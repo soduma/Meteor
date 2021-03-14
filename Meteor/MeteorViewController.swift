@@ -14,8 +14,6 @@ class MeteorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    let a = 123
-
 }
 
 class MeteorHeaderView: UICollectionReusableView {
