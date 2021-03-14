@@ -16,7 +16,6 @@ class MeteorViewController: UIViewController {
 
 
 }
-let test = "test"
 
 class MeteorHeaderView: UICollectionReusableView {
     
