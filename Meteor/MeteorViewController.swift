@@ -16,12 +16,6 @@ class MeteorViewController: UIViewController {
 
 
 }
-/* askldfjaoisejfoiajseiofjaoi
- askldjfoaiejofai
- jaiosdjfoiajeiofjaoifjioakl
- sdjfaioejof*/
-
-
 
 class MeteorHeaderView: UICollectionReusableView {
     
