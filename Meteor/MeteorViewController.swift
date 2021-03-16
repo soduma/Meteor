@@ -6,41 +6,37 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MeteorViewController: UIViewController {
+
+    @IBOutlet weak var meteorTextField: UITextField!
+    @IBOutlet weak var meteorButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-
-}
-
-extension MeteorViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeteorCell", for: indexPath) as? MeteorCell else { return UICollectionViewCell()
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge], completionHandler: {didAllow, Error in
+                                                                    print(didAllow)})
         }
-        return cell
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        for index in 1...5 {
+        
+        let contents = UNMutableNotificationContent()
+        contents.title = "가나다라"
+        contents.subtitle = "마바사"
+        contents.body = "아자차카"
+            contents.badge = NSNumber(value: index)
+        
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
     }
     
-}
-
-
-
-class MeteorCell: UICollectionViewCell {
-    
-    @IBOutlet weak var someLabel: UILabel!
-}
-
-class MeteorHeaderView: UICollectionReusableView {
-    
-    @IBOutlet weak var sectionTitleLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
     }
-}
