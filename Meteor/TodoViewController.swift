@@ -22,7 +22,7 @@ class TodoViewController: UIViewController {
 extension TodoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -30,7 +30,6 @@ extension TodoViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
     
 }
 
