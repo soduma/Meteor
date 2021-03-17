@@ -7,11 +7,14 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class SettingsViewController: UITableViewController {
+    
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        darkModeSwitch.isOn = false
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
@@ -42,4 +45,19 @@ class TableViewController: UITableViewController {
             application.open(webURL)
         }
     }
+    
+    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
+        if darkModeSwitch.isOn == false {
+            self.overrideUserInterfaceStyle = .dark
+        } else if darkModeSwitch.isOn == true {
+            self.overrideUserInterfaceStyle = .light
+        }
+    }
 }
+//let darkModeSwitchIsOn = defaults.bool(forKey: darkModeSwitchAct)
+//        darkModeSwitchOutlet.isOn = darkModeSwitchIsOn
+//        if darkModeSwitchIsOn {
+//            self.view.backgroundColor = .black
+//        } else {
+//            self.view.backgroundColor = .white
+//        }
