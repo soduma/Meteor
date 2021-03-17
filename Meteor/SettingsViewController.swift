@@ -46,13 +46,13 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
-        if darkModeSwitch.isOn == false {
-            self.overrideUserInterfaceStyle = .dark
-        } else if darkModeSwitch.isOn == true {
-            self.overrideUserInterfaceStyle = .light
-        }
-    }
+
+    
+//    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
+//        if darkModeSwitch.isOn == true {
+//            self.overrideUserInterfaceStyle = .light
+//        }
+//    }
 }
 //let darkModeSwitchIsOn = defaults.bool(forKey: darkModeSwitchAct)
 //        darkModeSwitchOutlet.isOn = darkModeSwitchIsOn
