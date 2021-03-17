@@ -11,10 +11,12 @@ class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let todoViewModel = TodoViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        todoViewModel.loadTasks()
     }
 
 }
@@ -22,12 +24,18 @@ class TodoViewController: UIViewController {
 extension TodoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return todoViewModel.todos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoCell", for: indexPath) as? TodoCell else { return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoCell", for: indexPath) as? TodoCell else {
+            return UICollectionViewCell()
         }
+        
+        var todo: Todo
+        todo = todoViewModel.todos[indexPath.item]
+        cell.updateUI(todo)
+        
         return cell
     }
     
@@ -47,16 +55,55 @@ class TodoCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var strikeThroughView: UIView!
     
+    @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
     
+    var doneButtonTapHandler: ((Bool) -> Void)?
+    var deleteButtonTapHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        reset()
+        reset()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        reset()
+        reset()
     }
+    
+    func updateUI(_ todo: Todo) {
+        checkButton.isSelected = todo.isDone
+        descriptionLabel.text = todo.detail
+        deleteButton.isHidden = todo.isDone == false
+        showStrikeThrough(todo.isDone)
+    }
+    
+    private func showStrikeThrough(_ show: Bool) {
+        if show {
+            strikeThroughWidth.constant = descriptionLabel.bounds.width
+        } else {
+            strikeThroughWidth.constant = 0
+        }
+    }
+    
+    func reset() {
+        deleteButton.isHidden = true
+        showStrikeThrough(false)
+    }
+    
+    @IBAction func tapCheckButton(_ sender: UIButton) {
+        checkButton.isSelected = !checkButton.isSelected
+        let isDone = checkButton.isSelected
+        showStrikeThrough(isDone)
+        deleteButton.isHidden = !isDone
+        
+        doneButtonTapHandler?(isDone)
+    }
+    
+    @IBAction func tapDeleteButton(_ sender: UIButton) {
+        deleteButtonTapHandler?()
+    }
+    
+    
 }
