@@ -68,7 +68,6 @@ class TodoCell: UICollectionViewCell {
     @IBOutlet weak var strikeThroughView: UIView!
     
     @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
-    @IBOutlet weak var emptyView: UIView!
     
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
