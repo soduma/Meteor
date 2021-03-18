@@ -19,6 +19,12 @@ class TodoViewController: UIViewController {
 
         todoViewModel.loadTasks()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        todoViewModel.loadTasks()
+//    }
 }
 
 extension TodoViewController: UICollectionViewDataSource {
