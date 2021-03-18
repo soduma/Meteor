@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
                                 <rect key="frame" x="20" y="328" width="350" height="50"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -107,7 +107,7 @@
                                                         <action selector="tapCheckButton:" destination="SyI-s1-wNN" eventType="touchUpInside" id="x9v-OK-FVg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집🐶 개발새발중 개발새 발중개 발새발중개 발새발중 개발새 발중개발새발 중개발 새발중개 발새발중개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
                                                     <rect key="frame" x="71" y="14.666666666666666" width="269" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -131,7 +131,7 @@
                                                     <rect key="frame" x="70" y="24" width="260" height="2"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="260" id="U4A-k0-GhS"/>
+                                                        <constraint firstAttribute="width" constant="260" id="Igz-12-ieB"/>
                                                         <constraint firstAttribute="height" constant="2" id="VTv-Ub-hNJ"/>
                                                     </constraints>
                                                 </view>
@@ -141,11 +141,11 @@
                                                 <constraint firstItem="ffr-ma-2S0" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="L4z-mU-IyF"/>
                                                 <constraint firstAttribute="trailing" secondItem="ffr-ma-2S0" secondAttribute="trailing" constant="15" id="LLw-gE-pNK"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="leading" secondItem="ElT-8q-o3y" secondAttribute="leading" constant="20" id="VLq-h1-oYT"/>
+                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="XYa-Np-Efs"/>
+                                                <constraint firstItem="ffr-ma-2S0" firstAttribute="leading" secondItem="HoI-Ka-L7C" secondAttribute="trailing" constant="10" id="bxp-jR-KvJ"/>
                                                 <constraint firstItem="HoI-Ka-L7C" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="l4n-cG-Jl7"/>
                                                 <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="16" id="lAf-e3-qE1"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="lU7-F8-q1r"/>
-                                                <constraint firstItem="ffr-ma-2S0" firstAttribute="leading" secondItem="HoI-Ka-L7C" secondAttribute="trailing" constant="10" id="qUj-sD-JA5"/>
-                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="centerY" secondItem="HoI-Ka-L7C" secondAttribute="centerY" id="yyA-tu-7lD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="390" height="50"/>
@@ -154,7 +154,7 @@
                                             <outlet property="deleteButton" destination="ffr-ma-2S0" id="KWe-rj-0G1"/>
                                             <outlet property="descriptionLabel" destination="HoI-Ka-L7C" id="cpo-s9-b8T"/>
                                             <outlet property="strikeThroughView" destination="ai5-hG-iYO" id="YLJ-zw-uax"/>
-                                            <outlet property="strikeThroughWidth" destination="yyA-tu-7lD" id="kY5-aW-RJw"/>
+                                            <outlet property="strikeThroughWidth" destination="Igz-12-ieB" id="INQ-4m-bCJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -205,6 +205,7 @@
                     <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="SfX-Jb-Sde"/>
                     <connections>
                         <outlet property="collectionView" destination="8Pg-M2-uUN" id="pp1-Is-sZm"/>
+                        <outlet property="tapAddButton" destination="DC9-en-am4" id="xmT-BR-98U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,7 +231,8 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
-                                <rect key="frame" x="30" y="91" width="330" height="615"/>
+                                <rect key="frame" x="40" y="91" width="315" height="565"/>
+                                <gestureRecognizers/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -244,23 +246,39 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="완료"/>
+                                <connections>
+                                    <action selector="tapFinishButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="xjs-Ji-nhS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gdz-bd-fQC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="30" id="18s-jW-OWa"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="k0Q-j8-NLo" secondAttribute="trailing" constant="30" id="1ai-w1-5c9"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="50" id="I2h-oy-yEO"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="k0Q-j8-NLo" secondAttribute="trailing" constant="35" id="1ai-w1-5c9"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="100" id="I2h-oy-yEO"/>
                             <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="30" id="PY8-7C-HBW"/>
-                            <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="30" id="bez-wY-8OE"/>
+                            <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="40" id="bez-wY-8OE"/>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="40" id="lLc-Qm-6Fw"/>
                             <constraint firstItem="WnL-JA-8Ya" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="35" id="nJs-WL-jv1"/>
                             <constraint firstItem="k0Q-j8-NLo" firstAttribute="top" secondItem="Iv4-La-ZWZ" secondAttribute="bottom" constant="20" id="qY4-y9-4Hb"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="l2F-Q9-yhI" appends="YES" id="IWc-Vw-iqp"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="finishButton" destination="WnL-JA-8Ya" id="EH7-cq-mIs"/>
+                        <outlet property="inputTextView" destination="k0Q-j8-NLo" id="Whm-I0-yNh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZr-VV-S4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="l2F-Q9-yhI">
+                    <connections>
+                        <action selector="tapBackGround:" destination="Ar1-RQ-ybm" id="h7o-RS-qqv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2513.8461538461538" y="72.511848341232223"/>
         </scene>

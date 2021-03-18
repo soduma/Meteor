@@ -10,6 +10,7 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tapAddButton: UIButton!
     
     let todoViewModel = TodoViewModel()
     
@@ -18,7 +19,6 @@ class TodoViewController: UIViewController {
 
         todoViewModel.loadTasks()
     }
-
 }
 
 extension TodoViewController: UICollectionViewDataSource {
@@ -36,9 +36,19 @@ extension TodoViewController: UICollectionViewDataSource {
         todo = todoViewModel.todos[indexPath.item]
         cell.updateUI(todo)
         
+        cell.doneButtonTapHandler = { isDone in
+            todo.isDone = isDone
+            self.todoViewModel.updateTodo(todo)
+            self.collectionView.reloadData()
+        }
+        
+        cell.deleteButtonTapHandler = {
+            self.todoViewModel.deleteTodo(todo)
+            self.collectionView.reloadData()
+        }
+        
         return cell
     }
-    
 }
 
 extension TodoViewController: UICollectionViewDelegateFlowLayout {
@@ -58,6 +68,7 @@ class TodoCell: UICollectionViewCell {
     @IBOutlet weak var strikeThroughView: UIView!
     
     @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
+    @IBOutlet weak var emptyView: UIView!
     
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
