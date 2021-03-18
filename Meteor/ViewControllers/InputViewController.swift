@@ -28,13 +28,10 @@ class InputViewController: UIViewController {
         guard let detail = inputTextView.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
         todoViewModel.addTodo(todo)
-//        let todoVC = TodoViewController()
-//        TodoViewController().collectionView?.reloadData()
         TodoViewController().collectionView?.reloadData()
-        inputTextView.text = ""
         dismiss(animated: true, completion: nil)
+        
     }
-    
     @IBAction func closeButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

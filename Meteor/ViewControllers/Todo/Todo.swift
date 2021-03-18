@@ -69,35 +69,11 @@ class TodoManager {
 
 class TodoViewModel {
     
-//    enum Section: Int, CaseIterable {
-//        case today
-//        case upcoming
-//
-//        var title: String {
-//            switch self {
-//            case .today: return "Today"
-//            default: return "Upcoming"
-//            }
-//        }
-//    }
-    
     private let manager = TodoManager.shared
     
     var todos: [Todo] {
         return manager.todos
     }
-    
-//    var todayTodos: [Todo] {
-//        return todos.filter { $0.isToday == true }
-//    }
-//
-//    var upcompingTodos: [Todo] {
-//        return todos.filter { $0.isToday == false }
-//    }
-//
-//    var numOfSection: Int {
-//        return Section.allCases.count
-//    }
     
     func addTodo(_ todo: Todo) {
         manager.addTodo(todo)
