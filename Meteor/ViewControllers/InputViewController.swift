@@ -29,6 +29,7 @@ class InputViewController: UIViewController {
         let todo = TodoManager.shared.createTodo(detail: detail)
         todoViewModel.addTodo(todo)
         TodoViewController().collectionView?.reloadData()
+        self.performSegue(withIdentifier: "gototodo", sender: self)
         dismiss(animated: true, completion: nil)
         
     }

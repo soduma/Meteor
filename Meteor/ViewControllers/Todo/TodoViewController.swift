@@ -20,11 +20,13 @@ class TodoViewController: UIViewController {
         todoViewModel.loadTasks()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        todoViewModel.loadTasks()
-//    }
+    @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension TodoViewController: UICollectionViewDataSource {
