@@ -270,16 +270,18 @@
                     <connections>
                         <outlet property="finishButton" destination="WnL-JA-8Ya" id="EH7-cq-mIs"/>
                         <outlet property="inputTextView" destination="k0Q-j8-NLo" id="Whm-I0-yNh"/>
+                        <segue destination="PdX-1W-gVk" kind="unwind" identifier="gototodo" unwindAction="unwindToTodoViewControllerWithSegue:" id="7bs-P6-V7W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZr-VV-S4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="PdX-1W-gVk" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="l2F-Q9-yhI">
                     <connections>
                         <action selector="tapBackGround:" destination="Ar1-RQ-ybm" id="h7o-RS-qqv"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2513.8461538461538" y="72.511848341232223"/>
+            <point key="canvasLocation" x="2531" y="73"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xpx-Lg-emU">
