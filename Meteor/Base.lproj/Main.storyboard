@@ -19,9 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
                                 <rect key="frame" x="20" y="328" width="350" height="50"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
                                 </constraints>
@@ -35,25 +34,47 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="284" y="398" width="86" height="48"/>
+                                <rect key="frame" x="292" y="398" width="78" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="보내기"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-sQ-JPM">
+                                <rect key="frame" x="20" y="629.66666666666663" width="350" height="81.333333333333371"/>
+                                <string key="text">asdfasdf asdfasdf asdfasdf
+aass</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray3Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
+                                <rect key="frame" x="20" y="272" width="162" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="Scm-sQ-JPM" secondAttribute="bottom" constant="50" id="AmT-7u-KZa"/>
                             <constraint firstItem="slp-i0-M92" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" constant="20" id="CHs-0c-kvB"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="20" id="TDx-nM-qnZ"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Scm-sQ-JPM" secondAttribute="trailing" constant="20" id="agF-8c-H4V"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="b6i-kF-HI6"/>
                             <constraint firstItem="slp-i0-M92" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="iqX-oX-ev0"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
+                            <constraint firstItem="Scm-sQ-JPM" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="oUc-gZ-2Hc"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="eAl-3u-eGw">
                         <imageReference key="image" image="burst.fill" catalog="system" symbolScale="medium"/>
@@ -64,6 +85,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Erw-Pg-INY">
+                    <connections>
+                        <action selector="tapBG:" destination="5ue-D9-5Dz" id="JDg-1P-1Fn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="889.23076923076917" y="-250.23696682464453"/>
         </scene>
@@ -109,9 +135,13 @@
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
                                                     <rect key="frame" x="71" y="14.666666666666666" width="101" height="20.666666666666671"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="HvM-Xf-s9b" appends="YES" id="nq0-Vq-N0A"/>
+                                                    </connections>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-ma-2S0">
                                                     <rect key="frame" x="350" y="12.666666666666664" width="25" height="25"/>
@@ -208,6 +238,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="FpS-GL-pyc" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="HvM-Xf-s9b">
+                    <connections>
+                        <action selector="tapDescriptionLabel:" destination="FpS-GL-pyc" id="HHT-hr-b2D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1744.6153846153845" y="72.511848341232223"/>
         </scene>
@@ -490,6 +526,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
