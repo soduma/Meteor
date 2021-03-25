@@ -16,7 +16,7 @@ class TodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         todoViewModel.loadTasks()
     }
     
@@ -27,6 +27,8 @@ class TodoViewController: UIViewController {
             }
         }
     }
+    
+    
 }
 
 extension TodoViewController: UICollectionViewDataSource {
@@ -123,5 +125,8 @@ class TodoCell: UICollectionViewCell {
         deleteButtonTapHandler?()
     }
     
+    @IBAction func tapDescriptionLabel(_ sender: UITapGestureRecognizer) {
+        
+    }
     
 }

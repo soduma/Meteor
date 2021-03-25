@@ -16,10 +16,14 @@ class MeteorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+                
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge], completionHandler: {didAllow, Error in
                                                                     print(didAllow)})
         }
+    
+    @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
+        meteorTextField.resignFirstResponder()
+    }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
