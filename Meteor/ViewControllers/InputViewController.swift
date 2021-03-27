@@ -20,7 +20,11 @@ class InputViewController: UIViewController {
         inputTextView.becomeFirstResponder()
     }
     
-    @IBAction func tapBackGround(_ sender: UITapGestureRecognizer) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
         inputTextView.resignFirstResponder()
     }
     
@@ -28,6 +32,7 @@ class InputViewController: UIViewController {
         guard let detail = inputTextView.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
         todoViewModel.addTodo(todo)
+        inputTextView.text = ""
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "gototodo", sender: self)
         dismiss(animated: true, completion: nil)
