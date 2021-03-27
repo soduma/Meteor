@@ -10,9 +10,19 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tapAddButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     let todoViewModel = TodoViewModel()
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "presentInput" {
+//            let vc = segue.destination as? InputViewController {
+//                if let index = sender as? Int {
+//
+//                }
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +36,6 @@ class TodoViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
-    }
-    
-    @IBAction func taplabel(_ sender: UITapGestureRecognizer) {
-        
     }
     
 }
@@ -61,6 +67,13 @@ extension TodoViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension TodoViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "presentInput", sender: indexPath.item)
     }
 }
 
@@ -127,7 +140,5 @@ class TodoCell: UICollectionViewCell {
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         deleteButtonTapHandler?()
     }
-    
-
     
 }

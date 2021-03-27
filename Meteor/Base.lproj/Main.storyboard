@@ -134,17 +134,11 @@ aass</string>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="71" y="10" width="101" height="30"/>
+                                                    <rect key="frame" x="71" y="14.999999999999998" width="101" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="LiB-6n-wzv"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="wfU-we-kQ7" appends="YES" id="czG-Zu-nek"/>
-                                                    </connections>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-ma-2S0">
                                                     <rect key="frame" x="350" y="12.666666666666664" width="25" height="25"/>
@@ -187,6 +181,7 @@ aass</string>
                                             <outlet property="descriptionLabel" destination="HoI-Ka-L7C" id="cpo-s9-b8T"/>
                                             <outlet property="strikeThroughView" destination="ai5-hG-iYO" id="YLJ-zw-uax"/>
                                             <outlet property="strikeThroughWidth" destination="Igz-12-ieB" id="INQ-4m-bCJ"/>
+                                            <segue destination="Ar1-RQ-ybm" kind="presentation" identifier="presentInput" id="Ctr-Og-qE2"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -236,17 +231,11 @@ aass</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="pencil" catalog="system" id="SfX-Jb-Sde"/>
                     <connections>
+                        <outlet property="addButton" destination="DC9-en-am4" id="xmT-BR-98U"/>
                         <outlet property="collectionView" destination="8Pg-M2-uUN" id="pp1-Is-sZm"/>
-                        <outlet property="tapAddButton" destination="DC9-en-am4" id="xmT-BR-98U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="wfU-we-kQ7">
-                    <connections>
-                        <action selector="taplabel:" destination="k7r-AM-8wv" id="Ccs-9D-xsj"/>
-                        <segue destination="Ar1-RQ-ybm" kind="presentation" identifier="presentToInput" id="u2h-oH-vPw"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1744.6153846153845" y="72.511848341232223"/>
         </scene>
@@ -516,7 +505,7 @@ aass</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="u2h-oH-vPw"/>
+        <segue reference="Ctr-Og-qE2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="burst.fill" catalog="system" width="128" height="117"/>

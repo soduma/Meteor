@@ -17,7 +17,7 @@ class InputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        inputTextView.becomeFirstResponder()
+//        inputTextView.becomeFirstResponder()
     }
     
     override func awakeFromNib() {
