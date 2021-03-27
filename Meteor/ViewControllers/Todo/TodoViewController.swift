@@ -28,6 +28,9 @@ class TodoViewController: UIViewController {
         }
     }
     
+    @IBAction func taplabel(_ sender: UITapGestureRecognizer) {
+        
+    }
     
 }
 
@@ -125,8 +128,6 @@ class TodoCell: UICollectionViewCell {
         deleteButtonTapHandler?()
     }
     
-    @IBAction func tapDescriptionLabel(_ sender: UITapGestureRecognizer) {
-        
-    }
+
     
 }

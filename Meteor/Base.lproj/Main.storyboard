@@ -133,14 +133,17 @@ aass</string>
                                                         <action selector="tapCheckButton:" destination="SyI-s1-wNN" eventType="touchUpInside" id="x9v-OK-FVg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="71" y="14.666666666666666" width="101" height="20.666666666666671"/>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
+                                                    <rect key="frame" x="71" y="10" width="101" height="30"/>
                                                     <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="LiB-6n-wzv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="HvM-Xf-s9b" appends="YES" id="nq0-Vq-N0A"/>
+                                                        <outletCollection property="gestureRecognizers" destination="wfU-we-kQ7" appends="YES" id="czG-Zu-nek"/>
                                                     </connections>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-ma-2S0">
@@ -238,10 +241,10 @@ aass</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="FpS-GL-pyc" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="HvM-Xf-s9b">
+                <tapGestureRecognizer id="wfU-we-kQ7">
                     <connections>
-                        <action selector="tapDescriptionLabel:" destination="FpS-GL-pyc" id="HHT-hr-b2D"/>
+                        <action selector="taplabel:" destination="k7r-AM-8wv" id="Ccs-9D-xsj"/>
+                        <segue destination="Ar1-RQ-ybm" kind="presentation" identifier="presentToInput" id="u2h-oH-vPw"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -313,7 +316,7 @@ aass</string>
                 <exit id="PdX-1W-gVk" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="l2F-Q9-yhI">
                     <connections>
-                        <action selector="tapBackGround:" destination="Ar1-RQ-ybm" id="h7o-RS-qqv"/>
+                        <action selector="tapBG:" destination="Ar1-RQ-ybm" id="h7o-RS-qqv"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -512,6 +515,9 @@ aass</string>
             <point key="canvasLocation" x="889" y="423"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="u2h-oH-vPw"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="burst.fill" catalog="system" width="128" height="117"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
