@@ -13,12 +13,15 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var meteorButton: UIButton!
     
+    var content: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge], completionHandler: {didAllow, Error in
-                                                                    print(didAllow)})
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: { (didAllow, error) in
+            
+        })
+        UNUserNotificationCenter.current().delegate = self
     }
     
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
@@ -27,20 +30,41 @@ class MeteorViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
-        for index in 1...5 {
-            
-            let contents = UNMutableNotificationContent()
-            contents.title = "METEOR:"
-            contents.subtitle = "마바사"
-            contents.body = "아자차카"
-            contents.badge = NSNumber(value: index)
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
+        
+        let contents = UNMutableNotificationContent()
+        contents.title = "METEOR :"
+        contents.body = "\(content)"
+        contents.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    @IBAction func inputContent(_ sender: UITextField) {
+        if let inputContent = meteorTextField.text {
+            content = inputContent
         }
     }
     
+}
+
+extension MeteorViewController : UNUserNotificationCenterDelegate {
+    //To display notifications when app is running  inforeground
+    
+    //앱이 foreground에 있을 때. 즉 앱안에 있어도 push알림을 받게 해줍니다.
+    //viewDidLoad()에 UNUserNotificationCenter.current().delegate = self를 추가해주는 것을 잊지마세요.
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+        let settingsViewController = UIViewController()
+        settingsViewController.view.backgroundColor = .gray
+        self.present(settingsViewController, animated: true, completion: nil)
+        
+    }
 }
