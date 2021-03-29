@@ -19,8 +19,8 @@ class MeteorViewController: UIViewController {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: { (didAllow, error) in
-            
         })
+        
         UNUserNotificationCenter.current().delegate = self
     }
     
@@ -49,7 +49,6 @@ class MeteorViewController: UIViewController {
             content = inputContent
         }
     }
-    
 }
 
 extension MeteorViewController : UNUserNotificationCenterDelegate {
@@ -65,6 +64,5 @@ extension MeteorViewController : UNUserNotificationCenterDelegate {
         let settingsViewController = UIViewController()
         settingsViewController.view.backgroundColor = .gray
         self.present(settingsViewController, animated: true, completion: nil)
-        
     }
 }
