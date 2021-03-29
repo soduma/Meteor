@@ -31,17 +31,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapNamkevmin(_ sender: UIButton) {
-        let Username =  "namkevmin" // Your Instagram Username here
-        let appURL = URL(string: "instagram://user?username=\(Username)")!
-        let application = UIApplication.shared
-
-        if application.canOpenURL(appURL) {
-            application.open(appURL)
-        } else {
-            // if Instagram app is not installed, open URL inside Safari
-            let webURL = URL(string: "https://instagram.com/\(Username)")!
-            application.open(webURL)
+    @IBAction func tapMail(_ sender: UIButton) {
+        let email = "soduma2@gmail.com"
+        if let url = URL(string: "mailto:\(email)") {
+          if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+          } else {
+            UIApplication.shared.openURL(url)
+          }
         }
     }
     

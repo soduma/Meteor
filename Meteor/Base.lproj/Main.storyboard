@@ -414,6 +414,9 @@
                                                     <state key="normal" title="soduma2@gmail.com">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tapMail:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="OcQ-bs-JMx"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
