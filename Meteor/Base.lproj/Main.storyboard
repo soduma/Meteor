@@ -19,40 +19,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
-                                <rect key="frame" x="20" y="328" width="350" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="여기에 작성 👀" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                                <rect key="frame" x="30" y="331" width="330" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메테오" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slp-i0-M92">
-                                <rect key="frame" x="30" y="64" width="78" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="292" y="398" width="78" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="보내기"/>
+                                <rect key="frame" x="305" y="401" width="65" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="보내기">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-sQ-JPM">
-                                <rect key="frame" x="20" y="629.66666666666663" width="350" height="81.333333333333371"/>
-                                <string key="text">asdfasdf asdfasdf asdfasdf
-aass</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림으로 받고 싶은 내용을  작성하고 버튼을 누르면  해당 내용을 알림 받을 수 있습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-sQ-JPM">
+                                <rect key="frame" x="20" y="609.33333333333337" width="350" height="101.66666666666663"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
-                                <rect key="frame" x="20" y="272" width="162" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
+                                <rect key="frame" x="25" y="285" width="139.33333333333334" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,12 +55,12 @@ aass</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="Scm-sQ-JPM" secondAttribute="bottom" constant="50" id="AmT-7u-KZa"/>
-                            <constraint firstItem="slp-i0-M92" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" constant="20" id="CHs-0c-kvB"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="20" id="TDx-nM-qnZ"/>
+                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="P0u-le-aFe" secondAttribute="bottom" constant="10" id="Fn3-Ks-2Cm"/>
+                            <constraint firstItem="P0u-le-aFe" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="Q28-oC-nHp"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="30" id="TDx-nM-qnZ"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Scm-sQ-JPM" secondAttribute="trailing" constant="20" id="agF-8c-H4V"/>
-                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="b6i-kF-HI6"/>
-                            <constraint firstItem="slp-i0-M92" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="iqX-oX-ev0"/>
+                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Scm-sQ-JPM" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="oUc-gZ-2Hc"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
@@ -209,8 +202,8 @@ aass</string>
                                     <segue destination="Ar1-RQ-ybm" kind="presentation" id="xej-KW-2Pd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="할 일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
-                                <rect key="frame" x="30" y="64" width="59" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
+                                <rect key="frame" x="30" y="64" width="52" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
