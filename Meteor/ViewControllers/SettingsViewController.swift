@@ -9,12 +9,12 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
-    @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var lightModeSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        darkModeSwitch.isOn = false
+        lightModeSwitch.isOn = false
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
@@ -29,7 +29,6 @@ class SettingsViewController: UITableViewController {
             let webURL = URL(string: "https://instagram.com/\(Username)")!
             application.open(webURL)
         }
-        
     }
     
     @IBAction func tapNamkevmin(_ sender: UIButton) {
@@ -46,18 +45,17 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
+        if let window = UIApplication.shared.windows.first {
+            if #available(iOS 13.0, *) {
 
-    
-//    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
-//        if darkModeSwitch.isOn == true {
-//            self.overrideUserInterfaceStyle = .light
-//        }
-//    }
+                if lightModeSwitch.isOn == true {
+                    window.overrideUserInterfaceStyle = .light
+                    
+                } else if lightModeSwitch.isOn == false {
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            }
+        }
+    }
 }
-//let darkModeSwitchIsOn = defaults.bool(forKey: darkModeSwitchAct)
-//        darkModeSwitchOutlet.isOn = darkModeSwitchIsOn
-//        if darkModeSwitchIsOn {
-//            self.view.backgroundColor = .black
-//        } else {
-//            self.view.backgroundColor = .white
-//        }

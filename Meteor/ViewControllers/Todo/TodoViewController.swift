@@ -37,7 +37,6 @@ class TodoViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension TodoViewController: UICollectionViewDataSource {
