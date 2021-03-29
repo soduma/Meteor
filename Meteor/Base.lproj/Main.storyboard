@@ -47,8 +47,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
-                                <rect key="frame" x="25" y="285" width="139.33333333333334" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <rect key="frame" x="25" y="267" width="207" height="54"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-M2-uUN">
-                                <rect key="frame" x="0.0" y="120" width="390" height="641"/>
+                                <rect key="frame" x="0.0" y="125" width="390" height="636"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hhS-iQ-d0b">
                                     <size key="itemSize" width="390" height="128"/>
@@ -206,7 +206,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
-                                <rect key="frame" x="30" y="64" width="52" height="36"/>
+                                <rect key="frame" x="25" y="69" width="52" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -215,11 +215,11 @@
                         <viewLayoutGuide key="safeArea" id="CRu-zx-Mrp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6VI-UB-qRJ" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" constant="30" id="1Le-57-11I"/>
+                            <constraint firstItem="6VI-UB-qRJ" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" constant="25" id="1Le-57-11I"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="8Pg-M2-uUN" secondAttribute="trailing" id="MMn-Gc-zHw"/>
                             <constraint firstItem="8Pg-M2-uUN" firstAttribute="top" secondItem="6VI-UB-qRJ" secondAttribute="bottom" constant="20" id="Ob2-CN-T48"/>
                             <constraint firstItem="8Pg-M2-uUN" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" id="ZPG-bt-re5"/>
-                            <constraint firstItem="6VI-UB-qRJ" firstAttribute="top" secondItem="CRu-zx-Mrp" secondAttribute="top" constant="20" id="f18-sF-NCE"/>
+                            <constraint firstItem="6VI-UB-qRJ" firstAttribute="top" secondItem="CRu-zx-Mrp" secondAttribute="top" constant="25" id="f18-sF-NCE"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="8Pg-M2-uUN" secondAttribute="bottom" id="oo4-a6-534"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="DC9-en-am4" secondAttribute="trailing" constant="40" id="waB-Lt-tmP"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="DC9-en-am4" secondAttribute="bottom" constant="40" id="yWp-JC-BMm"/>
