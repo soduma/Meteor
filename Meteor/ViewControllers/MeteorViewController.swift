@@ -12,15 +12,17 @@ class MeteorViewController: UIViewController {
     
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var meteorButton: UIButton!
+    @IBOutlet weak var eraseTextButton: UIButton!
     
     var content: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        eraseTextButton.isHidden = true
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge], completionHandler: { (didAllow, error) in
         })
-        
         UNUserNotificationCenter.current().delegate = self
     }
     
@@ -28,8 +30,12 @@ class MeteorViewController: UIViewController {
         meteorTextField.resignFirstResponder()
     }
     
+    @IBAction func tapEraseButton(_ sender: UIButton) {
+        meteorTextField.text = ""
+        eraseTextButton.isHidden = true
+    }
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
-        
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
         
         let contents = UNMutableNotificationContent()
@@ -47,6 +53,12 @@ class MeteorViewController: UIViewController {
     @IBAction func inputContent(_ sender: UITextField) {
         if let inputContent = meteorTextField.text {
             content = inputContent
+        }
+        
+        if meteorTextField.hasText {
+            eraseTextButton.isHidden = false
+        } else {
+            eraseTextButton.isHidden = true
         }
     }
 }

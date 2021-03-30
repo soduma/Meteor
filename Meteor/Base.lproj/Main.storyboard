@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="여기에 작성 👀" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
-                                <rect key="frame" x="30" y="331" width="330" height="50"/>
+                                <rect key="frame" x="30" y="331" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
                                 </constraints>
@@ -51,6 +51,18 @@
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwN-8r-dVs">
+                                <rect key="frame" x="335" y="341" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="R4U-yZ-U4L"/>
+                                    <constraint firstAttribute="width" constant="30" id="q9X-R0-fru"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapEraseButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="mCR-C8-vUe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,11 +70,13 @@
                         <constraints>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="Scm-sQ-JPM" secondAttribute="bottom" constant="50" id="AmT-7u-KZa"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="P0u-le-aFe" secondAttribute="bottom" constant="10" id="Fn3-Ks-2Cm"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="25" id="OwF-0H-Yf2"/>
                             <constraint firstItem="P0u-le-aFe" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="Q28-oC-nHp"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="30" id="TDx-nM-qnZ"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Scm-sQ-JPM" secondAttribute="trailing" constant="20" id="agF-8c-H4V"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
+                            <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Scm-sQ-JPM" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="oUc-gZ-2Hc"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
@@ -75,6 +89,7 @@
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
                         <outlet property="meteorButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                     </connections>
@@ -86,7 +101,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="889.23076923076917" y="-250.23696682464453"/>
+            <point key="canvasLocation" x="888" y="-628"/>
         </scene>
         <!--Todo View Controller-->
         <scene sceneID="DaL-IO-KWH">
@@ -234,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744.6153846153845" y="72.511848341232223"/>
+            <point key="canvasLocation" x="1277" y="73"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="QSp-fW-XgP">
@@ -307,7 +322,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2611" y="-250"/>
+            <point key="canvasLocation" x="2737" y="-262"/>
         </scene>
         <!--Modify View Controller-->
         <scene sceneID="5BC-wf-rIs">
@@ -387,7 +402,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2611" y="423"/>
+            <point key="canvasLocation" x="2737" y="409"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xpx-Lg-emU">
@@ -553,7 +568,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="423"/>
+            <point key="canvasLocation" x="888" y="779"/>
         </scene>
     </scenes>
     <resources>
