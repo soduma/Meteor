@@ -11,6 +11,7 @@ class InputViewController: UIViewController {
     
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     let todoViewModel = TodoViewModel()
     
@@ -34,11 +35,11 @@ class InputViewController: UIViewController {
         todoViewModel.addTodo(todo)
         inputTextView.text = ""
         TodoViewController().collectionView?.reloadData()
-        self.performSegue(withIdentifier: "gototodo", sender: self)
+        self.performSegue(withIdentifier: "fromInput", sender: self)
         dismiss(animated: true, completion: nil)
         
     }
-    @IBAction func closeButton(_ sender: UIButton) {
+    @IBAction func tapBackButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     

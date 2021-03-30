@@ -15,6 +15,8 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         lightModeSwitch.isOn = false
+        
+//        self.tabBarItem.image = UIImage(systemName: "ellipsis")!.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
