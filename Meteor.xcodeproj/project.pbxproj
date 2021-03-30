@@ -18,6 +18,7 @@
 		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
+		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,8 @@
 				A0A4C12725FE25890090A214 /* TodoViewController.swift */,
 				A0ED409A2601FD87009990ED /* Todo.swift */,
 				A0ED409E2602244E009990ED /* Storage.swift */,
+				A0ED408E26009DB5009990ED /* InputViewController.swift */,
+				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -92,7 +96,6 @@
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
 				A0ED40A12602245F009990ED /* Todo */,
-				A0ED408E26009DB5009990ED /* InputViewController.swift */,
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -175,6 +178,7 @@
 				A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */,
 				A0ED409F2602244E009990ED /* Storage.swift in Sources */,
 				A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */,
+				A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */,
 				A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

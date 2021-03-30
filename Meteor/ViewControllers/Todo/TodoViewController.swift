@@ -15,14 +15,26 @@ class TodoViewController: UIViewController {
     let todoViewModel = TodoViewModel()
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "presentInput" {
-//            let vc = segue.destination as? InputViewController {
-//                if let index = sender as? Int {
-//
-//                }
+//        if segue.identifier == "showModify" {
+//            let vc = segue.destination as? ModifyViewController
+//            if let index = sender as? Int {
+//                
+//                let todo = todoViewModel.todos[index]
+//                vc?.modifyViewModel.update(model: todo)
 //            }
 //        }
 //    }
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "presentModify" {
+    //            let vc = segue.destination as? ModifyViewController
+    //                if let detail = sender as? String {
+    //
+    //                    let todo = todoViewModel.todos[index]
+    //                    vc?.modifyViewModel.update(model: todo)
+    //            }
+    //        }
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,9 +82,9 @@ extension TodoViewController: UICollectionViewDataSource {
 }
 
 extension TodoViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "presentInput", sender: indexPath.item)
+        performSegue(withIdentifier: "showModify", sender: indexPath.item)
     }
 }
 

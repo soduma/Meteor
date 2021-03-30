@@ -45,7 +45,7 @@ class TodoManager {
         if let index = todos.firstIndex(of: todo) {
             todos.remove(at: index)
         }
-//        todos = todos.filter { $0.id != todo.id }
+        //        todos = todos.filter { $0.id != todo.id }
         saveTodo()
     }
     
@@ -75,6 +75,11 @@ class TodoViewModel {
         return manager.todos
     }
     
+//    var todoID: [Todo] {
+//        let todoID = todos
+//        return todoID
+//    }
+    
     func addTodo(_ todo: Todo) {
         manager.addTodo(todo)
     }
@@ -90,5 +95,9 @@ class TodoViewModel {
     func loadTasks() {
         manager.retrieveTodo()
     }
+    
+//    func todo(at index: Int) -> Todo {
+//        return todoID[index]
+//    }
 }
 
