@@ -24,6 +24,7 @@ class ModifyViewController: UIViewController {
     func updateUI() {
         if let todo = modifyViewModel.todo {
             modifyTextView.text = todo.detail
+            print(todo)
         }
     }
     
@@ -44,5 +45,6 @@ class ModifyViewModel {
     
     func update(model: Todo?) {
         todo = model
+        print(todo)
     }
 }
