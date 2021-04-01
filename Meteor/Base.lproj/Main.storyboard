@@ -143,7 +143,7 @@
                                                         <action selector="tapCheckButton:" destination="SyI-s1-wNN" eventType="touchUpInside" id="x9v-OK-FVg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
                                                     <rect key="frame" x="71" y="14.999999999999998" width="101" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -429,7 +429,7 @@
         <scene sceneID="9ZW-EQ-19w">
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="uD8-JC-se6">
@@ -489,7 +489,7 @@
                                                 <constraint firstItem="ErP-tN-Y1b" firstAttribute="centerY" secondItem="SG6-ND-JBU" secondAttribute="centerY" id="N1v-JQ-taz"/>
                                                 <constraint firstAttribute="trailing" secondItem="ErP-tN-Y1b" secondAttribute="trailing" constant="20" id="UWv-GO-6Xn"/>
                                                 <constraint firstItem="CHc-5L-yMd" firstAttribute="centerY" secondItem="SG6-ND-JBU" secondAttribute="centerY" id="Ucs-B4-KRE"/>
-                                                <constraint firstItem="CHc-5L-yMd" firstAttribute="leading" secondItem="SG6-ND-JBU" secondAttribute="leadingMargin" id="ZGm-dL-obK"/>
+                                                <constraint firstItem="CHc-5L-yMd" firstAttribute="leading" secondItem="SG6-ND-JBU" secondAttribute="leadingMargin" id="zde-Y8-T6p"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -561,7 +561,9 @@
                             <outlet property="delegate" destination="yKD-ZQ-Tqh" id="2AF-IB-EOu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="ellipsis" catalog="system" id="zSO-Ai-qKq"/>
+                    <tabBarItem key="tabBarItem" title="" image="ellipsis" catalog="system" id="zSO-Ai-qKq">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="NPD-1Y-UYT"/>
                     </connections>
