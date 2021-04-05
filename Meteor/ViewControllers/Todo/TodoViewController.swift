@@ -14,17 +14,6 @@ class TodoViewController: UIViewController {
     
     let todoViewModel = TodoViewModel()
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showModify" {
-//            let vc = segue.destination as? ModifyViewController
-//            if let index = sender as? Int {
-//
-//                let todo = todoViewModel.todos[index]
-//                vc?.modifyViewModel.update(model: todo)
-//            }
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showModify" {
             let vc = segue.destination as? ModifyViewController
