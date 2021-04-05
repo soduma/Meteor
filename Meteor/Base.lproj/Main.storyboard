@@ -191,7 +191,6 @@
                                             <outlet property="descriptionLabel" destination="HoI-Ka-L7C" id="cpo-s9-b8T"/>
                                             <outlet property="strikeThroughView" destination="ai5-hG-iYO" id="YLJ-zw-uax"/>
                                             <outlet property="strikeThroughWidth" destination="Igz-12-ieB" id="INQ-4m-bCJ"/>
-                                            <segue destination="1w1-ac-0VP" kind="presentation" identifier="showModify" id="YCV-pi-3XG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -245,6 +244,7 @@
                     <connections>
                         <outlet property="addButton" destination="DC9-en-am4" id="xmT-BR-98U"/>
                         <outlet property="collectionView" destination="8Pg-M2-uUN" id="pp1-Is-sZm"/>
+                        <segue destination="1w1-ac-0VP" kind="presentation" identifier="showModify" id="8Cj-vM-JZA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
