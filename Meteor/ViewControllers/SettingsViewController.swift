@@ -13,9 +13,7 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        lightModeSwitch.isOn = false
-        
+
 //        self.tabBarItem.image = UIImage(systemName: "ellipsis")!.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
     }
     
