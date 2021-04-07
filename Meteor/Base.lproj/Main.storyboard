@@ -159,7 +159,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="71" y="14.999999999999998" width="101" height="20.333333333333329"/>
+                                                    <rect key="frame" x="70" y="14.999999999999998" width="265" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -194,8 +194,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="ffr-ma-2S0" secondAttribute="trailing" constant="15" id="LLw-gE-pNK"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="leading" secondItem="ElT-8q-o3y" secondAttribute="leading" constant="20" id="VLq-h1-oYT"/>
                                                 <constraint firstItem="ai5-hG-iYO" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="XYa-Np-Efs"/>
+                                                <constraint firstItem="ffr-ma-2S0" firstAttribute="leading" secondItem="HoI-Ka-L7C" secondAttribute="trailing" constant="15" id="Y9L-60-9Qd"/>
                                                 <constraint firstItem="HoI-Ka-L7C" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="l4n-cG-Jl7"/>
-                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="16" id="lAf-e3-qE1"/>
+                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="15" id="lAf-e3-qE1"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="lU7-F8-q1r"/>
                                             </constraints>
                                         </collectionViewCellContentView>
