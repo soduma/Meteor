@@ -54,6 +54,7 @@ extension TodoViewController: UICollectionViewDataSource {
         
         var todo: Todo
         todo = todoViewModel.todos[indexPath.item]
+        print("cellfortiem \(todo)")
         cell.updateUI(todo)
         
         cell.doneButtonTapHandler = { isDone in

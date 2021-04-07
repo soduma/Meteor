@@ -13,11 +13,14 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var meteorButton: UIButton!
     @IBOutlet weak var eraseTextButton: UIButton!
+    @IBOutlet weak var testView: UIView!
     
     var content: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        testView.layer.cornerRadius = 20
         
         eraseTextButton.isHidden = true
         
