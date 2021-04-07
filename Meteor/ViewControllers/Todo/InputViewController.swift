@@ -29,6 +29,10 @@ class InputViewController: UIViewController {
         inputTextView.resignFirstResponder()
     }
     
+    @IBAction func tapBackButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func tapFinishButton(_ sender: UIButton) {
         guard let detail = inputTextView.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
@@ -36,11 +40,6 @@ class InputViewController: UIViewController {
         inputTextView.text = ""
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromInput", sender: self)
-        dismiss(animated: true, completion: nil)
-        
+//        dismiss(animated: true, completion: nil)
     }
-    @IBAction func tapBackButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
