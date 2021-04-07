@@ -37,7 +37,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
+                                    <action selector="tapSendButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-sQ-JPM">
@@ -64,14 +64,17 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-jh-0do">
-                                <rect key="frame" x="30" y="594" width="330" height="137"/>
+                                <rect key="frame" x="30" y="661" width="330" height="70"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Wg6-eA-ghc">
-                                        <rect key="frame" x="104" y="101" width="122" height="28"/>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Niu-uQ-qFo">
+                                        <rect key="frame" x="104" y="42" width="122" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="s3c-lq-NH3"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
@@ -93,7 +96,6 @@
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Scm-sQ-JPM" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="oUc-gZ-2Hc"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
-                            <constraint firstItem="kcv-jh-0do" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" constant="550" id="zYJ-H3-zW9"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
@@ -137,14 +139,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCell" id="SyI-s1-wNN" customClass="TodoCell" customModule="Meteor">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ElT-8q-o3y">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVs-JV-raG">
-                                                    <rect key="frame" x="20" y="7.6666666666666679" width="35" height="35"/>
+                                                    <rect key="frame" x="20" y="2.6666666666666679" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="XCq-aB-xvU"/>
                                                         <constraint firstAttribute="width" constant="35" id="gjN-QE-yMx"/>
@@ -159,14 +161,14 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="70" y="14.999999999999998" width="265" height="20.333333333333329"/>
+                                                    <rect key="frame" x="70" y="9.9999999999999982" width="265" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-ma-2S0">
-                                                    <rect key="frame" x="350" y="12.666666666666664" width="25" height="25"/>
+                                                    <rect key="frame" x="350" y="7.6666666666666679" width="25" height="25.000000000000004"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="NvW-TT-wYB"/>
                                                         <constraint firstAttribute="width" constant="25" id="szq-ph-ReD"/>
@@ -180,7 +182,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-hG-iYO">
-                                                    <rect key="frame" x="70" y="24" width="260" height="2"/>
+                                                    <rect key="frame" x="70" y="19" width="260" height="2"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Igz-12-ieB"/>
@@ -200,7 +202,7 @@
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="lU7-F8-q1r"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="390" height="50"/>
+                                        <size key="customSize" width="390" height="40"/>
                                         <connections>
                                             <outlet property="checkButton" destination="xVs-JV-raG" id="s2M-ri-v1o"/>
                                             <outlet property="deleteButton" destination="ffr-ma-2S0" id="KWe-rj-0G1"/>
@@ -211,7 +213,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iz0-sM-IN2">
-                                    <rect key="frame" x="0.0" y="50" width="390" height="80"/>
+                                    <rect key="frame" x="0.0" y="40" width="390" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
@@ -378,13 +380,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&gt;&gt;&gt;Modify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fK-fi-Ont">
-                                <rect key="frame" x="174" y="40" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1wi-Uy-wST"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
