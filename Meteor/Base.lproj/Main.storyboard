@@ -40,12 +40,6 @@
                                     <action selector="tapSendButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scm-sQ-JPM">
-                                <rect key="frame" x="20" y="670.33333333333337" width="350" height="40.666666666666629"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <color key="textColor" systemColor="systemGray3Color"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
                                 <rect key="frame" x="25" y="267" width="207" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
@@ -66,14 +60,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-jh-0do">
                                 <rect key="frame" x="30" y="661" width="330" height="70"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Niu-uQ-qFo">
-                                        <rect key="frame" x="104" y="42" width="122" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </pageControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-Pa-2MZ">
+                                        <rect key="frame" x="10" y="10" width="310" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ccd-Pa-2MZ" secondAttribute="trailing" constant="10" id="Pr6-Bo-nQA"/>
+                                    <constraint firstItem="ccd-Pa-2MZ" firstAttribute="leading" secondItem="kcv-jh-0do" secondAttribute="leading" constant="10" id="nGf-c6-TCs"/>
                                     <constraint firstAttribute="height" constant="70" id="s3c-lq-NH3"/>
+                                    <constraint firstAttribute="bottom" secondItem="ccd-Pa-2MZ" secondAttribute="bottom" constant="10" id="wqC-uH-aLZ"/>
+                                    <constraint firstItem="ccd-Pa-2MZ" firstAttribute="top" secondItem="kcv-jh-0do" secondAttribute="top" constant="10" id="xYy-z8-jFH"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -81,20 +81,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="Scm-sQ-JPM" secondAttribute="bottom" constant="50" id="AmT-7u-KZa"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="P0u-le-aFe" secondAttribute="bottom" constant="10" id="Fn3-Ks-2Cm"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="kcv-jh-0do" secondAttribute="bottom" constant="30" id="Ip1-EB-2Nf"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="25" id="OwF-0H-Yf2"/>
                             <constraint firstItem="P0u-le-aFe" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="Q28-oC-nHp"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Scm-sQ-JPM" secondAttribute="trailing" constant="20" id="agF-8c-H4V"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="kcv-jh-0do" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="iJM-Sw-icW"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="kcv-jh-0do" secondAttribute="trailing" constant="30" id="lK4-TQ-DPE"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
-                            <constraint firstItem="Scm-sQ-JPM" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="20" id="oUc-gZ-2Hc"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
                         </constraints>
                         <connections>
@@ -443,32 +440,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="uD8-JC-se6">
-                            <rect key="frame" x="0.0" y="204.33333587646484" width="390" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이트 모드로만 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JH-a5-95A">
-                                    <rect key="frame" x="40" y="15" width="170.33333333333334" height="20"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76j-vM-aKA">
-                                    <rect key="frame" x="311" y="9.6666666666666643" width="51" height="31"/>
-                                    <color key="onTintColor" systemColor="systemYellowColor"/>
-                                    <connections>
-                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="eWv-cY-VuS"/>
-                                    </connections>
-                                </switch>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="2JH-a5-95A" firstAttribute="centerY" secondItem="uD8-JC-se6" secondAttribute="centerY" id="7r3-Kf-Qow"/>
-                                <constraint firstAttribute="trailing" secondItem="76j-vM-aKA" secondAttribute="trailing" constant="30" id="eJW-4y-1oW"/>
-                                <constraint firstItem="2JH-a5-95A" firstAttribute="leading" secondItem="uD8-JC-se6" secondAttribute="leading" constant="40" id="eiC-AD-hkc"/>
-                                <constraint firstItem="76j-vM-aKA" firstAttribute="centerY" secondItem="uD8-JC-se6" secondAttribute="centerY" id="jEl-Xv-yHl"/>
-                            </constraints>
-                        </view>
                         <sections>
                             <tableViewSection headerTitle="메테오" id="si5-2F-S24">
                                 <cells>
@@ -566,13 +537,46 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="일반" id="noR-vq-LyQ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cR1-o4-Sre">
+                                        <rect key="frame" x="20" y="242.33333587646484" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cR1-o4-Sre" id="YKK-Es-HSQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이트 모드로만 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-Uw-6P6">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="170.66666666666666" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76j-vM-aKA">
+                                                    <rect key="frame" x="281" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                                    <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <connections>
+                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="eWv-cY-VuS"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wiS-Uw-6P6" firstAttribute="centerY" secondItem="YKK-Es-HSQ" secondAttribute="centerY" id="3ii-e5-EKz"/>
+                                                <constraint firstAttribute="trailing" secondItem="76j-vM-aKA" secondAttribute="trailing" constant="20" id="5TZ-Jq-9JM"/>
+                                                <constraint firstItem="wiS-Uw-6P6" firstAttribute="leading" secondItem="YKK-Es-HSQ" secondAttribute="leadingMargin" id="BRg-3U-ycT"/>
+                                                <constraint firstItem="76j-vM-aKA" firstAttribute="centerY" secondItem="YKK-Es-HSQ" secondAttribute="centerY" id="Q1S-vd-ytm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="yKD-ZQ-Tqh" id="jFZ-9I-Y6O"/>
                             <outlet property="delegate" destination="yKD-ZQ-Tqh" id="2AF-IB-EOu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="gear" catalog="system" id="zSO-Ai-qKq">
+                    <tabBarItem key="tabBarItem" title="" image="gearshape" catalog="system" id="zSO-Ai-qKq">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
@@ -588,7 +592,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="highlighter" catalog="system" width="128" height="119"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
@@ -599,8 +603,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
