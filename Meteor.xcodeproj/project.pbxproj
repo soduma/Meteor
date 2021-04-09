@@ -73,8 +73,8 @@
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				A0ED40A326022473009990ED /* ViewControllers */,
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
-				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
+				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 			);
 			path = Meteor;
 			sourceTree = "<group>";
