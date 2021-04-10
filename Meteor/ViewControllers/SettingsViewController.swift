@@ -10,11 +10,11 @@ import UIKit
 class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.tabBarItem.image = UIImage(systemName: "ellipsis")!.withBaselineOffset(fromBottom: UIFont.systemFontSize / 2)
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
@@ -43,13 +43,36 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
+        
+        
+        
         if let window = UIApplication.shared.windows.first {
+            
+            darkModeSwitch.isOn = false
+            
             if #available(iOS 13.0, *) {
 
                 if lightModeSwitch.isOn == true {
                     window.overrideUserInterfaceStyle = .light
                     
                 } else if lightModeSwitch.isOn == false {
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            }
+        }
+    }
+    
+    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
+        
+        lightModeSwitch.isOn = false
+        
+        if let window = UIApplication.shared.windows.first {
+            if #available(iOS 13.0, *) {
+
+                if darkModeSwitch.isOn == true {
+                    window.overrideUserInterfaceStyle = .dark
+                    
+                } else if darkModeSwitch.isOn == false {
                     window.overrideUserInterfaceStyle = .unspecified
                 }
             }
