@@ -62,8 +62,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-Pa-2MZ">
                                         <rect key="frame" x="10" y="10" width="310" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -158,7 +157,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="70" y="9.9999999999999982" width="265" height="20.333333333333329"/>
+                                                    <rect key="frame" x="65" y="9.9999999999999982" width="270" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -195,7 +194,7 @@
                                                 <constraint firstItem="ai5-hG-iYO" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="XYa-Np-Efs"/>
                                                 <constraint firstItem="ffr-ma-2S0" firstAttribute="leading" secondItem="HoI-Ka-L7C" secondAttribute="trailing" constant="15" id="Y9L-60-9Qd"/>
                                                 <constraint firstItem="HoI-Ka-L7C" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="l4n-cG-Jl7"/>
-                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="15" id="lAf-e3-qE1"/>
+                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="10" id="lAf-e3-qE1"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="lU7-F8-q1r"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -420,7 +419,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lo3-sn-6A7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>

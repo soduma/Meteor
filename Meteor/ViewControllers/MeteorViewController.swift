@@ -16,6 +16,7 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var testView: UIView!
     
     var content: String = ""
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class MeteorViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
+
+        index += 1
         
         let contents = UNMutableNotificationContent()
         contents.title = "METEOR :"
@@ -48,8 +51,8 @@ class MeteorViewController: UIViewController {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
-        let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
+        print(index)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
