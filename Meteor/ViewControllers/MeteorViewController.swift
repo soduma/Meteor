@@ -21,6 +21,19 @@ class MeteorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let window = UIApplication.shared.windows.first {
+            if #available(iOS 13.0, *) {
+                
+                if UserDefaults.standard.bool(forKey: "lightState") == true {
+                    window.overrideUserInterfaceStyle = .light
+                } else if UserDefaults.standard.bool(forKey: "darkState") == true {
+                    window.overrideUserInterfaceStyle = .dark
+                } else {
+                    window.overrideUserInterfaceStyle = .unspecified
+                }
+            }
+        }
+        
         testView.layer.cornerRadius = 20
         
         eraseTextButton.isHidden = true
@@ -41,19 +54,21 @@ class MeteorViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
-
+        
         index += 1
         
         let contents = UNMutableNotificationContent()
         contents.title = "METEOR :"
         contents.body = "\(content)"
-//        contents.badge = 1
+        //        contents.badge = 1
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
         let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
         print(index)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        meteorTextField.resignFirstResponder()
     }
     
     @IBAction func inputContent(_ sender: UITextField) {

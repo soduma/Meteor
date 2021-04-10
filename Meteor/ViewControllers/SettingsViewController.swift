@@ -14,14 +14,21 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
         let Username =  "infofield" // Your Instagram Username here
         let appURL = URL(string: "instagram://user?username=\(Username)")!
         let application = UIApplication.shared
-
+        
         if application.canOpenURL(appURL) {
             application.open(appURL)
         } else {
@@ -34,24 +41,21 @@ class SettingsViewController: UITableViewController {
     @IBAction func tapMail(_ sender: UIButton) {
         let email = "soduma2@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
-          if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url)
-          } else {
-            UIApplication.shared.openURL(url)
-          }
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
     
     @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
         
-        
+        darkModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
-            
-            darkModeSwitch.isOn = false
-            
             if #available(iOS 13.0, *) {
-
+                
                 if lightModeSwitch.isOn == true {
                     window.overrideUserInterfaceStyle = .light
                     
@@ -60,6 +64,11 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
+        
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
+        //        print("1",UserDefaults.standard.bool(forKey: "lightState"))
+        //        print("2",UserDefaults.standard.bool(forKey: "darkState"))
     }
     
     @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
@@ -68,7 +77,7 @@ class SettingsViewController: UITableViewController {
         
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
-
+                
                 if darkModeSwitch.isOn == true {
                     window.overrideUserInterfaceStyle = .dark
                     
@@ -77,5 +86,9 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
+        //        print("3",UserDefaults.standard.bool(forKey: "lightState"))
+        //        print("4",UserDefaults.standard.bool(forKey: "darkState"))
     }
 }

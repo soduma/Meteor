@@ -40,6 +40,5 @@ class InputViewController: UIViewController {
         inputTextView.text = ""
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromInput", sender: self)
-//        dismiss(animated: true, completion: nil)
     }
 }
