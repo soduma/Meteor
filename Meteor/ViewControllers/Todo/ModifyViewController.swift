@@ -46,7 +46,6 @@ class ModifyViewController: UIViewController {
         
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromModify", sender: self)
-//        dismiss(animated: true, completion: nil)
     }
 }
 
