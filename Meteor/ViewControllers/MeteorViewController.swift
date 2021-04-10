@@ -11,12 +11,11 @@ import UserNotifications
 class MeteorViewController: UIViewController {
     
     @IBOutlet weak var meteorTextField: UITextField!
-    @IBOutlet weak var meteorButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var eraseTextButton: UIButton!
-    @IBOutlet weak var testView: UIView!
     
     var content: String = ""
-    var index = 0
+    var notiIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +32,7 @@ class MeteorViewController: UIViewController {
                 }
             }
         }
-        
-        testView.layer.cornerRadius = 20
+        //        noticeView.layer.cornerRadius = 10
         
         eraseTextButton.isHidden = true
         
@@ -55,7 +53,10 @@ class MeteorViewController: UIViewController {
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
         
-        index += 1
+        notiIndex += 1
+        if notiIndex > 2 {
+            notiIndex = 0
+        }
         
         let contents = UNMutableNotificationContent()
         contents.title = "METEOR :"
@@ -64,8 +65,8 @@ class MeteorViewController: UIViewController {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
-        let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
-        print(index)
+        let request = UNNotificationRequest(identifier: "\(notiIndex)timerdone", content: contents, trigger: trigger)
+        print(notiIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         meteorTextField.resignFirstResponder()
