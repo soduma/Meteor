@@ -62,11 +62,12 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-Pa-2MZ">
                                         <rect key="frame" x="10" y="10" width="310" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ccd-Pa-2MZ" secondAttribute="trailing" constant="10" id="Pr6-Bo-nQA"/>
                                     <constraint firstItem="ccd-Pa-2MZ" firstAttribute="leading" secondItem="kcv-jh-0do" secondAttribute="leading" constant="10" id="nGf-c6-TCs"/>
@@ -535,26 +536,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="일반" id="noR-vq-LyQ">
+                            <tableViewSection headerTitle="스타일" footerTitle="두 가지 옵션을 모두 끄면 시스템 설정을 따릅니다." id="noR-vq-LyQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cR1-o4-Sre">
-                                        <rect key="frame" x="20" y="242.33333587646484" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="249.66666793823242" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cR1-o4-Sre" id="YKK-Es-HSQ">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이트 모드로만 사용하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-Uw-6P6">
-                                                    <rect key="frame" x="20" y="11.666666666666664" width="170.66666666666666" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이트 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-Uw-6P6">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76j-vM-aKA">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="76j-vM-aKA">
                                                     <rect key="frame" x="281" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="eWv-cY-VuS"/>
+                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="y6m-bE-Zr6"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -563,6 +565,36 @@
                                                 <constraint firstAttribute="trailing" secondItem="76j-vM-aKA" secondAttribute="trailing" constant="20" id="5TZ-Jq-9JM"/>
                                                 <constraint firstItem="wiS-Uw-6P6" firstAttribute="leading" secondItem="YKK-Es-HSQ" secondAttribute="leadingMargin" id="BRg-3U-ycT"/>
                                                 <constraint firstItem="76j-vM-aKA" firstAttribute="centerY" secondItem="YKK-Es-HSQ" secondAttribute="centerY" id="Q1S-vd-ytm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ecS-pA-ZFD">
+                                        <rect key="frame" x="20" y="293.33333587646484" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ecS-pA-ZFD" id="h56-mw-OOO">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다크 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-7Y-0AM">
+                                                    <rect key="frame" x="20.000000000000004" y="11.666666666666664" width="63.333333333333343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-YH-q9E">
+                                                    <rect key="frame" x="281" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                                    <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="tapDarkModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="9hC-fE-18I"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="A4a-7Y-0AM" firstAttribute="leading" secondItem="h56-mw-OOO" secondAttribute="leadingMargin" id="Gax-mU-Ujx"/>
+                                                <constraint firstItem="A4a-7Y-0AM" firstAttribute="centerY" secondItem="h56-mw-OOO" secondAttribute="centerY" id="JtB-uK-tOd"/>
+                                                <constraint firstAttribute="trailing" secondItem="3YJ-YH-q9E" secondAttribute="trailing" constant="20" id="Uyo-Qi-r2V"/>
+                                                <constraint firstItem="3YJ-YH-q9E" firstAttribute="centerY" secondItem="h56-mw-OOO" secondAttribute="centerY" id="rv4-rj-sx2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -578,7 +610,8 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="NPD-1Y-UYT"/>
+                        <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
+                        <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -600,9 +633,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
