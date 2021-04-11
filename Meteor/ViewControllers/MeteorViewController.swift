@@ -14,8 +14,14 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var eraseTextButton: UIButton!
     
+    @IBOutlet weak var noticeView: UIView!
+    @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var content: String = ""
-    var notiIndex = 0
+    var notificationIndex = 0
+    var notice = ["🌱 내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요.","🍀 그리고 알림 수는 3개까지 가능합니다.","🐦 알림 창의 텍스트 수는 한계가 있습니다!"]
+    var noticeIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +38,38 @@ class MeteorViewController: UIViewController {
                 }
             }
         }
-        //        noticeView.layer.cornerRadius = 10
+        
+        noticeLabel.text = notice[0]
+        pageControl.numberOfPages = notice.count
+        noticeView.layer.cornerRadius = 15
         
         eraseTextButton.isHidden = true
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
+    }
+    
+    @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
+        notificationIndex += 1
+        if notificationIndex > notice.count - 1 {
+            notificationIndex = 0
+        }
+        noticeLabel.text = notice[notificationIndex]
+        pageControl.currentPage = notificationIndex
+    }
+    
+    @IBAction func swipeRightNoticeView(_ sender: UISwipeGestureRecognizer) {
+        notificationIndex -= 1
+        if notificationIndex < 0 {
+            notificationIndex = notice.count - 1
+        }
+        noticeLabel.text = notice[notificationIndex]
+        pageControl.currentPage = notificationIndex
+    }
+    
+    @IBAction func pageChanged(_ sender: UIPageControl) {
+        noticeLabel.text = notice[pageControl.currentPage]
     }
     
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
@@ -53,9 +84,9 @@ class MeteorViewController: UIViewController {
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
         
-        notiIndex += 1
-        if notiIndex > 2 {
-            notiIndex = 0
+        notificationIndex += 1
+        if notificationIndex > 2 {
+            notificationIndex = 0
         }
         
         let contents = UNMutableNotificationContent()
@@ -65,8 +96,8 @@ class MeteorViewController: UIViewController {
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
-        let request = UNNotificationRequest(identifier: "\(notiIndex)timerdone", content: contents, trigger: trigger)
-        print(notiIndex)
+        let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
+        print(notificationIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         meteorTextField.resignFirstResponder()

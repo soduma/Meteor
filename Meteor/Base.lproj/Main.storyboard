@@ -57,35 +57,56 @@
                                     <action selector="tapEraseButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="mCR-C8-vUe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t68-ix-fnr">
-                                <rect key="frame" x="71.666666666666686" y="670.33333333333337" width="247" height="40.666666666666629"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-FQ-PDZ">
-                                <rect key="frame" x="134" y="716" width="122" height="28"/>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sha-U2-ab1">
+                                <rect key="frame" x="30" y="631" width="330" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t68-ix-fnr">
+                                        <rect key="frame" x="20" y="14.666666666666625" width="290" height="40.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-FQ-PDZ">
+                                        <rect key="frame" x="104" y="59" width="122" height="28"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
+                                        <connections>
+                                            <action selector="pageChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="zfA-Vk-gi0"/>
+                                        </connections>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="FpS-FQ-PDZ" secondAttribute="bottom" constant="3" id="1UJ-im-6H5"/>
+                                    <constraint firstItem="FpS-FQ-PDZ" firstAttribute="centerX" secondItem="sha-U2-ab1" secondAttribute="centerX" id="MKg-hv-yPl"/>
+                                    <constraint firstAttribute="trailing" secondItem="t68-ix-fnr" secondAttribute="trailing" constant="20" id="TJV-U0-UJ5"/>
+                                    <constraint firstAttribute="height" constant="90" id="Zgv-ky-eQg"/>
+                                    <constraint firstItem="t68-ix-fnr" firstAttribute="centerY" secondItem="sha-U2-ab1" secondAttribute="centerY" constant="-10" id="iHO-cw-llr"/>
+                                    <constraint firstItem="t68-ix-fnr" firstAttribute="leading" secondItem="sha-U2-ab1" secondAttribute="leading" constant="20" id="xnj-ss-eM8"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="yD4-tY-Tvc" appends="YES" id="t9b-lr-08C"/>
+                                    <outletCollection property="gestureRecognizers" destination="LV2-G3-4EY" appends="YES" id="koF-A6-IYJ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="t68-ix-fnr" secondAttribute="bottom" constant="50" id="Akq-is-ULv"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="sha-U2-ab1" secondAttribute="bottom" constant="40" id="2NV-nu-hDr"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="sha-U2-ab1" secondAttribute="trailing" constant="30" id="8dG-Yd-GKJ"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="P0u-le-aFe" secondAttribute="bottom" constant="10" id="Fn3-Ks-2Cm"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="25" id="OwF-0H-Yf2"/>
                             <constraint firstItem="P0u-le-aFe" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="Q28-oC-nHp"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
-                            <constraint firstItem="FpS-FQ-PDZ" firstAttribute="top" secondItem="t68-ix-fnr" secondAttribute="bottom" constant="5" id="ZAC-cs-KhA"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="20" id="oy8-ea-Bei"/>
-                            <constraint firstItem="t68-ix-fnr" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" id="vAq-PP-ptr"/>
-                            <constraint firstItem="FpS-FQ-PDZ" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" id="vlL-LU-ww2"/>
+                            <constraint firstItem="sha-U2-ab1" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="pw5-97-bws"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
@@ -97,6 +118,9 @@
                     <connections>
                         <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
+                        <outlet property="noticeLabel" destination="t68-ix-fnr" id="QDi-bR-l7v"/>
+                        <outlet property="noticeView" destination="sha-U2-ab1" id="nIo-n1-h4b"/>
+                        <outlet property="pageControl" destination="FpS-FQ-PDZ" id="ViO-yM-D1y"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
                     </connections>
                 </viewController>
@@ -106,6 +130,16 @@
                         <action selector="tapBG:" destination="5ue-D9-5Dz" id="JDg-1P-1Fn"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="yD4-tY-Tvc">
+                    <connections>
+                        <action selector="swipeLeftNoticeView:" destination="5ue-D9-5Dz" id="a10-ja-bE6"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="LV2-G3-4EY">
+                    <connections>
+                        <action selector="swipeRightNoticeView:" destination="5ue-D9-5Dz" id="TrT-qu-88l"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="887.69230769230762" y="-628.43601895734594"/>
         </scene>
