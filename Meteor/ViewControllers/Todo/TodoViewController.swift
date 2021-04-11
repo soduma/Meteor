@@ -143,5 +143,4 @@ class TodoCell: UICollectionViewCell {
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         deleteButtonTapHandler?()
     }
-    
 }
