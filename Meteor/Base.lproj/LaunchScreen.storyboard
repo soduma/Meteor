@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meteor_logo" translatesAutoresizingMaskIntoConstraints="NO" id="ipD-S0-Kil">
-                                <rect key="frame" x="128" y="327" width="150" height="150"/>
+                                <rect key="frame" x="133" y="327" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="8yf-tR-kU8"/>
                                     <constraint firstAttribute="height" constant="150" id="Ci2-rM-qNq"/>
@@ -28,7 +28,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ipD-S0-Kil" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="8" id="7lC-W7-H7l"/>
+                            <constraint firstItem="ipD-S0-Kil" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="13" id="7lC-W7-H7l"/>
                             <constraint firstItem="ipD-S0-Kil" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="T2q-k5-eTF"/>
                         </constraints>
                     </view>

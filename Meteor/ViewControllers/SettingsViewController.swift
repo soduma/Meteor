@@ -11,6 +11,9 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var infofieldButton: UIButton!
+    @IBOutlet weak var mailButton: UIButton!
+    @IBOutlet weak var versionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
