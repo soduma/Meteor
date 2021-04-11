@@ -20,7 +20,7 @@ class MeteorViewController: UIViewController {
     
     var content: String = ""
     var notificationIndex = 0
-    var notice = ["🌱 내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요.","🍀 그리고 알림 수는 3개까지 가능합니다.","🐦 알림 창의 텍스트 수는 한계가 있습니다!"]
+    var notice = ["🌱 내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요.","🍀 알림 수는 3개까지 가능합니다.","🐦 알림 창의 텍스트 수는 한계가 있습니다!"]
     var noticeIndex = 0
     
     override func viewDidLoad() {
