@@ -67,7 +67,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-FQ-PDZ">
-                                        <rect key="frame" x="104" y="59" width="122" height="28"/>
+                                        <rect key="frame" x="104" y="57" width="122" height="28"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                         <connections>
@@ -78,7 +78,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="FpS-FQ-PDZ" secondAttribute="bottom" constant="3" id="1UJ-im-6H5"/>
+                                    <constraint firstAttribute="bottom" secondItem="FpS-FQ-PDZ" secondAttribute="bottom" constant="5" id="1UJ-im-6H5"/>
                                     <constraint firstItem="FpS-FQ-PDZ" firstAttribute="centerX" secondItem="sha-U2-ab1" secondAttribute="centerX" id="MKg-hv-yPl"/>
                                     <constraint firstAttribute="trailing" secondItem="t68-ix-fnr" secondAttribute="trailing" constant="20" id="TJV-U0-UJ5"/>
                                     <constraint firstAttribute="height" constant="90" id="Zgv-ky-eQg"/>
@@ -205,7 +205,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-hG-iYO">
-                                                    <rect key="frame" x="70" y="19" width="260" height="2"/>
+                                                    <rect key="frame" x="65" y="19" width="260" height="2"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Igz-12-ieB"/>
@@ -214,7 +214,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="15" id="4DR-nA-QmD"/>
+                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="10" id="4DR-nA-QmD"/>
                                                 <constraint firstItem="ffr-ma-2S0" firstAttribute="centerY" secondItem="ElT-8q-o3y" secondAttribute="centerY" id="L4z-mU-IyF"/>
                                                 <constraint firstAttribute="trailing" secondItem="ffr-ma-2S0" secondAttribute="trailing" constant="15" id="LLw-gE-pNK"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="leading" secondItem="ElT-8q-o3y" secondAttribute="leading" constant="20" id="VLq-h1-oYT"/>
