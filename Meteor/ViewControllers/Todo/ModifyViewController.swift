@@ -11,7 +11,7 @@ class ModifyViewController: UIViewController {
     
     @IBOutlet weak var modifyTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     let modifyViewModel = ModifyViewModel()
     let todoViewModel = TodoViewModel()
