@@ -94,7 +94,7 @@ class MeteorViewController: UIViewController {
         contents.body = "\(content)"
         //        contents.badge = 1
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
         
         let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
         print(notificationIndex)
