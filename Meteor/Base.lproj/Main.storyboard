@@ -31,7 +31,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="300" y="401" width="65" height="42"/>
+                                <rect key="frame" x="295" y="401" width="65" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="보내기">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,30 +60,44 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sha-U2-ab1">
                                 <rect key="frame" x="30" y="631" width="330" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t68-ix-fnr">
-                                        <rect key="frame" x="20" y="14.666666666666625" width="290" height="40.666666666666657"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSa-BT-X3f">
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W5t-tX-wRt">
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="regular"/>
+                                    </visualEffectView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t68-ix-fnr">
+                                        <rect key="frame" x="40" y="14.666666666666625" width="250" height="40.666666666666657"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="ZHg-St-SuJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FpS-FQ-PDZ">
                                         <rect key="frame" x="104" y="57" width="122" height="28"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="pageChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="zfA-Vk-gi0"/>
                                         </connections>
                                     </pageControl>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="FpS-FQ-PDZ" secondAttribute="bottom" constant="5" id="1UJ-im-6H5"/>
+                                    <constraint firstItem="ZSa-BT-X3f" firstAttribute="leading" secondItem="sha-U2-ab1" secondAttribute="leading" id="IyM-gB-lUD"/>
                                     <constraint firstItem="FpS-FQ-PDZ" firstAttribute="centerX" secondItem="sha-U2-ab1" secondAttribute="centerX" id="MKg-hv-yPl"/>
-                                    <constraint firstAttribute="trailing" secondItem="t68-ix-fnr" secondAttribute="trailing" constant="20" id="TJV-U0-UJ5"/>
+                                    <constraint firstItem="t68-ix-fnr" firstAttribute="centerX" secondItem="sha-U2-ab1" secondAttribute="centerX" id="MLN-Px-Yq9"/>
+                                    <constraint firstItem="ZSa-BT-X3f" firstAttribute="top" secondItem="sha-U2-ab1" secondAttribute="top" id="Uwq-Ou-aNf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZSa-BT-X3f" secondAttribute="bottom" id="WJL-ZM-4Jd"/>
                                     <constraint firstAttribute="height" constant="90" id="Zgv-ky-eQg"/>
                                     <constraint firstItem="t68-ix-fnr" firstAttribute="centerY" secondItem="sha-U2-ab1" secondAttribute="centerY" constant="-10" id="iHO-cw-llr"/>
-                                    <constraint firstItem="t68-ix-fnr" firstAttribute="leading" secondItem="sha-U2-ab1" secondAttribute="leading" constant="20" id="xnj-ss-eM8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZSa-BT-X3f" secondAttribute="trailing" id="jie-Kk-L3D"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="yD4-tY-Tvc" appends="YES" id="t9b-lr-08C"/>
@@ -105,7 +119,7 @@
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="25" id="oy8-ea-Bei"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="30" id="oy8-ea-Bei"/>
                             <constraint firstItem="sha-U2-ab1" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="pw5-97-bws"/>
                         </constraints>
                         <connections>
@@ -116,6 +130,7 @@
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="blurView" destination="ZSa-BT-X3f" id="XI8-tw-dKD"/>
                         <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="t68-ix-fnr" id="QDi-bR-l7v"/>
