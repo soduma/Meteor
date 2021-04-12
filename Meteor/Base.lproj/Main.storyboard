@@ -329,7 +329,7 @@
                                     <action selector="tapBackButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="iFh-I1-gil"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="monday" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
                                 <rect key="frame" x="40" y="90" width="313" height="566"/>
                                 <gestureRecognizers/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -419,7 +419,7 @@
                                     <action selector="tapBackButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="cWX-9y-5nY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="sunday" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-di-LbD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-di-LbD">
                                 <rect key="frame" x="40" y="90" width="313" height="435"/>
                                 <gestureRecognizers/>
                                 <constraints>
