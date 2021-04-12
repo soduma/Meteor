@@ -14,17 +14,21 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var eraseTextButton: UIButton!
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var noticeView: UIView!
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
     var content: String = ""
     var notificationIndex = 0
-    var notice = ["🌱 내용을 작성하고 보내기를 누르면 해당 내용을 알림으로 받을 수 있어요.","🍀 알림 수는 3개까지 가능합니다.","🐦 알림 창에 표시될 수 있는 텍스트는 한계가 있습니다!"]
+    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.","알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.","알림 창에 표시할 수 있는 텍스트의 길이는 한계가 있습니다!"]
     var noticeIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        blurView.layer.cornerRadius = 15
+        blurView.clipsToBounds = true
         
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
@@ -41,7 +45,7 @@ class MeteorViewController: UIViewController {
         
         noticeLabel.text = notice[0]
         pageControl.numberOfPages = notice.count
-        noticeView.layer.cornerRadius = 15
+//        noticeView.layer.cornerRadius = 15
         
         eraseTextButton.isHidden = true
         
