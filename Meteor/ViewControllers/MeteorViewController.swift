@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import AudioToolbox
 
 class MeteorViewController: UIViewController {
     
@@ -103,6 +104,8 @@ class MeteorViewController: UIViewController {
         let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
         print(notificationIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
         
         meteorTextField.resignFirstResponder()
     }

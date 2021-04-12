@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class TodoViewController: UIViewController {
     
@@ -138,6 +139,8 @@ class TodoCell: UICollectionViewCell {
         deleteButton.isHidden = !isDone
         
         doneButtonTapHandler?(isDone)
+        
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
     }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
