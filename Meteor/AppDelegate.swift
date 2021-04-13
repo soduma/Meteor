@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Thread.sleep(forTimeInterval: 0.5)
+//        Thread.sleep(forTimeInterval: 0.5)
+//        UserDefaults.standard.bool(forKey: "vibrateSwitch") = true
+//        UserDefaults.standardUserDefaults().setBool(true, forKey: "autoAdjustSettings")
+        UserDefaults.standard.set(true, forKey: "vibrateSwitch")
         return true
     }
 

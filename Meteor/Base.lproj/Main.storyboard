@@ -162,11 +162,10 @@
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="blurView" destination="ZSa-BT-X3f" id="XI8-tw-dKD"/>
                         <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="t68-ix-fnr" id="QDi-bR-l7v"/>
-                        <outlet property="noticeView" destination="sha-U2-ab1" id="nIo-n1-h4b"/>
+                        <outlet property="noticeView" destination="sha-U2-ab1" id="OAw-d3-5re"/>
                         <outlet property="pageControl" destination="FpS-FQ-PDZ" id="ViO-yM-D1y"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
                     </connections>
@@ -691,6 +690,41 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="일반" id="mO4-mb-C9g">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
+                                        <rect key="frame" x="20" y="405.00000381469727" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="진동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-gX-VE4">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="29.666666666666671" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gT1-20-Rqn">
+                                                    <rect key="frame" x="281" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                                    <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="cPM-Iy-Ad5"/>
+                                                        <action selector="tapVibrateSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="6Hv-1L-cyl"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gT1-20-Rqn" firstAttribute="centerY" secondItem="FlB-bQ-m7X" secondAttribute="centerY" id="6no-GO-G42"/>
+                                                <constraint firstItem="GqJ-gX-VE4" firstAttribute="centerY" secondItem="FlB-bQ-m7X" secondAttribute="centerY" id="ANR-ld-bxK"/>
+                                                <constraint firstItem="GqJ-gX-VE4" firstAttribute="leading" secondItem="FlB-bQ-m7X" secondAttribute="leadingMargin" id="EaJ-2x-2Lt"/>
+                                                <constraint firstAttribute="trailing" secondItem="gT1-20-Rqn" secondAttribute="trailing" constant="20" id="lnN-4a-nAh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="yKD-ZQ-Tqh" id="jFZ-9I-Y6O"/>
@@ -706,6 +740,7 @@
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="mailButton" destination="DZa-ix-YkT" id="IpI-CL-Z8X"/>
                         <outlet property="versionButton" destination="GJJ-0s-SGg" id="9H5-1d-iDL"/>
+                        <outlet property="vibrateSwitch" destination="gT1-20-Rqn" id="AYX-Dh-egI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
