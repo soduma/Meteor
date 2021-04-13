@@ -40,8 +40,8 @@
                                     <action selector="tapSendButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
-                                <rect key="frame" x="25" y="267" width="207" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-le-aFe">
+                                <rect key="frame" x="251" y="267" width="186" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -104,24 +104,51 @@
                                     <outletCollection property="gestureRecognizers" destination="LV2-G3-4EY" appends="YES" id="koF-A6-IYJ"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzQ-vZ-Iit">
-                                <rect key="frame" x="241" y="407" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIS-fx-5QG">
+                                <rect key="frame" x="0.0" y="269" width="390" height="50"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZS-Nf-8dT">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BP2-pm-RYK">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="prominent"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="sZS-Nf-8dT" firstAttribute="top" secondItem="QIS-fx-5QG" secondAttribute="top" id="Fp3-jd-BhM"/>
+                                    <constraint firstAttribute="bottom" secondItem="sZS-Nf-8dT" secondAttribute="bottom" id="WZU-hx-1mI"/>
+                                    <constraint firstAttribute="height" constant="50" id="eFl-Hl-QF1"/>
+                                    <constraint firstAttribute="trailing" secondItem="sZS-Nf-8dT" secondAttribute="trailing" id="vwt-Up-JdV"/>
+                                    <constraint firstItem="sZS-Nf-8dT" firstAttribute="leading" secondItem="QIS-fx-5QG" secondAttribute="leading" id="w6V-Kv-nc1"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
+                                <rect key="frame" x="25" y="267" width="207" height="54"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="sha-U2-ab1" secondAttribute="bottom" constant="40" id="2NV-nu-hDr"/>
+                            <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="3jR-BE-3cm"/>
+                            <constraint firstItem="XrN-Ta-ams" firstAttribute="centerY" secondItem="P0u-le-aFe" secondAttribute="centerY" id="517-q9-VjL"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="sha-U2-ab1" secondAttribute="trailing" constant="30" id="8dG-Yd-GKJ"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="P0u-le-aFe" secondAttribute="bottom" constant="10" id="Fn3-Ks-2Cm"/>
+                            <constraint firstItem="QIS-fx-5QG" firstAttribute="centerY" secondItem="P0u-le-aFe" secondAttribute="centerY" id="JSM-eg-7we"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="25" id="OwF-0H-Yf2"/>
-                            <constraint firstItem="P0u-le-aFe" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="Q28-oC-nHp"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="P0u-le-aFe" secondAttribute="trailing" constant="-47" id="PyQ-RR-DW1"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QIS-fx-5QG" secondAttribute="trailing" id="UMf-ot-mdh"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
+                            <constraint firstItem="QIS-fx-5QG" firstAttribute="leading" secondItem="rbg-Pj-CxJ" secondAttribute="leading" id="eb0-on-vkc"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="30" id="oy8-ea-Bei"/>

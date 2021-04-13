@@ -7,7 +7,6 @@
 
 import UIKit
 import UserNotifications
-import AudioToolbox
 
 class MeteorViewController: UIViewController {
     
@@ -88,27 +87,27 @@ class MeteorViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
-        
+
         notificationIndex += 1
         if notificationIndex > 2 {
             notificationIndex = 0
         }
-        
+
         let contents = UNMutableNotificationContent()
         contents.title = "METEOR :"
         contents.body = "\(content)"
         //        contents.badge = 1
-        
+
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-        
+
         let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
         print(notificationIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
+
         //탭틱
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
-        
+
         meteorTextField.resignFirstResponder()
     }
     
