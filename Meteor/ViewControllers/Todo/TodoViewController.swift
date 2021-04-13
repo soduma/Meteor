@@ -140,8 +140,9 @@ class TodoCell: UICollectionViewCell {
         
         doneButtonTapHandler?(isDone)
         
-        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
-    }
+        //탭틱
+        let tapticFeedback = UINotificationFeedbackGenerator()
+        tapticFeedback.notificationOccurred(.success)    }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         deleteButtonTapHandler?()
