@@ -141,8 +141,12 @@ class TodoCell: UICollectionViewCell {
         doneButtonTapHandler?(isDone)
         
         //탭틱
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        if #available(iOS 13.0, *) {
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        } else {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
     }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {

@@ -9,11 +9,13 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
-    @IBOutlet weak var lightModeSwitch: UISwitch!
-    @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var infofieldButton: UIButton!
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
+    
+    @IBOutlet weak var lightModeSwitch: UISwitch!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var vibrateSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class SettingsViewController: UITableViewController {
         
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
+        vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
@@ -53,7 +56,6 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
-        
         darkModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -75,7 +77,6 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
-        
         lightModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -93,5 +94,9 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
         //        print("3",UserDefaults.standard.bool(forKey: "lightState"))
         //        print("4",UserDefaults.standard.bool(forKey: "darkState"))
+    }
+    
+    @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
     }
 }
