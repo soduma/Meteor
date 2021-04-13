@@ -106,8 +106,8 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         //탭틱
-        let tapticFeedback = UINotificationFeedbackGenerator()
-        tapticFeedback.notificationOccurred(.success)
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
         
         meteorTextField.resignFirstResponder()
     }
