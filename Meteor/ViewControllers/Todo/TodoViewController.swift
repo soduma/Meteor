@@ -141,8 +141,9 @@ class TodoCell: UICollectionViewCell {
         doneButtonTapHandler?(isDone)
         
         //탭틱
-        let tapticFeedback = UINotificationFeedbackGenerator()
-        tapticFeedback.notificationOccurred(.success)    }
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
     
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         deleteButtonTapHandler?()
