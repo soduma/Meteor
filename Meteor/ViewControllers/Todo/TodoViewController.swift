@@ -146,4 +146,16 @@ class TodoCell: UICollectionViewCell {
     @IBAction func tapDeleteButton(_ sender: UIButton) {
         deleteButtonTapHandler?()
     }
+    
+    // 셀 클릭시 하이라이트
+    override var isSelected: Bool {
+        didSet{
+            if self.isSelected {
+                UIView.animate(withDuration: 0.5) { // for animation effect
+                    self.backgroundColor = UIColor.gray
+                    self.backgroundColor = UIColor.clear
+                }
+            }
+        }
+    }
 }
