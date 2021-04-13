@@ -105,7 +105,9 @@ class MeteorViewController: UIViewController {
         print(notificationIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+        //탭틱
+        let tapticFeedback = UINotificationFeedbackGenerator()
+        tapticFeedback.notificationOccurred(.success)
         
         meteorTextField.resignFirstResponder()
     }
