@@ -41,7 +41,7 @@ class MeteorViewController: UIViewController {
         
         noticeLabel.text = notice[0]
         pageControl.numberOfPages = notice.count
-//        noticeView.layer.cornerRadius = 15
+        noticeView.layer.cornerRadius = 15
         
         eraseTextButton.isHidden = true
         
@@ -67,7 +67,7 @@ class MeteorViewController: UIViewController {
         noticeLabel.text = notice[notificationIndex]
         pageControl.currentPage = notificationIndex
     }
-    
+
     @IBAction func pageChanged(_ sender: UIPageControl) {
         noticeLabel.text = notice[pageControl.currentPage]
     }

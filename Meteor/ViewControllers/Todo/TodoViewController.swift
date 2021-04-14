@@ -141,11 +141,14 @@ class TodoCell: UICollectionViewCell {
         doneButtonTapHandler?(isDone)
         
         //탭틱
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+
         if #available(iOS 13.0, *) {
             UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         } else {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
+        }
         }
     }
     
