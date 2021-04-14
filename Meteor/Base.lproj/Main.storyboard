@@ -702,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="888" y="779"/>
         </scene>
-        <!--View Controller-->
+        <!--Version View Controller-->
         <scene sceneID="A0F-Wx-mh9">
             <objects>
-                <viewController id="374-Go-c7m" sceneMemberID="viewController">
+                <viewController id="374-Go-c7m" customClass="VersionViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vI-ES-csw">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,8 +723,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKX-kT-lPg">
-                                <rect key="frame" x="119.66666666666667" y="406" width="150.66666666666663" height="19.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Version ~~~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKX-kT-lPg">
+                                <rect key="frame" x="121.66666666666669" y="406" width="147" height="19.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -750,6 +750,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="maH-TF-ojE"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="IKX-kT-lPg" id="elC-H5-7Bg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HpC-YT-MiS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
