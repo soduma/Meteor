@@ -22,7 +22,7 @@ class TodoViewController: UIViewController {
                 
                 let todo = todoViewModel.todos[index]
                 vc?.modifyViewModel.update(model: todo)
-//                print(todoViewModel.todos[index])
+                //                print(todoViewModel.todos[index])
             }
         }
     }
@@ -55,13 +55,13 @@ extension TodoViewController: UICollectionViewDataSource {
         
         var todo: Todo
         todo = todoViewModel.todos[indexPath.item]
-        print("cellfortiem \(todo)")
+        //        print("cellfortiem \(todo)")
         cell.updateUI(todo)
         
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.todoViewModel.updateTodo(todo)
-            self.collectionView.reloadData()
+            //            self.collectionView.reloadData()
         }
         
         cell.deleteButtonTapHandler = {
@@ -116,39 +116,59 @@ class TodoCell: UICollectionViewCell {
         checkButton.isSelected = todo.isDone
         descriptionLabel.text = todo.detail
         deleteButton.isHidden = todo.isDone == false
-        showStrikeThrough(todo.isDone)
-    }
-    
-    private func showStrikeThrough(_ show: Bool) {
-        if show {
+        
+        if checkButton.isSelected == true {
             strikeThroughWidth.constant = descriptionLabel.bounds.width
         } else {
-            strikeThroughWidth.constant = 0
+            strike(todo.isDone)
+        }
+        //        showStrikeThrough(todo.isDone)
+    }
+    
+    //    private func showStrikeThrough(_ show: Bool) {
+    //        if show {
+    //            strikeThroughWidth.constant = descriptionLabel.bounds.width
+    //        } else {
+    //            strikeThroughWidth.constant = 0
+    //        }
+    //    }
+    
+    private func strike(_ show: Bool) {
+        if show {
+            strikeThroughWidth.constant = descriptionLabel.bounds.width
+            UIView.animate(withDuration: 0.1) {
+                self.contentView.layoutIfNeeded()
+            }
+        } else {
+            self.strikeThroughWidth.constant = 0
+            self.contentView.layoutIfNeeded()
         }
     }
     
     func reset() {
         deleteButton.isHidden = true
-        showStrikeThrough(false)
+        strike(false)
+        //        showStrikeThrough(false)
     }
     
     @IBAction func tapCheckButton(_ sender: UIButton) {
         checkButton.isSelected = !checkButton.isSelected
         let isDone = checkButton.isSelected
-        showStrikeThrough(isDone)
         deleteButton.isHidden = !isDone
+        //        showStrikeThrough(isDone)
+        strike(isDone)
         
         doneButtonTapHandler?(isDone)
         
         //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-
-        if #available(iOS 13.0, *) {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        } else {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-        }
+            
+            if #available(iOS 13.0, *) {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            } else {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+            }
         }
     }
     
@@ -161,7 +181,7 @@ class TodoCell: UICollectionViewCell {
         didSet{
             if self.isSelected {
                 UIView.animate(withDuration: 0.5) { // for animation effect
-                    self.backgroundColor = UIColor.lightGray
+                    self.backgroundColor = UIColor.systemGray5
                     self.backgroundColor = UIColor.clear
                 }
             }
