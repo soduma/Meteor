@@ -61,7 +61,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="118-qZ-0Nx">
                                 <rect key="frame" x="40" y="641" width="310" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 어쩌구 저쩌구" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
                                         <rect key="frame" x="30" y="25" width="250" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
@@ -316,10 +316,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
-                                <rect key="frame" x="40" y="90" width="313" height="566"/>
+                                <rect key="frame" x="40" y="90" width="313" height="416"/>
                                 <gestureRecognizers/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnL-JA-8Ya">
@@ -343,7 +343,7 @@
                             <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="k0Q-j8-NLo" secondAttribute="trailing" constant="37" id="1ai-w1-5c9"/>
                             <constraint firstItem="WnL-JA-8Ya" firstAttribute="centerY" secondItem="Iv4-La-ZWZ" secondAttribute="centerY" id="Cbd-zD-x4j"/>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="35" id="CxD-UK-oMb"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="100" id="I2h-oy-yEO"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="250" id="I2h-oy-yEO"/>
                             <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="25" id="PY8-7C-HBW"/>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="30" id="Quy-M8-YY1"/>
                             <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="40" id="bez-wY-8OE"/>
@@ -406,13 +406,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-di-LbD">
-                                <rect key="frame" x="40" y="90" width="313" height="435"/>
+                                <rect key="frame" x="40" y="90" width="313" height="416"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="435" id="yVq-MA-HHL"/>
-                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                         </subviews>
@@ -421,6 +418,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sc7-Ce-ePU" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" constant="30" id="IHt-Sf-01w"/>
+                            <constraint firstItem="1wi-Uy-wST" firstAttribute="bottom" secondItem="Whd-di-LbD" secondAttribute="bottom" constant="250" id="Lmg-Cp-7wB"/>
                             <constraint firstItem="Whd-di-LbD" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="90" id="Rdf-Du-HmN"/>
                             <constraint firstItem="sc7-Ce-ePU" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="35" id="TtX-Vj-jvo"/>
                             <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="Whd-di-LbD" secondAttribute="trailing" constant="37" id="h6h-aI-c99"/>

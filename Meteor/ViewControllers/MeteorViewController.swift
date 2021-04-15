@@ -50,6 +50,20 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+
+            if(settings.authorizationStatus == .authorized) {
+                print("Push notification is enabled")
+            } else {
+                print("Push notification is not enabled")
+            }
+        }
+    }
+    
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
         notificationIndex += 1
         if notificationIndex > notice.count - 1 {
