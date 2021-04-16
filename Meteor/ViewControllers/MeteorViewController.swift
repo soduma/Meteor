@@ -18,6 +18,10 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var authView: UIView!
+    @IBOutlet weak var authViewTop: NSLayoutConstraint!
+    @IBOutlet weak var authViewBottom: NSLayoutConstraint!
+    
     var content: String = ""
     var notificationIndex = 0
     var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.","알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.","알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
@@ -40,28 +44,46 @@ class MeteorViewController: UIViewController {
         }
         
         noticeLabel.text = notice[0]
-        pageControl.numberOfPages = notice.count
         noticeView.layer.cornerRadius = 15
+        pageControl.numberOfPages = notice.count
+        
+        authView.layer.cornerRadius = 20
+//        authView.isHidden = true
+        prepareAuthView()
         
         eraseTextButton.isHidden = true
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { (settings) in
+        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
 
-            if(settings.authorizationStatus == .authorized) {
-                print("Push notification is enabled")
-            } else {
-                print("Push notification is not enabled")
-            }
-        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func notiAuthCheck() {        
+                let center = UNUserNotificationCenter.current()
+                center.getNotificationSettings { (settings) in
+        
+                    if settings.authorizationStatus == .authorized {
+                        print("Push notification is enabled")
+                        
+                        DispatchQueue.main.async {
+                            self.authViewBottom.constant = self.view.bounds.height
+                        }
+                    }
+                }
     }
     
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
@@ -125,6 +147,22 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func inputContent(_ sender: UITextField) {
+        
+        //알림 권한
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+
+            if settings.authorizationStatus == .denied {
+                print("Push notification is nonono enabled")
+                
+                DispatchQueue.main.async {
+                    self.authViewBottom.constant = -self.view.bounds.height
+                    UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
+                    self.meteorTextField.resignFirstResponder()
+                }
+            }
+        }
+        
         if let inputContent = meteorTextField.text {
             content = inputContent
         }
@@ -134,6 +172,10 @@ class MeteorViewController: UIViewController {
         } else {
             eraseTextButton.isHidden = true
         }
+    }
+    
+    private func prepareAuthView() {
+        authViewBottom.constant = view.bounds.height
     }
 }
 
