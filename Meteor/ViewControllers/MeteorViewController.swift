@@ -24,7 +24,9 @@ class MeteorViewController: UIViewController {
     
     var content: String = ""
     var notificationIndex = 0
-    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.","알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.","알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
+    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.",
+                  "알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
+                  "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
     var noticeIndex = 0
     
     override func viewDidLoad() {
@@ -48,7 +50,6 @@ class MeteorViewController: UIViewController {
         pageControl.numberOfPages = notice.count
         
         authView.layer.cornerRadius = 20
-//        authView.isHidden = true
         prepareAuthView()
         
         eraseTextButton.isHidden = true
@@ -153,12 +154,13 @@ class MeteorViewController: UIViewController {
         center.getNotificationSettings { (settings) in
 
             if settings.authorizationStatus == .denied {
-                print("Push notification is nonono enabled")
+                print("Push notification is NOT enabled")
                 
                 DispatchQueue.main.async {
                     self.authViewBottom.constant = -self.view.bounds.height
                     UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
                     self.meteorTextField.resignFirstResponder()
+                    self.meteorTextField.text = ""
                 }
             }
         }
