@@ -30,11 +30,11 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                   "알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
                   "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
     
-    var adIndex = 0 // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    private var interstitial: GADInterstitialAd?
+    var adIndex = 0
+    // --------------------------------
 
-    
-    private var interstitial: GADInterstitialAd? // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,7 +78,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
-        
     }
     
     // 구글광고!!!!!!!!!!!!!!!!!!!!!!
@@ -116,7 +115,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,7 +136,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     private func prepareAuthView() {
-        authViewBottom.constant = view.bounds.height
+        DispatchQueue.main.async {
+            self.authViewBottom.constant = self.view.bounds.height
+        }
     }
     
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
@@ -188,7 +188,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
         // --------------------------------
         
-        if adIndex == 14 {
+        if adIndex == 9 {
             adIndex = 0
         }
         

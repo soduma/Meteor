@@ -90,6 +90,7 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
+        
         UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
         //        print("3",UserDefaults.standard.bool(forKey: "lightState"))
