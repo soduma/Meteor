@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630D0C587EE58B5A79FD0BAF /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */; };
 		A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */; };
 		A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */; };
 		A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */; };
@@ -17,6 +18,7 @@
 		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
 		A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A0AAB011262ABE3900D6E5EB /* meteor_logo.png */; };
+		A0AAB024262C01A000D6E5EB /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */; };
 		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
 		A0998A4B25FC99E7001BAEFD /* Meteor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meteor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,10 +40,13 @@
 		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		A0AAB011262ABE3900D6E5EB /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_logo.png; sourceTree = "<group>"; };
+		A0AAB021262C01A000D6E5EB /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
+		A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
+		F565FE62F83FABCC90C4C6E6 /* Pods-Meteor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.debug.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +54,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0AAB024262C01A000D6E5EB /* GoogleMobileAds.xcframework in Frameworks */,
+				630D0C587EE58B5A79FD0BAF /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E19E502B0E8C49E10E0635A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0AAB021262C01A000D6E5EB /* GoogleAppMeasurement.xcframework */,
+				A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */,
+				42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A02776A7C7AE5590E09E09E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F565FE62F83FABCC90C4C6E6 /* Pods-Meteor.debug.xcconfig */,
+				60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A0998A4225FC99E7001BAEFD = {
 			isa = PBXGroup;
 			children = (
 				A0998A4D25FC99E7001BAEFD /* Meteor */,
 				A0998A4C25FC99E7001BAEFD /* Products */,
+				A02776A7C7AE5590E09E09E6 /* Pods */,
+				2E19E502B0E8C49E10E0635A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0998A5F25FC99E9001BAEFD /* Build configuration list for PBXNativeTarget "Meteor" */;
 			buildPhases = (
+				2B769C7724B4EA7CC776223A /* [CP] Check Pods Manifest.lock */,
 				A0998A4725FC99E7001BAEFD /* Sources */,
 				A0998A4825FC99E7001BAEFD /* Frameworks */,
 				A0998A4925FC99E7001BAEFD /* Resources */,
+				5BD3A67F96728EED608D8805 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +204,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B769C7724B4EA7CC776223A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meteor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BD3A67F96728EED608D8805 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0998A4725FC99E7001BAEFD /* Sources */ = {
@@ -331,6 +405,7 @@
 		};
 		A0998A6025FC99E9001BAEFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F565FE62F83FABCC90C4C6E6 /* Pods-Meteor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -355,6 +430,7 @@
 		};
 		A0998A6125FC99E9001BAEFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

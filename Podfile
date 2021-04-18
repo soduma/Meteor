@@ -6,5 +6,5 @@ target 'Meteor' do
   use_frameworks!
 
   # Pods for Meteor
-
+pod 'Google-Mobile-Ads-SDK'
 end
