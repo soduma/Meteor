@@ -21,7 +21,6 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewTop: NSLayoutConstraint!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
-    @IBOutlet weak var authViewCloseButton: UIButton!
     
     var content: String = ""
     var notificationIndex = 0
