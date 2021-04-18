@@ -21,6 +21,7 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewTop: NSLayoutConstraint!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var authViewCloseButton: UIButton!
     
     var content: String = ""
     var notificationIndex = 0
@@ -80,11 +81,13 @@ class MeteorViewController: UIViewController {
             if settings.authorizationStatus == .authorized {
                 print("Push notification is enabled")
                 
-                DispatchQueue.main.async {
-                    self.authViewBottom.constant = self.view.bounds.height
-                }
+                self.prepareAuthView()
             }
         }
+    }
+    
+    private func prepareAuthView() {
+        authViewBottom.constant = view.bounds.height
     }
     
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
@@ -156,11 +159,11 @@ class MeteorViewController: UIViewController {
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
                 
-                DispatchQueue.main.async {
+                    DispatchQueue.main.async {
+                    self.meteorTextField.resignFirstResponder()
                     self.authViewBottom.constant = -self.view.bounds.height
                     UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
-                    self.meteorTextField.resignFirstResponder()
-                    self.meteorTextField.text = ""
+                        self.meteorTextField.text = ""
                 }
             }
         }
@@ -174,10 +177,6 @@ class MeteorViewController: UIViewController {
         } else {
             eraseTextButton.isHidden = true
         }
-    }
-    
-    private func prepareAuthView() {
-        authViewBottom.constant = view.bounds.height
     }
 }
 
