@@ -64,7 +64,7 @@ class MeteorViewController: UIViewController {
         super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,17 +74,17 @@ class MeteorViewController: UIViewController {
     }
     
     @objc func notiAuthCheck() {        
-                let center = UNUserNotificationCenter.current()
-                center.getNotificationSettings { (settings) in
-        
-                    if settings.authorizationStatus == .authorized {
-                        print("Push notification is enabled")
-                        
-                        DispatchQueue.main.async {
-                            self.authViewBottom.constant = self.view.bounds.height
-                        }
-                    }
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+            
+            if settings.authorizationStatus == .authorized {
+                print("Push notification is enabled")
+                
+                DispatchQueue.main.async {
+                    self.authViewBottom.constant = self.view.bounds.height
                 }
+            }
+        }
     }
     
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
@@ -104,7 +104,7 @@ class MeteorViewController: UIViewController {
         noticeLabel.text = notice[notificationIndex]
         pageControl.currentPage = notificationIndex
     }
-
+    
     @IBAction func pageChanged(_ sender: UIPageControl) {
         noticeLabel.text = notice[pageControl.currentPage]
     }
@@ -120,25 +120,25 @@ class MeteorViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
-
+        
         notificationIndex += 1
         if notificationIndex > 2 {
             notificationIndex = 0
         }
-
+        
         let contents = UNMutableNotificationContent()
         contents.title = "METEOR :"
         contents.body = "\(content)"
         //        contents.badge = 1
-
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-
+        
         let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
         print(notificationIndex)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-
+        
         meteorTextField.resignFirstResponder()
-
+        
         //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
             
@@ -152,7 +152,7 @@ class MeteorViewController: UIViewController {
         //알림 권한
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
-
+            
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
                 
