@@ -7,8 +7,9 @@
 
 import UIKit
 import UserNotifications
+import GoogleMobileAds
 
-class MeteorViewController: UIViewController {
+class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -24,14 +25,34 @@ class MeteorViewController: UIViewController {
     
     var content: String = ""
     var notificationIndex = 0
+    var noticeIndex = 0
     var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.",
                   "알림은 3개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
                   "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
-    var noticeIndex = 0
+    
+    var adIndex = 0 // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+
+    
+    private var interstitial: GADInterstitialAd? // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+                                    request: request,
+                          completionHandler: { [self] ad, error in
+                            if let error = error {
+                              print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                              return
+                            }
+                            interstitial = ad
+                            interstitial?.fullScreenContentDelegate = self
+                          }
+        )
+        // --------------------------------
+
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
                 
@@ -59,6 +80,37 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = self
         
     }
+    
+    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+      print("Ad did fail to present full screen content.")
+    }
+
+    /// Tells the delegate that the ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+      print("Ad did present full screen content.")
+    }
+
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        
+        let request2 = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+                               request: request2,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                               }
+        )
+        
+      print("Ad did dismiss full screen content.")
+    }
+    // --------------------------------
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -123,6 +175,23 @@ class MeteorViewController: UIViewController {
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
         
+        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        adIndex += 1
+        print("adIndex: \(adIndex)")
+        
+        if adIndex == 1 {
+            if interstitial != nil {
+                interstitial?.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+        }
+        // --------------------------------
+        
+        if adIndex == 14 {
+            adIndex = 0
+        }
+        
         notificationIndex += 1
         if notificationIndex > 2 {
             notificationIndex = 0
@@ -136,7 +205,7 @@ class MeteorViewController: UIViewController {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
         
         let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
-        print(notificationIndex)
+        print("notificationIndex: \(notificationIndex)")
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
         meteorTextField.resignFirstResponder()
