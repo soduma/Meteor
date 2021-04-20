@@ -81,22 +81,13 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if Reachability.isConnectedToNetwork() == false {
-//            sendButton.isEnabled = true
-//            print("Internet Connection Available!")
-//        } else {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkNetworkConnection),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,6 +125,16 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         print("Ad did dismiss full screen content.")
     }
     // --------------------------------
+    
+    @objc func checkNetworkConnection() {
+        if Reachability.isConnectedToNetwork() == false {
+//            sendButton.isEnabled = true
+//            print("Internet Connection Available!")
+//        } else {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
     
     @objc func notiAuthCheck() {        
         let center = UNUserNotificationCenter.current()
