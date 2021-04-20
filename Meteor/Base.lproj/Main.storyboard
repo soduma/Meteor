@@ -633,7 +633,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="스타일" footerTitle="두 가지 옵션을 모두 끄면 시스템 설정을 따릅니다." id="noR-vq-LyQ">
+                            <tableViewSection headerTitle="스타일" footerTitle="두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다." id="noR-vq-LyQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cR1-o4-Sre">
                                         <rect key="frame" x="20" y="249.66666793823242" width="350" height="43.666667938232422"/>
