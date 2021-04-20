@@ -92,16 +92,21 @@
                                 </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="0.0" y="74" width="390" height="770"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="770"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wg8-Bb-QJF">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="770"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이폰 설정 &gt; Meteor &gt; 알림에서 메테오의 알림을 활성화 해주세요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
-                                                    <rect key="frame" x="92.000000000000014" y="332.66666666666669" width="202.33333333333337" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메테오 기능은 알림 설정이 필요합니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl">
+                                                    <rect key="frame" x="50" y="312.33333333333331" width="206" height="52.666666666666686"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이폰 설정 &gt; Meteor &gt; 알림에서 메테오의 알림을 활성화 해주세요." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
+                                                    <rect key="frame" x="50.000000000000014" y="375" width="202.33333333333337" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="hqG-nX-jf7"/>
                                                     </constraints>
@@ -109,17 +114,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메테오 기능은 알림 설정이 필요합니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl">
-                                                    <rect key="frame" x="92" y="270" width="206" height="52.666666666666686"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="j1o-go-okn" firstAttribute="leading" secondItem="mYh-w1-2Gl" secondAttribute="leading" id="25g-Gn-JHz"/>
+                                                <constraint firstItem="mYh-w1-2Gl" firstAttribute="leading" secondItem="Wg8-Bb-QJF" secondAttribute="leading" constant="50" id="Lhr-Hx-qSx"/>
                                                 <constraint firstItem="j1o-go-okn" firstAttribute="top" secondItem="mYh-w1-2Gl" secondAttribute="bottom" constant="10" id="ONn-rh-Nvj"/>
-                                                <constraint firstItem="mYh-w1-2Gl" firstAttribute="top" secondItem="Wg8-Bb-QJF" secondAttribute="top" constant="270" id="mtk-QF-qon"/>
-                                                <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerX" secondItem="Wg8-Bb-QJF" secondAttribute="centerX" id="u9b-8M-d4v"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="regular"/>
@@ -139,6 +138,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="3jR-BE-3cm"/>
+                            <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="20" id="OwF-0H-Yf2"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
@@ -147,13 +147,13 @@
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
-                            <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" constant="30" id="hNj-mT-BDd"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" constant="40" id="o4H-ej-Ptt"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="25" id="oy8-ea-Bei"/>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="118-qZ-0Nx" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="40" id="uB0-Pd-VeE"/>
+                            <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
@@ -165,7 +165,6 @@
                     <connections>
                         <outlet property="authView" destination="FCV-iO-9UW" id="WeE-Yl-ECC"/>
                         <outlet property="authViewBottom" destination="rHZ-uA-TU3" id="BWH-Az-5GD"/>
-                        <outlet property="authViewTop" destination="hNj-mT-BDd" id="Yk1-Uu-V6K"/>
                         <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="3O8-SQ-hh2" id="87e-0l-Cni"/>

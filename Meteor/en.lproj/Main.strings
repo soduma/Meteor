@@ -3,7 +3,7 @@
 "2kf-Pz-TMT.text" = "Meteor";
 
 /* Class = "UILabel"; text = "알림 어쩌구 저쩌구"; ObjectID = "3O8-SQ-hh2"; */
-"3O8-SQ-hh2.text" = "알림 어쩌구 저쩌구";
+"3O8-SQ-hh2.text" = "noti blahblah";
 
 /* Class = "UILabel"; text = "메모"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "Memo";
@@ -27,7 +27,7 @@
 "GqJ-gX-VE4.text" = "Haptic";
 
 /* Class = "UILabel"; text = "🐶 개발새발중"; ObjectID = "HoI-Ka-L7C"; */
-"HoI-Ka-L7C.text" = "🐶 개발새발중";
+"HoI-Ka-L7C.text" = "🐶 working";
 
 /* Class = "UILabel"; text = "Current Version ~~~"; ObjectID = "IKX-kT-lPg"; */
 "IKX-kT-lPg.text" = "Current Version ~~~";
@@ -51,13 +51,13 @@
 "eAl-3u-eGw.title" = "Meteor";
 
 /* Class = "UILabel"; text = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."; ObjectID = "j1o-go-okn"; */
-"j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
+"j1o-go-okn.text" = "iPhone Settings > Meteor > Notifications Please enable notification.";
 
 /* Class = "UITableViewSection"; headerTitle = "일반"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "General";
 
 /* Class = "UILabel"; text = "메테오 기능은 알림 설정이 필요합니다."; ObjectID = "mYh-w1-2Gl"; */
-"mYh-w1-2Gl.text" = "Meteo feature requires
+"mYh-w1-2Gl.text" = "Meteor feature requires
 notification allowance.";
 
 /* Class = "UITableViewSection"; footerTitle = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다."; ObjectID = "noR-vq-LyQ"; */
