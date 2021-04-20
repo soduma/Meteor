@@ -20,9 +20,7 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        inputTextView.becomeFirstResponder()
-        
+                
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
@@ -33,6 +31,12 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         // --------------------------------
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        inputTextView.becomeFirstResponder()
     }
     
     // 구글광고!!!!!!!!!!!!!!!!!!!!!!
@@ -83,10 +87,6 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
         print("bannerViewDidDismissScreen")
     }
     // --------------------------------
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
         inputTextView.resignFirstResponder()
