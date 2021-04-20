@@ -155,11 +155,6 @@
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="118-qZ-0Nx" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="40" id="uB0-Pd-VeE"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="FCV-iO-9UW"/>
-                            </mask>
-                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
                         </connections>
@@ -311,7 +306,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40" weight="regular"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ar1-RQ-ybm" kind="presentation" id="xej-KW-2Pd"/>
+                                    <segue destination="Ar1-RQ-ybm" kind="presentation" id="YfU-gt-iie"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
@@ -377,10 +372,9 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnL-JA-8Ya">
-                                <rect key="frame" x="315" y="30" width="50" height="50"/>
+                                <rect key="frame" x="320" y="30" width="35" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hQE-8Q-80Y"/>
-                                    <constraint firstAttribute="width" constant="50" id="l3H-02-Ba1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -398,7 +392,7 @@
                             <constraint firstItem="WnL-JA-8Ya" firstAttribute="centerY" secondItem="Iv4-La-ZWZ" secondAttribute="centerY" id="Cbd-zD-x4j"/>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="35" id="CxD-UK-oMb"/>
                             <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="250" id="I2h-oy-yEO"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="25" id="PY8-7C-HBW"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="35" id="PY8-7C-HBW"/>
                             <constraint firstItem="Iv4-La-ZWZ" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="30" id="Quy-M8-YY1"/>
                             <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="40" id="bez-wY-8OE"/>
                             <constraint firstItem="k0Q-j8-NLo" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="90" id="unZ-g6-j6z"/>
@@ -433,9 +427,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-Ti-6UO">
-                                <rect key="frame" x="315" y="30" width="50" height="50"/>
+                                <rect key="frame" x="320" y="30" width="35" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="5pa-Lv-U23"/>
                                     <constraint firstAttribute="height" constant="50" id="AWU-mr-msS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -476,7 +469,7 @@
                             <constraint firstItem="Whd-di-LbD" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="90" id="Rdf-Du-HmN"/>
                             <constraint firstItem="sc7-Ce-ePU" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="35" id="TtX-Vj-jvo"/>
                             <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="Whd-di-LbD" secondAttribute="trailing" constant="37" id="h6h-aI-c99"/>
-                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="tjQ-Ti-6UO" secondAttribute="trailing" constant="25" id="tMK-in-CJp"/>
+                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="tjQ-Ti-6UO" secondAttribute="trailing" constant="35" id="tMK-in-CJp"/>
                             <constraint firstItem="tjQ-Ti-6UO" firstAttribute="centerY" secondItem="sc7-Ce-ePU" secondAttribute="centerY" id="urO-cs-kUb"/>
                             <constraint firstItem="Whd-di-LbD" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" constant="40" id="xQp-dE-QW8"/>
                         </constraints>
