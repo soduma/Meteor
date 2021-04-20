@@ -21,7 +21,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var authView: UIView!
-    @IBOutlet weak var authViewTop: NSLayoutConstraint!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     
     var content: String = ""
@@ -72,7 +71,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         pageControl.numberOfPages = notice.count
         
         authView.layer.cornerRadius = 20
-        prepareAuthView()
+        authView.isHidden = true
         
         eraseTextButton.isHidden = true
         
@@ -252,6 +251,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 print("Push notification is NOT enabled")
                 
                 DispatchQueue.main.async {
+                    self.authView.isHidden = false
                     self.meteorTextField.resignFirstResponder()
                     self.authViewBottom.constant = -self.view.bounds.height
                     UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
