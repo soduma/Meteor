@@ -81,6 +81,18 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if Reachability.isConnectedToNetwork() == false {
+//            sendButton.isEnabled = true
+//            print("Internet Connection Available!")
+//        } else {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
