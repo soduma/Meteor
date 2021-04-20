@@ -45,7 +45,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
-        let email = "soduma2@gmail.com"
+        let email = "dev.soduma@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)

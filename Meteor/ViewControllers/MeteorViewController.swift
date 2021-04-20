@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import GoogleMobileAds
+import SystemConfiguration
 
 class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
@@ -34,25 +35,25 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     private var interstitial: GADInterstitialAd?
     var adIndex = 0
     // --------------------------------
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
-                                    request: request,
-                          completionHandler: { [self] ad, error in
-                            if let error = error {
-                              print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                              return
-                            }
-                            interstitial = ad
-                            interstitial?.fullScreenContentDelegate = self
-                          }
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                               }
         )
         // --------------------------------
-
+        
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
                 
@@ -80,17 +81,41 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if Reachability.isConnectedToNetwork() == false {
+//            sendButton.isEnabled = true
+//            print("Internet Connection Available!")
+//        } else {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+
     // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-      print("Ad did fail to present full screen content.")
+        print("Ad did fail to present full screen content.")
     }
-
+    
     /// Tells the delegate that the ad presented full screen content.
     func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-      print("Ad did present full screen content.")
+        print("Ad did present full screen content.")
     }
-
+    
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
@@ -106,22 +131,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                                 interstitial?.fullScreenContentDelegate = self
                                }
         )
-        
-      print("Ad did dismiss full screen content.")
+        print("Ad did dismiss full screen content.")
     }
     // --------------------------------
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self)
-    }
     
     @objc func notiAuthCheck() {        
         let center = UNUserNotificationCenter.current()
@@ -129,7 +141,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             
             if settings.authorizationStatus == .authorized {
                 print("Push notification is enabled")
-                
                 self.prepareAuthView()
             }
         }
@@ -227,11 +238,11 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
                 
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.meteorTextField.resignFirstResponder()
                     self.authViewBottom.constant = -self.view.bounds.height
                     UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
-                        self.meteorTextField.text = ""
+                    self.meteorTextField.text = ""
                 }
             }
         }
@@ -245,6 +256,42 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         } else {
             eraseTextButton.isHidden = true
         }
+    }
+}
+
+// 인터넷 연결확인
+public class Reachability {
+    
+    class func isConnectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        /* Only Working for WIFI
+         let isReachable = flags == .reachable
+         let needsConnection = flags == .connectionRequired
+         
+         return isReachable && !needsConnection
+         */
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
     }
 }
 
