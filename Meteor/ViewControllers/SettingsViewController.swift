@@ -9,7 +9,6 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
-    @IBOutlet weak var infofieldButton: UIButton!
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
     
@@ -28,20 +27,6 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
-    }
-    
-    @IBAction func tapInfofield(_ sender: UIButton) {
-        let Username =  "infofield" // Your Instagram Username here
-        let appURL = URL(string: "instagram://user?username=\(Username)")!
-        let application = UIApplication.shared
-        
-        if application.canOpenURL(appURL) {
-            application.open(appURL)
-        } else {
-            // if Instagram app is not installed, open URL inside Safari
-            let webURL = URL(string: "https://instagram.com/\(Username)")!
-            application.open(webURL)
-        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
