@@ -537,8 +537,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ErP-tN-Y1b">
-                                                    <rect key="frame" x="247" y="5.6666666666666679" width="83" height="33"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="250" y="5.6666666666666679" width="80" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <state key="normal" title="@infofield">
                                                         <color key="titleColor" systemColor="systemGrayColor"/>
                                                     </state>
@@ -569,8 +569,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-ix-YkT">
-                                                    <rect key="frame" x="130" y="5.6666666666666679" width="200" height="33"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="135" y="5.6666666666666679" width="195" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <state key="normal" title="dev.soduma@gmail.com">
                                                         <color key="titleColor" systemColor="systemGrayColor"/>
                                                     </state>
