@@ -217,11 +217,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVs-JV-raG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVs-JV-raG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="XCq-aB-xvU"/>
-                                                        <constraint firstAttribute="width" constant="70" id="gjN-QE-yMx"/>
+                                                        <constraint firstAttribute="width" constant="40" id="gjN-QE-yMx"/>
                                                     </constraints>
                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                     <state key="normal" image="circle" catalog="system">
@@ -233,7 +233,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
-                                                    <rect key="frame" x="70" y="10" width="265" height="20"/>
+                                                    <rect key="frame" x="55" y="9.9999999999999982" width="280" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -254,7 +254,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ai5-hG-iYO">
-                                                    <rect key="frame" x="70" y="19" width="0.0" height="2"/>
+                                                    <rect key="frame" x="55" y="19" width="0.0" height="2"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="Igz-12-ieB"/>
@@ -263,14 +263,14 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" id="4DR-nA-QmD"/>
+                                                <constraint firstItem="ai5-hG-iYO" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="15" id="4DR-nA-QmD"/>
                                                 <constraint firstItem="ffr-ma-2S0" firstAttribute="centerY" secondItem="nyy-dt-Q5F" secondAttribute="centerY" id="L4z-mU-IyF"/>
                                                 <constraint firstAttribute="trailing" secondItem="ffr-ma-2S0" secondAttribute="trailing" constant="15" id="LLw-gE-pNK"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="leading" secondItem="nyy-dt-Q5F" secondAttribute="leading" id="VLq-h1-oYT"/>
                                                 <constraint firstItem="ai5-hG-iYO" firstAttribute="centerY" secondItem="nyy-dt-Q5F" secondAttribute="centerY" id="XYa-Np-Efs"/>
                                                 <constraint firstItem="ffr-ma-2S0" firstAttribute="leading" secondItem="HoI-Ka-L7C" secondAttribute="trailing" constant="15" id="Y9L-60-9Qd"/>
                                                 <constraint firstItem="HoI-Ka-L7C" firstAttribute="centerY" secondItem="nyy-dt-Q5F" secondAttribute="centerY" id="l4n-cG-Jl7"/>
-                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" id="lAf-e3-qE1"/>
+                                                <constraint firstItem="HoI-Ka-L7C" firstAttribute="leading" secondItem="xVs-JV-raG" secondAttribute="trailing" constant="15" id="lAf-e3-qE1"/>
                                                 <constraint firstItem="xVs-JV-raG" firstAttribute="centerY" secondItem="nyy-dt-Q5F" secondAttribute="centerY" id="lU7-F8-q1r"/>
                                             </constraints>
                                         </collectionViewCellContentView>
