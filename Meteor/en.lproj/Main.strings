@@ -42,7 +42,7 @@
 "SfX-Jb-Sde.title" = "Memo";
 
 /* Class = "UIButton"; normalTitle = "완료"; ObjectID = "WnL-JA-8Ya"; */
-"WnL-JA-8Ya.normalTitle" = "Finish";
+"WnL-JA-8Ya.normalTitle" = "Done";
 
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
@@ -73,13 +73,17 @@ notification allowance.";
 "si5-2F-S24.headerTitle" = "Meteor";
 
 /* Class = "UIButton"; normalTitle = "완료"; ObjectID = "tjQ-Ti-6UO"; */
-"tjQ-Ti-6UO.normalTitle" = "Finish";
+"tjQ-Ti-6UO.normalTitle" = "Done";
 
 /* Class = "UILabel"; text = "라이트 모드"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "Light Mode";
 
 /* Class = "UITextField"; placeholder = "여기에 작성 👀"; ObjectID = "x7b-OE-Nxg"; */
-"x7b-OE-Nxg.placeholder" = "Write here 👀";
+"x7b-OE-Nxg.placeholder" = "Scribble here 👀";
 
 /* Class = "UITabBarItem"; title = "설정"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "Settings";
+
+"notice0" = "Can get it as a notification when fill it out and tap send.";
+"notice1" = "Notification stack up to Five, and will be deleted sequentially.";
+"notice2" = "There is a limit to the length of text that can be displayed!";

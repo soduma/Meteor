@@ -26,11 +26,14 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     var content: String = ""
     var notificationIndex = 0
     var noticeIndex = 0
-    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.",
-                  "알림은 5개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
-                  "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
+//    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.",
+//                  "알림은 5개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
+//                  "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
+    var notice = [NSLocalizedString("notice0", tableName: "Main", comment: ""),
+                  NSLocalizedString("notice1", tableName: "Main", comment: ""),
+                  NSLocalizedString("notice2", tableName: "Main", comment: "")]
     
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    // 구글광고!!!!!!!!!!!!!!!!!!!!
     private var interstitial: GADInterstitialAd?
     var adIndex = 0
     // --------------------------------
