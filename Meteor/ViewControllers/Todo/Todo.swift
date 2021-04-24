@@ -37,7 +37,8 @@ class TodoManager {
     }
     
     func addTodo(_ todo: Todo) {
-        todos.append(todo)
+//        todos.append(todo)
+        todos.insert(todo, at: 0)
         saveTodo()
     }
     
