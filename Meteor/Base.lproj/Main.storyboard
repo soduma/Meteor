@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--메테오-->
+        <!--Meteor-->
         <scene sceneID="ao2-tt-E4d">
             <objects>
                 <viewController id="5ue-D9-5Dz" customClass="MeteorViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="여기에 작성 👀" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
                                 <rect key="frame" x="27" y="331" width="303" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
@@ -31,9 +31,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="300" y="401" width="65" height="42"/>
+                                <rect key="frame" x="306" y="401" width="59" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <state key="normal" title="보내기">
+                                <state key="normal" title="Send">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -61,7 +61,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="118-qZ-0Nx">
                                 <rect key="frame" x="40" y="641" width="310" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 어쩌구 저쩌구" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noti blahblah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
                                         <rect key="frame" x="30" y="25" width="250" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,8 +89,8 @@
                                     <outletCollection property="gestureRecognizers" destination="94p-r7-8Zj" appends="YES" id="wag-B6-PjR"/>
                                 </connections>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="310" y="44" width="390" height="800"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
+                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
@@ -98,13 +98,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메테오 기능은 알림 설정이 필요합니다." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl">
-                                                    <rect key="frame" x="50" y="312.33333333333331" width="206" height="52.666666666666686"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl">
+                                                    <rect key="frame" x="50" y="312.33333333333331" width="234" height="52.666666666666686"/>
+                                                    <string key="text">Meteor feature requires
+notification allowance.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이폰 설정 &gt; Meteor &gt; 알림에서 메테오의 알림을 활성화 해주세요." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
-                                                    <rect key="frame" x="50.000000000000014" y="375" width="202.33333333333337" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone Settings &gt; Meteor &gt; Notifications Please enable notification." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
+                                                    <rect key="frame" x="50" y="375" width="273" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="hqG-nX-jf7"/>
                                                     </constraints>
@@ -157,7 +159,7 @@
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="메테오" id="eAl-3u-eGw">
+                    <tabBarItem key="tabBarItem" title="Meteor" id="eAl-3u-eGw">
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
@@ -230,7 +232,7 @@
                                                         <action selector="tapCheckButton:" destination="SyI-s1-wNN" eventType="touchUpInside" id="x9v-OK-FVg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 개발새발중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐶 working" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Ka-L7C">
                                                     <rect key="frame" x="53" y="9.9999999999999982" width="292" height="20.333333333333329"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -306,8 +308,8 @@
                                     <segue destination="Ar1-RQ-ybm" kind="presentation" id="YfU-gt-iie"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
-                                <rect key="frame" x="25" y="69" width="52" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
+                                <rect key="frame" x="24.999999999999993" y="69" width="87.333333333333314" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -369,13 +371,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnL-JA-8Ya">
-                                <rect key="frame" x="320" y="30" width="35" height="50"/>
+                                <rect key="frame" x="305" y="30" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hQE-8Q-80Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="완료"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="tapFinishButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="xjs-Ji-nhS"/>
                                 </connections>
@@ -424,13 +426,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-Ti-6UO">
-                                <rect key="frame" x="320" y="30" width="35" height="50"/>
+                                <rect key="frame" x="305" y="30" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AWU-mr-msS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="완료"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="tapFinishButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="DLX-uH-Nw9"/>
                                 </connections>
@@ -519,7 +521,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
-                            <tableViewSection headerTitle="메테오" id="si5-2F-S24">
+                            <tableViewSection headerTitle="Meteor" id="si5-2F-S24">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="CV8-Vp-qHv">
                                         <rect key="frame" x="20" y="55.333332061767578" width="350" height="43.666667938232422"/>
@@ -591,7 +593,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="스타일" footerTitle="두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다." id="noR-vq-LyQ">
+                            <tableViewSection headerTitle="Style" footerTitle="If turn off both switches then follow the system settings." id="noR-vq-LyQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cR1-o4-Sre">
                                         <rect key="frame" x="20" y="206" width="350" height="43.666667938232422"/>
@@ -600,8 +602,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="라이트 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-Uw-6P6">
-                                                    <rect key="frame" x="20" y="11.666666666666664" width="78" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiS-Uw-6P6">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -630,8 +632,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다크 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-7Y-0AM">
-                                                    <rect key="frame" x="19.999999999999996" y="11.666666666666664" width="63.666666666666657" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-7Y-0AM">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="83.666666666666671" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -655,17 +657,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="일반" id="mO4-mb-C9g">
+                            <tableViewSection headerTitle="General" id="mO4-mb-C9g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="361.33333587646484" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="377.33333587646484" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="진동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-gX-VE4">
-                                                    <rect key="frame" x="20" y="11.666666666666664" width="29.666666666666671" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-gX-VE4">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

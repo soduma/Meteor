@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		630D0C587EE58B5A79FD0BAF /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */; };
+		A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A06A51EE2634075E003DAEEF /* Localizable.strings */; };
+		A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A06A51F5263409D6003DAEEF /* Localizable.strings */; };
 		A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */; };
 		A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */; };
 		A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */; };
@@ -28,6 +30,9 @@
 /* Begin PBXFileReference section */
 		42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
+		A06A51E72634063F003DAEEF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		A06A51ED2634075E003DAEEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A06A51F4263409D6003DAEEF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0998A4B25FC99E7001BAEFD /* Meteor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meteor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +110,8 @@
 				A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */,
 				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
+				A06A51F5263409D6003DAEEF /* Localizable.strings */,
+				A06A51EE2634075E003DAEEF /* Localizable.strings */,
 				A0ED40A326022473009990ED /* ViewControllers */,
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
@@ -180,6 +187,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = A0998A4225FC99E7001BAEFD;
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
@@ -196,6 +204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */,
+				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
 				A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */,
@@ -268,10 +278,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A06A51EE2634075E003DAEEF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A06A51ED2634075E003DAEEF /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A06A51F5263409D6003DAEEF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A06A51F4263409D6003DAEEF /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A0998A5425FC99E7001BAEFD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0998A5525FC99E7001BAEFD /* Base */,
+				A06A51E72634063F003DAEEF /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -413,7 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -438,7 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
