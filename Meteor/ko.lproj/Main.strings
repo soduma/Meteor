@@ -2,32 +2,29 @@
 /* Class = "UILabel"; text = "Meteor"; ObjectID = "2kf-Pz-TMT"; */
 "2kf-Pz-TMT.text" = "Meteor";
 
-/* Class = "UILabel"; text = "알림 어쩌구 저쩌구"; ObjectID = "3O8-SQ-hh2"; */
-"3O8-SQ-hh2.text" = "알림 어쩌구 저쩌구";
+/* Class = "UILabel"; text = "noti blahblah"; ObjectID = "3O8-SQ-hh2"; */
+"3O8-SQ-hh2.text" = "noti blahblah";
 
-/* Class = "UILabel"; text = "메모"; ObjectID = "6VI-UB-qRJ"; */
+/* Class = "UILabel"; text = "Memo"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
-/* Class = "UILabel"; text = "다크 모드"; ObjectID = "A4a-7Y-0AM"; */
+/* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
-
-/* Class = "UILabel"; text = "Support iOS 13.0 or Higher 🇰🇷"; ObjectID = "BTy-pG-KQK"; */
-"BTy-pG-KQK.text" = "Support iOS 13.0 or Higher 🇰🇷";
-
-/* Class = "UILabel"; text = "Made by"; ObjectID = "CHc-5L-yMd"; */
-"CHc-5L-yMd.text" = "Made by";
 
 /* Class = "UIButton"; normalTitle = "dev.soduma@gmail.com"; ObjectID = "DZa-ix-YkT"; */
 "DZa-ix-YkT.normalTitle" = "dev.soduma@gmail.com";
 
-/* Class = "UIButton"; normalTitle = "@infofield"; ObjectID = "ErP-tN-Y1b"; */
-"ErP-tN-Y1b.normalTitle" = "@infofield";
+/* Class = "UILabel"; text = "Made by"; ObjectID = "Dar-LJ-TSU"; */
+"Dar-LJ-TSU.text" = "Made by";
 
-/* Class = "UILabel"; text = "진동"; ObjectID = "GqJ-gX-VE4"; */
+/* Class = "UILabel"; text = "Support iOS 13.0 or Higher"; ObjectID = "Fvr-nD-0wz"; */
+"Fvr-nD-0wz.text" = "Support iOS 13.0 or Higher";
+
+/* Class = "UILabel"; text = "Haptic"; ObjectID = "GqJ-gX-VE4"; */
 "GqJ-gX-VE4.text" = "진동";
 
-/* Class = "UILabel"; text = "🐶 개발새발중"; ObjectID = "HoI-Ka-L7C"; */
-"HoI-Ka-L7C.text" = "🐶 개발새발중";
+/* Class = "UILabel"; text = "🐶 working"; ObjectID = "HoI-Ka-L7C"; */
+"HoI-Ka-L7C.text" = "🐶 working";
 
 /* Class = "UILabel"; text = "Current Version ~~~"; ObjectID = "IKX-kT-lPg"; */
 "IKX-kT-lPg.text" = "Current Version ~~~";
@@ -35,54 +32,53 @@
 /* Class = "UILabel"; text = "Contact"; ObjectID = "Pmw-Ai-Bkf"; */
 "Pmw-Ai-Bkf.text" = "Contact";
 
-/* Class = "UIButton"; normalTitle = "보내기"; ObjectID = "RFX-SY-fYk"; */
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "RFX-SY-fYk"; */
 "RFX-SY-fYk.normalTitle" = "보내기";
 
-/* Class = "UITabBarItem"; title = "메모"; ObjectID = "SfX-Jb-Sde"; */
+/* Class = "UITabBarItem"; title = "Memo"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UIButton"; normalTitle = "완료"; ObjectID = "WnL-JA-8Ya"; */
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
 "WnL-JA-8Ya.normalTitle" = "완료";
 
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
 
-/* Class = "UITabBarItem"; title = "메테오"; ObjectID = "eAl-3u-eGw"; */
+/* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
 "eAl-3u-eGw.title" = "메테오";
 
-/* Class = "UILabel"; text = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."; ObjectID = "j1o-go-okn"; */
+/* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
-/* Class = "UITableViewSection"; headerTitle = "일반"; ObjectID = "mO4-mb-C9g"; */
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
 
-/* Class = "UILabel"; text = "메테오 기능은 알림 설정이 필요합니다."; ObjectID = "mYh-w1-2Gl"; */
+/* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
 "mYh-w1-2Gl.text" = "메테오 기능은 알림 설정이 필요합니다.";
 
-/* Class = "UITableViewSection"; footerTitle = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다."; ObjectID = "noR-vq-LyQ"; */
+/* Class = "UITableViewSection"; footerTitle = "If turn off both switches then follow the system settings."; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.footerTitle" = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다.";
 
-/* Class = "UITableViewSection"; headerTitle = "스타일"; ObjectID = "noR-vq-LyQ"; */
+/* Class = "UITableViewSection"; headerTitle = "Style"; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.headerTitle" = "스타일";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "oak-uY-Kls"; */
 "oak-uY-Kls.text" = "Version";
 
-/* Class = "UITableViewSection"; headerTitle = "메테오"; ObjectID = "si5-2F-S24"; */
+/* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
 "si5-2F-S24.headerTitle" = "메테오";
 
-/* Class = "UIButton"; normalTitle = "완료"; ObjectID = "tjQ-Ti-6UO"; */
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "tjQ-Ti-6UO"; */
 "tjQ-Ti-6UO.normalTitle" = "완료";
 
-/* Class = "UILabel"; text = "라이트 모드"; ObjectID = "wiS-Uw-6P6"; */
+/* Class = "UIButton"; normalTitle = "@infofield🇰🇷"; ObjectID = "wUg-9c-pbD"; */
+"wUg-9c-pbD.normalTitle" = "@infofield🇰🇷";
+
+/* Class = "UILabel"; text = "Light Mode"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "라이트 모드";
 
-/* Class = "UITextField"; placeholder = "여기에 작성 👀"; ObjectID = "x7b-OE-Nxg"; */
+/* Class = "UITextField"; placeholder = "Scribble here 👀"; ObjectID = "x7b-OE-Nxg"; */
 "x7b-OE-Nxg.placeholder" = "여기에 작성 👀";
 
-/* Class = "UITabBarItem"; title = "설정"; ObjectID = "zSO-Ai-qKq"; */
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "설정";
-
-"notice0" = "내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.";
-"notice1" = "알림은 5개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.";
-"notice2" = "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!";
