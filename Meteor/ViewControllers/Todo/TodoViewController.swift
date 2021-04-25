@@ -120,43 +120,46 @@ class TodoCell: UICollectionViewCell {
         if checkButton.isSelected == true {
             strikeThroughWidth.constant = descriptionLabel.bounds.width
         } else {
-//            strike(todo.isDone)
-                showStrikeThrough(todo.isDone)
+            //            strike(todo.isDone)
+            showStrikeThrough(todo.isDone)
         }
     }
     
-        private func showStrikeThrough(_ show: Bool) {
-            if show {
-                strikeThroughWidth.constant = descriptionLabel.bounds.width
-            } else {
-                strikeThroughWidth.constant = 0
+    private func showStrikeThrough(_ show: Bool) {
+        if show {
+            strikeThroughWidth.constant = descriptionLabel.bounds.width
+            UIView.animate(withDuration: 0.2) {
+                self.contentView.layoutIfNeeded()
             }
+        } else {
+            strikeThroughWidth.constant = 0
         }
+    }
     
-//    private func strike(_ show: Bool) {
-//        if show {
-//            strikeThroughWidth.constant = descriptionLabel.bounds.width
-//            UIView.animate(withDuration: 0.2) {
-//                self.contentView.layoutIfNeeded()
-//            }
-//        } else {
-//            self.strikeThroughWidth.constant = 0
-//            self.contentView.layoutIfNeeded()
-//        }
-//    }
+    //    private func strike(_ show: Bool) {
+    //        if show {
+    //            strikeThroughWidth.constant = descriptionLabel.bounds.width
+    //            UIView.animate(withDuration: 0.2) {
+    //                self.contentView.layoutIfNeeded()
+    //            }
+    //        } else {
+    //            self.strikeThroughWidth.constant = 0
+    //            self.contentView.layoutIfNeeded()
+    //        }
+    //    }
     
     func reset() {
         deleteButton.isHidden = true
-//        strike(false)
-                showStrikeThrough(false)
+        showStrikeThrough(false)
+        //        strike(false)
     }
     
     @IBAction func tapCheckButton(_ sender: UIButton) {
         checkButton.isSelected = !checkButton.isSelected
         let isDone = checkButton.isSelected
         deleteButton.isHidden = !isDone
-                showStrikeThrough(isDone)
-//        strike(isDone)
+        showStrikeThrough(isDone)
+        //        strike(isDone)
         
         doneButtonTapHandler?(isDone)
         
