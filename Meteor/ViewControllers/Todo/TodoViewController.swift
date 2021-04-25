@@ -184,7 +184,7 @@ class TodoCell: UICollectionViewCell {
         didSet{
             if self.isSelected {
                 UIView.animate(withDuration: 0.5) { // for animation effect
-                    self.backgroundColor = UIColor.systemGray5
+                    self.backgroundColor = UIColor.systemGray4
                     self.backgroundColor = UIColor.clear
                 }
             }
