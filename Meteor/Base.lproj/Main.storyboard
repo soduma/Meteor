@@ -64,17 +64,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noti blahblah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
                                         <rect key="frame" x="30" y="25" width="250" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HBW-I1-99y">
                                         <rect key="frame" x="94" y="57" width="122" height="28"/>
+                                        <color key="pageIndicatorTintColor" systemColor="systemGray3Color"/>
+                                        <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
                                         <connections>
                                             <action selector="pageChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="9jn-5p-X8u"/>
                                         </connections>
                                     </pageControl>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="HBW-I1-99y" firstAttribute="centerX" secondItem="118-qZ-0Nx" secondAttribute="centerX" id="0Pe-hX-aRv"/>
@@ -89,8 +91,8 @@
                                     <outletCollection property="gestureRecognizers" destination="94p-r7-8Zj" appends="YES" id="wag-B6-PjR"/>
                                 </connections>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
+                                <rect key="frame" x="294" y="22" width="390" height="800"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
@@ -192,7 +194,7 @@ notification allowance.</string>
             </objects>
             <point key="canvasLocation" x="887.69230769230762" y="-628.43601895734594"/>
         </scene>
-        <!--메모-->
+        <!--Memo-->
         <scene sceneID="DaL-IO-KWH">
             <objects>
                 <viewController id="k7r-AM-8wv" customClass="TodoViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
@@ -328,7 +330,7 @@ notification allowance.</string>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="DC9-en-am4" secondAttribute="bottom" constant="35" id="yWp-JC-BMm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="메모" id="SfX-Jb-Sde">
+                    <tabBarItem key="tabBarItem" title="Memo" id="SfX-Jb-Sde">
                         <imageReference key="image" image="highlighter" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
@@ -513,7 +515,7 @@ notification allowance.</string>
             </objects>
             <point key="canvasLocation" x="-40" y="73.222748815165872"/>
         </scene>
-        <!--설정-->
+        <!--Settings-->
         <scene sceneID="9ZW-EQ-19w">
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
@@ -698,7 +700,7 @@ notification allowance.</string>
                             <outlet property="delegate" destination="yKD-ZQ-Tqh" id="2AF-IB-EOu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="설정" image="gearshape" catalog="system" id="zSO-Ai-qKq">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="zSO-Ai-qKq">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
@@ -807,6 +809,12 @@ notification allowance.</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
