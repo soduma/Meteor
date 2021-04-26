@@ -47,6 +47,12 @@
 /* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
 "eAl-3u-eGw.title" = "메테오";
 
+/* Class = "UIButton"; normalTitle = "Review"; ObjectID = "eVG-QI-Qxx"; */
+"eVG-QI-Qxx.normalTitle" = "Review";
+
+/* Class = "UILabel"; text = "Wanna"; ObjectID = "eid-Qh-HRI"; */
+"eid-Qh-HRI.text" = "Wanna";
+
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
