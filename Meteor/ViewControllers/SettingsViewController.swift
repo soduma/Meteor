@@ -11,6 +11,7 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
+    @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
@@ -31,6 +32,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapMail(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
+        
         if let url = URL(string: "mailto:\(email)") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)
@@ -39,6 +41,17 @@ class SettingsViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func tapReview(_ sender: Any) {
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/1562989730"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
     
     @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
