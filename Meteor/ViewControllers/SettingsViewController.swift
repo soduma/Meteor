@@ -52,7 +52,6 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    
     @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
         
