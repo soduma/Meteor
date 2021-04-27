@@ -20,6 +20,8 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        inputTextView.text = ""
                 
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         // In this case, we instantiate the banner with desired ad size.
