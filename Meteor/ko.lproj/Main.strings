@@ -5,7 +5,7 @@
 /* Class = "UILabel"; text = "noti blahblah"; ObjectID = "3O8-SQ-hh2"; */
 "3O8-SQ-hh2.text" = "noti blahblah";
 
-/* Class = "UILabel"; text = "Memo"; ObjectID = "6VI-UB-qRJ"; */
+/* Class = "UILabel"; text = "Notes"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
 /* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
@@ -35,7 +35,7 @@
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "RFX-SY-fYk"; */
 "RFX-SY-fYk.normalTitle" = "보내기";
 
-/* Class = "UITabBarItem"; title = "Memo"; ObjectID = "SfX-Jb-Sde"; */
+/* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
@@ -50,8 +50,8 @@
 /* Class = "UIButton"; normalTitle = "Review"; ObjectID = "eVG-QI-Qxx"; */
 "eVG-QI-Qxx.normalTitle" = "Review";
 
-/* Class = "UILabel"; text = "Wanna"; ObjectID = "eid-Qh-HRI"; */
-"eid-Qh-HRI.text" = "Wanna";
+/* Class = "UILabel"; text = "Write a"; ObjectID = "eid-Qh-HRI"; */
+"eid-Qh-HRI.text" = "Write a";
 
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
