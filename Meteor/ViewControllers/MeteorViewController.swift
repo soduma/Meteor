@@ -212,14 +212,14 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 print("Ad wasn't ready")
             }
         }
-        // --------------------------------
         
-        if adIndex == 9 {
+        if adIndex == 6 {
             adIndex = 0
         }
+        // --------------------------------
         
         notificationIndex += 1
-        if notificationIndex > 4 {
+        if notificationIndex > 3 {
             notificationIndex = 0
         }
         
