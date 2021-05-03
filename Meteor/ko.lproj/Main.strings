@@ -77,8 +77,8 @@
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "tjQ-Ti-6UO"; */
 "tjQ-Ti-6UO.normalTitle" = "완료";
 
-/* Class = "UIButton"; normalTitle = "@infofield🇰🇷"; ObjectID = "wUg-9c-pbD"; */
-"wUg-9c-pbD.normalTitle" = "@infofield🇰🇷";
+/* Class = "UIButton"; normalTitle = "@infofield"; ObjectID = "wUg-9c-pbD"; */
+"wUg-9c-pbD.normalTitle" = "@infofield";
 
 /* Class = "UILabel"; text = "Light Mode"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "라이트 모드";
