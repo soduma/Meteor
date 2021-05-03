@@ -43,7 +43,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+
                                request: request,
                                completionHandler: { [self] ad, error in
                                 if let error = error {
@@ -125,7 +127,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
         let request2 = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
+                               
                                request: request2,
                                completionHandler: { [self] ad, error in
                                 if let error = error {
@@ -219,7 +223,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         // --------------------------------
         
         notificationIndex += 1
-        if notificationIndex > 3 {
+        if notificationIndex > 4 {
             notificationIndex = 0
         }
         

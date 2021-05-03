@@ -29,7 +29,8 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트
+        bannerView.adUnitID = "ca-app-pub-1960781437106390/9678128363" // modify
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
