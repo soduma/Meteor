@@ -9,6 +9,8 @@ import UIKit
 import UserNotifications
 import GoogleMobileAds
 import SystemConfiguration
+import AppTrackingTransparency
+import AdSupport
 
 class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
@@ -41,22 +43,15 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-        let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
-
-                               request: request,
-                               completionHandler: { [self] ad, error in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                interstitial = ad
-                                interstitial?.fullScreenContentDelegate = self
-                               }
-        )
-        // --------------------------------
+        if #available(iOS 14.0, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                // Tracking authorization completed. Start loading ads here.
+                // loadAd()
+                self.firstLoadAd()
+            })
+        } else {
+            firstLoadAd()
+        }
         
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
@@ -111,6 +106,25 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         NotificationCenter.default.removeObserver(self)
     }
+    
+    private func firstLoadAd() {
+        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                               }
+        )
+        // --------------------------------
+    }
 
     // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     /// Tells the delegate that the ad failed to present full screen content.
@@ -154,7 +168,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
     }
     
-    @objc func notiAuthCheck() {        
+    @objc func notiAuthCheck() {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
             
