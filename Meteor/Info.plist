@@ -3,7 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>AAA</string>
+	<string>Provide optimized advertising to user. Even if don&apos;t allow, the number of ads will display are same.
+Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
