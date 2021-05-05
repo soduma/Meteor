@@ -110,8 +110,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     private func firstLoadAd() {
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
 
                                request: request,
                                completionHandler: { [self] ad, error in
