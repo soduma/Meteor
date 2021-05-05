@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,6 @@
 		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
 		A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A0AAB011262ABE3900D6E5EB /* meteor_logo.png */; };
-		A0AAB024262C01A000D6E5EB /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */; };
 		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
@@ -59,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0AAB024262C01A000D6E5EB /* GoogleMobileAds.xcframework in Frameworks */,
 				630D0C587EE58B5A79FD0BAF /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
