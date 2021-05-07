@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		630D0C587EE58B5A79FD0BAF /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */; };
+		A04AE61826453C1F008BB99C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04AE61726453C1F008BB99C /* TabBar.swift */; };
 		A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A06A51EE2634075E003DAEEF /* Localizable.strings */; };
 		A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A06A51F5263409D6003DAEEF /* Localizable.strings */; };
 		A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
+		A04AE61726453C1F008BB99C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A06A51ED2634075E003DAEEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A06A51F4263409D6003DAEEF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0998A4B25FC99E7001BAEFD /* Meteor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meteor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
 				A06A51EE2634075E003DAEEF /* Localizable.strings */,
+				A04AE61726453C1F008BB99C /* TabBar.swift */,
 				A0ED40A326022473009990ED /* ViewControllers */,
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
@@ -272,6 +275,7 @@
 				A0ED409F2602244E009990ED /* Storage.swift in Sources */,
 				A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */,
 				A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */,
+				A04AE61826453C1F008BB99C /* TabBar.swift in Sources */,
 				A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */,
 				A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */,
 			);
