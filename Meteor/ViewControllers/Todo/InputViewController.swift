@@ -25,7 +25,7 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
                 
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         // In this case, we instantiate the banner with desired ad size.
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
         
         addBannerViewToView(bannerView)
 //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716" // 테스트
