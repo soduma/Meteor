@@ -2,9 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Provide optimized advertising to user. Even if don&apos;t allow, the number of ads will display are same.
-Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -29,6 +26,9 @@ Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Provide optimized advertising to user. Even if don't allow, the number of ads will display are same.
+Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
