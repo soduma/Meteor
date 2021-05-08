@@ -61,7 +61,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="118-qZ-0Nx">
                                 <rect key="frame" x="30" y="641" width="330" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noti blahblah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noti blahblah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
                                         <rect key="frame" x="30" y="25.333333333333371" width="270" height="19.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
@@ -553,9 +553,9 @@ notification allowance.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-ix-YkT">
-                                                    <rect key="frame" x="135" y="5.6666666666666679" width="195" height="33"/>
+                                                    <rect key="frame" x="233" y="5.6666666666666679" width="97" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <state key="normal" title="dev.soduma@gmail.com">
+                                                    <state key="normal" title="dev.soduma">
                                                         <color key="titleColor" systemColor="systemGrayColor"/>
                                                     </state>
                                                     <connections>
