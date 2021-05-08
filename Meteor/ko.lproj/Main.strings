@@ -11,8 +11,8 @@
 /* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
 
-/* Class = "UIButton"; normalTitle = "dev.soduma@gmail.com"; ObjectID = "DZa-ix-YkT"; */
-"DZa-ix-YkT.normalTitle" = "dev.soduma@gmail.com";
+/* Class = "UIButton"; normalTitle = "dev.soduma"; ObjectID = "DZa-ix-YkT"; */
+"DZa-ix-YkT.normalTitle" = "dev.soduma";
 
 /* Class = "UILabel"; text = "Made by"; ObjectID = "Dar-LJ-TSU"; */
 "Dar-LJ-TSU.text" = "Made by";

@@ -13,9 +13,10 @@ class CustomTabBar: UITabBar {
         super.awakeFromNib()
         
         layer.masksToBounds = true
-        layer.cornerRadius = 25
-        layer.borderColor = UIColor.systemGray.cgColor
-        layer.borderWidth = 0.5
+        layer.cornerRadius = 20
+//        layer.borderColor = UIColor.systemGray.cgColor
+//        layer.borderWidth = 0.3
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        
     }
 }
