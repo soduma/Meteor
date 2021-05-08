@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Thread.sleep(forTimeInterval: 0.5)
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        UserDefaults.standard.set(true, forKey: "vibrateSwitch")
+        UserDefaults.standard.bool(forKey: "vibrateSwitch")
         return true
     }
 
