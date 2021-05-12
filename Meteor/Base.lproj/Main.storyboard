@@ -92,7 +92,7 @@
                                 </connections>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="-35" y="463" width="500" height="60"/>
+                                <rect key="frame" x="-35" y="473" width="500" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
                                     <constraint firstAttribute="width" constant="500" id="9Zu-ss-d4Y"/>
@@ -187,7 +187,7 @@ notification allowance.</string>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="leading" secondItem="118-qZ-0Nx" secondAttribute="leading" id="S51-x8-yFX"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
                             <constraint firstItem="caC-dS-7wV" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="TNx-lZ-ms6"/>
-                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" constant="10" id="TqI-8N-xiL"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" constant="30" id="aoY-3B-Kk0"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>

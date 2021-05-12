@@ -86,7 +86,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         timePicker.isHidden = true
         
         notificationCancelView.alpha = 0
-        notificationCancelView.layer.cornerRadius = 15
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
@@ -325,12 +324,13 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         if repeatButton.isSelected {
             
             let contents = UNMutableNotificationContent()
-            contents.title = "REPEAT \nMETEOR :"
+            contents.title = "REPEAT METEOR :"
             contents.body = "\(content)"
+            contents.sound = UNNotificationSound.default
             //        contents.badge = 1
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
-            let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
             print("notificationIndex: \(notificationIndex)")
@@ -410,9 +410,9 @@ extension MeteorViewController : UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        let settingsViewController = UIViewController()
-        settingsViewController.view.backgroundColor = .gray
-        self.present(settingsViewController, animated: true, completion: nil)
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+//        let settingsViewController = UIViewController()
+//        settingsViewController.view.backgroundColor = .gray
+//        self.present(settingsViewController, animated: true, completion: nil)
+//    }
 }
