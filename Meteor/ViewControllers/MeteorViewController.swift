@@ -14,9 +14,12 @@ import AdSupport
 
 class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
+    @IBOutlet weak var meteorHeadLabel: UILabel!
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var eraseTextButton: UIButton!
+    @IBOutlet weak var repeatButton: UIButton!
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     @IBOutlet weak var noticeView: UIView!
     @IBOutlet weak var noticeLabel: UILabel!
@@ -75,6 +78,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         eraseTextButton.isHidden = true
         
+        repeatButton.isSelected = false
+        timePicker.isEnabled = false
+        timePicker.isHidden = true
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
@@ -110,8 +117,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     private func firstLoadAd() {
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
 
                                request: request,
                                completionHandler: { [self] ad, error in
@@ -141,8 +148,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
         let request2 = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
                                
                                request: request2,
                                completionHandler: { [self] ad, error in
@@ -185,6 +192,36 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
     }
     
+    @IBAction func inputContent(_ sender: UITextField) {
+        
+        //알림 권한
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+            
+            if settings.authorizationStatus == .denied {
+                print("Push notification is NOT enabled")
+                
+                DispatchQueue.main.async {
+                    self.authView.isHidden = false
+                    self.meteorTextField.resignFirstResponder()
+                    self.authViewBottom.constant = -self.view.bounds.height
+                    UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
+                    self.meteorTextField.text = ""
+                }
+            }
+        }
+        
+        if let inputContent = meteorTextField.text {
+            content = inputContent
+        }
+        
+        if meteorTextField.hasText {
+            eraseTextButton.isHidden = false
+        } else {
+            eraseTextButton.isHidden = true
+        }
+    }
+    
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
         notificationIndex += 1
         if notificationIndex > notice.count - 1 {
@@ -216,8 +253,39 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         eraseTextButton.isHidden = true
     }
     
+    @IBAction func tapRepeatButton(_ sender: UIButton) {
+        repeatButton.isSelected = !repeatButton.isSelected
+        if repeatButton.isSelected {
+            meteorHeadLabel.text = "REPEAT \nMETEOR :"
+            timePicker.isEnabled = true
+            timePicker.isHidden = false
+        } else {
+            meteorHeadLabel.text = "METEOR :"
+            timePicker.isEnabled = false
+            timePicker.isHidden = true
+        }
+        
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            
+            if #available(iOS 13.0, *) {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+            } else {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+            }
+        }
+    }
+    
+    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
+        print(timePicker.countDownDuration)
+    }
+    
     @IBAction func tapSendButton(_ sender: UIButton) {
-        guard let detail = meteorTextField.text, detail.isEmpty == false else { return }
+        
+        guard let detail = meteorTextField.text, detail.isEmpty == false else {
+            print("Stop Repeat")
+            return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
         
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         adIndex += 1
@@ -237,58 +305,49 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         // --------------------------------
         
         notificationIndex += 1
-        if notificationIndex > 4 {
+        if notificationIndex > 3 {
             notificationIndex = 0
         }
         
-        let contents = UNMutableNotificationContent()
-        contents.title = "METEOR :"
-        contents.body = "\(content)"
-        //        contents.badge = 1
+        if repeatButton.isSelected {
+            
+            let contents = UNMutableNotificationContent()
+            contents.title = "REPEAT \nMETEOR :"
+            contents.body = "\(content)"
+            //        contents.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+            let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
+            print("notificationIndex: \(notificationIndex)")
+            meteorTextField.resignFirstResponder()
+            
+        } else {
+            
+            let contents = UNMutableNotificationContent()
+            contents.title = "METEOR :"
+            contents.body = "\(content)"
+            //        contents.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+            let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            
+            print("notificationIndex: \(notificationIndex)")
+            meteorTextField.resignFirstResponder()
+        }
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
-        print("notificationIndex: \(notificationIndex)")
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-        meteorTextField.resignFirstResponder()
+        repeatButton.isSelected = false
+        meteorHeadLabel.text = "METEOR :"
+        timePicker.isEnabled = false
+        timePicker.isHidden = true
         
         //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
             
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
-        }
-    }
-    
-    @IBAction func inputContent(_ sender: UITextField) {
-        
-        //알림 권한
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { (settings) in
-            
-            if settings.authorizationStatus == .denied {
-                print("Push notification is NOT enabled")
-                
-                DispatchQueue.main.async {
-                    self.authView.isHidden = false
-                    self.meteorTextField.resignFirstResponder()
-                    self.authViewBottom.constant = -self.view.bounds.height
-                    UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
-                    self.meteorTextField.text = ""
-                }
-            }
-        }
-        
-        if let inputContent = meteorTextField.text {
-            content = inputContent
-        }
-        
-        if meteorTextField.hasText {
-            eraseTextButton.isHidden = false
-        } else {
-            eraseTextButton.isHidden = true
         }
     }
 }

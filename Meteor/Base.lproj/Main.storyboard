@@ -31,7 +31,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="306" y="401" width="59" height="42"/>
+                                <rect key="frame" x="306" y="421" width="59" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="Send">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,7 +52,7 @@
                                     <action selector="tapEraseButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="mCR-C8-vUe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
                                 <rect key="frame" x="25" y="267" width="207" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -91,8 +91,29 @@
                                     <outletCollection property="gestureRecognizers" destination="94p-r7-8Zj" appends="YES" id="wag-B6-PjR"/>
                                 </connections>
                             </view>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="10" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
+                                <rect key="frame" x="-35" y="463" width="500" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
+                                    <constraint firstAttribute="width" constant="500" id="9Zu-ss-d4Y"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="timePickerChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="agm-2I-5Jm"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caC-dS-7wV">
+                                <rect key="frame" x="25" y="419" width="81" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Repeat">
+                                    <color key="titleColor" systemColor="systemGray3Color"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRepeatButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="TDy-kI-NsE"/>
+                                </connections>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="294" y="22" width="390" height="800"/>
+                                <rect key="frame" x="354" y="22" width="390" height="800"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
@@ -134,6 +155,37 @@ notification allowance.</string>
                                     <constraint firstAttribute="bottom" secondItem="fIk-f5-YF7" secondAttribute="bottom" id="q04-Ra-n8I"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-d3-aSf">
+                                <rect key="frame" x="30" y="641" width="330" height="90"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-oS-KeD">
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="z2T-5H-7lL">
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Cancelled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-SV-Tsh">
+                                                    <rect key="frame" x="117.33333333333334" y="24.666666666666625" width="95.333333333333343" height="40.666666666666657"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9Ka-SV-Tsh" firstAttribute="centerY" secondItem="z2T-5H-7lL" secondAttribute="centerY" id="ske-84-Zcy"/>
+                                                <constraint firstItem="9Ka-SV-Tsh" firstAttribute="centerX" secondItem="z2T-5H-7lL" secondAttribute="centerX" id="vTN-9d-E6b"/>
+                                            </constraints>
+                                        </view>
+                                        <blurEffect style="prominent"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Dfq-oS-KeD" secondAttribute="trailing" id="4WY-f9-Acz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dfq-oS-KeD" secondAttribute="bottom" id="HwM-tm-YgK"/>
+                                    <constraint firstItem="Dfq-oS-KeD" firstAttribute="leading" secondItem="N6f-d3-aSf" secondAttribute="leading" id="e8d-Ld-1lk"/>
+                                    <constraint firstItem="Dfq-oS-KeD" firstAttribute="top" secondItem="N6f-d3-aSf" secondAttribute="top" id="oqf-nI-5m9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -141,19 +193,27 @@ notification allowance.</string>
                         <constraints>
                             <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="3jR-BE-3cm"/>
                             <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
+                            <constraint firstItem="N6f-d3-aSf" firstAttribute="top" secondItem="118-qZ-0Nx" secondAttribute="top" id="Bnj-5a-YCf"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="20" id="CZI-rd-8ya"/>
+                            <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-2" id="Cb0-e8-h7V"/>
+                            <constraint firstItem="N6f-d3-aSf" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" id="Jhx-QY-vl8"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="20" id="OwF-0H-Yf2"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
+                            <constraint firstItem="N6f-d3-aSf" firstAttribute="leading" secondItem="118-qZ-0Nx" secondAttribute="leading" id="S51-x8-yFX"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
-                            <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="20" id="Utj-8a-IKz"/>
+                            <constraint firstItem="caC-dS-7wV" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="TNx-lZ-ms6"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
+                            <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" constant="30" id="aoY-3B-Kk0"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
-                            <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
+                            <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" constant="20" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" constant="30" id="o4H-ej-Ptt"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="25" id="oy8-ea-Bei"/>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
+                            <constraint firstItem="N6f-d3-aSf" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" id="rpe-bZ-tV8"/>
                             <constraint firstItem="118-qZ-0Nx" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="uB0-Pd-VeE"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                         </constraints>
@@ -168,11 +228,14 @@ notification allowance.</string>
                         <outlet property="authView" destination="FCV-iO-9UW" id="WeE-Yl-ECC"/>
                         <outlet property="authViewBottom" destination="rHZ-uA-TU3" id="BWH-Az-5GD"/>
                         <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
+                        <outlet property="meteorHeadLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="3O8-SQ-hh2" id="87e-0l-Cni"/>
                         <outlet property="noticeView" destination="118-qZ-0Nx" id="ekW-41-xfQ"/>
                         <outlet property="pageControl" destination="HBW-I1-99y" id="28x-lq-WX4"/>
+                        <outlet property="repeatButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
+                        <outlet property="timePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

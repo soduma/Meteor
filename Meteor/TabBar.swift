@@ -14,7 +14,7 @@ class CustomTabBar: UITabBar {
         
         layer.masksToBounds = true
         layer.cornerRadius = 25
-//        layer.borderColor = UIColor.systemGray.cgColor
+//        layer.borderColor = UIColor.systemGray6.cgColor
 //        layer.borderWidth = 0.3
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         
