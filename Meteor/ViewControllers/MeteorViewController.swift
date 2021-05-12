@@ -52,16 +52,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 14.0, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                // Tracking authorization completed. Start loading ads here.
-                // loadAd()
-                self.firstLoadAd()
-            })
-        } else {
-            firstLoadAd()
-        }
-        
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
                 
@@ -73,6 +63,25 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                     window.overrideUserInterfaceStyle = .unspecified
                 }
             }
+        }
+        
+        if UserDefaults.standard.bool(forKey: "First Launch") == false {
+            // first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
+        } else {
+            // not first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+        }
+        
+        if #available(iOS 14.0, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                // Tracking authorization completed. Start loading ads here.
+                // loadAd()
+                self.firstLoadAd()
+            })
+        } else {
+            firstLoadAd()
         }
         
         noticeLabel.text = notice[0]
