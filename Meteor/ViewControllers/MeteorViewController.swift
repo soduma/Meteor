@@ -125,8 +125,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     private func firstLoadAd() {
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
 
                                request: request,
                                completionHandler: { [self] ad, error in
@@ -156,8 +156,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
         let request2 = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
                                
                                request: request2,
                                completionHandler: { [self] ad, error in
@@ -293,13 +293,19 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
             self.notificationCancelView.alpha = 1
             UIView.animate(withDuration: 0.5,
-                           delay: 2,
+                           delay: 1.5,
                            options: .allowUserInteraction,
                            animations: { self.notificationCancelView.alpha = 0 },
                            completion: nil)
             
+            if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+            }
+            
             meteorTextField.resignFirstResponder()
             print("Stop Repeat")
+            
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
@@ -361,7 +367,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }

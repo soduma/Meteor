@@ -13,6 +13,7 @@ and will be deleted sequentially.";
 
 "notice2" = "There's a limit to the length of text that can be displayed!";
 
-"notice3" = "'Repeat' make receive notifications at specified time intervals.";
+"notice3" = "'Repeat' make notification
+at specified time intervals.";
 
 "notice4" = "Send with a blank, pending notification will be cancelled.";

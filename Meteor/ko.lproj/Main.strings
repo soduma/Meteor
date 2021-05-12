@@ -78,7 +78,7 @@
 "sFc-3J-lkG.text" = "반복 알림이 취소되었습니다";
 
 /* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
-"si5-2F-S24.headerTitle" = "메테오";
+"si5-2F-S24.headerTitle" = "Meteor";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "tjQ-Ti-6UO"; */
 "tjQ-Ti-6UO.normalTitle" = "완료";
