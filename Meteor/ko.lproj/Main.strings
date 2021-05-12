@@ -44,6 +44,9 @@
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
 
+/* Class = "UIButton"; normalTitle = "Repeat"; ObjectID = "caC-dS-7wV"; */
+"caC-dS-7wV.normalTitle" = "반복";
+
 /* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
 "eAl-3u-eGw.title" = "메테오";
 
@@ -54,22 +57,25 @@
 "eid-Qh-HRI.text" = "Write a";
 
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
-"j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
+"j1o-go-okn.text" = " 아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
 
 /* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
-"mYh-w1-2Gl.text" = "메테오 기능은 알림 설정이 필요합니다.";
+"mYh-w1-2Gl.text" = " 메테오 기능은 알림 설정이 필요합니다.";
 
 /* Class = "UITableViewSection"; footerTitle = "If turn off both switches then follow the system settings."; ObjectID = "noR-vq-LyQ"; */
-"noR-vq-LyQ.footerTitle" = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다.";
+"noR-vq-LyQ.footerTitle" = " 두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "Style"; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.headerTitle" = "스타일";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "oak-uY-Kls"; */
 "oak-uY-Kls.text" = "Version";
+
+/* Class = "UILabel"; text = "Repeat Cancelled"; ObjectID = "sFc-3J-lkG"; */
+"sFc-3J-lkG.text" = "반복 알림이 취소되었습니다";
 
 /* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
 "si5-2F-S24.headerTitle" = "메테오";
@@ -88,3 +94,4 @@
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "설정";
+
