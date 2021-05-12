@@ -28,6 +28,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var notificationCancelView: UIView!
+    @IBOutlet weak var notificationLabel: UILabel!
+    
     var content: String = ""
     var notificationIndex = 0
     var noticeIndex = 0
@@ -81,6 +84,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         repeatButton.isSelected = false
         timePicker.isEnabled = false
         timePicker.isHidden = true
+        
+        notificationCancelView.alpha = 0
+        notificationCancelView.layer.cornerRadius = 15
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
         })
@@ -283,6 +289,13 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func tapSendButton(_ sender: UIButton) {
         
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
+            self.notificationCancelView.alpha = 1
+            UIView.animate(withDuration: 0.5,
+                           delay: 1,
+                           options: .allowUserInteraction,
+                           animations: { self.notificationCancelView.alpha = 0 },
+                           completion: nil)
+         
             print("Stop Repeat")
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
@@ -316,7 +329,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             contents.body = "\(content)"
             //        contents.badge = 1
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
             let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             

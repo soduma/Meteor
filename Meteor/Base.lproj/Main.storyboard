@@ -62,8 +62,8 @@
                                 <rect key="frame" x="30" y="641" width="330" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noti blahblah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-SQ-hh2">
-                                        <rect key="frame" x="30" y="25.333333333333371" width="270" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <rect key="frame" x="30" y="25" width="270" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -91,7 +91,7 @@
                                     <outletCollection property="gestureRecognizers" destination="94p-r7-8Zj" appends="YES" id="wag-B6-PjR"/>
                                 </connections>
                             </view>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="10" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
                                 <rect key="frame" x="-35" y="463" width="500" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
@@ -155,35 +155,20 @@ notification allowance.</string>
                                     <constraint firstAttribute="bottom" secondItem="fIk-f5-YF7" secondAttribute="bottom" id="q04-Ra-n8I"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-d3-aSf">
-                                <rect key="frame" x="30" y="641" width="330" height="90"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-d3-aSf">
+                                <rect key="frame" x="-291" y="641" width="330" height="90"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-oS-KeD">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="z2T-5H-7lL">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Cancelled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-SV-Tsh">
-                                                    <rect key="frame" x="117.33333333333334" y="24.666666666666625" width="95.333333333333343" height="40.666666666666657"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="9Ka-SV-Tsh" firstAttribute="centerY" secondItem="z2T-5H-7lL" secondAttribute="centerY" id="ske-84-Zcy"/>
-                                                <constraint firstItem="9Ka-SV-Tsh" firstAttribute="centerX" secondItem="z2T-5H-7lL" secondAttribute="centerX" id="vTN-9d-E6b"/>
-                                            </constraints>
-                                        </view>
-                                        <blurEffect style="prominent"/>
-                                    </visualEffectView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Cancelled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFc-3J-lkG">
+                                        <rect key="frame" x="77.333333333333329" y="32" width="175.66666666666669" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Dfq-oS-KeD" secondAttribute="trailing" id="4WY-f9-Acz"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dfq-oS-KeD" secondAttribute="bottom" id="HwM-tm-YgK"/>
-                                    <constraint firstItem="Dfq-oS-KeD" firstAttribute="leading" secondItem="N6f-d3-aSf" secondAttribute="leading" id="e8d-Ld-1lk"/>
-                                    <constraint firstItem="Dfq-oS-KeD" firstAttribute="top" secondItem="N6f-d3-aSf" secondAttribute="top" id="oqf-nI-5m9"/>
+                                    <constraint firstItem="sFc-3J-lkG" firstAttribute="centerY" secondItem="N6f-d3-aSf" secondAttribute="centerY" constant="-3" id="BUp-Pw-RGU"/>
+                                    <constraint firstItem="sFc-3J-lkG" firstAttribute="centerX" secondItem="N6f-d3-aSf" secondAttribute="centerX" id="ouI-n1-BSe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -232,6 +217,8 @@ notification allowance.</string>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="3O8-SQ-hh2" id="87e-0l-Cni"/>
                         <outlet property="noticeView" destination="118-qZ-0Nx" id="ekW-41-xfQ"/>
+                        <outlet property="notificationCancelView" destination="N6f-d3-aSf" id="1NO-H4-zvL"/>
+                        <outlet property="notificationLabel" destination="sFc-3J-lkG" id="O9z-dC-oQ7"/>
                         <outlet property="pageControl" destination="HBW-I1-99y" id="28x-lq-WX4"/>
                         <outlet property="repeatButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
