@@ -39,7 +39,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
 //                  "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
     var notice = [NSLocalizedString("notice0", comment: ""),
                   NSLocalizedString("notice1", comment: ""),
-                  NSLocalizedString("notice2", comment: "")]
+                  NSLocalizedString("notice2", comment: ""),
+                  NSLocalizedString("notice3", comment: ""),
+                  NSLocalizedString("notice4", comment: "")]
+
     
     // 구글광고!!!!!!!!!!!!!!!!!!!!
     private var interstitial: GADInterstitialAd?
@@ -290,11 +293,12 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
             self.notificationCancelView.alpha = 1
             UIView.animate(withDuration: 0.5,
-                           delay: 1,
+                           delay: 2,
                            options: .allowUserInteraction,
                            animations: { self.notificationCancelView.alpha = 0 },
                            completion: nil)
-         
+            
+            meteorTextField.resignFirstResponder()
             print("Stop Repeat")
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
@@ -334,7 +338,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
             print("notificationIndex: \(notificationIndex)")
-            meteorTextField.resignFirstResponder()
             
         } else {
             
@@ -348,9 +351,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
             print("notificationIndex: \(notificationIndex)")
-            meteorTextField.resignFirstResponder()
         }
         
+        meteorTextField.resignFirstResponder()
         repeatButton.isSelected = false
         meteorHeadLabel.text = "METEOR :"
         timePicker.isEnabled = false
