@@ -102,7 +102,10 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caC-dS-7wV">
-                                <rect key="frame" x="25" y="419" width="81" height="42"/>
+                                <rect key="frame" x="25" y="416" width="81" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8AL-jJ-aBr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" title="Repeat">
@@ -180,7 +183,7 @@ notification allowance.</string>
                             <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="top" secondItem="118-qZ-0Nx" secondAttribute="top" id="Bnj-5a-YCf"/>
                             <constraint firstItem="qJl-Jl-hg3" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="20" id="CZI-rd-8ya"/>
-                            <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-2" id="Cb0-e8-h7V"/>
+                            <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="Cb0-e8-h7V"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" id="Jhx-QY-vl8"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="20" id="OwF-0H-Yf2"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
