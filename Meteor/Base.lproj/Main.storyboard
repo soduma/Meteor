@@ -32,6 +32,9 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
                                 <rect key="frame" x="306" y="421" width="59" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="5Bj-4G-YgN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="Send">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,7 +95,7 @@
                                 </connections>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="-35" y="473" width="500" height="60"/>
+                                <rect key="frame" x="-35" y="463" width="500" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
                                     <constraint firstAttribute="width" constant="500" id="9Zu-ss-d4Y"/>
@@ -102,13 +105,13 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caC-dS-7wV">
-                                <rect key="frame" x="25" y="416" width="81" height="50"/>
+                                <rect key="frame" x="25" y="416" width="89" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8AL-jJ-aBr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="Repeat">
+                                <state key="normal" title="Endless">
                                     <color key="titleColor" systemColor="systemGray3Color"/>
                                 </state>
                                 <connections>
@@ -161,8 +164,8 @@ notification allowance.</string>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6f-d3-aSf">
                                 <rect key="frame" x="-291" y="641" width="330" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat Cancelled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFc-3J-lkG">
-                                        <rect key="frame" x="95.333333333333329" y="32" width="139.33333333333337" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endless Canceled" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFc-3J-lkG">
+                                        <rect key="frame" x="94.666666666666686" y="32" width="141" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -174,6 +177,12 @@ notification allowance.</string>
                                     <constraint firstItem="sFc-3J-lkG" firstAttribute="centerX" secondItem="N6f-d3-aSf" secondAttribute="centerX" id="ouI-n1-BSe"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endless working now 🏃🏻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-qH-UQ6">
+                                <rect key="frame" x="108" y="512.66666666666663" width="194" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mqu-pD-j8Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -190,11 +199,12 @@ notification allowance.</string>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="leading" secondItem="118-qZ-0Nx" secondAttribute="leading" id="S51-x8-yFX"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
                             <constraint firstItem="caC-dS-7wV" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="TNx-lZ-ms6"/>
-                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" constant="10" id="TqI-8N-xiL"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" constant="30" id="aoY-3B-Kk0"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
+                            <constraint firstItem="kyd-qH-UQ6" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="10" id="dLl-lu-msv"/>
                             <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" constant="20" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" constant="30" id="o4H-ej-Ptt"/>
@@ -202,6 +212,7 @@ notification allowance.</string>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" id="rpe-bZ-tV8"/>
+                            <constraint firstItem="kyd-qH-UQ6" firstAttribute="bottom" secondItem="qJl-Jl-hg3" secondAttribute="bottom" constant="10" id="uAF-tf-IN8"/>
                             <constraint firstItem="118-qZ-0Nx" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="uB0-Pd-VeE"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                         </constraints>
@@ -220,10 +231,11 @@ notification allowance.</string>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                         <outlet property="noticeLabel" destination="3O8-SQ-hh2" id="87e-0l-Cni"/>
                         <outlet property="noticeView" destination="118-qZ-0Nx" id="ekW-41-xfQ"/>
-                        <outlet property="notificationCancelView" destination="N6f-d3-aSf" id="1NO-H4-zvL"/>
-                        <outlet property="notificationLabel" destination="sFc-3J-lkG" id="O9z-dC-oQ7"/>
                         <outlet property="pageControl" destination="HBW-I1-99y" id="28x-lq-WX4"/>
                         <outlet property="repeatButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
+                        <outlet property="repeatCancelLabel" destination="sFc-3J-lkG" id="O9z-dC-oQ7"/>
+                        <outlet property="repeatCancelView" destination="N6f-d3-aSf" id="1NO-H4-zvL"/>
+                        <outlet property="repeatLabel" destination="kyd-qH-UQ6" id="geX-vq-hfC"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
                         <outlet property="timePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                     </connections>

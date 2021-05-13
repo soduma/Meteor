@@ -28,8 +28,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     
-    @IBOutlet weak var notificationCancelView: UIView!
-    @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var repeatLabel: UILabel!
+    @IBOutlet weak var repeatCancelView: UIView!
+    @IBOutlet weak var repeatCancelLabel: UILabel!
     
     var content: String = ""
     var notificationIndex = 0
@@ -84,6 +85,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             firstLoadAd()
         }
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
+        })
+        UNUserNotificationCenter.current().delegate = self
+        
         noticeLabel.text = notice[0]
         noticeView.layer.cornerRadius = 15
         pageControl.numberOfPages = notice.count
@@ -97,11 +102,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         timePicker.isEnabled = false
         timePicker.isHidden = true
         
-        notificationCancelView.alpha = 0
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
-        })
-        UNUserNotificationCenter.current().delegate = self
+        repeatLabel.alpha = 0
+        repeatCancelView.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,6 +115,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
 //        } else {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
+        }
+        
+        if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
+            self.repeatLabel.alpha = 1
         }
     }
     
@@ -273,7 +279,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func tapRepeatButton(_ sender: UIButton) {
         repeatButton.isSelected = !repeatButton.isSelected
         if repeatButton.isSelected {
-            meteorHeadLabel.text = "REPEAT \nMETEOR :"
+            meteorHeadLabel.text = "ENDLESS \nMETEOR :"
             timePicker.isEnabled = true
             timePicker.isHidden = false
         } else {
@@ -300,12 +306,17 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func tapSendButton(_ sender: UIButton) {
         
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
-            self.notificationCancelView.alpha = 1
+            self.repeatLabel.alpha = 0
+            self.repeatCancelView.alpha = 1
             UIView.animate(withDuration: 0.5,
                            delay: 1.5,
                            options: .allowUserInteraction,
-                           animations: { self.notificationCancelView.alpha = 0 },
+                           animations: { self.repeatCancelView.alpha = 0 },
                            completion: nil)
+            
+//            UserDefaults.standard.set(0, forKey: "repeatIdling")
+            UserDefaults.standard.set(false, forKey: "repeatIdling")
+            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
             
             if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
                 let generator = UINotificationFeedbackGenerator()
@@ -343,7 +354,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         if repeatButton.isSelected {
             
             let contents = UNMutableNotificationContent()
-            contents.title = "REPEAT METEOR :"
+            contents.title = "ENDLESS METEOR :"
             contents.body = "\(content)"
             contents.sound = UNNotificationSound.default
             //        contents.badge = 1
@@ -353,6 +364,13 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
             print("notificationIndex: \(notificationIndex)")
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.repeatLabel.alpha = 1
+            })
+//            UserDefaults.standard.set(1, forKey: "repeatIdling")
+            UserDefaults.standard.set(true, forKey: "repeatIdling")
+            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
             
         } else {
             
