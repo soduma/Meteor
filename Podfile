@@ -7,4 +7,6 @@ target 'Meteor' do
 
   # Pods for Meteor
 pod 'Google-Mobile-Ads-SDK'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
 end

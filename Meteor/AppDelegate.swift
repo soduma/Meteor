@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMobileAds
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Thread.sleep(forTimeInterval: 0.5)
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        FirebaseApp.configure()
         return true
     }
 

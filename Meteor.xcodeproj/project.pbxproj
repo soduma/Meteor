@@ -17,6 +17,7 @@
 		A0998A5625FC99E7001BAEFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5425FC99E7001BAEFD /* Main.storyboard */; };
 		A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5725FC99E9001BAEFD /* Assets.xcassets */; };
 		A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */; };
+		A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */; };
 		A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */; };
 		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
@@ -43,6 +44,7 @@
 		A0998A5725FC99E9001BAEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0998A5A25FC99E9001BAEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0998A5C25FC99E9001BAEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
 				A0CEF95A2642A13E00DC929D /* InfoPlist.strings */,
+				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
 				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 				A0AAB011262ABE3900D6E5EB /* meteor_logo.png */,
 			);
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */,
+				A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */,
 				A0CEF9582642A13E00DC929D /* InfoPlist.strings in Resources */,
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
