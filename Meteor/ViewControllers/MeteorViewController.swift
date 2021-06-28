@@ -369,15 +369,16 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
             let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-            print("notificationIndex: \(notificationIndex)")
+//            print("notificationIndex: \(notificationIndex)")
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.repeatLabel.alpha = 1
             })
 //            UserDefaults.standard.set(1, forKey: "repeatIdling")
             UserDefaults.standard.set(true, forKey: "repeatIdling")
-            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
+//            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
+
+            self.db.child("repeatText").childByAutoId().setValue(["text": meteorTextField.text])
             
         } else {
             
@@ -390,7 +391,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
-            print("notificationIndex: \(notificationIndex)")
+//            print("notificationIndex: \(notificationIndex)")
+            
+            self.db.child("meteorText").childByAutoId().setValue(["text": meteorTextField.text])
         }
         
         meteorTextField.resignFirstResponder()
@@ -404,8 +407,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }
-        
-        self.db.child("meteorText").childByAutoId().setValue(["text": meteorTextField.text])
     }
 }
 

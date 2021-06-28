@@ -84,7 +84,7 @@ extension TodoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width: CGFloat = collectionView.bounds.width
-        let height: CGFloat = 40
+        let height: CGFloat = 50
         return CGSize(width: width, height: height)
     }
 }
