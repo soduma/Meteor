@@ -60,7 +60,7 @@
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
 /* Class = "UILabel"; text = "Endless working now 🏃🏻"; ObjectID = "kyd-qH-UQ6"; */
-"kyd-qH-UQ6.text" = "끝없이 작동중 🏃🏻";
+"kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
 
 /* Class = "UITableViewSection"; headerTitle = "일반"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
@@ -79,9 +79,6 @@
 
 /* Class = "UILabel"; text = "끝없이가 취소되었습니다"; ObjectID = "sFc-3J-lkG"; */
 "sFc-3J-lkG.text" = "끝없이가 취소되었습니다";
-
-/* Class = "UITableViewSection"; footerTitle = "Thank you for using. 🤧"; ObjectID = "si5-2F-S24"; */
-"si5-2F-S24.footerTitle" = "Thank you for using. 🤧";
 
 /* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
 "si5-2F-S24.headerTitle" = "Meteor";

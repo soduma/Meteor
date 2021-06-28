@@ -50,7 +50,9 @@
                                     <constraint firstAttribute="width" constant="30" id="q9X-R0-fru"/>
                                 </constraints>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                </state>
                                 <connections>
                                     <action selector="tapEraseButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="mCR-C8-vUe"/>
                                 </connections>
@@ -138,10 +140,10 @@
                                 <rect key="frame" x="0.0" y="510" width="390" height="131"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Endless working now 🏃🏻 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-qH-UQ6">
-                                        <rect key="frame" x="94.000000000000014" y="55.333333333333378" width="202.33333333333337" height="20.333333333333336"/>
+                                        <rect key="frame" x="88.333333333333329" y="54.666666666666622" width="213.33333333333337" height="21.666666666666664"/>
                                         <color key="backgroundColor" red="1" green="0.99744601789999998" blue="0.14274218259999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -152,10 +154,10 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="187" y="42" width="390" height="800"/>
+                                <rect key="frame" x="318" y="44" width="390" height="800"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
-                                        <rect key="frame" x="153" y="0.0" width="390" height="800"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wg8-Bb-QJF">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="800"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,7 +618,7 @@ notification allowance.</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
-                            <tableViewSection headerTitle="Meteor" footerTitle="Thank you for using. 🤧" id="si5-2F-S24">
+                            <tableViewSection headerTitle="Meteor" id="si5-2F-S24">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="CV8-Vp-qHv">
                                         <rect key="frame" x="20" y="49" width="350" height="43.666667938232422"/>
@@ -725,7 +727,7 @@ notification allowance.</string>
                             <tableViewSection headerTitle="Style" footerTitle="If turn off both switches then follow the system settings." id="noR-vq-LyQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cR1-o4-Sre">
-                                        <rect key="frame" x="20" y="245.33333778381348" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="237.00000381469727" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cR1-o4-Sre" id="YKK-Es-HSQ">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -755,7 +757,7 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ecS-pA-ZFD">
-                                        <rect key="frame" x="20" y="289.0000057220459" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="280.66667175292969" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ecS-pA-ZFD" id="h56-mw-OOO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -789,7 +791,7 @@ notification allowance.</string>
                             <tableViewSection headerTitle="General" id="mO4-mb-C9g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="404.66667175292969" width="350" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="396.33333778381348" width="350" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
@@ -820,6 +822,9 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
+                            </tableViewSection>
+                            <tableViewSection footerTitle=" 고맙습니다. Thank you for using. 🤲" id="xDe-Ec-H3V">
+                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
