@@ -50,7 +50,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     var adIndex = 0
     // --------------------------------
     
-    let db = Database.database().reference()
+    var db = Database.database().reference()
     var firebaseIndex = 0
     
     override func viewDidLoad() {
@@ -404,6 +404,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }
+        
+        self.db.child("meteorText").childByAutoId().setValue(["text": meteorTextField.text])
     }
 }
 
