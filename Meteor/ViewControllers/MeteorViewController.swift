@@ -323,7 +323,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             
 //            UserDefaults.standard.set(0, forKey: "repeatIdling")
             UserDefaults.standard.set(false, forKey: "repeatIdling")
-            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
+//            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
             
             if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
                 let generator = UINotificationFeedbackGenerator()
@@ -378,7 +378,12 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UserDefaults.standard.set(true, forKey: "repeatIdling")
 //            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
 
-            self.db.child("repeatText").childByAutoId().setValue(["text": meteorTextField.text])
+            if let text = meteorTextField.text {
+                let timer = timePicker.countDownDuration
+                let locale = TimeZone.current.identifier
+
+                self.db.child("repeatText").childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
+            }
             
         } else {
             
@@ -393,7 +398,16 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             
 //            print("notificationIndex: \(notificationIndex)")
             
-            self.db.child("meteorText").childByAutoId().setValue(["text": meteorTextField.text])
+            if let text = meteorTextField.text {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                
+                let dateTime = dateFormatter.string(from: Date())
+                let locale = TimeZone.current.identifier
+//                print(TimeZone.current.identifier)
+                
+                self.db.child("meteorText").childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+            }
         }
         
         meteorTextField.resignFirstResponder()
