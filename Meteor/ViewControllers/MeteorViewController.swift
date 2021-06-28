@@ -11,6 +11,7 @@ import GoogleMobileAds
 import SystemConfiguration
 import AppTrackingTransparency
 import AdSupport
+import Firebase
 
 class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
@@ -49,12 +50,19 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     var adIndex = 0
     // --------------------------------
     
+    let db = Database.database().reference()
+    var firebaseIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        db.child("adIndex").observeSingleEvent(of: .value) { snapshot in
+            self.firebaseIndex = snapshot.value as? Int ?? 0
+//            print(self.firebaseIndex)
+        }
+        
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
-                
                 if UserDefaults.standard.bool(forKey: "lightState") == true {
                     window.overrideUserInterfaceStyle = .light
                 } else if UserDefaults.standard.bool(forKey: "darkState") == true {
@@ -340,7 +348,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             }
         }
         
-        if adIndex == 6 {
+        if adIndex == firebaseIndex {
             adIndex = 0
         }
         // --------------------------------
