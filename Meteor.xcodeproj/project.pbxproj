@@ -23,6 +23,7 @@
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
 		A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A0AAB011262ABE3900D6E5EB /* meteor_logo.png */; };
 		A0CEF9582642A13E00DC929D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0CEF95A2642A13E00DC929D /* InfoPlist.strings */; };
+		A0E85765268C916800E10831 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85764268C916800E10831 /* Reachability.swift */; };
 		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
@@ -52,6 +53,7 @@
 		A0AAB021262C01A000D6E5EB /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
 		A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		A0CEF95B2642A16800DC929D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
+				A0E85764268C916800E10831 /* Reachability.swift */,
 				A0ED40A12602245F009990ED /* Todo */,
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,
@@ -273,6 +276,7 @@
 			files = (
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
 				A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */,
+				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
 				A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */,
 				A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */,
