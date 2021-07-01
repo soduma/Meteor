@@ -250,7 +250,7 @@ notification allowance.</string>
                         <outlet property="repeatButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
                         <outlet property="repeatCancelLabel" destination="sFc-3J-lkG" id="O9z-dC-oQ7"/>
                         <outlet property="repeatCancelView" destination="N6f-d3-aSf" id="1NO-H4-zvL"/>
-                        <outlet property="repeatLabel" destination="kyd-qH-UQ6" id="geX-vq-hfC"/>
+                        <outlet property="repeatWorkingLabel" destination="kyd-qH-UQ6" id="geX-vq-hfC"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
                         <outlet property="timePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                     </connections>
