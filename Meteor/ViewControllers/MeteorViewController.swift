@@ -28,29 +28,27 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     
-    @IBOutlet weak var repeatLabel: UILabel!
+    @IBOutlet weak var repeatWorkingLabel: UILabel!
     @IBOutlet weak var repeatCancelView: UIView!
     @IBOutlet weak var repeatCancelLabel: UILabel!
     
     var content: String = ""
-    var notificationIndex = 0
+    var notificationCountIndex = 0
     var noticeViewIndex = 0
-//    var notice = ["내용을 작성하고 보내기를 누르면 알림으로 받을 수 있어요.",
-//                  "알림은 5개까지 쌓이고, 먼저 온 알림부터 순차적으로 삭제됩니다.",
-//                  "알림 창에 표시할 수 있는 텍스트의 길이에는 한계가 있습니다!"]
+
     var notice = [NSLocalizedString("notice0", comment: ""),
                   NSLocalizedString("notice1", comment: ""),
                   NSLocalizedString("notice2", comment: ""),
                   NSLocalizedString("notice3", comment: ""),
                   NSLocalizedString("notice4", comment: "")]
+    
+    var db = Database.database().reference()
+    var firebaseIndex = 0
 
     // 구글광고!!!!!!!!!!!!!!!!!!!!
     private var interstitial: GADInterstitialAd?
     var adIndex = 0
     // --------------------------------
-    
-    var db = Database.database().reference()
-    var firebaseIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +89,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             firstLoadAd()
         }
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: { (didAllow, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
         
@@ -103,12 +101,11 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         authView.isHidden = true
         
         eraseTextButton.isHidden = true
-        
         repeatButton.isSelected = false
         timePicker.isEnabled = false
         timePicker.isHidden = true
         
-        repeatLabel.alpha = 0
+        repeatWorkingLabel.alpha = 0
         repeatCancelView.alpha = 0
     }
     
@@ -116,15 +113,12 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         super.viewWillAppear(animated)
 
         if Reachability.isConnectedToNetwork() == false {
-//            sendButton.isEnabled = true
-//            print("Internet Connection Available!")
-//        } else {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
         }
         
         if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
-            self.repeatLabel.alpha = 1
+            self.repeatWorkingLabel.alpha = 1
         }
     }
     
@@ -143,8 +137,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     private func firstLoadAd() {
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         let request = GADRequest()
 //        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
@@ -175,7 +169,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        
+
         let request2 = GADRequest()
 //        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
@@ -196,9 +190,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     @objc func checkNetworkConnection() {
         if Reachability.isConnectedToNetwork() == false {
-//            sendButton.isEnabled = true
-//            print("Internet Connection Available!")
-//        } else {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
         }
@@ -222,14 +213,12 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     @IBAction func inputContent(_ sender: UITextField) {
-        
         //알림 권한
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
             
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
-                
                 DispatchQueue.main.async {
                     self.authView.isHidden = false
                     self.meteorTextField.resignFirstResponder()
@@ -295,7 +284,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
         
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            
             if #available(iOS 13.0, *) {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             } else {
@@ -310,9 +298,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
-        
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
-            self.repeatLabel.alpha = 0
+            self.repeatWorkingLabel.alpha = 0
             self.repeatCancelView.alpha = 1
             UIView.animate(withDuration: 0.5,
                            delay: 1.5,
@@ -320,9 +307,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                            animations: { self.repeatCancelView.alpha = 0 },
                            completion: nil)
             
-//            UserDefaults.standard.set(0, forKey: "repeatIdling")
             UserDefaults.standard.set(false, forKey: "repeatIdling")
-//            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
             
             if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
                 let generator = UINotificationFeedbackGenerator()
@@ -337,7 +322,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         adIndex += 1
-        print("adIndex: \(adIndex)")
+//        print("adIndex: \(adIndex)")
         
         if adIndex == 1 {
             if interstitial != nil {
@@ -350,52 +335,44 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         } else if adIndex == 9 {
             adIndex = 0
         }
-
         // --------------------------------
         
-        notificationIndex += 1
-        if notificationIndex > 3 {
-            notificationIndex = 0
+        notificationCountIndex += 1
+//        print("notificationIndex: \(notificationIndex)")
+        if notificationCountIndex > 3 {
+            notificationCountIndex = 0
         }
         
         if repeatButton.isSelected {
-            
             let contents = UNMutableNotificationContent()
             contents.title = "ENDLESS METEOR :"
             contents.body = "\(content)"
             contents.sound = UNNotificationSound.default
-            //        contents.badge = 1
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
             let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//            print("notificationIndex: \(notificationIndex)")
             
             UIView.animate(withDuration: 0.5, animations: {
-                self.repeatLabel.alpha = 1
+                self.repeatWorkingLabel.alpha = 1
             })
-//            UserDefaults.standard.set(1, forKey: "repeatIdling")
             UserDefaults.standard.set(true, forKey: "repeatIdling")
 //            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
 
             if let text = meteorTextField.text {
                 let timer = timePicker.countDownDuration
                 let locale = TimeZone.current.identifier
-
                 self.db.child("repeatText").childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
             }
             
         } else {
-            
             let contents = UNMutableNotificationContent()
             contents.title = "METEOR :"
             contents.body = "\(content)"
-            //        contents.badge = 1
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-            let request = UNNotificationRequest(identifier: "\(notificationIndex)timerdone", content: contents, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "\(notificationCountIndex)timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
 //            print("notificationIndex: \(notificationIndex)")
             
             if let text = meteorTextField.text {
@@ -405,7 +382,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 let dateTime = dateFormatter.string(from: Date())
                 let locale = TimeZone.current.identifier
 //                print(TimeZone.current.identifier)
-                
                 self.db.child("meteorText").childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
             }
         }
@@ -416,7 +392,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         timePicker.isEnabled = false
         timePicker.isHidden = true
         
-        //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
@@ -426,16 +401,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
 
 extension MeteorViewController : UNUserNotificationCenterDelegate {
     //To display notifications when app is running  inforeground
-    
     //앱이 foreground에 있을 때. 즉 앱안에 있어도 push알림을 받게 해줍니다.
     //viewDidLoad()에 UNUserNotificationCenter.current().delegate = self를 추가해주는 것을 잊지마세요.
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-//        let settingsViewController = UIViewController()
-//        settingsViewController.view.backgroundColor = .gray
-//        self.present(settingsViewController, animated: true, completion: nil)
-//    }
 }
