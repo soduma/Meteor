@@ -15,10 +15,10 @@ class TodoViewController: UIViewController {
     let todoViewModel = TodoViewModel()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "showModify" {
             let vc = segue.destination as? ModifyViewController
             if let index = sender as? Int {
-                
                 let todo = todoViewModel.todos[index]
                 vc?.modifyViewModel.update(model: todo)
                 //                print(todoViewModel.todos[index])
@@ -95,7 +95,6 @@ class TodoCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var strikeThroughView: UIView!
-    
     @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
     
     var doneButtonTapHandler: ((Bool) -> Void)?
@@ -119,7 +118,6 @@ class TodoCell: UICollectionViewCell {
         if checkButton.isSelected == true {
             strikeThroughWidth.constant = descriptionLabel.bounds.width
         } else {
-            //            strike(todo.isDone)
             showStrikeThrough(todo.isDone)
         }
     }
@@ -135,22 +133,9 @@ class TodoCell: UICollectionViewCell {
         }
     }
     
-    //    private func strike(_ show: Bool) {
-    //        if show {
-    //            strikeThroughWidth.constant = descriptionLabel.bounds.width
-    //            UIView.animate(withDuration: 0.2) {
-    //                self.contentView.layoutIfNeeded()
-    //            }
-    //        } else {
-    //            self.strikeThroughWidth.constant = 0
-    //            self.contentView.layoutIfNeeded()
-    //        }
-    //    }
-    
     func reset() {
         deleteButton.isHidden = true
         showStrikeThrough(false)
-        //        strike(false)
     }
     
     @IBAction func tapCheckButton(_ sender: UIButton) {
@@ -158,13 +143,9 @@ class TodoCell: UICollectionViewCell {
         let isDone = checkButton.isSelected
         deleteButton.isHidden = !isDone
         showStrikeThrough(isDone)
-        //        strike(isDone)
-        
         doneButtonTapHandler?(isDone)
         
-        //탭틱
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            
             if #available(iOS 13.0, *) {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
             } else {
@@ -182,7 +163,7 @@ class TodoCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet{
             if self.isSelected {
-                UIView.animate(withDuration: 0.5) { // for animation effect
+                UIView.animate(withDuration: 0.5) {
                     self.backgroundColor = UIColor.systemGray4
                     self.backgroundColor = UIColor.clear
                 }

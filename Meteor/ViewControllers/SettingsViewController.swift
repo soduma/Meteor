@@ -32,7 +32,6 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapMail(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
-        
         if let url = URL(string: "mailto:\(email)") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url)
@@ -57,10 +56,8 @@ class SettingsViewController: UITableViewController {
         
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
-                
                 if lightModeSwitch.isOn == true {
                     window.overrideUserInterfaceStyle = .light
-                    
                 } else if lightModeSwitch.isOn == false {
                     window.overrideUserInterfaceStyle = .unspecified
                 }
@@ -78,10 +75,8 @@ class SettingsViewController: UITableViewController {
         
         if let window = UIApplication.shared.windows.first {
             if #available(iOS 13.0, *) {
-                
                 if darkModeSwitch.isOn == true {
                     window.overrideUserInterfaceStyle = .dark
-                    
                 } else if darkModeSwitch.isOn == false {
                     window.overrideUserInterfaceStyle = .unspecified
                 }

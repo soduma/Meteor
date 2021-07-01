@@ -16,7 +16,6 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
     
     let modifyViewModel = ModifyViewModel()
     let todoViewModel = TodoViewModel()
-    
     var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     
     override func viewDidLoad() {
@@ -102,12 +101,10 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
     
     @IBAction func tapFinishButton(_ sender: UIButton) {
         guard let detail = modifyTextView.text, detail.isEmpty == false else { return }
-        
         if var todo = modifyViewModel.todo {
             todo.detail = modifyTextView.text
             todoViewModel.updateTodo(todo)
         }
-        
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromModify", sender: self)
     }
@@ -116,7 +113,6 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
 class ModifyViewModel {
     
     var todo: Todo?
-    
     func update(model: Todo?) {
         todo = model
         //        print(todo)
