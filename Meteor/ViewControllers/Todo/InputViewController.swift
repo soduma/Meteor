@@ -15,7 +15,6 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var backButton: UIButton!
     
     let todoViewModel = TodoViewModel()
-    
     var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     
     override func viewDidLoad() {

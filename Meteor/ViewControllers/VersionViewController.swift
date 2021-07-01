@@ -18,7 +18,6 @@ class VersionViewController: UIViewController {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.text = "Current Version \(version)"
         }
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func tapInfofield(_ sender: UIButton) {
@@ -34,14 +33,4 @@ class VersionViewController: UIViewController {
             application.open(webURL)
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
