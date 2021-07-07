@@ -29,6 +29,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var repeatWorkingLabel: UILabel!
+    @IBOutlet weak var repeatTimerLabel: UILabel!
     @IBOutlet weak var repeatCancelView: UIView!
     @IBOutlet weak var repeatCancelLabel: UILabel!
     
@@ -83,15 +84,25 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                 // Tracking authorization completed. Start loading ads here.
                 // loadAd()
-                self.firstLoadAd()
+//                self.firstLoadAd()
             })
         } else {
-            firstLoadAd()
+//            firstLoadAd()
         }
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
         })
         UNUserNotificationCenter.current().delegate = self
+        
+//        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
+            let second = self.timePicker.countDownDuration
+            if second > 0 {
+                self.repeatTimerLabel.text = "\(second) 후에 도착"
+            } else {
+                Timer.invalidate()
+            }
+        }
         
         noticeLabel.text = notice[0]
         noticeView.layer.cornerRadius = 15
@@ -106,6 +117,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         timePicker.isHidden = true
         
         repeatWorkingLabel.alpha = 0
+        repeatTimerLabel.alpha = 0
         repeatCancelView.alpha = 0
     }
     
@@ -153,10 +165,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                                 interstitial?.fullScreenContentDelegate = self
                                }
         )
-        // --------------------------------
     }
 
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
@@ -204,6 +214,15 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 self.prepareAuthView()
             }
         }
+    }
+    
+    @objc func updateCounter() {
+//        let second = timePicker.countDownDuration / 60
+//        if second > 0 {
+//            repeatTimerLabel.text = "\(second) 후에 도착"
+//        } else {
+//            Timer.invalidate()
+//        }
     }
     
     private func prepareAuthView() {
@@ -300,6 +319,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
             self.repeatWorkingLabel.alpha = 0
+            self.repeatTimerLabel.alpha = 0
+            
             self.repeatCancelView.alpha = 1
             UIView.animate(withDuration: 0.5,
                            delay: 1.5,
@@ -355,6 +376,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.repeatWorkingLabel.alpha = 1
+                self.repeatTimerLabel.alpha = 1
             })
             UserDefaults.standard.set(true, forKey: "repeatIdling")
 //            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
