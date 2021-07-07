@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMobileAds
 
-class ModifyViewController: UIViewController, GADBannerViewDelegate {
+class ModifyViewController: UIViewController/*, GADBannerViewDelegate*/ {
     
     @IBOutlet weak var modifyTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
@@ -16,14 +16,14 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
     
     let modifyViewModel = ModifyViewModel()
     let todoViewModel = TodoViewModel()
-    var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+//    var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateUI()
         
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        /*// 구글광고!!!!!!!!!!!!!!!!!!!!!!
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
         
@@ -33,10 +33,10 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
-        // --------------------------------
+        // --------------------------------*/
     }
     
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    /*// 구글광고!!!!!!!!!!!!!!!!!!!!!!
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
@@ -83,7 +83,7 @@ class ModifyViewController: UIViewController, GADBannerViewDelegate {
     func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         print("bannerViewDidDismissScreen")
     }
-    // --------------------------------
+    // --------------------------------*/
     
     func updateUI() {
         if let todo = modifyViewModel.todo {

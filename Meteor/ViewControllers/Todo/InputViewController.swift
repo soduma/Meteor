@@ -8,21 +8,21 @@
 import UIKit
 import GoogleMobileAds
 
-class InputViewController: UIViewController, GADBannerViewDelegate {
+class InputViewController: UIViewController/*, GADBannerViewDelegate*/ {
     
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
     let todoViewModel = TodoViewModel()
-    var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+//    var bannerView: GADBannerView! // 구글광고!!!!!!!!!!!!!!!!!!!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         inputTextView.text = ""
                 
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        /*// 구글광고!!!!!!!!!!!!!!!!!!!!!!
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
         
@@ -32,7 +32,7 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self
-        // --------------------------------
+        // --------------------------------*/
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
         inputTextView.becomeFirstResponder()
     }
     
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    /*// 구글광고!!!!!!!!!!!!!!!!!!!!!!
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
@@ -88,7 +88,7 @@ class InputViewController: UIViewController, GADBannerViewDelegate {
     func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         print("bannerViewDidDismissScreen")
     }
-    // --------------------------------
+    // --------------------------------*/
     
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
         inputTextView.resignFirstResponder()
