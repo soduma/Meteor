@@ -94,16 +94,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         })
         UNUserNotificationCenter.current().delegate = self
         
-//        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { Timer in
-            let second = self.timePicker.countDownDuration
-            if second > 0 {
-                self.repeatTimerLabel.text = "\(second) 후에 도착"
-            } else {
-                Timer.invalidate()
-            }
-        }
-        
         noticeLabel.text = notice[0]
         noticeView.layer.cornerRadius = 15
         pageControl.numberOfPages = notice.count
@@ -131,6 +121,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         
         if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
             self.repeatWorkingLabel.alpha = 1
+            self.repeatTimerLabel.alpha = 1
         }
     }
     
@@ -214,15 +205,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 self.prepareAuthView()
             }
         }
-    }
-    
-    @objc func updateCounter() {
-//        let second = timePicker.countDownDuration / 60
-//        if second > 0 {
-//            repeatTimerLabel.text = "\(second) 후에 도착"
-//        } else {
-//            Timer.invalidate()
-//        }
     }
     
     private func prepareAuthView() {
@@ -378,6 +360,35 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 self.repeatWorkingLabel.alpha = 1
                 self.repeatTimerLabel.alpha = 1
             })
+            
+            // 타이머
+            let timePickerSecond = self.timePicker.countDownDuration
+            var seconds = timePickerSecond
+            self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+                seconds -= 1
+                self.repeatTimerLabel.text = secondsToString(seconds: seconds)
+                print(seconds)
+                
+                if seconds < 0 {
+                    seconds = timePickerSecond - 1
+                    self.repeatTimerLabel.text = secondsToString(seconds: seconds)
+                }
+                
+                if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
+                    Timer.invalidate()
+                    print("timer invalidate")
+                }
+            }
+            
+            func secondsToString(seconds: Double) -> String {
+                let totalSeconds = Int(seconds)
+                let min = totalSeconds / 60
+                let seconds = totalSeconds % 60
+                return String(format: "%02d:%02d", min, seconds)
+            }
+            
             UserDefaults.standard.set(true, forKey: "repeatIdling")
 //            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
 
