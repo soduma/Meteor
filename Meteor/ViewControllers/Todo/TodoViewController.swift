@@ -11,6 +11,8 @@ class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bottomView: UIView!
     
     let todoViewModel = TodoViewModel()
     
@@ -30,6 +32,21 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         
         todoViewModel.loadTasks()
+        bottomView.layer.cornerRadius = 25
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let url = "https://picsum.photos/400/100"
+            guard let imageURL = URL(string: url) else { return }
+            guard let data = try? Data(contentsOf: imageURL) else { return }
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
+            }
+        }
+        
     }
     
     @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
