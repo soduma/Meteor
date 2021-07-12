@@ -10,6 +10,7 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var bottomView: UIView!
@@ -96,8 +97,10 @@ class TodoViewController: UIViewController {
                 if noti.name == UIResponder.keyboardWillShowNotification {
                     let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
                     self.bottomViewBottom.constant = adjustmentHeight
+                    self.collectionViewBottom.constant = adjustmentHeight
                 } else {
                     self.bottomViewBottom.constant = 0
+                    self.collectionViewBottom.constant = 0
                 }
                 self.view.layoutIfNeeded()
             }

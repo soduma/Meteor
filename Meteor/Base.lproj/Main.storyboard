@@ -529,6 +529,7 @@ notification allowance.</string>
                         <outlet property="bottomView" destination="Ns9-qE-y6v" id="bwY-Id-I3L"/>
                         <outlet property="bottomViewBottom" destination="p9z-9D-AVK" id="uDc-3c-J1E"/>
                         <outlet property="collectionView" destination="8Pg-M2-uUN" id="pp1-Is-sZm"/>
+                        <outlet property="collectionViewBottom" destination="oo4-a6-534" id="CH8-bd-wWc"/>
                         <outlet property="imageView" destination="XVa-vk-P5C" id="0Zt-Yy-csN"/>
                         <outlet property="longButton" destination="Qox-wf-gO8" id="O8w-UO-fS5"/>
                         <outlet property="sendButton" destination="J1E-oh-Jwb" id="8Zq-BW-5eD"/>
