@@ -12,7 +12,15 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var longButton: UIButton!
+    @IBOutlet weak var shortButton: UIButton!
+    @IBOutlet weak var shortTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var xButton: UIButton!
     
     let todoViewModel = TodoViewModel()
     
@@ -32,7 +40,15 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         
         todoViewModel.loadTasks()
-        bottomView.layer.cornerRadius = 25
+//        bottomView.layer.cornerRadius = 25
+//        shortTextField.frame.size.width = 0
+        
+        shortTextField.isHidden = true
+        sendButton.isHidden = true
+        xButton.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +70,61 @@ class TodoViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
+        shortTextField.resignFirstResponder()
+    }
+    
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // [x] TODO: 키보드 높이에 따른 인풋뷰 위치 변경
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+                if noti.name == UIResponder.keyboardWillShowNotification {
+                    let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
+                    self.bottomViewBottom.constant = adjustmentHeight
+                } else {
+                    self.bottomViewBottom.constant = 0
+                }
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+        print("---> Keyboard End Frame: \(keyboardFrame)")
+    }
+    
+    @IBAction func tapShortButton(_ sender: UIButton) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1, animations: {
+                self.longButton.isHidden = true
+                self.shortButton.isHidden = true
+                self.xButton.isHidden = false
+                self.shortTextField.isHidden = false
+                self.sendButton.isHidden = false
+            })
+            self.shortTextField.becomeFirstResponder()
+            self.bottomView.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func tabXButton(_ sender: UIButton) {
+        self.longButton.isHidden = false
+        self.shortButton.isHidden = false
+        self.xButton.isHidden = true
+        self.shortTextField.isHidden = true
+        self.sendButton.isHidden = true
+        shortTextField.resignFirstResponder()
+    }
+    
+    @IBAction func tapSendButton(_ sender: UIButton) {
+        guard let detail = shortTextField.text, detail.isEmpty == false else { return }
+        let todo = TodoManager.shared.createTodo(detail: detail)
+        todoViewModel.addTodo(todo)
+        shortTextField.text = ""
+        collectionView.reloadData()
     }
 }
 
