@@ -8,6 +8,9 @@
 /* Class = "UILabel"; text = "메모"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
+/* Class = "UILabel"; text = "If kill app, the timer dies. But still working :D"; ObjectID = "9oA-8S-R1U"; */
+"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 끝없이 작동중 ^ㅇ^";
+
 /* Class = "UILabel"; text = "다크 모드"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
 
@@ -31,6 +34,9 @@
 
 /* Class = "UILabel"; text = "Contact"; ObjectID = "Pmw-Ai-Bkf"; */
 "Pmw-Ai-Bkf.text" = "Contact";
+
+/* Class = "UIButton"; normalTitle = "LONG"; ObjectID = "Qox-wf-gO8"; */
+"Qox-wf-gO8.normalTitle" = "길게";
 
 /* Class = "UIButton"; normalTitle = "보내기"; ObjectID = "RFX-SY-fYk"; */
 "RFX-SY-fYk.normalTitle" = "보내기";
@@ -94,6 +100,12 @@
 
 /* Class = "UITextField"; placeholder = "여기에 작성 👀"; ObjectID = "x7b-OE-Nxg"; */
 "x7b-OE-Nxg.placeholder" = "여기에 작성 👀";
+
+/* Class = "UITableViewSection"; footerTitle = " 고맙습니다. Thank you for using. 🤲"; ObjectID = "xDe-Ec-H3V"; */
+"xDe-Ec-H3V.footerTitle" = " 고맙습니다. Thank you for using. 🤲";
+
+/* Class = "UIButton"; normalTitle = "SHORT"; ObjectID = "y3t-Ey-iwg"; */
+"y3t-Ey-iwg.normalTitle" = "짧게";
 
 /* Class = "UITabBarItem"; title = "설정"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "설정";
