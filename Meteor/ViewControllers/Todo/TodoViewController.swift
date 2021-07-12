@@ -10,7 +10,6 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var bottomView: UIView!
@@ -40,20 +39,24 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         
         todoViewModel.loadTasks()
-//        bottomView.layer.cornerRadius = 25
-//        shortTextField.frame.size.width = 0
+        bottomView.layer.cornerRadius = 10
         
         shortTextField.isHidden = true
         sendButton.isHidden = true
         xButton.isHidden = true
+        getBottomViewImage()
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        getBottomViewImage()
+    }
+    
+    func getBottomViewImage() {
         DispatchQueue.global(qos: .userInteractive).async {
             let url = "https://picsum.photos/400/100"
             guard let imageURL = URL(string: url) else { return }
@@ -74,6 +77,13 @@ class TodoViewController: UIViewController {
     
     @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
         shortTextField.resignFirstResponder()
+        if shortTextField.text?.isEmpty == true {
+            self.longButton.isHidden = false
+            self.shortButton.isHidden = false
+            self.xButton.isHidden = true
+            self.shortTextField.isHidden = true
+            self.sendButton.isHidden = true
+        }
     }
     
     @objc private func adjustInputView(noti: Notification) {
@@ -110,7 +120,7 @@ class TodoViewController: UIViewController {
         }
     }
     
-    @IBAction func tabXButton(_ sender: UIButton) {
+    @IBAction func tapXButton(_ sender: UIButton) {
         self.longButton.isHidden = false
         self.shortButton.isHidden = false
         self.xButton.isHidden = true
