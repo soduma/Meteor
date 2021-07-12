@@ -38,7 +38,7 @@ class TodoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let url = "https://picsum.photos/400/100"
             guard let imageURL = URL(string: url) else { return }
             guard let data = try? Data(contentsOf: imageURL) else { return }
@@ -46,11 +46,10 @@ class TodoViewController: UIViewController {
                 self.imageView.image = UIImage(data: data)
             }
         }
-        
     }
     
     @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

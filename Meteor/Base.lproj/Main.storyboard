@@ -393,16 +393,59 @@ notification allowance.</string>
                                 </connections>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns9-qE-y6v">
-                                <rect key="frame" x="0.0" y="674" width="390" height="170"/>
+                                <rect key="frame" x="0.0" y="681" width="390" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-vk-P5C">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQF-2R-k6b">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j3o-ty-pxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNC-Qe-ZCQ">
+                                                    <rect key="frame" x="75" y="10" width="240" height="60"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Qox-wf-gO8" secondAttribute="height" multiplier="2:1" id="qLo-AY-jIc"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
+                                                            <rect key="frame" x="120" y="0.0" width="0.0" height="60"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" id="hqt-Zg-i4J"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
+                                                            <rect key="frame" x="120" y="0.0" width="120" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="y3t-Ey-iwg" secondAttribute="height" multiplier="2:1" id="OFB-De-bH8"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Qox-wf-gO8" secondAttribute="bottom" id="2YS-TQ-5k7"/>
+                                                        <constraint firstItem="Qox-wf-gO8" firstAttribute="top" secondItem="FNC-Qe-ZCQ" secondAttribute="top" id="JiF-Uy-Xts"/>
+                                                        <constraint firstItem="Qox-wf-gO8" firstAttribute="leading" secondItem="FNC-Qe-ZCQ" secondAttribute="leading" id="Kb3-VV-bX5"/>
+                                                        <constraint firstAttribute="bottom" secondItem="y3t-Ey-iwg" secondAttribute="bottom" id="ZPg-ux-2AR"/>
+                                                        <constraint firstItem="y3t-Ey-iwg" firstAttribute="top" secondItem="FNC-Qe-ZCQ" secondAttribute="top" id="h0f-gp-Lgg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="y3t-Ey-iwg" secondAttribute="trailing" id="ora-Zl-e7F"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FNC-Qe-ZCQ" firstAttribute="top" secondItem="j3o-ty-pxC" secondAttribute="top" constant="10" id="O7m-3G-s6b"/>
+                                                <constraint firstItem="FNC-Qe-ZCQ" firstAttribute="centerX" secondItem="j3o-ty-pxC" secondAttribute="centerX" id="aFX-46-r9n"/>
+                                                <constraint firstAttribute="bottom" secondItem="FNC-Qe-ZCQ" secondAttribute="bottom" constant="10" id="xSq-JD-Yz3"/>
+                                            </constraints>
                                         </view>
                                         <blurEffect style="systemUltraThinMaterial"/>
                                     </visualEffectView>
@@ -413,7 +456,7 @@ notification allowance.</string>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="MYN-sx-QYb"/>
                                     <constraint firstAttribute="bottom" secondItem="OQF-2R-k6b" secondAttribute="bottom" id="O4b-tu-lla"/>
                                     <constraint firstAttribute="trailing" secondItem="XVa-vk-P5C" secondAttribute="trailing" id="Oqy-IU-Ku6"/>
-                                    <constraint firstAttribute="height" constant="170" id="mGC-Om-mXO"/>
+                                    <constraint firstAttribute="height" constant="80" id="mGC-Om-mXO"/>
                                     <constraint firstAttribute="trailing" secondItem="OQF-2R-k6b" secondAttribute="trailing" id="mp6-NS-q3S"/>
                                     <constraint firstAttribute="bottom" secondItem="XVa-vk-P5C" secondAttribute="bottom" id="qta-po-CbC"/>
                                     <constraint firstItem="OQF-2R-k6b" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="xwj-rU-njC"/>
@@ -452,7 +495,7 @@ notification allowance.</string>
                             <constraint firstItem="8Pg-M2-uUN" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" id="ZPG-bt-re5"/>
                             <constraint firstItem="6VI-UB-qRJ" firstAttribute="top" secondItem="CRu-zx-Mrp" secondAttribute="top" constant="25" id="f18-sF-NCE"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="8Pg-M2-uUN" secondAttribute="bottom" id="oo4-a6-534"/>
-                            <constraint firstAttribute="bottom" secondItem="Ns9-qE-y6v" secondAttribute="bottom" id="p9z-9D-AVK"/>
+                            <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="Ns9-qE-y6v" secondAttribute="bottom" id="p9z-9D-AVK"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="DC9-en-am4" secondAttribute="trailing" constant="35" id="waB-Lt-tmP"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="bottom" secondItem="DC9-en-am4" secondAttribute="bottom" constant="35" id="yWp-JC-BMm"/>
                         </constraints>
@@ -470,7 +513,7 @@ notification allowance.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-UD-b3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="73"/>
+            <point key="canvasLocation" x="1661.5384615384614" y="72.511848341232223"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="QSp-fW-XgP">
@@ -646,6 +689,7 @@ notification allowance.</string>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lo3-sn-6A7" customClass="CustomTabBar" customModule="Meteor" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="tertiarySystemBackgroundColor"/>
                         <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>
@@ -1021,6 +1065,9 @@ notification allowance.</string>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
