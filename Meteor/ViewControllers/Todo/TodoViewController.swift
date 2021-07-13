@@ -13,6 +13,7 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
@@ -42,6 +43,7 @@ class TodoViewController: UIViewController {
         todoViewModel.loadTasks()
         bottomView.layer.cornerRadius = 10
         
+        tapGestureRecognizer.isEnabled = false
         shortTextField.isHidden = true
         sendButton.isHidden = true
         xButton.isHidden = true
@@ -68,28 +70,8 @@ class TodoViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
-        DispatchQueue.global(qos: .userInteractive).async {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
-    @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
-        shortTextField.resignFirstResponder()
-        if shortTextField.text?.isEmpty == true {
-            self.longButton.isHidden = false
-            self.shortButton.isHidden = false
-            self.xButton.isHidden = true
-            self.shortTextField.isHidden = true
-            self.sendButton.isHidden = true
-        }
-    }
-    
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
-        // [x] TODO: 키보드 높이에 따른 인풋뷰 위치 변경
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         DispatchQueue.main.async {
@@ -105,30 +87,53 @@ class TodoViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }
-        
         print("---> Keyboard End Frame: \(keyboardFrame)")
     }
     
-    @IBAction func tapShortButton(_ sender: UIButton) {
+    @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 1, animations: {
-                self.longButton.isHidden = true
-                self.shortButton.isHidden = true
-                self.xButton.isHidden = false
-                self.shortTextField.isHidden = false
-                self.sendButton.isHidden = false
-            })
-            self.shortTextField.becomeFirstResponder()
-            self.bottomView.layoutIfNeeded()
+            self.collectionView.reloadData()
         }
     }
     
+    @IBAction func tapBackground(_ sender: UITapGestureRecognizer) {
+        if shortTextField.becomeFirstResponder() {
+            shortTextField.resignFirstResponder()
+            tapGestureRecognizer.isEnabled = false
+        }
+        
+        if shortTextField.text?.isEmpty == true {
+            longButton.isHidden = false
+            shortButton.isHidden = false
+            xButton.isHidden = true
+            shortTextField.isHidden = true
+            sendButton.isHidden = true
+            shortTextField.resignFirstResponder()
+            tapGestureRecognizer.isEnabled = false
+        }
+    }
+    
+    @IBAction func tapTextField(_ sender: UITextField) {
+        tapGestureRecognizer.isEnabled = true
+    }
+    
+    @IBAction func tapShortButton(_ sender: UIButton) {
+        longButton.isHidden = true
+        shortButton.isHidden = true
+        xButton.isHidden = false
+        shortTextField.isHidden = false
+        sendButton.isHidden = false
+        shortTextField.becomeFirstResponder()
+        tapGestureRecognizer.isEnabled = true
+    }
+    
     @IBAction func tapXButton(_ sender: UIButton) {
-        self.longButton.isHidden = false
-        self.shortButton.isHidden = false
-        self.xButton.isHidden = true
-        self.shortTextField.isHidden = true
-        self.sendButton.isHidden = true
+        longButton.isHidden = false
+        shortButton.isHidden = false
+        xButton.isHidden = true
+        shortTextField.isHidden = true
+        sendButton.isHidden = true
+        shortTextField.text = ""
         shortTextField.resignFirstResponder()
     }
     
@@ -175,7 +180,7 @@ extension TodoViewController: UICollectionViewDataSource {
 extension TodoViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showModify", sender: indexPath.item)
+            performSegue(withIdentifier: "showModify", sender: indexPath.item)
     }
 }
 

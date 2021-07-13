@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GoogleMobileAds
+//import GoogleMobileAds
 
 class ModifyViewController: UIViewController/*, GADBannerViewDelegate*/ {
     
