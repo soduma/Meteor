@@ -10,7 +10,7 @@ import UIKit
 class TodoViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
+//    @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
@@ -78,11 +78,11 @@ class TodoViewController: UIViewController {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
                 if noti.name == UIResponder.keyboardWillShowNotification {
                     let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
-                    self.bottomViewBottom.constant = adjustmentHeight
-                    self.collectionViewBottom.constant = adjustmentHeight
+                    self.bottomViewBottom.constant = adjustmentHeight + 5
+//                    self.collectionViewBottom.constant = adjustmentHeight
                 } else {
-                    self.bottomViewBottom.constant = 0
-                    self.collectionViewBottom.constant = 0
+                    self.bottomViewBottom.constant = 5
+//                    self.collectionViewBottom.constant = 0
                 }
                 self.view.layoutIfNeeded()
             }
@@ -143,6 +143,10 @@ class TodoViewController: UIViewController {
         todoViewModel.addTodo(todo)
         shortTextField.text = ""
         collectionView.reloadData()
+        
+        let item = self.collectionView(self.collectionView, numberOfItemsInSection: 0) - 1
+        let lastItemIndex = IndexPath(item: item, section: 0)
+        self.collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
     }
 }
 
