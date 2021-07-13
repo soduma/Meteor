@@ -97,7 +97,7 @@
                                 </connections>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="-45" y="443" width="500" height="60"/>
+                                <rect key="frame" x="-40" y="443" width="500" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
                                     <constraint firstAttribute="width" constant="500" id="9Zu-ss-d4Y"/>
@@ -221,7 +221,7 @@ notification allowance.</string>
                             <constraint firstItem="118-qZ-0Nx" firstAttribute="top" secondItem="Cwj-Al-zg9" secondAttribute="bottom" id="4fm-x8-LIm"/>
                             <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="top" secondItem="118-qZ-0Nx" secondAttribute="top" id="Bnj-5a-YCf"/>
-                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="10" id="CZI-rd-8ya"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="15" id="CZI-rd-8ya"/>
                             <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="Cb0-e8-h7V"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" id="Jhx-QY-vl8"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Cwj-Al-zg9" secondAttribute="trailing" id="JkY-BC-3Lp"/>
@@ -393,26 +393,29 @@ notification allowance.</string>
                                 </connections>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns9-qE-y6v">
-                                <rect key="frame" x="0.0" y="701" width="390" height="60"/>
+                                <rect key="frame" x="5" y="711" width="380" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-vk-P5C">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQF-2R-k6b">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j3o-ty-pxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
-                                                    <rect key="frame" x="45" y="18.333333333333371" width="285" height="23.333333333333329"/>
+                                                    <rect key="frame" x="45" y="13.333333333333369" width="275" height="23.333333333333329"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <connections>
+                                                        <action selector="tapTextField:" destination="k7r-AM-8wv" eventType="editingDidBegin" id="fBK-Jv-BBq"/>
+                                                    </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
-                                                    <rect key="frame" x="210" y="10" width="150" height="40"/>
+                                                    <rect key="frame" x="200" y="10" width="150" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="KnJ-ZI-Oyt"/>
                                                     </constraints>
@@ -425,7 +428,7 @@ notification allowance.</string>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-oh-Jwb">
-                                                    <rect key="frame" x="340" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="330" y="5" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="6bL-hK-1S9"/>
                                                         <constraint firstAttribute="height" constant="40" id="w7P-wA-g2X"/>
@@ -439,7 +442,7 @@ notification allowance.</string>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-cw-kas">
-                                                    <rect key="frame" x="10" y="17.666666666666629" width="25" height="25"/>
+                                                    <rect key="frame" x="10" y="12.666666666666629" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="CFl-MY-EdL"/>
                                                         <constraint firstAttribute="height" constant="25" id="Mxz-ye-Tk9"/>
@@ -453,7 +456,7 @@ notification allowance.</string>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
-                                                    <rect key="frame" x="40" y="10" width="150" height="40"/>
+                                                    <rect key="frame" x="40" y="10" width="150" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="kY4-LF-eay"/>
                                                     </constraints>
@@ -491,7 +494,7 @@ notification allowance.</string>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="MYN-sx-QYb"/>
                                     <constraint firstAttribute="bottom" secondItem="OQF-2R-k6b" secondAttribute="bottom" id="O4b-tu-lla"/>
                                     <constraint firstAttribute="trailing" secondItem="XVa-vk-P5C" secondAttribute="trailing" id="Oqy-IU-Ku6"/>
-                                    <constraint firstAttribute="height" constant="60" id="mGC-Om-mXO"/>
+                                    <constraint firstAttribute="height" constant="50" id="mGC-Om-mXO"/>
                                     <constraint firstAttribute="trailing" secondItem="OQF-2R-k6b" secondAttribute="trailing" id="mp6-NS-q3S"/>
                                     <constraint firstAttribute="bottom" secondItem="XVa-vk-P5C" secondAttribute="bottom" id="qta-po-CbC"/>
                                     <constraint firstItem="OQF-2R-k6b" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="xwj-rU-njC"/>
@@ -509,8 +512,8 @@ notification allowance.</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6VI-UB-qRJ" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" constant="25" id="1Le-57-11I"/>
-                            <constraint firstItem="Ns9-qE-y6v" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" id="JzI-3d-aca"/>
-                            <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="Ns9-qE-y6v" secondAttribute="trailing" id="Lzc-UD-fRV"/>
+                            <constraint firstItem="Ns9-qE-y6v" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" constant="5" id="JzI-3d-aca"/>
+                            <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="Ns9-qE-y6v" secondAttribute="trailing" constant="5" id="Lzc-UD-fRV"/>
                             <constraint firstItem="CRu-zx-Mrp" firstAttribute="trailing" secondItem="8Pg-M2-uUN" secondAttribute="trailing" id="MMn-Gc-zHw"/>
                             <constraint firstItem="8Pg-M2-uUN" firstAttribute="top" secondItem="6VI-UB-qRJ" secondAttribute="bottom" constant="20" id="Ob2-CN-T48"/>
                             <constraint firstItem="8Pg-M2-uUN" firstAttribute="leading" secondItem="CRu-zx-Mrp" secondAttribute="leading" id="ZPG-bt-re5"/>
@@ -535,6 +538,7 @@ notification allowance.</string>
                         <outlet property="sendButton" destination="J1E-oh-Jwb" id="8Zq-BW-5eD"/>
                         <outlet property="shortButton" destination="y3t-Ey-iwg" id="Emf-GM-8fa"/>
                         <outlet property="shortTextField" destination="8Mk-Fx-HMb" id="BUA-vj-QBU"/>
+                        <outlet property="tapGestureRecognizer" destination="hQX-h6-hoj" id="eQl-cu-qkg"/>
                         <outlet property="xButton" destination="Ogs-cw-kas" id="ZSy-lf-ciC"/>
                         <segue destination="1w1-ac-0VP" kind="presentation" identifier="showModify" id="8Cj-vM-JZA"/>
                     </connections>
