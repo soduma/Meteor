@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UITableViewController {
     
@@ -19,9 +20,13 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var colorSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     
+    let db = Database.database().reference()
+    var url = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        url = "https://source.unsplash.com/random"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,11 +36,16 @@ class SettingsViewController: UITableViewController {
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
         colorSwitch.isOn = UserDefaults.standard.bool(forKey: "colorSwitch")
-        
+        getImage()
+    }
+    
+    func getImage() {
         if UserDefaults.standard.bool(forKey: "colorSwitch") {
             DispatchQueue.global(qos: .userInteractive).async {
-                let url = "https://source.unsplash.com/random"
-                guard let imageURL = URL(string: url) else { return }
+                self.db.child("upsplash").observeSingleEvent(of: .value) { snapshot in
+                    self.url = snapshot.value as? String ?? ""
+                }
+                guard let imageURL = URL(string: self.url) else { return }
                 let imageData = try! Data(contentsOf: imageURL)
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: imageData)
