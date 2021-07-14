@@ -5,13 +5,13 @@
 /* Class = "UILabel"; text = "noti blahblah"; ObjectID = "3O8-SQ-hh2"; */
 "3O8-SQ-hh2.text" = "noti blahblah";
 
-/* Class = "UILabel"; text = "메모"; ObjectID = "6VI-UB-qRJ"; */
+/* Class = "UILabel"; text = "Notes"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
 /* Class = "UILabel"; text = "If kill app, the timer dies. But still working :D"; ObjectID = "9oA-8S-R1U"; */
-"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 끝없이 작동중 :D”;
+"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 끝없이 작동중";
 
-/* Class = "UILabel"; text = "다크 모드"; ObjectID = "A4a-7Y-0AM"; */
+/* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
 
 /* Class = "UIButton"; normalTitle = "dev.soduma"; ObjectID = "DZa-ix-YkT"; */
@@ -23,7 +23,7 @@
 /* Class = "UILabel"; text = "Support iOS 13.0 or Higher"; ObjectID = "Fvr-nD-0wz"; */
 "Fvr-nD-0wz.text" = "Support iOS 13.0 or Higher";
 
-/* Class = "UILabel"; text = "진동"; ObjectID = "GqJ-gX-VE4"; */
+/* Class = "UILabel"; text = "Haptic"; ObjectID = "GqJ-gX-VE4"; */
 "GqJ-gX-VE4.text" = "햅틱";
 
 /* Class = "UILabel"; text = "🐶 working"; ObjectID = "HoI-Ka-L7C"; */
@@ -38,22 +38,25 @@
 /* Class = "UIButton"; normalTitle = "LONG"; ObjectID = "Qox-wf-gO8"; */
 "Qox-wf-gO8.normalTitle" = "길게";
 
-/* Class = "UIButton"; normalTitle = "보내기"; ObjectID = "RFX-SY-fYk"; */
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "RFX-SY-fYk"; */
 "RFX-SY-fYk.normalTitle" = "보내기";
 
-/* Class = "UITabBarItem"; title = "메모"; ObjectID = "SfX-Jb-Sde"; */
+/* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UIButton"; normalTitle = "완료"; ObjectID = "WnL-JA-8Ya"; */
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
 "WnL-JA-8Ya.normalTitle" = "완료";
 
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
 
-/* Class = "UIButton"; normalTitle = "끝없이"; ObjectID = "caC-dS-7wV"; */
+/* Class = "UILabel"; text = "Color"; ObjectID = "ZXQ-U0-yWN"; */
+"ZXQ-U0-yWN.text" = "컬러";
+
+/* Class = "UIButton"; normalTitle = "Endless"; ObjectID = "caC-dS-7wV"; */
 "caC-dS-7wV.normalTitle" = "끝없이";
 
-/* Class = "UITabBarItem"; title = "메테오"; ObjectID = "eAl-3u-eGw"; */
+/* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
 "eAl-3u-eGw.title" = "메테오";
 
 /* Class = "UIButton"; normalTitle = "Review"; ObjectID = "eVG-QI-Qxx"; */
@@ -62,53 +65,53 @@
 /* Class = "UILabel"; text = "Write a"; ObjectID = "eid-Qh-HRI"; */
 "eid-Qh-HRI.text" = "Write a";
 
-/* Class = "UILabel"; text = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."; ObjectID = "j1o-go-okn"; */
+/* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
-/* Class = "UILabel"; text = "Endless working now 🏃🏻"; ObjectID = "kyd-qH-UQ6"; */
+/* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
 
-/* Class = "UITableViewSection"; footerTitle = "If turn on Color switch, used less than 10KB of data each time when notes tap is opened."; ObjectID = "mO4-mb-C9g"; */
-"mO4-mb-C9g.footerTitle" = "컬러 스위치를 켜면 메모 탭을 열 때마다 10KB 미만의 데이터를 사용합니다.";
+/* Class = "UITableViewSection"; footerTitle = "Change color each time when notes tap is opened. Less than 10KB of data will be used."; ObjectID = "mO4-mb-C9g"; */
+"mO4-mb-C9g.footerTitle" = "메모 탭을 열 때마다 색이 변경됩니다. 10KB 미만의 데이터가 사용됩니다.";
 
-/* Class = "UITableViewSection"; headerTitle = "일반"; ObjectID = "mO4-mb-C9g"; */
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
 
-/* Class = "UILabel"; text = "메테오 기능은 알림 설정이 필요합니다."; ObjectID = "mYh-w1-2Gl"; */
+/* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
 "mYh-w1-2Gl.text" = "메테오 기능은 알림 설정이 필요합니다.";
 
-/* Class = "UITableViewSection"; footerTitle = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다."; ObjectID = "noR-vq-LyQ"; */
+/* Class = "UITableViewSection"; footerTitle = "If turn off both switches then follow the system settings."; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.footerTitle" = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다.";
 
-/* Class = "UITableViewSection"; headerTitle = "스타일"; ObjectID = "noR-vq-LyQ"; */
+/* Class = "UITableViewSection"; headerTitle = "Style"; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.headerTitle" = "스타일";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "oak-uY-Kls"; */
 "oak-uY-Kls.text" = "Version";
 
-/* Class = "UILabel"; text = "끝없이가 취소되었습니다"; ObjectID = "sFc-3J-lkG"; */
+/* Class = "UILabel"; text = "Endless Canceled"; ObjectID = "sFc-3J-lkG"; */
 "sFc-3J-lkG.text" = "끝없이가 취소되었습니다";
 
 /* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
 "si5-2F-S24.headerTitle" = "Meteor";
 
-/* Class = "UIButton"; normalTitle = "완료"; ObjectID = "tjQ-Ti-6UO"; */
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "tjQ-Ti-6UO"; */
 "tjQ-Ti-6UO.normalTitle" = "완료";
 
-/* Class = "UIButton"; normalTitle = "@infofield🇰🇷"; ObjectID = "wUg-9c-pbD"; */
+/* Class = "UIButton"; normalTitle = "@infofield"; ObjectID = "wUg-9c-pbD"; */
 "wUg-9c-pbD.normalTitle" = "@infofield🇰🇷";
 
-/* Class = "UILabel"; text = "라이트 모드"; ObjectID = "wiS-Uw-6P6"; */
+/* Class = "UILabel"; text = "Light Mode"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "라이트 모드";
 
-/* Class = "UITextField"; placeholder = "여기에 작성 👀"; ObjectID = "x7b-OE-Nxg"; */
+/* Class = "UITextField"; placeholder = "Scribble here 👀"; ObjectID = "x7b-OE-Nxg"; */
 "x7b-OE-Nxg.placeholder" = "여기에 작성 👀";
 
 /* Class = "UITableViewSection"; footerTitle = " 고맙습니다. Thank you for using. 🤲"; ObjectID = "xDe-Ec-H3V"; */
-"xDe-Ec-H3V.footerTitle" = " 고맙습니다. Thank you for using. 🤲";
+"xDe-Ec-H3V.footerTitle" = "고맙습니다. Thank you for using. 🤲";
 
 /* Class = "UIButton"; normalTitle = "SHORT"; ObjectID = "y3t-Ey-iwg"; */
 "y3t-Ey-iwg.normalTitle" = "짧게";
 
-/* Class = "UITabBarItem"; title = "설정"; ObjectID = "zSO-Ai-qKq"; */
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "설정";
