@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TodoViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var xButton: UIButton!
     
     let todoViewModel = TodoViewModel()
+    var db = Database.database().reference()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -149,12 +151,22 @@ class TodoViewController: UIViewController {
         guard let detail = shortTextField.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
         todoViewModel.addTodo(todo)
+        let text = shortTextField.text
         shortTextField.text = ""
         collectionView.reloadData()
         
         let item = self.collectionView(self.collectionView, numberOfItemsInSection: 0) - 1
         let lastItemIndex = IndexPath(item: item, section: 0)
         self.collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
+        
+        //firebase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateTime = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        db.child("shortText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
     }
 }
 
