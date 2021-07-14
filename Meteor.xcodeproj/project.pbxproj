@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		42C1A6CD69E3BED7B0F3839D /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AC4605E0E5705F339B6BD2 /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
-		A037DE5E264D0CFC009C9DC6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		A04A4017269EC64400D2613B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		A04AE61726453C1F008BB99C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A06A51ED2634075E003DAEEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A06A51F4263409D6003DAEEF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A0998A5525FC99E7001BAEFD /* Base */,
-				A037DE5E264D0CFC009C9DC6 /* ko */,
+				A04A4017269EC64400D2613B /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -462,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -487,7 +487,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

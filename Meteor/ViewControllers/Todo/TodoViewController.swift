@@ -16,6 +16,8 @@ class TodoViewController: UIViewController {
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var longBlurView: UIVisualEffectView!
+    @IBOutlet weak var shortBlurView: UIVisualEffectView!
     
     @IBOutlet weak var longButton: UIButton!
     @IBOutlet weak var shortButton: UIButton!
@@ -42,30 +44,37 @@ class TodoViewController: UIViewController {
         
         todoViewModel.loadTasks()
         bottomView.layer.cornerRadius = 10
+        longBlurView.layer.cornerRadius = 20
+        shortBlurView.layer.cornerRadius = 20
         
         tapGestureRecognizer.isEnabled = false
         shortTextField.isHidden = true
         sendButton.isHidden = true
         xButton.isHidden = true
-        getBottomViewImage()
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         getBottomViewImage()
     }
     
     func getBottomViewImage() {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let url = "https://picsum.photos/400/100"
-            guard let imageURL = URL(string: url) else { return }
-            guard let data = try? Data(contentsOf: imageURL) else { return }
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data)
+        if UserDefaults.standard.bool(forKey: "colorSwitch") == false {
+            self.imageView.backgroundColor = .label
+            self.imageView.image = nil
+            
+        } else {
+            DispatchQueue.global(qos: .userInteractive).async {
+                let url = "https://picsum.photos/400/100"
+                guard let imageURL = URL(string: url) else { return }
+                guard let data = try? Data(contentsOf: imageURL) else { return }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data)
+                }
             }
         }
     }
@@ -103,8 +112,8 @@ class TodoViewController: UIViewController {
         }
         
         if shortTextField.text?.isEmpty == true {
-            longButton.isHidden = false
-            shortButton.isHidden = false
+            longBlurView.isHidden = false
+            shortBlurView.isHidden = false
             xButton.isHidden = true
             shortTextField.isHidden = true
             sendButton.isHidden = true
@@ -118,8 +127,8 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func tapShortButton(_ sender: UIButton) {
-        longButton.isHidden = true
-        shortButton.isHidden = true
+        longBlurView.isHidden = true
+        shortBlurView.isHidden = true
         xButton.isHidden = false
         shortTextField.isHidden = false
         sendButton.isHidden = false
@@ -128,8 +137,8 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func tapXButton(_ sender: UIButton) {
-        longButton.isHidden = false
-        shortButton.isHidden = false
+        longBlurView.isHidden = false
+        shortBlurView.isHidden = false
         xButton.isHidden = true
         shortTextField.isHidden = true
         sendButton.isHidden = true
