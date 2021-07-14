@@ -9,7 +9,7 @@
 "6VI-UB-qRJ.text" = "메모";
 
 /* Class = "UILabel"; text = "If kill app, the timer dies. But still working :D"; ObjectID = "9oA-8S-R1U"; */
-"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 끝없이 작동중 ^ㅇ^";
+"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 끝없이 작동중 :D”;
 
 /* Class = "UILabel"; text = "다크 모드"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
@@ -67,6 +67,9 @@
 
 /* Class = "UILabel"; text = "Endless working now 🏃🏻"; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
+
+/* Class = "UITableViewSection"; footerTitle = "If turn on Color switch, used less than 10KB of data each time when notes tap is opened."; ObjectID = "mO4-mb-C9g"; */
+"mO4-mb-C9g.footerTitle" = "컬러 스위치를 켜면 메모 탭을 열 때마다 10KB 미만의 데이터를 사용합니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "일반"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";

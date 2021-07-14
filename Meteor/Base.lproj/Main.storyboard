@@ -404,8 +404,66 @@ notification allowance.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
+                                                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-4P-ehB">
+                                                    <rect key="frame" x="30" y="5" width="150" height="40"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yEa-4a-dLh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <state key="normal" title="LONG">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <segue destination="Ar1-RQ-ybm" kind="presentation" id="xpn-Yf-t4R"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Qox-wf-gO8" secondAttribute="bottom" id="Ior-2w-TVT"/>
+                                                            <constraint firstItem="Qox-wf-gO8" firstAttribute="leading" secondItem="yEa-4a-dLh" secondAttribute="leading" id="UNh-f4-zcE"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Qox-wf-gO8" secondAttribute="trailing" id="c8U-kV-5d6"/>
+                                                            <constraint firstItem="Qox-wf-gO8" firstAttribute="top" secondItem="yEa-4a-dLh" secondAttribute="top" id="iea-Bh-cSM"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="ULH-jO-x2K"/>
+                                                    </constraints>
+                                                    <blurEffect style="regular"/>
+                                                </visualEffectView>
+                                                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-wz-RdI">
+                                                    <rect key="frame" x="200" y="5" width="150" height="40"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WL5-Cl-zfm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <state key="normal" title="SHORT">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="tapShortButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="STh-zf-r1D"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="y3t-Ey-iwg" secondAttribute="trailing" id="haX-iU-ht0"/>
+                                                            <constraint firstItem="y3t-Ey-iwg" firstAttribute="top" secondItem="WL5-Cl-zfm" secondAttribute="top" id="lvE-Aa-cZw"/>
+                                                            <constraint firstAttribute="bottom" secondItem="y3t-Ey-iwg" secondAttribute="bottom" id="qFI-P9-1eV"/>
+                                                            <constraint firstItem="y3t-Ey-iwg" firstAttribute="leading" secondItem="WL5-Cl-zfm" secondAttribute="leading" id="xu3-wy-TNr"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="APc-qM-0pc"/>
+                                                    </constraints>
+                                                    <blurEffect style="regular"/>
+                                                </visualEffectView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
-                                                    <rect key="frame" x="45" y="13.333333333333369" width="275" height="23.333333333333329"/>
+                                                    <rect key="frame" x="50" y="13.333333333333369" width="280" height="23.333333333333329"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -414,51 +472,25 @@ notification allowance.</string>
                                                         <action selector="tapTextField:" destination="k7r-AM-8wv" eventType="editingDidBegin" id="fBK-Jv-BBq"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
-                                                    <rect key="frame" x="200" y="10" width="150" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="KnJ-ZI-Oyt"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <state key="normal" title="SHORT">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="tapShortButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="STh-zf-r1D"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
-                                                    <rect key="frame" x="40" y="10" width="150" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="kY4-LF-eay"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <state key="normal" title="LONG">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="Ar1-RQ-ybm" kind="presentation" id="xpn-Yf-t4R"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-oh-Jwb">
-                                                    <rect key="frame" x="330" y="5" width="40" height="40"/>
+                                                    <rect key="frame" x="340" y="5" width="30" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="6bL-hK-1S9"/>
+                                                        <constraint firstAttribute="width" constant="30" id="6bL-hK-1S9"/>
                                                         <constraint firstAttribute="height" constant="40" id="w7P-wA-g2X"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="arrow.up.circle.fill" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23" weight="medium"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="tapSendButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="pdI-6h-BIj"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-cw-kas">
-                                                    <rect key="frame" x="10" y="12.666666666666629" width="25" height="25"/>
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="CFl-MY-EdL"/>
-                                                        <constraint firstAttribute="height" constant="25" id="Mxz-ye-Tk9"/>
+                                                        <constraint firstAttribute="width" constant="30" id="CFl-MY-EdL"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Mxz-ye-Tk9"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="xmark" catalog="system">
@@ -470,30 +502,30 @@ notification allowance.</string>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="y3t-Ey-iwg" secondAttribute="trailing" constant="30" id="0hp-zM-Yd3"/>
                                                 <constraint firstItem="J1E-oh-Jwb" firstAttribute="leading" secondItem="8Mk-Fx-HMb" secondAttribute="trailing" constant="10" id="5t2-a8-MdQ"/>
-                                                <constraint firstItem="Qox-wf-gO8" firstAttribute="leading" secondItem="j3o-ty-pxC" secondAttribute="leading" constant="40" id="82k-da-0en"/>
-                                                <constraint firstItem="y3t-Ey-iwg" firstAttribute="top" secondItem="j3o-ty-pxC" secondAttribute="top" constant="10" id="9aQ-zo-vwj"/>
-                                                <constraint firstAttribute="bottom" secondItem="Qox-wf-gO8" secondAttribute="bottom" constant="10" id="CTW-HL-Jz1"/>
                                                 <constraint firstItem="8Mk-Fx-HMb" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="K3j-9p-0jy"/>
-                                                <constraint firstAttribute="bottom" secondItem="y3t-Ey-iwg" secondAttribute="bottom" constant="10" id="KJG-W4-gfK"/>
                                                 <constraint firstItem="Ogs-cw-kas" firstAttribute="leading" secondItem="j3o-ty-pxC" secondAttribute="leading" constant="10" id="gPb-3v-2uB"/>
                                                 <constraint firstItem="J1E-oh-Jwb" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="inw-pb-bJo"/>
                                                 <constraint firstItem="8Mk-Fx-HMb" firstAttribute="leading" secondItem="Ogs-cw-kas" secondAttribute="trailing" constant="10" id="oB3-j0-k3Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="J1E-oh-Jwb" secondAttribute="trailing" constant="10" id="q5y-xx-RNS"/>
                                                 <constraint firstItem="Ogs-cw-kas" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="s0f-vE-g8c"/>
-                                                <constraint firstItem="Qox-wf-gO8" firstAttribute="top" secondItem="j3o-ty-pxC" secondAttribute="top" constant="10" id="sFf-Mc-Akh"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="systemUltraThinMaterial"/>
                                     </visualEffectView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="pnh-wz-RdI" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="5" id="15n-fD-96Y"/>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" id="6G7-LD-tRi"/>
+                                    <constraint firstAttribute="bottom" secondItem="KSK-4P-ehB" secondAttribute="bottom" constant="5" id="8cj-dl-6PR"/>
+                                    <constraint firstAttribute="bottom" secondItem="pnh-wz-RdI" secondAttribute="bottom" constant="5" id="Gf9-W0-fZn"/>
                                     <constraint firstItem="OQF-2R-k6b" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" id="LTp-Ma-pm0"/>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="MYN-sx-QYb"/>
                                     <constraint firstAttribute="bottom" secondItem="OQF-2R-k6b" secondAttribute="bottom" id="O4b-tu-lla"/>
                                     <constraint firstAttribute="trailing" secondItem="XVa-vk-P5C" secondAttribute="trailing" id="Oqy-IU-Ku6"/>
+                                    <constraint firstItem="KSK-4P-ehB" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="5" id="WSP-Zj-bgK"/>
+                                    <constraint firstAttribute="trailing" secondItem="pnh-wz-RdI" secondAttribute="trailing" constant="30" id="Wiv-cH-7IC"/>
+                                    <constraint firstItem="KSK-4P-ehB" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" constant="30" id="hMv-FS-hQ8"/>
                                     <constraint firstAttribute="height" constant="50" id="mGC-Om-mXO"/>
                                     <constraint firstAttribute="trailing" secondItem="OQF-2R-k6b" secondAttribute="trailing" id="mp6-NS-q3S"/>
                                     <constraint firstAttribute="bottom" secondItem="XVa-vk-P5C" secondAttribute="bottom" id="qta-po-CbC"/>
@@ -533,8 +565,10 @@ notification allowance.</string>
                         <outlet property="bottomViewBottom" destination="p9z-9D-AVK" id="uDc-3c-J1E"/>
                         <outlet property="collectionView" destination="8Pg-M2-uUN" id="pp1-Is-sZm"/>
                         <outlet property="imageView" destination="XVa-vk-P5C" id="0Zt-Yy-csN"/>
+                        <outlet property="longBlurView" destination="KSK-4P-ehB" id="U2b-CC-zvF"/>
                         <outlet property="longButton" destination="Qox-wf-gO8" id="O8w-UO-fS5"/>
                         <outlet property="sendButton" destination="J1E-oh-Jwb" id="8Zq-BW-5eD"/>
+                        <outlet property="shortBlurView" destination="pnh-wz-RdI" id="kcO-32-J8u"/>
                         <outlet property="shortButton" destination="y3t-Ey-iwg" id="Emf-GM-8fa"/>
                         <outlet property="shortTextField" destination="8Mk-Fx-HMb" id="BUA-vj-QBU"/>
                         <outlet property="tapGestureRecognizer" destination="hQX-h6-hoj" id="eQl-cu-qkg"/>
@@ -725,7 +759,6 @@ notification allowance.</string>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lo3-sn-6A7" customClass="CustomTabBar" customModule="Meteor" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="tertiarySystemBackgroundColor"/>
                         <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>
@@ -916,10 +949,10 @@ notification allowance.</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" id="mO4-mb-C9g">
+                            <tableViewSection headerTitle="General" footerTitle="If turn on Color switch, used less than 10KB of data each time when notes tap is opened." id="mO4-mb-C9g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="397.99999809265137" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="405.33333206176758" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -949,6 +982,38 @@ notification allowance.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5Bn-BV-Rlq">
+                                        <rect key="frame" x="20" y="449.33333206176758" width="350" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Bn-BV-Rlq" id="eqt-rP-gYu">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXQ-U0-yWN">
+                                                    <rect key="frame" x="20" y="11.666666666666664" width="41" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Kc-zv-AfU">
+                                                    <rect key="frame" x="281" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                                    <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="tapImageSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="Gk0-SJ-caI"/>
+                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="uUO-W5-aQd"/>
+                                                        <action selector="tapVibrateSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="WbL-jv-EcA"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZXQ-U0-yWN" firstAttribute="leading" secondItem="eqt-rP-gYu" secondAttribute="leadingMargin" id="HTX-sx-tT7"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Kc-zv-AfU" secondAttribute="trailing" constant="20" id="bFn-Ce-8mf"/>
+                                                <constraint firstItem="4Kc-zv-AfU" firstAttribute="centerY" secondItem="eqt-rP-gYu" secondAttribute="centerY" id="czf-ZL-Lrs"/>
+                                                <constraint firstItem="ZXQ-U0-yWN" firstAttribute="centerY" secondItem="eqt-rP-gYu" secondAttribute="centerY" id="qho-O9-TfR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection footerTitle=" 고맙습니다. Thank you for using. 🤲" id="xDe-Ec-H3V">
@@ -964,6 +1029,7 @@ notification allowance.</string>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="colorSwitch" destination="4Kc-zv-AfU" id="nft-Ey-SV9"/>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="mailButton" destination="DZa-ix-YkT" id="IpI-CL-Z8X"/>
@@ -1102,9 +1168,6 @@ notification allowance.</string>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

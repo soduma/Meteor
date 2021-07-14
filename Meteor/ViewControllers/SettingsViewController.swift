@@ -16,6 +16,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var vibrateSwitch: UISwitch!
+    @IBOutlet weak var colorSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
+        colorSwitch.isOn = UserDefaults.standard.bool(forKey: "colorSwitch")
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -92,4 +94,9 @@ class SettingsViewController: UITableViewController {
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
     }
+    
+    @IBAction func tapImageSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(colorSwitch.isOn, forKey: "colorSwitch")
+    }
+    
 }
