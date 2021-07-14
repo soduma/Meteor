@@ -17,6 +17,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var vibrateSwitch: UISwitch!
     @IBOutlet weak var colorSwitch: UISwitch!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,17 @@ class SettingsViewController: UITableViewController {
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
         colorSwitch.isOn = UserDefaults.standard.bool(forKey: "colorSwitch")
+        
+        if UserDefaults.standard.bool(forKey: "colorSwitch") {
+            DispatchQueue.global(qos: .userInteractive).async {
+                let url = "https://source.unsplash.com/random"
+                guard let imageURL = URL(string: url) else { return }
+                let imageData = try! Data(contentsOf: imageURL)
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: imageData)
+                }
+            }
+        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -68,8 +80,6 @@ class SettingsViewController: UITableViewController {
         
         UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
-        //        print("1",UserDefaults.standard.bool(forKey: "lightState"))
-        //        print("2",UserDefaults.standard.bool(forKey: "darkState"))
     }
     
     @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
@@ -87,8 +97,6 @@ class SettingsViewController: UITableViewController {
         
         UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
-        //        print("3",UserDefaults.standard.bool(forKey: "lightState"))
-        //        print("4",UserDefaults.standard.bool(forKey: "darkState"))
     }
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
@@ -98,5 +106,4 @@ class SettingsViewController: UITableViewController {
     @IBAction func tapImageSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(colorSwitch.isOn, forKey: "colorSwitch")
     }
-    
 }
