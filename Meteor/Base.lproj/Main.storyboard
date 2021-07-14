@@ -950,7 +950,9 @@ notification allowance.</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" footerTitle="Change color each time when notes tap is opened. Less than 10KB of data will be used." id="mO4-mb-C9g">
+                            <tableViewSection headerTitle="General" id="mO4-mb-C9g">
+                                <string key="footerTitle">Change color each time when notes tap is opened. Less than 10KB of data will be used.
+</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
                                         <rect key="frame" x="20" y="405.33333206176758" width="350" height="44"/>
@@ -1017,40 +1019,33 @@ notification allowance.</string>
                             <tableViewSection id="j0T-WS-rtr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="350" id="LIl-n8-tFm">
-                                        <rect key="frame" x="20" y="551.66666412353516" width="350" height="350"/>
+                                        <rect key="frame" x="20" y="565.66666412353516" width="350" height="350"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LIl-n8-tFm" id="de1-XC-kcz">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cRB-OJ-SQV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                                    <rect key="frame" x="-10" y="-10" width="370" height="370"/>
                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cRB-OJ-SQV" secondAttribute="height" multiplier="1:1" id="MuB-ZP-Z3j"/>
-                                                        <constraint firstAttribute="width" constant="350" id="WXZ-Pd-uXq"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="cRB-OJ-SQV" firstAttribute="centerX" secondItem="de1-XC-kcz" secondAttribute="centerX" id="b8E-yZ-fPN"/>
-                                                <constraint firstItem="cRB-OJ-SQV" firstAttribute="centerY" secondItem="de1-XC-kcz" secondAttribute="centerY" id="cQA-Pf-8HX"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="cRB-OJ-SQV" firstAttribute="leading" secondItem="LIl-n8-tFm" secondAttribute="leading" constant="-10" id="CNl-xR-geU"/>
+                                            <constraint firstAttribute="trailing" secondItem="cRB-OJ-SQV" secondAttribute="trailing" constant="-10" id="Ipz-nF-O6x"/>
+                                            <constraint firstItem="cRB-OJ-SQV" firstAttribute="top" secondItem="LIl-n8-tFm" secondAttribute="top" constant="-10" id="lGr-bL-Gdh"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="Whe-Py-dQR">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="350" id="iLm-Ed-5ht">
-                                        <rect key="frame" x="20" y="937.66666412353516" width="350" height="350"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iLm-Ed-5ht" id="mEQ-OB-KQY">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
+                                <string key="footerTitle">고맙습니다.
+Thank you for using. 🤲</string>
+                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
