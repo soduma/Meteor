@@ -416,7 +416,9 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 let dateTime = dateFormatter.string(from: Date())
                 let locale = TimeZone.current.identifier
 //                print(TimeZone.current.identifier)
-                self.db.child("meteorText").childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+//                self.db.child("meteorText").childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+                guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+                self.db.child("meteorText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
             }
         }
         
