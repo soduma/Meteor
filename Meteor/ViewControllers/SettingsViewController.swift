@@ -42,8 +42,8 @@ class SettingsViewController: UITableViewController {
     func getImage() {
         if UserDefaults.standard.bool(forKey: "colorSwitch") {
             DispatchQueue.global(qos: .userInteractive).async {
-                self.db.child("upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? ""
+                self.db.child("b_upsplash").observeSingleEvent(of: .value) { snapshot in
+                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
                 }
                 guard let imageURL = URL(string: self.url) else { return }
                 let imageData = try! Data(contentsOf: imageURL)
