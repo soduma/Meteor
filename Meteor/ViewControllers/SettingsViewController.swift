@@ -56,7 +56,10 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapHeartButton(_ sender: UIButton) {
-        
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
+        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
