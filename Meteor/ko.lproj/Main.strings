@@ -20,8 +20,8 @@
 /* Class = "UILabel"; text = "Made by"; ObjectID = "Dar-LJ-TSU"; */
 "Dar-LJ-TSU.text" = "Made by";
 
-/* Class = "UILabel"; text = "Support iOS 13.0 or Higher"; ObjectID = "Fvr-nD-0wz"; */
-"Fvr-nD-0wz.text" = "Support iOS 13.0 or Higher";
+/* Class = "UILabel"; text = "Support iOS 14.0 or Higher"; ObjectID = "Fvr-nD-0wz"; */
+"Fvr-nD-0wz.text" = "Support iOS 14.0 or Higher";
 
 /* Class = "UILabel"; text = "Haptic"; ObjectID = "GqJ-gX-VE4"; */
 "GqJ-gX-VE4.text" = "햅틱";
