@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19142.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpH-LA-jla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpH-LA-jla">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19129"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -73,7 +73,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HBW-I1-99y">
-                                        <rect key="frame" x="83.333333333333329" y="57.666666666666636" width="163.33333333333337" height="27.333333333333336"/>
+                                        <rect key="frame" x="105" y="58.666666666666636" width="120.33333333333331" height="26.333333333333336"/>
                                         <color key="pageIndicatorTintColor" systemColor="systemGray3Color"/>
                                         <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
                                         <connections>
@@ -300,7 +300,7 @@ notification allowance.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-M2-uUN">
-                                <rect key="frame" x="0.0" y="125" width="390" height="571"/>
+                                <rect key="frame" x="0.0" y="125" width="390" height="551"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hhS-iQ-d0b">
                                     <size key="itemSize" width="390" height="50"/>
@@ -393,26 +393,26 @@ notification allowance.</string>
                                 </connections>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns9-qE-y6v">
-                                <rect key="frame" x="5" y="706" width="380" height="50"/>
+                                <rect key="frame" x="5" y="686" width="380" height="70"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XVa-vk-P5C">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="70"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQF-2R-k6b">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="70"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j3o-ty-pxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="380" height="70"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-4P-ehB">
-                                                    <rect key="frame" x="30" y="5" width="150" height="40"/>
+                                                    <rect key="frame" x="30" y="10" width="150" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yEa-4a-dLh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="LONG">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -435,13 +435,13 @@ notification allowance.</string>
                                                     <blurEffect style="regular"/>
                                                 </visualEffectView>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-wz-RdI">
-                                                    <rect key="frame" x="200" y="5" width="150" height="40"/>
+                                                    <rect key="frame" x="200" y="10" width="150" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WL5-Cl-zfm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="SHORT">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -463,39 +463,58 @@ notification allowance.</string>
                                                     </constraints>
                                                     <blurEffect style="regular"/>
                                                 </visualEffectView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
-                                                    <rect key="frame" x="50" y="13.666666666666629" width="280" height="23"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                    <connections>
-                                                        <action selector="tapTextField:" destination="k7r-AM-8wv" eventType="editingDidBegin" id="fBK-Jv-BBq"/>
-                                                    </connections>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-oh-Jwb">
-                                                    <rect key="frame" x="340" y="5" width="30" height="40"/>
+                                                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJN-3a-pb1">
+                                                    <rect key="frame" x="35" y="10" width="335" height="50"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i9s-Qs-hKg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
+                                                                <rect key="frame" x="15" y="5" width="278" height="40"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <connections>
+                                                                    <action selector="tapTextField:" destination="k7r-AM-8wv" eventType="editingDidBegin" id="fBK-Jv-BBq"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-oh-Jwb">
+                                                                <rect key="frame" x="298" y="0.0" width="30" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="6bL-hK-1S9"/>
+                                                                </constraints>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="arrow.up.circle.fill" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="bold"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="tapSendButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="pdI-6h-BIj"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="J1E-oh-Jwb" firstAttribute="leading" secondItem="8Mk-Fx-HMb" secondAttribute="trailing" constant="5" id="9js-fT-NXN"/>
+                                                        </constraints>
+                                                    </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="6bL-hK-1S9"/>
-                                                        <constraint firstAttribute="height" constant="40" id="w7P-wA-g2X"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8Mk-Fx-HMb" secondAttribute="bottom" constant="5" id="HxP-zF-BNR"/>
+                                                        <constraint firstItem="8Mk-Fx-HMb" firstAttribute="leading" secondItem="MJN-3a-pb1" secondAttribute="leading" constant="15" id="YYy-eS-R3H"/>
+                                                        <constraint firstAttribute="trailing" secondItem="J1E-oh-Jwb" secondAttribute="trailing" constant="7" id="ekF-G1-43f"/>
+                                                        <constraint firstAttribute="bottom" secondItem="J1E-oh-Jwb" secondAttribute="bottom" id="qSj-hv-kvG"/>
+                                                        <constraint firstItem="8Mk-Fx-HMb" firstAttribute="top" secondItem="MJN-3a-pb1" secondAttribute="top" constant="5" id="s3M-XI-JjA"/>
+                                                        <constraint firstItem="J1E-oh-Jwb" firstAttribute="top" secondItem="MJN-3a-pb1" secondAttribute="top" id="wa4-oM-Ebm"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="arrow.up.circle.fill" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="tapSendButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="pdI-6h-BIj"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-cw-kas">
-                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                    <blurEffect style="regular"/>
+                                                </visualEffectView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-cw-kas">
+                                                    <rect key="frame" x="10" y="0.0" width="20" height="70"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="CFl-MY-EdL"/>
-                                                        <constraint firstAttribute="height" constant="30" id="Mxz-ye-Tk9"/>
+                                                        <constraint firstAttribute="width" constant="20" id="CFl-MY-EdL"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="xmark" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" weight="light"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="tapXButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="UTM-Is-Pzg"/>
@@ -503,34 +522,34 @@ notification allowance.</string>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="J1E-oh-Jwb" firstAttribute="leading" secondItem="8Mk-Fx-HMb" secondAttribute="trailing" constant="10" id="5t2-a8-MdQ"/>
-                                                <constraint firstItem="8Mk-Fx-HMb" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="K3j-9p-0jy"/>
+                                                <constraint firstItem="MJN-3a-pb1" firstAttribute="leading" secondItem="Ogs-cw-kas" secondAttribute="trailing" constant="5" id="TSH-7S-WnP"/>
                                                 <constraint firstItem="Ogs-cw-kas" firstAttribute="leading" secondItem="j3o-ty-pxC" secondAttribute="leading" constant="10" id="gPb-3v-2uB"/>
-                                                <constraint firstItem="J1E-oh-Jwb" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="inw-pb-bJo"/>
-                                                <constraint firstItem="8Mk-Fx-HMb" firstAttribute="leading" secondItem="Ogs-cw-kas" secondAttribute="trailing" constant="10" id="oB3-j0-k3Q"/>
-                                                <constraint firstAttribute="trailing" secondItem="J1E-oh-Jwb" secondAttribute="trailing" constant="10" id="q5y-xx-RNS"/>
-                                                <constraint firstItem="Ogs-cw-kas" firstAttribute="centerY" secondItem="j3o-ty-pxC" secondAttribute="centerY" id="s0f-vE-g8c"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="systemUltraThinMaterial"/>
                                     </visualEffectView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="pnh-wz-RdI" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="5" id="15n-fD-96Y"/>
+                                    <constraint firstItem="pnh-wz-RdI" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="10" id="15n-fD-96Y"/>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" id="6G7-LD-tRi"/>
-                                    <constraint firstAttribute="bottom" secondItem="KSK-4P-ehB" secondAttribute="bottom" constant="5" id="8cj-dl-6PR"/>
-                                    <constraint firstAttribute="bottom" secondItem="pnh-wz-RdI" secondAttribute="bottom" constant="5" id="Gf9-W0-fZn"/>
+                                    <constraint firstAttribute="bottom" secondItem="KSK-4P-ehB" secondAttribute="bottom" constant="10" id="8cj-dl-6PR"/>
+                                    <constraint firstAttribute="bottom" secondItem="pnh-wz-RdI" secondAttribute="bottom" constant="10" id="Gf9-W0-fZn"/>
                                     <constraint firstItem="OQF-2R-k6b" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" id="LTp-Ma-pm0"/>
                                     <constraint firstItem="XVa-vk-P5C" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="MYN-sx-QYb"/>
                                     <constraint firstAttribute="bottom" secondItem="OQF-2R-k6b" secondAttribute="bottom" id="O4b-tu-lla"/>
                                     <constraint firstAttribute="trailing" secondItem="XVa-vk-P5C" secondAttribute="trailing" id="Oqy-IU-Ku6"/>
-                                    <constraint firstItem="KSK-4P-ehB" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="5" id="WSP-Zj-bgK"/>
+                                    <constraint firstAttribute="trailing" secondItem="MJN-3a-pb1" secondAttribute="trailing" constant="10" id="Rgn-el-4BG"/>
+                                    <constraint firstItem="KSK-4P-ehB" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="10" id="WSP-Zj-bgK"/>
                                     <constraint firstAttribute="trailing" secondItem="pnh-wz-RdI" secondAttribute="trailing" constant="30" id="Wiv-cH-7IC"/>
+                                    <constraint firstItem="MJN-3a-pb1" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" constant="10" id="XI2-Qv-plX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ogs-cw-kas" secondAttribute="bottom" id="bRu-Oz-7Wm"/>
+                                    <constraint firstItem="Ogs-cw-kas" firstAttribute="top" secondItem="Ns9-qE-y6v" secondAttribute="top" id="gCa-b1-fll"/>
                                     <constraint firstItem="KSK-4P-ehB" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" constant="30" id="hMv-FS-hQ8"/>
-                                    <constraint firstAttribute="height" constant="50" id="mGC-Om-mXO"/>
+                                    <constraint firstAttribute="height" constant="70" id="mGC-Om-mXO"/>
                                     <constraint firstAttribute="trailing" secondItem="OQF-2R-k6b" secondAttribute="trailing" id="mp6-NS-q3S"/>
                                     <constraint firstAttribute="bottom" secondItem="XVa-vk-P5C" secondAttribute="bottom" id="qta-po-CbC"/>
                                     <constraint firstItem="OQF-2R-k6b" firstAttribute="leading" secondItem="Ns9-qE-y6v" secondAttribute="leading" id="xwj-rU-njC"/>
+                                    <constraint firstAttribute="bottom" secondItem="MJN-3a-pb1" secondAttribute="bottom" constant="10" id="zKE-nX-2tx"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-UB-qRJ">
@@ -573,6 +592,7 @@ notification allowance.</string>
                         <outlet property="shortButton" destination="y3t-Ey-iwg" id="Emf-GM-8fa"/>
                         <outlet property="shortTextField" destination="8Mk-Fx-HMb" id="BUA-vj-QBU"/>
                         <outlet property="tapGestureRecognizer" destination="hQX-h6-hoj" id="eQl-cu-qkg"/>
+                        <outlet property="textFieldBlurView" destination="MJN-3a-pb1" id="vUf-db-z8G"/>
                         <outlet property="xButton" destination="Ogs-cw-kas" id="ZSy-lf-ciC"/>
                         <segue destination="1w1-ac-0VP" kind="presentation" identifier="showModify" id="8Cj-vM-JZA"/>
                     </connections>
@@ -783,7 +803,7 @@ notification allowance.</string>
                             <tableViewSection headerTitle="Meteor" id="si5-2F-S24">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="CV8-Vp-qHv">
-                                        <rect key="frame" x="20" y="55.333332061767578" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CV8-Vp-qHv" id="56V-OQ-hoa">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -815,7 +835,7 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="h3D-8K-WkM">
-                                        <rect key="frame" x="20" y="99.333332061767578" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="93" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h3D-8K-WkM" id="jzG-cl-mxg">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -849,7 +869,7 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="0FL-W6-upz">
-                                        <rect key="frame" x="20" y="143.33333206176758" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="137" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0FL-W6-upz" id="ezR-8r-qxM">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -889,7 +909,7 @@ notification allowance.</string>
                             <tableViewSection headerTitle="Style" footerTitle="If turn off both switches then follow the system settings." id="noR-vq-LyQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="cR1-o4-Sre">
-                                        <rect key="frame" x="20" y="250.66666412353516" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="238" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cR1-o4-Sre" id="YKK-Es-HSQ">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -919,7 +939,7 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="ecS-pA-ZFD">
-                                        <rect key="frame" x="20" y="294.66666412353516" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="282" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ecS-pA-ZFD" id="h56-mw-OOO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -955,7 +975,7 @@ notification allowance.</string>
 </string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="429.99999618530273" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="405.33333206176758" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -985,7 +1005,7 @@ notification allowance.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="5Bn-BV-Rlq">
-                                        <rect key="frame" x="20" y="473.99999618530273" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="449.33333206176758" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Bn-BV-Rlq" id="eqt-rP-gYu">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -1019,7 +1039,7 @@ notification allowance.</string>
                             <tableViewSection id="j0T-WS-rtr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="350" id="LIl-n8-tFm">
-                                        <rect key="frame" x="20" y="613.99999618530273" width="350" height="350"/>
+                                        <rect key="frame" x="20" y="565.66666412353516" width="350" height="350"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LIl-n8-tFm" id="de1-XC-kcz">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
