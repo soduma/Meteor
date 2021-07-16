@@ -17,8 +17,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var vibrateSwitch: UISwitch!
-    @IBOutlet weak var colorSwitch: UISwitch!
+    @IBOutlet weak var imageSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var heartButton: UIButton!
     
     let db = Database.database().reference()
     var url = ""
@@ -35,7 +36,7 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
-        colorSwitch.isOn = UserDefaults.standard.bool(forKey: "colorSwitch")
+        imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         getImage()
     }
     
@@ -52,6 +53,10 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func tapHeartButton(_ sender: UIButton) {
+        
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -114,6 +119,6 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapImageSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(colorSwitch.isOn, forKey: "colorSwitch")
+        UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
     }
 }
