@@ -53,7 +53,7 @@
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
 
-/* Class = "UILabel"; text = "Sensitivity"; ObjectID = "ZXQ-U0-yWN"; */
+/* Class = "UILabel"; text = "Sentimental"; ObjectID = "ZXQ-U0-yWN"; */
 "ZXQ-U0-yWN.text" = "감성";
 
 /* Class = "UIButton"; normalTitle = "Endless"; ObjectID = "caC-dS-7wV"; */
@@ -74,7 +74,7 @@
 /* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
 
-/* Class = "UITableViewSection"; footerTitle = "Add sensitivity each time when notes tap is opened. Less than 500KB of data will be used.\n"; ObjectID = "mO4-mb-C9g"; */
+/* Class = "UITableViewSection"; footerTitle = "Change photo each time when notes tap is opened. Less than 500KB of data will be used.\n"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "탭을 열 때마다 이미지가 변경됩니다. 500KB 미만의 데이터가 사용됩니다.\n";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
