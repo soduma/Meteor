@@ -68,7 +68,7 @@ class TodoViewController: UIViewController {
     }
     
     func getBottomViewImage() {
-        if UserDefaults.standard.bool(forKey: "colorSwitch") == false {
+        if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
             self.imageView.image = nil
             
         } else {

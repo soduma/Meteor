@@ -440,6 +440,7 @@ extension MeteorViewController : UNUserNotificationCenterDelegate {
     //앱이 foreground에 있을 때. 즉 앱안에 있어도 push알림을 받게 해줍니다.
     //viewDidLoad()에 UNUserNotificationCenter.current().delegate = self를 추가해주는 것을 잊지마세요.
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
+//        completionHandler([.alert, .sound])
+        completionHandler([.banner, .list, .sound])
     }
 }
