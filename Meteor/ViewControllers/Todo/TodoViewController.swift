@@ -131,6 +131,13 @@ class TodoViewController: UIViewController {
         tapGestureRecognizer.isEnabled = true
     }
     
+    @IBAction func tapLongButton(_ sender: UIButton) {
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
+    }
+    
     @IBAction func tapShortButton(_ sender: UIButton) {
         longBlurView.isHidden = true
         shortBlurView.isHidden = true
@@ -140,6 +147,11 @@ class TodoViewController: UIViewController {
         textFieldBlurView.isHidden = false
         shortTextField.becomeFirstResponder()
         tapGestureRecognizer.isEnabled = true
+        
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
     }
     
     @IBAction func tapXButton(_ sender: UIButton) {
@@ -173,6 +185,11 @@ class TodoViewController: UIViewController {
         let locale = TimeZone.current.identifier
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         db.child("shortText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+        
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UIImpactFeedbackGenerator(style: .rigid)
+            generator.impactOccurred()
+        }
     }
 }
 

@@ -418,12 +418,13 @@ notification allowance.</string>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="166.66666666666666" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="LONG">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="tapLongButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="bAh-kq-a2P"/>
                                                                     <segue destination="Ar1-RQ-ybm" kind="presentation" id="xpn-Yf-t4R"/>
                                                                 </connections>
                                                             </button>
@@ -444,7 +445,7 @@ notification allowance.</string>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="166" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="166.33333333333334" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="SHORT">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -464,13 +465,13 @@ notification allowance.</string>
                                                     <blurEffect style="systemUltraThinMaterialLight"/>
                                                 </visualEffectView>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJN-3a-pb1">
-                                                    <rect key="frame" x="35" y="10" width="373" height="50"/>
+                                                    <rect key="frame" x="37" y="10" width="371" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i9s-Qs-hKg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="371" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-Fx-HMb">
-                                                                <rect key="frame" x="15" y="5" width="316" height="40"/>
+                                                                <rect key="frame" x="15" y="5" width="314" height="40"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -480,7 +481,7 @@ notification allowance.</string>
                                                                 </connections>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1E-oh-Jwb">
-                                                                <rect key="frame" x="336" y="0.0" width="30" height="50"/>
+                                                                <rect key="frame" x="334" y="0.0" width="30" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="6bL-hK-1S9"/>
                                                                 </constraints>
@@ -514,7 +515,7 @@ notification allowance.</string>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="xmark" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" weight="light"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" weight="regular"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="tapXButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="UTM-Is-Pzg"/>
@@ -522,7 +523,7 @@ notification allowance.</string>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MJN-3a-pb1" firstAttribute="leading" secondItem="Ogs-cw-kas" secondAttribute="trailing" constant="5" id="TSH-7S-WnP"/>
+                                                <constraint firstItem="MJN-3a-pb1" firstAttribute="leading" secondItem="Ogs-cw-kas" secondAttribute="trailing" constant="7" id="TSH-7S-WnP"/>
                                                 <constraint firstItem="Ogs-cw-kas" firstAttribute="leading" secondItem="j3o-ty-pxC" secondAttribute="leading" constant="10" id="gPb-3v-2uB"/>
                                             </constraints>
                                         </view>
@@ -1057,7 +1058,7 @@ notification allowance.</string>
                                                         <constraint firstAttribute="width" secondItem="cRB-OJ-SQV" secondAttribute="height" multiplier="1:1" id="MuB-ZP-Z3j"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWH-c7-Yix">
+                                                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWH-c7-Yix">
                                                     <rect key="frame" x="310" y="310" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="TdI-jK-oXh"/>
@@ -1108,7 +1109,7 @@ Thank you for using. 🤲 </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="778"/>
+            <point key="canvasLocation" x="1746.7289719626167" y="777.53779697624191"/>
         </scene>
         <!--Version View Controller-->
         <scene sceneID="A0F-Wx-mh9">
