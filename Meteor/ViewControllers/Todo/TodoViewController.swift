@@ -19,6 +19,7 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     @IBOutlet weak var longBlurView: UIVisualEffectView!
     @IBOutlet weak var shortBlurView: UIVisualEffectView!
+    @IBOutlet weak var textFieldBlurView: UIVisualEffectView!
     
     @IBOutlet weak var longButton: UIButton!
     @IBOutlet weak var shortButton: UIButton!
@@ -45,14 +46,16 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         
         todoViewModel.loadTasks()
-        bottomView.layer.cornerRadius = 10
-        longBlurView.layer.cornerRadius = 20
-        shortBlurView.layer.cornerRadius = 20
+        bottomView.layer.cornerRadius = 27
+        longBlurView.layer.cornerRadius = 21
+        shortBlurView.layer.cornerRadius = 21
+        textFieldBlurView.layer.cornerRadius = 21
         
         tapGestureRecognizer.isEnabled = false
-        shortTextField.isHidden = true
-        sendButton.isHidden = true
+//        shortTextField.isHidden = true
+//        sendButton.isHidden = true
         xButton.isHidden = true
+        textFieldBlurView.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -116,8 +119,9 @@ class TodoViewController: UIViewController {
             longBlurView.isHidden = false
             shortBlurView.isHidden = false
             xButton.isHidden = true
-            shortTextField.isHidden = true
-            sendButton.isHidden = true
+//            shortTextField.isHidden = true
+//            sendButton.isHidden = true
+            textFieldBlurView.isHidden = true
             shortTextField.resignFirstResponder()
             tapGestureRecognizer.isEnabled = false
         }
@@ -131,8 +135,9 @@ class TodoViewController: UIViewController {
         longBlurView.isHidden = true
         shortBlurView.isHidden = true
         xButton.isHidden = false
-        shortTextField.isHidden = false
-        sendButton.isHidden = false
+//        shortTextField.isHidden = false
+//        sendButton.isHidden = false
+        textFieldBlurView.isHidden = false
         shortTextField.becomeFirstResponder()
         tapGestureRecognizer.isEnabled = true
     }
@@ -141,8 +146,9 @@ class TodoViewController: UIViewController {
         longBlurView.isHidden = false
         shortBlurView.isHidden = false
         xButton.isHidden = true
-        shortTextField.isHidden = true
-        sendButton.isHidden = true
+//        shortTextField.isHidden = true
+//        sendButton.isHidden = true
+        textFieldBlurView.isHidden = true
         shortTextField.text = ""
         shortTextField.resignFirstResponder()
     }
