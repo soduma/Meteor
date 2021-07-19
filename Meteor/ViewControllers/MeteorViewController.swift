@@ -7,12 +7,12 @@
 
 import UIKit
 import UserNotifications
-import GoogleMobileAds
-import AppTrackingTransparency
-import AdSupport
+//import GoogleMobileAds
+//import AppTrackingTransparency
+//import AdSupport
 import Firebase
 
-class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
+class MeteorViewController: UIViewController/*, GADFullScreenContentDelegate*/ {
     
     @IBOutlet weak var meteorHeadLabel: UILabel!
     @IBOutlet weak var meteorTextField: UITextField!
@@ -46,10 +46,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     var db = Database.database().reference()
     var firebaseIndex = 0
 
-    // 구글광고!!!!!!!!!!!!!!!!!!!!
-    private var interstitial: GADInterstitialAd?
-    var adIndex = 0
-    // --------------------------------
+//    // 구글광고!!!!!!!!!!!!!!!!!!!!
+//    private var interstitial: GADInterstitialAd?
+//    var adIndex = 0
+//    // --------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,15 +81,15 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UserDefaults.standard.set(true, forKey: "First Launch")
         }
         
-        if #available(iOS 14.0, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                // Tracking authorization completed. Start loading ads here.
-                // loadAd()
-//                self.firstLoadAd()
-            })
-        } else {
-//            firstLoadAd()
-        }
+//        if #available(iOS 14.0, *) {
+//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+//                // Tracking authorization completed. Start loading ads here.
+//                // loadAd()
+////                self.firstLoadAd()
+//            })
+//        } else {
+////            firstLoadAd()
+//        }
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
         })
@@ -141,54 +141,54 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-    private func firstLoadAd() {
-        let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
-
-                               request: request,
-                               completionHandler: { [self] ad, error in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                interstitial = ad
-                                interstitial?.fullScreenContentDelegate = self
-                               }
-        )
-    }
-
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-    
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-    
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-
-        let request2 = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
-                               
-                               request: request2,
-                               completionHandler: { [self] ad, error in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                interstitial = ad
-                                interstitial?.fullScreenContentDelegate = self
-                               }
-        )
-        print("Ad did dismiss full screen content.")
-    }
-    // --------------------------------
+//    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+//    private func firstLoadAd() {
+//        let request = GADRequest()
+////        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+//
+//                               request: request,
+//                               completionHandler: { [self] ad, error in
+//                                if let error = error {
+//                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                                    return
+//                                }
+//                                interstitial = ad
+//                                interstitial?.fullScreenContentDelegate = self
+//                               }
+//        )
+//    }
+//
+//    /// Tells the delegate that the ad failed to present full screen content.
+//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+//        print("Ad did fail to present full screen content.")
+//    }
+//
+//    /// Tells the delegate that the ad presented full screen content.
+//    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Ad did present full screen content.")
+//    }
+//
+//    /// Tells the delegate that the ad dismissed full screen content.
+//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//
+//        let request2 = GADRequest()
+////        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
+//
+//                               request: request2,
+//                               completionHandler: { [self] ad, error in
+//                                if let error = error {
+//                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                                    return
+//                                }
+//                                interstitial = ad
+//                                interstitial?.fullScreenContentDelegate = self
+//                               }
+//        )
+//        print("Ad did dismiss full screen content.")
+//    }
+//    // --------------------------------
     
     @objc func checkNetworkConnection() {
         if Reachability.isConnectedToNetwork() == false {
@@ -324,28 +324,28 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-        adIndex += 1
-//        print("adIndex: \(adIndex)")
+//        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+//        adIndex += 1
+////        print("adIndex: \(adIndex)")
+//
+//        if adIndex == 1 {
+//            if interstitial != nil {
+//                interstitial?.present(fromRootViewController: self)
+//            } else {
+//                print("Ad wasn't ready")
+//            }
+//        } else if adIndex == firebaseIndex {
+//            adIndex = 0
+//        } else if adIndex == 9 {
+//            adIndex = 0
+//        }
+//        // --------------------------------
         
-        if adIndex == 1 {
-            if interstitial != nil {
-                interstitial?.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
-            }
-        } else if adIndex == firebaseIndex {
-            adIndex = 0
-        } else if adIndex == 9 {
-            adIndex = 0
-        }
-        // --------------------------------
-        
-        notificationCountIndex += 1
-//        print("notificationIndex: \(notificationIndex)")
-        if notificationCountIndex > 3 {
-            notificationCountIndex = 0
-        }
+//        notificationCountIndex += 1
+//        if notificationCountIndex > 8 {
+//            notificationCountIndex = 0
+//        }
+//        print("notificationCountIndex: \(notificationCountIndex)")
         
         if repeatButton.isSelected {
             let contents = UNMutableNotificationContent()
