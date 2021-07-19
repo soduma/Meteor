@@ -32,6 +32,11 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         url = "https://source.unsplash.com/random"
+        
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +46,7 @@ class SettingsViewController: UITableViewController {
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
+        
         getImage()
     }
     
@@ -108,7 +114,7 @@ class SettingsViewController: UITableViewController {
         
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
             getImage()
-            timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
             WidgetCenter.shared.reloadAllTimelines()
         } else {
             timer.invalidate()
@@ -119,7 +125,7 @@ class SettingsViewController: UITableViewController {
     @objc func getImage() {
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
             DispatchQueue.global(qos: .userInteractive).async {
-                self.db.child("b_upsplash").observeSingleEvent(of: .value) { snapshot in
+                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
                     self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
                 }
                 guard let imageURL = URL(string: self.url) else { return }
