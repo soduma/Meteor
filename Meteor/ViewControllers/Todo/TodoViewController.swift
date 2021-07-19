@@ -69,7 +69,7 @@ class TodoViewController: UIViewController {
     
     func getBottomViewImage() {
         if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
-            self.imageView.image = nil
+//            self.imageView.image = nil
             
         } else {
             DispatchQueue.global(qos: .userInteractive).async {
