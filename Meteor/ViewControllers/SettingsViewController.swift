@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import SwiftUI
+import WidgetKit
 
 class SettingsViewController: UITableViewController {
     
@@ -19,10 +21,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var vibrateSwitch: UISwitch!
     @IBOutlet weak var imageSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var heartButton: UIButton!
     
     let db = Database.database().reference()
     var url = ""
+    var imageData: Data!
+    var widgetData: Data!
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +42,6 @@ class SettingsViewController: UITableViewController {
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         getImage()
-    }
-    
-    func getImage() {
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.db.child("b_upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
-                }
-                guard let imageURL = URL(string: self.url) else { return }
-                let imageData = try! Data(contentsOf: imageURL)
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: imageData)
-                }
-            }
-        }
-    }
-    
-    @IBAction func tapHeartButton(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
-            generator.impactOccurred()
-        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -123,5 +105,33 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapImageSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
+        
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            getImage()
+            timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+            WidgetCenter.shared.reloadAllTimelines()
+        } else {
+            timer.invalidate()
+            print("timer end")
+        }
+    }
+    
+    @objc func getImage() {
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            DispatchQueue.global(qos: .userInteractive).async {
+                self.db.child("b_upsplash").observeSingleEvent(of: .value) { snapshot in
+                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
+                }
+                guard let imageURL = URL(string: self.url) else { return }
+                self.imageData = try? Data(contentsOf: imageURL)
+                
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: self.imageData)
+                    self.widgetData = self.imageData
+                    UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "imageData")
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            }
+        }
     }
 }
