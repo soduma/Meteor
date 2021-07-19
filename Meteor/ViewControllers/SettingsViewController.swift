@@ -34,8 +34,7 @@ class SettingsViewController: UITableViewController {
         url = "https://source.unsplash.com/random"
         
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
-            WidgetCenter.shared.reloadAllTimelines()
+            setTimer()
         }
     }
     
@@ -48,6 +47,42 @@ class SettingsViewController: UITableViewController {
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         
         getImage()
+    }
+    
+    func setTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    @objc func getImage() {
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            DispatchQueue.global(qos: .userInteractive).async {
+                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
+                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
+                }
+                guard let imageURL = URL(string: self.url) else { return }
+                self.imageData = try? Data(contentsOf: imageURL)
+                
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: self.imageData)
+                    self.widgetData = self.imageData
+                    UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "imageData")
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
+            }
+        }
+    }
+    
+    @IBAction func tapImageSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
+        
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            getImage()
+            setTimer()
+        } else {
+            timer.invalidate()
+            print("timer end")
+        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -107,37 +142,5 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
-    }
-    
-    @IBAction func tapImageSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
-        
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            getImage()
-            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
-            WidgetCenter.shared.reloadAllTimelines()
-        } else {
-            timer.invalidate()
-            print("timer end")
-        }
-    }
-    
-    @objc func getImage() {
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
-                }
-                guard let imageURL = URL(string: self.url) else { return }
-                self.imageData = try? Data(contentsOf: imageURL)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: self.imageData)
-                    self.widgetData = self.imageData
-                    UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "imageData")
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
-            }
-        }
     }
 }
