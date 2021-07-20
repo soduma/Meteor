@@ -341,11 +341,11 @@ class MeteorViewController: UIViewController/*, GADFullScreenContentDelegate*/ {
 //        }
 //        // --------------------------------
         
-//        notificationCountIndex += 1
-//        if notificationCountIndex > 8 {
-//            notificationCountIndex = 0
-//        }
-//        print("notificationCountIndex: \(notificationCountIndex)")
+        notificationCountIndex += 1
+        if notificationCountIndex > 8 {
+            notificationCountIndex = 0
+        }
+        print("notificationCountIndex: \(notificationCountIndex)")
         
         if repeatButton.isSelected {
             let contents = UNMutableNotificationContent()
@@ -370,7 +370,7 @@ class MeteorViewController: UIViewController/*, GADFullScreenContentDelegate*/ {
             self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
-                var remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+                let remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
                 self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
                 print(remainSeconds)
                 
