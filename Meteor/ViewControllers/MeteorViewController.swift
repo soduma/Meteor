@@ -363,18 +363,21 @@ class MeteorViewController: UIViewController/*, GADFullScreenContentDelegate*/ {
             })
             
             // 타이머
-            let timePickerSecond = self.timePicker.countDownDuration
-            var seconds = timePickerSecond
+            var clickDate = Date()
+            print(clickDate)
+            
+            let timePickerSecond = Int(timePicker.countDownDuration)
             self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
-                seconds -= 1
-                self.repeatTimerLabel.text = secondsToString(seconds: seconds)
-                print(seconds)
+                var remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+                self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+                print(remainSeconds)
                 
-                if seconds < 0 {
-                    seconds = timePickerSecond - 1
-                    self.repeatTimerLabel.text = secondsToString(seconds: seconds)
+                if remainSeconds < 2 {
+                    let newDate = Date()
+                    let timeInterval = newDate.timeIntervalSince1970 + 0.5
+                    clickDate = Date(timeIntervalSince1970: timeInterval)
                 }
                 
                 if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
@@ -383,7 +386,7 @@ class MeteorViewController: UIViewController/*, GADFullScreenContentDelegate*/ {
                 }
             }
             
-            func secondsToString(seconds: Double) -> String {
+            func secondsToString(seconds: Int) -> String {
                 let totalSeconds = Int(seconds)
                 let min = totalSeconds / 60
                 let seconds = totalSeconds % 60
