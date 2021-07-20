@@ -68,17 +68,17 @@ class TodoViewController: UIViewController {
     }
     
     func getBottomViewImage() {
-        if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
-//            self.imageView.image = nil
-            
-        } else {
+//        if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
+////            self.imageView.image = nil
+//
+//        } else {
             DispatchQueue.global(qos: .userInteractive).async {
                 let url = "https://picsum.photos/400/100"
                 guard let imageURL = URL(string: url) else { return }
                 guard let data = try? Data(contentsOf: imageURL) else { return }
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: data)
-                }
+//                }
             }
         }
     }

@@ -61,14 +61,14 @@ class SettingsViewController: UITableViewController {
 //    }
 //
 //    @objc func setTimer() {
-////        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
 //        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { Timer in
 //            self.getImage()
 //            if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
 //                Timer.invalidate()
 //            }
 //        }
-////        WidgetCenter.shared.reloadAllTimelines()
+//        WidgetCenter.shared.reloadAllTimelines()
 //    }
     
     @objc func getImage() {
@@ -93,16 +93,16 @@ class SettingsViewController: UITableViewController {
     @IBAction func tapImageSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
         
-//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-//            getImage()
-////            setTimer()
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            getImage()
+//            setTimer()
 //            NotificationCenter.default.addObserver(self, selector: #selector(setTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
 //            NotificationCenter.default.addObserver(self, selector: #selector(cancelTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
 //        } else {
 //            NotificationCenter.default.removeObserver(self)
 //            timer.invalidate()
 //            print("timer end")
-//        }
+        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
