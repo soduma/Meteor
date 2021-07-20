@@ -27,15 +27,19 @@ class SettingsViewController: UITableViewController {
     var imageData: Data!
     var widgetData: Data!
     var timer = Timer()
+    let defaultImage = UIImage(named: "defaultImage.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         url = "https://source.unsplash.com/random"
         
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            setTimer()
-        }
+//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+//            setTimer()
+//
+//            NotificationCenter.default.addObserver(self, selector: #selector(setTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(cancelTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,12 +51,25 @@ class SettingsViewController: UITableViewController {
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         
         getImage()
+//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+//            setTimer()
+//        }
     }
     
-    func setTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
-        WidgetCenter.shared.reloadAllTimelines()
-    }
+//    @objc func cancelTimer() {
+//        NotificationCenter.default.removeObserver(self)
+//    }
+//
+//    @objc func setTimer() {
+////        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { Timer in
+//            self.getImage()
+//            if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
+//                Timer.invalidate()
+//            }
+//        }
+////        WidgetCenter.shared.reloadAllTimelines()
+//    }
     
     @objc func getImage() {
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
@@ -64,7 +81,7 @@ class SettingsViewController: UITableViewController {
                 self.imageData = try? Data(contentsOf: imageURL)
                 
                 DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: self.imageData)
+                    self.imageView.image = UIImage(data: ((self.imageData) ?? self.defaultImage?.pngData())!)
                     self.widgetData = self.imageData
                     UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "imageData")
                     WidgetCenter.shared.reloadAllTimelines()
@@ -76,13 +93,16 @@ class SettingsViewController: UITableViewController {
     @IBAction func tapImageSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
         
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            getImage()
-            setTimer()
-        } else {
-            timer.invalidate()
-            print("timer end")
-        }
+//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+//            getImage()
+////            setTimer()
+//            NotificationCenter.default.addObserver(self, selector: #selector(setTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(cancelTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
+//        } else {
+//            NotificationCenter.default.removeObserver(self)
+//            timer.invalidate()
+//            print("timer end")
+//        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {

@@ -72,7 +72,7 @@
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
 /* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
-"kyd-qH-UQ6.text" = " Endless working now 🏃🏻 ";
+"kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
 
 /* Class = "UITableViewSection"; footerTitle = "Automatically change photo once an hour or each time when tap is opened. Also can see this in widgets and Less than 500KB of data will be used."; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "한 시간에 한 번 또는 탭이 열릴 때마다 사진을 자동으로 변경합니다. 위젯에서도 이 정보를 볼 수 있으며, 500KB 미만의 데이터가 사용됩니다.";
