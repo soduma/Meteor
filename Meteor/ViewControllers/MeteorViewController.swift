@@ -85,10 +85,10 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                 // Tracking authorization completed. Start loading ads here.
                 // loadAd()
-                self.firstLoadAd()
+//                self.firstLoadAd()
             })
         } else {
-            firstLoadAd()
+//            firstLoadAd()
         }
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
@@ -114,7 +114,14 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+//
+//        let fore = UserDefaults.standard.double(forKey: "foreDate")
+//        let back = UserDefaults.standard.double(forKey: "backDate")
+//        let minus = Int(fore - back)
+//        print(fore)
+//        print(back)
+//        print(minus)
+//
         if Reachability.isConnectedToNetwork() == false {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
@@ -362,24 +369,102 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 self.repeatTimerLabel.alpha = 1
             })
             
+//            // 타이머
+//            var clickDate = Date()
+//            print(clickDate)
+//
+//            let timePickerSecond = Int(timePicker.countDownDuration)
+//            self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+//
+//            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+//                let remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+//                self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+//                print(remainSeconds)
+//
+//                if remainSeconds < 2 {
+//                    let newDate = Date()
+//                    let timeInterval = newDate.timeIntervalSince1970 + 0.5
+//                    clickDate = Date(timeIntervalSince1970: timeInterval)
+//                }
+//
+//                if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
+//                    Timer.invalidate()
+//                    print("timer invalidate")
+//                }
+//            }
+            
+//            // 타이머 성공
+//            var clickDate = Date()
+////            print(clickDate)
+//
+//            let timePickerSecond = Int(timePicker.countDownDuration)
+//            self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+//
+//            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+//                let remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+//                self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+//                print(remainSeconds)
+//
+//                if remainSeconds < 2 {
+//                    let newDate = Date()
+//                    clickDate = newDate
+//                }
+//
+//                if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
+//                    Timer.invalidate()
+//                    print("timer invalidate")
+//                }
+//            }
+            
+//            // 타이머 성공
+//            var clickDate = Date()
+////            print(clickDate)
+//            
+//            let timePickerSecond = Int(timePicker.countDownDuration)
+//            self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+//            
+//            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+//                let remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+//                self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+//                print(remainSeconds)
+//                
+//                if remainSeconds < 2 {
+//                    let newDate = Date()
+//                    clickDate = newDate
+//                }
+//                
+//                
+//                if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
+//                    Timer.invalidate()
+//                    print("timer invalidate")
+//                }
+//            }
+            
             // 타이머
-            var clickDate = Date()
-            print(clickDate)
-            
+//            var clickDate = Date()
+//            print(clickDate)
+
             let timePickerSecond = Int(timePicker.countDownDuration)
+//            let timePickerSecond = 5
+            var usedSecond = 0
             self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
-            
+
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
-                let remainSeconds = Int(timePickerSecond) - Int(Date().timeIntervalSince(clickDate))
+                usedSecond = usedSecond + 1
+                let remainSeconds = Int(timePickerSecond) - usedSecond
                 self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
                 print(remainSeconds)
-                
-                if remainSeconds < 2 {
-                    let newDate = Date()
-                    let timeInterval = newDate.timeIntervalSince1970 + 0.5
-                    clickDate = Date(timeIntervalSince1970: timeInterval)
+
+//                if remainSeconds < 2 {
+//                    let newDate = Date()
+//                    let timeInterval = newDate.timeIntervalSince1970 + 0.5
+//                    clickDate = Date(timeIntervalSince1970: timeInterval)
+//                }
+
+                if usedSecond == timePickerSecond - 1 {
+                    usedSecond = -1
                 }
-                
+
                 if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
                     Timer.invalidate()
                     print("timer invalidate")
