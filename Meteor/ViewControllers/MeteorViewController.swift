@@ -81,15 +81,12 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             UserDefaults.standard.set(true, forKey: "First Launch")
         }
         
-        if #available(iOS 14.0, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                // Tracking authorization completed. Start loading ads here.
-                // loadAd()
-//                self.firstLoadAd()
-            })
-        } else {
-//            firstLoadAd()
-        }
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+            // Tracking authorization completed. Start loading ads here.
+            // loadAd()
+            self.firstLoadAd()
+        })
+        
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
         })
@@ -114,14 +111,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//
-//        let fore = UserDefaults.standard.double(forKey: "foreDate")
-//        let back = UserDefaults.standard.double(forKey: "backDate")
-//        let minus = Int(fore - back)
-//        print(fore)
-//        print(back)
-//        print(minus)
-//
+        
         if Reachability.isConnectedToNetwork() == false {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
@@ -306,6 +296,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         print(timePicker.countDownDuration)
     }
     
+    //MARK: - SEND LOGIC
+    
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
             self.repeatWorkingLabel.alpha = 0
@@ -409,7 +401,8 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             if let text = meteorTextField.text {
                 let timer = timePicker.countDownDuration
                 let locale = TimeZone.current.identifier
-                self.db.child("repeatText").childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
+                guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+                self.db.child("repeatText").child(user).childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
             }
             
         } else {
