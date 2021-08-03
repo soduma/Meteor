@@ -20,8 +20,9 @@
 - Library : Firebase
 - Etc: [Upsplash](https://source.unsplash.com/random) (Random 이미지 생성용) 
 
-## Description
-### Main Function
+  
+
+### 주요 기능
 - 텍스트 필드에 입력한 내용을 Push Notification으로 receive할 수 있도록 구현함.
 - 또한 Push를 사용자가 지정한 시간 간격으로 계속해서 받을 수 있고, Push가 도착할 때까지 남은 시간을 표시하는 Timer 구현함.
 - UICollectionView를 사용하여 탭 하단의 View에서 입력된 내용을 표현, Data의 수정과 삭제가 가능함.
