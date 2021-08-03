@@ -11,3 +11,22 @@
 
 *한국어, 영어에 대해 현지화가 되어 있습니다.*
 - [App Store](https://apps.apple.com/kr/app/meteor/id1562989730)
+
+---
+
+## 사용 기술
+- Language : Swift
+- Framework : UIKit, Foundation, WidgetKit
+- Library : Firebase
+- Etc: [Upsplash](https://source.unsplash.com/random) (Random 이미지 생성용) 
+
+## Description
+### Main Function
+- 텍스트 필드에 입력한 내용을 Push Notification으로 receive할 수 있도록 구현함.
+- 또한 Push를 사용자가 지정한 시간 간격으로 계속해서 받을 수 있고, Push가 도착할 때까지 남은 시간을 표시하는 Timer 구현함.
+- UICollectionView를 사용하여 탭 하단의 View에서 입력된 내용을 표현, Data의 수정과 삭제가 가능함.
+- Link를 통해 받아온 Image를 ImageView에 담아 이를 Widget에서도 볼 수 있도록 구현함.
+
+### 신경 쓴 부분
+- 기능상 Alert 권한이 필수적이기 때문에 denied 되었을 경우 사용자에게 알리고, Background에서 Foreground로 돌아올 때 자연스러운 사용이 가능하도록 구현함.
+- Background Task에 대한 이해가 부족해 Timer가 계속 맞지 않는 것을 발견하고, Timer가 처음 동작할 때의 Date를 받아와서 이를 이용해 Push까지의 남은 시간을 표현하도록 함.
