@@ -12,7 +12,7 @@ import AppTrackingTransparency
 import AdSupport
 import Firebase
 
-class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
+class MeteorViewController: UIViewController {
     
     @IBOutlet weak var meteorHeadLabel: UILabel!
     @IBOutlet weak var meteorTextField: UITextField!
@@ -54,44 +54,77 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db.child("adIndex").observeSingleEvent(of: .value) { snapshot in
+        checkFirstAppLaunch()
+        changeApperanceMode()
+        layout()
+        
+        db.child("adIndex").observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else { return }
             self.firebaseIndex = snapshot.value as? Int ?? 0
 //            print(self.firebaseIndex)
         }
         
-        if let window = UIApplication.shared.windows.first {
-            if #available(iOS 13.0, *) {
-                if UserDefaults.standard.bool(forKey: "lightState") == true {
-                    window.overrideUserInterfaceStyle = .light
-                } else if UserDefaults.standard.bool(forKey: "darkState") == true {
-                    window.overrideUserInterfaceStyle = .dark
-                } else {
-                    window.overrideUserInterfaceStyle = .unspecified
-                }
-            }
-        }
-        
-        if UserDefaults.standard.bool(forKey: "First Launch") == false {
-            // first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
-            UserDefaults.standard.set(true, forKey: "imageSwitch")
-        } else {
-            // not first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-        }
-        
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
+            guard let self = self else { return }
             // Tracking authorization completed. Start loading ads here.
             // loadAd()
             self.firstLoadAd()
         })
         
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound], completionHandler: {(didAllow, error) in
-        })
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
+        }
         UNUserNotificationCenter.current().delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        if Reachability.isConnectedToNetwork() == false {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+        
+        //앱 강제종료시 타이머 유무 체크
+        if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
+            self.repeatWorkingLabel.alpha = 1
+            self.repeatTimerLabel.alpha = 1
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(checkNetworkConnection), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func checkNetworkConnection() {
+        if Reachability.isConnectedToNetwork() == false {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
+    
+    @objc func notiAuthCheck() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { [weak self] settings in
+            guard let self = self else { return }
+            if settings.authorizationStatus == .authorized {
+                print("Push notification is enabled")
+                self.prepareAuthView()
+            }
+        }
+    }
+    
+    private func layout() {
         noticeLabel.text = notice[0]
         noticeView.layer.cornerRadius = 15
         pageControl.numberOfPages = notice.count
@@ -109,121 +142,62 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         repeatCancelView.alpha = 0
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if Reachability.isConnectedToNetwork() == false {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
-        }
-        
-        if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
-            self.repeatWorkingLabel.alpha = 1
-            self.repeatTimerLabel.alpha = 1
+    private func checkFirstAppLaunch() {
+        if UserDefaults.standard.bool(forKey: "First Launch") == false {
+            // first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
+            UserDefaults.standard.set(true, forKey: "imageSwitch")
+        } else {
+            // not first
+            UserDefaults.standard.set(true, forKey: "First Launch")
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notiAuthCheck),
-                                               name: UIApplication.willEnterForegroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkNetworkConnection),
-                                               name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-    private func firstLoadAd() {
-        let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
-
-                               request: request,
-                               completionHandler: { [self] ad, error in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                interstitial = ad
-                                interstitial?.fullScreenContentDelegate = self
-                               }
-        )
-    }
-
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-
-        let request2 = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
-
-                               request: request2,
-                               completionHandler: { [self] ad, error in
-                                if let error = error {
-                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                    return
-                                }
-                                interstitial = ad
-                                interstitial?.fullScreenContentDelegate = self
-                               }
-        )
-        print("Ad did dismiss full screen content.")
-    }
-    // --------------------------------
-    
-    @objc func checkNetworkConnection() {
-        if Reachability.isConnectedToNetwork() == false {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
-        }
-    }
-    
-    @objc func notiAuthCheck() {
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { (settings) in
-            
-            if settings.authorizationStatus == .authorized {
-                print("Push notification is enabled")
-                self.prepareAuthView()
+    private func changeApperanceMode() {
+        if let window = UIApplication.shared.windows.first {
+            if UserDefaults.standard.bool(forKey: "lightState") == true {
+                window.overrideUserInterfaceStyle = .light
+            } else if UserDefaults.standard.bool(forKey: "darkState") == true {
+                window.overrideUserInterfaceStyle = .dark
+            } else {
+                window.overrideUserInterfaceStyle = .unspecified
             }
         }
     }
     
     private func prepareAuthView() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.authViewBottom.constant = self.view.bounds.height
         }
+    }
+    
+    private func secondsToString(seconds: Int) -> String {
+        let totalSeconds = Int(seconds)
+        let min = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%02d:%02d", min, seconds)
     }
     
     @IBAction func inputContent(_ sender: UITextField) {
         //알림 권한
         let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { (settings) in
-            
+        center.getNotificationSettings { [weak self] settings in
+            guard let self = self else { return }
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
-                DispatchQueue.main.async {
+                
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
                     self.authView.isHidden = false
                     self.meteorTextField.resignFirstResponder()
                     self.authViewBottom.constant = -self.view.bounds.height
-                    UIView.animate(withDuration: 0.5, animations: { self.authView.layoutIfNeeded() })
                     self.meteorTextField.text = ""
+                    
+                    UIView.animate(withDuration: 0.5, animations: { [weak self] in
+                        guard let self = self else { return }
+                        self.authView.layoutIfNeeded() })
                 }
             }
         }
@@ -259,6 +233,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     @IBAction func pageChanged(_ sender: UIPageControl) {
         noticeLabel.text = notice[pageControl.currentPage]
+        noticeViewIndex = pageControl.currentPage
     }
     
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
@@ -272,6 +247,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     
     @IBAction func tapRepeatButton(_ sender: UIButton) {
         repeatButton.isSelected = !repeatButton.isSelected
+        
         if repeatButton.isSelected {
             meteorHeadLabel.text = "ENDLESS \nMETEOR :"
             timePicker.isEnabled = true
@@ -283,12 +259,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
         
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            if #available(iOS 13.0, *) {
-                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-            } else {
-                let generator = UIImpactFeedbackGenerator(style: .medium)
-                generator.impactOccurred()
-            }
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
     }
     
@@ -297,17 +268,21 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     //MARK: - SEND LOGIC
-    
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
+            meteorTextField.resignFirstResponder()
+            print("Stop Repeat")
+            
             self.repeatWorkingLabel.alpha = 0
             self.repeatTimerLabel.alpha = 0
-            
             self.repeatCancelView.alpha = 1
+            
             UIView.animate(withDuration: 0.5,
                            delay: 1.5,
                            options: .allowUserInteraction,
-                           animations: { self.repeatCancelView.alpha = 0 },
+                           animations: { [weak self] in
+                guard let self = self else { return }
+                self.repeatCancelView.alpha = 0 },
                            completion: nil)
             
             UserDefaults.standard.set(false, forKey: "repeatIdling")
@@ -316,10 +291,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.success)
             }
-            
-            meteorTextField.resignFirstResponder()
-            print("Stop Repeat")
-            
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
@@ -340,11 +311,16 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         }
         // --------------------------------
         
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+        }
+        
         notificationCountIndex += 1
         if notificationCountIndex > 8 {
             notificationCountIndex = 0
+            print("notificationCountIndex: \(notificationCountIndex)")
         }
-        print("notificationCountIndex: \(notificationCountIndex)")
         
         if repeatButton.isSelected {
             let contents = UNMutableNotificationContent()
@@ -356,54 +332,46 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: { [weak self] in
+                guard let self = self else { return }
                 self.repeatWorkingLabel.alpha = 1
                 self.repeatTimerLabel.alpha = 1
             })
             
             // 타이머 성공
             let clickDate = Date()
-//            print(clickDate)
-
             let timePickerSecond = Int(timePicker.countDownDuration)
 //            let timePickerSecond = 5
             var remainSeconds = 0
             self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
 
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { Timer in
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+                guard let self = self else { return }
                 let passSecond = Int(round(Date().timeIntervalSince(clickDate)))
                 print(passSecond)
                 
                 if passSecond < timePickerSecond {
                     remainSeconds = timePickerSecond - passSecond
-                    self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+                    self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
                 } else {
                     remainSeconds = timePickerSecond - (passSecond % timePickerSecond)
-                    self.repeatTimerLabel.text = secondsToString(seconds: remainSeconds)
+                    self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
                 }
                 
                 if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
-                    Timer.invalidate()
+                    timer.invalidate()
                     print("timer invalidate")
                 }
             }
             
-            func secondsToString(seconds: Int) -> String {
-                let totalSeconds = Int(seconds)
-                let min = totalSeconds / 60
-                let seconds = totalSeconds % 60
-                return String(format: "%02d:%02d", min, seconds)
-            }
-            
-            UserDefaults.standard.set(true, forKey: "repeatIdling")
-//            print(UserDefaults.standard.bool(forKey: "repeatIdling"))
-
             if let text = meteorTextField.text {
                 let timer = timePicker.countDownDuration
                 let locale = TimeZone.current.identifier
                 guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
                 self.db.child("repeatText").child(user).childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
             }
+            
+            UserDefaults.standard.set(true, forKey: "repeatIdling")
             
         } else {
             let contents = UNMutableNotificationContent()
@@ -413,7 +381,6 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
             let request = UNNotificationRequest(identifier: "\(notificationCountIndex)timerdone", content: contents, trigger: trigger)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//            print("notificationIndex: \(notificationIndex)")
             
             if let text = meteorTextField.text {
                 let dateFormatter = DateFormatter()
@@ -421,8 +388,7 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
                 
                 let dateTime = dateFormatter.string(from: Date())
                 let locale = TimeZone.current.identifier
-//                print(TimeZone.current.identifier)
-//                self.db.child("meteorText").childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+
                 guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
                 self.db.child("meteorText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
             }
@@ -433,20 +399,64 @@ class MeteorViewController: UIViewController, GADFullScreenContentDelegate {
         meteorHeadLabel.text = "METEOR :"
         timePicker.isEnabled = false
         timePicker.isHidden = true
-        
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-        }
     }
 }
 
 extension MeteorViewController : UNUserNotificationCenterDelegate {
     //To display notifications when app is running  inforeground
-    //앱이 foreground에 있을 때. 즉 앱안에 있어도 push알림을 받게 해줍니다.
-    //viewDidLoad()에 UNUserNotificationCenter.current().delegate = self를 추가해주는 것을 잊지마세요.
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        completionHandler([.alert, .sound])
-        completionHandler([.banner, .list, .sound])
+    //viewDidLoad() UNUserNotificationCenter.current().delegate = self
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        [.banner, .list, .sound, .badge]
     }
+}
+
+extension MeteorViewController: GADFullScreenContentDelegate {
+    // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+    private func firstLoadAd() {
+        let request = GADRequest()
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/8071718444", // 전면 1
+
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                                }
+        )
+    }
+
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+
+    /// Tells the delegate that the ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+
+        let request2 = GADRequest()
+//        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", // 테스트
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-1960781437106390/9294984986", // 전면 2
+
+                               request: request2,
+                               completionHandler: { [self] ad, error in
+                                if let error = error {
+                                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                    return
+                                }
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                                }
+        )
+        print("Ad did dismiss full screen content.")
+    }
+    // --------------------------------
 }
