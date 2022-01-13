@@ -23,7 +23,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     let db = Database.database().reference()
-    var url = ""
+    var url = "https://source.unsplash.com/random"
     var imageData: Data!
     var widgetData: Data!
     var timer = Timer()
@@ -32,14 +32,6 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        url = "https://source.unsplash.com/random"
-        
-//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-//            setTimer()
-//
-//            NotificationCenter.default.addObserver(self, selector: #selector(setTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
-//            NotificationCenter.default.addObserver(self, selector: #selector(cancelTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,25 +43,7 @@ class SettingsViewController: UITableViewController {
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         
         getImage()
-//        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-//            setTimer()
-//        }
     }
-    
-//    @objc func cancelTimer() {
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//
-//    @objc func setTimer() {
-//        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getImage), userInfo: nil, repeats: true)
-//        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { Timer in
-//            self.getImage()
-//            if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
-//                Timer.invalidate()
-//            }
-//        }
-//        WidgetCenter.shared.reloadAllTimelines()
-//    }
     
     @objc func getImage() {
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
@@ -95,34 +69,19 @@ class SettingsViewController: UITableViewController {
         
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
             getImage()
-//            setTimer()
-//            NotificationCenter.default.addObserver(self, selector: #selector(setTimer), name: UIApplication.didEnterBackgroundNotification, object: nil)
-//            NotificationCenter.default.addObserver(self, selector: #selector(cancelTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
-//        } else {
-//            NotificationCenter.default.removeObserver(self)
-//            timer.invalidate()
-//            print("timer end")
         }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
+            UIApplication.shared.open(url)
         }
     }
     
     @IBAction func tapReview(_ sender: Any) {
         if let url = URL(string: "itms-apps://itunes.apple.com/app/1562989730"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
+            UIApplication.shared.open(url)
         }
     }
     
@@ -130,12 +89,10 @@ class SettingsViewController: UITableViewController {
         darkModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
-            if #available(iOS 13.0, *) {
-                if lightModeSwitch.isOn == true {
-                    window.overrideUserInterfaceStyle = .light
-                } else if lightModeSwitch.isOn == false {
-                    window.overrideUserInterfaceStyle = .unspecified
-                }
+            if lightModeSwitch.isOn == true {
+                window.overrideUserInterfaceStyle = .light
+            } else if lightModeSwitch.isOn == false {
+                window.overrideUserInterfaceStyle = .unspecified
             }
         }
         
@@ -147,12 +104,10 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
-            if #available(iOS 13.0, *) {
-                if darkModeSwitch.isOn == true {
-                    window.overrideUserInterfaceStyle = .dark
-                } else if darkModeSwitch.isOn == false {
-                    window.overrideUserInterfaceStyle = .unspecified
-                }
+            if darkModeSwitch.isOn == true {
+                window.overrideUserInterfaceStyle = .dark
+            } else if darkModeSwitch.isOn == false {
+                window.overrideUserInterfaceStyle = .unspecified
             }
         }
         
