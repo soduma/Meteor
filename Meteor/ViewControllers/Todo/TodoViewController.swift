@@ -31,7 +31,6 @@ class TodoViewController: UIViewController {
     var db = Database.database().reference()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "showModify" {
             let vc = segue.destination as? ModifyViewController
             if let index = sender as? Int {
@@ -52,13 +51,13 @@ class TodoViewController: UIViewController {
         textFieldBlurView.layer.cornerRadius = 21
         
         tapGestureRecognizer.isEnabled = false
-//        shortTextField.isHidden = true
-//        sendButton.isHidden = true
         xButton.isHidden = true
         textFieldBlurView.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,17 +67,12 @@ class TodoViewController: UIViewController {
     }
     
     func getBottomViewImage() {
-//        if UserDefaults.standard.bool(forKey: "imageSwitch") == false {
-////            self.imageView.image = nil
-//
-//        } else {
-            DispatchQueue.global(qos: .userInteractive).async {
-                let url = "https://picsum.photos/400/100"
-                guard let imageURL = URL(string: url) else { return }
-                guard let data = try? Data(contentsOf: imageURL) else { return }
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
-//                }
+        DispatchQueue.global(qos: .userInteractive).async {
+            let url = "https://picsum.photos/400/100"
+            guard let imageURL = URL(string: url) else { return }
+            guard let data = try? Data(contentsOf: imageURL) else { return }
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
             }
         }
     }
@@ -92,10 +86,8 @@ class TodoViewController: UIViewController {
                 if noti.name == UIResponder.keyboardWillShowNotification {
                     let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
                     self.bottomViewBottom.constant = adjustmentHeight + 5
-//                    self.collectionViewBottom.constant = adjustmentHeight
                 } else {
                     self.bottomViewBottom.constant = 5
-//                    self.collectionViewBottom.constant = 0
                 }
                 self.view.layoutIfNeeded()
             }
@@ -119,11 +111,9 @@ class TodoViewController: UIViewController {
             longBlurView.isHidden = false
             shortBlurView.isHidden = false
             xButton.isHidden = true
-//            shortTextField.isHidden = true
-//            sendButton.isHidden = true
             textFieldBlurView.isHidden = true
-            shortTextField.resignFirstResponder()
             tapGestureRecognizer.isEnabled = false
+            shortTextField.resignFirstResponder()
         }
     }
     
@@ -142,11 +132,9 @@ class TodoViewController: UIViewController {
         longBlurView.isHidden = true
         shortBlurView.isHidden = true
         xButton.isHidden = false
-//        shortTextField.isHidden = false
-//        sendButton.isHidden = false
         textFieldBlurView.isHidden = false
-        shortTextField.becomeFirstResponder()
         tapGestureRecognizer.isEnabled = true
+        shortTextField.becomeFirstResponder()
         
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
             let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -158,8 +146,6 @@ class TodoViewController: UIViewController {
         longBlurView.isHidden = false
         shortBlurView.isHidden = false
         xButton.isHidden = true
-//        shortTextField.isHidden = true
-//        sendButton.isHidden = true
         textFieldBlurView.isHidden = true
         shortTextField.text = ""
         shortTextField.resignFirstResponder()
@@ -194,7 +180,6 @@ class TodoViewController: UIViewController {
 }
 
 extension TodoViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return todoViewModel.todos.count
     }
@@ -225,16 +210,13 @@ extension TodoViewController: UICollectionViewDataSource {
 }
 
 extension TodoViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             performSegue(withIdentifier: "showModify", sender: indexPath.item)
     }
 }
 
 extension TodoViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = 50
         return CGSize(width: width, height: height)
@@ -298,12 +280,7 @@ class TodoCell: UICollectionViewCell {
         doneButtonTapHandler?(isDone)
         
         if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            if #available(iOS 13.0, *) {
-                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-            } else {
-                let generator = UIImpactFeedbackGenerator(style: .medium)
-                generator.impactOccurred()
-            }
+            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
         }
     }
     
@@ -313,7 +290,7 @@ class TodoCell: UICollectionViewCell {
     
     // 셀 클릭시 하이라이트
     override var isSelected: Bool {
-        didSet{
+        didSet {
             if self.isSelected {
                 UIView.animate(withDuration: 0.5) {
                     self.backgroundColor = UIColor.systemGray4
