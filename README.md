@@ -16,7 +16,7 @@
 
 ### 사용 기술
 - Language : Swift
-- Framework : UIKit, Foundation, WidgetKit
+- Framework : UIKit, WidgetKit
 - Library : Firebase
 - Etc: [Upsplash](https://source.unsplash.com/random) (Random 이미지 생성용) 
 
