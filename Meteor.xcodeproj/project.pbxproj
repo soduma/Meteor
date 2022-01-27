@@ -150,6 +150,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A04E305827A28E7E008C9993 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0E85764268C916800E10831 /* Reachability.swift */,
+				A0ED409A2601FD87009990ED /* Todo.swift */,
+				A0ED409E2602244E009990ED /* Storage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A04E305A27A28EC6008C9993 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				A04AE61726453C1F008BB99C /* TabBar.swift */,
+				A0ED40A326022473009990ED /* ViewControllers */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		A0998A4225FC99E7001BAEFD = {
 			isa = PBXGroup;
 			children = (
@@ -180,8 +199,8 @@
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
 				A06A51EE2634075E003DAEEF /* Localizable.strings */,
-				A04AE61726453C1F008BB99C /* TabBar.swift */,
-				A0ED40A326022473009990ED /* ViewControllers */,
+				A04E305827A28E7E008C9993 /* Model */,
+				A04E305A27A28EC6008C9993 /* Scene */,
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
 				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
@@ -196,8 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				A0A4C12725FE25890090A214 /* TodoViewController.swift */,
-				A0ED409A2601FD87009990ED /* Todo.swift */,
-				A0ED409E2602244E009990ED /* Storage.swift */,
 				A0ED408E26009DB5009990ED /* InputViewController.swift */,
 				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
@@ -208,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
-				A0E85764268C916800E10831 /* Reachability.swift */,
 				A0ED40A12602245F009990ED /* Todo */,
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,

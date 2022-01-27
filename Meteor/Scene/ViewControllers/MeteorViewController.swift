@@ -106,80 +106,6 @@ class MeteorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func checkNetworkConnection() {
-        if Reachability.isConnectedToNetwork() == false {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
-        }
-    }
-    
-    @objc func notiAuthCheck() {
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { [weak self] settings in
-            guard let self = self else { return }
-            if settings.authorizationStatus == .authorized {
-                print("Push notification is enabled")
-                self.prepareAuthView()
-            }
-        }
-    }
-    
-    private func layout() {
-        noticeLabel.text = notice[0]
-        noticeView.layer.cornerRadius = 15
-        pageControl.numberOfPages = notice.count
-        
-        authView.layer.cornerRadius = 20
-        authView.isHidden = true
-        
-        eraseTextButton.isHidden = true
-        repeatButton.isSelected = false
-        timePicker.isEnabled = false
-        timePicker.isHidden = true
-        
-        repeatWorkingLabel.alpha = 0
-        repeatTimerLabel.alpha = 0
-        repeatCancelView.alpha = 0
-    }
-    
-    private func checkFirstAppLaunch() {
-        if UserDefaults.standard.bool(forKey: "First Launch") == false {
-            // first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
-            UserDefaults.standard.set(true, forKey: "imageSwitch")
-        } else {
-            // not first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-        }
-    }
-    
-    private func changeApperanceMode() {
-        if let window = UIApplication.shared.windows.first {
-            if UserDefaults.standard.bool(forKey: "lightState") == true {
-                window.overrideUserInterfaceStyle = .light
-            } else if UserDefaults.standard.bool(forKey: "darkState") == true {
-                window.overrideUserInterfaceStyle = .dark
-            } else {
-                window.overrideUserInterfaceStyle = .unspecified
-            }
-        }
-    }
-    
-    private func prepareAuthView() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.authViewBottom.constant = self.view.bounds.height
-        }
-    }
-    
-    private func secondsToString(seconds: Int) -> String {
-        let totalSeconds = Int(seconds)
-        let min = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        return String(format: "%02d:%02d", min, seconds)
-    }
-    
     @IBAction func inputContent(_ sender: UITextField) {
         //알림 권한
         let center = UNUserNotificationCenter.current()
@@ -399,6 +325,82 @@ class MeteorViewController: UIViewController {
         meteorHeadLabel.text = "METEOR :"
         timePicker.isEnabled = false
         timePicker.isHidden = true
+    }
+}
+
+extension MeteorViewController {
+    @objc func checkNetworkConnection() {
+        if Reachability.isConnectedToNetwork() == false {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
+    
+    @objc func notiAuthCheck() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { [weak self] settings in
+            guard let self = self else { return }
+            if settings.authorizationStatus == .authorized {
+                print("Push notification is enabled")
+                self.prepareAuthView()
+            }
+        }
+    }
+    
+    private func layout() {
+        noticeLabel.text = notice[0]
+        noticeView.layer.cornerRadius = 15
+        pageControl.numberOfPages = notice.count
+        
+        authView.layer.cornerRadius = 20
+        authView.isHidden = true
+        
+        eraseTextButton.isHidden = true
+        repeatButton.isSelected = false
+        timePicker.isEnabled = false
+        timePicker.isHidden = true
+        
+        repeatWorkingLabel.alpha = 0
+        repeatTimerLabel.alpha = 0
+        repeatCancelView.alpha = 0
+    }
+    
+    private func checkFirstAppLaunch() {
+        if UserDefaults.standard.bool(forKey: "First Launch") == false {
+            // first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
+            UserDefaults.standard.set(true, forKey: "imageSwitch")
+        } else {
+            // not first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+        }
+    }
+    
+    private func changeApperanceMode() {
+        if let window = UIApplication.shared.windows.first {
+            if UserDefaults.standard.bool(forKey: "lightState") == true {
+                window.overrideUserInterfaceStyle = .light
+            } else if UserDefaults.standard.bool(forKey: "darkState") == true {
+                window.overrideUserInterfaceStyle = .dark
+            } else {
+                window.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+    }
+    
+    private func prepareAuthView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.authViewBottom.constant = self.view.bounds.height
+        }
+    }
+    
+    private func secondsToString(seconds: Int) -> String {
+        let totalSeconds = Int(seconds)
+        let min = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%02d:%02d", min, seconds)
     }
 }
 
