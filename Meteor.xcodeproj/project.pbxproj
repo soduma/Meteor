@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07EBE8BCC888E7FC9F768731 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C3052525D326ADB202029E /* Pods_Meteor.framework */; };
 		A018483526A551C700DC3A59 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483426A551C700DC3A59 /* WidgetKit.framework */; };
 		A018483726A551C700DC3A59 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483626A551C700DC3A59 /* SwiftUI.framework */; };
 		A018483A26A551C700DC3A59 /* MeteorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A018483926A551C700DC3A59 /* MeteorWidget.swift */; };
@@ -32,7 +33,6 @@
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
-		C3240141A0AFFD605A64B4A1 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634D0D8C195E1CC9AADD3665 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E90753366221C85C39A39F0 /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
-		634D0D8C195E1CC9AADD3665 /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D65689F39FA9B44A78FCCD /* Pods-Meteor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.release.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.release.xcconfig"; sourceTree = "<group>"; };
+		70DA5695B3FCA748EEF6FCE4 /* Pods-Meteor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.debug.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.debug.xcconfig"; sourceTree = "<group>"; };
 		A00DE0A526A5735900AC2F38 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		A018483326A551C700DC3A59 /* MeteorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeteorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A018483426A551C700DC3A59 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -88,14 +88,12 @@
 		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		A0AAB011262ABE3900D6E5EB /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_logo.png; sourceTree = "<group>"; };
-		A0AAB021262C01A000D6E5EB /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
-		A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
-		D78AA23A3EE935F671D1B0E5 /* Pods-Meteor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meteor.debug.xcconfig"; path = "Target Support Files/Pods-Meteor/Pods-Meteor.debug.xcconfig"; sourceTree = "<group>"; };
+		B6C3052525D326ADB202029E /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3240141A0AFFD605A64B4A1 /* Pods_Meteor.framework in Frameworks */,
+				07EBE8BCC888E7FC9F768731 /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,11 +120,9 @@
 		2E19E502B0E8C49E10E0635A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0AAB021262C01A000D6E5EB /* GoogleAppMeasurement.xcframework */,
-				A0AAB023262C01A000D6E5EB /* GoogleMobileAds.xcframework */,
 				A018483426A551C700DC3A59 /* WidgetKit.framework */,
 				A018483626A551C700DC3A59 /* SwiftUI.framework */,
-				634D0D8C195E1CC9AADD3665 /* Pods_Meteor.framework */,
+				B6C3052525D326ADB202029E /* Pods_Meteor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,15 +135,6 @@
 				A018483D26A551C800DC3A59 /* Info.plist */,
 			);
 			path = MeteorWidget;
-			sourceTree = "<group>";
-		};
-		A02776A7C7AE5590E09E09E6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D78AA23A3EE935F671D1B0E5 /* Pods-Meteor.debug.xcconfig */,
-				1E90753366221C85C39A39F0 /* Pods-Meteor.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		A04E305827A28E7E008C9993 /* Model */ = {
@@ -176,8 +163,8 @@
 				A0998A4D25FC99E7001BAEFD /* Meteor */,
 				A018483826A551C700DC3A59 /* MeteorWidget */,
 				A0998A4C25FC99E7001BAEFD /* Products */,
-				A02776A7C7AE5590E09E09E6 /* Pods */,
 				2E19E502B0E8C49E10E0635A /* Frameworks */,
+				FCD726DE8B6F35402C3E2E6B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,6 +219,16 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		FCD726DE8B6F35402C3E2E6B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70DA5695B3FCA748EEF6FCE4 /* Pods-Meteor.debug.xcconfig */,
+				30D65689F39FA9B44A78FCCD /* Pods-Meteor.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,12 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0998A5F25FC99E9001BAEFD /* Build configuration list for PBXNativeTarget "Meteor" */;
 			buildPhases = (
-				1E66BE08B8DAEF20A88FEA1B /* [CP] Check Pods Manifest.lock */,
+				C2086F4EADF2673285BB10A6 /* [CP] Check Pods Manifest.lock */,
 				A0998A4725FC99E7001BAEFD /* Sources */,
 				A0998A4825FC99E7001BAEFD /* Frameworks */,
 				A0998A4925FC99E7001BAEFD /* Resources */,
 				A018484126A551C800DC3A59 /* Embed App Extensions */,
-				5F424A71A95F082344562E01 /* [CP] Embed Pods Frameworks */,
+				700B2A6627753236A4010136 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,7 +334,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E66BE08B8DAEF20A88FEA1B /* [CP] Check Pods Manifest.lock */ = {
+		700B2A6627753236A4010136 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2086F4EADF2673285BB10A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,23 +371,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F424A71A95F082344562E01 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -635,7 +632,7 @@
 		};
 		A0998A6025FC99E9001BAEFD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D78AA23A3EE935F671D1B0E5 /* Pods-Meteor.debug.xcconfig */;
+			baseConfigurationReference = 70DA5695B3FCA748EEF6FCE4 /* Pods-Meteor.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -643,7 +640,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -662,7 +659,7 @@
 		};
 		A0998A6125FC99E9001BAEFD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E90753366221C85C39A39F0 /* Pods-Meteor.release.xcconfig */;
+			baseConfigurationReference = 30D65689F39FA9B44A78FCCD /* Pods-Meteor.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -670,7 +667,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
