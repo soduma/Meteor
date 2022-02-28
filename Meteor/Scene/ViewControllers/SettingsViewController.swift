@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import SwiftUI
 import WidgetKit
 
 class SettingsViewController: UITableViewController {
@@ -24,14 +23,17 @@ class SettingsViewController: UITableViewController {
     
     let db = Database.database().reference()
     var url = "https://source.unsplash.com/random"
-    var imageData: Data!
-    var widgetData: Data!
+    var imageData: Data?
+    var widgetData: Data?
     var timer = Timer()
     let defaultImage = UIImage(named: "defaultImage.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
+            imageView.image = UIImage(data: imageData)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,24 +44,26 @@ class SettingsViewController: UITableViewController {
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
         imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
         
-        getImage()
+        if UserDefaults.standard.bool(forKey: "imageSwitch") {
+            getImage()
+        }
     }
     
-    @objc func getImage() {
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? "https://source.unsplash.com/random"
-                }
-                guard let imageURL = URL(string: self.url) else { return }
-                self.imageData = try? Data(contentsOf: imageURL)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: ((self.imageData) ?? self.defaultImage?.pngData())!)
-                    self.widgetData = self.imageData
-                    UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "imageData")
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
+    func getImage() {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else { return }
+            self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
+                self.url = snapshot.value as? String ?? self.url
+            }
+            guard let imageURL = URL(string: self.url) else { return }
+            self.imageData = try? Data(contentsOf: imageURL)
+            
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: ((self.imageData) ?? self.defaultImage?.pngData())!)
+                self.widgetData = self.imageData
+                UserDefaults.standard.set(self.imageData, forKey: "imageData")
+                UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetData")
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
     }

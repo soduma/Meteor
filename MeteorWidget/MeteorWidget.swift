@@ -36,7 +36,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let data = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "imageData")
+    let data = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "widgetData")
 }
 
 struct MeteorWidgetEntryView : View {
