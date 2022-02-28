@@ -18,3 +18,7 @@ at specified time intervals.";
 
 "notice4" = "Send with a blank,
 Endless will be canceled.";
+
+"Endless Canceled" = "Endless Canceled";
+
+"Endless already been set" = "Endless already been set";
