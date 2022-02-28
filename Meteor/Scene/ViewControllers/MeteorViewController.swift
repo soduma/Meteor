@@ -11,6 +11,7 @@ import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
 import Firebase
+import AudioToolbox
 
 class MeteorViewController: UIViewController {
     
@@ -196,19 +197,19 @@ class MeteorViewController: UIViewController {
     //MARK: - SEND LOGIC
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
-            meteorTextField.resignFirstResponder()
             print("Stop Repeat")
             
-            self.repeatWorkingLabel.alpha = 0
-            self.repeatTimerLabel.alpha = 0
-            self.repeatCancelView.alpha = 1
+            meteorTextField.resignFirstResponder()
+            repeatWorkingLabel.alpha = 0
+            repeatTimerLabel.alpha = 0
+            repeatCancelView.alpha = 1
+            repeatCancelLabel.text = NSLocalizedString("Endless Canceled", comment: "")
             
             UIView.animate(withDuration: 0.5,
                            delay: 1.5,
                            options: .allowUserInteraction,
                            animations: { [weak self] in
-                guard let self = self else { return }
-                self.repeatCancelView.alpha = 0 },
+                self?.repeatCancelView.alpha = 0 },
                            completion: nil)
             
             UserDefaults.standard.set(false, forKey: "repeatIdling")
@@ -218,6 +219,17 @@ class MeteorViewController: UIViewController {
                 generator.notificationOccurred(.success)
             }
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
+        
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+        }
+        
+        notificationCountIndex += 1
+        if notificationCountIndex > 8 {
+            notificationCountIndex = 0
+            print("notificationCountIndex: \(notificationCountIndex)")
         }
         
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
@@ -237,87 +249,28 @@ class MeteorViewController: UIViewController {
         }
         // --------------------------------
         
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-        }
-        
-        notificationCountIndex += 1
-        if notificationCountIndex > 8 {
-            notificationCountIndex = 0
-            print("notificationCountIndex: \(notificationCountIndex)")
-        }
-        
         if repeatButton.isSelected {
-            let contents = UNMutableNotificationContent()
-            contents.title = "ENDLESS METEOR :"
-            contents.body = "\(content)"
-            contents.sound = UNNotificationSound.default
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
-            let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
-                guard let self = self else { return }
-                self.repeatWorkingLabel.alpha = 1
-                self.repeatTimerLabel.alpha = 1
-            })
-            
-            // 타이머 성공
-            let clickDate = Date()
-            let timePickerSecond = Int(timePicker.countDownDuration)
-//            let timePickerSecond = 5
-            var remainSeconds = 0
-            self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+            guard UserDefaults.standard.bool(forKey: "repeatIdling") == false else {
+                // 타이머가 이미 있으면 거절
+                repeatCancelLabel.text = NSLocalizedString("Endless already been set", comment: "")
+                repeatCancelView.alpha = 1
+                
+                UIView.animate(withDuration: 0.5,
+                               delay: 1.5,
+                               options: .allowUserInteraction,
+                               animations: { [weak self] in
+                    self?.repeatCancelView.alpha = 0 },
+                               completion: nil)
 
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
-                guard let self = self else { return }
-                let passSecond = Int(round(Date().timeIntervalSince(clickDate)))
-                print(passSecond)
-                
-                if passSecond < timePickerSecond {
-                    remainSeconds = timePickerSecond - passSecond
-                    self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
-                } else {
-                    remainSeconds = timePickerSecond - (passSecond % timePickerSecond)
-                    self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
+                if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
-                
-                if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
-                    timer.invalidate()
-                    print("timer invalidate")
-                }
+                return
             }
-            
-            if let text = meteorTextField.text {
-                let timer = timePicker.countDownDuration
-                let locale = TimeZone.current.identifier
-                guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-                self.db.child("repeatText").child(user).childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
-            }
-            
+            sendWithRepeat()
             UserDefaults.standard.set(true, forKey: "repeatIdling")
-            
         } else {
-            let contents = UNMutableNotificationContent()
-            contents.title = "METEOR :"
-            contents.body = "\(content)"
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-            let request = UNNotificationRequest(identifier: "\(notificationCountIndex)timerdone", content: contents, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            
-            if let text = meteorTextField.text {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                
-                let dateTime = dateFormatter.string(from: Date())
-                let locale = TimeZone.current.identifier
-
-                guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-                self.db.child("meteorText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
-            }
+            sendWithoutRepeat()
         }
         
         meteorTextField.resignFirstResponder()
@@ -344,6 +297,77 @@ extension MeteorViewController {
                 print("Push notification is enabled")
                 self.prepareAuthView()
             }
+        }
+    }
+    
+    private func sendWithRepeat() {
+        let contents = UNMutableNotificationContent()
+        contents.title = "ENDLESS METEOR :"
+        contents.body = "\(content)"
+        contents.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timePicker.countDownDuration, repeats: true)
+        let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            guard let self = self else { return }
+            self.repeatWorkingLabel.alpha = 1
+            self.repeatTimerLabel.alpha = 1
+        })
+        
+        // 타이머 성공
+        let clickDate = Date()
+        let timePickerSecond = Int(timePicker.countDownDuration)
+//            let timePickerSecond = 5
+        var remainSeconds = 0
+        self.repeatTimerLabel.text = secondsToString(seconds: timePickerSecond)
+
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            let passSecond = Int(round(Date().timeIntervalSince(clickDate)))
+            print(passSecond)
+            
+            if passSecond < timePickerSecond {
+                remainSeconds = timePickerSecond - passSecond
+                self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
+            } else {
+                remainSeconds = timePickerSecond - (passSecond % timePickerSecond)
+                self.repeatTimerLabel.text = self.secondsToString(seconds: remainSeconds)
+            }
+            
+            if UserDefaults.standard.bool(forKey: "repeatIdling") == false {
+                timer.invalidate()
+                print("timer invalidate")
+            }
+        }
+        
+        if let text = meteorTextField.text {
+            let timer = timePicker.countDownDuration
+            let locale = TimeZone.current.identifier
+            guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+            self.db.child("repeatText").child(user).childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
+        }
+    }
+    
+    private func sendWithoutRepeat() {
+        let contents = UNMutableNotificationContent()
+        contents.title = "METEOR :"
+        contents.body = "\(content)"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+        let request = UNNotificationRequest(identifier: "\(notificationCountIndex)timerdone", content: contents, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        if let text = meteorTextField.text {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            let dateTime = dateFormatter.string(from: Date())
+            let locale = TimeZone.current.identifier
+
+            guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+            self.db.child("meteorText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
         }
     }
     
