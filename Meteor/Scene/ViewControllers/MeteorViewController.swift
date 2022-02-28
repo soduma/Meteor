@@ -60,17 +60,9 @@ class MeteorViewController: UIViewController {
         layout()
         
         db.child("adIndex").observeSingleEvent(of: .value) { [weak self] snapshot in
-            guard let self = self else { return }
-            self.firebaseIndex = snapshot.value as? Int ?? 0
+            self?.firebaseIndex = snapshot.value as? Int ?? 0
 //            print(self.firebaseIndex)
         }
-        
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
-            guard let self = self else { return }
-            // Tracking authorization completed. Start loading ads here.
-            // loadAd()
-            self.firstLoadAd()
-        })
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
         }
@@ -99,6 +91,12 @@ class MeteorViewController: UIViewController {
             .addObserver(self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default
             .addObserver(self, selector: #selector(checkNetworkConnection), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
+            // Tracking authorization completed. Start loading ads here.
+            // loadAd()
+            self?.firstLoadAd()
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -115,16 +113,15 @@ class MeteorViewController: UIViewController {
             if settings.authorizationStatus == .denied {
                 print("Push notification is NOT enabled")
                 
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
+                DispatchQueue.main.async {
                     self.authView.isHidden = false
                     self.meteorTextField.resignFirstResponder()
                     self.authViewBottom.constant = -self.view.bounds.height
                     self.meteorTextField.text = ""
                     
-                    UIView.animate(withDuration: 0.5, animations: { [weak self] in
-                        guard let self = self else { return }
-                        self.authView.layoutIfNeeded() })
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.authView.layoutIfNeeded()
+                    })
                 }
             }
         }
@@ -292,10 +289,9 @@ extension MeteorViewController {
     @objc func notiAuthCheck() {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { [weak self] settings in
-            guard let self = self else { return }
             if settings.authorizationStatus == .authorized {
                 print("Push notification is enabled")
-                self.prepareAuthView()
+                self?.prepareAuthView()
             }
         }
     }

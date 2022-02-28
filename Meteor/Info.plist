@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Provide optimized advertising to user. Even if don't allow, the number of ads will display are same.
+	<string>Provide optimized advertising to user. Even if don&apos;t allow, the number of ads will display are same.
 Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
