@@ -67,12 +67,12 @@ class TodoViewController: UIViewController {
     }
     
     func getBottomViewImage() {
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             let url = "https://picsum.photos/400/100"
             guard let imageURL = URL(string: url) else { return }
             guard let data = try? Data(contentsOf: imageURL) else { return }
             DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data)
+                self?.imageView.image = UIImage(data: data)
             }
         }
     }
@@ -81,7 +81,8 @@ class TodoViewController: UIViewController {
         guard let userInfo = noti.userInfo else { return }
         guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
                 if noti.name == UIResponder.keyboardWillShowNotification {
                     let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
@@ -96,8 +97,8 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
     
@@ -159,9 +160,9 @@ class TodoViewController: UIViewController {
         shortTextField.text = ""
         collectionView.reloadData()
         
-        let item = self.collectionView(self.collectionView, numberOfItemsInSection: 0) - 1
+        let item = collectionView(collectionView, numberOfItemsInSection: 0) - 1
         let lastItemIndex = IndexPath(item: item, section: 0)
-        self.collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
+        collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
         
         //firebase
         let dateFormatter = DateFormatter()
