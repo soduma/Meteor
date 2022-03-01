@@ -74,10 +74,12 @@ class SettingsViewController: UITableViewController {
     
     private func appReview() {
         counterForAppReview += 1
-        if counterForAppReview == 15 {
+//        print(counterForAppReview)
+        if counterForAppReview == 20 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
+            counterForAppReview = 0
         }
     }
     
