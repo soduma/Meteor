@@ -52,6 +52,8 @@ class SettingsViewController: UITableViewController {
     }
     
     func getImage() {
+        appReview()
+        
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
             self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
