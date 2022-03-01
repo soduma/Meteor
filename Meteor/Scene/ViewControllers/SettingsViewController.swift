@@ -51,7 +51,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    func getImage() {
+    private func getImage() {
         appReview()
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
@@ -68,6 +68,15 @@ class SettingsViewController: UITableViewController {
                 UserDefaults.standard.set(self.imageData, forKey: "imageData")
                 UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetData")
                 WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+    }
+    
+    private func appReview() {
+        counterForAppReview += 1
+        if counterForAppReview == 15 {
+            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
             }
         }
     }
@@ -125,14 +134,5 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
-    }
-    
-    private func appReview() {
-        counterForAppReview += 1
-        if counterForAppReview == 15 {
-            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
-        }
     }
 }
