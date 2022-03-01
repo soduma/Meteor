@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class InputViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class InputViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     
     let todoViewModel = TodoViewModel()
+    var db = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,17 @@ class InputViewController: UIViewController {
         guard let detail = inputTextView.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
         todoViewModel.addTodo(todo)
+        let text = inputTextView.text
         inputTextView.text = ""
+        
+        //firebase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateTime = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        db.child("longText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
         
         TodoViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromInput", sender: self)
