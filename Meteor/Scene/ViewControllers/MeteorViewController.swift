@@ -286,19 +286,19 @@ extension MeteorViewController {
     private func showAdd() {
         // 구글광고!!!!!!!!!!!!!!!!!!!!!!
         adIndex += 1
-        UserDefaults.standard.set(adIndex, forKey: "adIndex")
 //        print("adIndex: \(adIndex)")
 
-        if adIndex == firebaseAdCountIndex {
+        if adIndex >= firebaseAdCountIndex {
             adIndex = 0
             if interstitial != nil {
                 interstitial?.present(fromRootViewController: self)
             } else {
                 print("Ad wasn't ready")
             }
-        } else if adIndex == 20 {
+        } else if adIndex > 50 {
             adIndex = 0
         }
+        UserDefaults.standard.set(adIndex, forKey: "adIndex")
         // --------------------------------
     }
     
