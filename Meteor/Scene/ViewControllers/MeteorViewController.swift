@@ -34,7 +34,7 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var repeatCancelView: UIView!
     @IBOutlet weak var repeatCancelLabel: UILabel!
     
-    var content: String = ""
+    var content = ""
     var notificationCountIndex = 0
     var noticeViewIndex = 0
 
@@ -45,7 +45,7 @@ class MeteorViewController: UIViewController {
                   NSLocalizedString("notice4", comment: "")]
     
     var db = Database.database().reference()
-    var firebaseIndex = 0
+    var firebaseAdCountIndex = 0
 
     // 구글광고!!!!!!!!!!!!!!!!!!!!
     private var interstitial: GADInterstitialAd?
@@ -59,8 +59,10 @@ class MeteorViewController: UIViewController {
         changeApperanceMode()
         layout()
         
+        adIndex = UserDefaults.standard.integer(forKey: "adIndex")
+        
         db.child("adIndex").observeSingleEvent(of: .value) { [weak self] snapshot in
-            self?.firebaseIndex = snapshot.value as? Int ?? 0
+            self?.firebaseAdCountIndex = snapshot.value as? Int ?? 0
 //            print(self.firebaseIndex)
         }
         
@@ -218,33 +220,18 @@ class MeteorViewController: UIViewController {
             return UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.error)
-        }
+        showAdd()
         
         notificationCountIndex += 1
         if notificationCountIndex > 8 {
             notificationCountIndex = 0
-            print("notificationCountIndex: \(notificationCountIndex)")
+//            print("notificationCountIndex: \(notificationCountIndex)")
         }
-        
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-        adIndex += 1
-//        print("adIndex: \(adIndex)")
-
-        if adIndex == 1 {
-            if interstitial != nil {
-                interstitial?.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
-            }
-        } else if adIndex == firebaseIndex {
-            adIndex = 0
-        } else if adIndex == 9 {
-            adIndex = 0
+                
+        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
         }
-        // --------------------------------
         
         if repeatButton.isSelected {
             guard UserDefaults.standard.bool(forKey: "repeatIdling") == false else {
@@ -294,6 +281,25 @@ extension MeteorViewController {
                 self?.prepareAuthView()
             }
         }
+    }
+    
+    private func showAdd() {
+        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
+        adIndex += 1
+        UserDefaults.standard.set(adIndex, forKey: "adIndex")
+//        print("adIndex: \(adIndex)")
+
+        if adIndex == firebaseAdCountIndex {
+            adIndex = 0
+            if interstitial != nil {
+                interstitial?.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+        } else if adIndex == 20 {
+            adIndex = 0
+        }
+        // --------------------------------
     }
     
     private func sendWithRepeat() {
