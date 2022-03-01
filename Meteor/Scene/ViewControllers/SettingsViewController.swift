@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import WidgetKit
+import StoreKit
 
 class SettingsViewController: UITableViewController {
     
@@ -27,6 +28,7 @@ class SettingsViewController: UITableViewController {
     var widgetData: Data?
     var timer = Timer()
     let defaultImage = UIImage(named: "defaultImage.png")
+    var counterForAppReview = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,5 +123,14 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
+    }
+    
+    private func appReview() {
+        counterForAppReview += 1
+        if counterForAppReview == 15 {
+            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
+            }
+        }
     }
 }
