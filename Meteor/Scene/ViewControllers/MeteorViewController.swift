@@ -66,9 +66,6 @@ class MeteorViewController: UIViewController {
             self?.firebaseAdCountIndex = snapshot.value as? Int ?? 0
 //            print(self.firebaseIndex)
         }
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
-        UNUserNotificationCenter.current().delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +90,9 @@ class MeteorViewController: UIViewController {
             self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(
             self, selector: #selector(checkNetworkConnection), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
+        UNUserNotificationCenter.current().delegate = self
         
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
             // Tracking authorization completed. Start loading ads here.
@@ -191,6 +191,12 @@ class MeteorViewController: UIViewController {
     
     @IBAction func timePickerChanged(_ sender: UIDatePicker) {
         print(timePicker.countDownDuration)
+    }
+    
+    @IBAction func tapMoveToSettingButton(_ sender: UIButton) {
+        if let settingURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingURL)
+        }
     }
     
     //MARK: - SEND LOGIC
