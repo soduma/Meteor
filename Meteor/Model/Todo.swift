@@ -23,7 +23,6 @@ struct Todo: Codable, Equatable {
 }
 
 class TodoManager {
-    
     static let shared = TodoManager()
     static var lastId: Int = 0
     
@@ -46,7 +45,7 @@ class TodoManager {
         if let index = todos.firstIndex(of: todo) {
             todos.remove(at: index)
         }
-        //        todos = todos.filter { $0.id != todo.id }
+//        todos = todos.filter { $0.id != todo.id }
         saveTodo()
     }
     
@@ -69,7 +68,6 @@ class TodoManager {
 }
 
 class TodoViewModel {
-    
     private let manager = TodoManager.shared
     
     var todos: [Todo] {
@@ -92,4 +90,3 @@ class TodoViewModel {
         manager.retrieveTodo()
     }
 }
-

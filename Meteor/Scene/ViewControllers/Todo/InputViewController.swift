@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 
 class InputViewController: UIViewController {
-    
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!

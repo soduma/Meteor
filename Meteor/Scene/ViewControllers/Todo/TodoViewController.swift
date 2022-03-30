@@ -9,9 +9,7 @@ import UIKit
 import Firebase
 
 class TodoViewController: UIViewController {
-    
     @IBOutlet weak var collectionView: UICollectionView!
-//    @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
@@ -36,7 +34,7 @@ class TodoViewController: UIViewController {
             if let index = sender as? Int {
                 let todo = todoViewModel.todos[index]
                 vc?.modifyViewModel.update(model: todo)
-                //                print(todoViewModel.todos[index])
+//                print(todoViewModel.todos[index])
             }
         }
     }
@@ -54,10 +52,10 @@ class TodoViewController: UIViewController {
         xButton.isHidden = true
         textFieldBlurView.isHidden = true
         
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default
-            .addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +69,7 @@ class TodoViewController: UIViewController {
             let url = "https://picsum.photos/400/100"
             guard let imageURL = URL(string: url) else { return }
             guard let data = try? Data(contentsOf: imageURL) else { return }
+            
             DispatchQueue.main.async {
                 self?.imageView.image = UIImage(data: data)
             }
@@ -97,8 +96,8 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func unwindToTodoViewController(segue: UIStoryboardSegue) {
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
         }
     }
     
@@ -192,20 +191,19 @@ extension TodoViewController: UICollectionViewDataSource {
         
         var todo: Todo
         todo = todoViewModel.todos[indexPath.item]
-        //        print("cellfortiem \(todo)")
+//        print("cellforitem \(todo)")
         cell.updateUI(todo)
         
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.todoViewModel.updateTodo(todo)
-            //            self.collectionView.reloadData()
+//            self.collectionView.reloadData()
         }
         
         cell.deleteButtonTapHandler = {
             self.todoViewModel.deleteTodo(todo)
             self.collectionView.reloadData()
         }
-        
         return cell
     }
 }
@@ -225,7 +223,6 @@ extension TodoViewController: UICollectionViewDelegateFlowLayout {
 }
 
 class TodoCell: UICollectionViewCell {
-    
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
@@ -257,12 +254,10 @@ class TodoCell: UICollectionViewCell {
         }
     }
     
-    private func showStrikeThrough(_ show: Bool) {
-        if show {
+    private func showStrikeThrough(_ isShow: Bool) {
+        if isShow {
             strikeThroughWidth.constant = descriptionLabel.bounds.width
-            UIView.animate(withDuration: 0.2) {
-                self.contentView.layoutIfNeeded()
-            }
+            UIView.animate(withDuration: 0.2) { self.contentView.layoutIfNeeded() }
         } else {
             strikeThroughWidth.constant = 0
         }
