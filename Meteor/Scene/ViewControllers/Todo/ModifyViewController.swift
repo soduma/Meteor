@@ -8,7 +8,6 @@
 import UIKit
 
 class ModifyViewController: UIViewController {
-    
     @IBOutlet weak var modifyTextView: UITextView!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
@@ -49,10 +48,10 @@ class ModifyViewController: UIViewController {
 }
 
 class ModifyViewModel {
-    
     var todo: Todo?
+    
     func update(model: Todo?) {
         todo = model
-        //        print(todo)
+//        print(todo)
     }
 }

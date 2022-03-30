@@ -8,7 +8,6 @@
 import UIKit
 
 class VersionViewController: UIViewController {
-    
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var infofieldButton: UIButton!
     

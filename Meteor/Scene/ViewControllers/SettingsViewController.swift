@@ -11,7 +11,6 @@ import WidgetKit
 import StoreKit
 
 class SettingsViewController: UITableViewController {
-    
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
     @IBOutlet weak var reviewButton: UIButton!

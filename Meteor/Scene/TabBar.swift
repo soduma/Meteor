@@ -8,7 +8,6 @@
 import UIKit
 
 class CustomTabBar: UITabBar {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -17,6 +16,5 @@ class CustomTabBar: UITabBar {
 //        layer.borderColor = UIColor.systemGray6.cgColor
 //        layer.borderWidth = 0.3
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        
     }
 }
