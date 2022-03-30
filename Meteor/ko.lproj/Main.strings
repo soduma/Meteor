@@ -44,6 +44,9 @@
 /* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "WgP-WV-G9E"; */
+"WgP-WV-G9E.normalTitle" = "";
+
 /* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 🤲 "; ObjectID = "Whe-Py-dQR"; */
 "Whe-Py-dQR.footerTitle" = "고맙습니다.\nThank you for using. 🤲 ";
 
