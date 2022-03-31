@@ -1110,20 +1110,20 @@ notification allowance.</string>
                                                         <constraint firstAttribute="width" secondItem="cRB-OJ-SQV" secondAttribute="height" multiplier="1:1" id="MuB-ZP-Z3j"/>
                                                     </constraints>
                                                 </imageView>
-                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-vw-iK3">
+                                                <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-vw-iK3">
                                                     <rect key="frame" x="-10" y="-10" width="370" height="370"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BN6-1s-Xdf">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="370"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <visualEffectView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-tG-d7c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="370" height="100"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="370" height="128.33333333333334"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdQ-Zg-0Me">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="100"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="128.33333333333334"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-bF-XRm">
-                                                                            <rect key="frame" x="107.33333333333333" y="64" width="155.33333333333337" height="36"/>
+                                                                            <rect key="frame" x="107.33333333333333" y="92.333333333333329" width="155.33333333333337" height="35.999999999999986"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1135,14 +1135,13 @@ notification allowance.</string>
                                                                 </view>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="faQ-bF-XRm" secondAttribute="bottom" id="LKy-tV-edi"/>
-                                                                    <constraint firstAttribute="height" constant="100" id="PYK-YO-dvD"/>
                                                                 </constraints>
                                                                 <vibrancyEffect>
                                                                     <blurEffect style="regular"/>
                                                                 </vibrancyEffect>
                                                             </visualEffectView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rate a star on the App Store 🙇🏻‍♂️🙏🏻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBD-bZ-eN8" userLabel="Rate this app on the App Store 🤧">
-                                                                <rect key="frame" x="0.0" y="100" width="370" height="170"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please rate a star on the App Store 🙇🏻‍♂️🙏🏻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBD-bZ-eN8" userLabel="Rate this app on the App Store 🤧">
+                                                                <rect key="frame" x="76.333333333333329" y="138.33333333333334" width="217.33333333333337" height="93.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1192,35 +1191,13 @@ notification allowance.</string>
                                                                                 </button>
                                                                             </subviews>
                                                                         </stackView>
-                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCL-gO-Tzp">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="2"/>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="2" id="WLJ-gC-dmn"/>
-                                                                            </constraints>
-                                                                        </view>
-                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5T-pH-fOi">
-                                                                            <rect key="frame" x="184" y="0.0" width="2" height="80"/>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="2" id="xWE-om-t3A"/>
-                                                                            </constraints>
-                                                                        </view>
                                                                     </subviews>
-                                                                    <constraints>
-                                                                        <constraint firstItem="s5T-pH-fOi" firstAttribute="centerX" secondItem="rZA-z4-T4k" secondAttribute="centerX" id="9Ze-nm-qad"/>
-                                                                    </constraints>
                                                                 </view>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="jjN-nw-i9g" secondAttribute="trailing" constant="10" id="AN8-ZE-NFt"/>
-                                                                    <constraint firstItem="s5T-pH-fOi" firstAttribute="top" secondItem="MUf-Lp-m88" secondAttribute="top" id="HMr-iq-xFa"/>
-                                                                    <constraint firstItem="MCL-gO-Tzp" firstAttribute="top" secondItem="MUf-Lp-m88" secondAttribute="top" id="QMV-i9-C7P"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="s5T-pH-fOi" secondAttribute="bottom" id="QsT-0t-Q4w"/>
                                                                     <constraint firstAttribute="bottom" secondItem="jjN-nw-i9g" secondAttribute="bottom" id="RVZ-kZ-Rm2"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="MCL-gO-Tzp" secondAttribute="trailing" id="cxV-KS-gxF"/>
                                                                     <constraint firstAttribute="height" constant="80" id="dva-CY-Ha7"/>
                                                                     <constraint firstItem="jjN-nw-i9g" firstAttribute="leading" secondItem="MUf-Lp-m88" secondAttribute="leading" constant="10" id="rXK-dr-bY3"/>
-                                                                    <constraint firstItem="MCL-gO-Tzp" firstAttribute="leading" secondItem="MUf-Lp-m88" secondAttribute="leading" id="uHJ-dm-QwJ"/>
                                                                     <constraint firstItem="jjN-nw-i9g" firstAttribute="top" secondItem="MUf-Lp-m88" secondAttribute="top" id="xKj-MY-Avm"/>
                                                                 </constraints>
                                                                 <vibrancyEffect>
@@ -1230,19 +1207,16 @@ notification allowance.</string>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="MUf-Lp-m88" secondAttribute="trailing" id="1Fm-5r-KAv"/>
-                                                            <constraint firstItem="MUf-Lp-m88" firstAttribute="top" secondItem="NBD-bZ-eN8" secondAttribute="bottom" constant="10" id="Cah-ak-wEy"/>
+                                                            <constraint firstItem="NBD-bZ-eN8" firstAttribute="centerY" secondItem="BN6-1s-Xdf" secondAttribute="centerY" id="LBA-jc-GD8"/>
+                                                            <constraint firstItem="NBD-bZ-eN8" firstAttribute="top" secondItem="Bqi-tG-d7c" secondAttribute="bottom" constant="10" id="UmS-ea-Mbv"/>
+                                                            <constraint firstItem="NBD-bZ-eN8" firstAttribute="centerX" secondItem="BN6-1s-Xdf" secondAttribute="centerX" id="adB-d7-mUX"/>
                                                             <constraint firstItem="Bqi-tG-d7c" firstAttribute="top" secondItem="BN6-1s-Xdf" secondAttribute="top" id="eba-ff-r8X"/>
                                                             <constraint firstAttribute="trailing" secondItem="Bqi-tG-d7c" secondAttribute="trailing" id="lwZ-ru-SKx"/>
                                                             <constraint firstItem="Bqi-tG-d7c" firstAttribute="leading" secondItem="BN6-1s-Xdf" secondAttribute="leading" id="rN7-Kc-b2W"/>
                                                             <constraint firstAttribute="bottom" secondItem="MUf-Lp-m88" secondAttribute="bottom" constant="10" id="sXd-qo-hEc"/>
                                                             <constraint firstItem="MUf-Lp-m88" firstAttribute="leading" secondItem="BN6-1s-Xdf" secondAttribute="leading" id="tau-Xb-ySI"/>
-                                                            <constraint firstItem="NBD-bZ-eN8" firstAttribute="top" secondItem="Bqi-tG-d7c" secondAttribute="bottom" id="tpZ-TZ-80f"/>
                                                         </constraints>
                                                     </view>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="NBD-bZ-eN8" secondAttribute="trailing" id="idK-5c-XLJ"/>
-                                                        <constraint firstItem="NBD-bZ-eN8" firstAttribute="leading" secondItem="sJu-vw-iK3" secondAttribute="leading" id="l8i-J4-WJj"/>
-                                                    </constraints>
                                                     <blurEffect style="regular"/>
                                                 </visualEffectView>
                                             </subviews>

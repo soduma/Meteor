@@ -33,7 +33,10 @@ class SettingsViewController: UITableViewController {
     var widgetData: Data?
     var timer = Timer()
     let defaultImage = UIImage(named: "defaultImage.png")
+    
     var counterForAppReview = 0
+    var counterForNonAutoAppReview = 0
+    var currentVersion = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +59,26 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    private func reviewLogic() {
+        counterForNonAutoAppReview += 1
+        
+        let infoDictionaryKey = kCFBundleVersionKey as String
+        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
+            fatalError("Expected to find a bundle version in the info dictionary") }
+        self.currentVersion = currentVersion
+//        print("current!!! --\(currentVersion)")
+        
+        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
+//        print("last!!! --\(lastVersion)")
+        
+        if counterForNonAutoAppReview == 20 && currentVersion != lastVersion {
+            starRateView.isHidden = false
+        }
+    }
+    
     private func getImage() {
         appReview()
+        reviewLogic()
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
@@ -80,7 +101,7 @@ class SettingsViewController: UITableViewController {
     private func appReview() {
         counterForAppReview += 1
 //        print(counterForAppReview)
-        if counterForAppReview == 20 {
+        if counterForAppReview >= 50 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
@@ -115,11 +136,10 @@ class SettingsViewController: UITableViewController {
         if let window = UIApplication.shared.windows.first {
             if lightModeSwitch.isOn == true {
                 window.overrideUserInterfaceStyle = .light
-            } else if lightModeSwitch.isOn == false {
+            } else {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        
         UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
     }
@@ -130,11 +150,10 @@ class SettingsViewController: UITableViewController {
         if let window = UIApplication.shared.windows.first {
             if darkModeSwitch.isOn == true {
                 window.overrideUserInterfaceStyle = .dark
-            } else if darkModeSwitch.isOn == false {
+            } else {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        
         UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
     }
@@ -145,13 +164,14 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapRateClose(_ sender: UIButton) {
         starRateView.isHidden = true
-        print("nono")
+        counterForNonAutoAppReview = 0
     }
     
     @IBAction func tapRateSubmit(_ sender: UIButton) {
-        print("good")
-        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1562989730?action=write-review")
-               else { fatalError("Expected a valid URL") }
-           UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1562989730?action=write-review") else {
+            fatalError("Expected a valid URL") }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+        UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
+        starRateView.isHidden = true
     }
 }
