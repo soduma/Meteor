@@ -26,6 +26,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateTextLabel: UILabel!
     @IBOutlet weak var rateCloseButton: UIButton!
     @IBOutlet weak var rateSubmitButton: UIButton!
+    @IBOutlet weak var keywordTextField: UITextField!
     
     let db = Database.database().reference()
     var url = "https://source.unsplash.com/random"
@@ -37,6 +38,7 @@ class SettingsViewController: UITableViewController {
     var counterForAppReview = 0
     var counterForNonAutoAppReview = 0
     var currentVersion = ""
+    var keywordText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,7 @@ class SettingsViewController: UITableViewController {
         if let imageData = UserDefaults.standard.data(forKey: "imageData") {
             imageView.image = UIImage(data: imageData)
         }
+        keywordTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +60,8 @@ class SettingsViewController: UITableViewController {
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
             getImage()
         }
+        appReview()
+        reviewLogic()
     }
     
     private func reviewLogic() {
@@ -77,16 +82,20 @@ class SettingsViewController: UITableViewController {
     }
     
     private func getImage() {
-        appReview()
-        reviewLogic()
-        
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
-            self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
-                self.url = snapshot.value as? String ?? self.url
+            
+            if self.keywordText == "" {
+                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
+                    self.url = snapshot.value as? String ?? self.url
+                }
+                guard let imageURL = URL(string: self.url) else { return }
+                self.imageData = try? Data(contentsOf: imageURL)
+            } else {
+                let keywordURL = "https://source.unsplash.com/featured/?\(self.keywordText)"
+                guard let imageURL = URL(string: keywordURL) else { return }
+                self.imageData = try? Data(contentsOf: imageURL)
             }
-            guard let imageURL = URL(string: self.url) else { return }
-            self.imageData = try? Data(contentsOf: imageURL)
             
             DispatchQueue.main.async {
                 self.imageView.image = UIImage(data: ((self.imageData) ?? self.defaultImage?.pngData())!)
@@ -173,5 +182,17 @@ class SettingsViewController: UITableViewController {
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
         starRateView.isHidden = true
+    }
+}
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        keywordTextField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            self.keywordText = text
+        }
     }
 }
