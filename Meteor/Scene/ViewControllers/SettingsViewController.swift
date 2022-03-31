@@ -21,6 +21,12 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var imageSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var starRateView: UIVisualEffectView!
+    @IBOutlet weak var rateHeaderLabel: UILabel!
+    @IBOutlet weak var rateTextLabel: UILabel!
+    @IBOutlet weak var rateCloseButton: UIButton!
+    @IBOutlet weak var rateSubmitButton: UIButton!
+    
     let db = Database.database().reference()
     var url = "https://source.unsplash.com/random"
     var imageData: Data?
@@ -135,5 +141,17 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
         UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
+    }
+    
+    @IBAction func tapRateClose(_ sender: UIButton) {
+        starRateView.isHidden = true
+        print("nono")
+    }
+    
+    @IBAction func tapRateSubmit(_ sender: UIButton) {
+        print("good")
+        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1562989730?action=write-review")
+               else { fatalError("Expected a valid URL") }
+           UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
 }

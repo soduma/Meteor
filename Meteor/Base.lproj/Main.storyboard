@@ -1142,22 +1142,22 @@ notification allowance.</string>
                                                                 </vibrancyEffect>
                                                             </visualEffectView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rate a star on the App Store 🙇🏻‍♂️🙏🏻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBD-bZ-eN8" userLabel="Rate this app on the App Store 🤧">
-                                                                <rect key="frame" x="0.0" y="100" width="370" height="180"/>
+                                                                <rect key="frame" x="0.0" y="100" width="370" height="170"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="MUf-Lp-m88">
-                                                                <rect key="frame" x="0.0" y="290" width="370" height="80"/>
+                                                                <rect key="frame" x="0.0" y="280" width="370" height="80"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rZA-z4-T4k">
                                                                     <rect key="frame" x="0.0" y="0.0" width="370" height="80"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jjN-nw-i9g">
-                                                                            <rect key="frame" x="10" y="0.0" width="350" height="75"/>
+                                                                            <rect key="frame" x="10" y="0.0" width="350" height="80"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-Yx-4Ol">
-                                                                                    <rect key="frame" x="0.0" y="13.666666666666682" width="175" height="47.666666666666657"/>
+                                                                                    <rect key="frame" x="0.0" y="16.333333333333311" width="175" height="47.666666666666657"/>
                                                                                     <state key="normal" title="Button"/>
                                                                                     <buttonConfiguration key="configuration" style="plain" subtitle="">
                                                                                         <attributedString key="attributedTitle">
@@ -1169,32 +1169,37 @@ notification allowance.</string>
                                                                                             </fragment>
                                                                                         </attributedString>
                                                                                     </buttonConfiguration>
+                                                                                    <connections>
+                                                                                        <action selector="tapRateClose:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="zeF-7C-wmW"/>
+                                                                                    </connections>
                                                                                 </button>
-                                                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbd-G1-jHM">
-                                                                                    <rect key="frame" x="175" y="13.666666666666682" width="175" height="47.666666666666657"/>
+                                                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-vd-AUs">
+                                                                                    <rect key="frame" x="175" y="16.333333333333311" width="175" height="47.666666666666657"/>
                                                                                     <state key="normal" title="Button"/>
                                                                                     <buttonConfiguration key="configuration" style="plain">
                                                                                         <attributedString key="attributedTitle">
                                                                                             <fragment content="Submit">
                                                                                                 <attributes>
-                                                                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <font key="NSFont" size="28" name="AppleSDGothicNeo-Bold"/>
                                                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                                 </attributes>
                                                                                             </fragment>
                                                                                         </attributedString>
                                                                                     </buttonConfiguration>
+                                                                                    <connections>
+                                                                                        <action selector="tapRateSubmit:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="aGc-6l-cJu"/>
+                                                                                    </connections>
                                                                                 </button>
                                                                             </subviews>
                                                                         </stackView>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCL-gO-Tzp">
+                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCL-gO-Tzp">
                                                                             <rect key="frame" x="0.0" y="0.0" width="370" height="2"/>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="2" id="WLJ-gC-dmn"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5T-pH-fOi">
+                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5T-pH-fOi">
                                                                             <rect key="frame" x="184" y="0.0" width="2" height="80"/>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
@@ -1211,7 +1216,7 @@ notification allowance.</string>
                                                                     <constraint firstItem="s5T-pH-fOi" firstAttribute="top" secondItem="MUf-Lp-m88" secondAttribute="top" id="HMr-iq-xFa"/>
                                                                     <constraint firstItem="MCL-gO-Tzp" firstAttribute="top" secondItem="MUf-Lp-m88" secondAttribute="top" id="QMV-i9-C7P"/>
                                                                     <constraint firstAttribute="bottom" secondItem="s5T-pH-fOi" secondAttribute="bottom" id="QsT-0t-Q4w"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="jjN-nw-i9g" secondAttribute="bottom" constant="5" id="RVZ-kZ-Rm2"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="jjN-nw-i9g" secondAttribute="bottom" id="RVZ-kZ-Rm2"/>
                                                                     <constraint firstAttribute="trailing" secondItem="MCL-gO-Tzp" secondAttribute="trailing" id="cxV-KS-gxF"/>
                                                                     <constraint firstAttribute="height" constant="80" id="dva-CY-Ha7"/>
                                                                     <constraint firstItem="jjN-nw-i9g" firstAttribute="leading" secondItem="MUf-Lp-m88" secondAttribute="leading" constant="10" id="rXK-dr-bY3"/>
@@ -1229,7 +1234,7 @@ notification allowance.</string>
                                                             <constraint firstItem="Bqi-tG-d7c" firstAttribute="top" secondItem="BN6-1s-Xdf" secondAttribute="top" id="eba-ff-r8X"/>
                                                             <constraint firstAttribute="trailing" secondItem="Bqi-tG-d7c" secondAttribute="trailing" id="lwZ-ru-SKx"/>
                                                             <constraint firstItem="Bqi-tG-d7c" firstAttribute="leading" secondItem="BN6-1s-Xdf" secondAttribute="leading" id="rN7-Kc-b2W"/>
-                                                            <constraint firstAttribute="bottom" secondItem="MUf-Lp-m88" secondAttribute="bottom" id="sXd-qo-hEc"/>
+                                                            <constraint firstAttribute="bottom" secondItem="MUf-Lp-m88" secondAttribute="bottom" constant="10" id="sXd-qo-hEc"/>
                                                             <constraint firstItem="MUf-Lp-m88" firstAttribute="leading" secondItem="BN6-1s-Xdf" secondAttribute="leading" id="tau-Xb-ySI"/>
                                                             <constraint firstItem="NBD-bZ-eN8" firstAttribute="top" secondItem="Bqi-tG-d7c" secondAttribute="bottom" id="tpZ-TZ-80f"/>
                                                         </constraints>
@@ -1275,7 +1280,12 @@ Thank you for using. 🤲 </string>
                         <outlet property="imageView" destination="cRB-OJ-SQV" id="g64-r6-8fw"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="mailButton" destination="DZa-ix-YkT" id="IpI-CL-Z8X"/>
+                        <outlet property="rateCloseButton" destination="lzG-Yx-4Ol" id="sVq-OP-5mf"/>
+                        <outlet property="rateHeaderLabel" destination="faQ-bF-XRm" id="Cqy-99-AEJ"/>
+                        <outlet property="rateSubmitButton" destination="3H5-vd-AUs" id="08c-cf-V5T"/>
+                        <outlet property="rateTextLabel" destination="NBD-bZ-eN8" id="lUk-MS-kII"/>
                         <outlet property="reviewButton" destination="eVG-QI-Qxx" id="P0Y-rC-AFA"/>
+                        <outlet property="starRateView" destination="sJu-vw-iK3" id="Z7J-tB-gD0"/>
                         <outlet property="versionButton" destination="GJJ-0s-SGg" id="9H5-1d-iDL"/>
                         <outlet property="vibrateSwitch" destination="gT1-20-Rqn" id="AYX-Dh-egI"/>
                     </connections>
