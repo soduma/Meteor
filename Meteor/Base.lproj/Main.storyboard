@@ -637,59 +637,78 @@ notification allowance.</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iv4-La-ZWZ">
-                                <rect key="frame" x="30" y="79" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2hs-fU-Bv2"/>
-                                    <constraint firstAttribute="width" constant="40" id="Qgi-FU-aRD"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" image="chevron.backward" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" weight="regular"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapBackButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="iFh-I1-gil"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
-                                <rect key="frame" x="40" y="134" width="313" height="406"/>
-                                <gestureRecognizers/>
-                                <attributedString key="attributedText">
-                                    <fragment content="blahh">
-                                        <attributes>
-                                            <color key="NSColor" systemColor="labelColor"/>
-                                            <font key="NSFont" metaFont="system" size="18"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnL-JA-8Ya">
-                                <rect key="frame" x="305" y="74" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hQE-8Q-80Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="tapFinishButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="xjs-Ji-nhS"/>
-                                </connections>
-                            </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGY-69-lcZ">
+                                <rect key="frame" x="0.0" y="44" width="390" height="846"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SE4-bR-Xn3">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="846"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnL-JA-8Ya">
+                                            <rect key="frame" x="305" y="30" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="hQE-8Q-80Y"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" title="Done"/>
+                                            <connections>
+                                                <action selector="tapFinishButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="xjs-Ji-nhS"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iv4-La-ZWZ">
+                                            <rect key="frame" x="30" y="35" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="2hs-fU-Bv2"/>
+                                                <constraint firstAttribute="width" constant="40" id="Qgi-FU-aRD"/>
+                                            </constraints>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" image="chevron.backward" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" weight="regular"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tapBackButton:" destination="Ar1-RQ-ybm" eventType="touchUpInside" id="iFh-I1-gil"/>
+                                            </connections>
+                                        </button>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0Q-j8-NLo">
+                                            <rect key="frame" x="30" y="90" width="330" height="400"/>
+                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="400" id="jmI-kM-xNc"/>
+                                            </constraints>
+                                            <inset key="scrollIndicatorInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="blahh">
+                                                    <attributes>
+                                                        <color key="NSColor" systemColor="labelColor"/>
+                                                        <font key="NSFont" metaFont="system" size="18"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="k0Q-j8-NLo" firstAttribute="top" secondItem="WnL-JA-8Ya" secondAttribute="bottom" constant="10" id="7yP-Ck-5pb"/>
+                                        <constraint firstItem="Iv4-La-ZWZ" firstAttribute="top" secondItem="SE4-bR-Xn3" secondAttribute="top" constant="35" id="AIy-3o-FUP"/>
+                                        <constraint firstItem="Iv4-La-ZWZ" firstAttribute="leading" secondItem="SE4-bR-Xn3" secondAttribute="leading" constant="30" id="Adg-6x-nLf"/>
+                                        <constraint firstItem="WnL-JA-8Ya" firstAttribute="centerY" secondItem="Iv4-La-ZWZ" secondAttribute="centerY" id="QOt-j6-3oc"/>
+                                        <constraint firstAttribute="trailing" secondItem="k0Q-j8-NLo" secondAttribute="trailing" constant="30" id="owg-bq-D0w"/>
+                                        <constraint firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="35" id="y5I-b4-MXg"/>
+                                        <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="SE4-bR-Xn3" secondAttribute="leading" constant="30" id="yOn-lZ-hTe"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gdz-bd-fQC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="k0Q-j8-NLo" secondAttribute="trailing" constant="37" id="1ai-w1-5c9"/>
-                            <constraint firstItem="WnL-JA-8Ya" firstAttribute="centerY" secondItem="Iv4-La-ZWZ" secondAttribute="centerY" id="Cbd-zD-x4j"/>
-                            <constraint firstItem="Iv4-La-ZWZ" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="35" id="CxD-UK-oMb"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="k0Q-j8-NLo" secondAttribute="bottom" constant="250" id="I2h-oy-yEO"/>
-                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WnL-JA-8Ya" secondAttribute="trailing" constant="35" id="PY8-7C-HBW"/>
-                            <constraint firstItem="Iv4-La-ZWZ" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="30" id="Quy-M8-YY1"/>
-                            <constraint firstItem="k0Q-j8-NLo" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" constant="40" id="bez-wY-8OE"/>
-                            <constraint firstItem="k0Q-j8-NLo" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" constant="90" id="unZ-g6-j6z"/>
+                            <constraint firstItem="WGY-69-lcZ" firstAttribute="leading" secondItem="Gdz-bd-fQC" secondAttribute="leading" id="2jh-1H-D9r"/>
+                            <constraint firstItem="WGY-69-lcZ" firstAttribute="top" secondItem="Gdz-bd-fQC" secondAttribute="top" id="JUN-y0-Xfi"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="trailing" secondItem="WGY-69-lcZ" secondAttribute="trailing" id="P9e-hh-Dg6"/>
+                            <constraint firstItem="Gdz-bd-fQC" firstAttribute="bottom" secondItem="WGY-69-lcZ" secondAttribute="bottom" constant="-100" id="UaL-Kb-Qre"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="l2F-Q9-yhI" appends="YES" id="IWc-Vw-iqp"/>
@@ -720,59 +739,77 @@ notification allowance.</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-Ti-6UO">
-                                <rect key="frame" x="305" y="74" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="AWU-mr-msS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="tapFinishButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="DLX-uH-Nw9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc7-Ce-ePU">
-                                <rect key="frame" x="30" y="79" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="IbG-Ju-mWa"/>
-                                    <constraint firstAttribute="height" constant="40" id="UoQ-IG-Xr2"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" image="chevron.backward" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" weight="regular"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapBackButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="cWX-9y-5nY"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-di-LbD">
-                                <rect key="frame" x="40" y="134" width="313" height="406"/>
-                                <gestureRecognizers/>
-                                <attributedString key="attributedText">
-                                    <fragment content="blahh">
-                                        <attributes>
-                                            <color key="NSColor" systemColor="labelColor"/>
-                                            <font key="NSFont" metaFont="system" size="18"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25F-Tb-rnw">
+                                <rect key="frame" x="0.0" y="44" width="390" height="846"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AHl-Wy-DMM">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="846"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-Ti-6UO">
+                                            <rect key="frame" x="305" y="30" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="AWU-mr-msS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" title="Done"/>
+                                            <connections>
+                                                <action selector="tapFinishButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="DLX-uH-Nw9"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc7-Ce-ePU">
+                                            <rect key="frame" x="30" y="35" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="IbG-Ju-mWa"/>
+                                                <constraint firstAttribute="height" constant="40" id="UoQ-IG-Xr2"/>
+                                            </constraints>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" image="chevron.backward" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" weight="regular"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tapBackButton:" destination="1w1-ac-0VP" eventType="touchUpInside" id="cWX-9y-5nY"/>
+                                            </connections>
+                                        </button>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-di-LbD">
+                                            <rect key="frame" x="30" y="90" width="330" height="400"/>
+                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="400" id="doZ-v0-Rtt"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="blahh">
+                                                    <attributes>
+                                                        <color key="NSColor" systemColor="labelColor"/>
+                                                        <font key="NSFont" metaFont="system" size="18"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Whd-di-LbD" firstAttribute="leading" secondItem="AHl-Wy-DMM" secondAttribute="leading" constant="30" id="KYF-3a-PzM"/>
+                                        <constraint firstItem="tjQ-Ti-6UO" firstAttribute="centerY" secondItem="sc7-Ce-ePU" secondAttribute="centerY" id="LJd-P3-52q"/>
+                                        <constraint firstAttribute="trailing" secondItem="Whd-di-LbD" secondAttribute="trailing" constant="30" id="Tb7-KL-scK"/>
+                                        <constraint firstItem="Whd-di-LbD" firstAttribute="top" secondItem="tjQ-Ti-6UO" secondAttribute="bottom" constant="10" id="lYB-et-lHY"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1wi-Uy-wST"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="sc7-Ce-ePU" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" constant="30" id="IHt-Sf-01w"/>
-                            <constraint firstItem="1wi-Uy-wST" firstAttribute="bottom" secondItem="Whd-di-LbD" secondAttribute="bottom" constant="250" id="Lmg-Cp-7wB"/>
-                            <constraint firstItem="Whd-di-LbD" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="90" id="Rdf-Du-HmN"/>
-                            <constraint firstItem="sc7-Ce-ePU" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="35" id="TtX-Vj-jvo"/>
-                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="Whd-di-LbD" secondAttribute="trailing" constant="37" id="h6h-aI-c99"/>
-                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="tjQ-Ti-6UO" secondAttribute="trailing" constant="35" id="tMK-in-CJp"/>
-                            <constraint firstItem="tjQ-Ti-6UO" firstAttribute="centerY" secondItem="sc7-Ce-ePU" secondAttribute="centerY" id="urO-cs-kUb"/>
-                            <constraint firstItem="Whd-di-LbD" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" constant="40" id="xQp-dE-QW8"/>
+                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="tjQ-Ti-6UO" secondAttribute="trailing" constant="35" id="0hT-mD-PHx"/>
+                            <constraint firstItem="1wi-Uy-wST" firstAttribute="bottom" secondItem="25F-Tb-rnw" secondAttribute="bottom" constant="-100" id="A4a-S3-swD"/>
+                            <constraint firstItem="1wi-Uy-wST" firstAttribute="trailing" secondItem="25F-Tb-rnw" secondAttribute="trailing" id="FMV-yO-0o4"/>
+                            <constraint firstItem="sc7-Ce-ePU" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" constant="30" id="Niw-pK-puD"/>
+                            <constraint firstItem="sc7-Ce-ePU" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" constant="35" id="d6F-2F-dvE"/>
+                            <constraint firstItem="25F-Tb-rnw" firstAttribute="leading" secondItem="1wi-Uy-wST" secondAttribute="leading" id="kO4-Gm-udX"/>
+                            <constraint firstItem="25F-Tb-rnw" firstAttribute="top" secondItem="1wi-Uy-wST" secondAttribute="top" id="wQR-wb-WcU"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="fCk-h4-GdR" appends="YES" id="lLC-GB-DSk"/>
