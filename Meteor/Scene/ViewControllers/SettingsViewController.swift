@@ -30,6 +30,7 @@ class SettingsViewController: UITableViewController {
     
     let db = Database.database().reference()
     var url = "https://source.unsplash.com/random"
+    var defaultURL = "https://source.unsplash.com/random"
     var imageData: Data?
     var widgetData: Data?
     var timer = Timer()
@@ -87,7 +88,7 @@ class SettingsViewController: UITableViewController {
             
             if self.keywordText == "" {
                 self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? self.url
+                    self.url = snapshot.value as? String ?? self.defaultURL
                 }
                 guard let imageURL = URL(string: self.url) else { return }
                 self.imageData = try? Data(contentsOf: imageURL)
