@@ -431,7 +431,7 @@ notification allowance.</string>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-4P-ehB">
                                                     <rect key="frame" x="30" y="10" width="147.66666666666666" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yEa-4a-dLh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
@@ -458,7 +458,7 @@ notification allowance.</string>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-wz-RdI">
                                                     <rect key="frame" x="202.66666666666663" y="10" width="147.33333333333337" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WL5-Cl-zfm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="147.33333333333337" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
@@ -857,7 +857,7 @@ notification allowance.</string>
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection headerTitle="Meteor" id="si5-2F-S24">
@@ -1119,7 +1119,7 @@ notification allowance.</string>
                                                             <visualEffectView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-tG-d7c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="128.33333333333334"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdQ-Zg-0Me">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="128"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="128.33333333333334"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-bF-XRm">
@@ -1152,39 +1152,23 @@ notification allowance.</string>
                                                                     <rect key="frame" x="0.0" y="0.0" width="370" height="80"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jjN-nw-i9g">
+                                                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jjN-nw-i9g">
                                                                             <rect key="frame" x="10" y="0.0" width="350" height="80"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzG-Yx-4Ol">
-                                                                                    <rect key="frame" x="0.0" y="16.333333333333311" width="175" height="47.666666666666657"/>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain" subtitle="">
-                                                                                        <attributedString key="attributedTitle">
-                                                                                            <fragment content="Close">
-                                                                                                <attributes>
-                                                                                                    <font key="NSFont" size="28" name="AppleSDGothicNeo-Medium"/>
-                                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                                </attributes>
-                                                                                            </fragment>
-                                                                                        </attributedString>
-                                                                                    </buttonConfiguration>
+                                                                                    <rect key="frame" x="0.0" y="17" width="175" height="46"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                    <state key="normal" title="Close"/>
                                                                                     <connections>
                                                                                         <action selector="tapRateClose:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="zeF-7C-wmW"/>
                                                                                     </connections>
                                                                                 </button>
                                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-vd-AUs">
-                                                                                    <rect key="frame" x="175" y="16.333333333333311" width="175" height="47.666666666666657"/>
-                                                                                    <state key="normal" title="Button"/>
-                                                                                    <buttonConfiguration key="configuration" style="plain">
-                                                                                        <attributedString key="attributedTitle">
-                                                                                            <fragment content="Submit">
-                                                                                                <attributes>
-                                                                                                    <font key="NSFont" size="28" name="AppleSDGothicNeo-Bold"/>
-                                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                                </attributes>
-                                                                                            </fragment>
-                                                                                        </attributedString>
-                                                                                    </buttonConfiguration>
+                                                                                    <rect key="frame" x="175" y="17" width="175" height="46"/>
+                                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                    <state key="normal" title="Submit"/>
                                                                                     <connections>
                                                                                         <action selector="tapRateSubmit:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="aGc-6l-cJu"/>
                                                                                     </connections>
@@ -1221,10 +1205,10 @@ notification allowance.</string>
                                                 </visualEffectView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="leading" secondItem="cRB-OJ-SQV" secondAttribute="leading" id="369-Ui-w1W"/>
-                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="top" secondItem="cRB-OJ-SQV" secondAttribute="top" id="FiO-hp-2Pw"/>
-                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="trailing" secondItem="cRB-OJ-SQV" secondAttribute="trailing" id="JG2-tO-1de"/>
-                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="bottom" secondItem="cRB-OJ-SQV" secondAttribute="bottom" id="LqR-Wh-5Yc"/>
+                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="leading" secondItem="de1-XC-kcz" secondAttribute="leading" constant="-10" id="369-Ui-w1W"/>
+                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="top" secondItem="de1-XC-kcz" secondAttribute="top" constant="-10" id="FiO-hp-2Pw"/>
+                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="trailing" secondItem="de1-XC-kcz" secondAttribute="trailing" constant="10" id="JG2-tO-1de"/>
+                                                <constraint firstItem="sJu-vw-iK3" firstAttribute="bottom" secondItem="de1-XC-kcz" secondAttribute="bottom" constant="10" id="LqR-Wh-5Yc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -1235,7 +1219,7 @@ notification allowance.</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="Whe-Py-dQR">
+                            <tableViewSection footerTitle="Write down a word without spaces." id="Whe-Py-dQR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ynm-Qm-4X2">
                                         <rect key="frame" x="20" y="951.66666603088379" width="350" height="44"/>
@@ -1273,7 +1257,7 @@ Thank you for using. 🤲 </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Lak-TZ-MUE"/>
-                    <size key="freeformSize" width="390" height="1200"/>
+                    <size key="freeformSize" width="390" height="1300"/>
                     <connections>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
                         <outlet property="imageSwitch" destination="4Kc-zv-AfU" id="nft-Ey-SV9"/>
