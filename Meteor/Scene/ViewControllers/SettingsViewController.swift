@@ -48,6 +48,9 @@ class SettingsViewController: UITableViewController {
             imageView.image = UIImage(data: imageData)
         }
         keywordTextField.delegate = self
+        
+        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
+        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,24 +65,7 @@ class SettingsViewController: UITableViewController {
             getImage()
         }
         appReview()
-        reviewLogic()
-    }
-    
-    private func reviewLogic() {
-        counterForNonAutoAppReview += 1
-        
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            fatalError("Expected to find a bundle version in the info dictionary") }
-        self.currentVersion = currentVersion
-//        print("current!!! --\(currentVersion)")
-        
-        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
-//        print("last!!! --\(lastVersion)")
-        
-        if counterForNonAutoAppReview == 20 && currentVersion != lastVersion {
-            starRateView.isHidden = false
-        }
+        nonAutoAppReview()
     }
     
     private func getImage() {
@@ -116,6 +102,23 @@ class SettingsViewController: UITableViewController {
                 SKStoreReviewController.requestReview(in: scene)
             }
             counterForAppReview = 0
+        }
+    }
+    
+    private func nonAutoAppReview() {
+        counterForNonAutoAppReview += 1
+        
+        let infoDictionaryKey = kCFBundleVersionKey as String
+        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
+            fatalError("Expected to find a bundle version in the info dictionary") }
+        self.currentVersion = currentVersion
+//        print("current!!! --\(currentVersion)")
+        
+        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
+//        print("last!!! --\(lastVersion)")
+        
+        if counterForNonAutoAppReview == 20 && currentVersion != lastVersion {
+            starRateView.isHidden = false
         }
     }
     

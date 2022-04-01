@@ -2,6 +2,9 @@
 /* Class = "UILabel"; text = "Meteor"; ObjectID = "2kf-Pz-TMT"; */
 "2kf-Pz-TMT.text" = "Meteor";
 
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "3H5-vd-AUs"; */
+"3H5-vd-AUs.normalTitle" = "Submit";
+
 /* Class = "UILabel"; text = "noti blahblah"; ObjectID = "3O8-SQ-hh2"; */
 "3O8-SQ-hh2.text" = "noti blahblah";
 
@@ -32,6 +35,9 @@
 /* Class = "UILabel"; text = "Current Version ~~~"; ObjectID = "IKX-kT-lPg"; */
 "IKX-kT-lPg.text" = "Current Version ~~~";
 
+/* Class = "UILabel"; text = "Please rate a star on the App Store 🙇🏻‍♂️🙏🏻"; ObjectID = "NBD-bZ-eN8"; */
+"NBD-bZ-eN8.text" = "잘 사용하고 계시다면...! 🙇🏻‍♂️🙏🏻";
+
 /* Class = "UILabel"; text = "Contact"; ObjectID = "Pmw-Ai-Bkf"; */
 "Pmw-Ai-Bkf.text" = "Contact";
 
@@ -44,14 +50,14 @@
 /* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UIButton"; normalTitle = ""; ObjectID = "WgP-WV-G9E"; */
-"WgP-WV-G9E.normalTitle" = "";
-
-/* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 🤲 "; ObjectID = "Whe-Py-dQR"; */
-"Whe-Py-dQR.footerTitle" = "고맙습니다.\nThank you for using. 🤲 ";
+/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces."; ObjectID = "Whe-Py-dQR"; */
+"Whe-Py-dQR.footerTitle" = "띄어쓰기가 없는 영어 단어입니다.";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
 "WnL-JA-8Ya.normalTitle" = "완료";
+
+/* Class = "UITextField"; placeholder = "Keyword"; ObjectID = "XQo-ai-wMq"; */
+"XQo-ai-wMq.placeholder" = "키워드";
 
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
@@ -71,11 +77,21 @@
 /* Class = "UILabel"; text = "Write a"; ObjectID = "eid-Qh-HRI"; */
 "eid-Qh-HRI.text" = "Write a";
 
+/* Class = "UILabel"; text = "Star Rating"; ObjectID = "faQ-bF-XRm"; */
+"faQ-bF-XRm.text" = "별점 남기기";
+
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
+/* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 🤲 "; ObjectID = "keM-A9-xCm"; */
+"keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 🤲 ";
+
 /* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
+
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
+"lzG-Yx-4Ol.normalTitle" = "Close";
 
 /* Class = "UITableViewSection"; footerTitle = "Automatically change photo when tap is opened. Also see this in widgets. Less than 500KB of data will be used."; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "탭이 열릴 때마다 사진을 자동으로 변경합니다. 위젯에서도 이 정보를 볼 수 있으며, 500KB 미만의 데이터가 사용됩니다.";
