@@ -51,6 +51,9 @@ class SettingsViewController: UITableViewController {
         
         rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
+        
+        counterForAppReview = UserDefaults.standard.integer(forKey: "appReview")
+        counterForNonAutoAppReview = UserDefaults.standard.integer(forKey: "nonAutoAppReview")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +69,8 @@ class SettingsViewController: UITableViewController {
         }
         appReview()
         nonAutoAppReview()
+//        print(UserDefaults.standard.integer(forKey: "appReview"))
+//        print(UserDefaults.standard.integer(forKey: "nonAutoAppReview"))
     }
     
     private func getImage() {
@@ -79,6 +84,7 @@ class SettingsViewController: UITableViewController {
                 guard let imageURL = URL(string: self.url) else { return }
                 self.imageData = try? Data(contentsOf: imageURL)
             } else {
+                self.db.child("a_upsplash").observeSingleEvent(of: .value) { _ in }
                 let keywordURL = "https://source.unsplash.com/featured/?\(self.keywordText)"
                 guard let imageURL = URL(string: keywordURL) else { return }
                 self.imageData = try? Data(contentsOf: imageURL)
@@ -97,6 +103,8 @@ class SettingsViewController: UITableViewController {
     private func appReview() {
         counterForAppReview += 1
 //        print(counterForAppReview)
+        UserDefaults.standard.set(counterForAppReview, forKey: "appReview")
+        
         if counterForAppReview >= 50 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
@@ -107,6 +115,7 @@ class SettingsViewController: UITableViewController {
     
     private func nonAutoAppReview() {
         counterForNonAutoAppReview += 1
+        UserDefaults.standard.set(counterForNonAutoAppReview, forKey: "nonAutoAppReview")
         
         let infoDictionaryKey = kCFBundleVersionKey as String
         guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
@@ -117,7 +126,7 @@ class SettingsViewController: UITableViewController {
         let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
 //        print("last!!! --\(lastVersion)")
         
-        if counterForNonAutoAppReview == 20 && currentVersion != lastVersion {
+        if counterForNonAutoAppReview >= 20 && currentVersion != lastVersion {
             starRateView.isHidden = false
         }
     }
