@@ -50,7 +50,7 @@
 /* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces."; ObjectID = "Whe-Py-dQR"; */
+/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces. Write down a word without spaces. If blank, it's random."; ObjectID = "Whe-Py-dQR"; */
 "Whe-Py-dQR.footerTitle" = "띄어쓰기가 없는 영어 단어로 입력하여야 합니다.";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
