@@ -140,7 +140,6 @@
 		A04E305827A28E7E008C9993 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A0E85764268C916800E10831 /* Reachability.swift */,
 				A0ED409A2601FD87009990ED /* Todo.swift */,
 				A0ED409E2602244E009990ED /* Storage.swift */,
 			);
@@ -181,19 +180,13 @@
 			isa = PBXGroup;
 			children = (
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
-				A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */,
-				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
-				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				A06A51EE2634075E003DAEEF /* Localizable.strings */,
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
+				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
+				F7E861332A7B7ED100E5F194 /* Setting */,
+				F7E861342A7B7EFA00E5F194 /* Util */,
 				A04E305827A28E7E008C9993 /* Model */,
 				A04E305A27A28EC6008C9993 /* Scene */,
-				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
-				A0998A5C25FC99E9001BAEFD /* Info.plist */,
-				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
-				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
-				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
-				A0AAB011262ABE3900D6E5EB /* meteor_logo.png */,
 			);
 			path = Meteor;
 			sourceTree = "<group>";
@@ -217,6 +210,29 @@
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F7E861332A7B7ED100E5F194 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */,
+				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
+				A0998A5C25FC99E9001BAEFD /* Info.plist */,
+				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
+				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
+				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
+				A0AAB011262ABE3900D6E5EB /* meteor_logo.png */,
+				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F7E861342A7B7EFA00E5F194 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A0E85764268C916800E10831 /* Reachability.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		FCD726DE8B6F35402C3E2E6B /* Pods */ = {
@@ -641,7 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
-				INFOPLIST_FILE = Meteor/Info.plist;
+				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,7 +684,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
-				INFOPLIST_FILE = Meteor/Info.plist;
+				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
