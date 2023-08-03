@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTabBar: UITabBar {
+class TabBar: UITabBar {
     override func awakeFromNib() {
         super.awakeFromNib()
         

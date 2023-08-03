@@ -26,12 +26,12 @@
 		A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */; };
 		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
-		A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A0AAB011262ABE3900D6E5EB /* meteor_logo.png */; };
 		A0E85765268C916800E10831 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85764268C916800E10831 /* Reachability.swift */; };
 		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
+		F77E75262A7B99A2008F1883 /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E75252A7B99A2008F1883 /* meteor_logo.png */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,12 +88,12 @@
 		A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
-		A0AAB011262ABE3900D6E5EB /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_logo.png; sourceTree = "<group>"; };
 		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
+		F77E75252A7B99A2008F1883 /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meteor_logo.png; path = ../../../../.Trash/meteor_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				A04AE61726453C1F008BB99C /* TabBar.swift */,
-				A0ED40A326022473009990ED /* ViewControllers */,
+				F77E75272A7B9AFF008F1883 /* Meteor */,
+				A0ED40A12602245F009990ED /* Notes */,
+				F77E75282A7B9B12008F1883 /* Settings */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -191,25 +193,31 @@
 			path = Meteor;
 			sourceTree = "<group>";
 		};
-		A0ED40A12602245F009990ED /* Todo */ = {
+		A0ED40A12602245F009990ED /* Notes */ = {
 			isa = PBXGroup;
 			children = (
 				A0A4C12725FE25890090A214 /* TodoViewController.swift */,
 				A0ED408E26009DB5009990ED /* InputViewController.swift */,
 				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
-			path = Todo;
+			path = Notes;
 			sourceTree = "<group>";
 		};
-		A0ED40A326022473009990ED /* ViewControllers */ = {
+		F77E75272A7B9AFF008F1883 /* Meteor */ = {
 			isa = PBXGroup;
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
-				A0ED40A12602245F009990ED /* Todo */,
+			);
+			path = Meteor;
+			sourceTree = "<group>";
+		};
+		F77E75282A7B9B12008F1883 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F7E861332A7B7ED100E5F194 /* Setting */ = {
@@ -221,7 +229,7 @@
 				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
 				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
-				A0AAB011262ABE3900D6E5EB /* meteor_logo.png */,
+				F77E75252A7B99A2008F1883 /* meteor_logo.png */,
 				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 			);
 			path = Setting;
@@ -341,7 +349,7 @@
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
-				A0AAB012262ABE3900D6E5EB /* meteor_logo.png in Resources */,
+				F77E75262A7B99A2008F1883 /* meteor_logo.png in Resources */,
 				A0998A5625FC99E7001BAEFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
