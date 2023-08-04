@@ -37,7 +37,6 @@ class TodoManager {
     
     func addTodo(_ todo: Todo) {
         todos.append(todo)
-//        todos.insert(todo, at: 0)
         saveTodo()
     }
     
@@ -45,7 +44,6 @@ class TodoManager {
         if let index = todos.firstIndex(of: todo) {
             todos.remove(at: index)
         }
-//        todos = todos.filter { $0.id != todo.id }
         saveTodo()
     }
     

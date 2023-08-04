@@ -43,7 +43,7 @@ class InputViewController: UIViewController {
         let text = inputTextView.text
         inputTextView.text = ""
         
-        //firebase
+        // for Firebase
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         
