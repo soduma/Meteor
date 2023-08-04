@@ -289,7 +289,6 @@ extension MeteorViewController {
             // first
             UserDefaults.standard.set(true, forKey: "First Launch")
             UserDefaults.standard.set(true, forKey: "vibrateSwitch")
-            UserDefaults.standard.set(true, forKey: "imageSwitch")
         } else {
             // not first
             UserDefaults.standard.set(true, forKey: "First Launch")
