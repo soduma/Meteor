@@ -31,7 +31,7 @@
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
-		F77E752C2A7C9DC9008F1883 /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752B2A7C9DC9008F1883 /* meteor_logo.png */; };
+		F77E75302A7CABAA008F1883 /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_logo.png */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +93,7 @@
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
-		F77E752B2A7C9DC9008F1883 /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meteor_logo.png; path = ../../../../Downloads/meteor_logo.png; sourceTree = "<group>"; };
+		F77E752F2A7CABAA008F1883 /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A04E305A27A28EC6008C9993 /* Scene */ = {
+		A04E305A27A28EC6008C9993 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
 				A04AE61726453C1F008BB99C /* TabBar.swift */,
@@ -154,7 +154,7 @@
 				A0ED40A12602245F009990ED /* Notes */,
 				F77E75282A7B9B12008F1883 /* Settings */,
 			);
-			path = Scene;
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		A0998A4225FC99E7001BAEFD = {
@@ -182,13 +182,14 @@
 			isa = PBXGroup;
 			children = (
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
+				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
 				A06A51EE2634075E003DAEEF /* Localizable.strings */,
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				F7E861332A7B7ED100E5F194 /* Setting */,
 				F7E861342A7B7EFA00E5F194 /* Util */,
 				A04E305827A28E7E008C9993 /* Model */,
-				A04E305A27A28EC6008C9993 /* Scene */,
+				A04E305A27A28EC6008C9993 /* Tab */,
 			);
 			path = Meteor;
 			sourceTree = "<group>";
@@ -220,6 +221,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		F77E75312A7CABB1008F1883 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
+				F77E752F2A7CABAA008F1883 /* meteor_logo.png */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		F7E861332A7B7ED100E5F194 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,9 +237,7 @@
 				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
 				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
-				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
-				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
-				F77E752B2A7C9DC9008F1883 /* meteor_logo.png */,
+				F77E75312A7CABB1008F1883 /* Asset */,
 				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 			);
 			path = Setting;
@@ -349,7 +357,7 @@
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
-				F77E752C2A7C9DC9008F1883 /* meteor_logo.png in Resources */,
+				F77E75302A7CABAA008F1883 /* meteor_logo.png in Resources */,
 				A0998A5625FC99E7001BAEFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
