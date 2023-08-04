@@ -34,7 +34,6 @@ class TodoViewController: UIViewController {
             if let index = sender as? Int {
                 let todo = viewModel.todos[index]
                 vc?.modifyViewModel.update(model: todo)
-//                print(todoViewModel.todos[index])
             }
         }
     }
@@ -159,6 +158,7 @@ class TodoViewController: UIViewController {
         guard let detail = shortTextField.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
         viewModel.addTodo(todo)
+        
         let text = shortTextField.text
         shortTextField.text = ""
         collectionView.reloadData()
@@ -167,7 +167,7 @@ class TodoViewController: UIViewController {
         let lastItemIndex = IndexPath(item: item, section: 0)
         collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
         
-        //firebase
+        // for Firebase
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         
@@ -195,13 +195,11 @@ extension TodoViewController: UICollectionViewDataSource {
         
         var todo: Todo
         todo = viewModel.todos[indexPath.item]
-//        print("cellforitem \(todo)")
-        cell.updateUI(todo)
+        cell.setLayout(todo)
         
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.viewModel.updateTodo(todo)
-//            self.collectionView.reloadData()
         }
         
         cell.deleteButtonTapHandler = {
@@ -238,15 +236,17 @@ class TodoCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        reset()
+        
+        resetUI()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        reset()
+        
+        resetUI()
     }
     
-    func updateUI(_ todo: Todo) {
+    func setLayout(_ todo: Todo) {
         checkButton.isSelected = todo.isDone
         descriptionLabel.text = todo.detail
         deleteButton.isHidden = todo.isDone == false
@@ -267,7 +267,7 @@ class TodoCell: UICollectionViewCell {
         }
     }
     
-    private func reset() {
+    private func resetUI() {
         deleteButton.isHidden = true
         showStrikeThrough(false)
     }

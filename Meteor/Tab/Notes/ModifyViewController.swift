@@ -18,10 +18,10 @@ class ModifyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateUI()
+        setData()
     }
 
-    func updateUI() {
+    private func setData() {
         if let todo = modifyViewModel.todo {
             modifyTextView.text = todo.detail
         }
