@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,9 @@
 		F77E75302A7CABAA008F1883 /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_logo.png */; };
 		F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */; };
 		F77E75352A7CB40C008F1883 /* ModifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75342A7CB40C008F1883 /* ModifyViewModel.swift */; };
+		F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F77E75382A7CCB70008F1883 /* FirebaseAnalytics */; };
+		F77E753B2A7CCB70008F1883 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */; };
+		F77E753D2A7CCB70008F1883 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F77E753C2A7CCB70008F1883 /* FirebaseDatabase */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77E753B2A7CCB70008F1883 /* FirebaseCrashlytics in Frameworks */,
+				F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */,
+				F77E753D2A7CCB70008F1883 /* FirebaseDatabase in Frameworks */,
 				FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +310,7 @@
 				A0998A4925FC99E7001BAEFD /* Resources */,
 				A018484126A551C800DC3A59 /* Embed App Extensions */,
 				C978CD574E7BE7D3541029D5 /* [CP] Embed Pods Frameworks */,
+				F77E753E2A7CCD59008F1883 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -311,6 +318,11 @@
 				A018483F26A551C800DC3A59 /* PBXTargetDependency */,
 			);
 			name = Meteor;
+			packageProductDependencies = (
+				F77E75382A7CCB70008F1883 /* FirebaseAnalytics */,
+				F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */,
+				F77E753C2A7CCB70008F1883 /* FirebaseDatabase */,
+			);
 			productName = Meteor;
 			productReference = A0998A4B25FC99E7001BAEFD /* Meteor.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +354,9 @@
 				ko,
 			);
 			mainGroup = A0998A4225FC99E7001BAEFD;
+			packageReferences = (
+				F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -417,6 +432,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meteor/Pods-Meteor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F77E753E2A7CCD59008F1883 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -594,7 +631,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -762,6 +799,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F77E75382A7CCB70008F1883 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		F77E753C2A7CCB70008F1883 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0998A4325FC99E7001BAEFD /* Project object */;
 }
