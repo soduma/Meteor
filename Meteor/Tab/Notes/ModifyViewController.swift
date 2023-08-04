@@ -46,12 +46,3 @@ class ModifyViewController: UIViewController {
         self.performSegue(withIdentifier: "fromModify", sender: self)
     }
 }
-
-class ModifyViewModel {
-    var todo: Todo?
-    
-    func update(model: Todo?) {
-        todo = model
-//        print(todo)
-    }
-}

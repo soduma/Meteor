@@ -28,4 +28,4 @@
 
 ### 신경 쓴 부분
 - 기능상 Alert 권한이 필수적이기 때문에 denied 되었을 경우 사용자에게 알리고, Background에서 Foreground로 돌아올 때 자연스러운 사용이 가능하도록 구현함.
-- Background Task에 대한 이해가 부족해 Timer가 계속 맞지 않는 것을 발견하고, Timer가 처음 동작할 때의 Date를 받아와서 이를 이용해 Push까지의 남은 시간을 표현하도록 함.
+- Background 상태에서 active로 돌아왔을 경우 Timer가 맞지 않는 것을 발견하고, Timer가 처음 동작할 때의 Date를 받아와서 이를 이용해 Push까지의 남은 시간을 표현하도록 함.
