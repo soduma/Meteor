@@ -18,8 +18,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var vibrateSwitch: UISwitch!
-    @IBOutlet weak var imageSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var refreshPhotoView: UIView!
     
     @IBOutlet weak var starRateView: UIVisualEffectView!
     @IBOutlet weak var rateHeaderLabel: UILabel!
@@ -36,24 +36,15 @@ class SettingsViewController: UITableViewController {
     var timer = Timer()
     let defaultImage = UIImage(named: "defaultImage.png")
     
-    var counterForAppReview = 0
-    var counterForNonAutoAppReview = 0
+    var counterForSystemAppReview = 0
+    var counterForCustomAppReview = 0
     var currentVersion = ""
     var keywordText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
-            imageView.image = UIImage(data: imageData)
-        }
-        keywordTextField.delegate = self
-        
-        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
-        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
-        
-        counterForAppReview = UserDefaults.standard.integer(forKey: "appReview")
-        counterForNonAutoAppReview = UserDefaults.standard.integer(forKey: "nonAutoAppReview")
+        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,15 +53,22 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
-        imageSwitch.isOn = UserDefaults.standard.bool(forKey: "imageSwitch")
-        
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            getImage()
+    }
+    
+    private func setLayout() {
+        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
+            imageView.image = UIImage(data: imageData)
         }
-        appReview()
-        nonAutoAppReview()
-//        print(UserDefaults.standard.integer(forKey: "appReview"))
-//        print(UserDefaults.standard.integer(forKey: "nonAutoAppReview"))
+        keywordTextField.delegate = self
+        
+        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(tapRefreshView))
+        refreshPhotoView.addGestureRecognizer(refreshGesture)
+        
+        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
+        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
+        
+        counterForSystemAppReview = UserDefaults.standard.integer(forKey: "systemAppReview")
+        counterForCustomAppReview = UserDefaults.standard.integer(forKey: "customAppReview")
     }
     
     private func getImage() {
@@ -100,22 +98,22 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    private func appReview() {
-        counterForAppReview += 1
+    private func checkSystemAppReview() {
+        counterForSystemAppReview += 1
 //        print(counterForAppReview)
-        UserDefaults.standard.set(counterForAppReview, forKey: "appReview")
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: "systemAppReview")
         
-        if counterForAppReview >= 50 {
+        if counterForSystemAppReview >= 30 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
-            counterForAppReview = 0
+            counterForSystemAppReview = 0
         }
     }
     
-    private func nonAutoAppReview() {
-        counterForNonAutoAppReview += 1
-        UserDefaults.standard.set(counterForNonAutoAppReview, forKey: "nonAutoAppReview")
+    private func checkCustomAppReview() {
+        counterForCustomAppReview += 1
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: "customAppReview")
         
         let infoDictionaryKey = kCFBundleVersionKey as String
         guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
@@ -126,17 +124,15 @@ class SettingsViewController: UITableViewController {
         let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
 //        print("last!!! --\(lastVersion)")
         
-        if counterForNonAutoAppReview >= 20 && currentVersion != lastVersion {
+        if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
             starRateView.isHidden = false
         }
     }
     
-    @IBAction func tapImageSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(imageSwitch.isOn, forKey: "imageSwitch")
-        
-        if UserDefaults.standard.bool(forKey: "imageSwitch") {
-            getImage()
-        }
+    @objc private func tapRefreshView() {
+        getImage()
+        checkSystemAppReview()
+        checkCustomAppReview()
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -186,7 +182,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapRateClose(_ sender: UIButton) {
         starRateView.isHidden = true
-        counterForNonAutoAppReview = 0
+        counterForCustomAppReview = 0
     }
     
     @IBAction func tapRateSubmit(_ sender: UIButton) {

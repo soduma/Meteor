@@ -13,7 +13,7 @@ class InputViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    let todoViewModel = TodoViewModel()
+    let viewModel = TodoViewModel()
     var db = Database.database().reference()
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class InputViewController: UIViewController {
     @IBAction func tapFinishButton(_ sender: UIButton) {
         guard let detail = inputTextView.text, detail.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(detail: detail)
-        todoViewModel.addTodo(todo)
+        viewModel.addTodo(todo)
         let text = inputTextView.text
         inputTextView.text = ""
         

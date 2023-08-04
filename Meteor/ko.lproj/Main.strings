@@ -63,7 +63,7 @@
 "XrN-Ta-ams.text" = "METEOR :";
 
 /* Class = "UILabel"; text = "Sentimental"; ObjectID = "ZXQ-U0-yWN"; */
-"ZXQ-U0-yWN.text" = "감성";
+"ZXQ-U0-yWN.text" = "새로운 사진 불러오기";
 
 /* Class = "UIButton"; normalTitle = "Endless"; ObjectID = "caC-dS-7wV"; */
 "caC-dS-7wV.normalTitle" = "끝없이";
@@ -74,8 +74,8 @@
 /* Class = "UIButton"; normalTitle = "Review"; ObjectID = "eVG-QI-Qxx"; */
 "eVG-QI-Qxx.normalTitle" = "Review";
 
-/* Class = "UILabel"; text = "Write a"; ObjectID = "eid-Qh-HRI"; */
-"eid-Qh-HRI.text" = "Write a";
+/* Class = "UILabel"; text = "Write"; ObjectID = "eid-Qh-HRI"; */
+"eid-Qh-HRI.text" = "Write";
 
 /* Class = "UILabel"; text = "Star Rating"; ObjectID = "faQ-bF-XRm"; */
 "faQ-bF-XRm.text" = "별점 남기기";
@@ -83,8 +83,8 @@
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
-/* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 🤲 "; ObjectID = "keM-A9-xCm"; */
-"keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 🤲 ";
+/* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 👋🏻 "; ObjectID = "keM-A9-xCm"; */
+"keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 👋🏻 ";
 
 /* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
@@ -93,8 +93,8 @@
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
 "lzG-Yx-4Ol.normalTitle" = "Close";
 
-/* Class = "UITableViewSection"; footerTitle = "Automatically change photo when tap is opened. Also see this in widget and about 500KB of data will be used."; ObjectID = "mO4-mb-C9g"; */
-"mO4-mb-C9g.footerTitle" = "탭이 열릴 때마다 사진을 자동으로 변경합니다. 위젯에서도 이 정보를 볼 수 있으며, 대략 500KB의 데이터가 사용됩니다.";
+/* Class = "UITableViewSection"; footerTitle = "About 500 KB of data is used each time a picture is loaded, and you can also see this information in the widget."; ObjectID = "mO4-mb-C9g"; */
+"mO4-mb-C9g.footerTitle" = "사진을 불러올 때마다 약 500KB의 데이터가 사용되며, 위젯에서도 이 정보를 볼 수 있습니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
@@ -102,8 +102,8 @@
 /* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
 "mYh-w1-2Gl.text" = "메테오 기능은 알림 설정이 필요합니다.";
 
-/* Class = "UITableViewSection"; footerTitle = "If turn off both switches then follow the system settings."; ObjectID = "noR-vq-LyQ"; */
-"noR-vq-LyQ.footerTitle" = "두 가지 스위치를 모두 끄면 시스템 설정을 따릅니다.";
+/* Class = "UITableViewSection"; footerTitle = "If turn off all switches then follow the system setting."; ObjectID = "noR-vq-LyQ"; */
+"noR-vq-LyQ.footerTitle" = "스위치를 모두 끄면 시스템 설정을 따릅니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "Style"; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.headerTitle" = "스타일";
