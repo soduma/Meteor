@@ -33,38 +33,35 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var repeatCancelView: UIView!
     @IBOutlet weak var repeatCancelLabel: UILabel!
     
+    var db = Database.database().reference()
+    var firebaseAdCountIndex = 0
+    
     var content = ""
     var notificationCountIndex = 0
     var noticeViewIndex = 0
-
-    var notice = [NSLocalizedString("notice0", comment: ""),
+    var noticeList = [NSLocalizedString("notice0", comment: ""),
                   NSLocalizedString("notice1", comment: ""),
                   NSLocalizedString("notice2", comment: ""),
                   NSLocalizedString("notice3", comment: ""),
                   NSLocalizedString("notice4", comment: "")]
-    
-    var db = Database.database().reference()
-    var firebaseAdCountIndex = 0
 
-    // 구글광고!!!!!!!!!!!!!!!!!!!!
+    // MARK: ADMOB
     private var interstitial: GADInterstitialAd?
     var adIndex = 0
     var adUnitID1 = ""
     var adUnitID2 = ""
-    // --------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         checkFirstAppLaunch()
-        changeApperanceMode()
-        layout()
+        checkApperanceMode()
+        setLayout()
         
         adIndex = UserDefaults.standard.integer(forKey: "adIndex")
         
         db.child("adIndex").observeSingleEvent(of: .value) { [weak self] snapshot in
             self?.firebaseAdCountIndex = snapshot.value as? Int ?? 0
-//            print(self.firebaseIndex)
         }
     }
     
@@ -76,7 +73,7 @@ class MeteorViewController: UIViewController {
             print("Internet Connection not Available!")
         }
         
-        //앱 강제종료시 타이머 유무 체크
+        // 앱 강제종료시 타이머 유무 체크
         if UserDefaults.standard.bool(forKey: "repeatIdling") == true {
             self.repeatWorkingLabel.alpha = 1
             self.repeatTimerLabel.alpha = 1
@@ -87,7 +84,7 @@ class MeteorViewController: UIViewController {
         super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(
-            self, selector: #selector(notiAuthCheck), name: UIApplication.willEnterForegroundNotification, object: nil)
+            self, selector: #selector(checkNotificationAuth), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(
             self, selector: #selector(checkNetworkConnection), name: UIApplication.willEnterForegroundNotification, object: nil)
         
@@ -96,7 +93,6 @@ class MeteorViewController: UIViewController {
         
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { [weak self] status in
             // Tracking authorization completed. Start loading ads here.
-            // loadAd()
             self?.firstLoadAd()
         })
     }
@@ -108,7 +104,7 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func inputContent(_ sender: UITextField) {
-        //알림 권한
+        // 알림 권한
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { [weak self] settings in
             guard let self = self else { return }
@@ -141,24 +137,24 @@ class MeteorViewController: UIViewController {
     
     @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
         noticeViewIndex += 1
-        if noticeViewIndex > notice.count - 1 {
+        if noticeViewIndex > noticeList.count - 1 {
             noticeViewIndex = 0
         }
-        noticeLabel.text = notice[noticeViewIndex]
+        noticeLabel.text = noticeList[noticeViewIndex]
         pageControl.currentPage = noticeViewIndex
     }
     
     @IBAction func swipeRightNoticeView(_ sender: UISwipeGestureRecognizer) {
         noticeViewIndex -= 1
         if noticeViewIndex < 0 {
-            noticeViewIndex = notice.count - 1
+            noticeViewIndex = noticeList.count - 1
         }
-        noticeLabel.text = notice[noticeViewIndex]
+        noticeLabel.text = noticeList[noticeViewIndex]
         pageControl.currentPage = noticeViewIndex
     }
     
     @IBAction func pageChanged(_ sender: UIPageControl) {
-        noticeLabel.text = notice[pageControl.currentPage]
+        noticeLabel.text = noticeList[pageControl.currentPage]
         noticeViewIndex = pageControl.currentPage
     }
     
@@ -199,7 +195,7 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    //MARK: - SEND LOGIC
+    // MARK: - SEND LOGIC
     @IBAction func tapSendButton(_ sender: UIButton) {
         guard let detail = meteorTextField.text, detail.isEmpty == false else {
             print("Stop Repeat")
@@ -270,40 +266,46 @@ class MeteorViewController: UIViewController {
 }
 
 extension MeteorViewController {
-    @objc func checkNetworkConnection() {
-        if Reachability.isConnectedToNetwork() == false {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
+    private func setLayout() {
+        noticeLabel.text = noticeList[0]
+        noticeView.layer.cornerRadius = 15
+        pageControl.numberOfPages = noticeList.count
+        
+        authView.layer.cornerRadius = 20
+        authView.isHidden = true
+        
+        eraseTextButton.isHidden = true
+        repeatButton.isSelected = false
+        timePicker.isEnabled = false
+        timePicker.isHidden = true
+        
+        repeatWorkingLabel.alpha = 0
+        repeatTimerLabel.alpha = 0
+        repeatCancelView.alpha = 0
+    }
+    
+    private func checkFirstAppLaunch() {
+        if UserDefaults.standard.bool(forKey: "First Launch") == false {
+            // first
+            UserDefaults.standard.set(true, forKey: "First Launch")
+            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
+            UserDefaults.standard.set(true, forKey: "imageSwitch")
+        } else {
+            // not first
+            UserDefaults.standard.set(true, forKey: "First Launch")
         }
     }
     
-    @objc func notiAuthCheck() {
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { [weak self] settings in
-            if settings.authorizationStatus == .authorized {
-                print("Push notification is enabled")
-                self?.prepareAuthView()
-            }
-        }
-    }
-    
-    private func showAD() {
-        // 구글광고!!!!!!!!!!!!!!!!!!!!!!
-        adIndex += 1
-//        print("adIndex: \(adIndex)")
-
-        if adIndex >= firebaseAdCountIndex {
-            adIndex = 0
-            if interstitial != nil {
-                interstitial?.present(fromRootViewController: self)
+    private func checkApperanceMode() {
+        if let window = UIApplication.shared.windows.first {
+            if UserDefaults.standard.bool(forKey: "lightState") == true {
+                window.overrideUserInterfaceStyle = .light
+            } else if UserDefaults.standard.bool(forKey: "darkState") == true {
+                window.overrideUserInterfaceStyle = .dark
             } else {
-                print("Ad wasn't ready")
+                window.overrideUserInterfaceStyle = .unspecified
             }
-        } else if adIndex > 50 {
-            adIndex = 0
         }
-        UserDefaults.standard.set(adIndex, forKey: "adIndex")
-        // --------------------------------
     }
     
     private func sendWithRepeat() {
@@ -352,7 +354,11 @@ extension MeteorViewController {
             let timer = timePicker.countDownDuration
             let locale = TimeZone.current.identifier
             guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-            self.db.child("repeatText").child(user).childByAutoId().setValue(["text": text, "timer": timer / 60, "locale": locale])
+            self.db
+                .child("repeatText")
+                .child(user)
+                .childByAutoId()
+                .setValue(["text": text, "timer": timer / 60, "locale": locale])
         }
     }
     
@@ -373,49 +379,11 @@ extension MeteorViewController {
             let locale = TimeZone.current.identifier
 
             guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-            self.db.child("meteorText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
-        }
-    }
-    
-    private func layout() {
-        noticeLabel.text = notice[0]
-        noticeView.layer.cornerRadius = 15
-        pageControl.numberOfPages = notice.count
-        
-        authView.layer.cornerRadius = 20
-        authView.isHidden = true
-        
-        eraseTextButton.isHidden = true
-        repeatButton.isSelected = false
-        timePicker.isEnabled = false
-        timePicker.isHidden = true
-        
-        repeatWorkingLabel.alpha = 0
-        repeatTimerLabel.alpha = 0
-        repeatCancelView.alpha = 0
-    }
-    
-    private func checkFirstAppLaunch() {
-        if UserDefaults.standard.bool(forKey: "First Launch") == false {
-            // first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-            UserDefaults.standard.set(true, forKey: "vibrateSwitch")
-            UserDefaults.standard.set(true, forKey: "imageSwitch")
-        } else {
-            // not first
-            UserDefaults.standard.set(true, forKey: "First Launch")
-        }
-    }
-    
-    private func changeApperanceMode() {
-        if let window = UIApplication.shared.windows.first {
-            if UserDefaults.standard.bool(forKey: "lightState") == true {
-                window.overrideUserInterfaceStyle = .light
-            } else if UserDefaults.standard.bool(forKey: "darkState") == true {
-                window.overrideUserInterfaceStyle = .dark
-            } else {
-                window.overrideUserInterfaceStyle = .unspecified
-            }
+            self.db
+                .child("meteorText")
+                .child(user)
+                .childByAutoId()
+                .setValue(["text": text, "time": dateTime, "locale": locale])
         }
     }
     
@@ -431,17 +399,49 @@ extension MeteorViewController {
         let seconds = totalSeconds % 60
         return String(format: "%02d:%02d", min, seconds)
     }
+    
+    // MARK: ADMOB
+    private func showAD() {
+        adIndex += 1
+        
+        if adIndex >= firebaseAdCountIndex {
+            adIndex = 0
+            if interstitial != nil {
+                interstitial?.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+        } else if adIndex > 50 {
+            adIndex = 0
+        }
+        UserDefaults.standard.set(adIndex, forKey: "adIndex")
+    }
+    
+    @objc private func checkNetworkConnection() {
+        if Reachability.isConnectedToNetwork() == false {
+            sendButton.isEnabled = false
+            print("Internet Connection not Available!")
+        }
+    }
+    
+    @objc private func checkNotificationAuth() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { [weak self] settings in
+            if settings.authorizationStatus == .authorized {
+                print("Push notification is enabled")
+                self?.prepareAuthView()
+            }
+        }
+    }
 }
 
 extension MeteorViewController : UNUserNotificationCenterDelegate {
-    //To display notifications when app is running  inforeground
-    //viewDidLoad() UNUserNotificationCenter.current().delegate = self
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         [.banner, .list, .sound, .badge]
     }
 }
 
-// 구글광고!!!!!!!!!!!!!!!!!!!!!!
+// MARK: ADMOB
 extension MeteorViewController: GADFullScreenContentDelegate {
     private func firstLoadAd() {
 #if DEBUG
@@ -495,4 +495,3 @@ extension MeteorViewController: GADFullScreenContentDelegate {
         print("Ad did dismiss full screen content.")
     }
 }
-// --------------------------------

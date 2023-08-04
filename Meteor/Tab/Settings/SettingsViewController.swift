@@ -44,16 +44,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
-            imageView.image = UIImage(data: imageData)
-        }
-        keywordTextField.delegate = self
-        
-        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
-        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
-        
-        counterForAppReview = UserDefaults.standard.integer(forKey: "appReview")
-        counterForNonAutoAppReview = UserDefaults.standard.integer(forKey: "nonAutoAppReview")
+        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,10 +58,22 @@ class SettingsViewController: UITableViewController {
         if UserDefaults.standard.bool(forKey: "imageSwitch") {
             getImage()
         }
-        appReview()
+        
+        countToShowAppReview()
         nonAutoAppReview()
-//        print(UserDefaults.standard.integer(forKey: "appReview"))
-//        print(UserDefaults.standard.integer(forKey: "nonAutoAppReview"))
+    }
+    
+    private func setLayout() {
+        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
+            imageView.image = UIImage(data: imageData)
+        }
+        keywordTextField.delegate = self
+        
+        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
+        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
+        
+        counterForAppReview = UserDefaults.standard.integer(forKey: "appReview")
+        counterForNonAutoAppReview = UserDefaults.standard.integer(forKey: "nonAutoAppReview")
     }
     
     private func getImage() {
@@ -100,7 +103,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    private func appReview() {
+    private func countToShowAppReview() {
         counterForAppReview += 1
 //        print(counterForAppReview)
         UserDefaults.standard.set(counterForAppReview, forKey: "appReview")
