@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
-                                <rect key="frame" x="27" y="311" width="303" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                                <rect key="frame" x="27" y="311" width="336" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
                                 </constraints>
@@ -41,20 +41,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tapSendButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QwN-8r-dVs">
-                                <rect key="frame" x="340" y="321" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="R4U-yZ-U4L"/>
-                                    <constraint firstAttribute="width" constant="30" id="q9X-R0-fru"/>
-                                </constraints>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapEraseButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="mCR-C8-vUe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
@@ -170,7 +156,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="317" y="44" width="390" height="800"/>
+                                <rect key="frame" x="339" y="47" width="390" height="797"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="797"/>
@@ -195,7 +181,10 @@ notification allowance.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgP-WV-G9E">
-                                                    <rect key="frame" x="300.66666666666669" y="428.33333333333331" width="49.333333333333314" height="34.333333333333314"/>
+                                                    <rect key="frame" x="300.66666666666669" y="428.33333333333331" width="49.333333333333314" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="r7I-OR-cAO"/>
+                                                    </constraints>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="arrowshape.turn.up.right" catalog="system">
@@ -241,17 +230,15 @@ notification allowance.</string>
                             <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="Cb0-e8-h7V"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" id="Jhx-QY-vl8"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Cwj-Al-zg9" secondAttribute="trailing" id="JkY-BC-3Lp"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="QwN-8r-dVs" secondAttribute="trailing" constant="20" id="OwF-0H-Yf2"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
                             <constraint firstItem="N6f-d3-aSf" firstAttribute="leading" secondItem="118-qZ-0Nx" secondAttribute="leading" id="S51-x8-yFX"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="60" id="TDx-nM-qnZ"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="27" id="TDx-nM-qnZ"/>
                             <constraint firstItem="caC-dS-7wV" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="TNx-lZ-ms6"/>
                             <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="118-qZ-0Nx" secondAttribute="bottom" constant="30" id="aoY-3B-Kk0"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
-                            <constraint firstItem="QwN-8r-dVs" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="ezz-cN-4Gv"/>
                             <constraint firstItem="Cwj-Al-zg9" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="fHZ-aB-GfB"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="118-qZ-0Nx" secondAttribute="trailing" constant="30" id="o4H-ej-Ptt"/>
@@ -273,9 +260,10 @@ notification allowance.</string>
                     <connections>
                         <outlet property="authView" destination="FCV-iO-9UW" id="WeE-Yl-ECC"/>
                         <outlet property="authViewBottom" destination="rHZ-uA-TU3" id="BWH-Az-5GD"/>
-                        <outlet property="eraseTextButton" destination="QwN-8r-dVs" id="dHJ-Yy-yt5"/>
+                        <outlet property="datePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                         <outlet property="meteorHeadLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
                         <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
+                        <outlet property="moveToSettingButton" destination="WgP-WV-G9E" id="Xx5-hh-gQh"/>
                         <outlet property="noticeLabel" destination="3O8-SQ-hh2" id="87e-0l-Cni"/>
                         <outlet property="noticeView" destination="118-qZ-0Nx" id="ekW-41-xfQ"/>
                         <outlet property="pageControl" destination="HBW-I1-99y" id="28x-lq-WX4"/>
@@ -285,7 +273,6 @@ notification allowance.</string>
                         <outlet property="repeatTimerLabel" destination="9oA-8S-R1U" id="RRC-0s-v2i"/>
                         <outlet property="repeatWorkingLabel" destination="kyd-qH-UQ6" id="geX-vq-hfC"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
-                        <outlet property="timePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -431,7 +418,7 @@ notification allowance.</string>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-4P-ehB">
                                                     <rect key="frame" x="30" y="10" width="147.66666666666666" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yEa-4a-dLh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="148" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
@@ -458,7 +445,7 @@ notification allowance.</string>
                                                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-wz-RdI">
                                                     <rect key="frame" x="202.66666666666663" y="10" width="147.33333333333337" height="50"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WL5-Cl-zfm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="147.33333333333337" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
@@ -1109,7 +1096,7 @@ notification allowance.</string>
                                                             <visualEffectView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-tG-d7c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="118.33333333333333"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdQ-Zg-0Me">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="118.33333333333333"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="118"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-bF-XRm">

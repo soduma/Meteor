@@ -100,7 +100,7 @@
 "mO4-mb-C9g.headerTitle" = "일반";
 
 /* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
-"mYh-w1-2Gl.text" = "메테오 기능은 알림 설정이 필요합니다.";
+"mYh-w1-2Gl.text" = "메테오 기능은 알림 권한이 필요합니다.";
 
 /* Class = "UITableViewSection"; footerTitle = "If turn off all switches then follow the system setting."; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.footerTitle" = "스위치를 모두 끄면 시스템 설정을 따릅니다.";
