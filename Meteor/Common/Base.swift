@@ -7,6 +7,22 @@
 
 import Foundation
 
-let repeatIdling = "repeatIdling"
-let vibrateSwitch = "vibrateSwitch"
+// for UserDefaults Key
+let FirstLaunch = "FirstLaunch"
+let LightState = "LightState"
+let DarkState = "DarkState"
+let VibrateState = "VibrateState"
+
+let RepeatIdling = "RepeatIdling"
+let SavedAdIndex = "SavedAdIndex"
+
+let ImageDataKey = "ImageDataKey"
+let SystemAppReviewCount = "SystemAppReviewCount"
+let CustomAppReviewCount = "CustomAppReviewCount"
+let LastVersion = "LastVersion"
+
+// for FirebaseDatabase Key
 let adIndex = "adIndex"
+let shortText = "shortText"
+let longText = "longText"
+let unsplash = "unsplash"

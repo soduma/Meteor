@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import WidgetKit
 import StoreKit
 
@@ -28,13 +27,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateSubmitButton: UIButton!
     @IBOutlet weak var keywordTextField: UITextField!
     
-    let db = Database.database().reference()
-    var url = "https://source.unsplash.com/random"
-    var defaultURL = "https://source.unsplash.com/random"
-    var imageData: Data?
-    var widgetData: Data?
-    var timer = Timer()
-    let defaultImage = UIImage(named: "defaultImage.png")
+    let viewModel = SettingViewModel()
     
     var counterForSystemAppReview = 0
     var counterForCustomAppReview = 0
@@ -45,18 +38,17 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         setLayout()
+        viewModel.getImage(keyword: keywordText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: "lightState")
-        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: "darkState")
-        vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: "vibrateSwitch")
+        setState()
     }
     
     private func setLayout() {
-        if let imageData = UserDefaults.standard.data(forKey: "imageData") {
+        if let imageData = UserDefaults.standard.data(forKey: ImageDataKey) {
             imageView.image = UIImage(data: imageData)
         }
         keywordTextField.delegate = self
@@ -67,41 +59,19 @@ class SettingsViewController: UITableViewController {
         rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
         
-        counterForSystemAppReview = UserDefaults.standard.integer(forKey: "systemAppReview")
-        counterForCustomAppReview = UserDefaults.standard.integer(forKey: "customAppReview")
+        counterForSystemAppReview = UserDefaults.standard.integer(forKey: SystemAppReviewCount)
+        counterForCustomAppReview = UserDefaults.standard.integer(forKey: CustomAppReviewCount)
     }
     
-    private func getImage() {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else { return }
-            
-            if self.keywordText == "" {
-                self.db.child("a_upsplash").observeSingleEvent(of: .value) { snapshot in
-                    self.url = snapshot.value as? String ?? self.defaultURL
-                }
-                guard let imageURL = URL(string: self.url) else { return }
-                self.imageData = try? Data(contentsOf: imageURL)
-            } else {
-                self.db.child("a_upsplash").observeSingleEvent(of: .value) { _ in }
-                let keywordURL = "https://source.unsplash.com/featured/?\(self.keywordText)"
-                guard let imageURL = URL(string: keywordURL) else { return }
-                self.imageData = try? Data(contentsOf: imageURL)
-            }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: ((self.imageData) ?? self.defaultImage?.pngData())!)
-                self.widgetData = self.imageData
-                UserDefaults.standard.set(self.imageData, forKey: "imageData")
-                UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetData")
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-        }
+    private func setState() {
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: LightState)
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: DarkState)
+        vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: VibrateState)
     }
     
     private func checkSystemAppReview() {
         counterForSystemAppReview += 1
-//        print(counterForAppReview)
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: "systemAppReview")
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: SystemAppReviewCount)
         
         if counterForSystemAppReview >= 30 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
@@ -113,16 +83,14 @@ class SettingsViewController: UITableViewController {
     
     private func checkCustomAppReview() {
         counterForCustomAppReview += 1
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: "customAppReview")
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: CustomAppReviewCount)
         
         let infoDictionaryKey = kCFBundleVersionKey as String
         guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            fatalError("Expected to find a bundle version in the info dictionary") }
-        self.currentVersion = currentVersion
-//        print("current!!! --\(currentVersion)")
+            return print("Expected to find a bundle version in the info dictionary") }
         
-        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion")
-//        print("last!!! --\(lastVersion)")
+        self.currentVersion = currentVersion
+        let lastVersion = UserDefaults.standard.string(forKey: LastVersion)
         
         if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
             starRateView.isHidden = false
@@ -130,9 +98,23 @@ class SettingsViewController: UITableViewController {
     }
     
     @objc private func tapRefreshView() {
-        getImage()
+        makeVibration(type: .rigid)
+        
         checkSystemAppReview()
         checkCustomAppReview()
+        
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else { return }
+            viewModel.getImage(keyword: keywordText)
+            
+            DispatchQueue.main.async {
+                let defaultImage = UIImage(named: "meteor_logo.png")
+                self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
+                
+                self.viewModel.setWidgetData()
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
     }
     
     @IBAction func tapMail(_ sender: UIButton) {
@@ -143,7 +125,9 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapReview(_ sender: Any) {
-        if let url = URL(string: "itms-apps://itunes.apple.com/app/1562989730"), UIApplication.shared.canOpenURL(url) {
+        let url = "itms-apps://itunes.apple.com/app/1562989730"
+        if let url = URL(string: url),
+           UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
     }
@@ -158,8 +142,8 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
     }
     
     @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
@@ -172,12 +156,12 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: "lightState")
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: "darkState")
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
     }
     
     @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(vibrateSwitch.isOn, forKey: "vibrateSwitch")
+        UserDefaults.standard.set(vibrateSwitch.isOn, forKey: VibrateState)
     }
     
     @IBAction func tapRateClose(_ sender: UIButton) {
@@ -186,10 +170,11 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func tapRateSubmit(_ sender: UIButton) {
-        guard let writeReviewURL = URL(string: "https://apps.apple.com/app/id1562989730?action=write-review") else {
-            fatalError("Expected a valid URL") }
+        let url = "https://apps.apple.com/app/id1562989730?action=write-review"
+        guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
-        UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
+        
+        UserDefaults.standard.set(currentVersion, forKey: LastVersion)
         starRateView.isHidden = true
     }
 }

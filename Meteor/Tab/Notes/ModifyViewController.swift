@@ -12,8 +12,7 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    let modifyViewModel = ModifyViewModel()
-    let todoViewModel = TodoViewModel()
+    let viewModel = TodoViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,7 @@ class ModifyViewController: UIViewController {
     }
 
     private func setData() {
-        if let todo = modifyViewModel.todo {
+        if let todo = TodoViewModel.todo {
             modifyTextView.text = todo.detail
         }
     }
@@ -36,10 +35,11 @@ class ModifyViewController: UIViewController {
     }
     
     @IBAction func tapFinishButton(_ sender: UIButton) {
-        guard let detail = modifyTextView.text, detail.isEmpty == false else { return }
-        if var todo = modifyViewModel.todo {
+        guard let detail = modifyTextView.text,
+              detail.isEmpty == false else { return }
+        if var todo = TodoViewModel.todo {
             todo.detail = modifyTextView.text
-            todoViewModel.updateTodo(todo)
+            viewModel.updateTodo(todo)
         }
         
         TodoViewController().collectionView?.reloadData()

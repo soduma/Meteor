@@ -19,7 +19,7 @@ class VersionViewController: UIViewController {
         }
     }
     
-    @IBAction func tapInfofield(_ sender: UIButton) {
+    @IBAction func tapId(_ sender: UIButton) {
         let Username =  "infofield" // Your Instagram Username here
         let appURL = URL(string: "instagram://user?username=\(Username)")!
         let application = UIApplication.shared

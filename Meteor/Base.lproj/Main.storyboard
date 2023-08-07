@@ -347,7 +347,7 @@ notification allowance.</string>
                                                         <constraint firstAttribute="height" constant="25" id="NvW-TT-wYB"/>
                                                         <constraint firstAttribute="width" constant="25" id="szq-ph-ReD"/>
                                                     </constraints>
-                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="xmark.circle.fill" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
                                                     </state>
@@ -422,7 +422,7 @@ notification allowance.</string>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-wf-gO8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="148" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="147.66666666666666" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="LONG">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -449,7 +449,7 @@ notification allowance.</string>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3t-Ey-iwg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="147" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="147.33333333333334" height="50"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <state key="normal" title="SHORT">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -494,7 +494,7 @@ notification allowance.</string>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="bold"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="tapSendButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="pdI-6h-BIj"/>
+                                                                    <action selector="tapArrowButton:" destination="k7r-AM-8wv" eventType="touchUpInside" id="pdI-6h-BIj"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -616,10 +616,10 @@ notification allowance.</string>
             </objects>
             <point key="canvasLocation" x="2590.7692307692305" y="72.511848341232223"/>
         </scene>
-        <!--Input View Controller-->
+        <!--Create View Controller-->
         <scene sceneID="QSp-fW-XgP">
             <objects>
-                <viewController id="Ar1-RQ-ybm" customClass="InputViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ar1-RQ-ybm" customClass="CreateViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0mj-mW-cn1">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -703,8 +703,8 @@ notification allowance.</string>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Iv4-La-ZWZ" id="oaY-uY-Edd"/>
+                        <outlet property="createTextView" destination="k0Q-j8-NLo" id="Whm-I0-yNh"/>
                         <outlet property="finishButton" destination="WnL-JA-8Ya" id="EH7-cq-mIs"/>
-                        <outlet property="inputTextView" destination="k0Q-j8-NLo" id="Whm-I0-yNh"/>
                         <segue destination="PdX-1W-gVk" kind="unwind" identifier="fromInput" unwindAction="unwindToTodoViewControllerWithSegue:" id="7bs-P6-V7W"/>
                     </connections>
                 </viewController>
@@ -1296,7 +1296,7 @@ Thank you for using. 🤲 </string>
                                                 <color key="titleColor" systemColor="labelColor"/>
                                             </state>
                                             <connections>
-                                                <action selector="tapInfofield:" destination="374-Go-c7m" eventType="touchUpInside" id="a6p-9H-RMW"/>
+                                                <action selector="tapId:" destination="374-Go-c7m" eventType="touchUpInside" id="a6p-9H-RMW"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support iOS 14.0 or Higher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvr-nD-0wz">

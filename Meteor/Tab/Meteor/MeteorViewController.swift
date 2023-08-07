@@ -63,8 +63,8 @@ class MeteorViewController: UIViewController {
             viewModel.checkApperanceMode(window: window)
         }
         
-        currentAdIndex = UserDefaults.standard.integer(forKey: adIndex)
-        viewModel.getAdIndex { [weak self] value in
+        currentAdIndex = UserDefaults.standard.integer(forKey: SavedAdIndex)
+        viewModel.getFirebaseAdIndex { [weak self] value in
             self?.firebaseAdIndex = value
         }
     }
@@ -175,7 +175,7 @@ class MeteorViewController: UIViewController {
             datePicker.isHidden = true
         }
         
-        viewModel.makeVibration(type: .rigid)
+        makeVibration(type: .rigid)
     }
     
     @IBAction func timePickerChanged(_ sender: UIDatePicker) {
@@ -199,14 +199,13 @@ class MeteorViewController: UIViewController {
                     
                     setTimer()
                     
-                    UIView.animate(withDuration: 0.1, animations: { [weak self] in
-                        guard let self = self else { return }
+                    UIView.animate(withDuration: 0.1, animations: {
                         self.repeatWorkingLabel.alpha = 1
                         self.repeatTimerLabel.alpha = 1
                     })
                     
                 } else { // 타이머가 이미 있으면 거절
-                    viewModel.makeVibration(type: .big)
+                    makeVibration(type: .big)
                     repeatCancelLabel.text = NSLocalizedString("Endless already been set", comment: "")
                     repeatCancelView.alpha = 1
                     
@@ -218,8 +217,8 @@ class MeteorViewController: UIViewController {
                 }
                 
             case false:
-                viewModel.makeVibration(type: .error)
                 viewModel.sendWithoutRepeat(text: meteorText)
+                makeVibration(type: .error)
             }
             
             // 보낸 이후 UI초기화
@@ -242,8 +241,8 @@ class MeteorViewController: UIViewController {
                            animations: { self.repeatCancelView.alpha = 0 },
                            completion: nil)
             
-            viewModel.updateUserDefaults(bool: false, key: repeatIdling)
-            viewModel.makeVibration(type: .success)
+            UserDefaults.standard.set(false, forKey: RepeatIdling)
+            makeVibration(type: .success)
             
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
@@ -332,17 +331,14 @@ extension MeteorViewController: GADFullScreenContentDelegate {
         currentAdIndex += 1
         
         if currentAdIndex >= firebaseAdIndex {
-            if interstitial != nil {
-                interstitial?.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
-            }
+            guard let interstitial = interstitial else { return print("Ad wasn't ready") }
+            interstitial.present(fromRootViewController: self)
             currentAdIndex = 0
             
         } else if currentAdIndex > 50 { // exception: 상한선에 도달시 초기화
             currentAdIndex = 0
         }
-        UserDefaults.standard.set(currentAdIndex, forKey: adIndex)
+        UserDefaults.standard.set(currentAdIndex, forKey: SavedAdIndex)
     }
     
     private func firstLoadAd() {
