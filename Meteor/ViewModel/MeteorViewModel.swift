@@ -7,43 +7,30 @@
 
 import Foundation
 import UIKit.UIWindow
-import AudioToolbox
 import Firebase
-
-enum VibrationType {
-    case rigid
-    case success
-    case error
-    case big
-}
 
 class MeteorViewModel {
     let db = Database.database().reference()
     var notificationLimit = 0
     
-    func getAdIndex(completion: @escaping (Int) -> Void) {
-//        var value = 0
-        db.child("adIndex").observeSingleEvent(of: .value) { snapshot in
+    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
+        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
             let value = snapshot.value as? Int ?? 0
             completion(value)
         }
     }
     
-    func updateUserDefaults(bool: Bool, key: String) {
-        UserDefaults.standard.set(bool, forKey: key)
-    }
-    
     func checkFirstAppLaunch() {
-        if UserDefaults.standard.bool(forKey: "First Launch") == false {
-            UserDefaults.standard.set(true, forKey: "First Launch")
-            UserDefaults.standard.set(true, forKey: vibrateSwitch)
+        if UserDefaults.standard.bool(forKey: FirstLaunch) == false {
+            UserDefaults.standard.set(true, forKey: FirstLaunch)
+            UserDefaults.standard.set(true, forKey: VibrateState)
         }
     }
     
     func checkApperanceMode(window: UIWindow) {
-        if UserDefaults.standard.bool(forKey: "lightState") == true {
+        if UserDefaults.standard.bool(forKey: LightState) == true {
             window.overrideUserInterfaceStyle = .light
-        } else if UserDefaults.standard.bool(forKey: "darkState") == true {
+        } else if UserDefaults.standard.bool(forKey: DarkState) == true {
             window.overrideUserInterfaceStyle = .dark
         } else {
             window.overrideUserInterfaceStyle = .unspecified
@@ -51,28 +38,10 @@ class MeteorViewModel {
     }
     
     func checkRepeatIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: repeatIdling) {
+        if UserDefaults.standard.bool(forKey: RepeatIdling) {
             return true
         } else {
             return false
-        }
-    }
-    
-    func makeVibration(type: VibrationType) {
-        if UserDefaults.standard.bool(forKey: vibrateSwitch) {
-            switch type {
-            case .rigid:
-                return UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                
-            case .success:
-                return UINotificationFeedbackGenerator().notificationOccurred(.success)
-                
-            case .error:
-                return UINotificationFeedbackGenerator().notificationOccurred(.error)
-                
-            case .big:
-                return                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            }
         }
     }
     
@@ -104,7 +73,7 @@ class MeteorViewModel {
     }
     
     func sendWithRepeat(text: String, duration: TimeInterval) {
-        updateUserDefaults(bool: true, key: repeatIdling)
+        UserDefaults.standard.set(true, forKey: RepeatIdling)
         
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
@@ -121,7 +90,7 @@ class MeteorViewModel {
             .child("repeatText")
             .child(user)
             .childByAutoId()
-            .setValue(["text": text, "timer": duration / 60, "locale": locale])
+            .setValue(["text": text, "timer": String(duration / 60), "locale": locale])
     }
     
     func secondsToString(seconds: Int) -> String {
