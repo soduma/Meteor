@@ -6,14 +6,13 @@
 //
 
 import UIKit
-import AudioToolbox
 
 enum VibrationType {
     case rigid
     case medium
     case success
+    case warning
     case error
-    case big
 }
 
 func makeVibration(type: VibrationType) {
@@ -28,11 +27,11 @@ func makeVibration(type: VibrationType) {
         case .success:
             return UINotificationFeedbackGenerator().notificationOccurred(.success)
             
+        case .warning:
+            return UINotificationFeedbackGenerator().notificationOccurred(.warning)
+            
         case .error:
             return UINotificationFeedbackGenerator().notificationOccurred(.error)
-            
-        case .big:
-            return                         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
 }

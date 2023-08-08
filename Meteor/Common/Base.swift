@@ -7,7 +7,7 @@
 
 import Foundation
 
-// for UserDefaults Key
+// MARK: - for UserDefaults Key
 let FirstLaunch = "FirstLaunch"
 let LightState = "LightState"
 let DarkState = "DarkState"
@@ -15,14 +15,16 @@ let VibrateState = "VibrateState"
 
 let RepeatIdling = "RepeatIdling"
 let SavedAdIndex = "SavedAdIndex"
+let NotificationIndex = "NotificationIndex"
 
 let ImageDataKey = "ImageDataKey"
-let SystemAppReviewCount = "SystemAppReviewCount"
-let CustomAppReviewCount = "CustomAppReviewCount"
+let SystemAppReview = "SystemAppReview"
+let CustomAppReview = "CustomAppReview"
 let LastVersion = "LastVersion"
+let UserGetImageCount = "UserGetImageCount"
 
-// for FirebaseDatabase Key
+// MARK: - for FirebaseDatabase Key
 let adIndex = "adIndex"
 let shortText = "shortText"
 let longText = "longText"
-let unsplash = "unsplash"
+let unsplash = "a_unsplash"

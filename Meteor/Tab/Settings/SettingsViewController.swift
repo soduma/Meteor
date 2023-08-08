@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import WidgetKit
-import StoreKit
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var mailButton: UIButton!
@@ -19,6 +17,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var vibrateSwitch: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var refreshPhotoView: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet weak var starRateView: UIVisualEffectView!
     @IBOutlet weak var rateHeaderLabel: UILabel!
@@ -28,10 +27,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var keywordTextField: UITextField!
     
     let viewModel = SettingViewModel()
-    
-    var counterForSystemAppReview = 0
-    var counterForCustomAppReview = 0
-    var currentVersion = ""
     var keywordText = ""
     
     override func viewDidLoad() {
@@ -44,10 +39,13 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setState()
+        viewModel.getImageURL()
+        setState()        
     }
     
     private func setLayout() {
+        activityIndicatorView.isHidden = true
+        
         if let imageData = UserDefaults.standard.data(forKey: ImageDataKey) {
             imageView.image = UIImage(data: imageData)
         }
@@ -58,9 +56,6 @@ class SettingsViewController: UITableViewController {
         
         rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
-        
-        counterForSystemAppReview = UserDefaults.standard.integer(forKey: SystemAppReviewCount)
-        counterForCustomAppReview = UserDefaults.standard.integer(forKey: CustomAppReviewCount)
     }
     
     private func setState() {
@@ -69,39 +64,13 @@ class SettingsViewController: UITableViewController {
         vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: VibrateState)
     }
     
-    private func checkSystemAppReview() {
-        counterForSystemAppReview += 1
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: SystemAppReviewCount)
-        
-        if counterForSystemAppReview >= 30 {
-            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
-            counterForSystemAppReview = 0
-        }
-    }
-    
-    private func checkCustomAppReview() {
-        counterForCustomAppReview += 1
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: CustomAppReviewCount)
-        
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            return print("Expected to find a bundle version in the info dictionary") }
-        
-        self.currentVersion = currentVersion
-        let lastVersion = UserDefaults.standard.string(forKey: LastVersion)
-        
-        if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
-            starRateView.isHidden = false
-        }
-    }
-    
     @objc private func tapRefreshView() {
         makeVibration(type: .rigid)
         
-        checkSystemAppReview()
-        checkCustomAppReview()
+        viewModel.checkSystemAppReview()
+        starRateView.isHidden = viewModel.checkCustomAppReview()
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
@@ -112,7 +81,9 @@ class SettingsViewController: UITableViewController {
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
                 
                 self.viewModel.setWidgetData()
-                WidgetCenter.shared.reloadAllTimelines()
+                
+                self.activityIndicatorView.isHidden = true
+                self.activityIndicatorView.stopAnimating()
             }
         }
     }
@@ -166,7 +137,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func tapRateClose(_ sender: UIButton) {
         starRateView.isHidden = true
-        counterForCustomAppReview = 0
+        viewModel.counterForCustomAppReview = 0
     }
     
     @IBAction func tapRateSubmit(_ sender: UIButton) {
@@ -174,7 +145,7 @@ class SettingsViewController: UITableViewController {
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(currentVersion, forKey: LastVersion)
+        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: LastVersion)
         starRateView.isHidden = true
     }
 }

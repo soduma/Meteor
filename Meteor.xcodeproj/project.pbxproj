@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,8 @@
 		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
 		F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* TodoCell.swift */; };
 		F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingViewModel.swift */; };
+		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
+		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,7 @@
 		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		F77E75452A80CD09008F1883 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		F77E75482A80CE87008F1883 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 				F77E753B2A7CCB70008F1883 /* FirebaseCrashlytics in Frameworks */,
 				F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */,
 				F77E753D2A7CCB70008F1883 /* FirebaseDatabase in Frameworks */,
+				F7DDA5452A81F0A800265ABD /* Toast in Frameworks */,
 				FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +267,7 @@
 		F77E75472A80CD2B008F1883 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				F77E754A2A811827008F1883 /* NoticeCell.swift */,
 				F77E75452A80CD09008F1883 /* TodoCell.swift */,
 			);
 			path = Cell;
@@ -342,6 +347,7 @@
 				F77E75382A7CCB70008F1883 /* FirebaseAnalytics */,
 				F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */,
 				F77E753C2A7CCB70008F1883 /* FirebaseDatabase */,
+				F7DDA5442A81F0A800265ABD /* Toast */,
 			);
 			productName = Meteor;
 			productReference = A0998A4B25FC99E7001BAEFD /* Meteor.app */;
@@ -376,6 +382,7 @@
 			mainGroup = A0998A4225FC99E7001BAEFD;
 			packageReferences = (
 				F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
 			projectDirPath = "";
@@ -493,6 +500,7 @@
 				F77E75422A7E3338008F1883 /* Base.swift in Sources */,
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
+				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
 				A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
 				F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */,
@@ -833,6 +841,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -850,6 +866,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		F7DDA5442A81F0A800265ABD /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
