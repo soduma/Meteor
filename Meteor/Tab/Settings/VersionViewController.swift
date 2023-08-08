@@ -9,7 +9,7 @@ import UIKit
 
 class VersionViewController: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var infofieldButton: UIButton!
+    @IBOutlet weak var idButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class VersionViewController: UIViewController {
         }
     }
     
-    @IBAction func tapInfofield(_ sender: UIButton) {
+    @IBAction func tapIdButton(_ sender: UIButton) {
         let Username =  "infofield" // Your Instagram Username here
         let appURL = URL(string: "instagram://user?username=\(Username)")!
         let application = UIApplication.shared
