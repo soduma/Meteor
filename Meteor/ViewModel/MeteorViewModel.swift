@@ -11,7 +11,11 @@ import Firebase
 
 class MeteorViewModel {
     let db = Database.database().reference()
-    var notificationLimit = 0
+    var noticeList = [NSLocalizedString("notice0", comment: ""),
+                  NSLocalizedString("notice1", comment: ""),
+                  NSLocalizedString("notice2", comment: ""),
+                  NSLocalizedString("notice3", comment: ""),
+                  NSLocalizedString("notice4", comment: "")]
     
     func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
         db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
@@ -46,9 +50,12 @@ class MeteorViewModel {
     }
     
     func sendWithoutRepeat(text: String) {
-        notificationLimit += 1
-        if notificationLimit > 8 {
-            notificationLimit = 0
+        let notificationLimit = 8
+        var lastIndex = UserDefaults.standard.integer(forKey: NotificationIndex)
+        
+        lastIndex += 1
+        if lastIndex > notificationLimit {
+            lastIndex = 0
         }
         
         let contents = UNMutableNotificationContent()
@@ -56,9 +63,11 @@ class MeteorViewModel {
         contents.body = "\(text)"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "\(notificationLimit)timerdone", content: contents, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(lastIndex)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        UserDefaults.standard.set(lastIndex, forKey: NotificationIndex)
         
+        // for Firebase
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let dateTime = dateFormatter.string(from: Date())
@@ -72,9 +81,7 @@ class MeteorViewModel {
             .setValue(["text": text, "time": dateTime, "locale": locale])
     }
     
-    func sendWithRepeat(text: String, duration: TimeInterval) {
-        UserDefaults.standard.set(true, forKey: RepeatIdling)
-        
+    func sendWithRepeat(text: String, duration: TimeInterval) {        
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
         contents.body = "\(text)"
@@ -84,6 +91,7 @@ class MeteorViewModel {
         let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+        // for Firebase
         let locale = TimeZone.current.identifier
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         self.db

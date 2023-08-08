@@ -150,16 +150,15 @@ class TodoViewController: UIViewController {
     @IBAction func tapArrowButton(_ sender: UIButton) {
         guard let text = shortTextField.text,
               text.isEmpty == false else { return }
+        makeVibration(type: .success)
         viewModel.saveShort(text: text)
         
         shortTextField.text = ""
         collectionView.reloadData()
-//
+        
         let item = collectionView(collectionView, numberOfItemsInSection: 0) - 1
         let lastItemIndex = IndexPath(item: item, section: 0)
         collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
-        
-        makeVibration(type: .rigid)
     }
 }
 

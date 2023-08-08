@@ -11,8 +11,9 @@
 /* Class = "UILabel"; text = "Notes"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
-/* Class = "UILabel"; text = "If kill app, the timer dies. But still working :D"; ObjectID = "9oA-8S-R1U"; */
-"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 작동중 :D";
+/* Class = "UILabel"; text = "If kill app, the timer dies.
+ But still working 😄"; ObjectID = "9oA-8S-R1U"; */
+"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 작동중 😄";
 
 /* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
@@ -50,8 +51,8 @@
 /* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces. Write down a word without spaces. If blank, it's random."; ObjectID = "Whe-Py-dQR"; */
-"Whe-Py-dQR.footerTitle" = "띄어쓰기가 없는 영어 단어로 입력하여야 합니다.";
+/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces. Write down a word without spaces. If blank, it's randomly."; ObjectID = "Whe-Py-dQR"; */
+"Whe-Py-dQR.footerTitle" = "띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다.";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
 "WnL-JA-8Ya.normalTitle" = "완료";
@@ -86,14 +87,14 @@
 /* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 👋🏻 "; ObjectID = "keM-A9-xCm"; */
 "keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 👋🏻 ";
 
-/* Class = "UILabel"; text = " Endless working now 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
+/* Class = "UILabel"; text = " Endless Working 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
 "kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
 
 
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
 "lzG-Yx-4Ol.normalTitle" = "Close";
 
-/* Class = "UITableViewSection"; footerTitle = "About 500 KB of data is used each time a picture is loaded, and you can also see this information in the widget."; ObjectID = "mO4-mb-C9g"; */
+/* Class = "UITableViewSection"; footerTitle = "About 500 KB of data is used each time a photo loaded. You can also see this photo in the widget."; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "사진을 불러올 때마다 약 500KB의 데이터가 사용되며, 위젯에서도 이 정보를 볼 수 있습니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */

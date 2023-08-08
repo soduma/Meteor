@@ -10,37 +10,28 @@ import UserNotifications
 import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
+import Toast
 
 class MeteorViewController: UIViewController {
     @IBOutlet weak var meteorHeadLabel: UILabel!
     @IBOutlet weak var meteorTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var repeatButton: UIButton!
+    @IBOutlet weak var endlessButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var noticeView: UIView!
-    @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var endlessWorkingLabel: UILabel!
+    @IBOutlet weak var endlessTimerLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var authView: UIView!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     @IBOutlet weak var moveToSettingButton: UIButton!
     
-    @IBOutlet weak var repeatWorkingLabel: UILabel!
-    @IBOutlet weak var repeatTimerLabel: UILabel!
-    @IBOutlet weak var repeatCancelView: UIView!
-    @IBOutlet weak var repeatCancelLabel: UILabel!
-    
     let viewModel = MeteorViewModel()
-    
+    var toast = Toast.text("")
     var meteorText = ""
-    var noticeViewIndex = 0
-    var noticeList = [NSLocalizedString("notice0", comment: ""),
-                  NSLocalizedString("notice1", comment: ""),
-                  NSLocalizedString("notice2", comment: ""),
-                  NSLocalizedString("notice3", comment: ""),
-                  NSLocalizedString("notice4", comment: "")]
-
+    
     // MARK: ADMOB
     private var interstitial: GADInterstitialAd?
     var firebaseAdIndex = 0
@@ -79,7 +70,7 @@ class MeteorViewController: UIViewController {
         
         // 앱 강제종료시 타이머 유무 체크
         if viewModel.checkRepeatIdling() {
-            [repeatWorkingLabel, repeatTimerLabel]
+            [endlessWorkingLabel, endlessTimerLabel]
                 .forEach { $0?.alpha = 1 }
         }
     }
@@ -135,37 +126,14 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    @IBAction func swipeLeftNoticeView(_ sender: UISwipeGestureRecognizer) {
-        noticeViewIndex += 1
-        if noticeViewIndex > noticeList.count - 1 {
-            noticeViewIndex = 0
-        }
-        noticeLabel.text = noticeList[noticeViewIndex]
-        pageControl.currentPage = noticeViewIndex
-    }
-    
-    @IBAction func swipeRightNoticeView(_ sender: UISwipeGestureRecognizer) {
-        noticeViewIndex -= 1
-        if noticeViewIndex < 0 {
-            noticeViewIndex = noticeList.count - 1
-        }
-        noticeLabel.text = noticeList[noticeViewIndex]
-        pageControl.currentPage = noticeViewIndex
-    }
-    
-    @IBAction func pageChanged(_ sender: UIPageControl) {
-        noticeLabel.text = noticeList[pageControl.currentPage]
-        noticeViewIndex = pageControl.currentPage
-    }
-    
     @IBAction func tapBG(_ sender: UITapGestureRecognizer) {
         meteorTextField.resignFirstResponder()
     }
     
-    @IBAction func tapRepeatButton(_ sender: UIButton) {
-        repeatButton.isSelected = !repeatButton.isSelected
+    @IBAction func tapEndlessButton(_ sender: UIButton) {
+        endlessButton.isSelected = !endlessButton.isSelected
         
-        if repeatButton.isSelected {
+        if endlessButton.isSelected {
             meteorHeadLabel.text = "ENDLESS \nMETEOR :"
             datePicker.isEnabled = true
             datePicker.isHidden = false
@@ -189,82 +157,82 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
+        toast.close()
+        let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: false, displayTime: 2)
+        
         if let text = meteorTextField.text, !text.isEmpty {
+            meteorTextField.resignFirstResponder()
             showAD()
             
-            switch repeatButton.isSelected {
+            switch endlessButton.isSelected {
             case true:
                 if viewModel.checkRepeatIdling() == false {
-                    viewModel.sendWithRepeat(text: meteorText, duration: datePicker.countDownDuration)
-                    
                     setTimer()
-                    
+                    makeVibration(type: .success)
+                    viewModel.sendWithRepeat(text: meteorText, duration: datePicker.countDownDuration)
+                                        
                     UIView.animate(withDuration: 0.1, animations: {
-                        self.repeatWorkingLabel.alpha = 1
-                        self.repeatTimerLabel.alpha = 1
+                        self.endlessWorkingLabel.alpha = 1
+                        self.endlessTimerLabel.alpha = 1
                     })
                     
-                } else { // 타이머가 이미 있으면 거절
-                    makeVibration(type: .big)
-                    repeatCancelLabel.text = NSLocalizedString("Endless already been set", comment: "")
-                    repeatCancelView.alpha = 1
+                    let title = NSLocalizedString("Endless", comment: "")
+                    let subTitle = NSLocalizedString("Started", comment: "")
+                    toast = Toast.default(image: UIImage(systemName: "clock.badge.fill")!, title: title, subtitle: subTitle, config: toastConfig)
+                    toast.enableTapToClose()
+                    toast.show()
                     
-                    UIView.animate(withDuration: 0.5,
-                                   delay: 1.5,
-                                   options: .allowUserInteraction,
-                                   animations: { self.repeatCancelView.alpha = 0 },
-                                   completion: nil)
+                } else { // 타이머가 이미 있으면 거절
+                    makeVibration(type: .error)
+                    
+                    let title = NSLocalizedString("Endless already been set", comment: "")
+                    toast = Toast.default(image: UIImage(systemName: "clock.badge.exclamationmark.fill")!, title: title, config: toastConfig)
+                    toast.enableTapToClose()
+                    toast.show()
                 }
                 
             case false:
+                makeVibration(type: .success)
                 viewModel.sendWithoutRepeat(text: meteorText)
-                makeVibration(type: .error)
             }
-            
-            // 보낸 이후 UI초기화
-            meteorTextField.resignFirstResponder()
-            repeatButton.isSelected = false
-            meteorHeadLabel.text = "METEOR :"
-            datePicker.isEnabled = false
-            datePicker.isHidden = true
             
         } else { // 끝없이 취소
             meteorTextField.resignFirstResponder()
-            repeatWorkingLabel.alpha = 0
-            repeatTimerLabel.alpha = 0
-            repeatCancelView.alpha = 1
-            repeatCancelLabel.text = NSLocalizedString("Endless Canceled", comment: "")
-            
-            UIView.animate(withDuration: 0.5,
-                           delay: 1.5,
-                           options: .allowUserInteraction,
-                           animations: { self.repeatCancelView.alpha = 0 },
-                           completion: nil)
-            
+            endlessWorkingLabel.alpha = 0
+            endlessTimerLabel.alpha = 0
             UserDefaults.standard.set(false, forKey: RepeatIdling)
-            makeVibration(type: .success)
-            
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            
+            makeVibration(type: .medium)
+            let title = NSLocalizedString("Endless", comment: "")
+            let subTitle = NSLocalizedString("Canceled", comment: "")
+            toast = Toast.default(image: UIImage(systemName: "clock.badge.xmark.fill")!, title: title, subtitle: subTitle, config: toastConfig)
+            toast.enableTapToClose()
+            toast.show()
         }
     }
 }
 
 extension MeteorViewController {
     private func setLayout() {
-        noticeLabel.text = noticeList[0]
-        noticeView.layer.cornerRadius = 15
-        pageControl.numberOfPages = noticeList.count
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
+        collectionView.layer.cornerRadius = 20
+        collectionView.clipsToBounds = true
+        pageControl.numberOfPages = viewModel.noticeList.count
+        
+        endlessButton.isSelected = false
+        datePicker.isEnabled = false
+        datePicker.isHidden = true
         
         authView.layer.cornerRadius = 20
         authView.isHidden = true
         moveToSettingButton.layer.cornerRadius = 20
         moveToSettingButton.clipsToBounds = true
         
-        repeatButton.isSelected = false
-        datePicker.isEnabled = false
-        datePicker.isHidden = true
-        
-        [repeatWorkingLabel, repeatTimerLabel, repeatCancelView]
+        [endlessWorkingLabel, endlessTimerLabel]
             .forEach { $0?.alpha = 0 }
     }
     
@@ -275,10 +243,12 @@ extension MeteorViewController {
     }
     
     private func setTimer() {
+        UserDefaults.standard.set(true, forKey: RepeatIdling)
+        
         let triggeredDate = Date()
         let datePickerDuration = Int(datePicker.countDownDuration)
         var remainSecond = 0
-        repeatTimerLabel.text = viewModel.secondsToString(seconds: datePickerDuration)
+        endlessTimerLabel.text = viewModel.secondsToString(seconds: datePickerDuration)
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -287,10 +257,10 @@ extension MeteorViewController {
             
             if passSecond < datePickerDuration {
                 remainSecond = datePickerDuration - passSecond
-                self.repeatTimerLabel.text = viewModel.secondsToString(seconds: remainSecond)
+                self.endlessTimerLabel.text = viewModel.secondsToString(seconds: remainSecond)
             } else {
                 remainSecond = datePickerDuration - (passSecond % datePickerDuration)
-                self.repeatTimerLabel.text = viewModel.secondsToString(seconds: remainSecond)
+                self.endlessTimerLabel.text = viewModel.secondsToString(seconds: remainSecond)
             }
             
             // MARK: 여기서 타이머 중지
@@ -316,6 +286,41 @@ extension MeteorViewController {
                 self?.prepareAuthView()
             }
         }
+    }
+}
+
+extension MeteorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.noticeList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoticeCell.identifier, for: indexPath) as? NoticeCell else {
+            return UICollectionViewCell()
+        }
+        cell.setLayout(notice: viewModel.noticeList[indexPath.row])
+        return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / collectionView.bounds.width)
+        pageControl.currentPage = page
+    }
+}
+
+extension MeteorViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = collectionView.bounds.width
+        let height: CGFloat = collectionView.bounds.height
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
     }
 }
 
