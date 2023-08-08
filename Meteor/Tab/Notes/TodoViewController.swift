@@ -25,7 +25,6 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var xButton: UIButton!
     
     let viewModel = TodoViewModel()
-    let url = "https://picsum.photos/400/100"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showModify" {
@@ -65,9 +64,10 @@ class TodoViewController: UIViewController {
     }
     
     private func getBottomViewImage() {
+        let url = "https://picsum.photos/400/100"
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
-            guard let imageURL = URL(string: self.url),
+            guard let imageURL = URL(string: url),
                   let data = try? Data(contentsOf: imageURL) else { return }
             
             DispatchQueue.main.async {
