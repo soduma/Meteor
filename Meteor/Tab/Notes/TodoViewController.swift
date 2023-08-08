@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class TodoViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -26,15 +25,12 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var xButton: UIButton!
     
     let viewModel = TodoViewModel()
-    var db = Database.database().reference()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showModify" {
-            let vc = segue.destination as? ModifyViewController
             if let index = sender as? Int {
                 let todo = viewModel.todos[index]
-                vc?.modifyViewModel.update(model: todo)
-//                print(todoViewModel.todos[index])
+                TodoViewModel.todo = todo
             }
         }
     }
@@ -42,19 +38,18 @@ class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.loadTasks()
         setLayout()
-        
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        viewModel.loadTasks()
+        getBottomViewImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getBottomViewImage()
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setLayout() {
@@ -69,13 +64,14 @@ class TodoViewController: UIViewController {
     }
     
     private func getBottomViewImage() {
+        let url = "https://picsum.photos/400/100"
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            let url = "https://picsum.photos/400/100"
-            guard let imageURL = URL(string: url) else { return }
-            guard let data = try? Data(contentsOf: imageURL) else { return }
+            guard let self = self else { return }
+            guard let imageURL = URL(string: url),
+                  let data = try? Data(contentsOf: imageURL) else { return }
             
             DispatchQueue.main.async {
-                self?.imageView.image = UIImage(data: data)
+                self.imageView.image = UIImage(data: data)
             }
         }
     }
@@ -86,7 +82,9 @@ class TodoViewController: UIViewController {
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            UIView.animate(withDuration: 0.2,
+                           delay: 0,
+                           options: .curveEaseInOut) {
                 if noti.name == UIResponder.keyboardWillShowNotification {
                     let adjustmentHeight = keyboardFrame.height - self.view.safeAreaInsets.bottom
                     self.bottomViewBottom.constant = adjustmentHeight + 5
@@ -126,24 +124,18 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func tapLongButton(_ sender: UIButton) {
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-        }
+        makeVibration(type: .medium)
     }
     
     @IBAction func tapShortButton(_ sender: UIButton) {
+        makeVibration(type: .medium)
+        
         longBlurView.isHidden = true
         shortBlurView.isHidden = true
         xButton.isHidden = false
         textFieldBlurView.isHidden = false
         tapGestureRecognizer.isEnabled = true
         shortTextField.becomeFirstResponder()
-        
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-        }
     }
     
     @IBAction func tapXButton(_ sender: UIButton) {
@@ -155,31 +147,18 @@ class TodoViewController: UIViewController {
         shortTextField.resignFirstResponder()
     }
     
-    @IBAction func tapSendButton(_ sender: UIButton) {
-        guard let detail = shortTextField.text, detail.isEmpty == false else { return }
-        let todo = TodoManager.shared.createTodo(detail: detail)
-        viewModel.addTodo(todo)
-        let text = shortTextField.text
+    @IBAction func tapArrowButton(_ sender: UIButton) {
+        guard let text = shortTextField.text,
+              text.isEmpty == false else { return }
+        makeVibration(type: .success)
+        viewModel.saveShort(text: text)
+        
         shortTextField.text = ""
         collectionView.reloadData()
         
         let item = collectionView(collectionView, numberOfItemsInSection: 0) - 1
         let lastItemIndex = IndexPath(item: item, section: 0)
         collectionView.scrollToItem(at: lastItemIndex, at: .top, animated: true)
-        
-        //firebase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
-        let dateTime = dateFormatter.string(from: Date())
-        let locale = TimeZone.current.identifier
-        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-        db.child("shortText").child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
-        
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            let generator = UIImpactFeedbackGenerator(style: .rigid)
-            generator.impactOccurred()
-        }
     }
 }
 
@@ -189,19 +168,16 @@ extension TodoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoCell", for: indexPath) as? TodoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCell.idendifier, for: indexPath) as? TodoCell else {
             return UICollectionViewCell()
         }
         
-        var todo: Todo
-        todo = viewModel.todos[indexPath.item]
-//        print("cellforitem \(todo)")
-        cell.updateUI(todo)
+        var todo = viewModel.todos[indexPath.item]
+        cell.setLayout(todo)
         
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.viewModel.updateTodo(todo)
-//            self.collectionView.reloadData()
         }
         
         cell.deleteButtonTapHandler = {
@@ -223,80 +199,5 @@ extension TodoViewController: UICollectionViewDelegateFlowLayout {
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = 50
         return CGSize(width: width, height: height)
-    }
-}
-
-class TodoCell: UICollectionViewCell {
-    @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var strikeThroughView: UIView!
-    @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
-    
-    var doneButtonTapHandler: ((Bool) -> Void)?
-    var deleteButtonTapHandler: (() -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        reset()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        reset()
-    }
-    
-    func updateUI(_ todo: Todo) {
-        checkButton.isSelected = todo.isDone
-        descriptionLabel.text = todo.detail
-        deleteButton.isHidden = todo.isDone == false
-        
-        if checkButton.isSelected == true {
-            strikeThroughWidth.constant = descriptionLabel.bounds.width
-        } else {
-            showStrikeThrough(todo.isDone)
-        }
-    }
-    
-    private func showStrikeThrough(_ isShow: Bool) {
-        if isShow {
-            strikeThroughWidth.constant = descriptionLabel.bounds.width
-            UIView.animate(withDuration: 0.2) { self.contentView.layoutIfNeeded() }
-        } else {
-            strikeThroughWidth.constant = 0
-        }
-    }
-    
-    private func reset() {
-        deleteButton.isHidden = true
-        showStrikeThrough(false)
-    }
-    
-    @IBAction func tapCheckButton(_ sender: UIButton) {
-        checkButton.isSelected = !checkButton.isSelected
-        let isDone = checkButton.isSelected
-        deleteButton.isHidden = !isDone
-        showStrikeThrough(isDone)
-        doneButtonTapHandler?(isDone)
-        
-        if UserDefaults.standard.bool(forKey: "vibrateSwitch") == true {
-            UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        }
-    }
-    
-    @IBAction func tapDeleteButton(_ sender: UIButton) {
-        deleteButtonTapHandler?()
-    }
-    
-    // 셀 클릭시 하이라이트
-    override var isSelected: Bool {
-        didSet {
-            if self.isSelected {
-                UIView.animate(withDuration: 0.5) {
-                    self.backgroundColor = UIColor.systemGray4
-                    self.backgroundColor = UIColor.clear
-                }
-            }
-        }
     }
 }

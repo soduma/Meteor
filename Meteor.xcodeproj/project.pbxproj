@@ -27,16 +27,22 @@
 		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
 		A0E85765268C916800E10831 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85764268C916800E10831 /* Reachability.swift */; };
-		A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* InputViewController.swift */; };
+		A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* CreateViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
 		F77E75302A7CABAA008F1883 /* meteor_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_logo.png */; };
 		F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */; };
-		F77E75352A7CB40C008F1883 /* ModifyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75342A7CB40C008F1883 /* ModifyViewModel.swift */; };
 		F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F77E75382A7CCB70008F1883 /* FirebaseAnalytics */; };
 		F77E753B2A7CCB70008F1883 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */; };
 		F77E753D2A7CCB70008F1883 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F77E753C2A7CCB70008F1883 /* FirebaseDatabase */; };
+		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
+		F77E75422A7E3338008F1883 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75412A7E3338008F1883 /* Base.swift */; };
+		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
+		F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* TodoCell.swift */; };
+		F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingViewModel.swift */; };
+		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
+		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,13 +100,18 @@
 		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		A0ED408E26009DB5009990ED /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		A0ED408E26009DB5009990ED /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		F77E752F2A7CABAA008F1883 /* meteor_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_logo.png; sourceTree = "<group>"; };
 		F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
-		F77E75342A7CB40C008F1883 /* ModifyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewModel.swift; sourceTree = "<group>"; };
+		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
+		F77E75412A7E3338008F1883 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
+		F77E75452A80CD09008F1883 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		F77E75482A80CE87008F1883 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +131,7 @@
 				F77E753B2A7CCB70008F1883 /* FirebaseCrashlytics in Frameworks */,
 				F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */,
 				F77E753D2A7CCB70008F1883 /* FirebaseDatabase in Frameworks */,
+				F7DDA5452A81F0A800265ABD /* Toast in Frameworks */,
 				FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +175,7 @@
 				F77E75272A7B9AFF008F1883 /* Meteor */,
 				A0ED40A12602245F009990ED /* Notes */,
 				F77E75282A7B9B12008F1883 /* Settings */,
+				F77E75472A80CD2B008F1883 /* Cell */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -197,7 +210,7 @@
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
 				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
 				F7E861332A7B7ED100E5F194 /* Setting */,
-				F7E861342A7B7EFA00E5F194 /* Util */,
+				F7E861342A7B7EFA00E5F194 /* Common */,
 				A04E305827A28E7E008C9993 /* Model */,
 				F77E75362A7CB417008F1883 /* ViewModel */,
 				A04E305A27A28EC6008C9993 /* Tab */,
@@ -209,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				A0A4C12725FE25890090A214 /* TodoViewController.swift */,
-				A0ED408E26009DB5009990ED /* InputViewController.swift */,
+				A0ED408E26009DB5009990ED /* CreateViewController.swift */,
 				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
 			path = Notes;
@@ -244,10 +257,20 @@
 		F77E75362A7CB417008F1883 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */,
 				F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */,
-				F77E75342A7CB40C008F1883 /* ModifyViewModel.swift */,
+				F77E75482A80CE87008F1883 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F77E75472A80CD2B008F1883 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F77E754A2A811827008F1883 /* NoticeCell.swift */,
+				F77E75452A80CD09008F1883 /* TodoCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F7E861332A7B7ED100E5F194 /* Setting */ = {
@@ -263,12 +286,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		F7E861342A7B7EFA00E5F194 /* Util */ = {
+		F7E861342A7B7EFA00E5F194 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F77E75412A7E3338008F1883 /* Base.swift */,
 				A0E85764268C916800E10831 /* Reachability.swift */,
+				F77E75432A80C180008F1883 /* Vibration.swift */,
 			);
-			path = Util;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		FCD726DE8B6F35402C3E2E6B /* Pods */ = {
@@ -322,6 +347,7 @@
 				F77E75382A7CCB70008F1883 /* FirebaseAnalytics */,
 				F77E753A2A7CCB70008F1883 /* FirebaseCrashlytics */,
 				F77E753C2A7CCB70008F1883 /* FirebaseDatabase */,
+				F7DDA5442A81F0A800265ABD /* Toast */,
 			);
 			productName = Meteor;
 			productReference = A0998A4B25FC99E7001BAEFD /* Meteor.app */;
@@ -356,6 +382,7 @@
 			mainGroup = A0998A4225FC99E7001BAEFD;
 			packageReferences = (
 				F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
 			projectDirPath = "";
@@ -470,13 +497,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77E75422A7E3338008F1883 /* Base.swift in Sources */,
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
+				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
+				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
 				A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
+				F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
-				F77E75352A7CB40C008F1883 /* ModifyViewModel.swift in Sources */,
+				F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */,
+				F77E75442A80C180008F1883 /* Vibration.swift in Sources */,
 				A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */,
-				A0ED408F26009DB5009990ED /* InputViewController.swift in Sources */,
+				A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */,
 				A0ED409F2602244E009990ED /* Storage.swift in Sources */,
 				A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */,
 				A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */,
@@ -724,7 +756,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -732,7 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -751,7 +783,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -759,7 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -809,6 +841,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -826,6 +866,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F77E75372A7CCB70008F1883 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		F7DDA5442A81F0A800265ABD /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

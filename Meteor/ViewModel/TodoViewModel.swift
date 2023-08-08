@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import UIKit.UIDevice
+import Firebase
 
 class TodoViewModel {
     private let manager = TodoManager.shared
+    var db = Database.database().reference()
+    
+    static var todo: Todo?
     
     var todos: [Todo] {
         return manager.todos
@@ -28,5 +33,33 @@ class TodoViewModel {
     
     func loadTasks() {
         manager.retrieveTodo()
+    }
+    
+    func saveShort(text: String) {
+        let todo = manager.createTodo(detail: text)
+        addTodo(todo)
+        
+        // for Firebase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateTime = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        db.child(shortText).child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
+    }
+    
+    func saveLong(text: String) {
+        let todo = manager.createTodo(detail: text)
+        addTodo(todo)
+        
+        // for Firebase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateTime = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        db.child(longText).child(user).childByAutoId().setValue(["text": text, "time": dateTime, "locale": locale])
     }
 }
