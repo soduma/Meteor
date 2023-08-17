@@ -77,7 +77,7 @@ class SettingsViewController: UITableViewController {
             viewModel.getImage(keyword: keywordText)
             
             DispatchQueue.main.async {
-                let defaultImage = UIImage(named: "meteor_logo.png")
+                let defaultImage = UIImage(named: "meteor_splash.png")
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
                 
                 self.viewModel.setWidgetData()
