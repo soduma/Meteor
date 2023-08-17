@@ -249,6 +249,10 @@ extension MeteorViewController {
         let datePickerDuration = Int(datePicker.countDownDuration)
         var remainSecond = 0
         endlessTimerLabel.text = viewModel.secondsToString(seconds: datePickerDuration)
+        
+        if #available(iOS 16.1, *) {
+            viewModel.startLiveActivity(text: meteorText)
+        }
 
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -265,6 +269,11 @@ extension MeteorViewController {
             
             // MARK: 여기서 타이머 중지
             if viewModel.checkRepeatIdling() == false {
+                Task {
+                    if #available(iOS 16.2, *) {
+                        await self.viewModel.endLiveActivity()
+                    }
+                }
                 timer.invalidate()
                 print("timer invalidate")
             }

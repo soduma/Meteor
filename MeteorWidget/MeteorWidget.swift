@@ -2,7 +2,7 @@
 //  MeteorWidget.swift
 //  MeteorWidget
 //
-//  Created by 장기화 on 2021/07/19.
+//  Created by 장기화 on 2023/08/11.
 //
 
 import WidgetKit
@@ -43,7 +43,6 @@ struct MeteorWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-//        Text(entry.date, style: .time)
         let myImage = entry.data!
         Image(uiImage: UIImage(data: myImage)!)
             .resizable()
@@ -51,7 +50,6 @@ struct MeteorWidgetEntryView : View {
     }
 }
 
-@main
 struct MeteorWidget: Widget {
     let kind: String = "MeteorWidget"
 

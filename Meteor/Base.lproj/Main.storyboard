@@ -171,7 +171,7 @@ notification allowance.</string>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7e3-IR-c0w">
                                 <rect key="frame" x="30" y="649" width="333" height="90"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="8ot-Ln-cyb"/>
                                 </constraints>
@@ -1264,7 +1264,7 @@ Thank you for using. 🤲 </string>
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meteor_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JRA-BL-0hz">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="JRA-BL-0hz">
                                             <rect key="frame" x="133.66666666666666" y="226" width="149.99999999999997" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="rSt-Av-TZZ"/>
@@ -1375,8 +1375,8 @@ Thank you for using. 🤲 </string>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="highlighter" catalog="system" width="128" height="120"/>
+        <image name="me" width="128" height="128"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
-        <image name="meteor_logo.png" width="300" height="300"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

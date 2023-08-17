@@ -13,7 +13,8 @@
 
 /* Class = "UILabel"; text = "If kill app, the timer dies.
  But still working 😄"; ObjectID = "9oA-8S-R1U"; */
-"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요. 그래도 작동중 😄";
+"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요.
+그래도 작동중 😄";
 
 /* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";

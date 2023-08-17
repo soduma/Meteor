@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit.UIWindow
+import ActivityKit
 import Firebase
 
 class MeteorViewModel {
@@ -106,5 +107,36 @@ class MeteorViewModel {
         let min = totalSeconds / 60
         let seconds = totalSeconds % 60
         return String(format: "%02d:%02d", min, seconds)
+    }
+    
+    @available(iOS 16.1, *)
+    func startLiveActivity(text: String) {
+//        if #available(iOS 16.2, *) {
+            let attributes = MeteorWidgetAttributes(value: "none")
+            let contentState = MeteorWidgetAttributes.ContentState(endlessText: text)
+            
+            do {
+                let activity = try Activity<MeteorWidgetAttributes>.request(
+                    attributes: attributes,
+                    contentState: contentState
+                )
+                print(activity)
+            } catch {
+                print(error.localizedDescription)
+            }
+//        }
+    }
+    
+    @available(iOS 16.2, *)
+    func endLiveActivity() async {
+//        if #available(iOS 16.2, *) {
+            let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "hi")
+            let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+            
+            for activity in Activity<MeteorWidgetAttributes>.activities {
+                await activity.end(finalContent, dismissalPolicy: .immediate)
+                print("Ending the Live Activity(Timer): \(activity.id)")
+            }
+//        }
     }
 }
