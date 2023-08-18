@@ -54,7 +54,7 @@ class MeteorViewController: UIViewController {
             viewModel.checkApperanceMode(window: window)
         }
         
-        currentAdIndex = UserDefaults.standard.integer(forKey: SavedAdIndex)
+        currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
         viewModel.getFirebaseAdIndex { [weak self] value in
             self?.firebaseAdIndex = value
         }
@@ -200,7 +200,7 @@ class MeteorViewController: UIViewController {
             meteorTextField.resignFirstResponder()
             endlessWorkingLabel.alpha = 0
             endlessTimerLabel.alpha = 0
-            UserDefaults.standard.set(false, forKey: RepeatIdling)
+            UserDefaults.standard.set(false, forKey: repeatIdlingKey)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             makeVibration(type: .medium)
@@ -243,7 +243,7 @@ extension MeteorViewController {
     }
     
     private func setTimer() {
-        UserDefaults.standard.set(true, forKey: RepeatIdling)
+        UserDefaults.standard.set(true, forKey: repeatIdlingKey)
         
         let triggeredDate = Date()
         let datePickerDuration = Int(datePicker.countDownDuration)
@@ -352,7 +352,7 @@ extension MeteorViewController: GADFullScreenContentDelegate {
         } else if currentAdIndex > 50 { // exception: 상한선에 도달시 초기화
             currentAdIndex = 0
         }
-        UserDefaults.standard.set(currentAdIndex, forKey: SavedAdIndex)
+        UserDefaults.standard.set(currentAdIndex, forKey: savedAdIndexKey)
     }
     
     private func firstLoadAd() {

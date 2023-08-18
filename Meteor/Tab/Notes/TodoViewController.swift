@@ -40,7 +40,7 @@ class TodoViewController: UIViewController {
         
         setLayout()
         viewModel.loadTasks()
-        getBottomViewImage()
+//        getBottomViewImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,18 +63,18 @@ class TodoViewController: UIViewController {
         textFieldBlurView.isHidden = true
     }
     
-    private func getBottomViewImage() {
-        let url = "https://picsum.photos/400/100"
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else { return }
-            guard let imageURL = URL(string: url),
-                  let data = try? Data(contentsOf: imageURL) else { return }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data)
-            }
-        }
-    }
+//    private func getBottomViewImage() {
+//        let url = "https://picsum.photos/400/100"
+//        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+//            guard let self = self else { return }
+//            guard let imageURL = URL(string: url),
+//                  let data = try? Data(contentsOf: imageURL) else { return }
+//
+//            DispatchQueue.main.async {
+//                self.imageView.image = UIImage(data: data)
+//            }
+//        }
+//    }
     
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }

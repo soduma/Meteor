@@ -13,49 +13,21 @@ struct MeteorWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var endlessText: String
+        var lockscreen: Bool
     }
 
     // Fixed non-changing properties about your activity go here!
     var value: String
 }
 
-@available(iOS 16.2, *)
 struct MeteorWidgetLiveActivity: Widget {
     let logo = "meteor_logo"
     
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: MeteorWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
-            ZStack {
-                Color.red.opacity(0.8)
-                VStack {
-                    HStack(alignment: .center, spacing: 8) {
-                        ZStack {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 32, height: 32, alignment: .leading)
-                            Image(logo)
-                        }
-                        Text("Meteor")
-                            .fontWeight(.black)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }.padding(.leading)
-                    if context.state.endlessText.count < 20 {
-                        Text(context.state.endlessText)
-                            .font(.system(size: 32, weight: .semibold))
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing])
-                    } else {
-                        Text(context.state.endlessText)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding([.leading, .trailing])
-                    }
-                }
-                .padding(.top)
-                .padding(.bottom)
-            }
+            LockScreenView(context: context)
+            
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
@@ -98,11 +70,82 @@ struct MeteorWidgetLiveActivity: Widget {
     }
 }
 
+struct LockScreenView: View {
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
+    let logo = "meteor_logo"
+    
+    let context: ActivityViewContext<MeteorWidgetAttributes>
+
+    var body: some View {
+        if context.state.lockscreen {
+            setLayout(showContent: true)
+        } else {
+            if isLuminanceReduced {
+                setLayout(showContent: false)
+            } else {
+                setLayout(showContent: true)
+            }
+        }
+    }
+    
+    @ViewBuilder func setLayout(showContent: Bool) -> some View {
+        ZStack {
+            Color.red.opacity(0.8)
+            VStack {
+                HStack(alignment: .center, spacing: 8) {
+                    ZStack {
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 32, height: 32, alignment: .leading)
+                        Image(logo)
+                    }
+                    Text("Meteor")
+                        .fontWeight(.black)
+                        .foregroundColor(.white)
+                    Spacer()
+                }
+                .padding(.leading)
+                
+                switch context.state.endlessText.count {
+                case ...20:
+                    if showContent {
+                        Text(context.state.endlessText)
+                            .font(.system(size: 32, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                    } else {
+                        Text(context.state.endlessText)
+                            .font(.system(size: 32, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                            .blur(radius: 8)
+                    }
+                default:
+                    if showContent {
+                        Text(context.state.endlessText)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                    } else {
+                        Text(context.state.endlessText)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                            .blur(radius: 8)
+                    }
+                }
+            }
+            .padding(.top)
+            .padding(.bottom)
+        }
+    }
+}
+
 @available(iOS 16.2, *)
 struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
     static let attributes = MeteorWidgetAttributes(value: "Me")
-    static let contentState = MeteorWidgetAttributes.ContentState(endlessText: "555")
-
+    static let contentState = MeteorWidgetAttributes.ContentState(endlessText: "555", lockscreen: true)
+    
     static var previews: some View {
         attributes
             .previewContext(contentState, viewKind: .dynamicIsland(.compact))

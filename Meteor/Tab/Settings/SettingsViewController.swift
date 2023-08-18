@@ -14,7 +14,9 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
-    @IBOutlet weak var vibrateSwitch: UISwitch!
+    @IBOutlet weak var hapticSwitch: UISwitch!
+    @IBOutlet weak var lockScreenSwitch: UISwitch!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var refreshPhotoView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -40,13 +42,13 @@ class SettingsViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         viewModel.getImageURL()
-        setState()        
+        setState()
     }
     
     private func setLayout() {
         activityIndicatorView.isHidden = true
         
-        if let imageData = UserDefaults.standard.data(forKey: ImageDataKey) {
+        if let imageData = UserDefaults.standard.data(forKey: imageDataKey) {
             imageView.image = UIImage(data: imageData)
         }
         keywordTextField.delegate = self
@@ -59,9 +61,10 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setState() {
-        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: LightState)
-        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: DarkState)
-        vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: VibrateState)
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: lightStateKey)
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: darkStateKey)
+        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: hapticStateKey)
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: lockScreenKey)
     }
     
     @objc private func tapRefreshView() {
@@ -113,8 +116,8 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
     }
     
     @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
@@ -127,17 +130,29 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
     }
     
-    @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(vibrateSwitch.isOn, forKey: VibrateState)
+    @IBAction func tapHapticSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(hapticSwitch.isOn, forKey: hapticStateKey)
     }
     
-    @IBAction func tapRateClose(_ sender: UIButton) {
-        starRateView.isHidden = true
-        viewModel.counterForCustomAppReview = 0
+    @IBAction func tapLockScreenSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: lockScreenKey)
+        
+        if #available(iOS 16.2, *) {
+            Task {
+                if UserDefaults.standard.bool(forKey: repeatIdlingKey) {
+                    await MeteorViewModel().endLiveActivity()
+                    
+                    let endlessText = UserDefaults.standard.string(forKey: lastEndlessTextKey) ?? ""
+                    MeteorViewModel().startLiveActivity(text: endlessText)
+                } else {
+                    UserDefaults.standard.removeObject(forKey: lastEndlessTextKey)
+                }
+            }
+        }
     }
     
     @IBAction func tapRateSubmit(_ sender: UIButton) {
@@ -145,8 +160,13 @@ class SettingsViewController: UITableViewController {
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: LastVersion)
+        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: lastVersionKey)
         starRateView.isHidden = true
+    }
+    
+    @IBAction func tapRateClose(_ sender: UIButton) {
+        starRateView.isHidden = true
+        viewModel.counterForCustomAppReview = 0
     }
 }
 
