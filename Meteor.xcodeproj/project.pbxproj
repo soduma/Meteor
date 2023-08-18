@@ -13,7 +13,6 @@
 		A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */; };
 		A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */; };
 		A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */; };
-		A0998A5625FC99E7001BAEFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5425FC99E7001BAEFD /* Main.storyboard */; };
 		A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5725FC99E9001BAEFD /* Assets.xcassets */; };
 		A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */; };
 		A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */; };
@@ -46,6 +45,7 @@
 		F7972D4D2A85EA6700050263 /* MeteorWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
+		F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F79FCA2A8F175700FA5464 /* Main.storyboard */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,12 +84,10 @@
 		A04AE61726453C1F008BB99C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		A06A51ED2634075E003DAEEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A06A51F4263409D6003DAEEF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A06F7FA527F6F84E002D4818 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		A0998A4B25FC99E7001BAEFD /* Meteor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meteor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewController.swift; sourceTree = "<group>"; };
-		A0998A5525FC99E7001BAEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0998A5725FC99E9001BAEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0998A5A25FC99E9001BAEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0998A5C25FC99E9001BAEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +115,8 @@
 		F7972D462A85EA6600050263 /* MeteorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidget.swift; sourceTree = "<group>"; };
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7F79FCC2A8F175A00FA5464 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
 				A06A51EE2634075E003DAEEF /* Localizable.strings */,
 				A06A51F5263409D6003DAEEF /* Localizable.strings */,
-				A0998A5425FC99E7001BAEFD /* Main.storyboard */,
+				F7F79FCA2A8F175700FA5464 /* Main.storyboard */,
 				F7E861332A7B7ED100E5F194 /* Setting */,
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				A04E305827A28E7E008C9993 /* Model */,
@@ -409,11 +409,11 @@
 				A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */,
 				A0A4042626A8B3EC0054112C /* InfoPlist.strings in Resources */,
 				A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */,
+				F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */,
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
 				F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */,
-				A0998A5625FC99E7001BAEFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,21 +556,21 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		A0998A5425FC99E7001BAEFD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0998A5525FC99E7001BAEFD /* Base */,
-				A06F7FA527F6F84E002D4818 /* ko */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0998A5A25FC99E9001BAEFD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F7F79FCA2A8F175700FA5464 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7F79FC92A8F175700FA5464 /* Base */,
+				F7F79FCC2A8F175A00FA5464 /* ko */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -707,7 +707,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +734,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

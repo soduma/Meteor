@@ -26,16 +26,18 @@ class MeteorViewModel {
     }
     
     func checkFirstAppLaunch() {
-        if UserDefaults.standard.bool(forKey: FirstLaunch) == false {
-            UserDefaults.standard.set(true, forKey: FirstLaunch)
-            UserDefaults.standard.set(true, forKey: VibrateState)
+        if UserDefaults.standard.bool(forKey: firstLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: hapticStateKey)
+            UserDefaults.standard.set(true, forKey: lockScreenKey)
+            
+            UserDefaults.standard.set(true, forKey: firstLaunchKey)
         }
     }
     
     func checkApperanceMode(window: UIWindow) {
-        if UserDefaults.standard.bool(forKey: LightState) == true {
+        if UserDefaults.standard.bool(forKey: lightStateKey) == true {
             window.overrideUserInterfaceStyle = .light
-        } else if UserDefaults.standard.bool(forKey: DarkState) == true {
+        } else if UserDefaults.standard.bool(forKey: darkStateKey) == true {
             window.overrideUserInterfaceStyle = .dark
         } else {
             window.overrideUserInterfaceStyle = .unspecified
@@ -43,7 +45,7 @@ class MeteorViewModel {
     }
     
     func checkRepeatIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: RepeatIdling) {
+        if UserDefaults.standard.bool(forKey: repeatIdlingKey) {
             return true
         } else {
             return false
@@ -52,7 +54,7 @@ class MeteorViewModel {
     
     func sendWithoutRepeat(text: String) {
         let notificationLimit = 8
-        var lastIndex = UserDefaults.standard.integer(forKey: NotificationIndex)
+        var lastIndex = UserDefaults.standard.integer(forKey: notificationIndexKey)
         
         lastIndex += 1
         if lastIndex > notificationLimit {
@@ -66,7 +68,7 @@ class MeteorViewModel {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
         let request = UNNotificationRequest(identifier: "\(lastIndex)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        UserDefaults.standard.set(lastIndex, forKey: NotificationIndex)
+        UserDefaults.standard.set(lastIndex, forKey: notificationIndexKey)
         
         // for Firebase
         let dateFormatter = DateFormatter()
@@ -82,7 +84,7 @@ class MeteorViewModel {
             .setValue(["text": text, "time": dateTime, "locale": locale])
     }
     
-    func sendWithRepeat(text: String, duration: TimeInterval) {        
+    func sendWithRepeat(text: String, duration: TimeInterval) {
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
         contents.body = "\(text)"
@@ -109,34 +111,35 @@ class MeteorViewModel {
         return String(format: "%02d:%02d", min, seconds)
     }
     
-    @available(iOS 16.1, *)
     func startLiveActivity(text: String) {
-//        if #available(iOS 16.2, *) {
-            let attributes = MeteorWidgetAttributes(value: "none")
-            let contentState = MeteorWidgetAttributes.ContentState(endlessText: text)
-            
-            do {
-                let activity = try Activity<MeteorWidgetAttributes>.request(
-                    attributes: attributes,
-                    contentState: contentState
-                )
-                print(activity)
-            } catch {
-                print(error.localizedDescription)
-            }
-//        }
+        UserDefaults.standard.set(text, forKey: lastEndlessTextKey)
+        
+        let attributes = MeteorWidgetAttributes(value: "none")
+        let contentState = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: lockScreenKey))
+        
+        do {
+            let activity = try Activity<MeteorWidgetAttributes>.request(
+                attributes: attributes,
+                contentState: contentState
+            )
+            print(activity)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     @available(iOS 16.2, *)
     func endLiveActivity() async {
-//        if #available(iOS 16.2, *) {
-            let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "hi")
-            let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
-            
-            for activity in Activity<MeteorWidgetAttributes>.activities {
-                await activity.end(finalContent, dismissalPolicy: .immediate)
-                print("Ending the Live Activity(Timer): \(activity.id)")
-            }
-//        }
+        let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "none", lockscreen: false)
+        let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+        
+        for activity in Activity<MeteorWidgetAttributes>.activities {
+            await activity.end(finalContent, dismissalPolicy: .immediate)
+            print("Ending the Live Activity(Timer): \(activity.id)")
+        }
+        
+        if UserDefaults.standard.bool(forKey: repeatIdlingKey) == false {
+            UserDefaults.standard.removeObject(forKey: lastEndlessTextKey)
+        }
     }
 }

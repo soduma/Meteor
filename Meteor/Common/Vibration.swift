@@ -16,7 +16,7 @@ enum VibrationType {
 }
 
 func makeVibration(type: VibrationType) {
-    if UserDefaults.standard.bool(forKey: VibrateState) {
+    if UserDefaults.standard.bool(forKey: hapticStateKey) {
         switch type {
         case .rigid:
             return UIImpactFeedbackGenerator(style: .rigid).impactOccurred()

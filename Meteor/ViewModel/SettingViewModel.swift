@@ -17,9 +17,9 @@ class SettingViewModel {
     
     var imageData: Data?
     var widgetData: Data?
-    var counterForSystemAppReview = UserDefaults.standard.integer(forKey: SystemAppReview)
-    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: CustomAppReview)
-    var getImageCount = UserDefaults.standard.integer(forKey: UserGetImageCount)
+    var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewKey)
+    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewKey)
+    var getImageCount = UserDefaults.standard.integer(forKey: userGetImageCountKey)
     
     func getImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
@@ -30,7 +30,7 @@ class SettingViewModel {
     
     func getImage(keyword: String) {
         getImageCount += 1
-        UserDefaults.standard.set(getImageCount, forKey: UserGetImageCount)
+        UserDefaults.standard.set(getImageCount, forKey: userGetImageCountKey)
         
         if keyword.isEmpty {
             guard let imageURL = URL(string: url) else { return }
@@ -57,14 +57,14 @@ class SettingViewModel {
     
     func setWidgetData() {
         widgetData = imageData
-        UserDefaults.standard.set(imageData, forKey: ImageDataKey)
+        UserDefaults.standard.set(imageData, forKey: imageDataKey)
         UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetDataKey")
         WidgetCenter.shared.reloadAllTimelines()
     }
     
     func checkSystemAppReview() {
         counterForSystemAppReview += 1
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: SystemAppReview)
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewKey)
         
         if counterForSystemAppReview >= 35 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
@@ -76,7 +76,7 @@ class SettingViewModel {
     
     func checkCustomAppReview() -> Bool {
         counterForCustomAppReview += 1
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: CustomAppReview)
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewKey)
         print(counterForCustomAppReview)
         
         let infoDictionaryKey = kCFBundleVersionKey as String
@@ -85,7 +85,7 @@ class SettingViewModel {
             return true
         }
         
-        let lastVersion = UserDefaults.standard.string(forKey: LastVersion)
+        let lastVersion = UserDefaults.standard.string(forKey: lastVersionKey)
         
         if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
             return false

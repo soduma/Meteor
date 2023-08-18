@@ -12,8 +12,6 @@ import SwiftUI
 struct MeteorWidgetBundle: WidgetBundle {
     var body: some Widget {
         MeteorWidget()
-        if #available(iOS 16.1, *) {
-            MeteorWidgetLiveActivity()
-        }
+        MeteorWidgetLiveActivity()
     }
 }
