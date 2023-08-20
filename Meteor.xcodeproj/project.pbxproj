@@ -46,6 +46,7 @@
 		F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F79FCA2A8F175700FA5464 /* Main.storyboard */; };
+		F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F79FCF2A90A1EC00FA5464 /* String+.swift */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7F79FCC2A8F175A00FA5464 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F7F79FCF2A90A1EC00FA5464 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 				F77E75412A7E3338008F1883 /* Base.swift */,
 				A0E85764268C916800E10831 /* Reachability.swift */,
 				F77E75432A80C180008F1883 /* Vibration.swift */,
+				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				A04AE61826453C1F008BB99C /* TabBar.swift in Sources */,
 				A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */,
 				A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */,
+				F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */,
 				F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,7 +711,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -734,7 +738,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
