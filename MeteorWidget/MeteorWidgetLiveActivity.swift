@@ -141,7 +141,6 @@ struct LockScreenView: View {
     }
 }
 
-@available(iOS 16.2, *)
 struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
     static let attributes = MeteorWidgetAttributes(value: "Me")
     static let contentState = MeteorWidgetAttributes.ContentState(endlessText: "555", lockscreen: true)

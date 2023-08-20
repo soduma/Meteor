@@ -10,7 +10,14 @@ import UIKit.UIWindow
 import ActivityKit
 import Firebase
 
+enum MeteorType {
+    case single
+    case endless
+    case live
+}
+
 class MeteorViewModel {
+    var meteorType = MeteorType.single
     let db = Database.database().reference()
     var noticeList = [NSLocalizedString("notice0", comment: ""),
                   NSLocalizedString("notice1", comment: ""),
@@ -44,15 +51,23 @@ class MeteorViewModel {
         }
     }
     
-    func checkRepeatIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: repeatIdlingKey) {
+    func checkEndlessIdling() -> Bool {
+        if UserDefaults.standard.bool(forKey: endlessIdlingKey) {
             return true
         } else {
             return false
         }
     }
     
-    func sendWithoutRepeat(text: String) {
+    func checkLiveIdling() -> Bool {
+        if UserDefaults.standard.bool(forKey: liveIdlingKey) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func sendSingleMeteor(text: String) {
         let notificationLimit = 8
         var lastIndex = UserDefaults.standard.integer(forKey: notificationIndexKey)
         
@@ -84,7 +99,9 @@ class MeteorViewModel {
             .setValue(["text": text, "time": dateTime, "locale": locale])
     }
     
-    func sendWithRepeat(text: String, duration: TimeInterval) {
+    func sendEndlessMeteor(text: String, duration: TimeInterval) {
+        UserDefaults.standard.set(true, forKey: endlessIdlingKey)
+        
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
         contents.body = "\(text)"
@@ -104,15 +121,9 @@ class MeteorViewModel {
             .setValue(["text": text, "timer": String(duration / 60), "locale": locale])
     }
     
-    func secondsToString(seconds: Int) -> String {
-        let totalSeconds = Int(seconds)
-        let min = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        return String(format: "%02d:%02d", min, seconds)
-    }
-    
     func startLiveActivity(text: String) {
-        UserDefaults.standard.set(text, forKey: lastEndlessTextKey)
+        UserDefaults.standard.set(true, forKey: liveIdlingKey)
+        UserDefaults.standard.set(text, forKey: LiveTextKey)
         
         let attributes = MeteorWidgetAttributes(value: "none")
         let contentState = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: lockScreenKey))
@@ -128,7 +139,6 @@ class MeteorViewModel {
         }
     }
     
-    @available(iOS 16.2, *)
     func endLiveActivity() async {
         let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "none", lockscreen: false)
         let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
@@ -138,8 +148,8 @@ class MeteorViewModel {
             print("Ending the Live Activity(Timer): \(activity.id)")
         }
         
-        if UserDefaults.standard.bool(forKey: repeatIdlingKey) == false {
-            UserDefaults.standard.removeObject(forKey: lastEndlessTextKey)
+        if UserDefaults.standard.bool(forKey: liveIdlingKey) == false {
+            UserDefaults.standard.removeObject(forKey: LiveTextKey)
         }
     }
 }

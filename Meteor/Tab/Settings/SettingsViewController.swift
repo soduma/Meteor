@@ -41,8 +41,8 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.getImageURL()
         setState()
+        viewModel.getFirebaseImageURL()
     }
     
     private func setLayout() {
@@ -53,7 +53,7 @@ class SettingsViewController: UITableViewController {
         }
         keywordTextField.delegate = self
         
-        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(tapRefreshView))
+        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
         refreshPhotoView.addGestureRecognizer(refreshGesture)
         
         rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
@@ -67,7 +67,7 @@ class SettingsViewController: UITableViewController {
         lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: lockScreenKey)
     }
     
-    @objc private func tapRefreshView() {
+    @objc private func refreshViewTapped() {
         makeVibration(type: .rigid)
         
         viewModel.checkSystemAppReview()
@@ -91,14 +91,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapMail(_ sender: UIButton) {
+    @IBAction func mailTapped(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
             UIApplication.shared.open(url)
         }
     }
     
-    @IBAction func tapReview(_ sender: Any) {
+    @IBAction func reviewTapped(_ sender: Any) {
         let url = "itms-apps://itunes.apple.com/app/1562989730"
         if let url = URL(string: url),
            UIApplication.shared.canOpenURL(url) {
@@ -106,7 +106,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
+    @IBAction func lightModeSwitchTapped(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -120,7 +120,7 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
     }
     
-    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
+    @IBAction func darkModeSwitchTapped(_ sender: UISwitch) {
         lightModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -134,28 +134,26 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
     }
     
-    @IBAction func tapHapticSwitch(_ sender: UISwitch) {
+    @IBAction func hapticSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(hapticSwitch.isOn, forKey: hapticStateKey)
     }
     
-    @IBAction func tapLockScreenSwitch(_ sender: UISwitch) {
+    @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: lockScreenKey)
         
-        if #available(iOS 16.2, *) {
-            Task {
-                if UserDefaults.standard.bool(forKey: repeatIdlingKey) {
-                    await MeteorViewModel().endLiveActivity()
-                    
-                    let endlessText = UserDefaults.standard.string(forKey: lastEndlessTextKey) ?? ""
-                    MeteorViewModel().startLiveActivity(text: endlessText)
-                } else {
-                    UserDefaults.standard.removeObject(forKey: lastEndlessTextKey)
-                }
+        Task {
+            if UserDefaults.standard.bool(forKey: liveIdlingKey) {
+                await MeteorViewModel().endLiveActivity()
+                
+                let liveText = UserDefaults.standard.string(forKey: LiveTextKey) ?? ""
+                MeteorViewModel().startLiveActivity(text: liveText)
+            } else {
+                UserDefaults.standard.removeObject(forKey: LiveTextKey)
             }
         }
     }
     
-    @IBAction func tapRateSubmit(_ sender: UIButton) {
+    @IBAction func rateSubmitTapped(_ sender: UIButton) {
         let url = "https://apps.apple.com/app/id1562989730?action=write-review"
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
@@ -164,7 +162,7 @@ class SettingsViewController: UITableViewController {
         starRateView.isHidden = true
     }
     
-    @IBAction func tapRateClose(_ sender: UIButton) {
+    @IBAction func rateCloseTapped(_ sender: UIButton) {
         starRateView.isHidden = true
         viewModel.counterForCustomAppReview = 0
     }
@@ -177,7 +175,7 @@ extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
-            self.keywordText = text
+            keywordText = text
         }
     }
 }

@@ -19,94 +19,121 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
-                                <rect key="frame" x="27" y="315" width="339" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                <connections>
-                                    <action selector="inputContent:" destination="5ue-D9-5Dz" eventType="editingChanged" id="gtU-tD-5KK"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
-                                <rect key="frame" x="309" y="405" width="59" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="5Bj-4G-YgN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapSendButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
-                                </connections>
-                            </button>
+                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
+                                <rect key="frame" x="11" y="211" width="371" height="162"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
-                                <rect key="frame" x="25" y="251" width="207" height="54"/>
+                                <rect key="frame" x="28" y="251" width="207" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="-38.666666666666657" y="447" width="500.33333333333326" height="60"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
+                                <rect key="frame" x="30" y="315" width="337" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <action selector="textFieldInputted:" destination="5ue-D9-5Dz" eventType="editingChanged" id="gtU-tD-5KK"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whj-Xw-89C">
+                                <rect key="frame" x="30" y="364" width="337" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="du9-aQ-6jp"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="epS-6F-Kaa">
+                                <rect key="frame" x="24" y="401" width="207" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-KC-BHR">
+                                        <rect key="frame" x="0.0" y="0.0" width="63" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="LkX-df-CjB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Single">
+                                            <color key="titleColor" systemColor="systemGray3Color"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="singleButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="bxc-0a-wm3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caC-dS-7wV">
+                                        <rect key="frame" x="75" y="0.0" width="79" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8AL-jJ-aBr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Endless">
+                                            <color key="titleColor" systemColor="systemGray3Color"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="endlessButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="TDy-kI-NsE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ez-ua-B75">
+                                        <rect key="frame" x="166" y="0.0" width="41" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="xs9-VL-f9w"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Live">
+                                            <color key="titleColor" systemColor="systemGray3Color"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="liveButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="yp9-vW-Njq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFX-SY-fYk">
+                                <rect key="frame" x="302" y="405" width="67" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="5Bj-4G-YgN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <state key="normal" title=" Send ">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="I4b-b6-Bew"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zae-IP-TZ4">
+                                <rect key="frame" x="278" y="405.66666666666669" width="97" height="41"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  Cancel  ">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="NHi-30-dlC"/>
+                                </connections>
+                            </button>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
+                                <rect key="frame" x="41" y="447" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
-                                    <constraint firstAttribute="width" constant="500" id="9Zu-ss-d4Y"/>
+                                    <constraint firstAttribute="width" constant="200" id="9Zu-ss-d4Y"/>
                                 </constraints>
                                 <connections>
                                     <action selector="timePickerChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="agm-2I-5Jm"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caC-dS-7wV">
-                                <rect key="frame" x="25" y="400" width="89" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8AL-jJ-aBr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <color key="tintColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="Endless">
-                                    <color key="titleColor" systemColor="systemGray3Color"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapEndlessButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="TDy-kI-NsE"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cwj-Al-zg9">
-                                <rect key="frame" x="0.0" y="494" width="393" height="155"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bv1-aB-EpB">
-                                        <rect key="frame" x="96.333333333333329" y="46.333333333333371" width="200.33333333333337" height="62.333333333333343"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Endless Working 🏃🏻 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyd-qH-UQ6">
-                                                <rect key="frame" x="0.0" y="0.0" width="200.33333333333334" height="21.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
-                                                <rect key="frame" x="0.0" y="21.666666666666625" width="200.33333333333334" height="40.666666666666657"/>
-                                                <string key="text">If kill app, the timer dies.
-But still working 😄</string>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="9oA-8S-R1U" firstAttribute="top" secondItem="kyd-qH-UQ6" secondAttribute="bottom" id="AnT-Fj-whx"/>
-                                            <constraint firstItem="9oA-8S-R1U" firstAttribute="leading" secondItem="bv1-aB-EpB" secondAttribute="leading" id="s8y-xS-cyl"/>
-                                            <constraint firstAttribute="trailing" secondItem="9oA-8S-R1U" secondAttribute="trailing" id="tln-J6-yaq"/>
-                                            <constraint firstAttribute="bottom" secondItem="9oA-8S-R1U" secondAttribute="bottom" id="uB6-fg-xX2"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="bv1-aB-EpB" firstAttribute="centerX" secondItem="Cwj-Al-zg9" secondAttribute="centerX" id="5Zv-Cs-dHj"/>
-                                    <constraint firstItem="bv1-aB-EpB" firstAttribute="centerY" secondItem="Cwj-Al-zg9" secondAttribute="centerY" id="5vR-X6-rzO"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏃🏻 00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
+                                <rect key="frame" x="291.66666666666669" y="467" width="77.333333333333314" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
                                 <rect key="frame" x="339" y="47" width="390" height="797"/>
                                 <subviews>
@@ -146,7 +173,7 @@ notification allowance.</string>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="light"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="tapMoveToSettingButton:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="yhv-TH-feS"/>
+                                                        <action selector="moveToSettingButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="yhv-TH-feS"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -221,32 +248,44 @@ notification allowance.</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="3jR-BE-3cm"/>
+                            <constraint firstItem="n4l-go-yFp" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="11" id="0o8-GD-KkB"/>
+                            <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="28" id="3jR-BE-3cm"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="11" id="67C-dr-oaE"/>
+                            <constraint firstItem="epS-6F-Kaa" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" id="7oh-fY-SXz"/>
                             <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="7e3-IR-c0w" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="B4I-Zv-SFN"/>
-                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="centerX" secondItem="rbg-Pj-CxJ" secondAttribute="centerX" constant="15" id="CZI-rd-8ya"/>
-                            <constraint firstItem="caC-dS-7wV" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="Cb0-e8-h7V"/>
+                            <constraint firstItem="n4l-go-yFp" firstAttribute="bottom" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="8" id="BPu-7N-WbK"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="7e3-IR-c0w" secondAttribute="trailing" constant="30" id="E3X-Vi-PaB"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="Cwj-Al-zg9" secondAttribute="trailing" id="JkY-BC-3Lp"/>
+                            <constraint firstItem="whj-Xw-89C" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" id="LSZ-9g-R2C"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="27" id="TDx-nM-qnZ"/>
-                            <constraint firstItem="caC-dS-7wV" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="25" id="TNx-lZ-ms6"/>
+                            <constraint firstItem="whj-Xw-89C" firstAttribute="leading" secondItem="x7b-OE-Nxg" secondAttribute="leading" id="SRA-sd-MvH"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="26" id="TDx-nM-qnZ"/>
                             <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
-                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="27" id="b6i-kF-HI6"/>
+                            <constraint firstItem="9oA-8S-R1U" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" id="Vl5-tU-kK1"/>
+                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
-                            <constraint firstItem="Cwj-Al-zg9" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="fHZ-aB-GfB"/>
+                            <constraint firstItem="zae-IP-TZ4" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" id="dx5-nI-5YZ"/>
+                            <constraint firstItem="epS-6F-Kaa" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="24" id="eZ5-eB-jTj"/>
+                            <constraint firstItem="whj-Xw-89C" firstAttribute="bottom" secondItem="x7b-OE-Nxg" secondAttribute="bottom" id="fDc-qj-mQu"/>
+                            <constraint firstItem="n4l-go-yFp" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="top" constant="-40" id="iRE-7P-qxT"/>
                             <constraint firstItem="o8v-SY-dBb" firstAttribute="bottom" secondItem="7e3-IR-c0w" secondAttribute="bottom" constant="-4" id="ltn-KP-fP7"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="25" id="oy8-ea-Bei"/>
+                            <constraint firstItem="9oA-8S-R1U" firstAttribute="centerY" secondItem="qJl-Jl-hg3" secondAttribute="centerY" id="nOq-Kg-Yif"/>
+                            <constraint firstItem="zae-IP-TZ4" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="6" id="nTQ-py-370"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="24" id="oy8-ea-Bei"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="7e3-IR-c0w" secondAttribute="bottom" constant="30" id="pjJ-rC-JhN"/>
-                            <constraint firstItem="Cwj-Al-zg9" firstAttribute="top" secondItem="qJl-Jl-hg3" secondAttribute="bottom" constant="-13" id="qHg-Yh-c4G"/>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="o8v-SY-dBb" firstAttribute="centerX" secondItem="7e3-IR-c0w" secondAttribute="centerX" id="tVP-U3-LFT"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="trailing" secondItem="epS-6F-Kaa" secondAttribute="trailing" constant="10" id="xpI-LP-bCf"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
-                            <constraint firstItem="7e3-IR-c0w" firstAttribute="top" secondItem="Cwj-Al-zg9" secondAttribute="bottom" id="zQR-12-88I"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="whj-Xw-89C"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
                         </connections>
@@ -257,22 +296,25 @@ notification allowance.</string>
                     <connections>
                         <outlet property="authView" destination="FCV-iO-9UW" id="WeE-Yl-ECC"/>
                         <outlet property="authViewBottom" destination="rHZ-uA-TU3" id="BWH-Az-5GD"/>
+                        <outlet property="cancelButton" destination="zae-IP-TZ4" id="bHj-S0-EC3"/>
                         <outlet property="collectionView" destination="7e3-IR-c0w" id="JyY-LM-K4Q"/>
                         <outlet property="datePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
                         <outlet property="endlessButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
                         <outlet property="endlessTimerLabel" destination="9oA-8S-R1U" id="RRC-0s-v2i"/>
-                        <outlet property="endlessWorkingLabel" destination="kyd-qH-UQ6" id="geX-vq-hfC"/>
-                        <outlet property="meteorHeadLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
-                        <outlet property="meteorTextField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
+                        <outlet property="headLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
+                        <outlet property="liveBackgroundView" destination="n4l-go-yFp" id="cYd-H4-Kqp"/>
+                        <outlet property="liveButton" destination="1ez-ua-B75" id="447-xA-Lde"/>
                         <outlet property="moveToSettingButton" destination="WgP-WV-G9E" id="Xx5-hh-gQh"/>
                         <outlet property="pageControl" destination="o8v-SY-dBb" id="Lbp-uO-e9f"/>
-                        <outlet property="sendButton" destination="RFX-SY-fYk" id="XbT-TS-45u"/>
+                        <outlet property="sendButton" destination="RFX-SY-fYk" id="7HC-JS-zdc"/>
+                        <outlet property="singleButton" destination="DjD-KC-BHR" id="MLJ-Bi-3EF"/>
+                        <outlet property="textField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Erw-Pg-INY">
                     <connections>
-                        <action selector="tapBG:" destination="5ue-D9-5Dz" id="JDg-1P-1Fn"/>
+                        <action selector="backgroundTapped:" destination="5ue-D9-5Dz" id="JDg-1P-1Fn"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -853,7 +895,7 @@ notification allowance.</string>
                                                         <color key="titleColor" systemColor="systemGrayColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="tapMail:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Bq6-XB-ihJ"/>
+                                                        <action selector="mailTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Bq6-XB-ihJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -887,7 +929,7 @@ notification allowance.</string>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="tapReview:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="cMY-pn-ZIe"/>
+                                                        <action selector="reviewTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="cMY-pn-ZIe"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -957,7 +999,7 @@ notification allowance.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="tapLightModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="y6m-bE-Zr6"/>
+                                                        <action selector="lightModeSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="y6m-bE-Zr6"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -987,7 +1029,7 @@ notification allowance.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="tapDarkModeSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="9hC-fE-18I"/>
+                                                        <action selector="darkModeSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="9hC-fE-18I"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -1021,7 +1063,7 @@ notification allowance.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="tapHapticSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="6Hv-1L-cyl"/>
+                                                        <action selector="hapticSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="6Hv-1L-cyl"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -1051,7 +1093,7 @@ notification allowance.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="tapLockScreenSwitch:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="PEx-HC-a1r"/>
+                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="PEx-HC-a1r"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -1132,7 +1174,7 @@ notification allowance.</string>
                                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                                     <state key="normal" title="Close"/>
                                                                                     <connections>
-                                                                                        <action selector="tapRateClose:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="zeF-7C-wmW"/>
+                                                                                        <action selector="rateCloseTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="zeF-7C-wmW"/>
                                                                                     </connections>
                                                                                 </button>
                                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-vd-AUs">
@@ -1141,7 +1183,7 @@ notification allowance.</string>
                                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                                     <state key="normal" title="Submit"/>
                                                                                     <connections>
-                                                                                        <action selector="tapRateSubmit:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="aGc-6l-cJu"/>
+                                                                                        <action selector="rateSubmitTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="aGc-6l-cJu"/>
                                                                                     </connections>
                                                                                 </button>
                                                                             </subviews>
@@ -1315,8 +1357,8 @@ Thank you for using. 🤲 </string>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support iOS 16.1 or Higher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvr-nD-0wz">
-                                            <rect key="frame" x="121.33333333333333" y="797.66666666666663" width="150.33333333333337" height="14.333333333333371"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Support iOS 16.2 or Higher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvr-nD-0wz">
+                                            <rect key="frame" x="120.33333333333333" y="797.66666666666663" width="152.33333333333337" height="14.333333333333371"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>

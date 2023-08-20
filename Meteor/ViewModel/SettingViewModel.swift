@@ -21,7 +21,7 @@ class SettingViewModel {
     var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewKey)
     var getImageCount = UserDefaults.standard.integer(forKey: userGetImageCountKey)
     
-    func getImageURL() {
+    func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
             url = snapshot.value as? String ?? defaultURL

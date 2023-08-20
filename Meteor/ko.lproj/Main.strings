@@ -68,7 +68,7 @@
 "ZXQ-U0-yWN.text" = "새로운 사진 불러오기";
 
 /* Class = "UIButton"; normalTitle = "Endless"; ObjectID = "caC-dS-7wV"; */
-"caC-dS-7wV.normalTitle" = "끝없이";
+"caC-dS-7wV.normalTitle" = "Endless";
 
 /* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
 "eAl-3u-eGw.title" = "메테오";
