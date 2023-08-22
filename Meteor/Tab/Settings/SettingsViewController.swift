@@ -35,14 +35,14 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.getImage(keyword: keywordText)
+        viewModel.getNewImage(keyword: keywordText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setState()
-        lockScreenSwitch.isEnabled = viewModel.enableLockScreenSwitch()
+        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
         viewModel.getFirebaseImageURL()
     }
     
@@ -50,7 +50,7 @@ class SettingsViewController: UITableViewController {
         activityIndicatorView.isHidden = true
         keywordTextField.delegate = self
         
-        if let imageData = UserDefaults.standard.data(forKey: imageDataKey) {
+        if let imageData = UserDefaults.standard.data(forKey: widgetDataKey) {
             imageView.image = UIImage(data: imageData)
         }
         
@@ -65,7 +65,7 @@ class SettingsViewController: UITableViewController {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: lightStateKey)
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: darkStateKey)
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: hapticStateKey)
-        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: lockScreenKey)
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: lockScreenStateKey)
     }
     
     @objc private func refreshViewTapped() {
@@ -78,12 +78,11 @@ class SettingsViewController: UITableViewController {
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
-            viewModel.getImage(keyword: keywordText)
+            viewModel.getNewImage(keyword: keywordText)
             
             DispatchQueue.main.async {
                 let defaultImage = UIImage(named: "meteor_splash.png")
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
-                self.viewModel.setWidgetData()
                 
                 self.activityIndicatorView.isHidden = true
                 self.activityIndicatorView.stopAnimating()
@@ -139,16 +138,16 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
-        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: lockScreenKey)
+        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: lockScreenStateKey)
         
         Task {
             if UserDefaults.standard.bool(forKey: liveIdlingKey) {
                 await MeteorViewModel().endLiveActivity()
                 
-                let liveText = UserDefaults.standard.string(forKey: LiveTextKey) ?? ""
+                let liveText = UserDefaults.standard.string(forKey: liveTextKey) ?? ""
                 MeteorViewModel().startLiveActivity(text: liveText)
             } else {
-                UserDefaults.standard.removeObject(forKey: LiveTextKey)
+                UserDefaults.standard.removeObject(forKey: liveTextKey)
             }
         }
     }

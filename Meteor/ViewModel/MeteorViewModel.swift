@@ -17,8 +17,8 @@ enum MeteorType {
 }
 
 class MeteorViewModel {
+    private let db = Database.database().reference()
     var meteorType = MeteorType.single
-    let db = Database.database().reference()
     var noticeList = [NSLocalizedString("notice0", comment: ""),
                       NSLocalizedString("notice1", comment: ""),
                       NSLocalizedString("notice2", comment: ""),
@@ -35,8 +35,7 @@ class MeteorViewModel {
     func checkIntialAppLaunch() {
         if UserDefaults.standard.bool(forKey: firstLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: hapticStateKey)
-            UserDefaults.standard.set(true, forKey: lockScreenKey)
-            
+            UserDefaults.standard.set(true, forKey: lockScreenStateKey)
             UserDefaults.standard.set(true, forKey: firstLaunchKey)
         }
     }
@@ -69,11 +68,11 @@ class MeteorViewModel {
     
     func sendSingleMeteor(text: String) {
         let notificationLimit = 8
-        var lastIndex = UserDefaults.standard.integer(forKey: notificationIndexKey)
+        var Index = UserDefaults.standard.integer(forKey: singleIndexKey)
         
-        lastIndex += 1
-        if lastIndex > notificationLimit {
-            lastIndex = 0
+        Index += 1
+        if Index > notificationLimit {
+            Index = 0
         }
         
         let contents = UNMutableNotificationContent()
@@ -81,9 +80,9 @@ class MeteorViewModel {
         contents.body = "\(text)"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "\(lastIndex)timerdone", content: contents, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(Index)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        UserDefaults.standard.set(lastIndex, forKey: notificationIndexKey)
+        UserDefaults.standard.set(Index, forKey: singleIndexKey)
         
         // for Firebase
         let dateFormatter = DateFormatter()
@@ -100,7 +99,7 @@ class MeteorViewModel {
     }
     
     func sendEndlessMeteor(text: String, duration: Int) {
-        UserDefaults.standard.set(duration, forKey: endlessSecondsKey)
+        UserDefaults.standard.set(duration, forKey: endlessDurationKey)
         
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
@@ -123,16 +122,19 @@ class MeteorViewModel {
     
     func startLiveActivity(text: String) {
         UserDefaults.standard.set(true, forKey: liveIdlingKey)
-        UserDefaults.standard.set(text, forKey: LiveTextKey)
+        UserDefaults.standard.set(text, forKey: liveTextKey)
         
         let attributes = MeteorWidgetAttributes(value: "none")
-        let contentState = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: lockScreenKey))
+        let state = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: lockScreenStateKey))
+        let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
-            let activity = try Activity<MeteorWidgetAttributes>.request(
-                attributes: attributes,
-                contentState: contentState
-            )
+            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes,
+                                                                        content: content)
+//            let activity = try Activity<MeteorWidgetAttributes>.request(
+//                attributes: attributes,
+//                contentState: contentState
+//            )
             print(activity)
         } catch {
             print(error.localizedDescription)
@@ -149,7 +151,7 @@ class MeteorViewModel {
         }
         
         if UserDefaults.standard.bool(forKey: liveIdlingKey) == false {
-            UserDefaults.standard.removeObject(forKey: LiveTextKey)
+            UserDefaults.standard.removeObject(forKey: liveTextKey)
         }
     }
     
