@@ -314,7 +314,7 @@ notification allowance.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-M2-uUN">
-                                <rect key="frame" x="0.0" y="140" width="393" height="544"/>
+                                <rect key="frame" x="0.0" y="140" width="393" height="593"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hhS-iQ-d0b">
                                     <size key="itemSize" width="390" height="50"/>
@@ -407,7 +407,7 @@ notification allowance.</string>
                                 </connections>
                             </collectionView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns9-qE-y6v">
-                                <rect key="frame" x="5" y="694" width="383" height="70"/>
+                                <rect key="frame" x="5" y="743" width="383" height="70"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9r-SN-Q3h">
                                         <rect key="frame" x="179" y="0.0" width="25" height="70"/>
@@ -842,7 +842,6 @@ notification allowance.</string>
                     </tabBar>
                     <connections>
                         <segue destination="5ue-D9-5Dz" kind="relationship" relationship="viewControllers" id="LIZ-g5-Pfs"/>
-                        <segue destination="k7r-AM-8wv" kind="relationship" relationship="viewControllers" id="a5d-i4-2Tr"/>
                         <segue destination="Qf4-r6-v7c" kind="relationship" relationship="viewControllers" id="xhx-DO-z0i"/>
                     </connections>
                 </tabBarController>
