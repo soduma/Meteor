@@ -1,20 +1,18 @@
 
+/* Class = "UIButton"; normalTitle = "Live"; ObjectID = "1ez-ua-B75"; */
+"1ez-ua-B75.normalTitle" = "Live";
+
 /* Class = "UILabel"; text = "Meteor"; ObjectID = "2kf-Pz-TMT"; */
 "2kf-Pz-TMT.text" = "Meteor";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "3H5-vd-AUs"; */
-"3H5-vd-AUs.normalTitle" = "Submit";
-
-/* Class = "UILabel"; text = "noti blahblah"; ObjectID = "3O8-SQ-hh2"; */
-"3O8-SQ-hh2.text" = "noti blahblah";
+"3H5-vd-AUs.normalTitle" = "제출";
 
 /* Class = "UILabel"; text = "Notes"; ObjectID = "6VI-UB-qRJ"; */
 "6VI-UB-qRJ.text" = "메모";
 
-/* Class = "UILabel"; text = "If kill app, the timer dies.
- But still working 😄"; ObjectID = "9oA-8S-R1U"; */
-"9oA-8S-R1U.text" = "앱을 끄면 타이머가 고장나요.
-그래도 작동중 😄";
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "9oA-8S-R1U"; */
+"9oA-8S-R1U.text" = "00:00:00";
 
 /* Class = "UILabel"; text = "Dark Mode"; ObjectID = "A4a-7Y-0AM"; */
 "A4a-7Y-0AM.text" = "다크 모드";
@@ -25,8 +23,11 @@
 /* Class = "UILabel"; text = "Made by"; ObjectID = "Dar-LJ-TSU"; */
 "Dar-LJ-TSU.text" = "Made by";
 
-/* Class = "UILabel"; text = "Support iOS 14.0 or Higher"; ObjectID = "Fvr-nD-0wz"; */
-"Fvr-nD-0wz.text" = "Support iOS 14.0 or Higher";
+/* Class = "UIButton"; normalTitle = "Single"; ObjectID = "DjD-KC-BHR"; */
+"DjD-KC-BHR.normalTitle" = "Single";
+
+/* Class = "UILabel"; text = "Support iOS 16.2 or Higher"; ObjectID = "Fvr-nD-0wz"; */
+"Fvr-nD-0wz.text" = "Support iOS 16.2 or Higher";
 
 /* Class = "UILabel"; text = "Haptic"; ObjectID = "GqJ-gX-VE4"; */
 "GqJ-gX-VE4.text" = "햅틱";
@@ -46,17 +47,20 @@
 /* Class = "UIButton"; normalTitle = "LONG"; ObjectID = "Qox-wf-gO8"; */
 "Qox-wf-gO8.normalTitle" = "길게";
 
-/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "RFX-SY-fYk"; */
-"RFX-SY-fYk.normalTitle" = "보내기";
+/* Class = "UIButton"; normalTitle = " Send "; ObjectID = "RFX-SY-fYk"; */
+"RFX-SY-fYk.normalTitle" = " 보내기 ";
 
 /* Class = "UITabBarItem"; title = "Notes"; ObjectID = "SfX-Jb-Sde"; */
 "SfX-Jb-Sde.title" = "메모";
 
-/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces. Write down a word without spaces. If blank, it's randomly."; ObjectID = "Whe-Py-dQR"; */
-"Whe-Py-dQR.footerTitle" = "띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다.";
+/* Class = "UITableViewSection"; footerTitle = "About 500 KB of data is used each time a photo loaded. You can also see this photo in the widget."; ObjectID = "Whe-Py-dQR"; */
+"Whe-Py-dQR.footerTitle" = "사진을 불러올 때마다 약 500KB의 데이터가 사용되며, 위젯에서도 이 정보를 볼 수 있습니다.";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "WnL-JA-8Ya"; */
 "WnL-JA-8Ya.normalTitle" = "완료";
+
+/* Class = "UILabel"; text = "notice example"; ObjectID = "X8d-eH-xdK"; */
+"X8d-eH-xdK.text" = "notice example";
 
 /* Class = "UITextField"; placeholder = "Keyword"; ObjectID = "XQo-ai-wMq"; */
 "XQo-ai-wMq.placeholder" = "키워드";
@@ -64,14 +68,14 @@
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
 
-/* Class = "UILabel"; text = "Sentimental"; ObjectID = "ZXQ-U0-yWN"; */
+/* Class = "UILabel"; text = "Refresh Photo"; ObjectID = "ZXQ-U0-yWN"; */
 "ZXQ-U0-yWN.text" = "새로운 사진 불러오기";
 
 /* Class = "UIButton"; normalTitle = "Endless"; ObjectID = "caC-dS-7wV"; */
 "caC-dS-7wV.normalTitle" = "Endless";
 
 /* Class = "UITabBarItem"; title = "Meteor"; ObjectID = "eAl-3u-eGw"; */
-"eAl-3u-eGw.title" = "메테오";
+"eAl-3u-eGw.title" = "Meteor";
 
 /* Class = "UIButton"; normalTitle = "Review"; ObjectID = "eVG-QI-Qxx"; */
 "eVG-QI-Qxx.normalTitle" = "Review";
@@ -82,27 +86,30 @@
 /* Class = "UILabel"; text = "Star Rating"; ObjectID = "faQ-bF-XRm"; */
 "faQ-bF-XRm.text" = "별점 남기기";
 
+/* Class = "UITableViewSection"; footerTitle = "Write down a word without spaces. If blank, it's randomly."; ObjectID = "j0T-WS-rtr"; */
+"j0T-WS-rtr.footerTitle" = "띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다.";
+
+/* Class = "UITableViewSection"; headerTitle = "Widget"; ObjectID = "j0T-WS-rtr"; */
+"j0T-WS-rtr.headerTitle" = "위젯";
+
 /* Class = "UILabel"; text = "iPhone Settings > Meteor > Notifications Please enable notification."; ObjectID = "j1o-go-okn"; */
 "j1o-go-okn.text" = "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요.";
 
 /* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 👋🏻 "; ObjectID = "keM-A9-xCm"; */
 "keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 👋🏻 ";
 
-/* Class = "UILabel"; text = " Endless Working 🏃🏻 "; ObjectID = "kyd-qH-UQ6"; */
-"kyd-qH-UQ6.text" = " 끝없이 작동중 🏃🏻 ";
-
-
 /* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
-"lzG-Yx-4Ol.normalTitle" = "Close";
+"lzG-Yx-4Ol.normalTitle" = "닫기";
 
-/* Class = "UITableViewSection"; footerTitle = "About 500 KB of data is used each time a photo loaded. You can also see this photo in the widget."; ObjectID = "mO4-mb-C9g"; */
-"mO4-mb-C9g.footerTitle" = "사진을 불러올 때마다 약 500KB의 데이터가 사용되며, 위젯에서도 이 정보를 볼 수 있습니다.";
+/* Class = "UITableViewSection"; footerTitle = "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content.  This switch is activated on models with Always On Display."; ObjectID = "mO4-mb-C9g"; */
+"mO4-mb-C9g.footerTitle" = "'항상 켬' 화면이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다.\n
+이 스위치는 '항상 켬' 화면 기능이 있는 기기에서만 활성화됩니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";
 
 /* Class = "UILabel"; text = "Meteor feature requires\nnotification allowance."; ObjectID = "mYh-w1-2Gl"; */
-"mYh-w1-2Gl.text" = "메테오 기능은 알림 권한이 필요합니다.";
+"mYh-w1-2Gl.text" = "메테오 기능은\n알림 권한이 필요합니다.";
 
 /* Class = "UITableViewSection"; footerTitle = "If turn off all switches then follow the system setting."; ObjectID = "noR-vq-LyQ"; */
 "noR-vq-LyQ.footerTitle" = "스위치를 모두 끄면 시스템 설정을 따릅니다.";
@@ -113,17 +120,14 @@
 /* Class = "UILabel"; text = "Version"; ObjectID = "oak-uY-Kls"; */
 "oak-uY-Kls.text" = "Version";
 
-/* Class = "UILabel"; text = "Endless Canceled"; ObjectID = "sFc-3J-lkG"; */
-"sFc-3J-lkG.text" = "끝없이가 취소되었습니다";
-
 /* Class = "UITableViewSection"; headerTitle = "Meteor"; ObjectID = "si5-2F-S24"; */
 "si5-2F-S24.headerTitle" = "Meteor";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "tjQ-Ti-6UO"; */
 "tjQ-Ti-6UO.normalTitle" = "완료";
 
-/* Class = "UIButton"; normalTitle = "@infofield"; ObjectID = "wUg-9c-pbD"; */
-"wUg-9c-pbD.normalTitle" = "@infofield🇰🇷";
+/* Class = "UIButton"; normalTitle = "🇰🇷@infofield"; ObjectID = "wUg-9c-pbD"; */
+"wUg-9c-pbD.normalTitle" = "🇰🇷@infofield";
 
 /* Class = "UILabel"; text = "Light Mode"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "라이트 모드";
@@ -136,3 +140,9 @@
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "zSO-Ai-qKq"; */
 "zSO-Ai-qKq.title" = "설정";
+
+/* Class = "UIButton"; normalTitle = "  Stop  "; ObjectID = "zae-IP-TZ4"; */
+"zae-IP-TZ4.normalTitle" = "    종료    ";
+
+/* Class = "UILabel"; text = "Hide Live Content in Lock Screen"; ObjectID = "zqu-cr-7J9"; */
+"zqu-cr-7J9.text" = "잠금 화면에서 Live 내용 가리기";

@@ -42,16 +42,17 @@ class SettingsViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         setState()
+        lockScreenSwitch.isEnabled = viewModel.enableLockScreenSwitch()
         viewModel.getFirebaseImageURL()
     }
     
     private func setLayout() {
         activityIndicatorView.isHidden = true
+        keywordTextField.delegate = self
         
         if let imageData = UserDefaults.standard.data(forKey: imageDataKey) {
             imageView.image = UIImage(data: imageData)
         }
-        keywordTextField.delegate = self
         
         let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
         refreshPhotoView.addGestureRecognizer(refreshGesture)
@@ -82,7 +83,6 @@ class SettingsViewController: UITableViewController {
             DispatchQueue.main.async {
                 let defaultImage = UIImage(named: "meteor_splash.png")
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
-                
                 self.viewModel.setWidgetData()
                 
                 self.activityIndicatorView.isHidden = true

@@ -8,24 +8,23 @@
 "notice0" = "Can get it as a notification
 when fill it out and tap send.";
 
-"notice1" = "Notification stack up to 9,
+"notice1" = "Maximum number of 'Single' is 9,
 and will be deleted sequentially.";
 
-"notice2" = "There's a limit to the length of text that can be displayed.";
-
-"notice3" = "Endless make notification
+"notice2" = "'Endless' make notification
 at specified time intervals.";
 
-"notice4" = "Send with a blank,
-Endless will be canceled.";
+"notice3" = "'Live' is a notification that appears on the lock screen.";
+
+"notice4" = "There's a limit to the length of text that can be displayed.";
+
 
 "Endless" = "Endless";
+"Live" = "Live";
 
 "Started" = "Started";
 
-"Canceled" = "Canceled";
-
-"Endless already been set" = "Endless already been set";
+"Stopped" = "Stopped";
 
 "Close" = "Close";
 

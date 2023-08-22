@@ -33,7 +33,7 @@ struct MeteorWidgetLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    HStack(alignment: .center, spacing: 8) {
+                    HStack(alignment: .center, spacing: 6) {
                         ZStack {
                             Circle()
                                 .fill(Color.white)
@@ -78,13 +78,13 @@ struct LockScreenView: View {
 
     var body: some View {
         if context.state.lockscreen {
-            setLayout(showContent: true)
-        } else {
             if isLuminanceReduced {
                 setLayout(showContent: false)
             } else {
                 setLayout(showContent: true)
             }
+        } else {
+            setLayout(showContent: true)
         }
     }
     
@@ -92,7 +92,7 @@ struct LockScreenView: View {
         ZStack {
             Color.red.opacity(0.8)
             VStack {
-                HStack(alignment: .center, spacing: 8) {
+                HStack(alignment: .center, spacing: 6) {
                     ZStack {
                         Circle()
                             .fill(Color.white)

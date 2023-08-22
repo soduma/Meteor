@@ -16,7 +16,7 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     @IBOutlet weak var singleButton: UIButton!
     @IBOutlet weak var endlessButton: UIButton!
@@ -161,9 +161,9 @@ class MeteorViewController: UIViewController {
         textField.textColor = .label
         
         if viewModel.checkEndlessIdling() {
-            cancelButton.isHidden = false
+            stopButton.isHidden = false
         } else {
-            cancelButton.isHidden = true
+            stopButton.isHidden = true
         }
         
         makeVibration(type: .rigid)
@@ -183,9 +183,9 @@ class MeteorViewController: UIViewController {
         textField.textColor = .white
         
         if viewModel.checkLiveIdling() {
-            cancelButton.isHidden = false
+            stopButton.isHidden = false
         } else {
-            cancelButton.isHidden = true
+            stopButton.isHidden = true
         }
         
         makeVibration(type: .rigid)
@@ -214,8 +214,8 @@ class MeteorViewController: UIViewController {
                 viewModel.sendSingleMeteor(text: meteorText)
                 
             case .endless:
-                if !viewModel.checkEndlessIdling() {
-                    cancelButton.isHidden = false
+//                if !viewModel.checkEndlessIdling() {
+                    stopButton.isHidden = false
                     
                     makeVibration(type: .success)
                     viewModel.sendEndlessMeteor(text: meteorText, duration: datePicker.countDownDuration)
@@ -231,18 +231,18 @@ class MeteorViewController: UIViewController {
                     toast.enableTapToClose()
                     toast.show()
                     
-                } else { // endless가 이미 있으면 거절
-                    makeVibration(type: .error)
-                    
-                    let title = NSLocalizedString("Endless already been set", comment: "")
-                    toast = Toast.default(image: UIImage(systemName: "clock.badge.exclamationmark.fill")!, title: title, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                }
+//                } else { // endless가 이미 있으면 거절
+//                    makeVibration(type: .error)
+//
+//                    let title = NSLocalizedString("Endless already been set", comment: "")
+//                    toast = Toast.default(image: UIImage(systemName: "clock.badge.exclamationmark.fill")!, title: title, config: toastConfig)
+//                    toast.enableTapToClose()
+//                    toast.show()
+//                }
                 
             case .live:
-                if !viewModel.checkLiveIdling() {
-                    cancelButton.isHidden = false
+//                if !viewModel.checkLiveIdling() {
+                    stopButton.isHidden = false
                     
                     makeVibration(type: .success)
                     viewModel.startLiveActivity(text: meteorText)
@@ -253,21 +253,21 @@ class MeteorViewController: UIViewController {
                     toast.enableTapToClose()
                     toast.show()
                                         
-                } else { // live가 이미 있으면 거절
-                    makeVibration(type: .error)
-                    
-                    let title = NSLocalizedString("Live already been set", comment: "")
-                    toast = Toast.default(image: UIImage(systemName: "ellipsis.message.fill")!, title: title, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                }
+//                } else { // live가 이미 있으면 거절
+//                    makeVibration(type: .error)
+//
+//                    let title = NSLocalizedString("Live already been set", comment: "")
+//                    toast = Toast.default(image: UIImage(systemName: "ellipsis.message.fill")!, title: title, config: toastConfig)
+//                    toast.enableTapToClose()
+//                    toast.show()
+//                }
             }
         }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         toast.close()
-        cancelButton.isHidden = true
+        stopButton.isHidden = true
         sendButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
@@ -283,7 +283,7 @@ class MeteorViewController: UIViewController {
             
             makeVibration(type: .medium)
             let title = NSLocalizedString("Endless", comment: "")
-            let subTitle = NSLocalizedString("Canceled", comment: "")
+            let subTitle = NSLocalizedString("Stopped", comment: "")
             toast = Toast.default(image: UIImage(systemName: "clock.badge.xmark.fill")!, title: title, subtitle: subTitle, config: toastConfig)
             toast.enableTapToClose()
             toast.show()
@@ -294,7 +294,7 @@ class MeteorViewController: UIViewController {
         case .live:
             makeVibration(type: .medium)
             let title = NSLocalizedString("Live", comment: "")
-            let subTitle = NSLocalizedString("terminated", comment: "")
+            let subTitle = NSLocalizedString("Stopped", comment: "")
             toast = Toast.default(image: UIImage(systemName: "checkmark.message.fill")!, title: title, subtitle: subTitle, config: toastConfig)
             toast.enableTapToClose()
             toast.show()
@@ -312,8 +312,8 @@ extension MeteorViewController {
         liveBackgroundView.layer.cornerRadius = 24
         liveBackgroundView.clipsToBounds = true
         
-        cancelButton.layer.cornerRadius = 16
-        cancelButton.clipsToBounds = true
+        stopButton.layer.cornerRadius = 16
+        stopButton.clipsToBounds = true
 //        sendButton.layer.borderColor = UIColor.red.cgColor.copy(alpha: 0.4)
 //        sendButton.layer.borderWidth = 1.5
         

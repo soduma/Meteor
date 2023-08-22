@@ -20,10 +20,10 @@ class MeteorViewModel {
     var meteorType = MeteorType.single
     let db = Database.database().reference()
     var noticeList = [NSLocalizedString("notice0", comment: ""),
-                  NSLocalizedString("notice1", comment: ""),
-                  NSLocalizedString("notice2", comment: ""),
-                  NSLocalizedString("notice3", comment: ""),
-                  NSLocalizedString("notice4", comment: "")]
+                      NSLocalizedString("notice1", comment: ""),
+                      NSLocalizedString("notice2", comment: ""),
+                      NSLocalizedString("notice3", comment: ""),
+                      NSLocalizedString("notice4", comment: "")]
     
     func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
         db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
