@@ -17,6 +17,8 @@ let hapticStateKey = "VibrateState"
 let lockScreenKey = "LockScreen"
 
 let endlessIdlingKey = "EndlessIdling" // endless 활성화 확인
+let endlessSecondsKey = "EndlessSeconds"
+let endlessTriggeredDateKey = "EndlessTriggeredDate"
 let liveIdlingKey = "LiveIdling" // live 활성화 확인
 let savedAdIndexKey = "SavedAdIndex"
 let notificationIndexKey = "NotificationIndex" // single의 카운트

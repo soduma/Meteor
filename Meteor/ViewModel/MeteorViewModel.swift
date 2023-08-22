@@ -32,7 +32,7 @@ class MeteorViewModel {
         }
     }
     
-    func checkFirstAppLaunch() {
+    func checkIntialAppLaunch() {
         if UserDefaults.standard.bool(forKey: firstLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: hapticStateKey)
             UserDefaults.standard.set(true, forKey: lockScreenKey)
@@ -99,15 +99,15 @@ class MeteorViewModel {
             .setValue(["text": text, "time": dateTime, "locale": locale])
     }
     
-    func sendEndlessMeteor(text: String, duration: TimeInterval) {
-        UserDefaults.standard.set(true, forKey: endlessIdlingKey)
+    func sendEndlessMeteor(text: String, duration: Int) {
+        UserDefaults.standard.set(duration, forKey: endlessSecondsKey)
         
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
-        contents.body = "\(text)"
+        contents.body = text
         contents.sound = UNNotificationSound.default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: duration, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(duration), repeats: true)
         let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
@@ -151,5 +151,18 @@ class MeteorViewModel {
         if UserDefaults.standard.bool(forKey: liveIdlingKey) == false {
             UserDefaults.standard.removeObject(forKey: LiveTextKey)
         }
+    }
+    
+    func setEndlessTimerLabel(triggeredDate: Date, duration: Int) -> String {
+        var remainSeconds: Int
+        let passedSeconds = Int(round(Date().timeIntervalSince(triggeredDate)))
+        print(passedSeconds)
+        
+        if passedSeconds < duration {
+            remainSeconds = duration - passedSeconds
+        } else {
+            remainSeconds = duration - (passedSeconds % duration)
+        }
+        return String.secondsToString(seconds: remainSeconds)
     }
 }

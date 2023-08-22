@@ -54,7 +54,8 @@ class MeteorViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.checkFirstAppLaunch()
+        viewModel.checkIntialAppLaunch()
+        
         if let window = UIApplication.shared.windows.first {
             viewModel.checkApperanceMode(window: window)
         }
@@ -62,6 +63,16 @@ class MeteorViewController: UIViewController {
         currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
         viewModel.getFirebaseAdIndex { [weak self] value in
             self?.firebaseAdIndex = value
+        }
+        
+        // 앱 종료 후 타이머 유무 체크
+        if viewModel.checkEndlessIdling() {
+            endlessTimerLabel.isHidden = false
+            
+            let seconds = UserDefaults.standard.integer(forKey: endlessSecondsKey)
+            guard let savedEndessDate = UserDefaults.standard.object(forKey: endlessTriggeredDateKey) as? Date else { return }
+            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndessDate, duration: seconds)
+            setEndlessTimer(triggeredDate: savedEndessDate, duration: seconds)
         }
     }
     
@@ -71,11 +82,6 @@ class MeteorViewController: UIViewController {
         if Reachability.isConnectedToNetwork() == false {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
-        }
-        
-        // 앱 강제종료시 타이머 유무 체크
-        if viewModel.checkEndlessIdling() {
-            endlessTimerLabel.alpha = 1
         }
     }
     
@@ -214,53 +220,35 @@ class MeteorViewController: UIViewController {
                 viewModel.sendSingleMeteor(text: meteorText)
                 
             case .endless:
-//                if !viewModel.checkEndlessIdling() {
-                    stopButton.isHidden = false
-                    
-                    makeVibration(type: .success)
-                    viewModel.sendEndlessMeteor(text: meteorText, duration: datePicker.countDownDuration)
-                    setEndlessTimer()
-                    
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.endlessTimerLabel.alpha = 1
-                    })
-                    
-                    let title = NSLocalizedString("Endless", comment: "")
-                    let subTitle = NSLocalizedString("Started", comment: "")
-                    toast = Toast.default(image: UIImage(systemName: "clock.badge.fill")!, title: title, subtitle: subTitle, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                    
-//                } else { // endless가 이미 있으면 거절
-//                    makeVibration(type: .error)
-//
-//                    let title = NSLocalizedString("Endless already been set", comment: "")
-//                    toast = Toast.default(image: UIImage(systemName: "clock.badge.exclamationmark.fill")!, title: title, config: toastConfig)
-//                    toast.enableTapToClose()
-//                    toast.show()
-//                }
+                stopButton.isHidden = false
+                
+                makeVibration(type: .success)
+                UserDefaults.standard.set(true, forKey: endlessIdlingKey)
+                
+                let duration = Int(datePicker.countDownDuration)
+                endlessTimerLabel.isHidden = false
+                endlessTimerLabel.text = String.secondsToString(seconds: duration)
+                
+                viewModel.sendEndlessMeteor(text: meteorText, duration: duration)
+                setEndlessTimer(triggeredDate: Date(), duration: duration)
+                
+                let title = NSLocalizedString("Endless", comment: "")
+                let subTitle = NSLocalizedString("Started", comment: "")
+                toast = Toast.default(image: UIImage(systemName: "clock.badge.fill")!, title: title, subtitle: subTitle, config: toastConfig)
+                toast.enableTapToClose()
+                toast.show()
                 
             case .live:
-//                if !viewModel.checkLiveIdling() {
-                    stopButton.isHidden = false
-                    
-                    makeVibration(type: .success)
-                    viewModel.startLiveActivity(text: meteorText)
-                    
-                    let title = NSLocalizedString("Live", comment: "")
-                    let subTitle = NSLocalizedString("Started", comment: "")
-                    toast = Toast.default(image: UIImage(systemName: "message.badge.filled.fill")!, title: title, subtitle: subTitle, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                                        
-//                } else { // live가 이미 있으면 거절
-//                    makeVibration(type: .error)
-//
-//                    let title = NSLocalizedString("Live already been set", comment: "")
-//                    toast = Toast.default(image: UIImage(systemName: "ellipsis.message.fill")!, title: title, config: toastConfig)
-//                    toast.enableTapToClose()
-//                    toast.show()
-//                }
+                stopButton.isHidden = false
+                
+                makeVibration(type: .success)
+                viewModel.startLiveActivity(text: meteorText)
+                
+                let title = NSLocalizedString("Live", comment: "")
+                let subTitle = NSLocalizedString("Started", comment: "")
+                toast = Toast.default(image: UIImage(systemName: "message.badge.filled.fill")!, title: title, subtitle: subTitle, config: toastConfig)
+                toast.enableTapToClose()
+                toast.show()
             }
         }
     }
@@ -279,7 +267,7 @@ class MeteorViewController: UIViewController {
             return
             
         case .endless:
-            endlessTimerLabel.alpha = 0
+            endlessTimerLabel.isHidden = true
             
             makeVibration(type: .medium)
             let title = NSLocalizedString("Endless", comment: "")
@@ -314,8 +302,6 @@ extension MeteorViewController {
         
         stopButton.layer.cornerRadius = 16
         stopButton.clipsToBounds = true
-//        sendButton.layer.borderColor = UIColor.red.cgColor.copy(alpha: 0.4)
-//        sendButton.layer.borderWidth = 1.5
         
         textField.delegate = self
         collectionView.delegate = self
@@ -331,27 +317,16 @@ extension MeteorViewController {
         moveToSettingButton.layer.cornerRadius = 20
         moveToSettingButton.clipsToBounds = true
         
-        endlessTimerLabel.alpha = 0
+        endlessTimerLabel.isHidden = true
     }
     
-    private func setEndlessTimer() {        
-        let triggeredDate = Date()
-        let datePickerDuration = Int(datePicker.countDownDuration)
-        var remainSecond = 0
-        endlessTimerLabel.text = "\(String.secondsToString(seconds: datePickerDuration))"
-
+    private func setEndlessTimer(triggeredDate: Date, duration: Int) {
+        UserDefaults.standard.set(triggeredDate, forKey: endlessTriggeredDateKey)
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
-            let passSecond = Int(round(Date().timeIntervalSince(triggeredDate)))
-            print(passSecond)
             
-            if passSecond < datePickerDuration {
-                remainSecond = datePickerDuration - passSecond
-                self.endlessTimerLabel.text = "\(String.secondsToString(seconds: remainSecond))"
-            } else {
-                remainSecond = datePickerDuration - (passSecond % datePickerDuration)
-                self.endlessTimerLabel.text = String.secondsToString(seconds: remainSecond)
-            }
+            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: triggeredDate, duration: duration)
             
             // MARK: 여기서 타이머 중지
             if viewModel.checkEndlessIdling() == false {
