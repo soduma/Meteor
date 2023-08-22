@@ -9,9 +9,15 @@ import Foundation
 
 extension String {
     static func secondsToString(seconds: Int) -> String {
-        let totalSeconds = Int(seconds)
-        let min = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        return String(format: "%02d:%02d", min, seconds)
+        if seconds >= 3600 {
+            let hours = seconds / 3600
+            let minutes = seconds / 60 % 60
+            let seconds = seconds % 60
+            return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+        } else {
+            let minutes = seconds / 60 % 60
+            let seconds = seconds % 60
+            return String(format: "%02i:%02i", minutes, seconds)
+        }
     }
 }
