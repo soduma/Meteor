@@ -69,7 +69,7 @@ class MeteorViewController: UIViewController {
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
-            let seconds = UserDefaults.standard.integer(forKey: endlessSecondsKey)
+            let seconds = UserDefaults.standard.integer(forKey: endlessDurationKey)
             guard let savedEndessDate = UserDefaults.standard.object(forKey: endlessTriggeredDateKey) as? Date else { return }
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndessDate, duration: seconds)
             setEndlessTimer(triggeredDate: savedEndessDate, duration: seconds)

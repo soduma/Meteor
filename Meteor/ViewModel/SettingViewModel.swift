@@ -11,30 +11,29 @@ import StoreKit
 import WidgetKit
 
 class SettingViewModel {
-    let db = Database.database().reference()
-    var url = ""
-    var defaultURL = "https://source.unsplash.com/random"
+    private let db = Database.database().reference()
+    private var firebaseImageURL = ""
+    private var defaultURL = "https://source.unsplash.com/random"
     
     var imageData: Data?
-    var widgetData: Data?
-    var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewKey)
-    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewKey)
-    var getImageCount = UserDefaults.standard.integer(forKey: userGetImageCountKey)
+    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
+    private var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
+    private var getImageTappedCount = UserDefaults.standard.integer(forKey: getImageTappedCountKey)
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
-            url = snapshot.value as? String ?? defaultURL
+            firebaseImageURL = snapshot.value as? String ?? defaultURL
         }
     }
     
-    func getImage(keyword: String) {
-        getImageCount += 1
-        UserDefaults.standard.set(getImageCount, forKey: userGetImageCountKey)
+    func getNewImage(keyword: String) {
+        getImageTappedCount += 1
+        UserDefaults.standard.set(getImageTappedCount, forKey: getImageTappedCountKey)
         
         if keyword.isEmpty {
-            guard let imageURL = URL(string: url) else { return }
-            self.imageData = try? Data(contentsOf: imageURL)
+            guard let url = URL(string: firebaseImageURL) else { return }
+            self.imageData = try? Data(contentsOf: url)
             
         } else {
             let keywordURL = "https://source.unsplash.com/featured/?\(keyword)"
@@ -42,27 +41,25 @@ class SettingViewModel {
             self.imageData = try? Data(contentsOf: imageURL)
         }
         
+        setWidget(imageData: imageData)
+        
         // for Firebase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateTime = dateFormatter.string(from: Date())
         let locale = TimeZone.current.identifier
         
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         self.db
             .child("getImage")
             .child(user)
-            .setValue(["locale": locale, "count": getImageCount])
+            .setValue(["locale": locale, "count": String(getImageTappedCount)])
     }
     
-    func setWidgetData() {
-        widgetData = imageData
-        UserDefaults.standard.set(imageData, forKey: imageDataKey)
-        UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetDataKey")
+    private func setWidget(imageData: Data?) {
+        UserDefaults.standard.set(imageData, forKey: widgetDataKey)
+        UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(imageData, forKeyPath: "widgetDataKey")
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    func enableLockScreenSwitch() -> Bool {
+    func checkDeviceModel() -> Bool {
         print("😚😚😚😚 \(UIDevice.modelName)")
         
         switch UIDevice.modelName {
@@ -77,7 +74,7 @@ class SettingViewModel {
     
     func checkSystemAppReview() {
         counterForSystemAppReview += 1
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewKey)
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewCountKey)
         
         if counterForSystemAppReview >= 35 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
@@ -89,7 +86,7 @@ class SettingViewModel {
     
     func checkCustomAppReview() -> Bool {
         counterForCustomAppReview += 1
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewKey)
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewCountKey)
         print(counterForCustomAppReview)
         
         let infoDictionaryKey = kCFBundleVersionKey as String
