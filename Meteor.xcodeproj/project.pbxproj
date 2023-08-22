@@ -25,6 +25,7 @@
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
+		F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77188C02A9300E400939BCD /* UIDevice+.swift */; };
 		F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_splash.png */; };
 		F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */; };
 		F77E75392A7CCB70008F1883 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F77E75382A7CCB70008F1883 /* FirebaseAnalytics */; };
@@ -102,6 +103,8 @@
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
+		F77188BF2A92EAE400939BCD /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F77188C02A9300E400939BCD /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		F77E752F2A7CABAA008F1883 /* meteor_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_splash.png; sourceTree = "<group>"; };
 		F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
@@ -117,7 +120,6 @@
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F7F79FCC2A8F175A00FA5464 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		F7F79FCF2A90A1EC00FA5464 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -302,6 +304,7 @@
 				A0E85764268C916800E10831 /* Reachability.swift */,
 				F77E75432A80C180008F1883 /* Vibration.swift */,
 				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
+				F77188C02A9300E400939BCD /* UIDevice+.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */,
 				A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */,
 				A0ED409F2602244E009990ED /* Storage.swift in Sources */,
+				F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */,
 				A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */,
 				F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */,
 				A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */,
@@ -572,7 +576,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F7F79FC92A8F175700FA5464 /* Base */,
-				F7F79FCC2A8F175A00FA5464 /* ko */,
+				F77188BF2A92EAE400939BCD /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

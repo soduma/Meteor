@@ -62,6 +62,19 @@ class SettingViewModel {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    func enableLockScreenSwitch() -> Bool {
+        print("😚😚😚😚 \(UIDevice.modelName)")
+        
+        switch UIDevice.modelName {
+        case "Simulator iPhone 14 Pro", "Simulator iPhone 14 Pro Max":
+            return true
+        case "iPhone 14 Pro", "iPhone 14 Pro Max":
+            return true
+        default:
+            return false
+        }
+    }
+    
     func checkSystemAppReview() {
         counterForSystemAppReview += 1
         UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewKey)
