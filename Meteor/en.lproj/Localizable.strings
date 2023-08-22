@@ -5,16 +5,16 @@
   Created by 장기화 on 2021/04/24.
   
 */
-"notice0" = "Can get it as a notification
+"notice0" = "Can get as a notification
 when fill it out and tap send.";
 
-"notice1" = "Maximum number of 'Single' is 9,
-and will be deleted sequentially.";
+"notice1" = "Maximum number of
+'Single's is 9️⃣";
 
-"notice2" = "'Endless' make notification
+"notice2" = "'Endless' send notification
 at specified time intervals.";
 
-"notice3" = "'Live' is a notification that appears on the lock screen.";
+"notice3" = "'Live' is a Live Activities that appears on the Lock Screen.";
 
 "notice4" = "There's a limit to the length of text that can be displayed.";
 
