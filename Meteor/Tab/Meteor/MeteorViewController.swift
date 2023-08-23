@@ -136,18 +136,29 @@ class MeteorViewController: UIViewController {
         textField.resignFirstResponder()
     }
     
+    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
+        print(datePicker.countDownDuration)
+    }
+    
+    @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {
+        if let settingURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingURL)
+        }
+    }
+    
     @IBAction func singleButtonTapped(_ sender: UIButton) {
         viewModel.meteorType = .single
         singleButton.isSelected = true
         
         headLabel.text = "METEOR :"
         headLabel.textColor = .red
+        textField.textColor = .label
         datePicker.isHidden = true
         
-        liveBackgroundView.isHidden = true
         endlessButton.isSelected = false
         liveButton.isSelected = false
-        textField.textColor = .label
+        liveBackgroundView.alpha = 0
+        stopButton.isHidden = true
         
         makeVibration(type: .rigid)
     }
@@ -156,14 +167,14 @@ class MeteorViewController: UIViewController {
         viewModel.meteorType = .endless
         endlessButton.isSelected = true
         
-        headLabel.text = "ENDLESS \nMETEOR :"
+        headLabel.text = "ENDLESS\nMETEOR :"
         headLabel.textColor = .red
+        textField.textColor = .label
         datePicker.isHidden = false
         
-        liveBackgroundView.isHidden = true
         singleButton.isSelected = false
         liveButton.isSelected = false
-        textField.textColor = .label
+        liveBackgroundView.alpha = 0
         
         if viewModel.checkEndlessIdling() {
             stopButton.isHidden = false
@@ -180,12 +191,15 @@ class MeteorViewController: UIViewController {
         
         headLabel.text = "METEOR"
         headLabel.textColor = .white
+        textField.textColor = .white
         datePicker.isHidden = true
         
-        liveBackgroundView.isHidden = false
         singleButton.isSelected = false
         endlessButton.isSelected = false
-        textField.textColor = .white
+        
+        UIView.animate(withDuration: 0.2) {
+            self.liveBackgroundView.alpha = 1
+        }
         
         if viewModel.checkLiveIdling() {
             stopButton.isHidden = false
@@ -194,16 +208,6 @@ class MeteorViewController: UIViewController {
         }
         
         makeVibration(type: .rigid)
-    }
-    
-    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
-        print(datePicker.countDownDuration)
-    }
-    
-    @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {
-        if let settingURL = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(settingURL)
-        }
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -317,13 +321,20 @@ extension MeteorViewController {
     private func makeToast(title: String, subTitle: String, imageName: String) {
         toast.close()
         
-        let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: false, displayTime: 3)
-        
-        let title = NSLocalizedString(title, comment: "")
-        let subTitle = NSLocalizedString(subTitle, comment: "")
-        toast = Toast.default(image: UIImage(systemName: imageName)!, title: title, subtitle: subTitle, config: toastConfig)
-        toast.enableTapToClose()
-        toast.show()
+        if subTitle.isEmpty {
+            let title = NSLocalizedString(title, comment: "")
+            toast = Toast.text(title)
+            toast.enableTapToClose()
+            toast.show()
+        } else {
+            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: false, displayTime: 3)
+            
+            let title = NSLocalizedString(title, comment: "")
+            let subTitle = NSLocalizedString(subTitle, comment: "")
+            toast = Toast.default(image: UIImage(systemName: imageName)!, title: title, subtitle: subTitle, config: toastConfig)
+            toast.enableTapToClose()
+            toast.show()
+        }
     }
     
     private func prepareAuthView() {

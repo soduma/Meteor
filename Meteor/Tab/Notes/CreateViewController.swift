@@ -39,7 +39,7 @@ class CreateViewController: UIViewController {
               text.isEmpty == false else { return }
         viewModel.saveLong(text: text)
         
-        TodoViewController().collectionView?.reloadData()
+        NotesViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromInput", sender: self)
     }
 }

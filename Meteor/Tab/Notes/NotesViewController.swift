@@ -1,5 +1,5 @@
 //
-//  TodoViewController.swift
+//  NotesViewController.swift
 //  Meteor
 //
 //  Created by 장기화 on 2021/03/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoViewController: UIViewController {
+class NotesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -162,13 +162,13 @@ class TodoViewController: UIViewController {
     }
 }
 
-extension TodoViewController: UICollectionViewDataSource {
+extension NotesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.todos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCell.idendifier, for: indexPath) as? TodoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCell.idendifier, for: indexPath) as? NotesCell else {
             return UICollectionViewCell()
         }
         
@@ -188,13 +188,13 @@ extension TodoViewController: UICollectionViewDataSource {
     }
 }
 
-extension TodoViewController: UICollectionViewDelegate {
+extension NotesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showModify", sender: indexPath.item)
     }
 }
 
-extension TodoViewController: UICollectionViewDelegateFlowLayout {
+extension NotesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = 50
