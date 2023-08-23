@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import Firebase
 import StoreKit
 import WidgetKit
+import FirebaseDatabase
 
 class SettingViewModel {
     private let db = Database.database().reference()

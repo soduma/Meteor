@@ -7,9 +7,9 @@
 
 import UIKit
 import UserNotifications
-import GoogleMobileAds
-import AppTrackingTransparency
-import AdSupport
+//import GoogleMobileAds
+//import AppTrackingTransparency
+//import AdSupport
 import Toast
 
 class MeteorViewController: UIViewController {
@@ -37,17 +37,17 @@ class MeteorViewController: UIViewController {
     private var toast = Toast.text("")
     
     // MARK: ADMOB
-    private var interstitial: GADInterstitialAd?
-    var firebaseAdIndex = 0
-    var currentAdIndex = 0
-    
-    #if DEBUG
-    var adUnitID1 = "ca-app-pub-3940256099942544/4411468910" // 테스트 1
-    var adUnitID2 = "ca-app-pub-3940256099942544/4411468910" // 테스트 2
-    #else
-    var adUnitID1 = "ca-app-pub-1960781437106390/8071718444" // 전면 1
-    var adUnitID2 = "ca-app-pub-1960781437106390/9294984986" // 전면 2
-    #endif
+//    private var interstitial: GADInterstitialAd?
+//    var firebaseAdIndex = 0
+//    var currentAdIndex = 0
+//
+//    #if DEBUG
+//    var adUnitID1 = "ca-app-pub-3940256099942544/4411468910" // 테스트 1
+//    var adUnitID2 = "ca-app-pub-3940256099942544/4411468910" // 테스트 2
+//    #else
+//    var adUnitID1 = "ca-app-pub-1960781437106390/8071718444" // 전면 1
+//    var adUnitID2 = "ca-app-pub-1960781437106390/9294984986" // 전면 2
+//    #endif
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +59,10 @@ class MeteorViewController: UIViewController {
             viewModel.checkApperanceMode(window: window)
         }
         
-        currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
-        viewModel.getFirebaseAdIndex { [weak self] value in
-            self?.firebaseAdIndex = value
-        }
+//        currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
+//        viewModel.getFirebaseAdIndex { [weak self] value in
+//            self?.firebaseAdIndex = value
+//        }
         
         // 앱 종료 후 타이머 유무 체크
         if viewModel.checkEndlessIdling() {
@@ -99,10 +99,10 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UNUserNotificationCenter.current().delegate = self
         
-        ATTrackingManager.requestTrackingAuthorization { [weak self] status in
-            // Tracking authorization completed. Start loading ads here.
-            self?.firstLoadAd()
-        }
+//        ATTrackingManager.requestTrackingAuthorization { [weak self] status in
+//            // Tracking authorization completed. Start loading ads here.
+//            self?.firstLoadAd()
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -213,7 +213,7 @@ class MeteorViewController: UIViewController {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if let text = textField.text, !text.isEmpty {
             textField.resignFirstResponder()
-            showAD()
+//            showAD()
             
             switch viewModel.meteorType {
             case .single:
@@ -414,60 +414,60 @@ extension MeteorViewController : UNUserNotificationCenterDelegate {
 }
 
 // MARK: ADMOB
-extension MeteorViewController: GADFullScreenContentDelegate {
-    private func showAD() {
-        currentAdIndex += 1
-        
-        if currentAdIndex >= firebaseAdIndex {
-            guard let interstitial = interstitial else { return print("Ad wasn't ready") }
-            interstitial.present(fromRootViewController: self)
-            currentAdIndex = 0
-            
-        } else if currentAdIndex > 50 { // exception: 상한선에 도달시 초기화
-            currentAdIndex = 0
-        }
-        UserDefaults.standard.set(currentAdIndex, forKey: savedAdIndexKey)
-    }
-    
-    private func firstLoadAd() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: adUnitID1,
-                               request: request,
-                               completionHandler: { [weak self] ad, error in
-            guard let self = self else { return }
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        })
-    }
-
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-
-    /// Tells the delegate that the ad will present full screen content.
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        let request2 = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: adUnitID2,
-                               request: request2,
-                               completionHandler: { [weak self] ad, error in
-            guard let self = self else { return }
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        })
-        print("Ad did dismiss full screen content.")
-    }
-}
+//extension MeteorViewController: GADFullScreenContentDelegate {
+//    private func showAD() {
+//        currentAdIndex += 1
+//
+//        if currentAdIndex >= firebaseAdIndex {
+//            guard let interstitial = interstitial else { return print("Ad wasn't ready") }
+//            interstitial.present(fromRootViewController: self)
+//            currentAdIndex = 0
+//
+//        } else if currentAdIndex > 50 { // exception: 상한선에 도달시 초기화
+//            currentAdIndex = 0
+//        }
+//        UserDefaults.standard.set(currentAdIndex, forKey: savedAdIndexKey)
+//    }
+//
+//    private func firstLoadAd() {
+//        let request = GADRequest()
+//        GADInterstitialAd.load(withAdUnitID: adUnitID1,
+//                               request: request,
+//                               completionHandler: { [weak self] ad, error in
+//            guard let self = self else { return }
+//            if let error = error {
+//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                return
+//            }
+//            interstitial = ad
+//            interstitial?.fullScreenContentDelegate = self
+//        })
+//    }
+//
+//    /// Tells the delegate that the ad failed to present full screen content.
+//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+//        print("Ad did fail to present full screen content.")
+//    }
+//
+//    /// Tells the delegate that the ad will present full screen content.
+//    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Ad will present full screen content.")
+//    }
+//
+//    /// Tells the delegate that the ad dismissed full screen content.
+//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        let request2 = GADRequest()
+//        GADInterstitialAd.load(withAdUnitID: adUnitID2,
+//                               request: request2,
+//                               completionHandler: { [weak self] ad, error in
+//            guard let self = self else { return }
+//            if let error = error {
+//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                return
+//            }
+//            interstitial = ad
+//            interstitial?.fullScreenContentDelegate = self
+//        })
+//        print("Ad did dismiss full screen content.")
+//    }
+//}

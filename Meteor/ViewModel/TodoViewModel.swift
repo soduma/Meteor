@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit.UIDevice
-import Firebase
+import FirebaseDatabase
 
 class TodoViewModel {
     private let manager = TodoManager.shared

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit.UIWindow
 import ActivityKit
-import Firebase
+import FirebaseDatabase
 
 enum MeteorType {
     case single

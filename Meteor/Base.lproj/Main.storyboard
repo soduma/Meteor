@@ -1117,7 +1117,7 @@ notification allowance.</string>
                                                             <visualEffectView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-tG-d7c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="118.33333333333333"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdQ-Zg-0Me">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="118.33333333333333"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="118"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-bF-XRm">
