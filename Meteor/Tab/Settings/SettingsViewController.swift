@@ -72,7 +72,7 @@ class SettingsViewController: UITableViewController {
         makeVibration(type: .rigid)
         
         viewModel.checkSystemAppReview()
-        starRateView.isHidden = viewModel.checkCustomAppReview()
+        starRateView.isHidden = !viewModel.checkCustomAppReview()
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
@@ -163,7 +163,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func rateCloseTapped(_ sender: UIButton) {
         starRateView.isHidden = true
-        viewModel.counterForCustomAppReview = 0
+        UserDefaults.standard.set(0, forKey: customAppReviewCountKey)
     }
 }
 

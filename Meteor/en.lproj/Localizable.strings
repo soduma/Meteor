@@ -29,3 +29,7 @@ at specified time intervals.";
 "Close" = "Close";
 
 "Submit" = "Submit";
+
+"rate" = "Rate a Star";
+"rate comment" = "Please take a moment and rate Meteor.";
+"rate button" = "  Yes! This is button🥹  ";
