@@ -27,6 +27,11 @@
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
 		F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77188C02A9300E400939BCD /* UIDevice+.swift */; };
+		F776839C2A95A3CF00824E4E /* Puller in Frameworks */ = {isa = PBXBuildFile; productRef = F776839B2A95A3CF00824E4E /* Puller */; };
+		F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */; };
+		F77683A12A95A45800824E4E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F77683A02A95A45800824E4E /* SnapKit */; };
+		F77683A62A95C92F00824E4E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F77683A52A95C92F00824E4E /* Lottie */; };
+		F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */ = {isa = PBXBuildFile; fileRef = F77683AB2A95CB7D00824E4E /* lottie_face.json */; };
 		F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_splash.png */; };
 		F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */; };
 		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
@@ -120,6 +125,8 @@
 		F77683742A9595DC00824E4E /* Pods_Meteor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Meteor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77683752A9595DC00824E4E /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77683762A9595DC00824E4E /* Promises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Promises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorReviewViewController.swift; sourceTree = "<group>"; };
+		F77683AB2A95CB7D00824E4E /* lottie_face.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_face.json; sourceTree = "<group>"; };
 		F77E752F2A7CABAA008F1883 /* meteor_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_splash.png; sourceTree = "<group>"; };
 		F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
@@ -145,7 +152,10 @@
 			files = (
 				F7DDA5452A81F0A800265ABD /* Toast in Frameworks */,
 				FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */,
+				F776839C2A95A3CF00824E4E /* Puller in Frameworks */,
 				2DB2F3EEE1E76818B501D66E /* Pods_Meteor.framework in Frameworks */,
+				F77683A12A95A45800824E4E /* SnapKit in Frameworks */,
+				F77683A62A95C92F00824E4E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
+				F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */,
 			);
 			path = Meteor;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 			children = (
 				A0998A5725FC99E9001BAEFD /* Assets.xcassets */,
 				F77E752F2A7CABAA008F1883 /* meteor_splash.png */,
+				F77683AB2A95CB7D00824E4E /* lottie_face.json */,
 			);
 			path = Asset;
 			sourceTree = "<group>";
@@ -371,6 +383,9 @@
 			name = Meteor;
 			packageProductDependencies = (
 				F7DDA5442A81F0A800265ABD /* Toast */,
+				F776839B2A95A3CF00824E4E /* Puller */,
+				F77683A02A95A45800824E4E /* SnapKit */,
+				F77683A52A95C92F00824E4E /* Lottie */,
 			);
 			productName = Meteor;
 			productReference = A0998A4B25FC99E7001BAEFD /* Meteor.app */;
@@ -422,6 +437,9 @@
 			mainGroup = A0998A4225FC99E7001BAEFD;
 			packageReferences = (
 				F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */,
+				F776839A2A95A3CF00824E4E /* XCRemoteSwiftPackageReference "Apple-Inspired-Puller" */,
+				F776839F2A95A45800824E4E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F77683A42A95C92F00824E4E /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
 			projectDirPath = "";
@@ -445,6 +463,7 @@
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
+				F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */,
 				F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +551,7 @@
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
 				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
+				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
 				F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */,
@@ -878,6 +898,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F776839A2A95A3CF00824E4E /* XCRemoteSwiftPackageReference "Apple-Inspired-Puller" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zsergey/Apple-Inspired-Puller.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		F776839F2A95A45800824E4E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F77683A42A95C92F00824E4E /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
@@ -889,6 +933,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F776839B2A95A3CF00824E4E /* Puller */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F776839A2A95A3CF00824E4E /* XCRemoteSwiftPackageReference "Apple-Inspired-Puller" */;
+			productName = Puller;
+		};
+		F77683A02A95A45800824E4E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F776839F2A95A45800824E4E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		F77683A52A95C92F00824E4E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F77683A42A95C92F00824E4E /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		F7DDA5442A81F0A800265ABD /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */;

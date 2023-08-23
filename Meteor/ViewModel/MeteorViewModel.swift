@@ -25,12 +25,12 @@ class MeteorViewModel {
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
     
-    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
-        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
-            let value = snapshot.value as? Int ?? 0
-            completion(value)
-        }
-    }
+//    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
+//        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
+//            let value = snapshot.value as? Int ?? 0
+//            completion(value)
+//        }
+//    }
     
     func checkIntialAppLaunch() {
         if UserDefaults.standard.bool(forKey: firstLaunchKey) == false {
@@ -68,11 +68,11 @@ class MeteorViewModel {
     
     func sendSingleMeteor(text: String) {
         let notificationLimit = 8
-        var Index = UserDefaults.standard.integer(forKey: singleIndexKey)
+        var index = UserDefaults.standard.integer(forKey: singleIndexKey)
         
-        Index += 1
-        if Index > notificationLimit {
-            Index = 0
+        index += 1
+        if index > notificationLimit {
+            index = 0
         }
         
         let contents = UNMutableNotificationContent()
@@ -80,9 +80,9 @@ class MeteorViewModel {
         contents.body = "\(text)"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "\(Index)timerdone", content: contents, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        UserDefaults.standard.set(Index, forKey: singleIndexKey)
+        UserDefaults.standard.set(index, forKey: singleIndexKey)
         
         // for Firebase
         let dateFormatter = DateFormatter()

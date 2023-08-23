@@ -11,6 +11,7 @@ import UserNotifications
 //import AppTrackingTransparency
 //import AdSupport
 import Toast
+import Puller
 
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
@@ -33,8 +34,9 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var moveToSettingButton: UIButton!
     
     private let viewModel = MeteorViewModel()
-    private var meteorText = ""
     private var toast = Toast.text("")
+    private var meteorText = ""
+//    private var meteorSentCount = 0
     
     // MARK: ADMOB
 //    private var interstitial: GADInterstitialAd?
@@ -63,6 +65,8 @@ class MeteorViewController: UIViewController {
 //        viewModel.getFirebaseAdIndex { [weak self] value in
 //            self?.firebaseAdIndex = value
 //        }
+        
+//        meteorSentCount = UserDefaults.standard.integer(forKey: meteorSentCountKey)
         
         // 앱 종료 후 타이머 유무 체크
         if viewModel.checkEndlessIdling() {
@@ -240,6 +244,18 @@ class MeteorViewController: UIViewController {
                 makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
                 
                 viewModel.startLiveActivity(text: meteorText)
+            }
+            
+            // MARK: 앱 리뷰
+            SettingViewModel().checkSystemAppReview()
+            if SettingViewModel().checkCustomAppReview() {
+                let vc = MeteorReviewViewController()
+                let pullerModel = PullerModel(animator: .default,
+                                              detents: [.medium],
+                                              isModalInPresentation: true,
+                                              hasDynamicHeight: false,
+                                              hasCircleCloseButton: false)
+                presentAsPuller(vc, model: pullerModel)
             }
         }
     }

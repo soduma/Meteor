@@ -16,9 +16,9 @@ class SettingViewModel {
     private var defaultURL = "https://source.unsplash.com/random"
     
     var imageData: Data?
-    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
-    private var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
-    private var getImageTappedCount = UserDefaults.standard.integer(forKey: getImageTappedCountKey)
+//    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
+//    private var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
+//    private var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: getNewImageTappedCountKey)
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
@@ -28,8 +28,8 @@ class SettingViewModel {
     }
     
     func getNewImage(keyword: String) {
-        getImageTappedCount += 1
-        UserDefaults.standard.set(getImageTappedCount, forKey: getImageTappedCountKey)
+        var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: getNewImageTappedCountKey)
+        counterForGetNewImageTapped += 1
         
         if keyword.isEmpty {
             guard let url = URL(string: firebaseImageURL) else { return }
@@ -43,6 +43,8 @@ class SettingViewModel {
         
         setWidget(imageData: imageData)
         
+        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: getNewImageTappedCountKey)
+        
         // for Firebase
         let locale = TimeZone.current.identifier
         
@@ -50,7 +52,7 @@ class SettingViewModel {
         self.db
             .child("getImage")
             .child(user)
-            .setValue(["locale": locale, "count": String(getImageTappedCount)])
+            .setValue(["locale": locale, "count": String(counterForGetNewImageTapped)])
     }
     
     private func setWidget(imageData: Data?) {
@@ -73,34 +75,39 @@ class SettingViewModel {
     }
     
     func checkSystemAppReview() {
+        var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
         counterForSystemAppReview += 1
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewCountKey)
         
-        if counterForSystemAppReview >= 35 {
+        if counterForSystemAppReview >= 100 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
             counterForSystemAppReview = 0
         }
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewCountKey)
     }
     
     func checkCustomAppReview() -> Bool {
+        var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
         counterForCustomAppReview += 1
+        
+//        let infoDictionaryKey = kCFBundleVersionKey as String
+//        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
+//            print("Expected to find a bundle version in the info dictionary")
+//            return true
+//        }
+        
         UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewCountKey)
         print(counterForCustomAppReview)
         
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            print("Expected to find a bundle version in the info dictionary")
-            return true
-        }
+//        let currentVersion = getCurrentVersion()
         
         let lastVersion = UserDefaults.standard.string(forKey: lastVersionKey)
         
-        if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
-            return false
-        } else {
+        if counterForCustomAppReview >= 50 && getCurrentVersion() != lastVersion {
             return true
+        } else {
+            return false
         }
     }
     
