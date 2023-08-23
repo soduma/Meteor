@@ -18,7 +18,7 @@
 		A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */; };
 		A0A4042626A8B3EC0054112C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0A4042526A8B3EC0054112C /* InfoPlist.strings */; };
 		A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */; };
-		A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* TodoViewController.swift */; };
+		A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* NotesViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
 		A0E85765268C916800E10831 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85764268C916800E10831 /* Reachability.swift */; };
 		A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* CreateViewController.swift */; };
@@ -34,7 +34,7 @@
 		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
 		F77E75422A7E3338008F1883 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75412A7E3338008F1883 /* Base.swift */; };
 		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
-		F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* TodoCell.swift */; };
+		F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* NotesCell.swift */; };
 		F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingViewModel.swift */; };
 		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
 		F7972D3F2A85EA6600050263 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483426A551C700DC3A59 /* WidgetKit.framework */; };
@@ -96,7 +96,7 @@
 		A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0A4042526A8B3EC0054112C /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		A0A4C12725FE25890090A214 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		A0A4C12725FE25890090A214 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
 		F77E75412A7E3338008F1883 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
-		F77E75452A80CD09008F1883 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		F77E75452A80CD09008F1883 /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		F77E75482A80CE87008F1883 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeteorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +220,7 @@
 		A0ED40A12602245F009990ED /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				A0A4C12725FE25890090A214 /* TodoViewController.swift */,
+				A0A4C12725FE25890090A214 /* NotesViewController.swift */,
 				A0ED408E26009DB5009990ED /* CreateViewController.swift */,
 				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
@@ -267,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				F77E754A2A811827008F1883 /* NoticeCell.swift */,
-				F77E75452A80CD09008F1883 /* TodoCell.swift */,
+				F77E75452A80CD09008F1883 /* NotesCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -506,9 +506,9 @@
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
 				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
-				A0A4C12825FE25890090A214 /* TodoViewController.swift in Sources */,
+				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
-				F77E75462A80CD09008F1883 /* TodoCell.swift in Sources */,
+				F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
 				F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */,
 				F77E75442A80C180008F1883 /* Vibration.swift in Sources */,

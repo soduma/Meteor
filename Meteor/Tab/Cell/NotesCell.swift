@@ -1,5 +1,5 @@
 //
-//  TodoCell.swift
+//  NotesCell.swift
 //  Meteor
 //
 //  Created by 장기화 on 2023/08/07.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TodoCell: UICollectionViewCell {
+class NotesCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var strikeThroughView: UIView!
     @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
     
-    static let idendifier = "TodoCell"
+    static let idendifier = "NotesCell"
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
     

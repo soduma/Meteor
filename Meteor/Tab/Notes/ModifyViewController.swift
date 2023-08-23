@@ -42,7 +42,7 @@ class ModifyViewController: UIViewController {
             viewModel.updateTodo(todo)
         }
         
-        TodoViewController().collectionView?.reloadData()
+        NotesViewController().collectionView?.reloadData()
         self.performSegue(withIdentifier: "fromModify", sender: self)
     }
 }

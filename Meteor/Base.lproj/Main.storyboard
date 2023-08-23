@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
                                 <rect key="frame" x="15" y="211" width="363" height="160"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                             </view>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="48" y="447" width="200" height="60"/>
+                                <rect key="frame" x="46" y="447" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
                                     <constraint firstAttribute="width" constant="200" id="9Zu-ss-d4Y"/>
@@ -268,7 +268,7 @@ notification allowance.</string>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
                             <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="o8v-SY-dBb" firstAttribute="centerX" secondItem="7e3-IR-c0w" secondAttribute="centerX" id="tVP-U3-LFT"/>
-                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="trailing" secondItem="epS-6F-Kaa" secondAttribute="trailing" constant="10" id="xpI-LP-bCf"/>
+                            <constraint firstItem="qJl-Jl-hg3" firstAttribute="trailing" secondItem="epS-6F-Kaa" secondAttribute="trailing" constant="8" id="xpI-LP-bCf"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                         </constraints>
                         <connections>
@@ -308,7 +308,7 @@ notification allowance.</string>
         <!--Notes-->
         <scene sceneID="DaL-IO-KWH">
             <objects>
-                <viewController id="k7r-AM-8wv" customClass="TodoViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k7r-AM-8wv" customClass="NotesViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o8g-Hc-q66">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,7 +323,7 @@ notification allowance.</string>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCell" id="SyI-s1-wNN" customClass="TodoCell" customModule="Meteor">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoCell" id="SyI-s1-wNN" customClass="NotesCell" customModule="Meteor">
                                         <rect key="frame" x="1.6666666666666667" y="0.0" width="390" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nyy-dt-Q5F">
@@ -1139,8 +1139,8 @@ notification allowance.</string>
                                                                 </vibrancyEffect>
                                                             </visualEffectView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Please rate a star on the App Store 🙇🏻‍♂️🙏🏻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBD-bZ-eN8" userLabel="Rate this app on the App Store 🤧">
-                                                                <rect key="frame" x="76.333333333333329" y="138.33333333333334" width="217.33333333333337" height="93.333333333333343"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
+                                                                <rect key="frame" x="81.333333333333329" y="138.33333333333334" width="207.66666666666669" height="93.333333333333343"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
