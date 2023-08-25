@@ -24,6 +24,7 @@ class MeteorReviewViewController: UIViewController {
         let label = UILabel()
         label.text = NSLocalizedString("rate", comment: "")
         label.textAlignment = .center
+        label.textColor = .black
         label.font = .systemFont(ofSize: 28, weight: .bold)
         label.numberOfLines = 0
         return label
@@ -48,9 +49,9 @@ class MeteorReviewViewController: UIViewController {
     private lazy var moveButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("rate button", comment: ""), for: .normal)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        button.backgroundColor = .yellow.withAlphaComponent(0.3)
+        button.backgroundColor = .yellow.withAlphaComponent(0.5)
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(moveButtonTapped), for: .touchUpInside)
@@ -70,14 +71,14 @@ class MeteorReviewViewController: UIViewController {
         lottieView.play()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         lottieView.stop()
     }
     
     private func setLayout() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         
         [closeButton, headerLabel, descriptionLabel, lottieView, moveButton]
             .forEach { view.addSubview($0) }
@@ -120,5 +121,7 @@ class MeteorReviewViewController: UIViewController {
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
         UserDefaults.standard.set(SettingViewModel().getCurrentVersion(), forKey: lastVersionKey)
+        
+        dismiss(animated: true)
     }
 }

@@ -48,6 +48,7 @@
 		F7972D492A85EA6700050263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7972D482A85EA6700050263 /* Assets.xcassets */; };
 		F7972D4D2A85EA6700050263 /* MeteorWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
+		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F79FCA2A8F175700FA5464 /* Main.storyboard */; };
 		F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F79FCF2A90A1EC00FA5464 /* String+.swift */; };
@@ -151,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7DDA5452A81F0A800265ABD /* Toast in Frameworks */,
+				F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */,
 				FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */,
 				F776839C2A95A3CF00824E4E /* Puller in Frameworks */,
 				2DB2F3EEE1E76818B501D66E /* Pods_Meteor.framework in Frameworks */,
@@ -386,6 +388,7 @@
 				F776839B2A95A3CF00824E4E /* Puller */,
 				F77683A02A95A45800824E4E /* SnapKit */,
 				F77683A52A95C92F00824E4E /* Lottie */,
+				F7D6D4782A971111004C9D25 /* Alamofire */,
 			);
 			productName = Meteor;
 			productReference = A0998A4B25FC99E7001BAEFD /* Meteor.app */;
@@ -440,6 +443,7 @@
 				F776839A2A95A3CF00824E4E /* XCRemoteSwiftPackageReference "Apple-Inspired-Puller" */,
 				F776839F2A95A45800824E4E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F77683A42A95C92F00824E4E /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				F7D6D4772A971111004C9D25 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = A0998A4C25FC99E7001BAEFD /* Products */;
 			projectDirPath = "";
@@ -922,6 +926,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		F7D6D4772A971111004C9D25 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		F7DDA5432A81F0A800265ABD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
@@ -947,6 +959,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F77683A42A95C92F00824E4E /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		F7D6D4782A971111004C9D25 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F7D6D4772A971111004C9D25 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		F7DDA5442A81F0A800265ABD /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

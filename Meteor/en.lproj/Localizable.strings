@@ -18,6 +18,9 @@ at specified time intervals.";
 
 "notice4" = "There's a limit to the length of text that can be displayed.";
 
+"notice5" = "⭐️ Maximum exposure time for 'Live' is 12 hours.";
+
+// ---
 
 "Endless" = "Endless";
 "Live" = "Live";

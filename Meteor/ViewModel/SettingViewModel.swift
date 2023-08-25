@@ -13,17 +13,14 @@ import FirebaseDatabase
 class SettingViewModel {
     private let db = Database.database().reference()
     private var firebaseImageURL = ""
-    private var defaultURL = "https://source.unsplash.com/random"
+    static let defaultURL = "https://source.unsplash.com/random"
     
     var imageData: Data?
-//    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
-//    private var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
-//    private var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: getNewImageTappedCountKey)
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
-            firebaseImageURL = snapshot.value as? String ?? defaultURL
+            firebaseImageURL = snapshot.value as? String ?? SettingViewModel.defaultURL
         }
     }
     
@@ -55,7 +52,7 @@ class SettingViewModel {
             .setValue(["locale": locale, "count": String(counterForGetNewImageTapped)])
     }
     
-    private func setWidget(imageData: Data?) {
+    func setWidget(imageData: Data?) {
         UserDefaults.standard.set(imageData, forKey: widgetDataKey)
         UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(imageData, forKeyPath: "widgetDataKey")
         WidgetCenter.shared.reloadAllTimelines()
@@ -78,7 +75,7 @@ class SettingViewModel {
         var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
         counterForSystemAppReview += 1
         
-        if counterForSystemAppReview >= 100 {
+        if counterForSystemAppReview >= 110 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
@@ -91,20 +88,12 @@ class SettingViewModel {
         var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
         counterForCustomAppReview += 1
         
-//        let infoDictionaryKey = kCFBundleVersionKey as String
-//        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-//            print("Expected to find a bundle version in the info dictionary")
-//            return true
-//        }
-        
         UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewCountKey)
         print(counterForCustomAppReview)
-        
-//        let currentVersion = getCurrentVersion()
-        
+                
         let lastVersion = UserDefaults.standard.string(forKey: lastVersionKey)
         
-        if counterForCustomAppReview >= 50 && getCurrentVersion() != lastVersion {
+        if counterForCustomAppReview >= 40 && getCurrentVersion() != lastVersion {
             return true
         } else {
             return false

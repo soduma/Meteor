@@ -8,6 +8,7 @@
 import Foundation
 import UIKit.UIWindow
 import ActivityKit
+import WidgetKit
 import FirebaseDatabase
 
 enum MeteorType {
@@ -23,7 +24,8 @@ class MeteorViewModel {
                       NSLocalizedString("notice1", comment: ""),
                       NSLocalizedString("notice2", comment: ""),
                       NSLocalizedString("notice3", comment: ""),
-                      NSLocalizedString("notice4", comment: "")]
+                      NSLocalizedString("notice4", comment: ""),
+                      NSLocalizedString("notice5", comment: "")]
     
 //    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
 //        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
@@ -32,11 +34,21 @@ class MeteorViewModel {
 //        }
 //    }
     
-    func checkIntialAppLaunch() {
-        if UserDefaults.standard.bool(forKey: firstLaunchKey) == false {
+    func IntialAppLaunchSettings() {
+        if UserDefaults.standard.bool(forKey: initialLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: hapticStateKey)
             UserDefaults.standard.set(true, forKey: lockScreenStateKey)
-            UserDefaults.standard.set(true, forKey: firstLaunchKey)
+            UserDefaults.standard.set(true, forKey: initialLaunchKey)
+            
+            // 초기 위젯 이미지 생성
+            guard let url = URL(string: SettingViewModel.defaultURL) else { return }
+            URLSession.shared.dataTask(with: url) { (data, _, _) in
+                guard let imageData = data else { return }
+                
+                DispatchQueue.main.async {
+                    SettingViewModel().setWidget(imageData: imageData)
+                }
+            }.resume()
         }
     }
     
