@@ -35,20 +35,21 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.getNewImage(keyword: keywordText)
+//        viewModel.getNewImage(keyword: keywordText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setState()
-        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
         viewModel.getFirebaseImageURL()
     }
     
     private func setLayout() {
         activityIndicatorView.isHidden = true
         keywordTextField.delegate = self
+        
+        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
         
         if let imageData = UserDefaults.standard.data(forKey: widgetDataKey) {
             imageView.image = UIImage(data: imageData)

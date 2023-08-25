@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - for UserDefaults Key
-let firstLaunchKey = "FirstLaunch"
+let initialLaunchKey = "InitialLaunch"
 let lightStateKey = "LightState"
 let darkStateKey = "DarkState"
 let hapticStateKey = "VibrateState"

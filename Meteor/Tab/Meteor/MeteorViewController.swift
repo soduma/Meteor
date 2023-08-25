@@ -16,6 +16,7 @@ import Puller
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
@@ -55,7 +56,7 @@ class MeteorViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.checkIntialAppLaunch()
+        viewModel.IntialAppLaunchSettings()
         
         if let window = UIApplication.shared.windows.first {
             viewModel.checkApperanceMode(window: window)
@@ -68,7 +69,7 @@ class MeteorViewController: UIViewController {
         
 //        meteorSentCount = UserDefaults.standard.integer(forKey: meteorSentCountKey)
         
-        // 앱 종료 후 타이머 유무 체크
+        // MARK: 앱 종료 후 타이머 유무 체크
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
@@ -116,7 +117,10 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func textFieldInputted(_ sender: UITextField) {
-        // 알림 권한 다시 확인
+//        clearButton.isHidden = !textField.hasText
+        clearButton.alpha = textField.hasText ? 1 : 0
+        
+        // MARK: 알림 권한 다시 확인
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             guard let self = self else { return }
             if settings.authorizationStatus == .denied {
@@ -138,6 +142,10 @@ class MeteorViewController: UIViewController {
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         textField.resignFirstResponder()
+
+        UIView.animate(withDuration: 0.2) {
+            self.clearButton.alpha = 0
+        }
     }
     
     @IBAction func timePickerChanged(_ sender: UIDatePicker) {
@@ -150,6 +158,11 @@ class MeteorViewController: UIViewController {
         }
     }
     
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+        textField.text = ""
+        clearButton.alpha = 0
+    }
+    
     @IBAction func singleButtonTapped(_ sender: UIButton) {
         viewModel.meteorType = .single
         singleButton.isSelected = true
@@ -157,6 +170,7 @@ class MeteorViewController: UIViewController {
         headLabel.text = "METEOR :"
         headLabel.textColor = .red
         textField.textColor = .label
+        textField.tintColor = .systemRed
         datePicker.isHidden = true
         
         endlessButton.isSelected = false
@@ -174,6 +188,7 @@ class MeteorViewController: UIViewController {
         headLabel.text = "ENDLESS\nMETEOR :"
         headLabel.textColor = .red
         textField.textColor = .label
+        textField.tintColor = .systemRed
         datePicker.isHidden = false
         
         singleButton.isSelected = false
@@ -196,6 +211,7 @@ class MeteorViewController: UIViewController {
         headLabel.text = "METEOR"
         headLabel.textColor = .white
         textField.textColor = .white
+        textField.tintColor = .yellow
         datePicker.isHidden = true
         
         singleButton.isSelected = false
@@ -252,6 +268,7 @@ class MeteorViewController: UIViewController {
                 let vc = MeteorReviewViewController()
                 let pullerModel = PullerModel(animator: .default,
                                               detents: [.medium],
+                                              cornerRadius: 50,
                                               isModalInPresentation: true,
                                               hasDynamicHeight: false,
                                               hasCircleCloseButton: false)
@@ -379,6 +396,16 @@ extension MeteorViewController {
 extension MeteorViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            if textField.hasText {
+                self.clearButton.alpha = 1
+            } else {
+                self.clearButton.alpha = 0
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

@@ -45,16 +45,24 @@ struct MeteorWidgetLiveActivity: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    if context.state.endlessText.count < 20 {
+                    switch context.state.endlessText.count {
+                    case ...15:
                         Text(context.state.endlessText)
                             .font(.system(size: 32, weight: .semibold))
                             .foregroundColor(.white)
-                            .padding([.leading, .trailing])
-                    } else {
+//                            .padding([.leading, .trailing])
+                        
+                    case 16...30:
+                        Text(context.state.endlessText)
+                            .font(.system(size: 26, weight: .semibold))
+                            .foregroundColor(.white)
+//                            .padding([.leading, .trailing])
+                        
+                    default:
                         Text(context.state.endlessText)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
-                            .padding([.leading, .trailing])
+//                            .padding([.leading, .trailing])
                     }
                 }
             } compactLeading: {
@@ -107,7 +115,7 @@ struct LockScreenView: View {
                 .padding(.leading)
                 
                 switch context.state.endlessText.count {
-                case ...20:
+                case ...15:
                     if showContent {
                         Text(context.state.endlessText)
                             .font(.system(size: 32, weight: .semibold))
@@ -120,6 +128,21 @@ struct LockScreenView: View {
                             .padding([.leading, .trailing])
                             .blur(radius: 8)
                     }
+                    
+                case 16...30:
+                    if showContent {
+                        Text(context.state.endlessText)
+                            .font(.system(size: 26, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                    } else {
+                        Text(context.state.endlessText)
+                            .font(.system(size: 26, weight: .semibold))
+                            .foregroundColor(.white)
+                            .padding([.leading, .trailing])
+                            .blur(radius: 8)
+                    }
+                    
                 default:
                     if showContent {
                         Text(context.state.endlessText)
