@@ -27,6 +27,8 @@ struct MeteorWidgetLiveActivity: Widget {
         ActivityConfiguration(for: MeteorWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             LockScreenView(context: context)
+                .activityBackgroundTint(.red)
+//                .activitySystemActionForegroundColor(.black)
             
         } dynamicIsland: { context in
             DynamicIsland {
@@ -97,8 +99,8 @@ struct LockScreenView: View {
     }
     
     @ViewBuilder func setLayout(showContent: Bool) -> some View {
-        ZStack {
-            Color.red.opacity(0.8)
+//        ZStack {
+//            Color.red.opacity(0.8)
             VStack {
                 HStack(alignment: .center, spacing: 6) {
                     ZStack {
@@ -160,7 +162,7 @@ struct LockScreenView: View {
             }
             .padding(.top)
             .padding(.bottom)
-        }
+//        }
     }
 }
 
