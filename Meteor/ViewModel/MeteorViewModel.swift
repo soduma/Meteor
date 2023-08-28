@@ -34,7 +34,7 @@ class MeteorViewModel {
 //        }
 //    }
     
-    func IntialAppLaunchSettings() {
+    func initialAppLaunchSettings() {
         if UserDefaults.standard.bool(forKey: initialLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: hapticStateKey)
             UserDefaults.standard.set(true, forKey: lockScreenStateKey)
@@ -78,6 +78,39 @@ class MeteorViewModel {
         }
     }
     
+    private func sendToFirebase(type: MeteorType, text: String, duration: Int?) {
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        
+        switch type {
+        case .single:
+//            let key = db.childByAutoId().key
+            
+            db.child("singleText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text])
+            
+        case .endless:
+            db.child("endlessText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text, "timer": String((duration ?? 1) / 60)])
+            
+        case .live:
+            db.child("liveText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text])
+        }
+    }
+    
     func sendSingleMeteor(text: String) {
         let notificationLimit = 8
         var index = UserDefaults.standard.integer(forKey: singleIndexKey)
@@ -96,18 +129,7 @@ class MeteorViewModel {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         UserDefaults.standard.set(index, forKey: singleIndexKey)
         
-        // for Firebase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateTime = dateFormatter.string(from: Date())
-        let locale = TimeZone.current.identifier
-        
-        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-        self.db
-            .child("meteorText")
-            .child(user)
-            .childByAutoId()
-            .setValue(["text": text, "time": dateTime, "locale": locale])
+        sendToFirebase(type: .single, text: text, duration: nil)
     }
     
     func sendEndlessMeteor(text: String, duration: Int) {
@@ -122,14 +144,7 @@ class MeteorViewModel {
         let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
-        // for Firebase
-        let locale = TimeZone.current.identifier
-        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-        self.db
-            .child("repeatText")
-            .child(user)
-            .childByAutoId()
-            .setValue(["text": text, "timer": String(duration / 60), "locale": locale])
+        sendToFirebase(type: .endless, text: text, duration: duration)
     }
     
     func startLiveActivity(text: String) {
@@ -151,6 +166,8 @@ class MeteorViewModel {
         } catch {
             print(error.localizedDescription)
         }
+        
+        sendToFirebase(type: .live, text: text, duration: nil)
     }
     
     func endLiveActivity() async {

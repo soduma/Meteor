@@ -17,7 +17,6 @@
 		A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5725FC99E9001BAEFD /* Assets.xcassets */; };
 		A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */; };
 		A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */; };
-		A0A4042626A8B3EC0054112C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0A4042526A8B3EC0054112C /* InfoPlist.strings */; };
 		A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */; };
 		A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* NotesViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
@@ -98,7 +97,6 @@
 		A0998A5A25FC99E9001BAEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0998A5C25FC99E9001BAEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A0A4042526A8B3EC0054112C /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0A4C12725FE25890090A214 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 				A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */,
 				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
 				A0998A5C25FC99E9001BAEFD /* Info.plist */,
-				A0A4042526A8B3EC0054112C /* InfoPlist.strings */,
 				F77E75312A7CABB1008F1883 /* Asset */,
 				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 			);
@@ -461,7 +458,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A06A51EC2634075E003DAEEF /* Localizable.strings in Resources */,
-				A0A4042626A8B3EC0054112C /* InfoPlist.strings in Resources */,
 				A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */,
 				F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */,
 				A06A51F3263409D6003DAEEF /* Localizable.strings in Resources */,
@@ -762,7 +758,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -770,7 +766,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -789,7 +785,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -797,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

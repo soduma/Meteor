@@ -56,7 +56,7 @@ class MeteorViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.IntialAppLaunchSettings()
+        viewModel.initialAppLaunchSettings()
         
         if let window = UIApplication.shared.windows.first {
             viewModel.checkApperanceMode(window: window)
@@ -209,7 +209,6 @@ class MeteorViewController: UIViewController {
         liveButton.isSelected = true
         
         headLabel.text = "METEOR"
-        headLabel.textColor = .white
         textField.textColor = .white
         textField.tintColor = .yellow
         datePicker.isHidden = true
@@ -218,6 +217,7 @@ class MeteorViewController: UIViewController {
         endlessButton.isSelected = false
         
         UIView.animate(withDuration: 0.2) {
+            self.headLabel.textColor = .white
             self.liveBackgroundView.alpha = 1
         }
         
