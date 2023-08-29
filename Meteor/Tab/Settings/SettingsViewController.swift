@@ -51,22 +51,22 @@ class SettingsViewController: UITableViewController {
         
         lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
         
-        if let imageData = UserDefaults.standard.data(forKey: widgetDataKey) {
+        if let imageData = UserDefaults.standard.data(forKey: UserDefaultsKeys.widgetDataKey) {
             imageView.image = UIImage(data: imageData)
         }
         
         let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
         refreshPhotoView.addGestureRecognizer(refreshGesture)
         
-        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
+//        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
     private func setState() {
-        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: lightStateKey)
-        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: darkStateKey)
-        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: hapticStateKey)
-        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: lockScreenStateKey)
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
+        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
     }
     
     @objc private func refreshViewTapped() {
@@ -116,8 +116,8 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: lightStateKey)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
     }
     
     @IBAction func darkModeSwitchTapped(_ sender: UISwitch) {
@@ -130,25 +130,25 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: lightStateKey)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: darkStateKey)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
     }
     
     @IBAction func hapticSwitchTapped(_ sender: UISwitch) {
-        UserDefaults.standard.set(hapticSwitch.isOn, forKey: hapticStateKey)
+        UserDefaults.standard.set(hapticSwitch.isOn, forKey: UserDefaultsKeys.hapticStateKey)
     }
     
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
-        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: lockScreenStateKey)
+        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
         
         Task {
-            if UserDefaults.standard.bool(forKey: liveIdlingKey) {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
                 await MeteorViewModel().endLiveActivity()
                 
-                let liveText = UserDefaults.standard.string(forKey: liveTextKey) ?? ""
+                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
                 MeteorViewModel().startLiveActivity(text: liveText)
             } else {
-                UserDefaults.standard.removeObject(forKey: liveTextKey)
+                UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
             }
         }
     }
@@ -158,13 +158,13 @@ class SettingsViewController: UITableViewController {
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: lastVersionKey)
+        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         starRateView.isHidden = true
     }
     
     @IBAction func rateCloseTapped(_ sender: UIButton) {
         starRateView.isHidden = true
-        UserDefaults.standard.set(0, forKey: customAppReviewCountKey)
+        UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
     }
 }
 

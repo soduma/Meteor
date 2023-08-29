@@ -111,7 +111,7 @@ class MeteorReviewViewController: UIViewController {
     }
     
     @objc private func closeButtonTapped() {
-        UserDefaults.standard.set(0, forKey: customAppReviewCountKey)
+        UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
         dismiss(animated: true)
     }
     
@@ -120,7 +120,7 @@ class MeteorReviewViewController: UIViewController {
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(SettingViewModel().getCurrentVersion(), forKey: lastVersionKey)
+        UserDefaults.standard.set(SettingViewModel().getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         
         dismiss(animated: true)
     }

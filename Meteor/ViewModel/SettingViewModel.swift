@@ -25,7 +25,7 @@ class SettingViewModel {
     }
     
     func getNewImage(keyword: String) {
-        var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: getNewImageTappedCountKey)
+        var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         counterForGetNewImageTapped += 1
         
         if keyword.isEmpty {
@@ -40,7 +40,7 @@ class SettingViewModel {
         
         setWidget(imageData: imageData)
         
-        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: getNewImageTappedCountKey)
+        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         
         // for Firebase
         let locale = TimeZone.current.identifier
@@ -53,7 +53,7 @@ class SettingViewModel {
     }
     
     func setWidget(imageData: Data?) {
-        UserDefaults.standard.set(imageData, forKey: widgetDataKey)
+        UserDefaults.standard.set(imageData, forKey: UserDefaultsKeys.widgetDataKey)
         UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(imageData, forKeyPath: "widgetDataKey")
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -72,7 +72,7 @@ class SettingViewModel {
     }
     
     func checkSystemAppReview() {
-        var counterForSystemAppReview = UserDefaults.standard.integer(forKey: systemAppReviewCountKey)
+        var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
         counterForSystemAppReview += 1
         
         if counterForSystemAppReview >= 110 {
@@ -81,17 +81,17 @@ class SettingViewModel {
             }
             counterForSystemAppReview = 0
         }
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: systemAppReviewCountKey)
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: UserDefaultsKeys.systemAppReviewCountKey)
     }
     
     func checkCustomAppReview() -> Bool {
-        var counterForCustomAppReview = UserDefaults.standard.integer(forKey: customAppReviewCountKey)
+        var counterForCustomAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
         counterForCustomAppReview += 1
         
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: customAppReviewCountKey)
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: UserDefaultsKeys.customAppReviewCountKey)
         print(counterForCustomAppReview)
                 
-        let lastVersion = UserDefaults.standard.string(forKey: lastVersionKey)
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
         
         if counterForCustomAppReview >= 40 && getCurrentVersion() != lastVersion {
             return true

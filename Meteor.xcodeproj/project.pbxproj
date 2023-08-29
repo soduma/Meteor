@@ -50,6 +50,7 @@
 		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7D6D47B2A9CE568004C9D25 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7D6D47A2A9CE568004C9D25 /* InfoPlist.strings */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
+		F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */; };
 		F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F79FCA2A8F175700FA5464 /* Main.storyboard */; };
 		F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F79FCF2A90A1EC00FA5464 /* String+.swift */; };
 		FB16310EE170AA09127D8DF3 /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA6E343EA2D21241749A7A3 /* Pods_Meteor.framework */; };
@@ -142,6 +143,7 @@
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7D6D47A2A9CE568004C9D25 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7F79FCF2A90A1EC00FA5464 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -349,6 +351,7 @@
 				F77E75432A80C180008F1883 /* Vibration.swift */,
 				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
 				F77188C02A9300E400939BCD /* UIDevice+.swift */,
+				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				A0ED409B2601FD87009990ED /* Todo.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
 				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
+				F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */,
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,

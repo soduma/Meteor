@@ -19,6 +19,8 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var indicatorBackgroundView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var singleButton: UIButton!
     @IBOutlet weak var endlessButton: UIButton!
@@ -73,10 +75,10 @@ class MeteorViewController: UIViewController {
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
-            let seconds = UserDefaults.standard.integer(forKey: endlessDurationKey)
-            guard let savedEndessDate = UserDefaults.standard.object(forKey: endlessTriggeredDateKey) as? Date else { return }
-            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndessDate, duration: seconds)
-            setEndlessTimer(triggeredDate: savedEndessDate, duration: seconds)
+            let duration = UserDefaults.standard.integer(forKey: UserDefaultsKeys.endlessDurationKey)
+            guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
+            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
+            setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
         }
     }
     
@@ -230,30 +232,27 @@ class MeteorViewController: UIViewController {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if let text = textField.text, !text.isEmpty {
             textField.resignFirstResponder()
+            makeVibration(type: .success)
+            stopButton.isHidden = false
+
 //            showAD()
             
             switch viewModel.meteorType {
             case .single:
-                makeVibration(type: .success)
                 viewModel.sendSingleMeteor(text: meteorText)
                 
             case .endless:
-                stopButton.isHidden = false
+                makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
+                
                 let duration = Int(datePicker.countDownDuration)
                 endlessTimerLabel.isHidden = false
                 endlessTimerLabel.text = String.secondsToString(seconds: duration)
-                
-                makeVibration(type: .success)
-                makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
                                 
-                UserDefaults.standard.set(true, forKey: endlessIdlingKey)
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
                 viewModel.sendEndlessMeteor(text: meteorText, duration: duration)
                 setEndlessTimer(triggeredDate: Date(), duration: duration)
                 
             case .live:
-                stopButton.isHidden = false
-                
-                makeVibration(type: .success)
                 makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
                 
                 viewModel.startLiveActivity(text: meteorText)
@@ -274,34 +273,45 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        stopButton.isHidden = true
-        sendButton.isEnabled = false
+    @IBAction func stopButtonTapped(_ sender: UIButton) {
+        makeVibration(type: .medium)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.sendButton.isEnabled = true
-        }
+        sendButton.isEnabled = false
+        stopButton.isHidden = true
+        indicatorBackgroundView.isHidden = false
+        activityIndicator.startAnimating()
         
         switch viewModel.meteorType {
         case .single:
-            return
+            break
             
         case .endless:
-            endlessTimerLabel.isHidden = true
-            
-            makeVibration(type: .medium)
-            makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
-            
-            UserDefaults.standard.set(false, forKey: endlessIdlingKey)
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
         case .live:
-            makeVibration(type: .medium)
-            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
-            
             Task {
-                UserDefaults.standard.set(false, forKey: liveIdlingKey)
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
                 await self.viewModel.endLiveActivity()
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
+            guard let self else { return }
+            makeVibration(type: .success)
+            
+            sendButton.isEnabled = true
+            endlessTimerLabel.isHidden = true
+            indicatorBackgroundView.isHidden = true
+            activityIndicator.stopAnimating()
+            
+            switch viewModel.meteorType {
+            case .single:
+                break
+            case .endless:
+                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
+            case .live:
+                makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
             }
         }
     }
@@ -333,7 +343,7 @@ extension MeteorViewController {
     }
     
     private func setEndlessTimer(triggeredDate: Date, duration: Int) {
-        UserDefaults.standard.set(triggeredDate, forKey: endlessTriggeredDateKey)
+        UserDefaults.standard.set(triggeredDate, forKey: UserDefaultsKeys.endlessTriggeredDateKey)
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -357,7 +367,7 @@ extension MeteorViewController {
             toast.enableTapToClose()
             toast.show()
         } else {
-            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: false, displayTime: 3)
+            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: true, displayTime: 3)
             
             let title = NSLocalizedString(title, comment: "")
             let subTitle = NSLocalizedString(subTitle, comment: "")

@@ -35,10 +35,10 @@ class MeteorViewModel {
 //    }
     
     func initialAppLaunchSettings() {
-        if UserDefaults.standard.bool(forKey: initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: hapticStateKey)
-            UserDefaults.standard.set(true, forKey: lockScreenStateKey)
-            UserDefaults.standard.set(true, forKey: initialLaunchKey)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             
             // 초기 위젯 이미지 생성
             guard let url = URL(string: SettingViewModel.defaultURL) else { return }
@@ -53,9 +53,9 @@ class MeteorViewModel {
     }
     
     func checkApperanceMode(window: UIWindow) {
-        if UserDefaults.standard.bool(forKey: lightStateKey) == true {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey) == true {
             window.overrideUserInterfaceStyle = .light
-        } else if UserDefaults.standard.bool(forKey: darkStateKey) == true {
+        } else if UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey) == true {
             window.overrideUserInterfaceStyle = .dark
         } else {
             window.overrideUserInterfaceStyle = .unspecified
@@ -63,7 +63,7 @@ class MeteorViewModel {
     }
     
     func checkEndlessIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: endlessIdlingKey) {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey) {
             return true
         } else {
             return false
@@ -71,7 +71,7 @@ class MeteorViewModel {
     }
     
     func checkLiveIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: liveIdlingKey) {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
             return true
         } else {
             return false
@@ -113,7 +113,7 @@ class MeteorViewModel {
     
     func sendSingleMeteor(text: String) {
         let notificationLimit = 8
-        var index = UserDefaults.standard.integer(forKey: singleIndexKey)
+        var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
         
         index += 1
         if index > notificationLimit {
@@ -127,13 +127,13 @@ class MeteorViewModel {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
         let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        UserDefaults.standard.set(index, forKey: singleIndexKey)
+        UserDefaults.standard.set(index, forKey: UserDefaultsKeys.singleIndexKey)
         
         sendToFirebase(type: .single, text: text, duration: nil)
     }
     
     func sendEndlessMeteor(text: String, duration: Int) {
-        UserDefaults.standard.set(duration, forKey: endlessDurationKey)
+        UserDefaults.standard.set(duration, forKey: UserDefaultsKeys.endlessDurationKey)
         
         let contents = UNMutableNotificationContent()
         contents.title = "ENDLESS METEOR :"
@@ -148,11 +148,11 @@ class MeteorViewModel {
     }
     
     func startLiveActivity(text: String) {
-        UserDefaults.standard.set(true, forKey: liveIdlingKey)
-        UserDefaults.standard.set(text, forKey: liveTextKey)
+        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+        UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
         
         let attributes = MeteorWidgetAttributes(value: "none")
-        let state = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: lockScreenStateKey))
+        let state = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey))
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
@@ -179,8 +179,8 @@ class MeteorViewModel {
             print("Ending the Live Activity(Timer): \(activity.id)")
         }
         
-        if UserDefaults.standard.bool(forKey: liveIdlingKey) == false {
-            UserDefaults.standard.removeObject(forKey: liveTextKey)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) == false {
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
         }
     }
     
