@@ -38,8 +38,12 @@
 /* Class = "UILabel"; text = "Current Version ~~~"; ObjectID = "IKX-kT-lPg"; */
 "IKX-kT-lPg.text" = "Current Version ~~~";
 
-/* Class = "UILabel"; text = "Please rate a star on the App Store 🙇🏻‍♂️🙏🏻"; ObjectID = "NBD-bZ-eN8"; */
-"NBD-bZ-eN8.text" = "잘 사용하고 계시다면...! 🙇🏻‍♂️🙏🏻";
+/* Class = "UILabel"; text = "Please take a moment and
+ Rate Meteor
+ 🥹"; ObjectID = "NBD-bZ-eN8"; */
+"NBD-bZ-eN8.text" = "잠깐 시간을 내어
+리뷰에 참여해주세요
+🥹";
 
 /* Class = "UILabel"; text = "Contact"; ObjectID = "Pmw-Ai-Bkf"; */
 "Pmw-Ai-Bkf.text" = "Contact";
@@ -98,8 +102,8 @@
 /* Class = "UITableViewSection"; footerTitle = "고맙습니다.\nThank you for using. 👋🏻 "; ObjectID = "keM-A9-xCm"; */
 "keM-A9-xCm.footerTitle" = "고맙습니다.\nThank you for using. 👋🏻 ";
 
-/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
-"lzG-Yx-4Ol.normalTitle" = "닫기";
+///* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lzG-Yx-4Ol"; */
+//"lzG-Yx-4Ol.normalTitle" = "닫기";
 
 /* Class = "UITableViewSection"; footerTitle = "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content.  This switch is activated on models with Always On Display."; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "'항상 켬' 화면이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다.\n
