@@ -36,17 +36,28 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let data = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "widgetDataKey")
+    let imageData = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "widgetDataKey")
 }
 
 struct MeteorWidgetEntryView : View {
+    @Environment(\.showsWidgetContainerBackground) var showsWidgetContainerBackground
     var entry: Provider.Entry
 
     var body: some View {
-        let myImage = entry.data!
-        Image(uiImage: UIImage(data: myImage)!)
-            .resizable()
-            .scaledToFill()
+        let myImage = entry.imageData!
+        
+        if #available(iOSApplicationExtension 17.0, *) {
+            ZStack {
+                Image(uiImage: UIImage(data: myImage)!)
+                    .resizable()
+                    .scaledToFill()
+            }.containerBackground(.bar, for: .widget)
+
+        } else {
+                Image(uiImage: UIImage(data: myImage)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
     }
 }
 
@@ -59,6 +70,8 @@ struct MeteorWidget: Widget {
         }
         .configurationDisplayName("Meteor Widget")
         .description("Inspire emotions into your day.")
+        .contentMarginsDisabled()
+//        .containerBackgroundRemovable(false)
     }
 }
 
