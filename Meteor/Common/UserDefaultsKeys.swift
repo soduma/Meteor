@@ -26,6 +26,10 @@ class UserDefaultsKeys {
         return "LockScreenState"
     }
     
+    class var liveColorKey: String {
+        return "LiveColor"
+    }
+    
     /// single의 identifier 분리용
     class var singleIndexKey: String {
         return "SingleIndex"

@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum LiveColor: Int {
+    case red = 0
+    case black = 1
+    case clear = 2
+}
+
+
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
@@ -16,6 +23,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var hapticSwitch: UISwitch!
     @IBOutlet weak var lockScreenSwitch: UISwitch!
+    @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var refreshPhotoView: UIView!
@@ -67,6 +75,7 @@ class SettingsViewController: UITableViewController {
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
         lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+        liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }
     
     @objc private func refreshViewTapped() {
@@ -153,6 +162,28 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        case 1:
+            UserDefaults.standard.set(LiveColor.black.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        default:
+            UserDefaults.standard.set(LiveColor.clear.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        }
+        
+        Task {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+                await MeteorViewModel().endLiveActivity()
+                
+                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+                MeteorViewModel().startLiveActivity(text: liveText)
+            } else {
+                UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
+            }
+        }
+    }
+    
     @IBAction func rateSubmitTapped(_ sender: UIButton) {
         let url = "https://apps.apple.com/app/id1562989730?action=write-review"
         guard let writeReviewURL = URL(string: url) else { return }
@@ -173,8 +204,21 @@ extension SettingsViewController: UITextFieldDelegate {
         keywordTextField.resignFirstResponder()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Keyword" {
+            textField.text = ""
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text {
+        if textField.text == "" {
+            textField.text = "Keyword"
+        }
+        
+        if textField.text == "Keyword" || textField.text == "" {
+            keywordText = ""
+        } else if textField.text != "",
+                  let text = textField.text {
             keywordText = text
         }
     }

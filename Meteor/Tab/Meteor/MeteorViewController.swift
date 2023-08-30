@@ -233,8 +233,6 @@ class MeteorViewController: UIViewController {
         if let text = textField.text, !text.isEmpty {
             textField.resignFirstResponder()
             makeVibration(type: .success)
-            stopButton.isHidden = false
-
 //            showAD()
             
             switch viewModel.meteorType {
@@ -247,6 +245,7 @@ class MeteorViewController: UIViewController {
                 let duration = Int(datePicker.countDownDuration)
                 endlessTimerLabel.isHidden = false
                 endlessTimerLabel.text = String.secondsToString(seconds: duration)
+                stopButton.isHidden = false
                                 
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
                 viewModel.sendEndlessMeteor(text: meteorText, duration: duration)
@@ -255,6 +254,7 @@ class MeteorViewController: UIViewController {
             case .live:
                 makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
                 
+                stopButton.isHidden = false
                 viewModel.startLiveActivity(text: meteorText)
             }
             

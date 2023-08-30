@@ -40,24 +40,30 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct MeteorWidgetEntryView : View {
-    @Environment(\.showsWidgetContainerBackground) var showsWidgetContainerBackground
     var entry: Provider.Entry
 
     var body: some View {
         let myImage = entry.imageData!
         
+        // MARK: - 정식버전 올리면 수정
+#if compiler(>=5.9) // Xcode 15
         if #available(iOSApplicationExtension 17.0, *) {
             ZStack {
                 Image(uiImage: UIImage(data: myImage)!)
                     .resizable()
                     .scaledToFill()
-            }.containerBackground(.bar, for: .widget)
-
-        } else {
-                Image(uiImage: UIImage(data: myImage)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            }
+            }.containerBackground(.clear, for: .widget)
+        }
+        else {
+            Image(uiImage: UIImage(data: myImage)!)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        }
+#else
+        Image(uiImage: UIImage(data: myImage)!)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+#endif
     }
 }
 
@@ -70,7 +76,7 @@ struct MeteorWidget: Widget {
         }
         .configurationDisplayName("Meteor Widget")
         .description("Inspire emotions into your day.")
-        .contentMarginsDisabled()
+//        .contentMarginsDisabled()
 //        .containerBackgroundRemovable(false)
     }
 }
