@@ -16,14 +16,14 @@
 
 ### 사용 기술
 - Language : Swift
-- Framework : UIKit, WidgetKit
+- Framework : UIKit, WidgetKit, ActivityKit
 - Library : Firebase
 - Etc: [Unsplash](https://source.unsplash.com/random) (Random 이미지 생성용) 
 
 ### 주요 기능
 - 텍스트 필드에 입력한 내용을 Local Push Notification으로 receive할 수 있도록 구현함.
 - 또한 Push를 사용자가 지정한 시간 간격으로 계속해서 받을 수 있고, Push가 도착할 때까지 남은 시간을 표시하는 Timer 구현함.
-- 탭 하단의 View에서 입력된 내용을 UICollectionView를 사용하여 표현, Data의 수정과 삭제가 가능함.
+- 같은 사용법으로 Live Activities를 사용할 수 있도록 함.
 - URL를 통해 받아온 Image를 Widget에서도 볼 수 있도록 구현함.
 
 ### 신경 쓴 부분
