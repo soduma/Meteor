@@ -12,7 +12,7 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    let viewModel = TodoViewModel()
+    let viewModel = NotesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ModifyViewController: UIViewController {
     }
 
     private func setData() {
-        if let todo = TodoViewModel.todo {
+        if let todo = NotesViewModel.todo {
             modifyTextView.text = todo.detail
         }
     }
@@ -37,7 +37,7 @@ class ModifyViewController: UIViewController {
     @IBAction func tapFinishButton(_ sender: UIButton) {
         guard let detail = modifyTextView.text,
               detail.isEmpty == false else { return }
-        if var todo = TodoViewModel.todo {
+        if var todo = NotesViewModel.todo {
             todo.detail = modifyTextView.text
             viewModel.updateTodo(todo)
         }

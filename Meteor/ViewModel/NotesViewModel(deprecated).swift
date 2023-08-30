@@ -1,5 +1,5 @@
 //
-//  TodoViewModel.swift
+//  NotesViewModel.swift
 //  Meteor
 //
 //  Created by 장기화 on 2023/08/04.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit.UIDevice
 import FirebaseDatabase
 
-class TodoViewModel {
+class NotesViewModel {
     private let manager = TodoManager.shared
     var db = Database.database().reference()
     

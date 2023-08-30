@@ -12,7 +12,7 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    let viewModel = TodoViewModel()
+    let viewModel = NotesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
