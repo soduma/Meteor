@@ -32,7 +32,7 @@
 		F77683A62A95C92F00824E4E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F77683A52A95C92F00824E4E /* Lottie */; };
 		F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */ = {isa = PBXBuildFile; fileRef = F77683AB2A95CB7D00824E4E /* lottie_face.json */; };
 		F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_splash.png */; };
-		F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */; };
+		F77E75332A7CB3C5008F1883 /* NotesViewModel(deprecated).swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75322A7CB3C5008F1883 /* NotesViewModel(deprecated).swift */; };
 		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
 		F77E75422A7E3338008F1883 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75412A7E3338008F1883 /* Base.swift */; };
 		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
@@ -129,7 +129,7 @@
 		F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorReviewViewController.swift; sourceTree = "<group>"; };
 		F77683AB2A95CB7D00824E4E /* lottie_face.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_face.json; sourceTree = "<group>"; };
 		F77E752F2A7CABAA008F1883 /* meteor_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_splash.png; sourceTree = "<group>"; };
-		F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		F77E75322A7CB3C5008F1883 /* NotesViewModel(deprecated).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesViewModel(deprecated).swift"; sourceTree = "<group>"; };
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
 		F77E75412A7E3338008F1883 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			children = (
 				A04AE61726453C1F008BB99C /* TabBar.swift */,
 				F77E75272A7B9AFF008F1883 /* Meteor */,
-				A0ED40A12602245F009990ED /* Notes */,
+				A0ED40A12602245F009990ED /* Notes(deprecated) */,
 				F77E75282A7B9B12008F1883 /* Settings */,
 				F77E75472A80CD2B008F1883 /* Cell */,
 			);
@@ -261,14 +261,14 @@
 			path = Meteor;
 			sourceTree = "<group>";
 		};
-		A0ED40A12602245F009990ED /* Notes */ = {
+		A0ED40A12602245F009990ED /* Notes(deprecated) */ = {
 			isa = PBXGroup;
 			children = (
 				A0A4C12725FE25890090A214 /* NotesViewController.swift */,
 				A0ED408E26009DB5009990ED /* CreateViewController.swift */,
 				A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */,
 			);
-			path = Notes;
+			path = "Notes(deprecated)";
 			sourceTree = "<group>";
 		};
 		F77E75272A7B9AFF008F1883 /* Meteor */ = {
@@ -303,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */,
-				F77E75322A7CB3C5008F1883 /* TodoViewModel.swift */,
+				F77E75322A7CB3C5008F1883 /* NotesViewModel(deprecated).swift */,
 				F77E75482A80CE87008F1883 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
@@ -577,7 +577,7 @@
 				A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */,
 				A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */,
 				F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */,
-				F77E75332A7CB3C5008F1883 /* TodoViewModel.swift in Sources */,
+				F77E75332A7CB3C5008F1883 /* NotesViewModel(deprecated).swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

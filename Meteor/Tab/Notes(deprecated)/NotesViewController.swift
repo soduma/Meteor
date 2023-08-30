@@ -24,13 +24,13 @@ class NotesViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
     
-    let viewModel = TodoViewModel()
+    let viewModel = NotesViewModel()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showModify" {
             if let index = sender as? Int {
                 let todo = viewModel.todos[index]
-                TodoViewModel.todo = todo
+                NotesViewModel.todo = todo
             }
         }
     }
