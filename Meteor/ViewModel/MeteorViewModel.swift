@@ -24,8 +24,7 @@ class MeteorViewModel {
                       NSLocalizedString("notice1", comment: ""),
                       NSLocalizedString("notice2", comment: ""),
                       NSLocalizedString("notice3", comment: ""),
-                      NSLocalizedString("notice4", comment: ""),
-                      NSLocalizedString("notice5", comment: "")]
+                      NSLocalizedString("notice4", comment: "")]
     
 //    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
 //        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
@@ -39,8 +38,9 @@ class MeteorViewModel {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
+            UserDefaults.standard.set(LiveColor.red, forKey: UserDefaultsKeys.liveColorKey)
             
-            // 초기 위젯 이미지 생성
+            // 최초 위젯 이미지 생성
             guard let url = URL(string: SettingViewModel.defaultURL) else { return }
             URLSession.shared.dataTask(with: url) { (data, _, _) in
                 guard let imageData = data else { return }
@@ -152,16 +152,14 @@ class MeteorViewModel {
         UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
         
         let attributes = MeteorWidgetAttributes(value: "none")
-        let state = MeteorWidgetAttributes.ContentState(endlessText: text, lockscreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey))
+        let state = MeteorWidgetAttributes.ContentState(endlessText: text,
+                                                        hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
+                                                        liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey))
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
             let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes,
                                                                         content: content)
-//            let activity = try Activity<MeteorWidgetAttributes>.request(
-//                attributes: attributes,
-//                contentState: contentState
-//            )
             print(activity)
         } catch {
             print(error.localizedDescription)
@@ -171,7 +169,9 @@ class MeteorViewModel {
     }
     
     func endLiveActivity() async {
-        let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "none", lockscreen: false)
+        let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "none",
+                                                              hideContentOnLockScreen: false,
+                                                              liveColor: 0)
         let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
         
         for activity in Activity<MeteorWidgetAttributes>.activities {

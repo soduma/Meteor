@@ -12,13 +12,15 @@ when fill it out and tap send.";
 'Single's is 9️⃣";
 
 "notice2" = "'Endless' send notification
-at specified time intervals.";
+at selected time intervals.";
 
-"notice3" = "'Live' is a Live Activities that appears on the Lock Screen.";
+"notice3" = "'Live' is a Live Activity that appears
+for up to 12 hours.";
 
-"notice4" = "There's a limit to the length of text that can be displayed.";
+"notice4" = "There's a limit to the length of text
+that can be displayed.";
 
-"notice5" = "⭐️ Maximum exposure time for 'Live' is 12 hours.";
+//"notice5" = "⭐️ Maximum exposure time for 'Live' is 12 hours.";
 
 // ---
 
