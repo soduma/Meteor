@@ -10,10 +10,18 @@ import StoreKit
 import WidgetKit
 import FirebaseDatabase
 
+enum LiveColor: Int {
+    case red = 0
+    case black = 1
+    case clear = 2
+}
+
 class SettingViewModel {
-    private let db = Database.database().reference()
-    private var firebaseImageURL = ""
     static let defaultURL = "https://source.unsplash.com/random"
+    private var firebaseImageURL = ""
+    private let db = Database.database().reference()
+    
+    var liveColor = LiveColor.red
     
     var imageData: Data?
     
