@@ -78,7 +78,7 @@ class MeteorViewModel {
         }
     }
     
-    private func sendToFirebase(type: MeteorType, text: String, duration: Int?) {
+    func sendToFirebase(type: MeteorType, text: String, duration: Int) {
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -100,7 +100,7 @@ class MeteorViewModel {
                 .child("\(locale)")
                 .child(user)
                 .child(date)
-                .setValue(["text": text, "timer": String((duration ?? 1) / 60)])
+                .setValue(["text": text, "timer": String(duration / 60)])
             
         case .live:
             db.child("liveText")
@@ -128,8 +128,6 @@ class MeteorViewModel {
         let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         UserDefaults.standard.set(index, forKey: UserDefaultsKeys.singleIndexKey)
-        
-        sendToFirebase(type: .single, text: text, duration: nil)
     }
     
     func sendEndlessMeteor(text: String, duration: Int) {
@@ -143,8 +141,6 @@ class MeteorViewModel {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(duration), repeats: true)
         let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-        sendToFirebase(type: .endless, text: text, duration: duration)
     }
     
     func startLiveActivity(text: String) {
@@ -164,8 +160,6 @@ class MeteorViewModel {
         } catch {
             print(error.localizedDescription)
         }
-        
-        sendToFirebase(type: .live, text: text, duration: nil)
     }
     
     func endLiveActivity() async {
