@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum LiveColor: Int {
-    case red = 0
-    case black = 1
-    case clear = 2
-}
-
-
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
@@ -165,12 +158,16 @@ class SettingsViewController: UITableViewController {
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+            viewModel.liveColor = .red
+//            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         case 1:
-            UserDefaults.standard.set(LiveColor.black.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+            viewModel.liveColor = .black
+//            UserDefaults.standard.set(LiveColor.black.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         default:
-            UserDefaults.standard.set(LiveColor.clear.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+            viewModel.liveColor = .clear
+//            UserDefaults.standard.set(LiveColor.clear.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         }
+        UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
         Task {
             if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
@@ -178,8 +175,6 @@ class SettingsViewController: UITableViewController {
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
                 MeteorViewModel().startLiveActivity(text: liveText)
-            } else {
-                UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
             }
         }
     }

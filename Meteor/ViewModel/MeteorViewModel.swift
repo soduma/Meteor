@@ -38,7 +38,7 @@ class MeteorViewModel {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
-            UserDefaults.standard.set(LiveColor.red, forKey: UserDefaultsKeys.liveColorKey)
+            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
             guard let url = URL(string: SettingViewModel.defaultURL) else { return }
