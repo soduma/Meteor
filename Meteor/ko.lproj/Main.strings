@@ -1,6 +1,6 @@
 
-/* Class = "UILabel"; text = "Clear"; ObjectID = "0Cq-UK-TS4"; */
-"0Cq-UK-TS4.text" = "투명";
+/* Class = "UILabel"; text = "Blur"; ObjectID = "0Cq-UK-TS4"; */
+"0Cq-UK-TS4.text" = "흐림";
 
 /* Class = "UIButton"; normalTitle = "Live"; ObjectID = "1ez-ua-B75"; */
 "1ez-ua-B75.normalTitle" = "Live";

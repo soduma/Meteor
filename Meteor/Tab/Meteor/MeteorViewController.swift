@@ -233,6 +233,7 @@ class MeteorViewController: UIViewController {
         if let text = textField.text, !text.isEmpty {
             textField.resignFirstResponder()
             makeVibration(type: .success)
+            var duration = 0
 //            showAD()
             
             switch viewModel.meteorType {
@@ -242,7 +243,7 @@ class MeteorViewController: UIViewController {
             case .endless:
                 makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
                 
-                let duration = Int(datePicker.countDownDuration)
+                duration = Int(datePicker.countDownDuration)
                 endlessTimerLabel.isHidden = false
                 endlessTimerLabel.text = String.secondsToString(seconds: duration)
                 stopButton.isHidden = false
@@ -257,6 +258,10 @@ class MeteorViewController: UIViewController {
                 stopButton.isHidden = false
                 viewModel.startLiveActivity(text: meteorText)
             }
+            
+#if RELEASE
+            viewModel.sendToFirebase(type: viewModel.meteorType, text: meteorText, duration: duration)
+#endif
             
             // MARK: 앱 리뷰
             SettingViewModel().checkSystemAppReview()
