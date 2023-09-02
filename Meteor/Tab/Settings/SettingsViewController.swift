@@ -14,7 +14,10 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
-    @IBOutlet weak var vibrateSwitch: UISwitch!
+    @IBOutlet weak var hapticSwitch: UISwitch!
+    @IBOutlet weak var lockScreenSwitch: UISwitch!
+    @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var refreshPhotoView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -33,54 +36,56 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.getImage(keyword: keywordText)
+//        viewModel.getNewImage(keyword: keywordText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.getImageURL()
-        setState()        
+        setState()
+        viewModel.getFirebaseImageURL()
     }
     
     private func setLayout() {
         activityIndicatorView.isHidden = true
-        
-        if let imageData = UserDefaults.standard.data(forKey: ImageDataKey) {
-            imageView.image = UIImage(data: imageData)
-        }
         keywordTextField.delegate = self
         
-        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(tapRefreshView))
+        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
+        
+        if let imageData = UserDefaults.standard.data(forKey: UserDefaultsKeys.widgetDataKey) {
+            imageView.image = UIImage(data: imageData)
+        }
+        
+        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
         refreshPhotoView.addGestureRecognizer(refreshGesture)
         
-        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
+//        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
     private func setState() {
-        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: LightState)
-        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: DarkState)
-        vibrateSwitch.isOn = UserDefaults.standard.bool(forKey: VibrateState)
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
+        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+        liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }
     
-    @objc private func tapRefreshView() {
+    @objc private func refreshViewTapped() {
         makeVibration(type: .rigid)
         
         viewModel.checkSystemAppReview()
-        starRateView.isHidden = viewModel.checkCustomAppReview()
+        starRateView.isHidden = !viewModel.checkCustomAppReview()
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
-            viewModel.getImage(keyword: keywordText)
+            viewModel.getNewImage(keyword: keywordText)
             
             DispatchQueue.main.async {
-                let defaultImage = UIImage(named: "meteor_logo.png")
+                let defaultImage = UIImage(named: "meteor_splash.png")
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
-                
-                self.viewModel.setWidgetData()
                 
                 self.activityIndicatorView.isHidden = true
                 self.activityIndicatorView.stopAnimating()
@@ -88,14 +93,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapMail(_ sender: UIButton) {
+    @IBAction func mailTapped(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
             UIApplication.shared.open(url)
         }
     }
     
-    @IBAction func tapReview(_ sender: Any) {
+    @IBAction func reviewTapped(_ sender: Any) {
         let url = "itms-apps://itunes.apple.com/app/1562989730"
         if let url = URL(string: url),
            UIApplication.shared.canOpenURL(url) {
@@ -103,7 +108,7 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func tapLightModeSwitch(_ sender: UISwitch) {
+    @IBAction func lightModeSwitchTapped(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -113,11 +118,11 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
     }
     
-    @IBAction func tapDarkModeSwitch(_ sender: UISwitch) {
+    @IBAction func darkModeSwitchTapped(_ sender: UISwitch) {
         lightModeSwitch.isOn = false
         
         if let window = UIApplication.shared.windows.first {
@@ -127,26 +132,65 @@ class SettingsViewController: UITableViewController {
                 window.overrideUserInterfaceStyle = .unspecified
             }
         }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: LightState)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: DarkState)
+        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
     }
     
-    @IBAction func tapVibrateSwitch(_ sender: UISwitch) {
-        UserDefaults.standard.set(vibrateSwitch.isOn, forKey: VibrateState)
+    @IBAction func hapticSwitchTapped(_ sender: UISwitch) {
+        UserDefaults.standard.set(hapticSwitch.isOn, forKey: UserDefaultsKeys.hapticStateKey)
     }
     
-    @IBAction func tapRateClose(_ sender: UIButton) {
-        starRateView.isHidden = true
-        viewModel.counterForCustomAppReview = 0
+    @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
+        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
+        
+        Task {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+                await MeteorViewModel().endLiveActivity()
+                
+                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+                MeteorViewModel().startLiveActivity(text: liveText)
+            } else {
+                UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
+            }
+        }
     }
     
-    @IBAction func tapRateSubmit(_ sender: UIButton) {
+    @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.liveColor = .red
+//            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        case 1:
+            viewModel.liveColor = .black
+//            UserDefaults.standard.set(LiveColor.black.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        default:
+            viewModel.liveColor = .clear
+//            UserDefaults.standard.set(LiveColor.clear.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        }
+        UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        
+        Task {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+                await MeteorViewModel().endLiveActivity()
+                
+                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+                MeteorViewModel().startLiveActivity(text: liveText)
+            }
+        }
+    }
+    
+    @IBAction func rateSubmitTapped(_ sender: UIButton) {
         let url = "https://apps.apple.com/app/id1562989730?action=write-review"
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: LastVersion)
+        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         starRateView.isHidden = true
+    }
+    
+    @IBAction func rateCloseTapped(_ sender: UIButton) {
+        starRateView.isHidden = true
+        UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
     }
 }
 
@@ -155,9 +199,22 @@ extension SettingsViewController: UITextFieldDelegate {
         keywordTextField.resignFirstResponder()
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Keyword" {
+            textField.text = ""
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text {
-            self.keywordText = text
+        if textField.text == "" {
+            textField.text = "Keyword"
+        }
+        
+        if textField.text == "Keyword" || textField.text == "" {
+            keywordText = ""
+        } else if textField.text != "",
+                  let text = textField.text {
+            keywordText = text
         }
     }
 }

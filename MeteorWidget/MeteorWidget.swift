@@ -2,7 +2,7 @@
 //  MeteorWidget.swift
 //  MeteorWidget
 //
-//  Created by 장기화 on 2021/07/19.
+//  Created by 장기화 on 2023/08/11.
 //
 
 import WidgetKit
@@ -36,22 +36,37 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let data = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "widgetDataKey")
+    let imageData = UserDefaults(suiteName: "group.com.soduma.Meteor")?.data(forKey: "widgetDataKey")
 }
 
 struct MeteorWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-//        Text(entry.date, style: .time)
-        let myImage = entry.data!
+        let myImage = entry.imageData!
+        
+        // MARK: - 정식버전 올리면 수정
+#if compiler(>=5.9) // Xcode 15
+        if #available(iOSApplicationExtension 17.0, *) {
+            ZStack {
+                Image(uiImage: UIImage(data: myImage)!)
+                    .resizable()
+                    .scaledToFill()
+            }.containerBackground(.clear, for: .widget)
+        }
+        else {
+            Image(uiImage: UIImage(data: myImage)!)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        }
+#else
         Image(uiImage: UIImage(data: myImage)!)
             .resizable()
-            .scaledToFill()
+            .aspectRatio(contentMode: .fill)
+#endif
     }
 }
 
-@main
 struct MeteorWidget: Widget {
     let kind: String = "MeteorWidget"
 
@@ -61,6 +76,8 @@ struct MeteorWidget: Widget {
         }
         .configurationDisplayName("Meteor Widget")
         .description("Inspire emotions into your day.")
+//        .contentMarginsDisabled()
+//        .containerBackgroundRemovable(false)
     }
 }
 

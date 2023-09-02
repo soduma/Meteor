@@ -5,28 +5,36 @@
   Created by 장기화 on 2021/04/24.
   
 */
-"notice0" = "Can get it as a notification
+"notice0" = "Can get as a notification
 when fill it out and tap send.";
 
-"notice1" = "Notification stack up to 9,
-and will be deleted sequentially.";
+"notice1" = "Maximum number of
+'Single's is 9️⃣";
 
-"notice2" = "There's a limit to the length of text that can be displayed.";
+"notice2" = "'Endless' send notification
+at selected time intervals.";
 
-"notice3" = "Endless make notification
-at specified time intervals.";
+"notice3" = "'Live' is a Live Activity that appears
+for up to 12 hours.";
 
-"notice4" = "Send with a blank,
-Endless will be canceled.";
+"notice4" = "There's a limit to the length of text
+that can be displayed.";
+
+//"notice5" = "⭐️ Maximum exposure time for 'Live' is 12 hours.";
+
+// ---
 
 "Endless" = "Endless";
+"Live" = "Live";
 
 "Started" = "Started";
 
-"Canceled" = "Canceled";
+"Stopped" = "Stopped";
 
-"Endless already been set" = "Endless already been set";
-
-"Close" = "Close";
+//"Close" = "Close";
 
 "Submit" = "Submit";
+
+"rate" = "Rate a Star";
+"rate comment" = "Please take a moment and rate Meteor.";
+"rate button" = "  Yes! This is button🥹  ";

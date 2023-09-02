@@ -13,6 +13,6 @@ class TabBar: UITabBar {
         
         layer.masksToBounds = true
         layer.cornerRadius = 25
-        layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
