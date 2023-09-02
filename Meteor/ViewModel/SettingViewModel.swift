@@ -6,35 +6,39 @@
 //
 
 import Foundation
-import Firebase
 import StoreKit
 import WidgetKit
+import FirebaseDatabase
+
+enum LiveColor: Int {
+    case red = 0
+    case black = 1
+    case clear = 2
+}
 
 class SettingViewModel {
-    let db = Database.database().reference()
-    var url = ""
-    var defaultURL = "https://source.unsplash.com/random"
+    static let defaultURL = "https://source.unsplash.com/random"
+    private var firebaseImageURL = ""
+    private let db = Database.database().reference()
+    
+    var liveColor = LiveColor.red
     
     var imageData: Data?
-    var widgetData: Data?
-    var counterForSystemAppReview = UserDefaults.standard.integer(forKey: SystemAppReview)
-    var counterForCustomAppReview = UserDefaults.standard.integer(forKey: CustomAppReview)
-    var getImageCount = UserDefaults.standard.integer(forKey: UserGetImageCount)
     
-    func getImageURL() {
+    func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
             guard let self = self else { return }
-            url = snapshot.value as? String ?? defaultURL
+            firebaseImageURL = snapshot.value as? String ?? SettingViewModel.defaultURL
         }
     }
     
-    func getImage(keyword: String) {
-        getImageCount += 1
-        UserDefaults.standard.set(getImageCount, forKey: UserGetImageCount)
+    func getNewImage(keyword: String) {
+        var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
+        counterForGetNewImageTapped += 1
         
         if keyword.isEmpty {
-            guard let imageURL = URL(string: url) else { return }
-            self.imageData = try? Data(contentsOf: imageURL)
+            guard let url = URL(string: firebaseImageURL) else { return }
+            self.imageData = try? Data(contentsOf: url)
             
         } else {
             let keywordURL = "https://source.unsplash.com/featured/?\(keyword)"
@@ -42,55 +46,65 @@ class SettingViewModel {
             self.imageData = try? Data(contentsOf: imageURL)
         }
         
+        setWidget(imageData: imageData)
+        
+        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
+        
         // for Firebase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateTime = dateFormatter.string(from: Date())
         let locale = TimeZone.current.identifier
         
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         self.db
             .child("getImage")
             .child(user)
-            .setValue(["locale": locale, "count": getImageCount])
+            .setValue(["locale": locale, "count": String(counterForGetNewImageTapped)])
     }
     
-    func setWidgetData() {
-        widgetData = imageData
-        UserDefaults.standard.set(imageData, forKey: ImageDataKey)
-        UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(self.widgetData, forKeyPath: "widgetDataKey")
+    func setWidget(imageData: Data?) {
+        UserDefaults.standard.set(imageData, forKey: UserDefaultsKeys.widgetDataKey)
+        UserDefaults(suiteName: "group.com.soduma.Meteor")?.setValue(imageData, forKeyPath: "widgetDataKey")
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-    func checkSystemAppReview() {
-        counterForSystemAppReview += 1
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: SystemAppReview)
+    func checkDeviceModel() -> Bool {
+        print("😚😚😚😚 \(UIDevice.modelName)")
         
-        if counterForSystemAppReview >= 35 {
+        switch UIDevice.modelName {
+        case "Simulator iPhone 14 Pro", "Simulator iPhone 14 Pro Max":
+            return true
+        case "iPhone 14 Pro", "iPhone 14 Pro Max":
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func checkSystemAppReview() {
+        var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
+        counterForSystemAppReview += 1
+        
+        if counterForSystemAppReview >= 110 {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
             counterForSystemAppReview = 0
         }
+        UserDefaults.standard.set(counterForSystemAppReview, forKey: UserDefaultsKeys.systemAppReviewCountKey)
     }
     
     func checkCustomAppReview() -> Bool {
+        var counterForCustomAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
         counterForCustomAppReview += 1
-        UserDefaults.standard.set(counterForCustomAppReview, forKey: CustomAppReview)
+        
+        UserDefaults.standard.set(counterForCustomAppReview, forKey: UserDefaultsKeys.customAppReviewCountKey)
         print(counterForCustomAppReview)
+                
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
         
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            print("Expected to find a bundle version in the info dictionary")
+        if counterForCustomAppReview >= 40 && getCurrentVersion() != lastVersion {
             return true
-        }
-        
-        let lastVersion = UserDefaults.standard.string(forKey: LastVersion)
-        
-        if counterForCustomAppReview >= 20 && currentVersion != lastVersion {
-            return false
         } else {
-            return true
+            return false
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  TodoViewController.swift
+//  NotesViewController.swift
 //  Meteor
 //
 //  Created by 장기화 on 2021/03/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodoViewController: UIViewController {
+class NotesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -24,13 +24,13 @@ class TodoViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
     
-    let viewModel = TodoViewModel()
+    let viewModel = NotesViewModel()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showModify" {
             if let index = sender as? Int {
                 let todo = viewModel.todos[index]
-                TodoViewModel.todo = todo
+                NotesViewModel.todo = todo
             }
         }
     }
@@ -40,7 +40,7 @@ class TodoViewController: UIViewController {
         
         setLayout()
         viewModel.loadTasks()
-        getBottomViewImage()
+//        getBottomViewImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,18 +63,18 @@ class TodoViewController: UIViewController {
         textFieldBlurView.isHidden = true
     }
     
-    private func getBottomViewImage() {
-        let url = "https://picsum.photos/400/100"
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else { return }
-            guard let imageURL = URL(string: url),
-                  let data = try? Data(contentsOf: imageURL) else { return }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data)
-            }
-        }
-    }
+//    private func getBottomViewImage() {
+//        let url = "https://picsum.photos/400/100"
+//        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+//            guard let self = self else { return }
+//            guard let imageURL = URL(string: url),
+//                  let data = try? Data(contentsOf: imageURL) else { return }
+//
+//            DispatchQueue.main.async {
+//                self.imageView.image = UIImage(data: data)
+//            }
+//        }
+//    }
     
     @objc private func adjustInputView(noti: Notification) {
         guard let userInfo = noti.userInfo else { return }
@@ -162,13 +162,13 @@ class TodoViewController: UIViewController {
     }
 }
 
-extension TodoViewController: UICollectionViewDataSource {
+extension NotesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.todos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCell.idendifier, for: indexPath) as? TodoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotesCell.idendifier, for: indexPath) as? NotesCell else {
             return UICollectionViewCell()
         }
         
@@ -188,13 +188,13 @@ extension TodoViewController: UICollectionViewDataSource {
     }
 }
 
-extension TodoViewController: UICollectionViewDelegate {
+extension NotesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showModify", sender: indexPath.item)
     }
 }
 
-extension TodoViewController: UICollectionViewDelegateFlowLayout {
+extension NotesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width
         let height: CGFloat = 50
