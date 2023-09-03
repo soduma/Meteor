@@ -142,6 +142,7 @@
 		F7972D462A85EA6600050263 /* MeteorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidget.swift; sourceTree = "<group>"; };
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7D622242AA4AC610051740B /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		F7D6D47A2A9CE568004C9D25 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 		A0998A4225FC99E7001BAEFD = {
 			isa = PBXGroup;
 			children = (
+				F7D622222AA4AC2B0051740B /* ci_scripts */,
 				A018484626A5532F00DC3A59 /* MeteorWidgetExtension.entitlements */,
 				A0998A4D25FC99E7001BAEFD /* Meteor */,
 				F7972D412A85EA6600050263 /* MeteorWidget */,
@@ -328,6 +330,14 @@
 				F7972D4A2A85EA6700050263 /* Info.plist */,
 			);
 			path = MeteorWidget;
+			sourceTree = "<group>";
+		};
+		F7D622222AA4AC2B0051740B /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				F7D622242AA4AC610051740B /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 		F7E861332A7B7ED100E5F194 /* Setting */ = {
