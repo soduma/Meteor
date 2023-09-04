@@ -7,7 +7,7 @@
 #  
 
 # Update brew and install SwiftLint and Danger-swift
-brew update
+#brew update
 # Install CocoaPods using Homebrew.
 brew install cocoapods
 
