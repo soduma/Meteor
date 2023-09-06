@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit.UIWindow
 import ActivityKit
 import WidgetKit
 import FirebaseDatabase
@@ -25,13 +24,6 @@ class MeteorViewModel {
                       NSLocalizedString("notice2", comment: ""),
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
-    
-//    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
-//        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
-//            let value = snapshot.value as? Int ?? 0
-//            completion(value)
-//        }
-//    }
     
     func initialAppLaunchSettings() {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
@@ -52,13 +44,17 @@ class MeteorViewModel {
         }
     }
     
-    func checkApperanceMode(window: UIWindow) {
+    func checkAppearanceMode() {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey) == true {
-            window.overrideUserInterfaceStyle = .light
+            window?.overrideUserInterfaceStyle = .light
         } else if UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey) == true {
-            window.overrideUserInterfaceStyle = .dark
+            window?.overrideUserInterfaceStyle = .dark
         } else {
-            window.overrideUserInterfaceStyle = .unspecified
+            window?.overrideUserInterfaceStyle = .unspecified
         }
     }
     
@@ -87,7 +83,6 @@ class MeteorViewModel {
         
         switch type {
         case .single:
-//            let key = db.childByAutoId().key
             
             db.child("singleText")
                 .child("\(locale)")
@@ -112,11 +107,10 @@ class MeteorViewModel {
     }
     
     func sendSingleMeteor(text: String) {
-        let notificationLimit = 8
         var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
         
         index += 1
-        if index > notificationLimit {
+        if index > singleLimit {
             index = 0
         }
         
@@ -154,9 +148,7 @@ class MeteorViewModel {
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
-            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes,
-                                                                        content: content)
-            print(activity)
+            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
         } catch {
             print(error.localizedDescription)
         }

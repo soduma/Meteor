@@ -36,7 +36,6 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         setLayout()
-//        viewModel.getNewImage(keyword: keywordText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +58,6 @@ class SettingsViewController: UITableViewController {
         let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
         refreshPhotoView.addGestureRecognizer(refreshGesture)
         
-//        rateCloseButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Close", comment: "")), for: .normal)
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
@@ -110,30 +108,12 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func lightModeSwitchTapped(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
-        
-        if let window = UIApplication.shared.windows.first {
-            if lightModeSwitch.isOn == true {
-                window.overrideUserInterfaceStyle = .light
-            } else {
-                window.overrideUserInterfaceStyle = .unspecified
-            }
-        }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
+        viewModel.changeAppearance(lightMode: lightModeSwitch.isOn, darkMode: darkModeSwitch.isOn)
     }
     
     @IBAction func darkModeSwitchTapped(_ sender: UISwitch) {
         lightModeSwitch.isOn = false
-        
-        if let window = UIApplication.shared.windows.first {
-            if darkModeSwitch.isOn == true {
-                window.overrideUserInterfaceStyle = .dark
-            } else {
-                window.overrideUserInterfaceStyle = .unspecified
-            }
-        }
-        UserDefaults.standard.set(lightModeSwitch.isOn, forKey: UserDefaultsKeys.lightStateKey)
-        UserDefaults.standard.set(darkModeSwitch.isOn, forKey: UserDefaultsKeys.darkStateKey)
+        viewModel.changeAppearance(lightMode: lightModeSwitch.isOn, darkMode: darkModeSwitch.isOn)
     }
     
     @IBAction func hapticSwitchTapped(_ sender: UISwitch) {
@@ -156,16 +136,18 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
+        makeVibration(type: .rigid)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+            _ = viewModel.checkCustomAppReview()
+        }
+        
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel.liveColor = .red
-//            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         case 1:
             viewModel.liveColor = .black
-//            UserDefaults.standard.set(LiveColor.black.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         default:
             viewModel.liveColor = .clear
-//            UserDefaults.standard.set(LiveColor.clear.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         }
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
