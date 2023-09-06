@@ -2,9 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Provide optimized advertising to user. Even if don&apos;t allow, the number of ads will display are same.
-Can change setting in Settings &gt; Privacy &gt; Tracking.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
