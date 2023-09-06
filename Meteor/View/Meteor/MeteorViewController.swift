@@ -60,7 +60,7 @@ class MeteorViewController: UIViewController {
         viewModel.initialAppLaunchSettings()
         viewModel.checkAppearanceMode()
         
-        // MARK: 앱 종료 후 타이머 유무 체크
+        // MARK: 앱 재실행 후 타이머 체크
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
@@ -68,6 +68,13 @@ class MeteorViewController: UIViewController {
             guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
             setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
+        }
+        
+        // MARK: 리뷰 카운트 재설정
+        let count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+        if customReviewLimit - count < 10 {
+            UserDefaults.standard.set(30, forKey: UserDefaultsKeys.customAppReviewCountKey)
+
         }
     }
     
