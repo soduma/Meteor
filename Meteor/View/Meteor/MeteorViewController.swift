@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 //import GoogleMobileAds
-import AppTrackingTransparency
+//import AppTrackingTransparency
 //import AdSupport
 import Toast
 import Puller
@@ -102,7 +102,7 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UNUserNotificationCenter.current().delegate = self
         
-        ATTrackingManager.requestTrackingAuthorization { _ in }
+//        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
