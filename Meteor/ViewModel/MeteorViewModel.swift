@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit.UIWindow
 import ActivityKit
 import WidgetKit
 import FirebaseDatabase
@@ -52,13 +51,17 @@ class MeteorViewModel {
         }
     }
     
-    func checkApperanceMode(window: UIWindow) {
+    func checkAppearanceMode() {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey) == true {
-            window.overrideUserInterfaceStyle = .light
+            window?.overrideUserInterfaceStyle = .light
         } else if UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey) == true {
-            window.overrideUserInterfaceStyle = .dark
+            window?.overrideUserInterfaceStyle = .dark
         } else {
-            window.overrideUserInterfaceStyle = .unspecified
+            window?.overrideUserInterfaceStyle = .unspecified
         }
     }
     

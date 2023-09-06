@@ -79,6 +79,23 @@ class SettingViewModel {
         }
     }
     
+    func changeAppearance(lightMode: Bool, darkMode: Bool) {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        if lightMode == true {
+            window?.overrideUserInterfaceStyle = .light
+        } else if darkMode == true {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .unspecified
+        }
+        
+        UserDefaults.standard.set(lightMode, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
+    }
+    
     func checkSystemAppReview() {
         var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
         counterForSystemAppReview += 1
