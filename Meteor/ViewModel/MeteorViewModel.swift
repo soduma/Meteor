@@ -25,13 +25,6 @@ class MeteorViewModel {
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
     
-//    func getFirebaseAdIndex(completion: @escaping (Int) -> Void) {
-//        db.child(adIndex).observeSingleEvent(of: .value) { snapshot in
-//            let value = snapshot.value as? Int ?? 0
-//            completion(value)
-//        }
-//    }
-    
     func initialAppLaunchSettings() {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
@@ -90,7 +83,6 @@ class MeteorViewModel {
         
         switch type {
         case .single:
-//            let key = db.childByAutoId().key
             
             db.child("singleText")
                 .child("\(locale)")
@@ -115,11 +107,10 @@ class MeteorViewModel {
     }
     
     func sendSingleMeteor(text: String) {
-        let notificationLimit = 8
         var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
         
         index += 1
-        if index > notificationLimit {
+        if index > singleLimit {
             index = 0
         }
         
@@ -157,9 +148,7 @@ class MeteorViewModel {
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
-            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes,
-                                                                        content: content)
-            print(activity)
+            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
         } catch {
             print(error.localizedDescription)
         }

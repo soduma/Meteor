@@ -7,8 +7,11 @@
 
 import Foundation
 
+let singleLimit = 8 // single의 identifier 구분용
+let systemReviewLimit = 110
+let customReviewLimit = 40
+
 // MARK: for FirebaseDatabase Key
-//let adIndex = "adIndex"
-let shortText = "shortText"
-let longText = "longText"
+let shortText = "shortText" // deprecated
+let longText = "longText" // deprecated
 let unsplash = "a_unsplash"

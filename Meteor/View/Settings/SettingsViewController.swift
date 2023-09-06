@@ -136,6 +136,11 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
+        makeVibration(type: .rigid)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+            _ = viewModel.checkCustomAppReview()
+        }
+        
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel.liveColor = .red
