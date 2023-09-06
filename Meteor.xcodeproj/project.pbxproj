@@ -36,7 +36,7 @@
 		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
 		F77E75422A7E3338008F1883 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75412A7E3338008F1883 /* Base.swift */; };
 		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
-		F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* NotesCell.swift */; };
+		F77E75462A80CD09008F1883 /* NotesCell(deprecated).swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* NotesCell(deprecated).swift */; };
 		F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingViewModel.swift */; };
 		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
 		F7972D3F2A85EA6600050263 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483426A551C700DC3A59 /* WidgetKit.framework */; };
@@ -133,7 +133,7 @@
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
 		F77E75412A7E3338008F1883 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
-		F77E75452A80CD09008F1883 /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
+		F77E75452A80CD09008F1883 /* NotesCell(deprecated).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesCell(deprecated).swift"; sourceTree = "<group>"; };
 		F77E75482A80CE87008F1883 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeteorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,7 +212,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A04E305A27A28EC6008C9993 /* Tab */ = {
+		A04E305A27A28EC6008C9993 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A04AE61726453C1F008BB99C /* TabBar.swift */,
@@ -221,7 +221,7 @@
 				F77E75282A7B9B12008F1883 /* Settings */,
 				F77E75472A80CD2B008F1883 /* Cell */,
 			);
-			path = Tab;
+			path = View;
 			sourceTree = "<group>";
 		};
 		A0998A4225FC99E7001BAEFD = {
@@ -258,7 +258,7 @@
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				A04E305827A28E7E008C9993 /* Model */,
 				F77E75362A7CB417008F1883 /* ViewModel */,
-				A04E305A27A28EC6008C9993 /* Tab */,
+				A04E305A27A28EC6008C9993 /* View */,
 			);
 			path = Meteor;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				F77E754A2A811827008F1883 /* NoticeCell.swift */,
-				F77E75452A80CD09008F1883 /* NotesCell.swift */,
+				F77E75452A80CD09008F1883 /* NotesCell(deprecated).swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
-				F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */,
+				F77E75462A80CD09008F1883 /* NotesCell(deprecated).swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
 				F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */,
 				F77E75442A80C180008F1883 /* Vibration.swift in Sources */,
@@ -776,7 +776,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -784,7 +784,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -803,7 +803,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -811,7 +811,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

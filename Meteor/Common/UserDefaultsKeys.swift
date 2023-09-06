@@ -78,7 +78,7 @@ class UserDefaultsKeys {
         return "CustomAppReviewCount"
     }
     
-    /// 앱 리뷰 화면 표현용
+    /// Firebase 확인용
     class var getNewImageTappedCountKey: String {
         return "GetNewImageTappedCount"
     }

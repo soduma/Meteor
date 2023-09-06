@@ -47,17 +47,17 @@ class SettingViewModel {
         }
         
         setWidget(imageData: imageData)
-        
         UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         
+#if RELEASE
         // for Firebase
-        let locale = TimeZone.current.identifier
-        
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        let locale = TimeZone.current.identifier
         self.db
             .child("getImage")
             .child(user)
             .setValue(["locale": locale, "count": String(counterForGetNewImageTapped)])
+#endif
     }
     
     func setWidget(imageData: Data?) {
@@ -79,11 +79,28 @@ class SettingViewModel {
         }
     }
     
+    func changeAppearance(lightMode: Bool, darkMode: Bool) {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        if lightMode == true {
+            window?.overrideUserInterfaceStyle = .light
+        } else if darkMode == true {
+            window?.overrideUserInterfaceStyle = .dark
+        } else {
+            window?.overrideUserInterfaceStyle = .unspecified
+        }
+        
+        UserDefaults.standard.set(lightMode, forKey: UserDefaultsKeys.lightStateKey)
+        UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
+    }
+    
     func checkSystemAppReview() {
         var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
         counterForSystemAppReview += 1
         
-        if counterForSystemAppReview >= 110 {
+        if counterForSystemAppReview >= systemReviewLimit {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
@@ -100,8 +117,9 @@ class SettingViewModel {
         print(counterForCustomAppReview)
                 
         let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
+        print(lastVersion ?? "")
         
-        if counterForCustomAppReview >= 40 && getCurrentVersion() != lastVersion {
+        if lastVersion == nil && counterForCustomAppReview >= customReviewLimit {
             return true
         } else {
             return false
@@ -109,11 +127,7 @@ class SettingViewModel {
     }
     
     func getCurrentVersion() -> String {
-        let infoDictionaryKey = kCFBundleVersionKey as String
-        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String else {
-            print("Expected to find a bundle version in the info dictionary")
-            return ""
-        }
-        return currentVersion
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
+        return version
     }
 }

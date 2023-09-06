@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 //import GoogleMobileAds
-import AppTrackingTransparency
+//import AppTrackingTransparency
 //import AdSupport
 import Toast
 import Puller
@@ -39,7 +39,6 @@ class MeteorViewController: UIViewController {
     private let viewModel = MeteorViewModel()
     private var toast = Toast.text("")
     private var meteorText = ""
-//    private var meteorSentCount = 0
     
     // MARK: ADMOB
 //    private var interstitial: GADInterstitialAd?
@@ -59,19 +58,9 @@ class MeteorViewController: UIViewController {
         
         setLayout()
         viewModel.initialAppLaunchSettings()
+        viewModel.checkAppearanceMode()
         
-        if let window = UIApplication.shared.windows.first {
-            viewModel.checkApperanceMode(window: window)
-        }
-        
-//        currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
-//        viewModel.getFirebaseAdIndex { [weak self] value in
-//            self?.firebaseAdIndex = value
-//        }
-        
-//        meteorSentCount = UserDefaults.standard.integer(forKey: meteorSentCountKey)
-        
-        // MARK: 앱 종료 후 타이머 유무 체크
+        // MARK: 앱 재실행 후 타이머 체크
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
@@ -79,6 +68,13 @@ class MeteorViewController: UIViewController {
             guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
             setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
+        }
+        
+        // MARK: 리뷰 카운트 재설정
+        let count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+        if customReviewLimit - count < 10 {
+            UserDefaults.standard.set(30, forKey: UserDefaultsKeys.customAppReviewCountKey)
+
         }
     }
     
@@ -106,7 +102,7 @@ class MeteorViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UNUserNotificationCenter.current().delegate = self
         
-        ATTrackingManager.requestTrackingAuthorization { _ in }
+//        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,7 +112,6 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func textFieldInputted(_ sender: UITextField) {
-//        clearButton.isHidden = !textField.hasText
         clearButton.alpha = textField.hasText ? 1 : 0
         
         // MARK: 알림 권한 다시 확인
@@ -278,9 +273,7 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    @IBAction func stopButtonTapped(_ sender: UIButton) {
-        makeVibration(type: .medium)
-        
+    @IBAction func stopButtonTapped(_ sender: UIButton) {        
         sendButton.isEnabled = false
         stopButton.isHidden = true
         indicatorBackgroundView.isHidden = false
@@ -291,33 +284,33 @@ class MeteorViewController: UIViewController {
             break
             
         case .endless:
+            makeVibration(type: .medium)
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
+                guard let self else { return }
+                makeVibration(type: .success)
+                
+                sendButton.isEnabled = true
+                endlessTimerLabel.isHidden = true
+                indicatorBackgroundView.isHidden = true
+                activityIndicator.stopAnimating()
+                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
+            }
+            
         case .live:
+            makeVibration(type: .success)
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             Task {
-                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
                 await self.viewModel.endLiveActivity()
             }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
-            guard let self else { return }
-            makeVibration(type: .success)
             
             sendButton.isEnabled = true
             endlessTimerLabel.isHidden = true
             indicatorBackgroundView.isHidden = true
             activityIndicator.stopAnimating()
-            
-            switch viewModel.meteorType {
-            case .single:
-                break
-            case .endless:
-                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
-            case .live:
-                makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
-            }
+            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
         }
     }
 }
