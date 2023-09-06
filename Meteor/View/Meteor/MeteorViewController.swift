@@ -266,9 +266,7 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    @IBAction func stopButtonTapped(_ sender: UIButton) {
-        makeVibration(type: .medium)
-        
+    @IBAction func stopButtonTapped(_ sender: UIButton) {        
         sendButton.isEnabled = false
         stopButton.isHidden = true
         indicatorBackgroundView.isHidden = false
@@ -279,33 +277,33 @@ class MeteorViewController: UIViewController {
             break
             
         case .endless:
+            makeVibration(type: .medium)
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
+                guard let self else { return }
+                makeVibration(type: .success)
+                
+                sendButton.isEnabled = true
+                endlessTimerLabel.isHidden = true
+                indicatorBackgroundView.isHidden = true
+                activityIndicator.stopAnimating()
+                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
+            }
+            
         case .live:
+            makeVibration(type: .success)
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             Task {
-                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
                 await self.viewModel.endLiveActivity()
             }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
-            guard let self else { return }
-            makeVibration(type: .success)
             
             sendButton.isEnabled = true
             endlessTimerLabel.isHidden = true
             indicatorBackgroundView.isHidden = true
             activityIndicator.stopAnimating()
-            
-            switch viewModel.meteorType {
-            case .single:
-                break
-            case .endless:
-                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
-            case .live:
-                makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
-            }
+            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
         }
     }
 }
