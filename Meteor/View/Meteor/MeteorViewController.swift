@@ -39,7 +39,6 @@ class MeteorViewController: UIViewController {
     private let viewModel = MeteorViewModel()
     private var toast = Toast.text("")
     private var meteorText = ""
-//    private var meteorSentCount = 0
     
     // MARK: ADMOB
 //    private var interstitial: GADInterstitialAd?
@@ -59,17 +58,7 @@ class MeteorViewController: UIViewController {
         
         setLayout()
         viewModel.initialAppLaunchSettings()
-        
-        if let window = UIApplication.shared.windows.first {
-            viewModel.checkApperanceMode(window: window)
-        }
-        
-//        currentAdIndex = UserDefaults.standard.integer(forKey: savedAdIndexKey)
-//        viewModel.getFirebaseAdIndex { [weak self] value in
-//            self?.firebaseAdIndex = value
-//        }
-        
-//        meteorSentCount = UserDefaults.standard.integer(forKey: meteorSentCountKey)
+        viewModel.checkAppearanceMode()
         
         // MARK: 앱 종료 후 타이머 유무 체크
         if viewModel.checkEndlessIdling() {
@@ -116,7 +105,6 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func textFieldInputted(_ sender: UITextField) {
-//        clearButton.isHidden = !textField.hasText
         clearButton.alpha = textField.hasText ? 1 : 0
         
         // MARK: 알림 권한 다시 확인
