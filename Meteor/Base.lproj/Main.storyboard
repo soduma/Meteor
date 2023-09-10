@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpH-LA-jla">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpH-LA-jla">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22129"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,47 +20,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
-                                <rect key="frame" x="11" y="211" width="371" height="160"/>
+                                <rect key="frame" x="16" y="232" width="361" height="160"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="3ef-z6-0zY"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
-                                <rect key="frame" x="28" y="251" width="207" height="54"/>
+                                <rect key="frame" x="28" y="278" width="207" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scribble here 👀" textAlignment="natural" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="x7b-OE-Nxg">
-                                <rect key="frame" x="30" y="315" width="298" height="50"/>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9vB-dk-pQB"/>
-                                </constraints>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scribble here 👀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-9s-chN">
+                                <rect key="frame" x="32" y="342" width="329" height="30"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <color key="textColor" systemColor="placeholderTextColor"/>
+                                <nil key="highlightedColor"/>
                                 <connections>
-                                    <action selector="textFieldInputted:" destination="5ue-D9-5Dz" eventType="editingChanged" id="gtU-tD-5KK"/>
+                                    <outletCollection property="gestureRecognizers" destination="qKd-zb-ceY" appends="YES" id="bG8-fl-gMH"/>
                                 </connections>
-                            </textField>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JQ-9h-2WC">
-                                <rect key="frame" x="336" y="321.33333333333331" width="32" height="37.666666666666686"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="cGB-CA-0k8"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="xmark.circle.fill" catalog="system" renderingMode="hierarchical-single">
-                                        <hierarchicalColors>
-                                            <color systemColor="labelColor"/>
-                                            <color systemColor="secondaryLabelColor"/>
-                                            <color systemColor="tertiaryLabelColor"/>
-                                        </hierarchicalColors>
-                                    </imageReference>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="clearButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="rIe-bg-TLj"/>
-                                </connections>
-                            </button>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="epS-6F-Kaa">
                                 <rect key="frame" x="24" y="400" width="214" height="50"/>
                                 <subviews>
@@ -150,11 +131,8 @@
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
                                     <constraint firstAttribute="width" constant="200" id="9Zu-ss-d4Y"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="timePickerChanged:" destination="5ue-D9-5Dz" eventType="valueChanged" id="agm-2I-5Jm"/>
-                                </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
                                 <rect key="frame" x="302.66666666666669" y="467" width="78" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -202,11 +180,11 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="o8v-SY-dBb">
-                                <rect key="frame" x="138.66666666666666" y="709" width="115.66666666666666" height="26"/>
+                                <rect key="frame" x="138.66666666666666" y="709.33333333333337" width="115.66666666666666" height="25.666666666666629"/>
                                 <color key="pageIndicatorTintColor" systemColor="systemGray3Color"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
                             </pageControl>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
                                 <rect key="frame" x="339" y="47" width="390" height="797"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
@@ -274,29 +252,26 @@ notification allowance.</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9oA-8S-R1U" firstAttribute="centerX" secondItem="zae-IP-TZ4" secondAttribute="centerX" id="0Kq-lR-oPY"/>
-                            <constraint firstItem="n4l-go-yFp" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="11" id="0o8-GD-KkB"/>
-                            <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="28" id="3jR-BE-3cm"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="11" id="67C-dr-oaE"/>
-                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="2JQ-9h-2WC" secondAttribute="trailing" constant="25" id="7CU-ae-x6P"/>
+                            <constraint firstItem="n4l-go-yFp" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="16" id="0o8-GD-KkB"/>
+                            <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="16" id="67C-dr-oaE"/>
                             <constraint firstItem="epS-6F-Kaa" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="7oh-fY-SXz"/>
                             <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="7e3-IR-c0w" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="B4I-Zv-SFN"/>
-                            <constraint firstItem="n4l-go-yFp" firstAttribute="bottom" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="6" id="BPu-7N-WbK"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="7e3-IR-c0w" secondAttribute="trailing" constant="30" id="E3X-Vi-PaB"/>
+                            <constraint firstItem="Y9A-9s-chN" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="-16" id="Hi5-cb-Z1n"/>
+                            <constraint firstItem="Y9A-9s-chN" firstAttribute="leading" secondItem="n4l-go-yFp" secondAttribute="leading" constant="16" id="PbA-SJ-Eyn"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" id="QzE-Qg-l8n"/>
                             <constraint firstItem="qJl-Jl-hg3" firstAttribute="top" secondItem="RFX-SY-fYk" secondAttribute="bottom" id="TqI-8N-xiL"/>
-                            <constraint firstItem="RFX-SY-fYk" firstAttribute="top" secondItem="x7b-OE-Nxg" secondAttribute="bottom" constant="40" id="Utj-8a-IKz"/>
+                            <constraint firstItem="XrN-Ta-ams" firstAttribute="leading" secondItem="n4l-go-yFp" secondAttribute="leading" constant="12" id="Uww-x8-S45"/>
                             <constraint firstItem="wZ3-Xo-bRW" firstAttribute="bottom" secondItem="zae-IP-TZ4" secondAttribute="bottom" id="XRq-Uq-rg1"/>
-                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="30" id="b6i-kF-HI6"/>
                             <constraint firstItem="wZ3-Xo-bRW" firstAttribute="leading" secondItem="zae-IP-TZ4" secondAttribute="leading" id="bOn-v8-rST"/>
                             <constraint firstItem="wZ3-Xo-bRW" firstAttribute="top" secondItem="zae-IP-TZ4" secondAttribute="top" id="bbS-S8-bmC"/>
-                            <constraint firstItem="2JQ-9h-2WC" firstAttribute="leading" secondItem="x7b-OE-Nxg" secondAttribute="trailing" constant="8" id="brR-po-bF6"/>
+                            <constraint firstItem="epS-6F-Kaa" firstAttribute="top" secondItem="n4l-go-yFp" secondAttribute="bottom" constant="8" id="c5L-Rg-zuq"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="FCV-iO-9UW" secondAttribute="trailing" id="d05-jp-MQB"/>
                             <constraint firstItem="zae-IP-TZ4" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" id="dx5-nI-5YZ"/>
                             <constraint firstItem="epS-6F-Kaa" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="24" id="eZ5-eB-jTj"/>
+                            <constraint firstItem="Y9A-9s-chN" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="hWq-dp-cJO"/>
                             <constraint firstItem="wZ3-Xo-bRW" firstAttribute="trailing" secondItem="zae-IP-TZ4" secondAttribute="trailing" id="hpa-Ti-ESD"/>
-                            <constraint firstItem="n4l-go-yFp" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="top" constant="-40" id="iRE-7P-qxT"/>
-                            <constraint firstItem="2JQ-9h-2WC" firstAttribute="centerY" secondItem="x7b-OE-Nxg" secondAttribute="centerY" id="lba-fx-GMd"/>
                             <constraint firstItem="o8v-SY-dBb" firstAttribute="bottom" secondItem="7e3-IR-c0w" secondAttribute="bottom" constant="-4" id="ltn-KP-fP7"/>
                             <constraint firstItem="RFX-SY-fYk" firstAttribute="centerY" secondItem="rbg-Pj-CxJ" secondAttribute="centerY" id="m9c-gC-8cu"/>
                             <constraint firstItem="9oA-8S-R1U" firstAttribute="centerY" secondItem="qJl-Jl-hg3" secondAttribute="centerY" id="nOq-Kg-Yif"/>
@@ -304,14 +279,11 @@ notification allowance.</string>
                             <constraint firstItem="zae-IP-TZ4" firstAttribute="trailing" secondItem="RFX-SY-fYk" secondAttribute="trailing" constant="8" id="pZf-qL-BeT"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="bottom" secondItem="7e3-IR-c0w" secondAttribute="bottom" constant="30" id="pjJ-rC-JhN"/>
                             <constraint firstAttribute="bottom" secondItem="FCV-iO-9UW" secondAttribute="bottom" id="rHZ-uA-TU3"/>
-                            <constraint firstItem="x7b-OE-Nxg" firstAttribute="top" secondItem="XrN-Ta-ams" secondAttribute="bottom" constant="10" id="rcw-Ra-cIy"/>
                             <constraint firstItem="o8v-SY-dBb" firstAttribute="centerX" secondItem="7e3-IR-c0w" secondAttribute="centerX" id="tVP-U3-LFT"/>
                             <constraint firstItem="qJl-Jl-hg3" firstAttribute="trailing" secondItem="epS-6F-Kaa" secondAttribute="trailing" constant="8" id="xpI-LP-bCf"/>
+                            <constraint firstItem="Y9A-9s-chN" firstAttribute="bottom" secondItem="n4l-go-yFp" secondAttribute="bottom" constant="-20" id="yTP-Ok-9OP"/>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Erw-Pg-INY" appends="YES" id="cpE-ty-JPw"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meteor" id="eAl-3u-eGw">
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
@@ -320,27 +292,27 @@ notification allowance.</string>
                         <outlet property="activityIndicator" destination="QSS-yH-l6B" id="ZfS-uE-t4F"/>
                         <outlet property="authView" destination="FCV-iO-9UW" id="WeE-Yl-ECC"/>
                         <outlet property="authViewBottom" destination="rHZ-uA-TU3" id="BWH-Az-5GD"/>
-                        <outlet property="clearButton" destination="2JQ-9h-2WC" id="EKb-DE-WOD"/>
                         <outlet property="collectionView" destination="7e3-IR-c0w" id="JyY-LM-K4Q"/>
-                        <outlet property="datePicker" destination="qJl-Jl-hg3" id="eBE-Rk-dg4"/>
+                        <outlet property="datePicker" destination="qJl-Jl-hg3" id="rYm-ae-psu"/>
                         <outlet property="endlessButton" destination="caC-dS-7wV" id="P8A-N9-gDF"/>
                         <outlet property="endlessTimerLabel" destination="9oA-8S-R1U" id="RRC-0s-v2i"/>
                         <outlet property="headLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
                         <outlet property="indicatorBackgroundView" destination="wZ3-Xo-bRW" id="XAh-DO-RGb"/>
                         <outlet property="liveBackgroundView" destination="n4l-go-yFp" id="cYd-H4-Kqp"/>
                         <outlet property="liveButton" destination="1ez-ua-B75" id="447-xA-Lde"/>
+                        <outlet property="meteorTextLabel" destination="Y9A-9s-chN" id="dNp-xB-625"/>
+                        <outlet property="meteorTextLabelGesture" destination="qKd-zb-ceY" id="MuJ-66-tSS"/>
                         <outlet property="moveToSettingButton" destination="WgP-WV-G9E" id="Xx5-hh-gQh"/>
                         <outlet property="pageControl" destination="o8v-SY-dBb" id="Lbp-uO-e9f"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="7HC-JS-zdc"/>
                         <outlet property="singleButton" destination="DjD-KC-BHR" id="MLJ-Bi-3EF"/>
                         <outlet property="stopButton" destination="zae-IP-TZ4" id="bHj-S0-EC3"/>
-                        <outlet property="textField" destination="x7b-OE-Nxg" id="VDs-JU-9S2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Erw-Pg-INY">
+                <tapGestureRecognizer id="qKd-zb-ceY">
                     <connections>
-                        <action selector="backgroundTapped:" destination="5ue-D9-5Dz" id="JDg-1P-1Fn"/>
+                        <action selector="meteorTextLabelTapped:" destination="5ue-D9-5Dz" id="nev-DZ-UyR"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1575,47 +1547,50 @@ Thank you for using. 👋🏻 </string>
         <image name="highlighter" catalog="system" width="128" height="120"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="meteor_splash.png" width="300" height="300"/>
-        <image name="rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="98"/>
-        <image name="switch.2" catalog="system" width="128" height="109"/>
+        <image name="rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="102"/>
+        <image name="switch.2" catalog="system" width="128" height="115"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17647058823529413" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -1,12 +1,9 @@
 
 /* Class = "UILabel"; text = "Blur"; ObjectID = "0Cq-UK-TS4"; */
-"0Cq-UK-TS4.text" = "흐림";
+"0Cq-UK-TS4.text" = "불투명";
 
 /* Class = "UIButton"; normalTitle = "Live"; ObjectID = "1ez-ua-B75"; */
 "1ez-ua-B75.normalTitle" = "Live";
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2JQ-9h-2WC"; */
-"2JQ-9h-2WC.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Meteor"; ObjectID = "2kf-Pz-TMT"; */
 "2kf-Pz-TMT.text" = "Meteor";
@@ -54,9 +51,7 @@
 "IKX-kT-lPg.text" = "Current Version ~~~";
 
 /* Class = "UILabel"; text = "Please take a moment and\nRate Meteor\n🥹"; ObjectID = "NBD-bZ-eN8"; */
-"NBD-bZ-eN8.text" = "잠깐 시간을 내어
-리뷰에 참여해주세요
-🥹";
+"NBD-bZ-eN8.text" = "잠깐 시간을 내어\n리뷰에 참여해주세요\n🥹";
 
 /* Class = "UILabel"; text = "Contact"; ObjectID = "Pmw-Ai-Bkf"; */
 "Pmw-Ai-Bkf.text" = "Contact";
@@ -81,6 +76,9 @@
 
 /* Class = "UILabel"; text = "METEOR :"; ObjectID = "XrN-Ta-ams"; */
 "XrN-Ta-ams.text" = "METEOR :";
+
+/* Class = "UILabel"; text = "Scribble here 👀"; ObjectID = "Y9A-9s-chN"; */
+"Y9A-9s-chN.text" = "여기에 작성 👀";
 
 /* Class = "UILabel"; text = "Refresh Photo"; ObjectID = "ZXQ-U0-yWN"; */
 "ZXQ-U0-yWN.text" = "새로운 사진 불러오기";
@@ -115,7 +113,7 @@
 /* Class = "UITableViewSection"; headerTitle = "Live Color"; ObjectID = "keM-A9-xCm"; */
 "keM-A9-xCm.headerTitle" = "Live 색상";
 
-/* Class = "UITableViewSection"; footerTitle = "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content.  This switch is activated on models with Always On Display."; ObjectID = "mO4-mb-C9g"; */
+/* Class = "UITableViewSection"; footerTitle = "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content."; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.footerTitle" = "'항상 켬' 화면이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
@@ -128,7 +126,7 @@
 "noR-vq-LyQ.footerTitle" = "스위치를 모두 끄면 시스템 설정을 따릅니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "Style"; ObjectID = "noR-vq-LyQ"; */
-"noR-vq-LyQ.headerTitle" = "스타일";
+"noR-vq-LyQ.headerTitle" = "화면 모드";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "oak-uY-Kls"; */
 "oak-uY-Kls.text" = "Version";
@@ -147,9 +145,6 @@
 
 /* Class = "UILabel"; text = "Light Mode"; ObjectID = "wiS-Uw-6P6"; */
 "wiS-Uw-6P6.text" = "라이트 모드";
-
-/* Class = "UITextField"; placeholder = "Scribble here 👀"; ObjectID = "x7b-OE-Nxg"; */
-"x7b-OE-Nxg.placeholder" = "여기에 작성 👀";
 
 /* Class = "UIButton"; normalTitle = "SHORT"; ObjectID = "y3t-Ey-iwg"; */
 "y3t-Ey-iwg.normalTitle" = "SHORT";
