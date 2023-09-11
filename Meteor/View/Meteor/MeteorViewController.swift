@@ -15,8 +15,8 @@ import Puller
 
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var meteorTextLabel: UILabel!
+    @IBOutlet var meteorTextLabelGesture: UITapGestureRecognizer!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var indicatorBackgroundView: UIView!
@@ -38,7 +38,6 @@ class MeteorViewController: UIViewController {
     
     private let viewModel = MeteorViewModel()
     private var toast = Toast.text("")
-    private var meteorText = ""
     
     // MARK: ADMOB
 //    private var interstitial: GADInterstitialAd?
@@ -81,6 +80,16 @@ class MeteorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        if meteorText.isEmpty {
+////            var attributes = AttributeContainer()
+////            attributes.font = .systemFont(ofSize: 25, weight: .medium)
+////            let localizeString = AttributedString(NSLocalizedString("Scribble here 👀", comment: ""), attributes: attributes)
+//            meteorTextLabel.text = NSLocalizedString("Scribble here 👀", comment: "")
+//            
+//        } else {
+//            meteorTextLabel.text = meteorText
+//        }
+        
         if Reachability.isConnectedToNetwork() == false {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
@@ -111,50 +120,41 @@ class MeteorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func textFieldInputted(_ sender: UITextField) {
-        clearButton.alpha = textField.hasText ? 1 : 0
-        
-        // MARK: 알림 권한 다시 확인
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            guard let self = self else { return }
-            if settings.authorizationStatus == .denied {
-                print("Push notification is NOT enabled")
-                
-                DispatchQueue.main.async {
-                    self.authView.isHidden = false
-                    self.textField.resignFirstResponder()
-                    self.authViewBottom.constant = -self.view.bounds.height
-                    self.textField.text = ""
-                    
-                    UIView.animate(withDuration: 0.5, animations: {
-                        self.authView.layoutIfNeeded()
-                    })
-                }
-            }
-        }
-    }
-    
-    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
-        textField.resignFirstResponder()
-
-        UIView.animate(withDuration: 0.2) {
-            self.clearButton.alpha = 0
-        }
-    }
-    
-    @IBAction func timePickerChanged(_ sender: UIDatePicker) {
-        print(datePicker.countDownDuration)
-    }
-    
     @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {
         if let settingURL = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(settingURL)
         }
     }
     
-    @IBAction func clearButtonTapped(_ sender: UIButton) {
-        textField.text = ""
-        clearButton.alpha = 0
+    @IBAction func meteorTextLabelTapped(_ sender: UITapGestureRecognizer) {
+        // 알림 권한 확인
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+            guard let self = self else { return }
+            
+            switch settings.authorizationStatus {
+            case .authorized:
+                makeVibration(type: .medium)
+                
+                DispatchQueue.main.async {
+                    let vc = MeteorInputViewController(meteorText: self.viewModel.meteorText, labelPositionY: self.meteorTextLabel.frame.midY)
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.delegate = self
+                    self.present(vc, animated: false)
+                }
+                
+            default:
+                makeVibration(type: .error)
+                
+                DispatchQueue.main.async {
+                    self.authView.isHidden = false
+                    self.authViewBottom.constant = -self.view.bounds.height
+                    
+                    UIView.animate(withDuration: 0.4) {
+                        self.authView.layoutIfNeeded()
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func singleButtonTapped(_ sender: UIButton) {
@@ -163,8 +163,13 @@ class MeteorViewController: UIViewController {
         
         headLabel.text = "METEOR :"
         headLabel.textColor = .red
-        textField.textColor = .label
-        textField.tintColor = .systemRed
+        if viewModel.meteorText.isEmpty {
+            meteorTextLabel.textColor = .placeholderText
+        } else {
+            meteorTextLabel.textColor = .label
+        }
+        
+        meteorTextLabel.clipsToBounds = true
         datePicker.isHidden = true
         
         endlessButton.isSelected = false
@@ -181,8 +186,13 @@ class MeteorViewController: UIViewController {
         
         headLabel.text = "ENDLESS\nMETEOR :"
         headLabel.textColor = .red
-        textField.textColor = .label
-        textField.tintColor = .systemRed
+        if viewModel.meteorText.isEmpty {
+            meteorTextLabel.textColor = .placeholderText
+        } else {
+            meteorTextLabel.textColor = .label
+        }
+        
+        meteorTextLabel.clipsToBounds = true
         datePicker.isHidden = false
         
         singleButton.isSelected = false
@@ -203,8 +213,13 @@ class MeteorViewController: UIViewController {
         liveButton.isSelected = true
         
         headLabel.text = "METEOR"
-        textField.textColor = .white
-        textField.tintColor = .yellow
+        if viewModel.meteorText.isEmpty {
+            meteorTextLabel.textColor = .placeholderText
+        } else {
+            meteorTextLabel.textColor = .white
+        }
+        
+        meteorTextLabel.clipsToBounds = true
         datePicker.isHidden = true
         
         singleButton.isSelected = false
@@ -225,15 +240,15 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        if let text = textField.text, !text.isEmpty {
-            textField.resignFirstResponder()
+        if !viewModel.meteorText.isEmpty {
+            meteorTextLabel.resignFirstResponder()
             makeVibration(type: .success)
             var duration = 0
 //            showAD()
             
             switch viewModel.meteorType {
             case .single:
-                viewModel.sendSingleMeteor(text: meteorText)
+                viewModel.sendSingleMeteor(text: viewModel.meteorText)
                 
             case .endless:
                 makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
@@ -242,20 +257,20 @@ class MeteorViewController: UIViewController {
                 endlessTimerLabel.isHidden = false
                 endlessTimerLabel.text = String.secondsToString(seconds: duration)
                 stopButton.isHidden = false
-                                
+                
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
-                viewModel.sendEndlessMeteor(text: meteorText, duration: duration)
+                viewModel.sendEndlessMeteor(text: viewModel.meteorText, duration: duration)
                 setEndlessTimer(triggeredDate: Date(), duration: duration)
                 
             case .live:
                 makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
                 
                 stopButton.isHidden = false
-                viewModel.startLiveActivity(text: meteorText)
+                viewModel.startLiveActivity(text: viewModel.meteorText)
             }
             
 #if RELEASE
-            viewModel.sendToFirebase(type: viewModel.meteorType, text: meteorText, duration: duration)
+            viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: duration)
 #endif
             
             // MARK: 앱 리뷰
@@ -273,7 +288,7 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    @IBAction func stopButtonTapped(_ sender: UIButton) {        
+    @IBAction func stopButtonTapped(_ sender: UIButton) {
         sendButton.isEnabled = false
         stopButton.isHidden = true
         indicatorBackgroundView.isHidden = false
@@ -323,7 +338,6 @@ extension MeteorViewController {
         stopButton.layer.cornerRadius = 16
         stopButton.clipsToBounds = true
         
-        textField.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
@@ -333,11 +347,8 @@ extension MeteorViewController {
         pageControl.numberOfPages = viewModel.noticeList.count
         
         authView.layer.cornerRadius = 20
-        authView.isHidden = true
         moveToSettingButton.layer.cornerRadius = 20
         moveToSettingButton.clipsToBounds = true
-        
-        endlessTimerLabel.isHidden = true
     }
     
     private func setEndlessTimer(triggeredDate: Date, duration: Int) {
@@ -398,24 +409,30 @@ extension MeteorViewController {
     }
 }
 
-extension MeteorViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.2) {
-            if textField.hasText {
-                self.clearButton.alpha = 1
+extension MeteorViewController: MeteorTextDelegate {
+    func setMeteorText(text: String) {
+        viewModel.meteorText = text
+        
+        if text.isEmpty {
+            meteorTextLabel.text = NSLocalizedString("Scribble here 👀", comment: "")
+            meteorTextLabel.textColor = .placeholderText
+        } else {
+            let textList = text.components(separatedBy: "\n")
+            if textList.count == 1 {
+                meteorTextLabel.text = textList.first
             } else {
-                self.clearButton.alpha = 0
+                guard let firstLineText = textList.first else { return }
+                meteorTextLabel.text = "\(firstLineText)⋯"
             }
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text {
-            meteorText = text
+            
+            switch viewModel.meteorType {
+            case .single:
+                meteorTextLabel.textColor = .label
+            case .endless:
+                meteorTextLabel.textColor = .label
+            case .live:
+                meteorTextLabel.textColor = .white
+            }
         }
     }
 }

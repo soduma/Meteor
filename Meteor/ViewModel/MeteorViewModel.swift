@@ -19,6 +19,7 @@ enum MeteorType {
 class MeteorViewModel {
     private let db = Database.database().reference()
     var meteorType = MeteorType.single
+    var meteorText = ""
     var noticeList = [NSLocalizedString("notice0", comment: ""),
                       NSLocalizedString("notice1", comment: ""),
                       NSLocalizedString("notice2", comment: ""),

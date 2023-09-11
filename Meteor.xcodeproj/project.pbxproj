@@ -25,6 +25,7 @@
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
+		F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AF7392AADB44F00DBECBE /* TextView+.swift */; };
 		F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77188C02A9300E400939BCD /* UIDevice+.swift */; };
 		F776839C2A95A3CF00824E4E /* Puller in Frameworks */ = {isa = PBXBuildFile; productRef = F776839B2A95A3CF00824E4E /* Puller */; };
 		F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */; };
@@ -49,6 +50,7 @@
 		F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
 		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
+		F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */; };
 		F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */; };
 		F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7F79FCA2A8F175700FA5464 /* Main.storyboard */; };
 		F7F79FD02A90A1EC00FA5464 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F79FCF2A90A1EC00FA5464 /* String+.swift */; };
@@ -106,7 +108,7 @@
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
-		F705049F2A9EE208001B0AB9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		F71AF7392AADB44F00DBECBE /* TextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+.swift"; sourceTree = "<group>"; };
 		F77188C02A9300E400939BCD /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		F77683662A9595DC00824E4E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		F77683672A9595DC00824E4E /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,9 +144,11 @@
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7D622242AA4AC610051740B /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorInputViewController.swift; sourceTree = "<group>"; };
 		F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		F7F79FC92A8F175700FA5464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7F79FCF2A90A1EC00FA5464 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		F7FB31B12AACDCB60067503A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */,
+				F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */,
 				F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */,
 			);
 			path = Meteor;
@@ -358,6 +363,7 @@
 				F77E75432A80C180008F1883 /* Vibration.swift */,
 				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
 				F77188C02A9300E400939BCD /* UIDevice+.swift */,
+				F71AF7392AADB44F00DBECBE /* TextView+.swift */,
 				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
 			);
 			path = Common;
@@ -567,7 +573,9 @@
 				F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */,
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
+				F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */,
 				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
+				F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */,
 				F77E75462A80CD09008F1883 /* NotesCell(deprecated).swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
 				F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */,
@@ -636,7 +644,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F7F79FC92A8F175700FA5464 /* Base */,
-				F705049F2A9EE208001B0AB9 /* ko */,
+				F7FB31B12AACDCB60067503A /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -772,7 +780,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -780,7 +788,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -799,7 +807,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Setting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -807,7 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
