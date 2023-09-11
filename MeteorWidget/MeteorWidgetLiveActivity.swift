@@ -12,11 +12,11 @@ import SwiftUI
 struct MeteorWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var endlessText: String
-        var hideContentOnLockScreen: Bool
+        var liveText: String
         var liveColor: Int
+        var hideContentOnLockScreen: Bool
     }
-
+    
     // Fixed non-changing properties about your activity go here!
     var value: String
 }
@@ -55,49 +55,10 @@ struct MeteorWidgetLiveActivity: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-//                    let textLineCount = context.state.endlessText.components(separatedBy: "\n").count
-//                    let textCount = context.state.endlessText.count
-                    
-                    Text(context.state.endlessText)
+                    Text(context.state.liveText)
                         .font(.system(size: 32, weight: .semibold))
                         .foregroundColor(.white)
                         .minimumScaleFactor(0.42)
-
-//                    switch (textLineCount, textCount) {
-//                    case (1, ...15):
-//                        Text(context.state.endlessText)
-//                            .font(.system(size: 32, weight: .semibold))
-//                            .foregroundColor(.white)
-//                    case (2, 16...30):
-//                        Text(context.state.endlessText)
-//                            .font(.system(size: 26, weight: .semibold))
-//                            .foregroundColor(.white)
-//                    default:
-//                        Text(context.state.endlessText)
-////                            .fontWeight(.semibold)
-//                            .font(.system(size: 16, weight: .semibold))
-//                            .foregroundColor(.white)
-//                    }
-                    
-//                    switch context.state.endlessText.count {
-//                    case ...15:
-//                        Text(context.state.endlessText)
-//                            .font(.system(size: 32, weight: .semibold))
-//                            .foregroundColor(.white)
-////                            .padding([.leading, .trailing])
-//                        
-//                    case 16...30:
-//                        Text(context.state.endlessText)
-//                            .font(.system(size: 26, weight: .semibold))
-//                            .foregroundColor(.white)
-////                            .padding([.leading, .trailing])
-//                        
-//                    default:
-//                        Text(context.state.endlessText)
-//                            .fontWeight(.semibold)
-//                            .foregroundColor(.white)
-////                            .padding([.leading, .trailing])
-//                    }
                 }
             } compactLeading: {
                 Image(logo)
@@ -117,7 +78,7 @@ struct LockScreenView: View {
     let logo = "meteor_logo"
     
     let context: ActivityViewContext<MeteorWidgetAttributes>
-
+    
     var body: some View {
         if context.state.hideContentOnLockScreen {
             if isLuminanceReduced {
@@ -131,9 +92,6 @@ struct LockScreenView: View {
     }
     
     @ViewBuilder func setLayout(showContent: Bool) -> some View {
-//        let textLineCount = context.state.endlessText.components(separatedBy: "\n").count
-//        let textCount = context.state.endlessText.count
-        
         VStack {
             HStack(alignment: .center, spacing: 6) {
                 ZStack {
@@ -150,105 +108,19 @@ struct LockScreenView: View {
             .padding(.leading)
             
             if showContent {
-                Text(context.state.endlessText)
+                Text(context.state.liveText)
                     .font(.system(size: 32, weight: .semibold))
                     .foregroundColor(.white)
                     .minimumScaleFactor(0.42)
                     .padding([.leading, .trailing])
             } else {
-                Text(context.state.endlessText)
+                Text(context.state.liveText)
                     .font(.system(size: 32, weight: .semibold))
                     .foregroundColor(.white)
                     .minimumScaleFactor(0.42)
                     .padding([.leading, .trailing])
                     .blur(radius: 8)
             }
-            
-//            switch (textLineCount, textCount) {
-//            case (1, ...15):
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 32, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 32, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//            case (2, 16...30):
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 26, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 26, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//            default:
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//            }
-            
-//            switch context.state.endlessText.count {
-//            case ...15:
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 32, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 32, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//                
-//            case 16...30:
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 26, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .font(.system(size: 26, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//                
-//            default:
-//                if showContent {
-//                    Text(context.state.endlessText)
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                } else {
-//                    Text(context.state.endlessText)
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                        .padding([.leading, .trailing])
-//                        .blur(radius: 8)
-//                }
-//            }
         }
         .padding(.top)
         .padding(.bottom)
@@ -257,7 +129,7 @@ struct LockScreenView: View {
 
 struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
     static let attributes = MeteorWidgetAttributes(value: "Me")
-    static let contentState = MeteorWidgetAttributes.ContentState(endlessText: "555", hideContentOnLockScreen: true, liveColor: 0)
+    static let contentState = MeteorWidgetAttributes.ContentState(liveText: "555", liveColor: 0, hideContentOnLockScreen: true)
     
     static var previews: some View {
         attributes

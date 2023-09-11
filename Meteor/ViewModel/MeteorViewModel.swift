@@ -20,7 +20,7 @@ class MeteorViewModel {
     private let db = Database.database().reference()
     var meteorType = MeteorType.single
     var meteorText = ""
-    var noticeList = [NSLocalizedString("notice0", comment: ""),
+    let noticeList = [NSLocalizedString("notice0", comment: ""),
                       NSLocalizedString("notice1", comment: ""),
                       NSLocalizedString("notice2", comment: ""),
                       NSLocalizedString("notice3", comment: ""),
@@ -60,56 +60,15 @@ class MeteorViewModel {
     }
     
     func checkEndlessIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey) {
-            return true
-        } else {
-            return false
-        }
+        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey)
     }
     
     func checkLiveIdling() -> Bool {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func sendToFirebase(type: MeteorType, text: String, duration: Int) {
-        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dateFormatter.string(from: Date())
-        let locale = TimeZone.current.identifier
-        
-        switch type {
-        case .single:
-            
-            db.child("singleText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text])
-            
-        case .endless:
-            db.child("endlessText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text, "timer": String(duration / 60)])
-            
-        case .live:
-            db.child("liveText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text])
-        }
+        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
     }
     
     func sendSingleMeteor(text: String) {
         var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
-        
         index += 1
         if index > singleLimit {
             index = 0
@@ -143,31 +102,27 @@ class MeteorViewModel {
         UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
         
         let attributes = MeteorWidgetAttributes(value: "none")
-        let state = MeteorWidgetAttributes.ContentState(endlessText: text,
-                                                        hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
-                                                        liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey))
+        let state = MeteorWidgetAttributes.ContentState(liveText: text,
+                                                        liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
+                                                        hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey))
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         
         do {
-            let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+            _ = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
         } catch {
             print(error.localizedDescription)
         }
     }
     
     func endLiveActivity() async {
-        let finalStatus = MeteorWidgetAttributes.ContentState(endlessText: "none",
-                                                              hideContentOnLockScreen: false,
-                                                              liveColor: 0)
+        let finalStatus = MeteorWidgetAttributes.ContentState(liveText: "none",
+                                                              liveColor: 0,
+                                                              hideContentOnLockScreen: false)
         let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
         
         for activity in Activity<MeteorWidgetAttributes>.activities {
             await activity.end(finalContent, dismissalPolicy: .immediate)
             print("Ending the Live Activity(Timer): \(activity.id)")
-        }
-        
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) == false {
-            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
         }
     }
     
@@ -182,5 +137,38 @@ class MeteorViewModel {
             remainSeconds = duration - (passedSeconds % duration)
         }
         return String.secondsToString(seconds: remainSeconds)
+    }
+    
+    func sendToFirebase(type: MeteorType, text: String, duration: Int) {
+#if RELEASE
+        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.string(from: Date())
+        let locale = TimeZone.current.identifier
+        
+        switch type {
+        case .single:
+            db.child("singleText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text])
+            
+        case .endless:
+            db.child("endlessText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text, "timer": String(duration / 60)])
+            
+        case .live:
+            db.child("liveText")
+                .child("\(locale)")
+                .child(user)
+                .child(date)
+                .setValue(["text": text])
+        }
+#endif
     }
 }

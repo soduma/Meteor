@@ -21,14 +21,13 @@ class SettingViewModel {
     private var firebaseImageURL = ""
     private let db = Database.database().reference()
     
+    var keywordText = ""
     var liveColor = LiveColor.red
-    
     var imageData: Data?
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
-            guard let self = self else { return }
-            firebaseImageURL = snapshot.value as? String ?? SettingViewModel.defaultURL
+            self?.firebaseImageURL = snapshot.value as? String ?? SettingViewModel.defaultURL
         }
     }
     
@@ -101,12 +100,11 @@ class SettingViewModel {
         counterForSystemAppReview += 1
         
         if counterForSystemAppReview >= systemReviewLimit {
-            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                SKStoreReviewController.requestReview(in: scene)
-            }
+            guard let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
+            SKStoreReviewController.requestReview(in: scene)
             counterForSystemAppReview = 0
+            UserDefaults.standard.set(counterForSystemAppReview, forKey: UserDefaultsKeys.systemAppReviewCountKey)
         }
-        UserDefaults.standard.set(counterForSystemAppReview, forKey: UserDefaultsKeys.systemAppReviewCountKey)
     }
     
     func checkCustomAppReview() -> Bool {

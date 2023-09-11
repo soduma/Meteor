@@ -12,15 +12,15 @@ struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
-
+    
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date())
         completion(entry)
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
@@ -28,7 +28,7 @@ struct Provider: TimelineProvider {
             let entry = SimpleEntry(date: entryDate)
             entries.append(entry)
         }
-
+        
         let timeline = Timeline(entries: entries, policy: .never)
         completion(timeline)
     }
@@ -41,11 +41,11 @@ struct SimpleEntry: TimelineEntry {
 
 struct MeteorWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
         let myImage = entry.imageData!
         
-        // MARK: - 정식버전 올리면 수정
+        // TODO: - 정식버전 올리면 수정
 #if compiler(>=5.9) // Xcode 15
         if #available(iOSApplicationExtension 17.0, *) {
             ZStack {
@@ -69,7 +69,7 @@ struct MeteorWidgetEntryView : View {
 
 struct MeteorWidget: Widget {
     let kind: String = "MeteorWidget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             MeteorWidgetEntryView(entry: entry)
