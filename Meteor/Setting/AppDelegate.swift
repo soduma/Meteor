@@ -6,14 +6,12 @@
 //
 
 import UIKit
-//import GoogleMobileAds
 import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 0.5)
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
         return true

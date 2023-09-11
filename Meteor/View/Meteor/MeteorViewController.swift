@@ -7,9 +7,6 @@
 
 import UIKit
 import UserNotifications
-//import GoogleMobileAds
-//import AppTrackingTransparency
-//import AdSupport
 import Toast
 import Puller
 
@@ -39,19 +36,6 @@ class MeteorViewController: UIViewController {
     private let viewModel = MeteorViewModel()
     private var toast = Toast.text("")
     
-    // MARK: ADMOB
-//    private var interstitial: GADInterstitialAd?
-//    var firebaseAdIndex = 0
-//    var currentAdIndex = 0
-//
-//    #if DEBUG
-//    var adUnitID1 = "ca-app-pub-3940256099942544/4411468910" // 테스트 1
-//    var adUnitID2 = "ca-app-pub-3940256099942544/4411468910" // 테스트 2
-//    #else
-//    var adUnitID1 = "ca-app-pub-1960781437106390/8071718444" // 전면 1
-//    var adUnitID2 = "ca-app-pub-1960781437106390/9294984986" // 전면 2
-//    #endif
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,8 +47,8 @@ class MeteorViewController: UIViewController {
         if viewModel.checkEndlessIdling() {
             endlessTimerLabel.isHidden = false
             
-            let duration = UserDefaults.standard.integer(forKey: UserDefaultsKeys.endlessDurationKey)
             guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
+            let duration = UserDefaults.standard.integer(forKey: UserDefaultsKeys.endlessDurationKey)
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
             setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
         }
@@ -73,24 +57,13 @@ class MeteorViewController: UIViewController {
         let count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
         if customReviewLimit - count < 10 {
             UserDefaults.standard.set(30, forKey: UserDefaultsKeys.customAppReviewCountKey)
-
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if meteorText.isEmpty {
-////            var attributes = AttributeContainer()
-////            attributes.font = .systemFont(ofSize: 25, weight: .medium)
-////            let localizeString = AttributedString(NSLocalizedString("Scribble here 👀", comment: ""), attributes: attributes)
-//            meteorTextLabel.text = NSLocalizedString("Scribble here 👀", comment: "")
-//            
-//        } else {
-//            meteorTextLabel.text = meteorText
-//        }
-        
-        if Reachability.isConnectedToNetwork() == false {
+        if !Reachability.isConnectedToNetwork() {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
         }
@@ -110,8 +83,6 @@ class MeteorViewController: UIViewController {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UNUserNotificationCenter.current().delegate = self
-        
-//        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -120,16 +91,10 @@ class MeteorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {
-        if let settingURL = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(settingURL)
-        }
-    }
-    
     @IBAction func meteorTextLabelTapped(_ sender: UITapGestureRecognizer) {
         // 알림 권한 확인
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            guard let self = self else { return }
+            guard let self else { return }
             
             switch settings.authorizationStatus {
             case .authorized:
@@ -158,133 +123,66 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func singleButtonTapped(_ sender: UIButton) {
-        viewModel.meteorType = .single
-        singleButton.isSelected = true
-        
-        headLabel.text = "METEOR :"
-        headLabel.textColor = .red
-        if viewModel.meteorText.isEmpty {
-            meteorTextLabel.textColor = .placeholderText
-        } else {
-            meteorTextLabel.textColor = .label
-        }
-        
-        meteorTextLabel.clipsToBounds = true
-        datePicker.isHidden = true
-        
-        endlessButton.isSelected = false
-        liveButton.isSelected = false
-        liveBackgroundView.alpha = 0
-        stopButton.isHidden = true
-        
         makeVibration(type: .rigid)
+        viewModel.meteorType = .single
+        updateStackButtonUI(type: .single)
     }
     
     @IBAction func endlessButtonTapped(_ sender: UIButton) {
-        viewModel.meteorType = .endless
-        endlessButton.isSelected = true
-        
-        headLabel.text = "ENDLESS\nMETEOR :"
-        headLabel.textColor = .red
-        if viewModel.meteorText.isEmpty {
-            meteorTextLabel.textColor = .placeholderText
-        } else {
-            meteorTextLabel.textColor = .label
-        }
-        
-        meteorTextLabel.clipsToBounds = true
-        datePicker.isHidden = false
-        
-        singleButton.isSelected = false
-        liveButton.isSelected = false
-        liveBackgroundView.alpha = 0
-        
-        if viewModel.checkEndlessIdling() {
-            stopButton.isHidden = false
-        } else {
-            stopButton.isHidden = true
-        }
-        
         makeVibration(type: .rigid)
+        viewModel.meteorType = .endless
+        updateStackButtonUI(type: .endless)
     }
     
     @IBAction func liveButtonTapped(_ sender: UIButton) {
-        viewModel.meteorType = .live
-        liveButton.isSelected = true
-        
-        headLabel.text = "METEOR"
-        if viewModel.meteorText.isEmpty {
-            meteorTextLabel.textColor = .placeholderText
-        } else {
-            meteorTextLabel.textColor = .white
-        }
-        
-        meteorTextLabel.clipsToBounds = true
-        datePicker.isHidden = true
-        
-        singleButton.isSelected = false
-        endlessButton.isSelected = false
-        
-        UIView.animate(withDuration: 0.2) {
-            self.headLabel.textColor = .white
-            self.liveBackgroundView.alpha = 1
-        }
-        
-        if viewModel.checkLiveIdling() {
-            stopButton.isHidden = false
-        } else {
-            stopButton.isHidden = true
-        }
-        
         makeVibration(type: .rigid)
+        viewModel.meteorType = .live
+        updateStackButtonUI(type: .live)
+        
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        if !viewModel.meteorText.isEmpty {
-            meteorTextLabel.resignFirstResponder()
-            makeVibration(type: .success)
-            var duration = 0
-//            showAD()
+        guard !viewModel.meteorText.isEmpty else { return }
+        meteorTextLabel.resignFirstResponder()
+        makeVibration(type: .success)
+        var endlessDuration = 0
+        
+        switch viewModel.meteorType {
+        case .single:
+            viewModel.sendSingleMeteor(text: viewModel.meteorText)
             
-            switch viewModel.meteorType {
-            case .single:
-                viewModel.sendSingleMeteor(text: viewModel.meteorText)
-                
-            case .endless:
-                makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
-                
-                duration = Int(datePicker.countDownDuration)
-                endlessTimerLabel.isHidden = false
-                endlessTimerLabel.text = String.secondsToString(seconds: duration)
-                stopButton.isHidden = false
-                
-                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
-                viewModel.sendEndlessMeteor(text: viewModel.meteorText, duration: duration)
-                setEndlessTimer(triggeredDate: Date(), duration: duration)
-                
-            case .live:
-                makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
-                
-                stopButton.isHidden = false
-                viewModel.startLiveActivity(text: viewModel.meteorText)
-            }
+        case .endless:
+            makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
             
-#if RELEASE
-            viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: duration)
-#endif
+            endlessDuration = Int(datePicker.countDownDuration)
+            endlessTimerLabel.isHidden = false
+            endlessTimerLabel.text = String.secondsToString(seconds: endlessDuration)
+            stopButton.isHidden = false
             
-            // MARK: 앱 리뷰
-            SettingViewModel().checkSystemAppReview()
-            if SettingViewModel().checkCustomAppReview() {
-                let vc = MeteorReviewViewController()
-                let pullerModel = PullerModel(animator: .default,
-                                              detents: [.medium],
-                                              cornerRadius: 50,
-                                              isModalInPresentation: true,
-                                              hasDynamicHeight: false,
-                                              hasCircleCloseButton: false)
-                presentAsPuller(vc, model: pullerModel)
-            }
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
+            viewModel.sendEndlessMeteor(text: viewModel.meteorText, duration: endlessDuration)
+            setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
+            
+        case .live:
+            makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
+            
+            stopButton.isHidden = false
+            viewModel.startLiveActivity(text: viewModel.meteorText)
+        }
+        
+        viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
+        
+        // MARK: 앱 리뷰
+        SettingViewModel().checkSystemAppReview()
+        if SettingViewModel().checkCustomAppReview() {
+            let vc = MeteorReviewViewController()
+            let pullerModel = PullerModel(animator: .default,
+                                          detents: [.medium],
+                                          cornerRadius: 50,
+                                          isModalInPresentation: true,
+                                          hasDynamicHeight: false,
+                                          hasCircleCloseButton: false)
+            presentAsPuller(vc, model: pullerModel)
         }
     }
     
@@ -306,16 +204,17 @@ class MeteorViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
                 guard let self else { return }
                 makeVibration(type: .success)
+                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
                 
                 sendButton.isEnabled = true
                 endlessTimerLabel.isHidden = true
                 indicatorBackgroundView.isHidden = true
                 activityIndicator.stopAnimating()
-                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
             }
             
         case .live:
             makeVibration(type: .success)
+            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             Task {
                 await self.viewModel.endLiveActivity()
@@ -325,7 +224,12 @@ class MeteorViewController: UIViewController {
             endlessTimerLabel.isHidden = true
             indicatorBackgroundView.isHidden = true
             activityIndicator.stopAnimating()
-            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
+        }
+    }
+    
+    @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {
+        if let settingURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingURL)
         }
     }
 }
@@ -334,6 +238,7 @@ extension MeteorViewController {
     private func setLayout() {
         liveBackgroundView.layer.cornerRadius = 24
         liveBackgroundView.clipsToBounds = true
+        meteorTextLabel.clipsToBounds = true
         
         stopButton.layer.cornerRadius = 16
         stopButton.clipsToBounds = true
@@ -351,18 +256,63 @@ extension MeteorViewController {
         moveToSettingButton.clipsToBounds = true
     }
     
+    private func updateStackButtonUI(type: MeteorType) {
+        switch type {
+        case .single:
+            singleButton.isSelected = true
+            
+            headLabel.text = "METEOR :"
+            headLabel.textColor = .red
+            meteorTextLabel.textColor = viewModel.meteorText.isEmpty ? .placeholderText : .label
+            
+            endlessButton.isSelected = false
+            datePicker.isHidden = true
+            liveButton.isSelected = false
+            liveBackgroundView.alpha = 0
+            stopButton.isHidden = true
+            
+        case .endless:
+            endlessButton.isSelected = true
+            
+            headLabel.text = "ENDLESS\nMETEOR :"
+            headLabel.textColor = .red
+            meteorTextLabel.textColor = viewModel.meteorText.isEmpty ? .placeholderText : .label
+            
+            singleButton.isSelected = false
+            datePicker.isHidden = false
+            liveButton.isSelected = false
+            liveBackgroundView.alpha = 0
+            stopButton.isHidden = viewModel.checkEndlessIdling() ? false : true
+            
+        case .live:
+            liveButton.isSelected = true
+            
+            headLabel.text = "METEOR"
+            meteorTextLabel.textColor = viewModel.meteorText.isEmpty ? .placeholderText : .white
+            
+            singleButton.isSelected = false
+            endlessButton.isSelected = false
+            datePicker.isHidden = true
+            stopButton.isHidden = viewModel.checkLiveIdling() ? false : true
+            
+            UIView.animate(withDuration: 0.2) {
+                self.headLabel.textColor = .white
+                self.liveBackgroundView.alpha = 1
+            }
+        }
+    }
+    
     private func setEndlessTimer(triggeredDate: Date, duration: Int) {
         UserDefaults.standard.set(triggeredDate, forKey: UserDefaultsKeys.endlessTriggeredDateKey)
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            
+            guard let self else { return }
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: triggeredDate, duration: duration)
             
             // MARK: 여기서 타이머 중지
             if viewModel.checkEndlessIdling() == false {
                 timer.invalidate()
-                print("timer invalidate")
+                print("❎ timer invalidate")
             }
         }
     }
@@ -376,10 +326,9 @@ extension MeteorViewController {
             toast.enableTapToClose()
             toast.show()
         } else {
-            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: true, displayTime: 3)
-            
             let title = NSLocalizedString(title, comment: "")
             let subTitle = NSLocalizedString(subTitle, comment: "")
+            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: true, displayTime: 3)
             toast = Toast.default(image: UIImage(systemName: imageName)!, title: title, subtitle: subTitle, config: toastConfig)
             toast.enableTapToClose()
             toast.show()
@@ -393,7 +342,7 @@ extension MeteorViewController {
     }
     
     @objc private func checkNetworkConnection() {
-        if Reachability.isConnectedToNetwork() == false {
+        if !Reachability.isConnectedToNetwork() {
             sendButton.isEnabled = false
             print("Internet Connection not Available!")
         }
@@ -409,8 +358,8 @@ extension MeteorViewController {
     }
 }
 
-extension MeteorViewController: MeteorTextDelegate {
-    func setMeteorText(text: String) {
+extension MeteorViewController: MeteorInputDelegate {
+    func setInputtedText(text: String) {
         viewModel.meteorText = text
         
         if text.isEmpty {
@@ -437,6 +386,12 @@ extension MeteorViewController: MeteorTextDelegate {
     }
 }
 
+extension MeteorViewController : UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        [.banner, .list, .sound, .badge]
+    }
+}
+
 extension MeteorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.noticeList.count
@@ -444,8 +399,7 @@ extension MeteorViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoticeCell.identifier, for: indexPath) as? NoticeCell else {
-            return UICollectionViewCell()
-        }
+            return UICollectionViewCell() }
         cell.setLayout(notice: viewModel.noticeList[indexPath.row])
         return cell
     }
@@ -471,68 +425,3 @@ extension MeteorViewController: UICollectionViewDelegateFlowLayout {
         return .zero
     }
 }
-
-extension MeteorViewController : UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
-        [.banner, .list, .sound, .badge]
-    }
-}
-
-// MARK: ADMOB
-//extension MeteorViewController: GADFullScreenContentDelegate {
-//    private func showAD() {
-//        currentAdIndex += 1
-//
-//        if currentAdIndex >= firebaseAdIndex {
-//            guard let interstitial = interstitial else { return print("Ad wasn't ready") }
-//            interstitial.present(fromRootViewController: self)
-//            currentAdIndex = 0
-//
-//        } else if currentAdIndex > 50 { // exception: 상한선에 도달시 초기화
-//            currentAdIndex = 0
-//        }
-//        UserDefaults.standard.set(currentAdIndex, forKey: savedAdIndexKey)
-//    }
-//
-//    private func firstLoadAd() {
-//        let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID: adUnitID1,
-//                               request: request,
-//                               completionHandler: { [weak self] ad, error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-//                return
-//            }
-//            interstitial = ad
-//            interstitial?.fullScreenContentDelegate = self
-//        })
-//    }
-//
-//    /// Tells the delegate that the ad failed to present full screen content.
-//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-//        print("Ad did fail to present full screen content.")
-//    }
-//
-//    /// Tells the delegate that the ad will present full screen content.
-//    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-//        print("Ad will present full screen content.")
-//    }
-//
-//    /// Tells the delegate that the ad dismissed full screen content.
-//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-//        let request2 = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID: adUnitID2,
-//                               request: request2,
-//                               completionHandler: { [weak self] ad, error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-//                return
-//            }
-//            interstitial = ad
-//            interstitial?.fullScreenContentDelegate = self
-//        })
-//        print("Ad did dismiss full screen content.")
-//    }
-//}
