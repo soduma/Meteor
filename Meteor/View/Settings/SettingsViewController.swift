@@ -30,7 +30,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var keywordTextField: UITextField!
     
     let viewModel = SettingViewModel()
-    var keywordText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,12 +78,11 @@ class SettingsViewController: UITableViewController {
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             guard let self = self else { return }
-            viewModel.getNewImage(keyword: keywordText)
+            viewModel.getNewImage(keyword: viewModel.keywordText)
             
             DispatchQueue.main.async {
                 let defaultImage = UIImage(named: "meteor_splash.png")
                 self.imageView.image = UIImage(data: ((self.viewModel.imageData) ?? defaultImage?.pngData())!)
-                
                 self.activityIndicatorView.isHidden = true
                 self.activityIndicatorView.stopAnimating()
             }
@@ -123,15 +121,15 @@ class SettingsViewController: UITableViewController {
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
         
-        Task {
-            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+            Task {
                 await MeteorViewModel().endLiveActivity()
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
                 MeteorViewModel().startLiveActivity(text: liveText)
-            } else {
-                UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
             }
+        } else {
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
         }
     }
     
@@ -151,8 +149,8 @@ class SettingsViewController: UITableViewController {
         }
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
-        Task {
-            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+            Task {
                 await MeteorViewModel().endLiveActivity()
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
@@ -166,8 +164,8 @@ class SettingsViewController: UITableViewController {
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
         
-        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         starRateView.isHidden = true
+        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
     }
     
     @IBAction func rateCloseTapped(_ sender: UIButton) {
@@ -188,15 +186,13 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text == "" {
-            textField.text = "Keyword"
-        }
-        
         if textField.text == "Keyword" || textField.text == "" {
-            keywordText = ""
+            textField.text = "Keyword"
+            viewModel.keywordText = ""
+            
         } else if textField.text != "",
                   let text = textField.text {
-            keywordText = text
+            viewModel.keywordText = text
         }
     }
 }
