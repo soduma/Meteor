@@ -17,6 +17,7 @@ class MeteorInputViewController: UIViewController {
     var gesture = UIPanGestureRecognizer()
     var originalX: CGFloat = 0
     var originalY: CGFloat = 0
+    var absoluteY: CGFloat = 0
     
     let meteorText: String
     let labelPositionY: CGFloat
@@ -190,11 +191,15 @@ class MeteorInputViewController: UIViewController {
         
         sender.view!.center = CGPoint(x: sender.view!.center.x + (translation.x / 10),
                                       y: sender.view!.center.y + (translation.y / 10)) // 나누기 10해서 속도 늦춤
+        absoluteY += translation.y
+        print("🙏🏻 \(absoluteY)")
+        
         sender.setTranslation(.zero, in: view)
+        print("🌈 \(translation.y)")
         
         switch sender.state {
         case .ended:
-            if abs(velocity.y) > 800 { // 빠르게 할 때만 디스미스
+            if abs(velocity.y) > 500 || absoluteY > 300 { // 빠르게 할 때만 디스미스
                 textView.resignFirstResponder()
                 UIView.animate(withDuration: 0.3) {
                     self.view.alpha = 0
@@ -205,6 +210,8 @@ class MeteorInputViewController: UIViewController {
                 }
                 
             } else {
+                absoluteY = 0
+                
                 UIView.animate(withDuration: 0.2) {
                     sender.view!.center = CGPoint(x: self.originalX, y: self.originalY)
                     self.view.layoutIfNeeded()
@@ -262,22 +269,22 @@ extension MeteorInputViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         clearButtonAnimation(textView: textView)
         
-        if textView.text.components(separatedBy: "\n").count > 4 {
-            textView.textColor = .systemRed
-        } else {
-            textView.textColor = .label
-        }
+//        if textView.text.components(separatedBy: "\n").count > 8 {
+//            textView.textColor = .systemRed
+//        } else {
+//            textView.textColor = .label
+//        }
 //        adjustContentSize(textView: textView)
     }
     
     func textViewDidChange(_ textView: UITextView) {
         clearButtonAnimation(textView: textView)
         
-        if textView.text.components(separatedBy: "\n").count > 4 {
-            textView.textColor = .systemRed
-        } else {
-            textView.textColor = .label
-        }
+//        if textView.text.components(separatedBy: "\n").count > 4 {
+//            textView.textColor = .systemRed
+//        } else {
+//            textView.textColor = .label
+//        }
 //        adjustContentSize(textView: textView)
     }
     

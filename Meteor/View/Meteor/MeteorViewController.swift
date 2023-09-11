@@ -270,7 +270,7 @@ class MeteorViewController: UIViewController {
             }
             
 #if RELEASE
-            viewModel.sendToFirebase(type: viewModel.meteorType, text: meteorText, duration: duration)
+            viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: duration)
 #endif
             
             // MARK: 앱 리뷰
