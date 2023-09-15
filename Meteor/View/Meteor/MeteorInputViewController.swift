@@ -253,6 +253,7 @@ extension MeteorInputViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         clearButtonAnimation(textView: textView)
+        textView.textColor = .label // 텍스트뷰 크기조정 트릭
     }
     
     private func clearButtonAnimation(textView: UITextView) {

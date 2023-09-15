@@ -152,7 +152,7 @@ class MeteorViewController: UIViewController {
             viewModel.sendSingleMeteor(text: viewModel.meteorText)
             
         case .endless:
-            makeToast(title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
+            makeToast(toast: &toast, title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
             
             endlessDuration = Int(datePicker.countDownDuration)
             endlessTimerLabel.isHidden = false
@@ -164,7 +164,7 @@ class MeteorViewController: UIViewController {
             setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
             
         case .live:
-            makeToast(title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
+            makeToast(toast: &toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
             
             stopButton.isHidden = false
             viewModel.startLiveActivity(text: viewModel.meteorText)
@@ -204,7 +204,7 @@ class MeteorViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
                 guard let self else { return }
                 makeVibration(type: .success)
-                makeToast(title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
+                makeToast(toast: &toast, title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
                 
                 sendButton.isEnabled = true
                 endlessTimerLabel.isHidden = true
@@ -214,7 +214,7 @@ class MeteorViewController: UIViewController {
             
         case .live:
             makeVibration(type: .success)
-            makeToast(title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
+            makeToast(toast: &toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             Task {
                 await self.viewModel.endLiveActivity()
@@ -314,24 +314,6 @@ extension MeteorViewController {
                 timer.invalidate()
                 print("❎ timer invalidate")
             }
-        }
-    }
-    
-    private func makeToast(title: String, subTitle: String, imageName: String) {
-        toast.close()
-        
-        if subTitle.isEmpty {
-            let title = NSLocalizedString(title, comment: "")
-            toast = Toast.text(title)
-            toast.enableTapToClose()
-            toast.show()
-        } else {
-            let title = NSLocalizedString(title, comment: "")
-            let subTitle = NSLocalizedString(subTitle, comment: "")
-            let toastConfig = ToastConfiguration(autoHide: true, enablePanToClose: true, displayTime: 3)
-            toast = Toast.default(image: UIImage(systemName: imageName)!, title: title, subtitle: subTitle, config: toastConfig)
-            toast.enableTapToClose()
-            toast.show()
         }
     }
     
