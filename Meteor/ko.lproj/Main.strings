@@ -38,8 +38,8 @@
 /* Class = "UIButton"; normalTitle = "Single"; ObjectID = "DjD-KC-BHR"; */
 "DjD-KC-BHR.normalTitle" = "Single";
 
-/* Class = "UILabel"; text = "Support iOS 16.2 or Higher"; ObjectID = "Fvr-nD-0wz"; */
-"Fvr-nD-0wz.text" = "Support iOS 16.2 or Higher";
+/* Class = "UILabel"; text = "Support iOS 16.2 and Later"; ObjectID = "Fvr-nD-0wz"; */
+"Fvr-nD-0wz.text" = "Support iOS 16.2 and Later";
 
 /* Class = "UILabel"; text = "Haptic"; ObjectID = "GqJ-gX-VE4"; */
 "GqJ-gX-VE4.text" = "햅틱";
@@ -114,7 +114,7 @@
 "keM-A9-xCm.headerTitle" = "Live 색상";
 
 /* Class = "UITableViewSection"; footerTitle = "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content."; ObjectID = "mO4-mb-C9g"; */
-"mO4-mb-C9g.footerTitle" = "'항상 켬' 화면이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다.";
+"mO4-mb-C9g.footerTitle" = "iPhone의 화면 상시표시('항상 켬' 화면)가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다.";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "mO4-mb-C9g"; */
 "mO4-mb-C9g.headerTitle" = "일반";

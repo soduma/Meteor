@@ -69,9 +69,11 @@ class SettingViewModel {
         print("😚😚😚😚 \(UIDevice.modelName)")
         
         switch UIDevice.modelName {
-        case "Simulator iPhone 14 Pro", "Simulator iPhone 14 Pro Max":
+        case "Simulator iPhone 14 Pro", "Simulator iPhone 14 Pro Max",
+            "Simulator iPhone 15 Pro", "Simulator iPhone 15 Pro Max":
             return true
-        case "iPhone 14 Pro", "iPhone 14 Pro Max":
+        case "iPhone 14 Pro", "iPhone 14 Pro Max",
+            "iPhone 15 Pro", "iPhone 15 Pro Max":
             return true
         default:
             return false

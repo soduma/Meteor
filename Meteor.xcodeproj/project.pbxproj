@@ -40,6 +40,7 @@
 		F77E75462A80CD09008F1883 /* NotesCell(deprecated).swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75452A80CD09008F1883 /* NotesCell(deprecated).swift */; };
 		F77E75492A80CE87008F1883 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingViewModel.swift */; };
 		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
+		F78A549E2AB43E5700507678 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78A549D2AB43E5700507678 /* Toast.swift */; };
 		F7972D3F2A85EA6600050263 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483426A551C700DC3A59 /* WidgetKit.framework */; };
 		F7972D402A85EA6600050263 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483626A551C700DC3A59 /* SwiftUI.framework */; };
 		F7972D432A85EA6600050263 /* MeteorWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D422A85EA6600050263 /* MeteorWidgetBundle.swift */; };
@@ -137,6 +138,7 @@
 		F77E75452A80CD09008F1883 /* NotesCell(deprecated).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotesCell(deprecated).swift"; sourceTree = "<group>"; };
 		F77E75482A80CE87008F1883 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		F78A549D2AB43E5700507678 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeteorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7972D422A85EA6600050263 /* MeteorWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidgetBundle.swift; sourceTree = "<group>"; };
 		F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidgetLiveActivity.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				F77E75412A7E3338008F1883 /* Base.swift */,
 				A0E85764268C916800E10831 /* Reachability.swift */,
 				F77E75432A80C180008F1883 /* Vibration.swift */,
+				F78A549D2AB43E5700507678 /* Toast.swift */,
 				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
 				F77188C02A9300E400939BCD /* UIDevice+.swift */,
 				F71AF7392AADB44F00DBECBE /* TextView+.swift */,
@@ -582,6 +585,7 @@
 				F77E75442A80C180008F1883 /* Vibration.swift in Sources */,
 				A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */,
 				A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */,
+				F78A549E2AB43E5700507678 /* Toast.swift in Sources */,
 				A0ED409F2602244E009990ED /* Storage.swift in Sources */,
 				F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */,
 				A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */,
