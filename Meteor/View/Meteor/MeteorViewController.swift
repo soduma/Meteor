@@ -54,9 +54,13 @@ class MeteorViewController: UIViewController {
         }
         
         // MARK: 리뷰 카운트 재설정
-        let count = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-        if customReviewLimit - count < 10 {
-            UserDefaults.standard.set(30, forKey: UserDefaultsKeys.customAppReviewCountKey)
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
+        let currentVersion = SettingViewModel().getCurrentVersion()
+        if lastVersion != currentVersion {
+            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+            if customReviewLimit < reviewCount {
+                UserDefaults.standard.set(35, forKey: UserDefaultsKeys.customAppReviewCountKey)
+            }
         }
     }
     
@@ -178,7 +182,6 @@ class MeteorViewController: UIViewController {
             let vc = MeteorReviewViewController()
             let pullerModel = PullerModel(animator: .default,
                                           detents: [.medium],
-                                          cornerRadius: 50,
                                           isModalInPresentation: true,
                                           hasDynamicHeight: false,
                                           hasCircleCloseButton: false)
@@ -287,7 +290,6 @@ extension MeteorViewController {
         case .live:
             liveButton.isSelected = true
             
-            headLabel.text = "METEOR"
             meteorTextLabel.textColor = viewModel.meteorText.isEmpty ? .placeholderText : .white
             
             singleButton.isSelected = false
@@ -296,6 +298,7 @@ extension MeteorViewController {
             stopButton.isHidden = viewModel.checkLiveIdling() ? false : true
             
             UIView.animate(withDuration: 0.2) {
+                self.headLabel.text = "METEOR"
                 self.headLabel.textColor = .white
                 self.liveBackgroundView.alpha = 1
             }
