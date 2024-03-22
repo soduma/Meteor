@@ -16,16 +16,16 @@
 
 ### 사용 기술
 - Language : Swift
-- Framework : UIKit, WidgetKit, ActivityKit
-- Library : Firebase
+- Framework : UIKit, SwiftUI, WidgetKit, ActivityKit
+- Library : SnapKit, Alamofire, Lottie, Firebase
 - Etc: [Unsplash](https://source.unsplash.com/random) (Random 이미지 생성용) 
 
 ### 주요 기능
-- 텍스트 필드에 입력한 내용을 Local Push Notification으로 receive할 수 있도록 구현함.
-- 또한 Push를 사용자가 지정한 시간 간격으로 계속해서 받을 수 있고, Push가 도착할 때까지 남은 시간을 표시하는 Timer 구현함.
-- 같은 사용법으로 Live Activities를 사용할 수 있도록 함.
-- URL를 통해 받아온 Image를 Widget에서도 볼 수 있도록 구현함.
+- Local Push Notification으로 텍스트 필드에 입력한 내용을 receive할 수 있음.
+- Push를 사용자가 지정한 시간 간격마다 받을 수 있고, receive할 때까지 남은 시간을 표시하는 Timer 구현.
+- 같은 사용법으로 Live Activities에서 내용을 확인 할 수 있도록 함.
+- URL를 통해 받아온 Image를 Widget에서 볼 수 있도록 구현.
 
 ### 신경 쓴 부분
-- 기능상 Alert 권한이 필수적이기 때문에 denied 되었을 경우 사용자에게 알리고, Background에서 Foreground로 돌아올 때 자연스러운 사용이 가능하도록 구현함.
+- 기능상 Alert 권한이 필수적이기 때문에 denied 되었을 경우 사용자에게 알리고, 설정 변경 후 Background에서 Foreground로 돌아올 때 자연스러운 사용이 가능하도록 구현함.
 - Background 상태에서 Active로 돌아왔을 경우를 위해, Timer가 처음 동작할 때의 Date를 받아와서 이를 이용해 Push까지의 남은 시간을 표현하도록 함.
