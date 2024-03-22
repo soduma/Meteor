@@ -798,7 +798,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
-				INFOPLIST_FILE = Meteor/Setting/Info.plist;
+				INFOPLIST_FILE = Meteor/Foundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -825,7 +825,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
-				INFOPLIST_FILE = Meteor/Setting/Info.plist;
+				INFOPLIST_FILE = Meteor/Foundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
