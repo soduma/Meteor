@@ -55,7 +55,7 @@ class MeteorViewController: UIViewController {
         
         // MARK: 리뷰 카운트 재설정
         let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingViewModel().getCurrentVersion()
+        let currentVersion = SettingsViewModel().getCurrentVersion()
         if lastVersion != currentVersion {
             let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
             if customReviewLimit < reviewCount {
@@ -177,8 +177,8 @@ class MeteorViewController: UIViewController {
         viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
         
         // MARK: 앱 리뷰
-        SettingViewModel().checkSystemAppReview()
-        if SettingViewModel().checkCustomAppReview() {
+        SettingsViewModel().checkSystemAppReview()
+        if SettingsViewModel().checkCustomAppReview() {
             let vc = MeteorReviewViewController()
             let pullerModel = PullerModel(animator: .default,
                                           detents: [.medium],

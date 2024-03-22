@@ -1,12 +1,13 @@
 {
+  "originHash" : "88e52817f539c9ca67ef12482113d88db1c342caa84e89b1e803713d2d2b962e",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
-        "version" : "5.7.1"
+        "revision" : "723fa5a6c65812aec4a0d7cc432ee198883b6e00",
+        "version" : "5.9.0"
       }
     },
     {
@@ -15,7 +16,7 @@
       "location" : "https://github.com/zsergey/Apple-Inspired-Puller.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "df7cc2eb27c791c1fc2b64af9a2aed80dd3f0942"
+        "revision" : "1c0bc0331e6b4d22a950257552d10779dd101bfd"
       }
     },
     {
@@ -23,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-spm.git",
       "state" : {
-        "revision" : "60ea4f82fba8b4cb21a75665a889e86ed4d81c6e",
-        "version" : "4.2.0"
+        "revision" : "3bd43e12d6fb54654366a61f7cfaca787318b8ce",
+        "version" : "4.4.1"
       }
     },
     {
@@ -32,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit.git",
       "state" : {
-        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
-        "version" : "5.6.0"
+        "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
+        "version" : "5.7.1"
       }
     },
     {
@@ -41,10 +42,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BastiaanJansen/toast-swift.git",
       "state" : {
-        "revision" : "7e9e3fa6c85dc76ab996abb09b26f5fc14bec26b",
-        "version" : "1.3.2"
+        "revision" : "bc52aa61d6a372da553d1d59bdd4e56037ae2f14",
+        "version" : "1.5.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

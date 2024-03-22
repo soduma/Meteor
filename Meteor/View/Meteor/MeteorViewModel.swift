@@ -34,12 +34,12 @@ class MeteorViewModel {
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
-            guard let url = URL(string: SettingViewModel.defaultURL) else { return }
+            guard let url = URL(string: SettingsViewModel.defaultURL) else { return }
             URLSession.shared.dataTask(with: url) { (data, _, _) in
                 guard let imageData = data else { return }
                 
                 DispatchQueue.main.async {
-                    SettingViewModel().setWidget(imageData: imageData)
+                    SettingsViewModel().setWidget(imageData: imageData)
                 }
             }.resume()
         }
