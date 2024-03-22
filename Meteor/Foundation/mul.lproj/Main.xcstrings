@@ -1,0 +1,960 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "0Cq-UK-TS4.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Blur\"; ObjectID = \"0Cq-UK-TS4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Blur"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불투명"
+          }
+        }
+      }
+    },
+    "1ez-ua-B75.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Live\"; ObjectID = \"1ez-ua-B75\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Live"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        }
+      }
+    },
+    "2kf-Pz-TMT.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Meteor\"; ObjectID = \"2kf-Pz-TMT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meteor"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        }
+      }
+    },
+    "3H5-vd-AUs.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Submit\"; ObjectID = \"3H5-vd-AUs\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Submit"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제출"
+          }
+        }
+      }
+    },
+    "6VI-UB-qRJ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Notes\"; ObjectID = \"6VI-UB-qRJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notes"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        }
+      }
+    },
+    "8TC-ak-svv.placeholder" : {
+      "comment" : "Class = \"UITextField\"; placeholder = \"Keyword\"; ObjectID = \"8TC-ak-svv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Keyword"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        }
+      }
+    },
+    "8TC-ak-svv.text" : {
+      "comment" : "Class = \"UITextField\"; text = \"Keyword\"; ObjectID = \"8TC-ak-svv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Keyword"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        }
+      }
+    },
+    "9oA-8S-R1U.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"00:00:00\"; ObjectID = \"9oA-8S-R1U\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "00:00:00"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00:00:00"
+          }
+        }
+      }
+    },
+    "A4a-7Y-0AM.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Dark Mode\"; ObjectID = \"A4a-7Y-0AM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dark Mode"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다크 모드"
+          }
+        }
+      }
+    },
+    "caC-dS-7wV.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Endless\"; ObjectID = \"caC-dS-7wV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Endless"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endless"
+          }
+        }
+      }
+    },
+    "Dar-LJ-TSU.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Made by\"; ObjectID = \"Dar-LJ-TSU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Made by"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by"
+          }
+        }
+      }
+    },
+    "DjD-KC-BHR.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Single\"; ObjectID = \"DjD-KC-BHR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Single"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single"
+          }
+        }
+      }
+    },
+    "DKC-8s-X7G.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Red\"; ObjectID = \"DKC-8s-X7G\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Red"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "빨강"
+          }
+        }
+      }
+    },
+    "DZa-ix-YkT.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"dev.soduma\"; ObjectID = \"DZa-ix-YkT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dev.soduma"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        }
+      }
+    },
+    "eAl-3u-eGw.title" : {
+      "comment" : "Class = \"UITabBarItem\"; title = \"Meteor\"; ObjectID = \"eAl-3u-eGw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meteor"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        }
+      }
+    },
+    "eBn-Bm-JdW.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Black\"; ObjectID = \"eBn-Bm-JdW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Black"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검정"
+          }
+        }
+      }
+    },
+    "eid-Qh-HRI.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Write\"; ObjectID = \"eid-Qh-HRI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Write"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write"
+          }
+        }
+      }
+    },
+    "eVG-QI-Qxx.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Review\"; ObjectID = \"eVG-QI-Qxx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        }
+      }
+    },
+    "faQ-bF-XRm.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Star Rating\"; ObjectID = \"faQ-bF-XRm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Star Rating"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별점 남기기"
+          }
+        }
+      }
+    },
+    "Fvr-nD-0wz.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Support iOS 16.2 and Later\"; ObjectID = \"Fvr-nD-0wz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Support iOS 16.2 and Later"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support iOS 16.2 and Later"
+          }
+        }
+      }
+    },
+    "GqJ-gX-VE4.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Haptic\"; ObjectID = \"GqJ-gX-VE4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Haptic"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "햅틱"
+          }
+        }
+      }
+    },
+    "HoI-Ka-L7C.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"🐶 working\"; ObjectID = \"HoI-Ka-L7C\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "🐶 working"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🐶 working"
+          }
+        }
+      }
+    },
+    "IKX-kT-lPg.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Current Version ~~~\"; ObjectID = \"IKX-kT-lPg\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Current Version ~~~"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Version ~~~"
+          }
+        }
+      }
+    },
+    "j0T-WS-rtr.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Write down a word without spaces. If blank, it's randomly.\"; ObjectID = \"j0T-WS-rtr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Write down a word without spaces. If blank, it's randomly."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
+          }
+        }
+      }
+    },
+    "j0T-WS-rtr.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Widget\"; ObjectID = \"j0T-WS-rtr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Widget"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯"
+          }
+        }
+      }
+    },
+    "j1o-go-okn.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"iPhone Settings > Meteor > Notifications Please enable notification.\"; ObjectID = \"j1o-go-okn\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "iPhone Settings > Meteor > Notifications Please enable notification."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."
+          }
+        }
+      }
+    },
+    "keM-A9-xCm.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Live Color\"; ObjectID = \"keM-A9-xCm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Live Color"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live 색상"
+          }
+        }
+      }
+    },
+    "mO4-mb-C9g.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If Always On Display turned on and the Lock Screen dimmed, it hides the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone의 화면 상시표시('항상 켬' 화면)가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+          }
+        }
+      }
+    },
+    "mO4-mb-C9g.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"General\"; ObjectID = \"mO4-mb-C9g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일반"
+          }
+        }
+      }
+    },
+    "mYh-w1-2Gl.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Meteor feature requires\\nnotification allowance.\"; ObjectID = \"mYh-w1-2Gl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meteor feature requires\nnotification allowance."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메테오 기능은\n알림 권한이 필요합니다."
+          }
+        }
+      }
+    },
+    "NBD-bZ-eN8.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Please take a moment and\\nRate Meteor\\n🥹\"; ObjectID = \"NBD-bZ-eN8\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please take a moment and\nRate Meteor\n🥹"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠깐 시간을 내어\n리뷰에 참여해주세요\n🥹"
+          }
+        }
+      }
+    },
+    "noR-vq-LyQ.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If turn off all switches then follow the system setting.\"; ObjectID = \"noR-vq-LyQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If turn off all switches then follow the system setting."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "스위치를 모두 끄면 시스템 설정을 따릅니다."
+          }
+        }
+      }
+    },
+    "noR-vq-LyQ.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Style\"; ObjectID = \"noR-vq-LyQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Style"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "화면 모드"
+          }
+        }
+      }
+    },
+    "oak-uY-Kls.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Version\"; ObjectID = \"oak-uY-Kls\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "Pmw-Ai-Bkf.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Contact\"; ObjectID = \"Pmw-Ai-Bkf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Contact"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        }
+      }
+    },
+    "Qox-wf-gO8.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"LONG\"; ObjectID = \"Qox-wf-gO8\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "LONG"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LONG"
+          }
+        }
+      }
+    },
+    "rDY-ZO-TPG.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"고맙습니다.\\nThank you for using. 👋🏻 \"; ObjectID = \"rDY-ZO-TPG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻 "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻 "
+          }
+        }
+      }
+    },
+    "RFX-SY-fYk.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Send\"; ObjectID = \"RFX-SY-fYk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Send"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보내기"
+          }
+        }
+      }
+    },
+    "SfX-Jb-Sde.title" : {
+      "comment" : "Class = \"UITabBarItem\"; title = \"Notes\"; ObjectID = \"SfX-Jb-Sde\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notes"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
+          }
+        }
+      }
+    },
+    "si5-2F-S24.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Meteor\"; ObjectID = \"si5-2F-S24\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meteor"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        }
+      }
+    },
+    "tjQ-Ti-6UO.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Done\"; ObjectID = \"tjQ-Ti-6UO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Whe-Py-dQR.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Can see this photo in the widget and about 500 KB of data is used each time a photo loaded.\"; ObjectID = \"Whe-Py-dQR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Can see this photo in the widget and about 500 KB of data is used each time a photo loaded."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위젯에서 이 사진을 볼 수 있으며, 사진을 불러올 때마다 약 500KB의 데이터가 사용됩니다."
+          }
+        }
+      }
+    },
+    "wiS-Uw-6P6.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Light Mode\"; ObjectID = \"wiS-Uw-6P6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Light Mode"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이트 모드"
+          }
+        }
+      }
+    },
+    "WnL-JA-8Ya.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Done\"; ObjectID = \"WnL-JA-8Ya\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "wUg-9c-pbD.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"🇰🇷@infofield\"; ObjectID = \"wUg-9c-pbD\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "🇰🇷@infofield"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇰🇷@infofield"
+          }
+        }
+      }
+    },
+    "X8d-eH-xdK.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"notice example\"; ObjectID = \"X8d-eH-xdK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "notice example"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notice example"
+          }
+        }
+      }
+    },
+    "XrN-Ta-ams.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"METEOR :\"; ObjectID = \"XrN-Ta-ams\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "METEOR :"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "METEOR :"
+          }
+        }
+      }
+    },
+    "y3t-Ey-iwg.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"SHORT\"; ObjectID = \"y3t-Ey-iwg\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SHORT"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SHORT"
+          }
+        }
+      }
+    },
+    "Y9A-9s-chN.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Scribble here 👀\"; ObjectID = \"Y9A-9s-chN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scribble here 👀"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여기에 작성 👀"
+          }
+        }
+      }
+    },
+    "zae-IP-TZ4.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"  Stop  \"; ObjectID = \"zae-IP-TZ4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "  Stop  "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "    종료    "
+          }
+        }
+      }
+    },
+    "zqu-cr-7J9.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"zqu-cr-7J9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide Live Content in Lock Screen"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠금 화면에서 Live 내용 가리기"
+          }
+        }
+      }
+    },
+    "zSO-Ai-qKq.title" : {
+      "comment" : "Class = \"UITabBarItem\"; title = \"Settings\"; ObjectID = \"zSO-Ai-qKq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Settings"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
+          }
+        }
+      }
+    },
+    "ZXQ-U0-yWN.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Refresh Photo\"; ObjectID = \"ZXQ-U0-yWN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Refresh Photo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 사진 불러오기"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
