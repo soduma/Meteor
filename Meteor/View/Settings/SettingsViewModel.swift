@@ -1,5 +1,5 @@
 //
-//  SettingViewModel.swift
+//  SettingsViewModel.swift
 //  Meteor
 //
 //  Created by 장기화 on 2023/08/07.
@@ -16,7 +16,7 @@ enum LiveColor: Int {
     case clear = 2
 }
 
-class SettingViewModel {
+class SettingsViewModel {
     static let defaultURL = "https://source.unsplash.com/random"
     private var firebaseImageURL = ""
     private let db = Database.database().reference()
@@ -27,7 +27,7 @@ class SettingViewModel {
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
-            self?.firebaseImageURL = snapshot.value as? String ?? SettingViewModel.defaultURL
+            self?.firebaseImageURL = snapshot.value as? String ?? SettingsViewModel.defaultURL
         }
     }
     

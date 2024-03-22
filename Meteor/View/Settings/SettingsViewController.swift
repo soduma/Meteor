@@ -29,7 +29,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateSubmitButton: UIButton!
     @IBOutlet weak var keywordTextField: UITextField!
     
-    let viewModel = SettingViewModel()
+    let viewModel = SettingsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
