@@ -64,24 +64,11 @@ class MeteorViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !Reachability.isConnectedToNetwork() {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(checkNotificationAuth),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(checkNetworkConnection),
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         
@@ -323,13 +310,6 @@ extension MeteorViewController {
     private func prepareAuthView() {
         DispatchQueue.main.async {
             self.authViewBottom.constant = self.view.bounds.height
-        }
-    }
-    
-    @objc private func checkNetworkConnection() {
-        if !Reachability.isConnectedToNetwork() {
-            sendButton.isEnabled = false
-            print("Internet Connection not Available!")
         }
     }
     
