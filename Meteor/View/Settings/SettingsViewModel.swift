@@ -10,7 +10,7 @@ import StoreKit
 import WidgetKit
 import FirebaseDatabase
 
-enum LiveColor: Int {
+enum LiveColor: Int { // UserDefaults 저장을 위해서 Int 처리
     case red = 0
     case black = 1
     case clear = 2

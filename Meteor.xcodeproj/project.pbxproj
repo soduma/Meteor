@@ -13,17 +13,16 @@
 		A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5225FC99E7001BAEFD /* MeteorViewController.swift */; };
 		A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5725FC99E9001BAEFD /* Assets.xcassets */; };
 		A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */; };
-		A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */; };
 		A0A4C11F25FDDEA00090A214 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */; };
 		A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A4C12725FE25890090A214 /* NotesViewController.swift */; };
 		A0AAAFA526270CC600D6E5EB /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */; };
-		A0E85765268C916800E10831 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E85764268C916800E10831 /* Reachability.swift */; };
 		A0ED408F26009DB5009990ED /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED408E26009DB5009990ED /* CreateViewController.swift */; };
 		A0ED409B2601FD87009990ED /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409A2601FD87009990ED /* Todo.swift */; };
 		A0ED409F2602244E009990ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED409E2602244E009990ED /* Storage.swift */; };
 		A0F1AF0D26130BAF009084AB /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1AF0C26130BAF009084AB /* ModifyViewController.swift */; };
 		F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71AF7392AADB44F00DBECBE /* TextView+.swift */; };
 		F758AC5C2BAD53DB00CC19A9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F758AC5B2BAD53DB00CC19A9 /* Localizable.xcstrings */; };
+		F758ACD52BB298A500CC19A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F758ACD42BB298A500CC19A9 /* GoogleService-Info.plist */; };
 		F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77188C02A9300E400939BCD /* UIDevice+.swift */; };
 		F776839C2A95A3CF00824E4E /* Puller in Frameworks */ = {isa = PBXBuildFile; productRef = F776839B2A95A3CF00824E4E /* Puller */; };
 		F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */; };
@@ -97,11 +96,9 @@
 		A0998A5725FC99E9001BAEFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0998A5A25FC99E9001BAEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0998A5C25FC99E9001BAEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A0A4C12725FE25890090A214 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
-		A0E85764268C916800E10831 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A0ED408E26009DB5009990ED /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		A0ED409A2601FD87009990ED /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		A0ED409E2602244E009990ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -109,6 +106,7 @@
 		F71AF7392AADB44F00DBECBE /* TextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+.swift"; sourceTree = "<group>"; };
 		F758AC5B2BAD53DB00CC19A9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F758AC5D2BAD53DB00CC19A9 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
+		F758ACD42BB298A500CC19A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F77188C02A9300E400939BCD /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		F77683662A9595DC00824E4E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		F77683672A9595DC00824E4E /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
-				A09D211F2689CCFB0043A0A9 /* GoogleService-Info.plist */,
+				F758ACD42BB298A500CC19A9 /* GoogleService-Info.plist */,
 				F7E861332A7B7ED100E5F194 /* Foundation */,
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				F797ABEB2BAD429B0012ACFE /* Extension */,
@@ -370,7 +368,6 @@
 			isa = PBXGroup;
 			children = (
 				F77E75412A7E3338008F1883 /* Base.swift */,
-				A0E85764268C916800E10831 /* Reachability.swift */,
 				F77E75432A80C180008F1883 /* Vibration.swift */,
 				F78A549D2AB43E5700507678 /* Toast.swift */,
 				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
@@ -486,13 +483,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09D21202689CCFC0043A0A9 /* GoogleService-Info.plist in Resources */,
 				F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
 				F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */,
 				F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */,
 				F758AC5C2BAD53DB00CC19A9 /* Localizable.xcstrings in Resources */,
+				F758ACD52BB298A500CC19A9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +580,6 @@
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				A0A4C12825FE25890090A214 /* NotesViewController.swift in Sources */,
 				F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */,
-				A0E85765268C916800E10831 /* Reachability.swift in Sources */,
 				F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */,
 				F77E75462A80CD09008F1883 /* NotesCell.swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,
@@ -777,7 +773,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Foundation/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
@@ -786,7 +782,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -808,7 +804,7 @@
 				CODE_SIGN_ENTITLEMENTS = Meteor/Meteor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM9J3DG5MT;
 				INFOPLIST_FILE = Meteor/Foundation/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
@@ -817,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
