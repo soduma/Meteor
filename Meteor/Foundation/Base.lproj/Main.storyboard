@@ -1063,17 +1063,17 @@ notification allowance.</string>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Keyword" placeholder="Keyword" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8TC-ak-svv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                                                <rect key="frame" x="4" y="0.0" width="342" height="44"/>
                                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="8TC-ak-svv" secondAttribute="trailing" id="215-9M-xbY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8TC-ak-svv" secondAttribute="trailing" constant="4" id="215-9M-xbY"/>
                                                         <constraint firstItem="8TC-ak-svv" firstAttribute="top" secondItem="gWC-db-6X4" secondAttribute="top" id="6b8-tW-uC0"/>
                                                         <constraint firstAttribute="height" constant="44" id="FzE-n1-dUp"/>
-                                                        <constraint firstItem="8TC-ak-svv" firstAttribute="leading" secondItem="gWC-db-6X4" secondAttribute="leading" id="JeB-ut-zTf"/>
+                                                        <constraint firstItem="8TC-ak-svv" firstAttribute="leading" secondItem="gWC-db-6X4" secondAttribute="leading" constant="4" id="JeB-ut-zTf"/>
                                                         <constraint firstAttribute="bottom" secondItem="8TC-ak-svv" secondAttribute="bottom" id="wNa-OA-0iq"/>
                                                     </constraints>
                                                     <vibrancyEffect>

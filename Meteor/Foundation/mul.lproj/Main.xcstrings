@@ -266,7 +266,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meteor"
+            "value" : "메테오"
           }
         }
       }
@@ -428,7 +428,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
+            "value" : "키워드는 띄어쓰기가 없는 영단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
           }
         }
       }
@@ -506,19 +506,19 @@
       }
     },
     "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
+            "value" : "If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone의 화면 상시표시('항상 켬' 화면)가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+            "value" : "iPhone의 '화면 상시표시' 기능이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
           }
         }
       }

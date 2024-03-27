@@ -192,7 +192,9 @@ extension SettingsViewController: UITextFieldDelegate {
             
         } else if textField.text != "",
                   let text = textField.text {
-            viewModel.keywordText = text
+            let removeBlanks = text.replacingOccurrences(of: " ", with: "")
+            textField.text = removeBlanks
+            viewModel.keywordText = removeBlanks
         }
     }
 }
