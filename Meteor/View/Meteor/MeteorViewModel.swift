@@ -59,11 +59,11 @@ class MeteorViewModel {
         }
     }
     
-    func checkEndlessIdling() -> Bool {
+    func isEndlessIdling() -> Bool {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey)
     }
     
-    func checkLiveIdling() -> Bool {
+    func isLiveIdling() -> Bool {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
     }
     

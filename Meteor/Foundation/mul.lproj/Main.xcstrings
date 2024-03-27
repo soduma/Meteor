@@ -506,13 +506,13 @@
       }
     },
     "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If Always On Display turned on and the Lock Screen dimmed, it hides the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If Always On Display turned on and the Lock Screen dimmed, it hides the Live content."
+            "value" : "If 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
           }
         },
         "ko" : {

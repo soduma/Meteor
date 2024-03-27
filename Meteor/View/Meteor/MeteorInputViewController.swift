@@ -9,11 +9,12 @@ import UIKit
 import SnapKit
 
 protocol MeteorInputDelegate: AnyObject {
-    func setInputtedText(text: String)
+    func updateMeteorTextLabelUI(text: String)
 }
 
 class MeteorInputViewController: UIViewController {
     weak var delegate: MeteorInputDelegate?
+    
     var gesture = UIPanGestureRecognizer()
     var rectangleViewOriginalX: CGFloat = 0
     var rectangleViewOriginalY: CGFloat = 0
@@ -239,7 +240,7 @@ class MeteorInputViewController: UIViewController {
             guard let self else { return }
             view.alpha = 0
             view.layoutIfNeeded()
-            delegate?.setInputtedText(text: textView.text)
+            delegate?.updateMeteorTextLabelUI(text: textView.text)
         } completion: { _ in
             self.dismiss(animated: false)
         }

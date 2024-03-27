@@ -892,7 +892,7 @@ notification allowance.</string>
                                                         <color key="titleColor" systemColor="systemGrayColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="mailTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Bq6-XB-ihJ"/>
+                                                        <action selector="mailButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Bq6-XB-ihJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -926,7 +926,7 @@ notification allowance.</string>
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="reviewTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="cMY-pn-ZIe"/>
+                                                        <action selector="reviewButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="cMY-pn-ZIe"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1232,7 +1232,7 @@ Rate Meteor
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" footerTitle="If Always On Display turned on and the Lock Screen dimmed, it hides the Live content." id="mO4-mb-C9g">
+                            <tableViewSection headerTitle="General" footerTitle="If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content." id="mO4-mb-C9g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
                                         <rect key="frame" x="20" y="942.99999237060547" width="350" height="44"/>
