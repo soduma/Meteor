@@ -84,11 +84,7 @@ struct MeteorHistoryListView: View {
 }
 
 struct MeteorHistoryCellView: View {
-    private var history: History
-    
-    init(history: History) {
-        self.history = history
-    }
+    var history: History
     
     var body: some View {
         HStack {
@@ -102,14 +98,14 @@ struct MeteorHistoryCellView: View {
             .padding(.horizontal)
             .background(RoundedRectangle(cornerRadius: 25.0)
                 .fill(.yellow).opacity(0.2))
+            .contentShape(Rectangle()) // gesture 영역
+            .onTapGesture {
+                UIPasteboard.general.string = history.content
+                makeVibration(type: .success)
+                ToastManager.makeToast(toast: &ToastManager.toast, title: history.content, imageName: "doc.on.doc")
+            }
             
             Spacer()
-        }
-        .contentShape(Rectangle()) // row 전체에 gesture
-        .onTapGesture {
-            UIPasteboard.general.string = history.content
-            makeVibration(type: .success)
-            ToastManager.makeToast(toast: &ToastManager.toast, title: history.content, imageName: "doc.on.doc")
         }
     }
 }
