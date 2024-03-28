@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SnapKit
 
 protocol MeteorInputDelegate: AnyObject {
@@ -14,11 +15,12 @@ protocol MeteorInputDelegate: AnyObject {
 
 class MeteorInputViewController: UIViewController {
     weak var delegate: MeteorInputDelegate?
+    private let viewModel = MeteorViewModel()
     
-    var gesture = UIPanGestureRecognizer()
-    var rectangleViewOriginalX: CGFloat = 0
-    var rectangleViewOriginalY: CGFloat = 0
-    var absoluteY: CGFloat = 0
+    private var gesture = UIPanGestureRecognizer()
+    private var rectangleViewOriginalX: CGFloat = 0
+    private var rectangleViewOriginalY: CGFloat = 0
+    private var absoluteY: CGFloat = 0
     
     let meteorText: String
     let labelPositionY: CGFloat
@@ -71,9 +73,18 @@ class MeteorInputViewController: UIViewController {
         return button
     }()
     
+    private lazy var historyButton: UIButton = {
+        let button = UIButton()
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
+        button.setImage(UIImage(systemName: "doc.append", withConfiguration: imageConfig), for: .normal)
+        button.tintColor = .lightGray
+        button.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var enterButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .semibold)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 44, weight: .semibold)
         button.setImage(UIImage(systemName: "checkmark.circle.fill", withConfiguration: imageConfig), for: .normal)
         button.tintColor = .systemYellow
         button.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
@@ -104,7 +115,7 @@ class MeteorInputViewController: UIViewController {
         view.alpha = 0
         textView.text = meteorText
         
-        [visualEffectView, rectangleView].forEach {
+        [visualEffectView, rectangleView, enterButton].forEach {
             view.addSubview($0)
         }
         
@@ -119,12 +130,17 @@ class MeteorInputViewController: UIViewController {
             $0.height.equalTo(50)
         }
         
-        [textView, clearButton, enterButton, grabberView].forEach {
+        enterButton.snp.makeConstraints {
+            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
+            $0.trailing.equalTo(rectangleView).inset(4)
+        }
+        
+        [textView, clearButton, historyButton, grabberView].forEach {
             rectangleView.addSubview($0)
         }
         
         clearButton.snp.makeConstraints {
-            $0.centerX.equalTo(enterButton)
+            $0.centerX.equalTo(historyButton)
             $0.centerY.equalToSuperview()
             $0.width.height.equalTo(32)
         }
@@ -140,11 +156,11 @@ class MeteorInputViewController: UIViewController {
         textView.snp.remakeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(24)
-            $0.trailing.equalTo(enterButton.snp.leading)
+            $0.trailing.equalTo(historyButton.snp.leading)
             $0.bottom.equalTo(grabberView).inset(20)
         }
         
-        enterButton.snp.remakeConstraints {
+        historyButton.snp.remakeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(20)
         }
@@ -185,6 +201,11 @@ class MeteorInputViewController: UIViewController {
         case .ended:
             if abs(velocity.y) > 500 || absoluteY > 300 { // 빠르게 할 때만 디스미스
                 textView.resignFirstResponder()
+                
+                UIView.animate(withDuration: 0.1) {
+                    self.enterButton.alpha = 0
+                }
+                
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     guard let self else { return }
                     view.alpha = 0
@@ -212,6 +233,14 @@ class MeteorInputViewController: UIViewController {
         clearButton.alpha = 0
     }
     
+    @objc private func historyButtonTapped() {
+        let vc = UIHostingController(rootView: MeteorHistoryView())
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        present(vc, animated: true)
+    }
+    
     @objc private func enterButtonTapped() {
         makeVibration(type: .rigid)
         textView.resignFirstResponder()
@@ -224,11 +253,11 @@ class MeteorInputViewController: UIViewController {
         
         textView.snp.remakeConstraints {
             $0.leading.equalToSuperview().inset(24)
-            $0.trailing.equalTo(enterButton.snp.leading)
+            $0.trailing.equalTo(historyButton.snp.leading)
             $0.bottom.equalTo(grabberView).inset(20)
         }
         
-        enterButton.snp.remakeConstraints {
+        historyButton.snp.remakeConstraints {
             $0.width.height.equalTo(0)
         }
         
@@ -238,6 +267,7 @@ class MeteorInputViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
             guard let self else { return }
+            enterButton.alpha = 0
             view.alpha = 0
             view.layoutIfNeeded()
             delegate?.updateMeteorTextLabelUI(text: textView.text)
