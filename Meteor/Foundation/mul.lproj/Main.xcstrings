@@ -73,24 +73,6 @@
         }
       }
     },
-    "6VI-UB-qRJ.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Notes\"; ObjectID = \"6VI-UB-qRJ\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Notes"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notes"
-          }
-        }
-      }
-    },
     "8TC-ak-svv.placeholder" : {
       "comment" : "Class = \"UITextField\"; placeholder = \"Keyword\"; ObjectID = \"8TC-ak-svv\";",
       "extractionState" : "extracted_with_value",
@@ -379,24 +361,6 @@
         }
       }
     },
-    "HoI-Ka-L7C.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"🐶 working\"; ObjectID = \"HoI-Ka-L7C\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "🐶 working"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🐶 working"
-          }
-        }
-      }
-    },
     "IKX-kT-lPg.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Current Version ~~~\"; ObjectID = \"IKX-kT-lPg\";",
       "extractionState" : "extracted_with_value",
@@ -649,24 +613,6 @@
         }
       }
     },
-    "Qox-wf-gO8.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"LONG\"; ObjectID = \"Qox-wf-gO8\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "LONG"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LONG"
-          }
-        }
-      }
-    },
     "rDY-ZO-TPG.footerTitle" : {
       "comment" : "Class = \"UITableViewSection\"; footerTitle = \"고맙습니다.\\nThank you for using. 👋🏻 \"; ObjectID = \"rDY-ZO-TPG\";",
       "extractionState" : "extracted_with_value",
@@ -703,42 +649,6 @@
         }
       }
     },
-    "SfX-Jb-Sde.title" : {
-      "comment" : "Class = \"UITabBarItem\"; title = \"Notes\"; ObjectID = \"SfX-Jb-Sde\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Notes"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notes"
-          }
-        }
-      }
-    },
-    "tjQ-Ti-6UO.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Done\"; ObjectID = \"tjQ-Ti-6UO\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Done"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        }
-      }
-    },
     "Whe-Py-dQR.footerTitle" : {
       "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Can see this photo in the widget and about 500 KB of data is used each time a photo loaded.\"; ObjectID = \"Whe-Py-dQR\";",
       "extractionState" : "extracted_with_value",
@@ -771,24 +681,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "라이트 모드"
-          }
-        }
-      }
-    },
-    "WnL-JA-8Ya.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Done\"; ObjectID = \"WnL-JA-8Ya\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Done"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
           }
         }
       }
@@ -843,24 +735,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "METEOR :"
-          }
-        }
-      }
-    },
-    "y3t-Ey-iwg.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"SHORT\"; ObjectID = \"y3t-Ey-iwg\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "SHORT"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SHORT"
           }
         }
       }
