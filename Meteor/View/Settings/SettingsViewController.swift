@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
+    let viewModel = SettingsViewModel()
+    
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var versionButton: UIButton!
     @IBOutlet weak var reviewButton: UIButton!
@@ -28,9 +30,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateCloseButton: UIButton!
     @IBOutlet weak var rateSubmitButton: UIButton!
     @IBOutlet weak var keywordTextField: UITextField!
-    
-    let viewModel = SettingsViewModel()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setState()
+        setSwitchesState()
         viewModel.getFirebaseImageURL()
     }
     
@@ -60,7 +60,7 @@ class SettingsViewController: UITableViewController {
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
-    private func setState() {
+    private func setSwitchesState() {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
@@ -71,8 +71,8 @@ class SettingsViewController: UITableViewController {
     @objc private func refreshViewTapped() {
         makeVibration(type: .rigid)
         
-        viewModel.checkSystemAppReview()
-        starRateView.isHidden = !viewModel.checkCustomAppReview()
+        viewModel.systemAppReview()
+        starRateView.isHidden = !viewModel.customAppReview()
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
@@ -89,14 +89,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    @IBAction func mailTapped(_ sender: UIButton) {
+    @IBAction func mailButtonTapped(_ sender: UIButton) {
         let email = "dev.soduma@gmail.com"
         if let url = URL(string: "mailto:\(email)") {
             UIApplication.shared.open(url)
         }
     }
     
-    @IBAction func reviewTapped(_ sender: Any) {
+    @IBAction func reviewButtonTapped(_ sender: UIButton) {
         let url = "itms-apps://itunes.apple.com/app/1562989730"
         if let url = URL(string: url),
            UIApplication.shared.canOpenURL(url) {
@@ -136,7 +136,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
         makeVibration(type: .rigid)
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-            _ = viewModel.checkCustomAppReview()
+            _ = viewModel.customAppReview()
         }
         
         switch sender.selectedSegmentIndex {
@@ -192,7 +192,9 @@ extension SettingsViewController: UITextFieldDelegate {
             
         } else if textField.text != "",
                   let text = textField.text {
-            viewModel.keywordText = text
+            let removeBlanks = text.replacingOccurrences(of: " ", with: "")
+            textField.text = removeBlanks
+            viewModel.keywordText = removeBlanks
         }
     }
 }

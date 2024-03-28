@@ -9,7 +9,8 @@ import Foundation
 
 let singleLimit = 8 // single의 identifier 구분용
 let systemReviewLimit = 110
-let customReviewLimit = 40
+let customReviewLimit = 30
+let customReviewReset = 25
 
 // MARK: for FirebaseDatabase Key
 let shortText = "shortText" // deprecated

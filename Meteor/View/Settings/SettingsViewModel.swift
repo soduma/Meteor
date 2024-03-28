@@ -97,7 +97,7 @@ class SettingsViewModel {
         UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
     }
     
-    func checkSystemAppReview() {
+    func systemAppReview() {
         var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
         counterForSystemAppReview += 1
         
@@ -109,7 +109,7 @@ class SettingsViewModel {
         }
     }
     
-    func checkCustomAppReview() -> Bool {
+    func customAppReview() -> Bool {
         var counterForCustomAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
         counterForCustomAppReview += 1
         

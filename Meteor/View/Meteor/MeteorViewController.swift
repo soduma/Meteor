@@ -34,7 +34,6 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var moveToSettingButton: UIButton!
     
     private let viewModel = MeteorViewModel()
-    private var toast = Toast.text("")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,25 +42,8 @@ class MeteorViewController: UIViewController {
         viewModel.initialAppLaunchSettings()
         viewModel.checkAppearanceMode()
         
-        // MARK: 앱 재실행 후 타이머 체크
-        if viewModel.checkEndlessIdling() {
-            endlessTimerLabel.isHidden = false
-            
-            guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
-            let duration = UserDefaults.standard.integer(forKey: UserDefaultsKeys.endlessDurationKey)
-            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
-            setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
-        }
-        
-        // MARK: 리뷰 카운트 재설정
-        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingsViewModel().getCurrentVersion()
-        if lastVersion != currentVersion {
-            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(35, forKey: UserDefaultsKeys.customAppReviewCountKey)
-            }
-        }
+        checkTimerRunning()
+        resetCustomReviewCount()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -133,9 +115,10 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        guard !viewModel.meteorText.isEmpty else { return }
+        guard viewModel.meteorText.isEmpty == false else { return }
         meteorTextLabel.resignFirstResponder()
         makeVibration(type: .success)
+        checkAppReview()
         var endlessDuration = 0
         
         switch viewModel.meteorType {
@@ -143,7 +126,7 @@ class MeteorViewController: UIViewController {
             viewModel.sendSingleMeteor(text: viewModel.meteorText)
             
         case .endless:
-            makeToast(toast: &toast, title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
+            ToastManager.makeToast(toast: &ToastManager.toast, title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
             
             endlessDuration = Int(datePicker.countDownDuration)
             endlessTimerLabel.isHidden = false
@@ -155,25 +138,14 @@ class MeteorViewController: UIViewController {
             setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
             
         case .live:
-            makeToast(toast: &toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
+            ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
             
             stopButton.isHidden = false
             viewModel.startLiveActivity(text: viewModel.meteorText)
         }
         
+        viewModel.saveHistory()
         viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
-        
-        // MARK: 앱 리뷰
-        SettingsViewModel().checkSystemAppReview()
-        if SettingsViewModel().checkCustomAppReview() {
-            let vc = MeteorReviewViewController()
-            let pullerModel = PullerModel(animator: .default,
-                                          detents: [.medium],
-                                          isModalInPresentation: true,
-                                          hasDynamicHeight: false,
-                                          hasCircleCloseButton: false)
-            presentAsPuller(vc, model: pullerModel)
-        }
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
@@ -194,7 +166,7 @@ class MeteorViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
                 guard let self else { return }
                 makeVibration(type: .success)
-                makeToast(toast: &toast, title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
+                ToastManager.makeToast(toast: &ToastManager.toast, title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
                 
                 sendButton.isEnabled = true
                 endlessTimerLabel.isHidden = true
@@ -204,10 +176,10 @@ class MeteorViewController: UIViewController {
             
         case .live:
             makeVibration(type: .success)
-            makeToast(toast: &toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+            ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
             Task {
                 await self.viewModel.endLiveActivity()
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             }
             
             sendButton.isEnabled = true
@@ -272,7 +244,7 @@ extension MeteorViewController {
             datePicker.isHidden = false
             liveButton.isSelected = false
             liveBackgroundView.alpha = 0
-            stopButton.isHidden = viewModel.checkEndlessIdling() ? false : true
+            stopButton.isHidden = viewModel.isEndlessIdling() ? false : true
             
         case .live:
             liveButton.isSelected = true
@@ -282,12 +254,37 @@ extension MeteorViewController {
             singleButton.isSelected = false
             endlessButton.isSelected = false
             datePicker.isHidden = true
-            stopButton.isHidden = viewModel.checkLiveIdling() ? false : true
+            stopButton.isHidden = viewModel.isLiveIdling() ? false : true
             
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
                 self.headLabel.textColor = .white
                 self.liveBackgroundView.alpha = 1
+            }
+        }
+    }
+    
+    /// 앱 재실행 후 타이머 체크
+    private func checkTimerRunning() {
+        if viewModel.isEndlessIdling() {
+            endlessTimerLabel.isHidden = false
+            
+            guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
+            let duration = UserDefaults.standard.integer(forKey: UserDefaultsKeys.endlessDurationKey)
+            endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: savedEndlessDate, duration: duration)
+            setEndlessTimer(triggeredDate: savedEndlessDate, duration: duration)
+        }
+    }
+    
+    /// 앱 업데이트 후 너무 이른 customReview 방지
+    private func resetCustomReviewCount() {
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
+        let currentVersion = SettingsViewModel().getCurrentVersion()
+        
+        if lastVersion != currentVersion {
+            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+            if customReviewLimit < reviewCount {
+                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
             }
         }
     }
@@ -299,11 +296,24 @@ extension MeteorViewController {
             guard let self else { return }
             endlessTimerLabel.text = viewModel.setEndlessTimerLabel(triggeredDate: triggeredDate, duration: duration)
             
-            // MARK: 여기서 타이머 중지
-            if viewModel.checkEndlessIdling() == false {
+            // MARK: - 여기서 타이머 중지
+            if viewModel.isEndlessIdling() == false {
                 timer.invalidate()
                 print("❎ timer invalidate")
             }
+        }
+    }
+    
+    private func checkAppReview() {
+        SettingsViewModel().systemAppReview()
+        if SettingsViewModel().customAppReview() {
+            let vc = MeteorReviewViewController()
+            let pullerModel = PullerModel(animator: .default,
+                                          detents: [.medium],
+                                          isModalInPresentation: true,
+                                          hasDynamicHeight: false,
+                                          hasCircleCloseButton: false)
+            presentAsPuller(vc, model: pullerModel)
         }
     }
     
@@ -324,7 +334,7 @@ extension MeteorViewController {
 }
 
 extension MeteorViewController: MeteorInputDelegate {
-    func setInputtedText(text: String) {
+    func updateMeteorTextLabelUI(text: String) {
         viewModel.meteorText = text
         
         if text.isEmpty {
@@ -351,7 +361,7 @@ extension MeteorViewController: MeteorInputDelegate {
     }
 }
 
-extension MeteorViewController : UNUserNotificationCenterDelegate {
+extension MeteorViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         [.banner, .list, .sound, .badge]
     }

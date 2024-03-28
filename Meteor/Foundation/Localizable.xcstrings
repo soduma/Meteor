@@ -1,15 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Delete All" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모두 삭제"
+          }
+        }
+      }
+    },
     "Endless" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Endless"
-          }
-        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18,15 +22,19 @@
         }
       }
     },
+    "History" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기록"
+          }
+        }
+      }
+    },
     "Live" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Live"
-          }
-        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,12 +205,6 @@
     "Started" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Started"
-          }
-        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -214,12 +216,6 @@
     "Stopped" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stopped"
-          }
-        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",

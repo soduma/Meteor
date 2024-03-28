@@ -8,6 +8,7 @@
 import Foundation
 import ActivityKit
 import WidgetKit
+import SwiftData
 import FirebaseDatabase
 
 enum MeteorType {
@@ -59,11 +60,11 @@ class MeteorViewModel {
         }
     }
     
-    func checkEndlessIdling() -> Bool {
+    func isEndlessIdling() -> Bool {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey)
     }
     
-    func checkLiveIdling() -> Bool {
+    func isLiveIdling() -> Bool {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
     }
     
@@ -170,5 +171,11 @@ class MeteorViewModel {
                 .setValue(["text": text])
         }
 #endif
+    }
+    
+    @MainActor func saveHistory() {
+        let container = try? ModelContainer(for: History.self)
+        let history = History(content: meteorText, timestamp: Date().timeIntervalSince1970)
+        container?.mainContext.insert(history)
     }
 }
