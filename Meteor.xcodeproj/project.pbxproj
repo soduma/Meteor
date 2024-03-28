@@ -26,6 +26,8 @@
 		F77683A12A95A45800824E4E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F77683A02A95A45800824E4E /* SnapKit */; };
 		F77683A62A95C92F00824E4E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F77683A52A95C92F00824E4E /* Lottie */; };
 		F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */ = {isa = PBXBuildFile; fileRef = F77683AB2A95CB7D00824E4E /* lottie_face.json */; };
+		F77A9BF92BB593A600CD015B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */; };
+		F77A9BFB2BB5950D00CD015B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */; };
 		F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = F77E752F2A7CABAA008F1883 /* meteor_splash.png */; };
 		F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */; };
 		F77E75422A7E3338008F1883 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75412A7E3338008F1883 /* Base.swift */; };
@@ -118,6 +120,7 @@
 		F77683762A9595DC00824E4E /* Promises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Promises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F776839D2A95A41800824E4E /* MeteorReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorReviewViewController.swift; sourceTree = "<group>"; };
 		F77683AB2A95CB7D00824E4E /* lottie_face.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_face.json; sourceTree = "<group>"; };
+		F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F77E752F2A7CABAA008F1883 /* meteor_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meteor_splash.png; sourceTree = "<group>"; };
 		F77E753F2A7E2AE6008F1883 /* MeteorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorViewModel.swift; sourceTree = "<group>"; };
 		F77E75412A7E3338008F1883 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
+				F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */,
 				F758ACD42BB298A500CC19A9 /* GoogleService-Info.plist */,
 				F7E861332A7B7ED100E5F194 /* Foundation */,
 				F7E861342A7B7EFA00E5F194 /* Common */,
@@ -455,6 +459,7 @@
 				F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */,
 				F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */,
 				F758AC5C2BAD53DB00CC19A9 /* Localizable.xcstrings in Resources */,
+				F77A9BF92BB593A600CD015B /* PrivacyInfo.xcprivacy in Resources */,
 				F758ACD52BB298A500CC19A9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77A9BFB2BB5950D00CD015B /* PrivacyInfo.xcprivacy in Resources */,
 				F7972D492A85EA6700050263 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
