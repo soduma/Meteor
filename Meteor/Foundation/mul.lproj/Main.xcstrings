@@ -326,19 +326,19 @@
       }
     },
     "Fvr-nD-0wz.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Support iOS 16.2 and Later\"; ObjectID = \"Fvr-nD-0wz\";",
+      "comment" : "Class = \"UILabel\"; text = \"Support iOS 17.0 and Later\"; ObjectID = \"Fvr-nD-0wz\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Support iOS 16.2 and Later"
+            "value" : "Support iOS 17.0 and Later"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Support iOS 16.2 and Later"
+            "value" : "Support iOS 17.0 and Later"
           }
         }
       }
@@ -626,7 +626,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "고맙습니다.\nThank you for using. 👋🏻 "
+            "value" : "고맙습니다.\nThank you for using. 👋🏻"
           }
         }
       }

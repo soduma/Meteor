@@ -1,5 +1,5 @@
 {
-  "originHash" : "4baa7b6eb1a3b4f30324d9fe28685771faa7f6c972dbb9abacc7d2729f0433aa",
+  "originHash" : "2c0ad16f1ed754bfe7e1d085308bb28e5a5395fb1aa8a4c3444a6921b2c9adbd",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -13,10 +13,10 @@
     {
       "identity" : "apple-inspired-puller",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/zsergey/Apple-Inspired-Puller.git",
+      "location" : "https://github.com/zsergey/Apple-Inspired-Puller",
       "state" : {
         "branch" : "develop",
-        "revision" : "918705da3670861c1d5d99881cffcd9ba50e443e"
+        "revision" : "bd57514d044e51e8d3781eb689bef5e851d00c5a"
       }
     },
     {
