@@ -58,13 +58,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Can get as a notification\nwhen fill it out and tap send."
+            "value" : "Make a notification\nwith your own content"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내용을 작성하고 보내기를 누르면\n알림으로 받을 수 있어요."
+            "value" : "원하는 내용으로 알림을 만들어보세요"
           }
         }
       }
@@ -74,13 +74,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum number of\n'Single's is 9️⃣"
+            "value" : "Maximum number of\n'Single' is 9️⃣"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "'Single'은 최대 9️⃣개까지\n만들 수 있습니다."
+            "value" : "Single은 최대 9️⃣개까지 만들 수 있습니다."
           }
         }
       }
@@ -96,7 +96,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "'Endless'는 선택한 시간을 간격으로\n반복되는 알림이에요."
+            "value" : "Endless는 선택한 시간을 간격으로\n반복되는 알림이에요."
           }
         }
       }
@@ -112,7 +112,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "'Live'는 1회당 최대 12시간까지 나타나는\n실시간 현황입니다."
+            "value" : "Live는 최대 12시간까지 나타나는\n실시간 현황 기능입니다."
           }
         }
       }
@@ -122,13 +122,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There's a limit to the length of text\nthat can be displayed."
+            "value" : "There's a limit to the length of text\nthat can be displayed ✂️"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내용의 길이가 너무 길면\n글이 잘릴 수 있어요."
+            "value" : "내용의 길이가 너무 길면\n글이 잘릴 수 있어요 ✂️"
           }
         }
       }
