@@ -163,6 +163,24 @@
         }
       }
     },
+    "CYW-C2-CJt.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"고맙습니다.\\nThank you for using. 👋🏻 \"; ObjectID = \"CYW-C2-CJt\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻 "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻"
+          }
+        }
+      }
+    },
     "Dar-LJ-TSU.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Made by\"; ObjectID = \"Dar-LJ-TSU\";",
       "extractionState" : "extracted_with_value",
@@ -344,19 +362,19 @@
       }
     },
     "GqJ-gX-VE4.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Haptic\"; ObjectID = \"GqJ-gX-VE4\";",
+      "comment" : "Class = \"UILabel\"; text = \"Vibration\"; ObjectID = \"GqJ-gX-VE4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Haptic"
+            "value" : "Vibration"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "햅틱"
+            "value" : "진동"
           }
         }
       }
@@ -393,24 +411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "키워드는 띄어쓰기가 없는 영단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
-          }
-        }
-      }
-    },
-    "j0T-WS-rtr.headerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Widget\"; ObjectID = \"j0T-WS-rtr\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Widget"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "위젯"
           }
         }
       }
@@ -482,7 +482,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone의 '화면 상시표시' 기능이 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+            "value" : "iPhone의 '화면 상시표시'가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
           }
         }
       }
@@ -506,37 +506,37 @@
       }
     },
     "mYh-w1-2Gl.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Meteor feature requires\\nnotification allowance.\"; ObjectID = \"mYh-w1-2Gl\";",
+      "comment" : "Class = \"UILabel\"; text = \"⚠️ Meteor feature requires\\nnotification allowance.\"; ObjectID = \"mYh-w1-2Gl\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Meteor feature requires\nnotification allowance."
+            "value" : "⚠️ Meteor feature requires\nnotification allowance."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메테오 기능은\n알림 권한이 필요합니다."
+            "value" : "⚠️ 메테오 기능은\n알림 권한이 필요합니다."
           }
         }
       }
     },
     "NBD-bZ-eN8.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Please take a moment and\\nRate Meteor\\n🥹\"; ObjectID = \"NBD-bZ-eN8\";",
+      "comment" : "Class = \"UILabel\"; text = \"Please take a moment and\\nRate Meteor 🥹\"; ObjectID = \"NBD-bZ-eN8\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Please take a moment and\nRate Meteor\n🥹"
+            "value" : "Please take a moment and\nRate Meteor 🥹"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "잠깐 시간을 내어\n리뷰에 참여해주세요\n🥹"
+            "value" : "잠깐 시간을 내어\n리뷰에 참여해주세요 🥹"
           }
         }
       }
@@ -614,19 +614,37 @@
       }
     },
     "rDY-ZO-TPG.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"고맙습니다.\\nThank you for using. 👋🏻 \"; ObjectID = \"rDY-ZO-TPG\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Can see this photo in the Widget, and approximately 500KB of data is used each time a photo is loaded.\"; ObjectID = \"rDY-ZO-TPG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "고맙습니다.\nThank you for using. 👋🏻 "
+            "value" : "Can see this photo in the Widget, and approximately 500KB of data is used each time a photo is loaded."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "고맙습니다.\nThank you for using. 👋🏻"
+            "value" : "아래의 사진을 위젯에서 볼 수 있습니다. 사진을 불러올 때마다 약 500KB의 데이터가 사용됩니다."
+          }
+        }
+      }
+    },
+    "rDY-ZO-TPG.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Widget\"; ObjectID = \"rDY-ZO-TPG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Widget"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
           }
         }
       }
@@ -645,24 +663,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "보내기"
-          }
-        }
-      }
-    },
-    "Whe-Py-dQR.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Can see this photo in the widget and about 500 KB of data is used each time a photo loaded.\"; ObjectID = \"Whe-Py-dQR\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Can see this photo in the widget and about 500 KB of data is used each time a photo loaded."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "위젯에서 이 사진을 볼 수 있으며, 사진을 불러올 때마다 약 500KB의 데이터가 사용됩니다."
           }
         }
       }

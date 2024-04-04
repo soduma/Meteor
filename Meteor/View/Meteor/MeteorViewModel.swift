@@ -98,35 +98,6 @@ class MeteorViewModel {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    func startLiveActivity(text: String) {
-        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
-        UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
-        
-        let attributes = MeteorWidgetAttributes(value: "none")
-        let state = MeteorWidgetAttributes.ContentState(liveText: text,
-                                                        liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-                                                        hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey))
-        let content = ActivityContent(state: state, staleDate: .distantFuture)
-        
-        do {
-            _ = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func endLiveActivity() async {
-        let finalStatus = MeteorWidgetAttributes.ContentState(liveText: "none",
-                                                              liveColor: 0,
-                                                              hideContentOnLockScreen: false)
-        let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
-        
-        for activity in Activity<MeteorWidgetAttributes>.activities {
-            await activity.end(finalContent, dismissalPolicy: .immediate)
-            print("Ending the Live Activity(Timer): \(activity.id)")
-        }
-    }
-    
     func setEndlessTimerLabel(triggeredDate: Date, duration: Int) -> String {
         var remainSeconds: Int
         let passedSeconds = Int(round(Date().timeIntervalSince(triggeredDate)))
@@ -140,37 +111,86 @@ class MeteorViewModel {
         return String.secondsToString(seconds: remainSeconds)
     }
     
+    /// 앱 업데이트 후 너무 이른 customReview 방지
+    func resetCustomReviewCount() {
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
+        let currentVersion = SettingsViewModel().getCurrentVersion()
+        
+        if lastVersion != currentVersion {
+            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+            if customReviewLimit < reviewCount {
+                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
+            }
+        }
+    }
+    
     func sendToFirebase(type: MeteorType, text: String, duration: Int) {
+        switch type {
+        case .single:
+            firebase(kind: "2_singleText", content: text)
+        case .endless:
+            firebase(kind: "3_endlessText", content: text)
+        case .live:
+            firebase(kind: "4_liveText", content: text)
+        }
+    }
+    
+    private func firebase(kind: String, content: String) {
 #if RELEASE
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: Date())
         let locale = TimeZone.current.identifier
+        let version = SettingsViewModel().getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         
-        switch type {
-        case .single:
-            db.child("singleText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text])
-            
-        case .endless:
-            db.child("endlessText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text, "timer": String(duration / 60)])
-            
-        case .live:
-            db.child("liveText")
-                .child("\(locale)")
-                .child(user)
-                .child(date)
-                .setValue(["text": text])
-        }
+        self.db
+            .child(version)
+            .child(kind)
+            .child(date)
+            .child(locale)
+            .child(user)
+            .setValue(["text": content])
 #endif
+    }
+}
+
+extension MeteorViewModel {
+    func startLiveActivity(text: String) -> Bool {
+        if ActivityAuthorizationInfo().areActivitiesEnabled {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+            UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
+            
+            let attributes = MeteorWidgetAttributes(value: "none")
+            let state = MeteorWidgetAttributes.ContentState(
+                liveText: text,
+                liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
+                hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+            )
+            let content = ActivityContent(state: state, staleDate: .distantFuture)
+            
+            do {
+                _ = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func endLiveActivity() async {
+        let finalStatus = MeteorWidgetAttributes.ContentState(liveText: "none",
+                                                              liveColor: 0,
+                                                              hideContentOnLockScreen: false)
+        let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+        
+        for activity in Activity<MeteorWidgetAttributes>.activities {
+            await activity.end(finalContent, dismissalPolicy: .immediate)
+            print("Ending the Live Activity(Timer): \(activity.id)")
+        }
     }
     
     @MainActor func saveHistory() {

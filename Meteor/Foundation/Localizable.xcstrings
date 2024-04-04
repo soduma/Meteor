@@ -43,6 +43,74 @@
         }
       }
     },
+    "mailCopy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy email"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메일 복사하기"
+          }
+        }
+      }
+    },
+    "mailDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You need the 'Mail' app to send mail."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메일을 보내려면 'Mail' 앱이 필요합니다."
+          }
+        }
+      }
+    },
+    "mailHeader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you have a mail app?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'Mail' 앱이 있습니까?"
+          }
+        }
+      }
+    },
+    "mailMove" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to App Store"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store로 이동하기"
+          }
+        }
+      }
+    },
     "Meteor" : {
       "localizations" : {
         "ko" : {
@@ -58,13 +126,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Make a notification\nwith your own content"
+            "value" : "Make a notification\nwith your own content."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "원하는 내용으로 알림을 만들어보세요"
+            "value" : "원하는 내용으로 알림을 만들어보세요."
           }
         }
       }
@@ -139,6 +207,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "On"
+          }
+        }
+      }
+    },
+    "Please enter the subject" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제목을 입력해주세요"
           }
         }
       }

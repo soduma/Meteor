@@ -69,6 +69,7 @@ struct MeteorHistoryListView: View {
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
+                        .bold()
                         .foregroundStyle(.yellow)
                 }
             }
@@ -115,7 +116,7 @@ struct MeteorHistoryCellView: View {
     let container = try! ModelContainer(for: History.self, configurations: config)
     
     for i in 1..<10 {
-        let history = History(content: "반갑습니다 abc ABC", timestamp: 123)
+        let history = History(content: "반갑습니다 abc ABC", timestamp: TimeInterval(i))
         container.mainContext.insert(history)
     }
     

@@ -65,9 +65,9 @@ class MeteorInputViewController: UIViewController {
     
     private lazy var clearButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
-        button.setImage(UIImage(systemName: "xmark.bin.circle.fill", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemGray2
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold)
+        button.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: imageConfig), for: .normal)
+        button.tintColor = .systemGray
         button.alpha = 0
         button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         return button
@@ -77,7 +77,7 @@ class MeteorInputViewController: UIViewController {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
         button.setImage(UIImage(systemName: "doc.append", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .lightGray
+        button.tintColor = .systemGray2
         button.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -132,7 +132,7 @@ class MeteorInputViewController: UIViewController {
         
         enterButton.snp.makeConstraints {
             $0.top.equalTo(rectangleView.snp.bottom).offset(16)
-            $0.trailing.equalTo(rectangleView).inset(4)
+            $0.trailing.equalTo(rectangleView).inset(3)
         }
         
         [textView, clearButton, historyButton, grabberView].forEach {

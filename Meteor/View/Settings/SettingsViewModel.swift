@@ -17,13 +17,11 @@ enum LiveColor: Int { // UserDefaults 저장을 위해서 Int 처리
 }
 
 class SettingsViewModel {
-    static let defaultURL = "https://source.unsplash.com/random"
-    private var firebaseImageURL = ""
     private let db = Database.database().reference()
+    private var firebaseImageURL = ""
+    static let defaultURL = "https://source.unsplash.com/random"
     
-    var keywordText = ""
     var liveColor = LiveColor.red
-    var imageData: Data?
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
@@ -31,32 +29,37 @@ class SettingsViewModel {
         }
     }
     
-    func getNewImage(keyword: String) {
+    func getNewImage(keyword: String) -> Data? {
+        var imageData: Data?
         var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         counterForGetNewImageTapped += 1
         
         if keyword.isEmpty {
-            guard let url = URL(string: firebaseImageURL) else { return }
-            self.imageData = try? Data(contentsOf: url)
+            guard let url = URL(string: firebaseImageURL) else { return nil }
+            imageData = try? Data(contentsOf: url)
             
         } else {
             let keywordURL = "https://source.unsplash.com/featured/?\(keyword)"
-            guard let imageURL = URL(string: keywordURL) else { return }
-            self.imageData = try? Data(contentsOf: imageURL)
+            guard let imageURL = URL(string: keywordURL) else { return nil }
+            imageData = try? Data(contentsOf: imageURL)
         }
         
-        setWidget(imageData: imageData)
+        
         UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
+        setWidget(imageData: imageData)
         
 #if RELEASE
-        // for Firebase
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         let locale = TimeZone.current.identifier
+        let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         self.db
-            .child("getImage")
+            .child(version)
+            .child("1_getImage")
             .child(user)
-            .setValue(["locale": locale, "count": String(counterForGetNewImageTapped)])
+            .setValue(["locale": locale, "count": String(counterForGetNewImageTapped), "keyword": keyword])
 #endif
+        
+        return imageData
     }
     
     func setWidget(imageData: Data?) {
@@ -97,7 +100,12 @@ class SettingsViewModel {
         UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
     }
     
-    func systemAppReview() {
+    func loadAppReviews() -> Bool {
+        systemAppReview()
+        return customAppReview()
+    }
+    
+    private func systemAppReview() {
         var counterForSystemAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.systemAppReviewCountKey)
         counterForSystemAppReview += 1
         
@@ -109,7 +117,7 @@ class SettingsViewModel {
         }
     }
     
-    func customAppReview() -> Bool {
+    private func customAppReview() -> Bool {
         var counterForCustomAppReview = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
         counterForCustomAppReview += 1
         

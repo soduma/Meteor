@@ -41,9 +41,9 @@ class MeteorViewController: UIViewController {
         setLayout()
         viewModel.initialAppLaunchSettings()
         viewModel.checkAppearanceMode()
+        viewModel.resetCustomReviewCount()
         
         checkTimerRunning()
-        resetCustomReviewCount()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,14 +83,16 @@ class MeteorViewController: UIViewController {
             default:
                 makeVibration(type: .error)
                 
-                DispatchQueue.main.async {
-                    self.authView.isHidden = false
-                    self.authViewBottom.constant = -self.view.bounds.height
-                    
-                    UIView.animate(withDuration: 0.4) {
-                        self.authView.layoutIfNeeded()
-                    }
-                }
+                showAuthView()
+                
+//                DispatchQueue.main.async {
+//                    self.authView.isHidden = false
+//                    self.authViewBottom.constant = -self.view.bounds.height
+//                    
+//                    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5) {
+//                        self.authView.layoutIfNeeded()
+//                    }
+//                }
             }
         }
     }
@@ -118,7 +120,6 @@ class MeteorViewController: UIViewController {
         guard viewModel.meteorText.isEmpty == false else { return }
         meteorTextLabel.resignFirstResponder()
         makeVibration(type: .success)
-        checkAppReview()
         var endlessDuration = 0
         
         switch viewModel.meteorType {
@@ -138,21 +139,23 @@ class MeteorViewController: UIViewController {
             setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
             
         case .live:
-            ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
-            
-            stopButton.isHidden = false
-            viewModel.startLiveActivity(text: viewModel.meteorText)
+            if viewModel.startLiveActivity(text: viewModel.meteorText) {
+                ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
+                stopButton.isHidden = false
+                
+            } else {
+                showAuthView()
+            }
         }
         
         viewModel.saveHistory()
         viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
+        showCustomAppReviewView()
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         sendButton.isEnabled = false
         stopButton.isHidden = true
-        indicatorBackgroundView.isHidden = false
-        activityIndicator.startAnimating()
         
         switch viewModel.meteorType {
         case .single:
@@ -160,6 +163,8 @@ class MeteorViewController: UIViewController {
             
         case .endless:
             makeVibration(type: .medium)
+            indicatorBackgroundView.isHidden = false
+            activityIndicator.startAnimating()
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
@@ -183,9 +188,6 @@ class MeteorViewController: UIViewController {
             }
             
             sendButton.isEnabled = true
-            endlessTimerLabel.isHidden = true
-            indicatorBackgroundView.isHidden = true
-            activityIndicator.stopAnimating()
         }
     }
     
@@ -276,19 +278,6 @@ extension MeteorViewController {
         }
     }
     
-    /// 앱 업데이트 후 너무 이른 customReview 방지
-    private func resetCustomReviewCount() {
-        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingsViewModel().getCurrentVersion()
-        
-        if lastVersion != currentVersion {
-            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
-            }
-        }
-    }
-    
     private func setEndlessTimer(triggeredDate: Date, duration: Int) {
         UserDefaults.standard.set(triggeredDate, forKey: UserDefaultsKeys.endlessTriggeredDateKey)
         
@@ -304,9 +293,8 @@ extension MeteorViewController {
         }
     }
     
-    private func checkAppReview() {
-        SettingsViewModel().systemAppReview()
-        if SettingsViewModel().customAppReview() {
+    private func showCustomAppReviewView() {
+        if SettingsViewModel().loadAppReviews() {
             let vc = MeteorReviewViewController()
             let pullerModel = PullerModel(animator: .default,
                                           detents: [.medium],
@@ -317,9 +305,14 @@ extension MeteorViewController {
         }
     }
     
-    private func prepareAuthView() {
+    private func showAuthView() {
         DispatchQueue.main.async {
-            self.authViewBottom.constant = self.view.bounds.height
+            self.authView.isHidden = false
+            self.authViewBottom.constant = -self.view.bounds.height
+            
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5) {
+                self.authView.layoutIfNeeded()
+            }
         }
     }
     
@@ -327,7 +320,11 @@ extension MeteorViewController {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             if settings.authorizationStatus == .authorized {
                 print("Push notification is enabled")
-                self?.prepareAuthView()
+                
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    authViewBottom.constant = view.bounds.height
+                }
             }
         }
     }
