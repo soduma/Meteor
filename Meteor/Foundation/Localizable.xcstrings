@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "⚠️ Live Expired" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ Live 만료됨"
+          }
+        }
+      }
+    },
     "Delete All" : {
       "localizations" : {
         "ko" : {
@@ -201,16 +211,6 @@
         }
       }
     },
-    "On" : {
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "On"
-          }
-        }
-      }
-    },
     "Please enter the subject" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -266,6 +266,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "잠깐 시간을 내어 리뷰에 참여해주세요."
+          }
+        }
+      }
+    },
+    "Remain time" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남은 시간"
           }
         }
       }

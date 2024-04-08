@@ -29,23 +29,27 @@ class SettingsViewModel {
         }
     }
     
-    func getNewImage(keyword: String) -> Data? {
+    func getNewImage(keyword: String) async -> Data? {
         var imageData: Data?
         var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         counterForGetNewImageTapped += 1
+        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         
-        if keyword.isEmpty {
-            guard let url = URL(string: firebaseImageURL) else { return nil }
-            imageData = try? Data(contentsOf: url)
-            
-        } else {
-            let keywordURL = "https://source.unsplash.com/featured/?\(keyword)"
-            guard let imageURL = URL(string: keywordURL) else { return nil }
-            imageData = try? Data(contentsOf: imageURL)
+        do {
+            if keyword.isEmpty {
+                guard let imageURL = URL(string: firebaseImageURL) else { return nil }
+                (imageData, _) = try await URLSession.shared.data(from: imageURL)
+                
+            } else {
+                let url = "https://source.unsplash.com/featured/?\(keyword)"
+                guard let imageURL = URL(string: url) else { return nil }
+                (imageData, _) = try await URLSession.shared.data(from: imageURL)
+                
+            }
+        } catch {
+            print(error.localizedDescription)
         }
         
-        
-        UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         setWidget(imageData: imageData)
         
 #if RELEASE
@@ -100,6 +104,11 @@ class SettingsViewModel {
         UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
     }
     
+    func getCurrentVersion() -> String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
+        return version
+    }
+    
     func loadAppReviews() -> Bool {
         systemAppReview()
         return customAppReview()
@@ -132,10 +141,5 @@ class SettingsViewModel {
         } else {
             return false
         }
-    }
-    
-    func getCurrentVersion() -> String {
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
-        return version
     }
 }

@@ -78,15 +78,11 @@ class SettingsViewController: UITableViewController {
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else { return }
-            guard let imageData = viewModel.getNewImage(keyword: keywordText) else { return }
-            
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: imageData)
-                self.activityIndicatorView.isHidden = true
-                self.activityIndicatorView.stopAnimating()
-            }
+        Task {
+            guard let imageData = await viewModel.getNewImage(keyword: keywordText) else { return }
+            imageView.image = UIImage(data: imageData)
+            activityIndicatorView.isHidden = true
+            activityIndicatorView.stopAnimating()
         }
     }
     
@@ -112,11 +108,7 @@ class SettingsViewController: UITableViewController {
             composeViewController.setMessageBody(bodyString, isHTML: false)
             present(composeViewController, animated: true)
         } else {
-            let sendMailErrorAlert = UIAlertController(
-                title: NSLocalizedString("mailHeader", comment: ""),
-                message: NSLocalizedString("mailDescription", comment: ""),
-                preferredStyle: .alert
-            )
+            let sendMailErrorAlert = UIAlertController(title: NSLocalizedString("mailHeader", comment: ""), message: NSLocalizedString("mailDescription", comment: ""), preferredStyle: .alert)
             
             let appStoreAction = UIAlertAction(title: NSLocalizedString("mailMove", comment: ""), style: .default) { _ in
                 if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"),
@@ -170,18 +162,16 @@ class SettingsViewController: UITableViewController {
                 await MeteorViewModel().endLiveActivity()
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-                _ = MeteorViewModel().startLiveActivity(text: liveText)
+                _ = await MeteorViewModel().startLiveActivity(text: liveText)
             }
-        } else {
-            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
         }
+//        else {
+//            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
+//        }
     }
     
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
         makeVibration(type: .rigid)
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-            _ = viewModel.loadAppReviews()
-        }
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -194,13 +184,24 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+            _ = viewModel.loadAppReviews()
+            
             Task {
                 await MeteorViewModel().endLiveActivity()
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-                _ = MeteorViewModel().startLiveActivity(text: liveText)
+                _ = await MeteorViewModel().startLiveActivity(text: liveText)
             }
         }
+        
+//        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+////            Task {
+//                MeteorViewModel().endLiveActivity()
+//                
+//                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+//                _ = MeteorViewModel().startLiveActivity(text: liveText)
+////            }
+//        }
     }
     
     @IBAction func rateSubmitTapped(_ sender: UIButton) {

@@ -596,19 +596,19 @@
       }
     },
     "Pmw-Ai-Bkf.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Contact\"; ObjectID = \"Pmw-Ai-Bkf\";",
+      "comment" : "Class = \"UILabel\"; text = \"Feedback\"; ObjectID = \"Pmw-Ai-Bkf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Contact"
+            "value" : "Feedback"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contact"
+            "value" : "Feedback"
           }
         }
       }

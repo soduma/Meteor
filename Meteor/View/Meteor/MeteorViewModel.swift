@@ -27,36 +27,43 @@ class MeteorViewModel {
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
     
-    func initialAppLaunchSettings() {
+    var currentActivity: Activity<MeteorWidgetAttributes>?
+    var activityState: ActivityState?
+    
+    func initialAppLaunchSettings() async {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
-            guard let url = URL(string: SettingsViewModel.defaultURL) else { return }
-            URLSession.shared.dataTask(with: url) { (data, _, _) in
-                guard let imageData = data else { return }
-                
-                DispatchQueue.main.async {
-                    SettingsViewModel().setWidget(imageData: imageData)
-                }
-            }.resume()
+            Task {
+                guard let url = URL(string: SettingsViewModel.defaultURL) else { return }
+                let (imageData, _) = try await URLSession.shared.data(from: url)
+                SettingsViewModel().setWidget(imageData: imageData)
+            }
+            
+        } else {
+            checkAppearanceMode()
+            resetCustomReviewCount()
+            await loadLiveActivity()
         }
     }
     
     func checkAppearanceMode() {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
-        let window = windowScene?.windows.first
-        
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey) == true {
-            window?.overrideUserInterfaceStyle = .light
-        } else if UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey) == true {
-            window?.overrideUserInterfaceStyle = .dark
-        } else {
-            window?.overrideUserInterfaceStyle = .unspecified
+        DispatchQueue.main.async {
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey) == true {
+                window?.overrideUserInterfaceStyle = .light
+            } else if UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey) == true {
+                window?.overrideUserInterfaceStyle = .dark
+            } else {
+                window?.overrideUserInterfaceStyle = .unspecified
+            }
         }
     }
     
@@ -129,17 +136,17 @@ class MeteorViewModel {
         case .single:
             firebase(kind: "2_singleText", content: text)
         case .endless:
-            firebase(kind: "3_endlessText", content: text)
+            firebase(kind: "3_endlessText", content: text, duration: duration)
         case .live:
             firebase(kind: "4_liveText", content: text)
         }
     }
     
-    private func firebase(kind: String, content: String) {
+    private func firebase(kind: String, content: String, duration: Int = 0) {
 #if RELEASE
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = dateFormatter.string(from: Date())
         let locale = TimeZone.current.identifier
         let version = SettingsViewModel().getCurrentVersion().replacingOccurrences(of: ".", with: "_")
@@ -147,49 +154,124 @@ class MeteorViewModel {
         self.db
             .child(version)
             .child(kind)
-            .child(date)
             .child(locale)
+            .child(date)
             .child(user)
-            .setValue(["text": content])
+            .setValue(kind == "3_endlessText"
+                      ? ["text": content.replacingOccurrences(of: "\n", with: "/-/"), "duration": String(duration / 60)]
+                      : ["text": content.replacingOccurrences(of: "\n", with: "/-/")]
+            )
 #endif
     }
 }
 
 extension MeteorViewModel {
-    func startLiveActivity(text: String) -> Bool {
+    func loadLiveActivity() async {
+        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
+        currentActivity = activity
+        await observeActivity(activity: activity)
+    }
+    
+    func startLiveActivity(text: String) async -> Bool {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
             UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
+            
+            // MARK: - Live 타임아웃 때 Local notification 등록
+//            let contents = UNMutableNotificationContent()
+//            contents.subtitle = NSLocalizedString("⚠️ Live Expired", comment: "")
+//            contents.body = text
+//            contents.sound = UNNotificationSound.default
+//            
+//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(5), repeats: false)
+//            let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
+//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            // MARK: -
             
             let attributes = MeteorWidgetAttributes(value: "none")
             let state = MeteorWidgetAttributes.ContentState(
                 liveText: text,
                 liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-                hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+                hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
+                triggerDate: Date()
             )
             let content = ActivityContent(state: state, staleDate: .distantFuture)
             
             do {
-                _ = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+                let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+                await observeActivity(activity: activity)
+                
             } catch {
                 print(error.localizedDescription)
             }
-            
             return true
         } else {
             return false
         }
     }
     
+    private func observeActivity(activity: Activity<MeteorWidgetAttributes>) async {
+//        Task {
+            for await activityState in activity.activityStateUpdates {
+                if activityState == .dismissed {
+                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+                } else if activityState == .active {
+                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+                }
+                self.activityState = activityState
+            }
+//        }
+    }
+    
     func endLiveActivity() async {
-        let finalStatus = MeteorWidgetAttributes.ContentState(liveText: "none",
-                                                              liveColor: 0,
-                                                              hideContentOnLockScreen: false)
-        let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
         
-        for activity in Activity<MeteorWidgetAttributes>.activities {
-            await activity.end(finalContent, dismissalPolicy: .immediate)
-            print("Ending the Live Activity(Timer): \(activity.id)")
+        // MARK: - Local notification 해제
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["live"])
+        
+        let finalState = MeteorWidgetAttributes.ContentState(liveText: "none",
+                                                             liveColor: 0,
+                                                             hideContentOnLockScreen: false,
+                                                             triggerDate: Date()
+        )
+        let finalContent = ActivityContent(state: finalState, staleDate: nil)
+        
+//        Task {
+            for activity in Activity<MeteorWidgetAttributes>.activities {
+                await activity.end(finalContent, dismissalPolicy: .immediate)
+                print("Ending the Live Activity(Timer): \(activity.id)")
+//            }
+        }
+    }
+    
+    func isLiveActivityAlive() -> Bool {
+        switch activityState {
+        case .active, .stale:
+            return true
+        case .ended, .dismissed:
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+            ToastManager.makeToast(toast: &ToastManager.toast, title: "end dismiss", imageName: "swirl.circle.righthalf.filled")
+            return false
+        default:
+            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+            ToastManager.makeToast(toast: &ToastManager.toast, title: "default", imageName: "swirl.circle.righthalf.filled")
+            return false
+        }
+    }
+    
+    func isLiveActivityAliveaaaa() -> String {
+        switch activityState {
+        case .active:
+            return "active"
+        case .stale:
+            return "stale"
+        case .ended:
+            return "ended"
+        case .dismissed:
+            return "dismissed"
+        case .none:
+            return "none"
+        default:
+            return "default"
         }
     }
     
