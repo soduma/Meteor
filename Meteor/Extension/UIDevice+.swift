@@ -9,6 +9,7 @@
 import UIKit
 
 public extension UIDevice {
+
     static let modelName: String = {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -105,8 +106,13 @@ public extension UIDevice {
             #elseif os(tvOS)
             switch identifier {
             case "AppleTV5,3": return "Apple TV 4"
-            case "AppleTV6,2": return "Apple TV 4K"
+            case "AppleTV6,2", "AppleTV11,1", "AppleTV14,1": return "Apple TV 4K"
             case "i386", "x86_64": return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "tvOS"))"
+            default: return identifier
+            }
+            #elseif os(visionOS)
+            switch identifier {
+            case "RealityDevice14,1": return "Apple Vision Pro"
             default: return identifier
             }
             #endif

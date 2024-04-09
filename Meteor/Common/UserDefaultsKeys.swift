@@ -51,9 +51,9 @@ class UserDefaultsKeys {
     }
     
     /// live 활성화 확인
-    class var liveIdlingKey: String {
-        return "LiveIdling"
-    }
+//    class var liveIdlingKey: String {
+//        return "LiveIdling"
+//    }
     
     /// 마지막으로 입력된 live의 메세지 (설정의 잠금화면 스위치를 변경할 때 사용)
     class var liveTextKey: String {

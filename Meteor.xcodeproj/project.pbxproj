@@ -35,7 +35,6 @@
 		F77E75492A80CE87008F1883 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingsViewModel.swift */; };
 		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
 		F78A549E2AB43E5700507678 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78A549D2AB43E5700507678 /* ToastManager.swift */; };
-		F7972D3F2A85EA6600050263 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483426A551C700DC3A59 /* WidgetKit.framework */; };
 		F7972D402A85EA6600050263 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483626A551C700DC3A59 /* SwiftUI.framework */; };
 		F7972D432A85EA6600050263 /* MeteorWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D422A85EA6600050263 /* MeteorWidgetBundle.swift */; };
 		F7972D452A85EA6600050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
@@ -43,6 +42,7 @@
 		F7972D492A85EA6700050263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7972D482A85EA6700050263 /* Assets.xcassets */; };
 		F7972D4D2A85EA6700050263 /* MeteorWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F7972D512A85F46200050263 /* MeteorWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorWidgetLiveActivity.swift */; };
+		F79CED572BBD134600683914 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CED502BBD0FDC00683914 /* ActivityKit.framework */; };
 		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */; };
@@ -134,6 +134,7 @@
 		F7972D462A85EA6600050263 /* MeteorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidget.swift; sourceTree = "<group>"; };
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F79CED502BBD0FDC00683914 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
 		F7D622242AA4AC610051740B /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorInputViewController.swift; sourceTree = "<group>"; };
 		F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
@@ -159,8 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F79CED572BBD134600683914 /* ActivityKit.framework in Frameworks */,
 				F7972D402A85EA6600050263 /* SwiftUI.framework in Frameworks */,
-				F7972D3F2A85EA6600050263 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +171,7 @@
 		2E19E502B0E8C49E10E0635A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F79CED502BBD0FDC00683914 /* ActivityKit.framework */,
 				F77683662A9595DC00824E4E /* FirebaseAnalytics.xcframework */,
 				F77683672A9595DC00824E4E /* FirebaseCore.framework */,
 				F77683682A9595DC00824E4E /* FirebaseCoreExtension.framework */,
@@ -748,7 +750,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.3;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -779,7 +781,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.3;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soduma.Meteor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -9,6 +9,7 @@ import UIKit
 import UserNotifications
 import Toast
 import Puller
+import ActivityKit
 
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
@@ -39,19 +40,30 @@ class MeteorViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
-        viewModel.initialAppLaunchSettings()
-        viewModel.checkAppearanceMode()
-        
         checkTimerRunning()
-        resetCustomReviewCount()
+        
+        Task {
+            await viewModel.initialAppLaunchSettings()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkToHideStopButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(checkNotificationAuth),
+                                               selector: #selector(removeAuthViewAfterAllowAuthorization),
                                                name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(checkToHideStopButton),
+                                               name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
@@ -66,31 +78,20 @@ class MeteorViewController: UIViewController {
     
     @IBAction func meteorTextLabelTapped(_ sender: UITapGestureRecognizer) {
         // 알림 권한 확인
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            guard let self else { return }
-            
-            switch settings.authorizationStatus {
+        Task {
+            let setting = await UNUserNotificationCenter.current().notificationSettings()
+            switch setting.authorizationStatus {
             case .authorized:
                 makeVibration(type: .medium)
                 
-                DispatchQueue.main.async {
-                    let vc = MeteorInputViewController(meteorText: self.viewModel.meteorText, labelPositionY: self.meteorTextLabel.frame.midY)
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.delegate = self
-                    self.present(vc, animated: false)
-                }
+                let vc = MeteorInputViewController(meteorText: viewModel.meteorText, labelPositionY: meteorTextLabel.frame.midY)
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.delegate = self
+                present(vc, animated: false)
                 
             default:
                 makeVibration(type: .error)
-                
-                DispatchQueue.main.async {
-                    self.authView.isHidden = false
-                    self.authViewBottom.constant = -self.view.bounds.height
-                    
-                    UIView.animate(withDuration: 0.4) {
-                        self.authView.layoutIfNeeded()
-                    }
-                }
+                showAuthView()
             }
         }
     }
@@ -111,14 +112,11 @@ class MeteorViewController: UIViewController {
         makeVibration(type: .rigid)
         viewModel.meteorType = .live
         updateStackButtonUI(type: .live)
-        
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         guard viewModel.meteorText.isEmpty == false else { return }
-        meteorTextLabel.resignFirstResponder()
         makeVibration(type: .success)
-        checkAppReview()
         var endlessDuration = 0
         
         switch viewModel.meteorType {
@@ -138,21 +136,26 @@ class MeteorViewController: UIViewController {
             setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
             
         case .live:
+            stopButton.isHidden = false
             ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
             
-            stopButton.isHidden = false
-            viewModel.startLiveActivity(text: viewModel.meteorText)
+            Task {
+                if await viewModel.startLiveActivity(text: viewModel.meteorText) {
+                    
+                } else {
+                    showAuthView()
+                }
+            }
         }
         
         viewModel.saveHistory()
         viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
+        showCustomAppReviewView()
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         sendButton.isEnabled = false
         stopButton.isHidden = true
-        indicatorBackgroundView.isHidden = false
-        activityIndicator.startAnimating()
         
         switch viewModel.meteorType {
         case .single:
@@ -160,7 +163,9 @@ class MeteorViewController: UIViewController {
             
         case .endless:
             makeVibration(type: .medium)
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
+            activityIndicator.startAnimating()
+            indicatorBackgroundView.isHidden = false
+            endlessTimerLabel.attributedText = endlessTimerLabel.text?.strikeThrough()
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
@@ -172,20 +177,19 @@ class MeteorViewController: UIViewController {
                 endlessTimerLabel.isHidden = true
                 indicatorBackgroundView.isHidden = true
                 activityIndicator.stopAnimating()
+                endlessTimerLabel.attributedText = endlessTimerLabel.text?.removeStrike()
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             }
             
         case .live:
             makeVibration(type: .success)
             ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
+            
             Task {
-                await self.viewModel.endLiveActivity()
-                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+                await viewModel.endLiveActivity()
             }
             
             sendButton.isEnabled = true
-            endlessTimerLabel.isHidden = true
-            indicatorBackgroundView.isHidden = true
-            activityIndicator.stopAnimating()
         }
     }
     
@@ -244,7 +248,7 @@ extension MeteorViewController {
             datePicker.isHidden = false
             liveButton.isSelected = false
             liveBackgroundView.alpha = 0
-            stopButton.isHidden = viewModel.isEndlessIdling() ? false : true
+            stopButton.isHidden = !viewModel.isEndlessIdling()
             
         case .live:
             liveButton.isSelected = true
@@ -254,7 +258,7 @@ extension MeteorViewController {
             singleButton.isSelected = false
             endlessButton.isSelected = false
             datePicker.isHidden = true
-            stopButton.isHidden = viewModel.isLiveIdling() ? false : true
+            stopButton.isHidden = !viewModel.isLiveActivityAlive()
             
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
@@ -276,19 +280,6 @@ extension MeteorViewController {
         }
     }
     
-    /// 앱 업데이트 후 너무 이른 customReview 방지
-    private func resetCustomReviewCount() {
-        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingsViewModel().getCurrentVersion()
-        
-        if lastVersion != currentVersion {
-            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
-            }
-        }
-    }
-    
     private func setEndlessTimer(triggeredDate: Date, duration: Int) {
         UserDefaults.standard.set(triggeredDate, forKey: UserDefaultsKeys.endlessTriggeredDateKey)
         
@@ -301,12 +292,12 @@ extension MeteorViewController {
                 timer.invalidate()
                 print("❎ timer invalidate")
             }
+            // MARK: -
         }
     }
     
-    private func checkAppReview() {
-        SettingsViewModel().systemAppReview()
-        if SettingsViewModel().customAppReview() {
+    private func showCustomAppReviewView() {
+        if SettingsViewModel().loadAppReviews() {
             let vc = MeteorReviewViewController()
             let pullerModel = PullerModel(animator: .default,
                                           detents: [.medium],
@@ -317,17 +308,39 @@ extension MeteorViewController {
         }
     }
     
-    private func prepareAuthView() {
+    private func showAuthView() {
         DispatchQueue.main.async {
-            self.authViewBottom.constant = self.view.bounds.height
+            self.authView.isHidden = false
+            self.authViewBottom.constant = -self.view.bounds.height
+            
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5) {
+                self.authView.layoutIfNeeded()
+            }
         }
     }
     
-    @objc private func checkNotificationAuth() {
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
-            if settings.authorizationStatus == .authorized {
-                print("Push notification is enabled")
-                self?.prepareAuthView()
+    @objc private func removeAuthViewAfterAllowAuthorization() {
+        Task {
+            let setting = await UNUserNotificationCenter.current().notificationSettings()
+            if setting.authorizationStatus == .authorized {
+                authViewBottom.constant = view.bounds.height
+            }
+        }
+    }
+    
+    @objc private func checkToHideStopButton() {
+        switch viewModel.meteorType {
+        case .single:
+            stopButton.isHidden = true
+        case .endless:
+            stopButton.isHidden = !viewModel.isEndlessIdling()
+        case .live:
+            if let activity = Activity<MeteorWidgetAttributes>.activities.first {
+                if activity.activityState == .active || activity.activityState == .ended {
+                    stopButton.isHidden = false
+                }
+            } else {
+                stopButton.isHidden = true
             }
         }
     }
