@@ -53,20 +53,24 @@ class SettingsViewModel {
         setWidget(imageData: imageData)
         
 #if RELEASE
-        guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
+        guard let user = await UIDevice.current.identifierForVendor?.uuidString else { return nil }
         let locale = TimeZone.current.identifier
         let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = dateFormatter.string(from: Date())
         
-        self.db
-            .child(version)
-            .child("1_getImage")
-            .child(locale)
-            .child(date)
-            .child(user)
-            .setValue(["count": String(counterForGetNewImageTapped), "keyword": keyword])
+        do {
+            try await self.db
+                .child(version)
+                .child("1_getImage")
+                .child(locale)
+                .child(date)
+                .child(user)
+                .setValue(["count": String(counterForGetNewImageTapped), "keyword": keyword])
+        } catch {
+            print(error.localizedDescription)
+        }
 #endif
         return imageData
     }
