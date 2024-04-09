@@ -30,7 +30,11 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateSubmitButton: UIButton!
     @IBOutlet weak var keywordTextField: UITextField!
     
-    let viewModel = SettingsViewModel()
+//    var currentActivity: Activity<MeteorWidgetAttributes>?
+//    var activityState: ActivityState?
+    
+    private let viewModel = SettingsViewModel()
+    private let meteorViewModel = MeteorViewModel()
     var keywordText = ""
         
     override func viewDidLoad() {
@@ -156,18 +160,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
-        
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-            Task {
-                await MeteorViewModel().endLiveActivity()
-                
-                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-                _ = await MeteorViewModel().startLiveActivity(text: liveText)
-            }
-        }
-//        else {
-//            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.liveTextKey)
-//        }
+        restartLiveActivity()
     }
     
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
@@ -181,26 +174,21 @@ class SettingsViewController: UITableViewController {
         default:
             viewModel.liveColor = .clear
         }
-        UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
+        UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+        restartLiveActivity()
+    }
+    
+    private func restartLiveActivity() {
+//        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
             _ = viewModel.loadAppReviews()
             
             Task {
-                await MeteorViewModel().endLiveActivity()
+                await meteorViewModel.endLiveActivity()
                 
                 let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-                _ = await MeteorViewModel().startLiveActivity(text: liveText)
+                _ = await meteorViewModel.startLiveActivity(text: liveText)
             }
-        }
-        
-//        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-////            Task {
-//                MeteorViewModel().endLiveActivity()
-//                
-//                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-//                _ = MeteorViewModel().startLiveActivity(text: liveText)
-////            }
 //        }
     }
     

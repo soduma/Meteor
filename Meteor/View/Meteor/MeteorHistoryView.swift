@@ -10,11 +10,8 @@ import SwiftData
 
 struct MeteorHistoryView: View {
     var modelContainer: ModelContainer = {
-        let schema = Schema([History.self])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
@@ -113,12 +110,11 @@ struct MeteorHistoryCellView: View {
 
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: History.self, configurations: config)
+    let modelContainer = try! ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self, configurations: config)
     
     for i in 1..<10 {
         let history = History(content: "반갑습니다 abc ABC", timestamp: TimeInterval(i))
-        container.mainContext.insert(history)
+        modelContainer.mainContext.insert(history)
     }
-    
-    return MeteorHistoryView(modelContainer: container)
+    return MeteorHistoryView(modelContainer: modelContainer)
 }

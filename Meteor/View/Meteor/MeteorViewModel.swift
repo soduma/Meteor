@@ -27,8 +27,13 @@ class MeteorViewModel {
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
     
-    var currentActivity: Activity<MeteorWidgetAttributes>?
-    var activityState: ActivityState?
+//    var currentActivity: Activity<MeteorWidgetAttributes>?
+//    var activityState: ActivityState?
+//    
+//    init(currentActivity: Activity<MeteorWidgetAttributes>? = nil, activityState: ActivityState? = nil) {
+//        self.currentActivity = currentActivity
+//        self.activityState = activityState
+//    }
     
     func initialAppLaunchSettings() async {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
@@ -71,9 +76,9 @@ class MeteorViewModel {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey)
     }
     
-    func isLiveIdling() -> Bool {
-        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
-    }
+//    func isLiveIdling() -> Bool {
+//        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
+//    }
     
     func sendSingleMeteor(text: String) {
         var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
@@ -168,23 +173,30 @@ class MeteorViewModel {
 extension MeteorViewModel {
     func loadLiveActivity() async {
         guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-        currentActivity = activity
+//        currentActivity = activity
         await observeActivity(activity: activity)
     }
     
     func startLiveActivity(text: String) async -> Bool {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+//            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
             UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
             
             // MARK: - Live 타임아웃 때 Local notification 등록
-//            let contents = UNMutableNotificationContent()
-//            contents.subtitle = NSLocalizedString("⚠️ Live Expired", comment: "")
-//            contents.body = text
-//            contents.sound = UNNotificationSound.default
-//            
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(5), repeats: false)
-//            let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
+            let contents = UNMutableNotificationContent()
+            contents.subtitle = NSLocalizedString("⚠️ Live Expired", comment: "")
+            contents.body = text
+            contents.sound = UNNotificationSound.default
+            let twelveHours: TimeInterval = 12 * 60 * 60
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: twelveHours, repeats: false)
+            let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
+            
+            do {
+                try await UNUserNotificationCenter.current().add(request)
+            } catch {
+                print(error.localizedDescription)
+            }
 //            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             // MARK: -
             
@@ -211,20 +223,24 @@ extension MeteorViewModel {
     }
     
     private func observeActivity(activity: Activity<MeteorWidgetAttributes>) async {
+        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
 //        Task {
             for await activityState in activity.activityStateUpdates {
                 if activityState == .dismissed {
-                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+                    await endLiveActivity()
+//                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+//                    self.activityState = activityState
                 } else if activityState == .active {
-                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+//                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+//                    self.activityState = activityState
+                } else {
+//                    self.activityState = nil
                 }
-                self.activityState = activityState
             }
 //        }
     }
     
     func endLiveActivity() async {
-        
         // MARK: - Local notification 해제
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["live"])
         
@@ -244,21 +260,26 @@ extension MeteorViewModel {
     }
     
     func isLiveActivityAlive() -> Bool {
+        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return false }
+        let activityState = activity.activityState
         switch activityState {
         case .active, .stale:
+//            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
             return true
         case .ended, .dismissed:
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             ToastManager.makeToast(toast: &ToastManager.toast, title: "end dismiss", imageName: "swirl.circle.righthalf.filled")
             return false
         default:
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             ToastManager.makeToast(toast: &ToastManager.toast, title: "default", imageName: "swirl.circle.righthalf.filled")
             return false
         }
     }
     
     func isLiveActivityAliveaaaa() -> String {
+        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return "" }
+        let activityState = activity.activityState
         switch activityState {
         case .active:
             return "active"
@@ -268,15 +289,15 @@ extension MeteorViewModel {
             return "ended"
         case .dismissed:
             return "dismissed"
-        case .none:
-            return "none"
+//        case .none:
+//            return "none"
         default:
             return "default"
         }
     }
     
     @MainActor func saveHistory() {
-        let container = try? ModelContainer(for: History.self)
+        let container = try? ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
         let history = History(content: meteorText, timestamp: Date().timeIntervalSince1970)
         container?.mainContext.insert(history)
     }

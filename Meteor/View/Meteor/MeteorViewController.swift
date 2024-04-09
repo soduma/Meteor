@@ -9,6 +9,7 @@ import UIKit
 import UserNotifications
 import Toast
 import Puller
+import ActivityKit
 
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
@@ -50,7 +51,7 @@ class MeteorViewController: UIViewController {
         super.viewWillAppear(animated)
         
         hideStopButton()
-        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
+//        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,7 +115,8 @@ class MeteorViewController: UIViewController {
         viewModel.meteorType = .live
         updateStackButtonUI(type: .live)
         
-        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
+//        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
+//        print(viewModel.activityState)
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -188,7 +190,7 @@ class MeteorViewController: UIViewController {
             
             Task {
                 await viewModel.endLiveActivity()
-                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
+//                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             }
             
             sendButton.isEnabled = true
@@ -260,7 +262,7 @@ extension MeteorViewController {
             singleButton.isSelected = false
             endlessButton.isSelected = false
             datePicker.isHidden = true
-            stopButton.isHidden = viewModel.isLiveIdling() ? false : true
+            stopButton.isHidden = viewModel.isLiveActivityAlive() ? false : true
             
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
@@ -331,9 +333,25 @@ extension MeteorViewController {
     }
     
     @objc private func hideStopButton() {
-        if viewModel.isLiveActivityAlive() == false && viewModel.meteorType == .live {
+        if let activity = Activity<MeteorWidgetAttributes>.activities.first {
+            let activityState = activity.activityState
+            if activityState == .active {
+                if viewModel.meteorType == .live {
+                    stopButton.isHidden = false
+                }
+            }
+        } else {
             stopButton.isHidden = true
         }
+//        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
+//        let activityState = activity.activityState
+//        if activityState == .active {
+//            if viewModel.meteorType == .live {
+//                stopButton.isHidden = false
+//            }
+//        } else {
+//            stopButton.isHidden = true
+//        }
     }
 }
 
