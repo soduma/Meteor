@@ -50,8 +50,7 @@ class MeteorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        hideStopButton()
-//        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
+        checkToHideStopButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,10 +62,9 @@ class MeteorViewController: UIViewController {
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(hideStopButton),
+                                               selector: #selector(checkToHideStopButton),
                                                name: UIApplication.didBecomeActiveNotification,
-                                               object: nil
-        )
+                                               object: nil)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UNUserNotificationCenter.current().delegate = self
@@ -114,9 +112,6 @@ class MeteorViewController: UIViewController {
         makeVibration(type: .rigid)
         viewModel.meteorType = .live
         updateStackButtonUI(type: .live)
-        
-//        meteorTextLabel.text = viewModel.isLiveActivityAliveaaaa()
-//        print(viewModel.activityState)
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
@@ -168,9 +163,9 @@ class MeteorViewController: UIViewController {
             
         case .endless:
             makeVibration(type: .medium)
-            indicatorBackgroundView.isHidden = false
             activityIndicator.startAnimating()
-            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
+            indicatorBackgroundView.isHidden = false
+            endlessTimerLabel.attributedText = endlessTimerLabel.text?.strikeThrough()
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.1) { [weak self] in
@@ -182,6 +177,8 @@ class MeteorViewController: UIViewController {
                 endlessTimerLabel.isHidden = true
                 indicatorBackgroundView.isHidden = true
                 activityIndicator.stopAnimating()
+                endlessTimerLabel.attributedText = endlessTimerLabel.text?.removeStrike()
+                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             }
             
         case .live:
@@ -190,7 +187,6 @@ class MeteorViewController: UIViewController {
             
             Task {
                 await viewModel.endLiveActivity()
-//                UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
             }
             
             sendButton.isEnabled = true
@@ -252,7 +248,7 @@ extension MeteorViewController {
             datePicker.isHidden = false
             liveButton.isSelected = false
             liveBackgroundView.alpha = 0
-            stopButton.isHidden = viewModel.isEndlessIdling() ? false : true
+            stopButton.isHidden = !viewModel.isEndlessIdling()
             
         case .live:
             liveButton.isSelected = true
@@ -262,7 +258,7 @@ extension MeteorViewController {
             singleButton.isSelected = false
             endlessButton.isSelected = false
             datePicker.isHidden = true
-            stopButton.isHidden = viewModel.isLiveActivityAlive() ? false : true
+            stopButton.isHidden = !viewModel.isLiveActivityAlive()
             
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
@@ -332,26 +328,21 @@ extension MeteorViewController {
         }
     }
     
-    @objc private func hideStopButton() {
-        if let activity = Activity<MeteorWidgetAttributes>.activities.first {
-            let activityState = activity.activityState
-            if activityState == .active {
-                if viewModel.meteorType == .live {
+    @objc private func checkToHideStopButton() {
+        switch viewModel.meteorType {
+        case .single:
+            stopButton.isHidden = true
+        case .endless:
+            stopButton.isHidden = !viewModel.isEndlessIdling()
+        case .live:
+            if let activity = Activity<MeteorWidgetAttributes>.activities.first {
+                if activity.activityState == .active || activity.activityState == .ended {
                     stopButton.isHidden = false
                 }
+            } else {
+                stopButton.isHidden = true
             }
-        } else {
-            stopButton.isHidden = true
         }
-//        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-//        let activityState = activity.activityState
-//        if activityState == .active {
-//            if viewModel.meteorType == .live {
-//                stopButton.isHidden = false
-//            }
-//        } else {
-//            stopButton.isHidden = true
-//        }
     }
 }
 

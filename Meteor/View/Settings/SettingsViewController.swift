@@ -30,11 +30,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var rateSubmitButton: UIButton!
     @IBOutlet weak var keywordTextField: UITextField!
     
-//    var currentActivity: Activity<MeteorWidgetAttributes>?
-//    var activityState: ActivityState?
-    
     private let viewModel = SettingsViewModel()
-    private let meteorViewModel = MeteorViewModel()
     var keywordText = ""
         
     override func viewDidLoad() {
@@ -180,16 +176,15 @@ class SettingsViewController: UITableViewController {
     }
     
     private func restartLiveActivity() {
-//        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey) {
-            _ = viewModel.loadAppReviews()
+        _ = viewModel.loadAppReviews()
+        
+        Task {
+            let meteorViewModel = MeteorViewModel()
+            await meteorViewModel.endLiveActivity()
             
-            Task {
-                await meteorViewModel.endLiveActivity()
-                
-                let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-                _ = await meteorViewModel.startLiveActivity(text: liveText)
-            }
-//        }
+            let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+            _ = await meteorViewModel.startLiveActivity(text: liveText)
+        }
     }
     
     @IBAction func rateSubmitTapped(_ sender: UIButton) {

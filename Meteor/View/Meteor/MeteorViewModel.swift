@@ -76,10 +76,6 @@ class MeteorViewModel {
         return UserDefaults.standard.bool(forKey: UserDefaultsKeys.endlessIdlingKey)
     }
     
-//    func isLiveIdling() -> Bool {
-//        return UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveIdlingKey)
-//    }
-    
     func sendSingleMeteor(text: String) {
         var index = UserDefaults.standard.integer(forKey: UserDefaultsKeys.singleIndexKey)
         index += 1
@@ -155,6 +151,16 @@ class MeteorViewModel {
         let date = dateFormatter.string(from: Date())
         let locale = TimeZone.current.identifier
         let version = SettingsViewModel().getCurrentVersion().replacingOccurrences(of: ".", with: "_")
+        let text = content.replacingOccurrences(of: "\n", with: "/-/")
+        var value: Any? {
+            if kind == "3_endlessText" {
+                ["text": text, "duration": duration / 60]
+            } else if kind == "4_liveText" {
+                ["text": text, "liveColor": UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)]
+            } else {
+                ["text": text]
+            }
+        }
         
         self.db
             .child(version)
@@ -162,29 +168,30 @@ class MeteorViewModel {
             .child(locale)
             .child(date)
             .child(user)
-            .setValue(kind == "3_endlessText"
-                      ? ["text": content.replacingOccurrences(of: "\n", with: "/-/"), "duration": String(duration / 60)]
-                      : ["text": content.replacingOccurrences(of: "\n", with: "/-/")]
-            )
+            .setValue(value)
 #endif
+    }
+    
+    @MainActor func saveHistory() {
+        let container = try? ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
+        let history = History(content: meteorText, timestamp: Date().timeIntervalSince1970)
+        container?.mainContext.insert(history)
     }
 }
 
 extension MeteorViewModel {
     func loadLiveActivity() async {
         guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-//        currentActivity = activity
         await observeActivity(activity: activity)
     }
     
     func startLiveActivity(text: String) async -> Bool {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
-//            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
             UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
             
             // MARK: - Live 타임아웃 때 Local notification 등록
             let contents = UNMutableNotificationContent()
-            contents.subtitle = NSLocalizedString("⚠️ Live Expired", comment: "")
+            contents.title = NSLocalizedString("⚠️ Live Expired", comment: "")
             contents.body = text
             contents.sound = UNNotificationSound.default
             let twelveHours: TimeInterval = 12 * 60 * 60
@@ -197,7 +204,6 @@ extension MeteorViewModel {
             } catch {
                 print(error.localizedDescription)
             }
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             // MARK: -
             
             let attributes = MeteorWidgetAttributes(value: "none")
@@ -224,20 +230,11 @@ extension MeteorViewModel {
     
     private func observeActivity(activity: Activity<MeteorWidgetAttributes>) async {
         guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-//        Task {
-            for await activityState in activity.activityStateUpdates {
-                if activityState == .dismissed {
-                    await endLiveActivity()
-//                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
-//                    self.activityState = activityState
-                } else if activityState == .active {
-//                    UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
-//                    self.activityState = activityState
-                } else {
-//                    self.activityState = nil
-                }
+        for await activityState in activity.activityStateUpdates {
+            if activityState == .dismissed {
+                await endLiveActivity()
             }
-//        }
+        }
     }
     
     func endLiveActivity() async {
@@ -251,11 +248,9 @@ extension MeteorViewModel {
         )
         let finalContent = ActivityContent(state: finalState, staleDate: nil)
         
-//        Task {
-            for activity in Activity<MeteorWidgetAttributes>.activities {
-                await activity.end(finalContent, dismissalPolicy: .immediate)
-                print("Ending the Live Activity(Timer): \(activity.id)")
-//            }
+        for activity in Activity<MeteorWidgetAttributes>.activities {
+            await activity.end(finalContent, dismissalPolicy: .immediate)
+            print("Ending the Live Activity(Timer): \(activity.id)")
         }
     }
     
@@ -263,42 +258,10 @@ extension MeteorViewModel {
         guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return false }
         let activityState = activity.activityState
         switch activityState {
-        case .active, .stale:
-//            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveIdlingKey)
+        case .active, .ended:
             return true
-        case .ended, .dismissed:
-//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
-            ToastManager.makeToast(toast: &ToastManager.toast, title: "end dismiss", imageName: "swirl.circle.righthalf.filled")
-            return false
         default:
-//            UserDefaults.standard.set(false, forKey: UserDefaultsKeys.liveIdlingKey)
-            ToastManager.makeToast(toast: &ToastManager.toast, title: "default", imageName: "swirl.circle.righthalf.filled")
             return false
         }
-    }
-    
-    func isLiveActivityAliveaaaa() -> String {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return "" }
-        let activityState = activity.activityState
-        switch activityState {
-        case .active:
-            return "active"
-        case .stale:
-            return "stale"
-        case .ended:
-            return "ended"
-        case .dismissed:
-            return "dismissed"
-//        case .none:
-//            return "none"
-        default:
-            return "default"
-        }
-    }
-    
-    @MainActor func saveHistory() {
-        let container = try? ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
-        let history = History(content: meteorText, timestamp: Date().timeIntervalSince1970)
-        container?.mainContext.insert(history)
     }
 }

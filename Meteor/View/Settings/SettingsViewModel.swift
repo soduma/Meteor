@@ -56,13 +56,18 @@ class SettingsViewModel {
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
         let locale = TimeZone.current.identifier
         let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.string(from: Date())
+        
         self.db
             .child(version)
             .child("1_getImage")
+            .child(locale)
+            .child(date)
             .child(user)
-            .setValue(["locale": locale, "count": String(counterForGetNewImageTapped), "keyword": keyword])
+            .setValue(["count": String(counterForGetNewImageTapped), "keyword": keyword])
 #endif
-        
         return imageData
     }
     
@@ -72,6 +77,7 @@ class SettingsViewModel {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    /// AOD가 있는 모델만
     func checkDeviceModel() -> Bool {
         print("😚😚😚😚 \(UIDevice.modelName)")
         
