@@ -67,7 +67,7 @@ class MeteorInputViewController: UIViewController {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold)
         button.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemGray
+        button.tintColor = .tertiaryLabel
         button.alpha = 0
         button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         return button
@@ -75,9 +75,10 @@ class MeteorInputViewController: UIViewController {
     
     private lazy var historyButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
-        button.setImage(UIImage(systemName: "doc.append", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemGray2
+        let config1 = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
+        let config2 =  UIImage.SymbolConfiguration(paletteColors: [.systemGray, .tertiaryLabel])
+        let image = UIImage(systemName: "book.pages.fill", withConfiguration: config1)?.applyingSymbolConfiguration(config2)
+        button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -167,7 +168,7 @@ class MeteorInputViewController: UIViewController {
         
         grabberView.snp.remakeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(8)
             $0.width.equalTo(100)
             $0.height.equalTo(4)
         }
@@ -234,11 +235,26 @@ class MeteorInputViewController: UIViewController {
     }
     
     @objc private func historyButtonTapped() {
-        let vc = UIHostingController(rootView: MeteorHistoryView())
-        if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+        var viewController: UIViewController?
+        
+        let contentView = MeteorHistoryView { [weak self] text in
+            guard let self else { return }
+            viewController?.dismiss(animated: true)
+            textView.text = text
+            clearButtonAnimation(textView: textView)
+            makeVibration(type: .rigid)
         }
-        present(vc, animated: true)
+        
+        viewController = UIHostingController(rootView: contentView)
+        
+        if let vc = viewController {
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.prefersGrabberVisible = true
+            }
+            present(vc, animated: true)
+        }
     }
     
     @objc private func enterButtonTapped() {

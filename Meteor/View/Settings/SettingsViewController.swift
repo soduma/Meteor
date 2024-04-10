@@ -74,7 +74,7 @@ class SettingsViewController: UITableViewController {
         keywordTextField.resignFirstResponder()
         makeVibration(type: .rigid)
         
-        starRateView.isHidden = !viewModel.loadAppReviews()
+        starRateView.isHidden = !viewModel.executeAppReviews()
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
@@ -176,14 +176,14 @@ class SettingsViewController: UITableViewController {
     }
     
     private func restartLiveActivity() {
-        _ = viewModel.loadAppReviews()
+        _ = viewModel.executeAppReviews()
         
         Task {
             let meteorViewModel = MeteorViewModel()
             await meteorViewModel.endLiveActivity()
             
             let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-            _ = await meteorViewModel.startLiveActivity(text: liveText)
+            _ = meteorViewModel.startLiveActivity(text: liveText)
         }
     }
     

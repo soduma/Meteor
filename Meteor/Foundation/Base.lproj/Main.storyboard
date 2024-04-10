@@ -21,6 +21,7 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
                                 <rect key="frame" x="16" y="232" width="361" height="160"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="3ef-z6-0zY"/>
                                 </constraints>
@@ -125,10 +126,10 @@
                                 </constraints>
                             </view>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="46" y="447" width="200" height="60"/>
+                                <rect key="frame" x="26" y="447" width="220" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
-                                    <constraint firstAttribute="width" constant="200" id="9Zu-ss-d4Y"/>
+                                    <constraint firstAttribute="width" constant="220" id="9Zu-ss-d4Y"/>
                                 </constraints>
                             </datePicker>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
@@ -341,7 +342,7 @@ notification allowance.</string>
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection id="si5-2F-S24">
@@ -869,7 +870,7 @@ Thank you for using. 👋🏻 </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Meteor" id="Lak-TZ-MUE"/>
-                    <size key="freeformSize" width="390" height="1300"/>
+                    <size key="freeformSize" width="390" height="1500"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="HSg-RR-DOY" id="PiT-bz-Rq5"/>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
@@ -892,7 +893,7 @@ Thank you for using. 👋🏻 </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743.5114503816794" y="645.77464788732402"/>
+            <point key="canvasLocation" x="1754" y="520"/>
         </scene>
         <!--Version View Controller-->
         <scene sceneID="A0F-Wx-mh9">
@@ -988,7 +989,7 @@ Thank you for using. 👋🏻 </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HpC-YT-MiS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589" y="647"/>
+            <point key="canvasLocation" x="2631" y="520"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Zwk-94-DId">
@@ -1009,7 +1010,7 @@ Thank you for using. 👋🏻 </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1b-gv-2cd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="521"/>
+            <point key="canvasLocation" x="886" y="520"/>
         </scene>
     </scenes>
     <resources>
