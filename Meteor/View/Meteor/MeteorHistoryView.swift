@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct MeteorHistoryView: View {
+    var historyText: ((String) -> Void)?
+    
     var modelContainer: ModelContainer = {
         do {
             return try ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
@@ -19,13 +21,15 @@ struct MeteorHistoryView: View {
     
     var body: some View {
         NavigationStack {
-            MeteorHistoryListView()
+            MeteorHistoryListView(historyText: historyText)
                 .modelContainer(modelContainer)
         }
     }
 }
 
 struct MeteorHistoryListView: View {
+    var historyText: ((String) -> Void)?
+
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     @Query(sort: \History.timestamp, order: .reverse) private var historyList: [History]
@@ -36,15 +40,22 @@ struct MeteorHistoryListView: View {
                 MeteorHistoryCellView(history: history)
                     .frame(minHeight: 60, maxHeight: .greatestFiniteMagnitude)
                     .listRowSeparator(.hidden)
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            historyText?(history.content)
+//                            dismiss()
+                        } label: {
+//                            Label("Enter", systemImage: "swift")
+                            Image(systemName: "swift")
+                        }
+                    }
             }
             .onDelete(perform: { indexSet in
                 makeVibration(type: .rigid)
+                deleteHistory(indexSet)
                 
                 if historyList.count == 1 {
-                    deleteHistory(indexSet)
                     dismiss()
-                } else {
-                    deleteHistory(indexSet)
                 }
             })
         }
@@ -89,7 +100,7 @@ struct MeteorHistoryCellView: View {
             VStack {
                 HStack {
                     Text(history.content)
-                        .font(.system(size: 20, weight: .medium))
+                        .font(.system(size: 20))
                 }
             }
             .padding(.vertical, 20)

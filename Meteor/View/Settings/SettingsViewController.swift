@@ -32,11 +32,12 @@ class SettingsViewController: UITableViewController {
     
     private let viewModel = SettingsViewModel()
     var keywordText = ""
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLayout()
+        initialSeoul()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +63,14 @@ class SettingsViewController: UITableViewController {
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
     
+    private func initialSeoul() {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
+            keywordTextField.text = "Seoul"
+            keywordText = "Seoul"
+        }
+    }
+    
     private func setSwitchesState() {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
@@ -74,7 +83,7 @@ class SettingsViewController: UITableViewController {
         keywordTextField.resignFirstResponder()
         makeVibration(type: .rigid)
         
-        starRateView.isHidden = !viewModel.loadAppReviews()
+        starRateView.isHidden = !viewModel.executeAppReviews()
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         
@@ -176,14 +185,14 @@ class SettingsViewController: UITableViewController {
     }
     
     private func restartLiveActivity() {
-        _ = viewModel.loadAppReviews()
+        _ = viewModel.executeAppReviews()
         
         Task {
             let meteorViewModel = MeteorViewModel()
             await meteorViewModel.endLiveActivity()
             
             let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-            _ = await meteorViewModel.startLiveActivity(text: liveText)
+            _ = meteorViewModel.startLiveActivity(text: liveText)
         }
     }
     

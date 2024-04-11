@@ -37,6 +37,24 @@
         }
       }
     },
+    "1hV-Rv-Gqc.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"1hV-Rv-Gqc\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide Live Content in Lock Screen"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠금 화면에서 Live 내용 가리기"
+          }
+        }
+      }
+    },
     "2kf-Pz-TMT.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Meteor\"; ObjectID = \"2kf-Pz-TMT\";",
       "extractionState" : "extracted_with_value",
@@ -771,24 +789,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "    종료    "
-          }
-        }
-      }
-    },
-    "zqu-cr-7J9.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"zqu-cr-7J9\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Hide Live Content in Lock Screen"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "잠금 화면에서 Live 내용 가리기"
           }
         }
       }

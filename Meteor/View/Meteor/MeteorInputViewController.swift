@@ -67,7 +67,7 @@ class MeteorInputViewController: UIViewController {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .semibold)
         button.setImage(UIImage(systemName: "xmark.circle.fill", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemGray
+        button.tintColor = .tertiaryLabel
         button.alpha = 0
         button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         return button
@@ -75,16 +75,17 @@ class MeteorInputViewController: UIViewController {
     
     private lazy var historyButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
-        button.setImage(UIImage(systemName: "doc.append", withConfiguration: imageConfig), for: .normal)
-        button.tintColor = .systemGray2
+        let config1 = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
+        let config2 =  UIImage.SymbolConfiguration(paletteColors: [.systemGray, .tertiaryLabel])
+        let image = UIImage(systemName: "book.pages.fill", withConfiguration: config1)?.applyingSymbolConfiguration(config2)
+        button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var enterButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 44, weight: .semibold)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 44, weight: .medium)
         button.setImage(UIImage(systemName: "checkmark.circle.fill", withConfiguration: imageConfig), for: .normal)
         button.tintColor = .systemYellow
         button.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
@@ -103,6 +104,12 @@ class MeteorInputViewController: UIViewController {
         super.viewDidLoad()
         
         setInitialLayout()
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        textView.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,9 +138,15 @@ class MeteorInputViewController: UIViewController {
         }
         
         enterButton.snp.makeConstraints {
-            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
-            $0.trailing.equalTo(rectangleView).inset(3)
+            $0.trailing.equalToSuperview().inset(24)
+//            $0.height.equalTo(60)
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-20)
         }
+        
+//        enterButton.snp.makeConstraints {
+//            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
+//            $0.trailing.equalTo(rectangleView).inset(3)
+//        }
         
         [textView, clearButton, historyButton, grabberView].forEach {
             rectangleView.addSubview($0)
@@ -167,7 +180,7 @@ class MeteorInputViewController: UIViewController {
         
         grabberView.snp.remakeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(8)
             $0.width.equalTo(100)
             $0.height.equalTo(4)
         }
@@ -180,8 +193,7 @@ class MeteorInputViewController: UIViewController {
             guard let self else { return }
             rectangleViewOriginalX = gesture.view!.center.x
             rectangleViewOriginalY = gesture.view!.center.y
-            textView.becomeFirstResponder()
-            makeVibration(type: .rigid)
+//            makeVibration(type: .rigid)
         }
     }
     
@@ -202,9 +214,9 @@ class MeteorInputViewController: UIViewController {
             if abs(velocity.y) > 500 || absoluteY > 300 { // 빠르게 할 때만 디스미스
                 textView.resignFirstResponder()
                 
-                UIView.animate(withDuration: 0.1) {
-                    self.enterButton.alpha = 0
-                }
+//                UIView.animate(withDuration: 0.1) {
+//                    self.enterButton.alpha = 0
+//                }
                 
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     guard let self else { return }
@@ -234,11 +246,26 @@ class MeteorInputViewController: UIViewController {
     }
     
     @objc private func historyButtonTapped() {
-        let vc = UIHostingController(rootView: MeteorHistoryView())
-        if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
+        var viewController: UIViewController?
+        
+        let contentView = MeteorHistoryView { [weak self] text in
+            guard let self else { return }
+            viewController?.dismiss(animated: true)
+            textView.text = text
+            clearButtonAnimation(textView: textView)
+            makeVibration(type: .rigid)
         }
-        present(vc, animated: true)
+        
+        viewController = UIHostingController(rootView: contentView)
+        
+        if let vc = viewController {
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.prefersGrabberVisible = true
+            }
+            present(vc, animated: true)
+        }
     }
     
     @objc private func enterButtonTapped() {
@@ -267,7 +294,7 @@ class MeteorInputViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
             guard let self else { return }
-            enterButton.alpha = 0
+//            enterButton.alpha = 0
             view.alpha = 0
             view.layoutIfNeeded()
             delegate?.updateMeteorTextLabelUI(text: textView.text)

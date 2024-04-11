@@ -65,8 +65,8 @@ class SettingsViewModel {
                 .child(version)
                 .child("1_getImage")
                 .child(locale)
-                .child(date)
                 .child(user)
+                .child(date)
                 .setValue(["count": String(counterForGetNewImageTapped), "keyword": keyword])
         } catch {
             print(error.localizedDescription)
@@ -119,7 +119,7 @@ class SettingsViewModel {
         return version
     }
     
-    func loadAppReviews() -> Bool {
+    func executeAppReviews() -> Bool {
         systemAppReview()
         return customAppReview()
     }

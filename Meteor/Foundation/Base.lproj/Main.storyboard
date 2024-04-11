@@ -18,12 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-go-yFp">
                                 <rect key="frame" x="16" y="232" width="361" height="160"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="3ef-z6-0zY"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="L9Q-XP-IJD" appends="YES" id="EZE-M6-0La"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METEOR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-Ta-ams">
                                 <rect key="frame" x="28" y="278" width="207" height="54"/>
@@ -31,15 +35,12 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scribble here 👀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-9s-chN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scribble here 👀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-9s-chN">
                                 <rect key="frame" x="32" y="342" width="329" height="30"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="qKd-zb-ceY" appends="YES" id="bG8-fl-gMH"/>
-                                </connections>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="epS-6F-Kaa">
                                 <rect key="frame" x="24" y="400" width="214" height="50"/>
@@ -125,10 +126,10 @@
                                 </constraints>
                             </view>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJl-Jl-hg3">
-                                <rect key="frame" x="46" y="447" width="200" height="60"/>
+                                <rect key="frame" x="26" y="447" width="220" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8cm-95-egE"/>
-                                    <constraint firstAttribute="width" constant="200" id="9Zu-ss-d4Y"/>
+                                    <constraint firstAttribute="width" constant="220" id="9Zu-ss-d4Y"/>
                                 </constraints>
                             </datePicker>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oA-8S-R1U">
@@ -298,9 +299,9 @@ notification allowance.</string>
                         <outlet property="headLabel" destination="XrN-Ta-ams" id="GOh-BT-lKX"/>
                         <outlet property="indicatorBackgroundView" destination="wZ3-Xo-bRW" id="XAh-DO-RGb"/>
                         <outlet property="liveBackgroundView" destination="n4l-go-yFp" id="cYd-H4-Kqp"/>
+                        <outlet property="liveBackgroundViewTapGesture" destination="L9Q-XP-IJD" id="cem-ye-QxU"/>
                         <outlet property="liveButton" destination="1ez-ua-B75" id="447-xA-Lde"/>
                         <outlet property="meteorTextLabel" destination="Y9A-9s-chN" id="dNp-xB-625"/>
-                        <outlet property="meteorTextLabelGesture" destination="qKd-zb-ceY" id="MuJ-66-tSS"/>
                         <outlet property="moveToSettingButton" destination="WgP-WV-G9E" id="Xx5-hh-gQh"/>
                         <outlet property="pageControl" destination="o8v-SY-dBb" id="Lbp-uO-e9f"/>
                         <outlet property="sendButton" destination="RFX-SY-fYk" id="7HC-JS-zdc"/>
@@ -309,9 +310,9 @@ notification allowance.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cip-ng-gn2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="qKd-zb-ceY">
+                <tapGestureRecognizer id="L9Q-XP-IJD">
                     <connections>
-                        <action selector="meteorTextLabelTapped:" destination="5ue-D9-5Dz" id="nev-DZ-UyR"/>
+                        <action selector="liveBackgroundViewTapped:" destination="5ue-D9-5Dz" id="18J-0e-bfu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -322,6 +323,7 @@ notification allowance.</string>
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xpH-LA-jla" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="S07-w4-6F0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lo3-sn-6A7" customClass="TabBar" customModule="Meteor" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -341,7 +343,7 @@ notification allowance.</string>
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection id="si5-2F-S24">
@@ -740,33 +742,33 @@ Rate Meteor 🥹</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="DE1-Ik-J7t">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="9dm-TH-fmM">
                                         <rect key="frame" x="20" y="1038.9999942779541" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DE1-Ik-J7t" id="Ot9-5U-4s4">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dm-TH-fmM" id="4tk-bs-jY9">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Live Content in Lock Screen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqu-cr-7J9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Live Content in Lock Screen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Rv-Gqc">
                                                     <rect key="frame" x="20" y="12.333333333333334" width="240" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCC-nG-UTC">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7a0-3p-7RQ">
                                                     <rect key="frame" x="283" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="PEx-HC-a1r"/>
+                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="8LC-hS-TUf"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="KCC-nG-UTC" firstAttribute="centerY" secondItem="Ot9-5U-4s4" secondAttribute="centerY" id="7am-zk-9O2"/>
-                                                <constraint firstAttribute="trailing" secondItem="KCC-nG-UTC" secondAttribute="trailing" constant="18" id="Ezu-82-DU3"/>
-                                                <constraint firstItem="zqu-cr-7J9" firstAttribute="leading" secondItem="Ot9-5U-4s4" secondAttribute="leadingMargin" id="bfl-q5-mBP"/>
-                                                <constraint firstItem="zqu-cr-7J9" firstAttribute="centerY" secondItem="Ot9-5U-4s4" secondAttribute="centerY" id="uOE-e9-hHa"/>
+                                                <constraint firstItem="7a0-3p-7RQ" firstAttribute="centerY" secondItem="4tk-bs-jY9" secondAttribute="centerY" id="8xH-zN-Yc2"/>
+                                                <constraint firstItem="1hV-Rv-Gqc" firstAttribute="leading" secondItem="4tk-bs-jY9" secondAttribute="leadingMargin" id="Ydj-TT-AQr"/>
+                                                <constraint firstAttribute="trailing" secondItem="7a0-3p-7RQ" secondAttribute="trailing" constant="18" id="n1Q-dp-WG7"/>
+                                                <constraint firstItem="1hV-Rv-Gqc" firstAttribute="centerY" secondItem="4tk-bs-jY9" secondAttribute="centerY" id="nlu-4I-kKP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -869,7 +871,7 @@ Thank you for using. 👋🏻 </string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Meteor" id="Lak-TZ-MUE"/>
-                    <size key="freeformSize" width="390" height="1300"/>
+                    <size key="freeformSize" width="390" height="1500"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="HSg-RR-DOY" id="PiT-bz-Rq5"/>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
@@ -878,7 +880,7 @@ Thank you for using. 👋🏻 </string>
                         <outlet property="keywordTextField" destination="8TC-ak-svv" id="tkd-wq-bRa"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="liveColorSegmentedControl" destination="Wlz-aA-bLY" id="5kV-YF-Oq6"/>
-                        <outlet property="lockScreenSwitch" destination="KCC-nG-UTC" id="DsP-Uv-Nmd"/>
+                        <outlet property="lockScreenSwitch" destination="7a0-3p-7RQ" id="kcF-Py-4a4"/>
                         <outlet property="mailButton" destination="DZa-ix-YkT" id="IpI-CL-Z8X"/>
                         <outlet property="rateCloseButton" destination="lzG-Yx-4Ol" id="sVq-OP-5mf"/>
                         <outlet property="rateHeaderLabel" destination="faQ-bF-XRm" id="Cqy-99-AEJ"/>
@@ -892,7 +894,7 @@ Thank you for using. 👋🏻 </string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1743.5114503816794" y="645.77464788732402"/>
+            <point key="canvasLocation" x="1754" y="520"/>
         </scene>
         <!--Version View Controller-->
         <scene sceneID="A0F-Wx-mh9">
@@ -988,7 +990,7 @@ Thank you for using. 👋🏻 </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HpC-YT-MiS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589" y="647"/>
+            <point key="canvasLocation" x="2631" y="520"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Zwk-94-DId">
@@ -1009,7 +1011,7 @@ Thank you for using. 👋🏻 </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1b-gv-2cd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="521"/>
+            <point key="canvasLocation" x="886" y="520"/>
         </scene>
     </scenes>
     <resources>

@@ -37,14 +37,13 @@ class MeteorViewModel {
     
     func initialAppLaunchSettings() async {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
             Task {
-                guard let url = URL(string: SettingsViewModel.defaultURL) else { return }
+                guard let url = URL(string: "https://source.unsplash.com/featured/?seoul") else { return }
                 let (imageData, _) = try await URLSession.shared.data(from: url)
                 SettingsViewModel().setWidget(imageData: imageData)
             }
@@ -166,8 +165,8 @@ class MeteorViewModel {
             .child(version)
             .child(kind)
             .child(locale)
-            .child(date)
             .child(user)
+            .child(date)
             .setValue(value)
 #endif
     }
@@ -185,42 +184,44 @@ extension MeteorViewModel {
         await observeActivity(activity: activity)
     }
     
-    func startLiveActivity(text: String) async -> Bool {
+    func startLiveActivity(text: String) -> Bool {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
             
-            // MARK: - Live 타임아웃 때 Local notification 등록
-            let contents = UNMutableNotificationContent()
-            contents.title = NSLocalizedString("⚠️ Live Expired", comment: "")
-            contents.body = text
-            contents.sound = UNNotificationSound.default
-            let twelveHours: TimeInterval = 12 * 60 * 60
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: twelveHours, repeats: false)
-            let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
-            
-            do {
-                try await UNUserNotificationCenter.current().add(request)
-            } catch {
-                print(error.localizedDescription)
-            }
-            // MARK: -
-            
-            let attributes = MeteorWidgetAttributes(value: "none")
-            let state = MeteorWidgetAttributes.ContentState(
-                liveText: text,
-                liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-                hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
-                triggerDate: Date()
-            )
-            let content = ActivityContent(state: state, staleDate: .distantFuture)
-            
-            do {
-                let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
-                await observeActivity(activity: activity)
+            Task {
+                // MARK: - Live 타임아웃 때 Local notification 등록
+                let contents = UNMutableNotificationContent()
+                contents.title = NSLocalizedString("⚠️ Live Expired", comment: "")
+                contents.body = text
+                contents.sound = UNNotificationSound.default
+                let twelveHours: TimeInterval = 12 * 60 * 60
                 
-            } catch {
-                print(error.localizedDescription)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: twelveHours, repeats: false)
+                let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
+                
+                do {
+                    try await UNUserNotificationCenter.current().add(request)
+                } catch {
+                    print(error.localizedDescription)
+                }
+                // MARK: -
+                
+                let attributes = MeteorWidgetAttributes(value: "none")
+                let state = MeteorWidgetAttributes.ContentState(
+                    liveText: text,
+                    liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
+                    hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
+                    triggerDate: Date()
+                )
+                let content = ActivityContent(state: state, staleDate: .distantFuture)
+                
+                do {
+                    let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+                    await observeActivity(activity: activity)
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
             return true
         } else {
