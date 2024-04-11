@@ -12,7 +12,11 @@ struct MeteorHistoryView: View {
     var historyText: ((String) -> Void)?
     
     var modelContainer: ModelContainer = {
+        let schema = Schema([History.self])
+        let modelConfiguration = ModelConfiguration(schema: schema)
+        
         do {
+//            return try ModelContainer(for: schema, migrationPlan: HistoryMigrationPlan.self, configurations: [modelConfiguration])
             return try ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
