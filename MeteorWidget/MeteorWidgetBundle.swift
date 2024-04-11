@@ -12,6 +12,8 @@ import SwiftUI
 struct MeteorWidgetBundle: WidgetBundle {
     var body: some Widget {
         MeteorWidget()
+        #if canImport(ActivityKit)
         MeteorWidgetLiveActivity()
+        #endif
     }
 }
