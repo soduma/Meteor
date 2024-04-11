@@ -264,7 +264,7 @@ extension MeteorViewController {
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
                 self.headLabel.textColor = .white
-                self.liveBackgroundView.backgroundColor = .red
+                self.liveBackgroundView.backgroundColor = .red.withAlphaComponent(0.8)
             }
         }
     }
