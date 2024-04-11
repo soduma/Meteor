@@ -37,14 +37,13 @@ class MeteorViewModel {
     
     func initialAppLaunchSettings() async {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
             Task {
-                guard let url = URL(string: SettingsViewModel.defaultURL) else { return }
+                guard let url = URL(string: "https://source.unsplash.com/featured/?seoul") else { return }
                 let (imageData, _) = try await URLSession.shared.data(from: url)
                 SettingsViewModel().setWidget(imageData: imageData)
             }

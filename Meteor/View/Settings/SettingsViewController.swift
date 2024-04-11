@@ -32,11 +32,12 @@ class SettingsViewController: UITableViewController {
     
     private let viewModel = SettingsViewModel()
     var keywordText = ""
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLayout()
+        initialSeoul()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +61,14 @@ class SettingsViewController: UITableViewController {
         refreshPhotoView.addGestureRecognizer(refreshGesture)
         
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
+    }
+    
+    private func initialSeoul() {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
+            keywordTextField.text = "Seoul"
+            keywordText = "Seoul"
+        }
     }
     
     private func setSwitchesState() {

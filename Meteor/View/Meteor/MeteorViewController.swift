@@ -14,7 +14,7 @@ import ActivityKit
 class MeteorViewController: UIViewController {
     @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var meteorTextLabel: UILabel!
-    @IBOutlet var meteorTextLabelGesture: UITapGestureRecognizer!
+    @IBOutlet var liveBackgroundViewTapGesture: UITapGestureRecognizer!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var indicatorBackgroundView: UIView!
@@ -76,8 +76,7 @@ class MeteorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func meteorTextLabelTapped(_ sender: UITapGestureRecognizer) {
-        // 알림 권한 확인
+    @IBAction func liveBackgroundViewTapped(_ sender: UITapGestureRecognizer) {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
@@ -236,7 +235,7 @@ extension MeteorViewController {
             endlessButton.isSelected = false
             datePicker.isHidden = true
             liveButton.isSelected = false
-            liveBackgroundView.alpha = 0
+            liveBackgroundView.backgroundColor = .clear
             stopButton.isHidden = true
             
         case .endless:
@@ -249,7 +248,7 @@ extension MeteorViewController {
             singleButton.isSelected = false
             datePicker.isHidden = false
             liveButton.isSelected = false
-            liveBackgroundView.alpha = 0
+            liveBackgroundView.backgroundColor = .clear
             stopButton.isHidden = !viewModel.isEndlessIdling()
             
         case .live:
@@ -265,7 +264,7 @@ extension MeteorViewController {
             UIView.animate(withDuration: 0.2) {
                 self.headLabel.text = "METEOR"
                 self.headLabel.textColor = .white
-                self.liveBackgroundView.alpha = 1
+                self.liveBackgroundView.backgroundColor = .red
             }
         }
     }

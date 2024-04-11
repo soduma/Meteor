@@ -85,7 +85,7 @@ class MeteorInputViewController: UIViewController {
     
     private lazy var enterButton: UIButton = {
         let button = UIButton()
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 44, weight: .semibold)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 44, weight: .medium)
         button.setImage(UIImage(systemName: "checkmark.circle.fill", withConfiguration: imageConfig), for: .normal)
         button.tintColor = .systemYellow
         button.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
@@ -104,6 +104,12 @@ class MeteorInputViewController: UIViewController {
         super.viewDidLoad()
         
         setInitialLayout()
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
+        textView.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,9 +138,15 @@ class MeteorInputViewController: UIViewController {
         }
         
         enterButton.snp.makeConstraints {
-            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
-            $0.trailing.equalTo(rectangleView).inset(3)
+            $0.trailing.equalToSuperview().inset(24)
+//            $0.height.equalTo(60)
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-20)
         }
+        
+//        enterButton.snp.makeConstraints {
+//            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
+//            $0.trailing.equalTo(rectangleView).inset(3)
+//        }
         
         [textView, clearButton, historyButton, grabberView].forEach {
             rectangleView.addSubview($0)
@@ -181,8 +193,7 @@ class MeteorInputViewController: UIViewController {
             guard let self else { return }
             rectangleViewOriginalX = gesture.view!.center.x
             rectangleViewOriginalY = gesture.view!.center.y
-            textView.becomeFirstResponder()
-            makeVibration(type: .rigid)
+//            makeVibration(type: .rigid)
         }
     }
     
@@ -203,9 +214,9 @@ class MeteorInputViewController: UIViewController {
             if abs(velocity.y) > 500 || absoluteY > 300 { // 빠르게 할 때만 디스미스
                 textView.resignFirstResponder()
                 
-                UIView.animate(withDuration: 0.1) {
-                    self.enterButton.alpha = 0
-                }
+//                UIView.animate(withDuration: 0.1) {
+//                    self.enterButton.alpha = 0
+//                }
                 
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     guard let self else { return }
@@ -283,7 +294,7 @@ class MeteorInputViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
             guard let self else { return }
-            enterButton.alpha = 0
+//            enterButton.alpha = 0
             view.alpha = 0
             view.layoutIfNeeded()
             delegate?.updateMeteorTextLabelUI(text: textView.text)
