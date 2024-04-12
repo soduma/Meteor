@@ -31,6 +31,7 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var authView: UIView!
+    @IBOutlet weak var authCloseButton: UIButton!
     @IBOutlet weak var authViewBottom: NSLayoutConstraint!
     @IBOutlet weak var moveToSettingButton: UIButton!
     
@@ -77,23 +78,14 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func liveBackgroundViewTapped(_ sender: UITapGestureRecognizer) {
-        UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                switch setting.authorizationStatus {
-                case .authorized:
-                    makeVibration(type: .medium)
-                    
-                    let vc = MeteorInputViewController(meteorText: viewModel.meteorText, labelPositionY: meteorTextLabel.frame.midY)
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.delegate = self
-                    present(vc, animated: false)
-                    
-                default:
-                    makeVibration(type: .error)
-                    showAuthView()
-                }
-            }
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            makeVibration(type: .medium)
+            
+            let vc = MeteorInputViewController(meteorText: viewModel.meteorText, labelPositionY: meteorTextLabel.frame.midY)
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.delegate = self
+            present(vc, animated: false)
         }
     }
     
@@ -116,42 +108,57 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        guard viewModel.meteorText.isEmpty == false else { return }
-        var endlessDuration = 0
-        
-        switch viewModel.meteorType {
-        case .single:
-            viewModel.sendSingleMeteor(text: viewModel.meteorText)
-            makeVibration(type: .success)
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
+            guard let self else { return }
             
-        case .endless:
-            ToastManager.makeToast(toast: &ToastManager.toast, title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
-            makeVibration(type: .success)
-            
-            endlessDuration = Int(datePicker.countDownDuration)
-            endlessTimerLabel.isHidden = false
-            endlessTimerLabel.text = String.secondsToString(seconds: endlessDuration)
-            stopButton.isHidden = false
-            
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
-            viewModel.sendEndlessMeteor(text: viewModel.meteorText, duration: endlessDuration)
-            setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
-            
-        case .live:
-            if viewModel.startLiveActivity(text: viewModel.meteorText) {
-                ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
-                makeVibration(type: .success)
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
                 
-                stopButton.isHidden = false
-            } else {
-                showAuthView()
-                makeVibration(type: .error)
+                switch setting.authorizationStatus {
+                case .authorized:
+                    
+                    guard viewModel.meteorText.isEmpty == false else { return }
+                    var endlessDuration = 0
+                    
+                    switch viewModel.meteorType {
+                    case .single:
+                        viewModel.sendSingleMeteor(text: viewModel.meteorText)
+                        makeVibration(type: .success)
+                        
+                    case .endless:
+                        stopButton.isHidden = false
+                        ToastManager.makeToast(toast: &ToastManager.toast, title: "Endless", subTitle: "Started", imageName: "clock.badge.fill")
+                        makeVibration(type: .success)
+                        
+                        endlessDuration = Int(datePicker.countDownDuration)
+                        endlessTimerLabel.isHidden = false
+                        endlessTimerLabel.text = String.secondsToString(seconds: endlessDuration)
+                        setEndlessTimer(triggeredDate: Date(), duration: endlessDuration)
+                        viewModel.sendEndlessMeteor(text: viewModel.meteorText, duration: endlessDuration)
+                        
+                        UserDefaults.standard.set(true, forKey: UserDefaultsKeys.endlessIdlingKey)
+                        
+                    case .live:
+                        if viewModel.startLiveActivity(text: viewModel.meteorText) {
+                            stopButton.isHidden = false
+                            ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Started", imageName: "message.badge.filled.fill")
+                            makeVibration(type: .success)
+                        } else {
+                            showAuthView()
+                            makeVibration(type: .error)
+                        }
+                    }
+                    
+                    viewModel.saveHistory()
+                    viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
+                    showCustomAppReview()
+                    
+                default:
+                    makeVibration(type: .error)
+                    showAuthView()
+                }
             }
         }
-        
-        viewModel.saveHistory()
-        viewModel.sendToFirebase(type: viewModel.meteorType, text: viewModel.meteorText, duration: endlessDuration)
-        showCustomAppReview()
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
@@ -192,6 +199,11 @@ class MeteorViewController: UIViewController {
             
             sendButton.isEnabled = true
         }
+    }
+    
+    @IBAction func authCloseButtonTapped(_ sender: UIButton) {
+        authView.isHidden = true
+        authViewBottom.constant = view.bounds.height
     }
     
     @IBAction func moveToSettingButtonTapped(_ sender: UIButton) {

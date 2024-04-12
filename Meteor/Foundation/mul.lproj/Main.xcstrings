@@ -434,19 +434,19 @@
       }
     },
     "j1o-go-okn.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"iPhone Settings > Meteor > Notifications Please enable notification.\"; ObjectID = \"j1o-go-okn\";",
+      "comment" : "Class = \"UILabel\"; text = \"iPhone Settings > Meteor > Notifications Please enable notifications.\"; ObjectID = \"j1o-go-okn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "iPhone Settings > Meteor > Notifications Please enable notification."
+            "value" : "iPhone Settings > Meteor > Notifications Please enable notifications."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "아이폰 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."
+            "value" : "iPhone 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."
           }
         }
       }
@@ -537,6 +537,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "⚠️ 메테오 기능은\n알림 권한이 필요합니다."
+          }
+        }
+      }
+    },
+    "mZN-T7-oDf.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"mZN-T7-oDf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
           }
         }
       }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E532A38813FA35687365BAB /* Pods_Meteor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F77683742A9595DC00824E4E /* Pods_Meteor.framework */; };
 		A04AE61826453C1F008BB99C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04AE61726453C1F008BB99C /* TabBar.swift */; };
 		A0998A4F25FC99E7001BAEFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */; };
 		A0998A5125FC99E7001BAEFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */; };
@@ -153,6 +154,7 @@
 				F77683A12A95A45800824E4E /* SnapKit in Frameworks */,
 				F72964AB2BB432300068CF04 /* Puller in Frameworks */,
 				F77683A62A95C92F00824E4E /* Lottie in Frameworks */,
+				4E532A38813FA35687365BAB /* Pods_Meteor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
