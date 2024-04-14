@@ -271,6 +271,7 @@
       }
     },
     "Remain time" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {

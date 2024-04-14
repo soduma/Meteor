@@ -5,9 +5,9 @@
 //  Created by 장기화 on 2023/08/11.
 //
 
-import ActivityKit
-import WidgetKit
 import SwiftUI
+import WidgetKit
+import ActivityKit
 
 fileprivate let logo = "meteor_logo"
 
@@ -54,35 +54,13 @@ struct MeteorWidgetLiveActivity: Widget {
                     HStack(spacing: 8) {
                         Spacer()
                         
-//                        if Int(twelveHours) % 2 == 0 {
-//                            Text(Date(timeIntervalSinceNow: date.timeIntervalSince1970 + twelveHours) - date.timeIntervalSince1970, style: .relative)
-//                            .font(.system(size: 12))
-//                            .minimumScaleFactor(0.7)
-//                            .multilineTextAlignment(.trailing)
-//                            .foregroundStyle(.red)
-//                        } else {
-//                            Text(Date(timeIntervalSinceNow: date.timeIntervalSince1970 + twelveHours) - date.timeIntervalSince1970, style: .relative)
-//                            .font(.system(size: 12))
-//                            .minimumScaleFactor(0.7)
-//                            .multilineTextAlignment(.trailing)
-//                            .foregroundStyle(.white)
-//                        }
                         Text(Date(timeIntervalSinceNow: date.timeIntervalSince1970 + twelveHours) - date.timeIntervalSince1970, style: .relative)
                             .font(.system(size: 12, weight: .medium))
                         .minimumScaleFactor(0.7)
                         .multilineTextAlignment(.trailing)
-//                        .foregroundStyle(Int(twelveHours) % 2 == 1 ? .red : .white)
                         
                         ProgressView(timerInterval: workoutDateRange) {
-//                            VStack {
-//                                Spacer()
-//                                Text(NSLocalizedString("Remain time", comment: ""))
-//                                    .minimumScaleFactor(0.7)
-//                            }
                         } currentValueLabel: {
-//                            Spacer()
-//                            Text(Date(timeIntervalSinceNow: Date().timeIntervalSince1970 + 12*60*60) - Date().timeIntervalSince1970, style: .relative)
-//                            Spacer()
                         }
                         .progressViewStyle(.circular)
                         .frame(width: 30, height: 30)
@@ -98,31 +76,11 @@ struct MeteorWidgetLiveActivity: Widget {
             } compactLeading: {
                 Image(logo)
             } compactTrailing: {
-//                ProgressView(value: 12, total: 12) {
-//                    Text("hi")
-//                } currentValueLabel: {
-//                    Text("12")
-//                }
-//                let workoutDateRange = Date()...Date().addingTimeInterval(1*60)
-//                let hour = workout
-//
-//                let start = Date()
-//                let end = start.addingTimeInterval(1*60)
-//
                 ProgressView(timerInterval: workoutDateRange) {
-//                    Text("On")
                 } currentValueLabel: {
-//                    Text("On")
-//                        .fontWeight(.bold)
-//                        .foregroundColor(.red)
                 }
                 .progressViewStyle(.circular)
-//                .tint(workoutDateRange.contains(Date().addingTimeInterval(5)) ? Color.red : Color.green)
                 .tint(.white)
-                
-//                Text("On")
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.red)
             } minimal: {
                 Image(logo)
             }
@@ -137,17 +95,17 @@ struct LockScreenView: View {
     var body: some View {
         if context.state.hideContentOnLockScreen {
             if isLuminanceReduced {
-                setLayout(hideContent: true, context: context)
+                setLayout(context, hideContent: true)
             } else {
-                setLayout(hideContent: false, context: context)
+                setLayout(context, hideContent: false)
             }
         } else {
-            setLayout(hideContent: false, context: context)
+            setLayout(context, hideContent: false)
         }
     }
 }
 
-@ViewBuilder fileprivate func setLayout(hideContent: Bool, context: ActivityViewContext<MeteorWidgetAttributes>) -> some View {
+@ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorWidgetAttributes>, hideContent: Bool) -> some View {
     VStack {
         setLeadingLayout()
             .padding(.leading)
@@ -159,8 +117,7 @@ struct LockScreenView: View {
             .padding([.leading, .trailing])
             .blur(radius: hideContent ? 8 : 0)
     }
-    .padding(.top)
-    .padding(.bottom)
+    .padding([.top, .bottom])
 }
 
 @ViewBuilder fileprivate func setLeadingLayout() -> some View {

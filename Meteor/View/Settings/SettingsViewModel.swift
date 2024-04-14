@@ -57,7 +57,7 @@ class SettingsViewModel {
         let locale = TimeZone.current.identifier
         let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: Date())
         
         do {
