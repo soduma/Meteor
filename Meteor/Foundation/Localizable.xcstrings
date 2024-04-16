@@ -270,17 +270,6 @@
         }
       }
     },
-    "Remain time" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "남은 시간"
-          }
-        }
-      }
-    },
     "Scribble here 👀" : {
       "comment" : "Localizable.strings\n  Meteor\n\n  Created by 장기화 on 2021/04/24.",
       "localizations" : {

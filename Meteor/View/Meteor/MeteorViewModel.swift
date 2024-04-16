@@ -10,6 +10,7 @@ import ActivityKit
 import WidgetKit
 import SwiftData
 import FirebaseDatabase
+import OSLog
 
 enum MeteorType {
     case single
@@ -180,7 +181,7 @@ class MeteorViewModel {
 
 extension MeteorViewModel {
     func loadLiveActivity() async {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
+        guard let activity = Activity<MeteorAttributes>.activities.first else { return }
         await observeActivity(activity: activity)
     }
     
@@ -206,17 +207,17 @@ extension MeteorViewModel {
                 }
                 // MARK: -
                 
-                let attributes = MeteorWidgetAttributes(value: "none")
-                let state = MeteorWidgetAttributes.ContentState(
+                let attributes = MeteorAttributes()
+                let state = MeteorAttributes.ContentState(
                     liveText: text,
                     liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
                     hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
-                    triggerDate: Date()
+                    triggerDate: Int(Date().timeIntervalSince1970)
                 )
                 let content = ActivityContent(state: state, staleDate: .distantFuture)
                 
                 do {
-                    let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
+                    let activity = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
                     await observeActivity(activity: activity)
                     
                 } catch {
@@ -229,12 +230,26 @@ extension MeteorViewModel {
         }
     }
     
-    private func observeActivity(activity: Activity<MeteorWidgetAttributes>) async {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-        for await activityState in activity.activityStateUpdates {
-            if activityState == .dismissed {
-                await endLiveActivity()
+    private func observeActivity(activity: Activity<MeteorAttributes>) async {
+        await withTaskGroup(of: Void.self) { group in
+//            guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
+            group.addTask { @MainActor in
+                for await activityState in activity.activityStateUpdates {
+                    print("🌈🌈🌈🌈🌈🌈🌈")
+                    if activityState == .dismissed {
+                        await self.endLiveActivity()
+                    }
+                }
             }
+            
+//            if #available(iOS 17.2, *) {
+//                group.addTask { @MainActor in
+//                    for await pushToken in Activity<MeteorAttributes>.pushToStartTokenUpdates {
+//                        let pushTokenString = pushToken.hexadecimalString
+//                        Logger().debug("live push token: \(pushTokenString)")
+//                    }
+//                }
+//            }
         }
     }
     
@@ -242,21 +257,21 @@ extension MeteorViewModel {
         // MARK: - Local notification 해제
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["live"])
         
-        let finalState = MeteorWidgetAttributes.ContentState(liveText: "none",
+        let finalState = MeteorAttributes.ContentState(liveText: "none",
                                                              liveColor: 0,
                                                              hideContentOnLockScreen: false,
-                                                             triggerDate: Date()
+                                                             triggerDate: Int(Date().timeIntervalSince1970)
         )
         let finalContent = ActivityContent(state: finalState, staleDate: nil)
         
-        for activity in Activity<MeteorWidgetAttributes>.activities {
+        for activity in Activity<MeteorAttributes>.activities {
             await activity.end(finalContent, dismissalPolicy: .immediate)
             print("Ending the Live Activity(Timer): \(activity.id)")
         }
     }
     
     func isLiveActivityAlive() -> Bool {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return false }
+        guard let activity = Activity<MeteorAttributes>.activities.first else { return false }
         let activityState = activity.activityState
         switch activityState {
         case .active, .ended:

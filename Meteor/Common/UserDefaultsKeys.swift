@@ -87,4 +87,19 @@ class UserDefaultsKeys {
     class var lastVersionKey: String {
         return "LastVersion"
     }
+    
+// MARK: - LIVE ACTIVITY
+    
+    /// liveactivity deviceToken(alert 토큰과 다름)
+    class var deviceToken: String {
+        return "DeviceToken"
+    }
+    
+    class var requestedDateKey: String {
+        return "RequestedDateKey"
+    }
+    
+    class var tokenKey: String {
+        return "TokenKey"
+    }
 }

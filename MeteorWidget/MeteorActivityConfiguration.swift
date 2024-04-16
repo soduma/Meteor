@@ -1,5 +1,5 @@
 //
-//  MeteorWidgetLiveActivity.swift
+//  MeteorActivityConfiguration.swift
 //  MeteorWidget
 //
 //  Created by 장기화 on 2023/08/11.
@@ -11,22 +11,24 @@ import ActivityKit
 
 fileprivate let logo = "meteor_logo"
 
-struct MeteorWidgetAttributes: ActivityAttributes {
+#if canImport(ActivityKit)
+struct MeteorAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var liveText: String
         var liveColor: Int
         var hideContentOnLockScreen: Bool
-        var triggerDate: Date
+        var triggerDate: Int
     }
     
     // Fixed non-changing properties about your activity go here!
-    var value: String
+//    var value: String
 }
+#endif
 
-struct MeteorWidgetLiveActivity: Widget {
+struct MeteorActivityConfiguration: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: MeteorWidgetAttributes.self) { context in
+        ActivityConfiguration(for: MeteorAttributes.self) { context in
             // Lock screen/banner UI goes here
             switch context.state.liveColor {
             case 0:
@@ -40,9 +42,10 @@ struct MeteorWidgetLiveActivity: Widget {
                     .activityBackgroundTint(.clear)
             }
         } dynamicIsland: { context in
-            let date = context.state.triggerDate
+            let timeInterval = TimeInterval(context.state.triggerDate)
+            let date = Date(timeIntervalSince1970: timeInterval)
             let twelveHours: TimeInterval = 12 * 60 * 60
-            let workoutDateRange = date...date.addingTimeInterval(twelveHours)
+            let workoutDateRange = date...date + twelveHours
             
             return DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
@@ -54,14 +57,13 @@ struct MeteorWidgetLiveActivity: Widget {
                     HStack(spacing: 8) {
                         Spacer()
                         
-                        Text(Date(timeIntervalSinceNow: date.timeIntervalSince1970 + twelveHours) - date.timeIntervalSince1970, style: .relative)
+                        Text(Date(timeIntervalSinceNow: twelveHours), style: .relative)
                             .font(.system(size: 12, weight: .medium))
                         .minimumScaleFactor(0.7)
                         .multilineTextAlignment(.trailing)
                         
                         ProgressView(timerInterval: workoutDateRange) {
-                        } currentValueLabel: {
-                        }
+                        } currentValueLabel: { }
                         .progressViewStyle(.circular)
                         .frame(width: 30, height: 30)
                         .tint(.white)
@@ -77,8 +79,7 @@ struct MeteorWidgetLiveActivity: Widget {
                 Image(logo)
             } compactTrailing: {
                 ProgressView(timerInterval: workoutDateRange) {
-                } currentValueLabel: {
-                }
+                } currentValueLabel: { }
                 .progressViewStyle(.circular)
                 .tint(.white)
             } minimal: {
@@ -90,7 +91,7 @@ struct MeteorWidgetLiveActivity: Widget {
 
 struct LockScreenView: View {
     @Environment(\.isLuminanceReduced) private var isLuminanceReduced
-    let context: ActivityViewContext<MeteorWidgetAttributes>
+    let context: ActivityViewContext<MeteorAttributes>
     
     var body: some View {
         if context.state.hideContentOnLockScreen {
@@ -105,17 +106,19 @@ struct LockScreenView: View {
     }
 }
 
-@ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorWidgetAttributes>, hideContent: Bool) -> some View {
+@ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorAttributes>, hideContent: Bool) -> some View {
     VStack {
         setLeadingLayout()
             .padding(.leading)
         
-        Text(context.state.liveText)
-            .font(.system(size: 32, weight: .semibold))
-            .foregroundColor(.white)
-            .minimumScaleFactor(0.42)
-            .padding([.leading, .trailing])
-            .blur(radius: hideContent ? 8 : 0)
+        if !context.state.liveText.isEmpty {
+            Text(context.state.liveText)
+                .font(.system(size: 32, weight: .semibold))
+                .foregroundColor(.white)
+                .minimumScaleFactor(0.42)
+                .padding([.leading, .trailing])
+                .blur(radius: hideContent ? 8 : 0)
+        }
     }
     .padding([.top, .bottom])
 }
@@ -141,22 +144,22 @@ struct LockScreenView: View {
     }
 }
 
-struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
-    static let attributes = MeteorWidgetAttributes(value: "Me")
-    static let contentState = MeteorWidgetAttributes.ContentState(liveText: "555", liveColor: 0, hideContentOnLockScreen: true, triggerDate: Date())
-    
-    static var previews: some View {
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.compact))
-            .previewDisplayName("Island Compact")
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.expanded))
-            .previewDisplayName("Island Expanded")
-        attributes
-            .previewContext(contentState, viewKind: .dynamicIsland(.minimal))
-            .previewDisplayName("Minimal")
-        attributes
-            .previewContext(contentState, viewKind: .content)
-            .previewDisplayName("Notification")
-    }
-}
+//struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
+//    static let attributes = MeteorAttributes()
+//    static let contentState = MeteorAttributes.ContentState(liveText: "555", liveColor: 0, hideContentOnLockScreen: true, triggerDate: Date())
+//    
+//    static var previews: some View {
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.compact))
+//            .previewDisplayName("Island Compact")
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.expanded))
+//            .previewDisplayName("Island Expanded")
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.minimal))
+//            .previewDisplayName("Minimal")
+//        attributes
+//            .previewContext(contentState, viewKind: .content)
+//            .previewDisplayName("Notification")
+//    }
+//}
