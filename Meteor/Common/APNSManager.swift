@@ -13,7 +13,7 @@ class APNSManager {
         case production
     }
     
-    private var hostAddon: String? {
+    private var hostAddOn: String? {
 #if RELEASE
         return nil
 #else
@@ -39,7 +39,7 @@ class APNSManager {
     private func urlComponents(deviceToken: String) -> URLComponents {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = ["api", hostAddon, "push.apple.com"]
+        urlComponents.host = ["api", hostAddOn, "push.apple.com"]
             .compactMap { $0 }
             .joined(separator: ".")
         urlComponents.path = "/3/device/\(deviceToken)"
