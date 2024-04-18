@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.hexadecimalString
+        UserDefaults.standard.set(token, forKey: UserDefaultsKeys.apnsDeviceTokenKey)
         print("🙏🏻 APNs token : \(token)")
     }
     

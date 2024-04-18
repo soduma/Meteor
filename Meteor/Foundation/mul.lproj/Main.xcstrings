@@ -38,19 +38,19 @@
       }
     },
     "1hV-Rv-Gqc.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"1hV-Rv-Gqc\";",
+      "comment" : "Class = \"UILabel\"; text = \"Lock Application\"; ObjectID = \"1hV-Rv-Gqc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Hide Live Content in Lock Screen"
+            "value" : "Lock Application"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "잠금 화면에서 Live 내용 가리기"
+            "value" : "앱 잠금"
           }
         }
       }
@@ -87,6 +87,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "제출"
+          }
+        }
+      }
+    },
+    "4tG-Qy-j6n.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Review\"; ObjectID = \"4tG-Qy-j6n\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        }
+      }
+    },
+    "4tG-Qy-j6n.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"4tG-Qy-j6n\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
           }
         }
       }
@@ -253,24 +289,6 @@
         }
       }
     },
-    "DZa-ix-YkT.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"dev.soduma\"; ObjectID = \"DZa-ix-YkT\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "dev.soduma"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dev.soduma"
-          }
-        }
-      }
-    },
     "eAl-3u-eGw.title" : {
       "comment" : "Class = \"UITabBarItem\"; title = \"Meteor\"; ObjectID = \"eAl-3u-eGw\";",
       "extractionState" : "extracted_with_value",
@@ -325,24 +343,6 @@
         }
       }
     },
-    "eVG-QI-Qxx.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Review\"; ObjectID = \"eVG-QI-Qxx\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Review"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Review"
-          }
-        }
-      }
-    },
     "faQ-bF-XRm.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Star Rating\"; ObjectID = \"faQ-bF-XRm\";",
       "extractionState" : "extracted_with_value",
@@ -357,6 +357,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "별점 남기기"
+          }
+        }
+      }
+    },
+    "fMt-Tu-Xlt.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Always On Live (β)\"; ObjectID = \"fMt-Tu-Xlt\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Always On Live (β)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live 항상 표시 (β)"
           }
         }
       }
@@ -380,19 +398,19 @@
       }
     },
     "GqJ-gX-VE4.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Vibration\"; ObjectID = \"GqJ-gX-VE4\";",
+      "comment" : "Class = \"UILabel\"; text = \"Haptic\"; ObjectID = \"GqJ-gX-VE4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Vibration"
+            "value" : "Haptic"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "진동"
+            "value" : "햅틱"
           }
         }
       }
@@ -483,24 +501,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meteor"
-          }
-        }
-      }
-    },
-    "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iPhone의 '화면 상시표시'가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
           }
         }
       }
@@ -703,6 +703,42 @@
         }
       }
     },
+    "Tam-U8-D2K.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"dev.soduma\"; ObjectID = \"Tam-U8-D2K\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dev.soduma"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        }
+      }
+    },
+    "Tam-U8-D2K.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Tam-U8-D2K\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        }
+      }
+    },
     "wiS-Uw-6P6.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Light Mode\"; ObjectID = \"wiS-Uw-6P6\";",
       "extractionState" : "extracted_with_value",
@@ -753,6 +789,60 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "notice example"
+          }
+        }
+      }
+    },
+    "xcI-or-A7B.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"xcI-or-A7B\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide Live Content in Lock Screen"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠금 화면에서 Live 내용 가리기"
+          }
+        }
+      }
+    },
+    "Xh4-Qj-N8E.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"Xh4-Qj-N8E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone의 '화면 상시표시'가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+          }
+        }
+      }
+    },
+    "Xh4-Qj-N8E.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Live\"; ObjectID = \"Xh4-Qj-N8E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Live"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
           }
         }
       }
@@ -825,6 +915,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정"
+          }
+        }
+      }
+    },
+    "zWe-cb-GqJ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"-\"; ObjectID = \"zWe-cb-GqJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
           }
         }
       }

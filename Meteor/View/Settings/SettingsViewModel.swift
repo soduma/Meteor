@@ -21,6 +21,7 @@ class SettingsViewModel {
     private var firebaseImageURL = ""
     static let defaultURL = "https://source.unsplash.com/random"
     
+    var keywordText = ""
     var liveColor = LiveColor.red
     
     func getFirebaseImageURL() {
@@ -29,19 +30,19 @@ class SettingsViewModel {
         }
     }
     
-    func getNewImage(keyword: String) async -> Data? {
+    func getNewImage() async -> Data? {
         var imageData: Data?
         var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         counterForGetNewImageTapped += 1
         UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         
         do {
-            if keyword.isEmpty {
+            if keywordText.isEmpty {
                 guard let imageURL = URL(string: firebaseImageURL) else { return nil }
                 (imageData, _) = try await URLSession.shared.data(from: imageURL)
                 
             } else {
-                let url = "https://source.unsplash.com/featured/?\(keyword)"
+                let url = "https://source.unsplash.com/featured/?\(keywordText)"
                 guard let imageURL = URL(string: url) else { return nil }
                 (imageData, _) = try await URLSession.shared.data(from: imageURL)
                 
@@ -119,6 +120,7 @@ class SettingsViewModel {
         return version
     }
     
+    @discardableResult
     func executeAppReviews() -> Bool {
         systemAppReview()
         return customAppReview()

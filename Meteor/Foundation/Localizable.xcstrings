@@ -1,12 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "'화면 상시표시'는 잠금 화면을 어둡게 하면서 최소한의 전력으로 시간, 위젯 및 알림과 같은 정보를 계속 표시합니다." : {
+
+    },
     "⚠️ Live Expired" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "⚠️ Live 만료됨"
+          }
+        }
+      }
+    },
+    "Always On Live (β)" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live 항상 표시 (β)"
           }
         }
       }
@@ -211,6 +224,40 @@
         }
       }
     },
+    "Off" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "끔"
+          }
+        }
+      }
+    },
+    "On" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "켬"
+          }
+        }
+      }
+    },
     "Please enter the subject" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -221,6 +268,9 @@
           }
         }
       }
+    },
+    "rame = (20 293.667; 350 350); clipsToBounds = YES; autoresize = W; layer = <CALayer: 0x12488d930>> and trailing of <UIVisualEffectV" : {
+
     },
     "rate" : {
       "localizations" : {

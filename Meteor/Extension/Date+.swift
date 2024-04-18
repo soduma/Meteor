@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Date {
+    static var timestamp: Int {
+        return Int(Date().timeIntervalSince1970.rounded())
+    }
+}

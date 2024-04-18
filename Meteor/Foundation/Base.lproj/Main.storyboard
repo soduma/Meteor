@@ -373,22 +373,22 @@ notification allowance.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-ix-YkT">
-                                                    <rect key="frame" x="238" y="6" width="92" height="32"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <state key="normal" title="dev.soduma">
-                                                        <color key="titleColor" systemColor="systemGrayColor"/>
-                                                    </state>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-U8-D2K">
+                                                    <rect key="frame" x="243" y="7.3333333333333339" width="99" height="29.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="gray" title="dev.soduma" cornerStyle="capsule">
+                                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="mailButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Bq6-XB-ihJ"/>
+                                                        <action selector="mailButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="aWV-NU-W7u"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Tam-U8-D2K" secondAttribute="trailing" constant="8" id="2ix-dW-lIX"/>
+                                                <constraint firstItem="Tam-U8-D2K" firstAttribute="centerY" secondItem="56V-OQ-hoa" secondAttribute="centerY" id="BeE-Zn-vJe"/>
                                                 <constraint firstItem="Pmw-Ai-Bkf" firstAttribute="leading" secondItem="56V-OQ-hoa" secondAttribute="leadingMargin" id="Tol-9w-FA3"/>
                                                 <constraint firstItem="Pmw-Ai-Bkf" firstAttribute="centerY" secondItem="56V-OQ-hoa" secondAttribute="centerY" id="df4-Ug-fHJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="DZa-ix-YkT" secondAttribute="trailing" constant="20" id="h2q-AG-MaB"/>
-                                                <constraint firstItem="DZa-ix-YkT" firstAttribute="centerY" secondItem="56V-OQ-hoa" secondAttribute="centerY" id="wkc-d4-Mii"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -405,32 +405,30 @@ notification allowance.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVG-QI-Qxx">
-                                                    <rect key="frame" x="276" y="6" width="54" height="32"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                    <color key="tintColor" systemColor="systemGrayColor"/>
-                                                    <state key="normal" title="Review">
-                                                        <color key="titleColor" systemColor="systemGrayColor"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
-                                                    </state>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tG-Qy-j6n">
+                                                    <rect key="frame" x="273.66666666666669" y="7.3333333333333339" width="68.333333333333314" height="29.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="gray" title="Review" cornerStyle="capsule">
+                                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="reviewButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="cMY-pn-ZIe"/>
+                                                        <action selector="reviewButtonTapped:" destination="yKD-ZQ-Tqh" eventType="touchUpInside" id="Da3-Jz-pVF"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eid-Qh-HRI" firstAttribute="leading" secondItem="jzG-cl-mxg" secondAttribute="leadingMargin" id="ECx-ZI-nKb"/>
-                                                <constraint firstAttribute="trailing" secondItem="eVG-QI-Qxx" secondAttribute="trailing" constant="20" id="Yet-EH-HE2"/>
+                                                <constraint firstAttribute="trailing" secondItem="4tG-Qy-j6n" secondAttribute="trailing" constant="8" id="RGB-rM-OYm"/>
                                                 <constraint firstItem="eid-Qh-HRI" firstAttribute="centerY" secondItem="jzG-cl-mxg" secondAttribute="centerY" id="bF7-oH-ywI"/>
-                                                <constraint firstItem="eVG-QI-Qxx" firstAttribute="centerY" secondItem="jzG-cl-mxg" secondAttribute="centerY" id="mRv-5x-j7A"/>
+                                                <constraint firstItem="4tG-Qy-j6n" firstAttribute="centerY" secondItem="jzG-cl-mxg" secondAttribute="centerY" id="pNb-Nd-ian"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="0FL-W6-upz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="0FL-W6-upz">
                                         <rect key="frame" x="20" y="106" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0FL-W6-upz" id="ezR-8r-qxM">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oak-uY-Kls">
@@ -439,25 +437,13 @@ notification allowance.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJJ-0s-SGg">
-                                                    <rect key="frame" x="300" y="2" width="50" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="H9c-oy-yfb"/>
-                                                        <constraint firstAttribute="width" constant="50" id="fZO-5P-CyR"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="systemGrayColor"/>
-                                                    <state key="normal" image="chevron.right" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="15" weight="semibold"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="GJJ-0s-SGg" secondAttribute="trailing" id="Wuh-4Q-ZJ2"/>
                                                 <constraint firstItem="oak-uY-Kls" firstAttribute="leading" secondItem="ezR-8r-qxM" secondAttribute="leadingMargin" id="bZS-a1-HCO"/>
                                                 <constraint firstItem="oak-uY-Kls" firstAttribute="centerY" secondItem="ezR-8r-qxM" secondAttribute="centerY" id="gRS-EI-5bl"/>
-                                                <constraint firstItem="GJJ-0s-SGg" firstAttribute="centerY" secondItem="ezR-8r-qxM" secondAttribute="centerY" id="wKR-P7-zud"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <segue destination="374-Go-c7m" kind="presentation" id="oyn-PL-Yam"/>
                                         </connections>
@@ -722,17 +708,17 @@ Rate Meteor 🥹</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General" footerTitle="If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content." id="mO4-mb-C9g">
+                            <tableViewSection headerTitle="General" id="mO4-mb-C9g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="994.9999942779541" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="987.66666221618652" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-gX-VE4">
-                                                    <rect key="frame" x="20" y="12.333333333333334" width="65.333333333333329" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqJ-gX-VE4">
+                                                    <rect key="frame" x="20.000000000000004" y="12.333333333333334" width="47.333333333333343" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -755,24 +741,24 @@ Rate Meteor 🥹</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="9dm-TH-fmM">
-                                        <rect key="frame" x="20" y="1038.9999942779541" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="1031.6666622161865" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dm-TH-fmM" id="4tk-bs-jY9">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Live Content in Lock Screen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Rv-Gqc">
-                                                    <rect key="frame" x="20" y="12.333333333333334" width="240" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lock Application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Rv-Gqc">
+                                                    <rect key="frame" x="20" y="12.333333333333334" width="120" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7a0-3p-7RQ">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7a0-3p-7RQ">
                                                     <rect key="frame" x="283" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="8LC-hS-TUf"/>
+                                                        <action selector="applicationSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="oTB-Sr-72g"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -786,10 +772,72 @@ Rate Meteor 🥹</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Live" footerTitle="If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content." id="Xh4-Qj-N8E">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="aRL-HV-6YX">
+                                        <rect key="frame" x="20" y="1138.9999942779541" width="350" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRL-HV-6YX" id="6io-Zc-6dw">
+                                            <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always On Live (β)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMt-Tu-Xlt">
+                                                    <rect key="frame" x="20" y="12.333333333333334" width="134.33333333333334" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWe-cb-GqJ">
+                                                    <rect key="frame" x="304.33333333333331" y="12.333333333333334" width="7.3333333333333144" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="zWe-cb-GqJ" secondAttribute="trailing" constant="8" id="2Id-Df-5fg"/>
+                                                <constraint firstItem="zWe-cb-GqJ" firstAttribute="centerY" secondItem="6io-Zc-6dw" secondAttribute="centerY" id="98w-Tf-aY8"/>
+                                                <constraint firstItem="fMt-Tu-Xlt" firstAttribute="centerY" secondItem="6io-Zc-6dw" secondAttribute="centerY" id="9ab-CX-JOK"/>
+                                                <constraint firstItem="fMt-Tu-Xlt" firstAttribute="leading" secondItem="6io-Zc-6dw" secondAttribute="leadingMargin" id="gVN-Te-tvA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="UyZ-Xb-wBf">
+                                        <rect key="frame" x="20" y="1182.9999942779541" width="350" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UyZ-Xb-wBf" id="Iw7-Tc-V8X">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Live Content in Lock Screen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcI-or-A7B">
+                                                    <rect key="frame" x="20" y="12.333333333333334" width="240" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYy-z0-mdS">
+                                                    <rect key="frame" x="283" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                                    <color key="onTintColor" systemColor="systemYellowColor"/>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="YPs-K5-G00"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xcI-or-A7B" firstAttribute="leading" secondItem="Iw7-Tc-V8X" secondAttribute="leadingMargin" id="0ri-c1-Uxg"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZYy-z0-mdS" secondAttribute="trailing" constant="18" id="1LO-G3-TtV"/>
+                                                <constraint firstItem="ZYy-z0-mdS" firstAttribute="centerY" secondItem="Iw7-Tc-V8X" secondAttribute="centerY" id="Nvk-Ut-sN4"/>
+                                                <constraint firstItem="xcI-or-A7B" firstAttribute="centerY" secondItem="Iw7-Tc-V8X" secondAttribute="centerY" id="rRb-2c-kxy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Live Color" id="keM-A9-xCm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="j8H-Kf-JZL">
-                                        <rect key="frame" x="20" y="1167.3333263397217" width="350" height="68"/>
+                                        <rect key="frame" x="20" y="1311.3333263397217" width="350" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8H-Kf-JZL" id="d27-Iv-GkP">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
@@ -886,27 +934,29 @@ Thank you for using. 👋🏻 </string>
                     <size key="freeformSize" width="390" height="1500"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="HSg-RR-DOY" id="PiT-bz-Rq5"/>
+                        <outlet property="alwayOnLiveCell" destination="aRL-HV-6YX" id="THB-ZG-EMx"/>
+                        <outlet property="alwaysOnLiveLabel" destination="zWe-cb-GqJ" id="8E9-Jt-xRI"/>
+                        <outlet property="applicationSwitch" destination="7a0-3p-7RQ" id="reJ-Oo-UJH"/>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
+                        <outlet property="feedbackButton" destination="Tam-U8-D2K" id="MCX-mh-Ppd"/>
                         <outlet property="hapticSwitch" destination="gT1-20-Rqn" id="AYX-Dh-egI"/>
                         <outlet property="imageView" destination="cRB-OJ-SQV" id="g64-r6-8fw"/>
                         <outlet property="keywordTextField" destination="8TC-ak-svv" id="tkd-wq-bRa"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="liveColorSegmentedControl" destination="Wlz-aA-bLY" id="5kV-YF-Oq6"/>
-                        <outlet property="lockScreenSwitch" destination="7a0-3p-7RQ" id="kcF-Py-4a4"/>
-                        <outlet property="mailButton" destination="DZa-ix-YkT" id="IpI-CL-Z8X"/>
+                        <outlet property="lockScreenSwitch" destination="ZYy-z0-mdS" id="pMM-L9-Fuw"/>
                         <outlet property="rateCloseButton" destination="lzG-Yx-4Ol" id="sVq-OP-5mf"/>
                         <outlet property="rateHeaderLabel" destination="faQ-bF-XRm" id="Cqy-99-AEJ"/>
                         <outlet property="rateSubmitButton" destination="3H5-vd-AUs" id="08c-cf-V5T"/>
                         <outlet property="rateTextLabel" destination="NBD-bZ-eN8" id="lUk-MS-kII"/>
                         <outlet property="refreshPhotoView" destination="eqt-rP-gYu" id="a54-RE-vbY"/>
-                        <outlet property="reviewButton" destination="eVG-QI-Qxx" id="P0Y-rC-AFA"/>
+                        <outlet property="reviewButton" destination="4tG-Qy-j6n" id="1El-Uo-COa"/>
                         <outlet property="starRateView" destination="sJu-vw-iK3" id="Z7J-tB-gD0"/>
-                        <outlet property="versionButton" destination="GJJ-0s-SGg" id="9H5-1d-iDL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bup-5N-8Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="520"/>
+            <point key="canvasLocation" x="1752.6717557251907" y="519.71830985915494"/>
         </scene>
         <!--Version View Controller-->
         <scene sceneID="A0F-Wx-mh9">
@@ -1029,7 +1079,6 @@ Thank you for using. 👋🏻 </string>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="104"/>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="meteor_splash.png" width="300" height="300"/>
         <image name="rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="102"/>

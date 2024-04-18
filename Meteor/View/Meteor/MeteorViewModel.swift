@@ -36,23 +36,24 @@ class MeteorViewModel {
 //        self.activityState = activityState
 //    }
     
-    func initialAppLaunchSettings() async {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
-            UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
-            
-            // 최초 위젯 이미지 생성
-            Task {
+    func initialAppLaunchSettings() {
+        Task {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
+                UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+                
+                // 최초 위젯 이미지 생성
                 guard let url = URL(string: "https://source.unsplash.com/featured/?seoul") else { return }
                 let (imageData, _) = try await URLSession.shared.data(from: url)
                 SettingsViewModel().setWidget(imageData: imageData)
+                
+            } else {
+                checkAppearanceMode()
+                resetCustomReviewCount()
+                await loadLiveActivity()
+                
             }
-            
-        } else {
-            checkAppearanceMode()
-            resetCustomReviewCount()
-            await loadLiveActivity()
         }
     }
     
@@ -242,14 +243,14 @@ extension MeteorViewModel {
                 }
             }
             
-//            if #available(iOS 17.2, *) {
-//                group.addTask { @MainActor in
-//                    for await pushToken in Activity<MeteorAttributes>.pushToStartTokenUpdates {
-//                        let pushTokenString = pushToken.hexadecimalString
-//                        Logger().debug("live push token: \(pushTokenString)")
-//                    }
-//                }
-//            }
+            if #available(iOS 17.2, *) {
+                group.addTask { @MainActor in
+                    for await pushToken in Activity<MeteorAttributes>.pushToStartTokenUpdates {
+                        let pushTokenString = pushToken.hexadecimalString
+                        Logger().debug("live push token: \(pushTokenString)")
+                    }
+                }
+            }
         }
     }
     
@@ -278,6 +279,109 @@ extension MeteorViewModel {
             return true
         default:
             return false
+        }
+    }
+    
+    func push(timestamp: Int, liveColor: Int, isHide: Bool) async {
+        guard let p8Payload = FileParser.parse() else { return }
+        do {
+            let jsonWebToken = try JSONWebToken(keyID: FileParser.keyID, teamID: FileParser.teamID, p8Payload: p8Payload)
+            print("🍓 jsonWebToken : \(jsonWebToken.token)")
+            let authenticationToken = jsonWebToken.token
+            let deviceToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveDeviceTokenKey) ?? ""
+            let payload =
+"""
+{
+    "aps": {
+        "timestamp": \(timestamp),
+        "event": "start",
+        "content-state": {
+            "liveText": "",
+            "liveColor": \(liveColor),
+            "hideContentOnLockScreen": \(isHide),
+            "triggerDate": \(timestamp)
+        },
+        "attributes-type": "MeteorAttributes",
+        "attributes": {
+            "liveText": "",
+            "liveColor": \(liveColor),
+            "hideContentOnLockScreen": \(isHide),
+            "triggerDate": \(timestamp)
+        },
+        "alert": {
+            "title": {
+                "loc-key": "%@ is on an adventure!"
+            },
+            "body": {
+                "loc-key": "%@ found a sword!",
+                "loc-args": ["Live"]
+            }
+        }
+    }
+}
+"""
+            guard let request = APNSManager().urlRequest(
+                authenticationToken: authenticationToken,
+                deviceToken: deviceToken,
+                payload: payload) else { return }
+            ///
+            let (data, response) = try await URLSession.shared.data(for: request)
+            var messages = [String]()
+            
+            if let description = String(data: data, encoding: .utf8),
+               !description.isEmpty {
+                messages.append("Payload: \(description)")
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                var description = response.description
+                let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, description.count)
+                description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
+                if let url = response.url {
+                    messages.append("URL: \(url)")
+                }
+                
+                messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
+                
+                if let allHeaderFields = response.allHeaderFields as? [String: String] {
+                    messages.append("Header: \(allHeaderFields.description)")
+                }
+            }
+            print("🍖\(messages.compactMap { $0 } .joined(separator: "\n")) \n-----")
+            ///
+            
+        /*
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                var messages = [ error?.localizedDescription ]
+                
+                if let response = response as? HTTPURLResponse {
+                    var description = response.description
+                    let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, description.count)
+                    description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
+                    if let url = response.url {
+                        messages.append("URL: \(url)")
+                    }
+                    
+                    messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
+                    
+                    if let allHeaderFields = response.allHeaderFields as? [String: String] {
+                        messages.append("Header: \(allHeaderFields.description)")
+                    }
+                }
+                
+                if let data = data,
+                   let description = String(data: data, encoding: .utf8),
+                   !description.isEmpty {
+                    messages.append("Payload: \(description)")
+                }
+                print("🍖\(messages.compactMap { $0 } .joined(separator: "\n")) \n-----")
+            }
+            task.resume()
+            */
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

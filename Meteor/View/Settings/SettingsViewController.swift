@@ -6,17 +6,23 @@
 //
 
 import UIKit
+import SwiftUI
 import MessageUI
 
 class SettingsViewController: UITableViewController {
-    @IBOutlet weak var mailButton: UIButton!
-    @IBOutlet weak var versionButton: UIButton!
+    @IBOutlet weak var feedbackButton: UIButton!
     @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
+    
     @IBOutlet weak var hapticSwitch: UISwitch!
+    @IBOutlet weak var applicationSwitch: UISwitch!
+    
+    @IBOutlet weak var alwayOnLiveCell: UITableViewCell!
+    @IBOutlet weak var alwaysOnLiveLabel: UILabel!
     @IBOutlet weak var lockScreenSwitch: UISwitch!
+    
     @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -31,7 +37,6 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var keywordTextField: UITextField!
     
     private let viewModel = SettingsViewModel()
-    var keywordText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +62,12 @@ class SettingsViewController: UITableViewController {
             imageView.image = UIImage(data: imageData)
         }
         
-        let refreshGesture = UITapGestureRecognizer(target: self, action: #selector(refreshViewTapped))
-        refreshPhotoView.addGestureRecognizer(refreshGesture)
+        let refreshPhotoGesture = UITapGestureRecognizer(target: self, action: #selector(refreshPhotoCellViewTapped))
+        refreshPhotoView.addGestureRecognizer(refreshPhotoGesture)
+        let alwaysOnLiveGesture = UITapGestureRecognizer(target: self, action: #selector(alwaysOnLiveCellViewTapped))
+//        alwaysOnLiveView.addGestureRecognizer(alwaysOnLiveGesture)
+        alwayOnLiveCell.addGestureRecognizer(alwaysOnLiveGesture)
+        
         
         rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
     }
@@ -67,19 +76,36 @@ class SettingsViewController: UITableViewController {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
             keywordTextField.text = "Seoul"
-            keywordText = "Seoul"
+            viewModel.keywordText = "Seoul"
         }
     }
     
     private func setSwitchesState() {
         lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
+        
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
+        //앱잠금
+        
+        alwaysOnLiveLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) ? "On" : "Off", comment: "")
         lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+        
         liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }
     
-    @objc private func refreshViewTapped() {
+    private func restartLiveActivity() {
+        viewModel.executeAppReviews()
+        
+        Task {
+            let meteorViewModel = MeteorViewModel()
+            await meteorViewModel.endLiveActivity()
+            
+            let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
+            _ = meteorViewModel.startLiveActivity(text: liveText)
+        }
+    }
+    
+    @objc private func refreshPhotoCellViewTapped() {
         keywordTextField.resignFirstResponder()
         makeVibration(type: .rigid)
         
@@ -88,14 +114,25 @@ class SettingsViewController: UITableViewController {
         activityIndicatorView.startAnimating()
         
         Task {
-            guard let imageData = await viewModel.getNewImage(keyword: keywordText) else { return }
+            guard let imageData = await viewModel.getNewImage() else { return }
             imageView.image = UIImage(data: imageData)
             activityIndicatorView.isHidden = true
             activityIndicatorView.stopAnimating()
         }
     }
     
+    @objc private func alwaysOnLiveCellViewTapped() {
+        let vc = UIHostingController(rootView: AlwaysOnLiveView())
+        vc.title = NSLocalizedString("Always On Live (β)", comment: "")
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func mailButtonTapped(_ sender: UIButton) {
+        var last = ""
+        if let key = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) {
+            last = String(key.replacingOccurrences(of: ".", with: "").reversed())
+        }
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
             composeViewController.mailComposeDelegate = self
@@ -107,7 +144,7 @@ class SettingsViewController: UITableViewController {
                              
                              -------------------
                              
-                             App Version : \(viewModel.getCurrentVersion())
+                             App Version : \(last). __\(viewModel.getCurrentVersion())
                              Device Model : \(UIDevice.modelName)
                              Device OS : \(UIDevice.current.systemVersion)
                              """
@@ -163,6 +200,10 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(hapticSwitch.isOn, forKey: UserDefaultsKeys.hapticStateKey)
     }
     
+    @IBAction func applicationSwitchTapped(_ sender: UISwitch) {
+        
+    }
+    
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
         restartLiveActivity()
@@ -182,18 +223,6 @@ class SettingsViewController: UITableViewController {
         
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         restartLiveActivity()
-    }
-    
-    private func restartLiveActivity() {
-        _ = viewModel.executeAppReviews()
-        
-        Task {
-            let meteorViewModel = MeteorViewModel()
-            await meteorViewModel.endLiveActivity()
-            
-            let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-            _ = meteorViewModel.startLiveActivity(text: liveText)
-        }
     }
     
     @IBAction func rateSubmitTapped(_ sender: UIButton) {
@@ -225,13 +254,13 @@ extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "Keyword" || textField.text == "" {
             textField.text = "Keyword"
-            keywordText = ""
+            viewModel.keywordText = ""
             
         } else if textField.text != "",
                   let text = textField.text {
             let removeBlanks = text.replacingOccurrences(of: " ", with: "")
             textField.text = removeBlanks
-            keywordText = removeBlanks
+            viewModel.keywordText = removeBlanks
         }
     }
 }

@@ -51,7 +51,7 @@ struct MeteorActivityConfiguration: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    setLeadingLayout()
+                    setLeadingLayout(context)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     HStack(spacing: 8) {
@@ -108,7 +108,7 @@ struct LockScreenView: View {
 
 @ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorAttributes>, hideContent: Bool) -> some View {
     VStack {
-        setLeadingLayout()
+        setLeadingLayout(context)
             .padding(.leading)
         
         if !context.state.liveText.isEmpty {
@@ -123,15 +123,16 @@ struct LockScreenView: View {
     .padding([.top, .bottom])
 }
 
-@ViewBuilder fileprivate func setLeadingLayout() -> some View {
+@ViewBuilder fileprivate func setLeadingLayout(_ context: ActivityViewContext<MeteorAttributes>) -> some View {
     HStack(alignment: .center, spacing: 8) {
         ZStack {
             Circle()
-                .fill(Color.white)
+                .fill(context.state.liveText.isEmpty ? .clear : .white)
                 .frame(width: 30, height: 30, alignment: .center)
             Image(logo)
                 .resizable()
                 .frame(width: 22, height: 22)
+                .grayscale(context.state.liveText.isEmpty ? 1 : 0)
         }
         
         Text("Meteor")
@@ -139,6 +140,7 @@ struct LockScreenView: View {
             .fontWeight(.medium)
             .lineLimit(1)
             .minimumScaleFactor(0.1)
+            .opacity(context.state.liveText.isEmpty ? 0.2 : 1)
         
         Spacer()
     }

@@ -45,10 +45,8 @@ class MeteorViewController: UIViewController {
         setLayout()
         checkTimerRunning()
         
-        Task {
-            await viewModel.initialAppLaunchSettings()
-            getPushToStartToken()
-        }
+        viewModel.initialAppLaunchSettings()
+        getPushToStartToken()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,19 +67,6 @@ class MeteorViewController: UIViewController {
                                                selector: #selector(checkStopButtonNeedToHide),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
-        
-//        UNUserNotificationCenter.current().delegate = self
-//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
-//        UIApplication.shared.registerForRemoteNotifications()
-        
-//        Messaging.messaging().token { token, error in
-//            if let error {
-//                print("Error fetching FCM registration token: \(error)")
-//            } else if let token = token {
-//                print("FCM registration token: \(token)")
-////                self.meteorTextLabel.text  = "Remote FCM registration token: \(token)"
-//            }
-//        }
     }
     
     func getPushToStartToken() {
@@ -90,7 +75,7 @@ class MeteorViewController: UIViewController {
                 for await data in Activity<MeteorAttributes>.pushToStartTokenUpdates {
                     let token = data.hexadecimalString
                     print("🌊 Activity PushToStart Token: \(token)")
-                    UserDefaults.standard.set(token, forKey: UserDefaultsKeys.deviceToken)
+                    UserDefaults.standard.set(token, forKey: UserDefaultsKeys.liveDeviceTokenKey)
                 }
             }
         }
@@ -133,87 +118,25 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        
-//        let urlString = "https://api.sandbox.push.apple.com:443/3/device/806fcef757f914ed774b57ff82298b2631819688e92ede5821f0024e0a67d683a697db19b7d78a6dd02fbe260dbf7044042b56028349d60942f7967570387b592a1b32ee0907558cd5c232a7e6a73739"
-//        
-//        let deviceToken = "806fcef757f914ed774b57ff82298b2631819688e92ede5821f0024e0a67d683a697db19b7d78a6dd02fbe260dbf7044042b56028349d60942f7967570387b592a1b32ee0907558cd5c232a7e6a73739"
-//        
-//        let headers: HTTPHeaders = [
-//            "authorization": "bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IlozR05KSzU2VlgifQ.eyJpc3MiOiJITTlKM0RHNU1UIiwiaWF0IjoxNzEzMjQwNzA3fQ.lcSv1Nmeu9PGUP9KhoScBxFjB5ishexEw3WOd09yXSSdEOzD6D-9lT8JogAQvyW4m6H0Xdrvy9Uk7OjWQEdOsQ",
-//            "apns-topic": "com.soduma.Meteor.push-type.liveactivity",
-//            "apns-priority": "5",
-//            "apns-push-type": "liveactivity"
-////            "apns-expiration": "0"
-//        ]
-//        
-//        let body: [String: Any] = [
-//            "aps": [
-//                "timestamp": 1713240723,
-//                "event": "start",
-//                "content-state": [
-//                    "liveText": "",
-//                    "liveColor": 2,
-//                    "hideContentOnLockScreen": true,
-//                    "triggerDate": 1713240723
-//                ],
-//                "attributes-type": "MeteorAttributes",
-//                "attributes": [
-//                    "liveText": "",
-//                    "liveColor": 2,
-//                    "hideContentOnLockScreen": true,
-//                    "triggerDate": 1713240723
-//                ],
-//                "alert": [
-//                    "title": "A",
-//                    "body": "B"
-//                ]
-//            ]
-//        ]
-//        
-//        let payload = """
-//{
-//    "aps": {
-//        "timestamp": 1713237010,
-//        "event": "start",
-//        "content-state": {
-//            "liveText": "",
-//            "liveColor": 0,
-//            "hideContentOnLockScreen": true,
-//            "triggerDate": 1713237010
-//        },
-//        "attributes-type": "MeteorAttributes",
-//        "attributes": {
-//            "liveText": "",
-//            "liveColor": 0,
-//            "hideContentOnLockScreen": true,
-//            "triggerDate": 1713237010
-//        },
-//        "alert": {
-//            "title": "A",
-//            "body": "B"
-//        }
-//    }
-//}
-//"""
-        
-//        guard let url = URL(string: urlString) else { return }
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IlozR05KSzU2VlgifQ.eyJpc3MiOiJITTlKM0RHNU1UIiwiaWF0IjoxNzEzMjQzOTc4fQ.E2Rdi9NEX-QFTN3kIpRH34yJXt_tWR1Md2_DzuZ2f0VnHqUjfZvxL_-eO-MBPE7Nxv7NXzh5ft78QeoT-KBxdA", forHTTPHeaderField: "authorization")
-//        request.setValue("com.soduma.Meteor.push-type.liveactivity", forHTTPHeaderField: "apns-topic")
-//        request.setValue("10", forHTTPHeaderField: "apns-priority")
-//        request.setValue("liveactivity", forHTTPHeaderField: "apns-push-type")
-//        request.httpBody = payload.data(using: .utf8)
-//        
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data else { return }
-//            print(String(data: data, encoding: .utf8))
-//        }
-//        
-//        task.resume()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.push(timestamp: Int(Date().timeIntervalSince1970.rounded()), liveColor: 1, isHide: true)
+        if viewModel.meteorText.isEmpty {
+            var color = 0
+            
+            switch viewModel.meteorType {
+            case .single:
+                color = 0
+            case .endless:
+                color = 1
+            case .live:
+                color = 2
+            }
+                
+            Task {
+                if Activity<MeteorAttributes>.activities.isEmpty == false {
+                    await viewModel.endLiveActivity()
+                }
+                await viewModel.push(timestamp: Date.timestamp, liveColor: color, isHide: true)
+                await viewModel.loadLiveActivity()
+            }
         }
         
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
@@ -266,63 +189,6 @@ class MeteorViewController: UIViewController {
                     showAuthView()
                 }
             }
-        }
-    }
-    
-    func push(timestamp: Int, liveColor: Int, isHide: Bool) {
-        guard let p8Payload = FileParser.parse() else { return }
-        do {
-            let jsonWebToken = try JSONWebToken(keyID: FileParser.keyID, teamID: FileParser.teamID, p8Payload: p8Payload)
-            print("🍓 jsonWebToken : \(jsonWebToken.token)")
-            let authenticationToken = jsonWebToken.token
-            let deviceToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.deviceToken) ?? ""
-            let payload = 
-"""
-{
-    "aps": {
-        "timestamp": \(timestamp),
-        "event": "start",
-        "content-state": {
-            "liveText": "",
-            "liveColor": \(liveColor),
-            "hideContentOnLockScreen": \(isHide),
-            "triggerDate": \(timestamp)
-        },
-        "attributes-type": "MeteorAttributes",
-        "attributes": {
-            "liveText": "",
-            "liveColor": \(liveColor),
-            "hideContentOnLockScreen": \(isHide),
-            "triggerDate": \(timestamp)
-        },
-        "alert": {
-            "title": {
-                "loc-key": "%@ is on an adventure!"
-            },
-            "body": {
-                "loc-key": "%@ found a sword!",
-                "loc-args": ["Live"]
-            }
-        }
-    }
-}
-"""
-            guard let request = APNSManager().urlRequest(
-                authenticationToken: authenticationToken,
-                deviceToken: deviceToken,
-                payload: payload) else { return }
-            
-            let task = URLSession.shared.dataTask(with: request) { _, response, error in
-                if let response {
-                    print(response)
-                } else if let error {
-                    print(error.localizedDescription)
-                }
-            }
-            task.resume()
-            
-        } catch {
-            print(error.localizedDescription)
         }
     }
     

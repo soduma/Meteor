@@ -60,11 +60,6 @@ class UserDefaultsKeys {
         return "LiveText"
     }
     
-    /// 앱 리뷰 화면 표현용
-    class var meteorSentCountKey: String {
-        return "meteorSentCount"
-    }
-    
     /// 위젯용 이미지 데이터
     class var widgetDataKey: String {
         return "WidgetDataKey"
@@ -83,22 +78,33 @@ class UserDefaultsKeys {
         return "GetNewImageTappedCount"
     }
     
-    /// 앱 리뷰 화면 표현용
+    /// 리뷰한 버전
     class var lastVersionKey: String {
         return "LastVersion"
     }
     
 // MARK: - LIVE ACTIVITY
     
-    /// liveactivity deviceToken(alert 토큰과 다름)
-    class var deviceToken: String {
-        return "DeviceToken"
+    class var alwaysOnLiveKey: String {
+        return "AlwaysOnLive"
     }
     
+    /// alert deviceToken
+    class var apnsDeviceTokenKey: String {
+        return "ApnsDeviceToken"
+    }
+    
+    /// liveactivity deviceToken
+    class var liveDeviceTokenKey: String {
+        return "LiveDeviceToken"
+    }
+    
+    /// jwt valid 확인용
     class var requestedDateKey: String {
-        return "RequestedDateKey"
+        return "RequestedDate"
     }
     
+    /// jwt, authentication
     class var tokenKey: String {
         return "TokenKey"
     }

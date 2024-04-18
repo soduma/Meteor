@@ -23,6 +23,8 @@
 		F734A77B2BCE8DE400C9ABFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F734A77A2BCE8DE400C9ABFD /* GoogleService-Info.plist */; };
 		F734A77E2BCEE3BA00C9ABFD /* AuthKey.p8 in Resources */ = {isa = PBXBuildFile; fileRef = F734A77C2BCEE3BA00C9ABFD /* AuthKey.p8 */; };
 		F734A77F2BCEE3BA00C9ABFD /* IDList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F734A77D2BCEE3BA00C9ABFD /* IDList.plist */; };
+		F734A7852BD00D5800C9ABFD /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734A7842BD00D5800C9ABFD /* Date+.swift */; };
+		F734A78B2BD0663800C9ABFD /* AlwaysOnLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F734A78A2BD0663800C9ABFD /* AlwaysOnLiveView.swift */; };
 		F73882D02BCC992600B1A15A /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73882CF2BCC992600B1A15A /* Data+.swift */; };
 		F73882D22BCE45D200B1A15A /* APNSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73882D12BCE45D200B1A15A /* APNSManager.swift */; };
 		F73882D42BCE4D6300B1A15A /* JSONWebToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73882D32BCE4D6300B1A15A /* JSONWebToken.swift */; };
@@ -109,6 +111,8 @@
 		F734A77A2BCE8DE400C9ABFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F734A77C2BCEE3BA00C9ABFD /* AuthKey.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey.p8; sourceTree = "<group>"; };
 		F734A77D2BCEE3BA00C9ABFD /* IDList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IDList.plist; sourceTree = "<group>"; };
+		F734A7842BD00D5800C9ABFD /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		F734A78A2BD0663800C9ABFD /* AlwaysOnLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysOnLiveView.swift; sourceTree = "<group>"; };
 		F73882CF2BCC992600B1A15A /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		F73882D12BCE45D200B1A15A /* APNSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSManager.swift; sourceTree = "<group>"; };
 		F73882D32BCE4D6300B1A15A /* JSONWebToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONWebToken.swift; sourceTree = "<group>"; };
@@ -271,7 +275,7 @@
 			path = Meteor;
 			sourceTree = "<group>";
 		};
-		F73882DB2BCE4E6300B1A15A /* JSON */ = {
+		F73882DB2BCE4E6300B1A15A /* JWTParse */ = {
 			isa = PBXGroup;
 			children = (
 				F73882D32BCE4D6300B1A15A /* JSONWebToken.swift */,
@@ -279,7 +283,7 @@
 				F73882D92BCE4E4000B1A15A /* FileParser.swift */,
 				F73882E22BCE595400B1A15A /* P8Payload.swift */,
 			);
-			path = JSON;
+			path = JWTParse;
 			sourceTree = "<group>";
 		};
 		F77E75272A7B9AFF008F1883 /* Meteor */ = {
@@ -301,6 +305,7 @@
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,
 				F77E75482A80CE87008F1883 /* SettingsViewModel.swift */,
+				F734A78A2BD0663800C9ABFD /* AlwaysOnLiveView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				F73882CF2BCC992600B1A15A /* Data+.swift */,
+				F734A7842BD00D5800C9ABFD /* Date+.swift */,
 				F7F79FCF2A90A1EC00FA5464 /* String+.swift */,
 				F71AF7392AADB44F00DBECBE /* TextView+.swift */,
 				F77188C02A9300E400939BCD /* UIDevice+.swift */,
@@ -376,7 +382,7 @@
 				F78A549D2AB43E5700507678 /* ToastManager.swift */,
 				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
 				F73882D12BCE45D200B1A15A /* APNSManager.swift */,
-				F73882DB2BCE4E6300B1A15A /* JSON */,
+				F73882DB2BCE4E6300B1A15A /* JWTParse */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -583,12 +589,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F77E75422A7E3338008F1883 /* Base.swift in Sources */,
+				F734A78B2BD0663800C9ABFD /* AlwaysOnLiveView.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
 				F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */,
 				F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */,
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */,
 				F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */,
+				F734A7852BD00D5800C9ABFD /* Date+.swift in Sources */,
 				F73882E32BCE595400B1A15A /* P8Payload.swift in Sources */,
 				F73882D82BCE4E2000B1A15A /* EllipticCurveKey.swift in Sources */,
 				A0998A5325FC99E7001BAEFD /* MeteorViewController.swift in Sources */,

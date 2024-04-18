@@ -5,70 +5,33 @@
 //  Created by 장기화 on 4/18/24.
 //
 
-import UIKit
-import SnapKit
 import SwiftUI
-
-//class AlwaysViewController: UIViewController {
-//    private lazy var tableView: UITableView = {
-//        let view = UITableView(frame: .zero, style: .insetGrouped)
-//        view.dataSource = self
-//        view.delegate = self
-//        return view
-//    }()
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        setLayout()
-//    }
-//    
-//    private func setLayout() {
-//        title = "Always On Live"
-//        
-//        [tableView]
-//            .forEach { view.addSubview($0) }
-//        
-//        tableView.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//        }
-//    }
-//}
-//
-//extension AlwaysViewController: UITableViewDataSource, UITableViewDelegate {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        4
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        2
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        UITableViewCell()
-//    }
-//    
-//    
-//}
+import ActivityKit
 
 struct AlwaysOnLiveView: View {
+    @AppStorage(UserDefaultsKeys.alwaysOnLiveKey)
+    private var isOn: Bool = UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey)
+    
     var body: some View {
         List {
-            
             Section {
             } footer: {
-                Text("gggggggg")
+                Text("'화면 상시표시'는 잠금 화면을 어둡게 하면서 최소한의 전력으로 시간, 위젯 및 알림과 같은 정보를 계속 표시합니다.")
             }
             
             Section {
-                Text("hi")
-                Text("hi")
-            } header: {
-                Text("zzzzzz")
             } footer: {
-                Text("gggggggg")
+                Text("rame = (20 293.667; 350 350); clipsToBounds = YES; autoresize = W; layer = <CALayer: 0x12488d930>> and trailing of <UIVisualEffectV")
             }
-
+            
+            Section {
+                HStack {
+                    Toggle("Always On Live (β)", isOn: $isOn)
+                        .tint(.yellow)
+                }
+            }
         }
+        .listStyle(.insetGrouped)
+        .contentMargins(.vertical, 19)
     }
 }
