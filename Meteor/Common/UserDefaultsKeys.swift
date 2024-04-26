@@ -85,8 +85,8 @@ class UserDefaultsKeys {
     
 // MARK: - LIVE ACTIVITY
     
-    class var alwaysOnLiveKey: String {
-        return "AlwaysOnLive"
+    class var alwaysOnLiveStateKey: String {
+        return "AlwaysOnLiveState"
     }
     
     /// alert deviceToken
@@ -105,7 +105,11 @@ class UserDefaultsKeys {
     }
     
     /// jwt, authentication
-    class var tokenKey: String {
-        return "TokenKey"
+    class var JWTokenKey: String {
+        return "JWToken"
+    }
+    
+    class var liveBackgroundUpdateStateKey: String {
+        return "LiveBackgroundUpdateState"
     }
 }

@@ -10,8 +10,9 @@ import SwiftUI
 import MessageUI
 
 class SettingsViewController: UITableViewController {
-    @IBOutlet weak var feedbackButton: UIButton!
-    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var feedbackImageView: UIImageView!
+    @IBOutlet weak var reviewImageView: UIImageView!
+    @IBOutlet weak var versionImageView: UIImageView!
     
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
@@ -37,6 +38,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var keywordTextField: UITextField!
     
     private let viewModel = SettingsViewModel()
+    private let liveManager = LiveActivityManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,15 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setLayout() {
+//        [feedbackImageView, reviewImageView, versionImageView].forEach {
+//            $0?.layer.cornerRadius = 6
+////            $0?.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1).cgColor
+//            $0?.layer.borderColor = UIColor.systemGray6.cgColor
+//            $0?.layer.borderWidth = 0.5
+//            $0?.clipsToBounds = true
+//        }
+        setImageViewsBorder()
+        
         activityIndicatorView.isHidden = true
         keywordTextField.delegate = self
         
@@ -87,21 +98,19 @@ class SettingsViewController: UITableViewController {
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
         //앱잠금
         
-        alwaysOnLiveLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) ? "On" : "Off", comment: "")
+        alwaysOnLiveLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey) ? "On" : "Off", comment: "")
         lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
         
         liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }
     
-    private func restartLiveActivity() {
-        viewModel.executeAppReviews()
-        
-        Task {
-            let meteorViewModel = MeteorViewModel()
-            await meteorViewModel.endLiveActivity()
-            
-            let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? ""
-            _ = meteorViewModel.startLiveActivity(text: liveText)
+    private func setImageViewsBorder() {
+        [feedbackImageView, reviewImageView, versionImageView].forEach {
+            $0?.layer.cornerRadius = 6
+//            $0?.layer.borderColor = UIColor.systemGray5.withAlphaComponent(0.5).cgColor
+            $0?.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.3).cgColor
+            $0?.layer.borderWidth = 0.5
+            $0?.clipsToBounds = true
         }
     }
     
@@ -123,15 +132,15 @@ class SettingsViewController: UITableViewController {
     
     @objc private func alwaysOnLiveCellViewTapped() {
         let vc = UIHostingController(rootView: AlwaysOnLiveView())
-        vc.title = NSLocalizedString("Always On Live (β)", comment: "")
+        vc.title = NSLocalizedString("Always On Live", comment: "")
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func mailButtonTapped(_ sender: UIButton) {
-        var last = ""
-        if let key = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) {
-            last = String(key.replacingOccurrences(of: ".", with: "").reversed())
+    @IBAction func feedbackButtonTapped(_ sender: UIButton) {
+        var reverseLast = ""
+        if let last = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) {
+            reverseLast = String(last.replacingOccurrences(of: ".", with: "").reversed())
         }
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
@@ -144,7 +153,7 @@ class SettingsViewController: UITableViewController {
                              
                              -------------------
                              
-                             App Version : \(last). __\(viewModel.getCurrentVersion())
+                             App Version : \(reverseLast). __\(viewModel.getCurrentVersion())
                              Device Model : \(UIDevice.modelName)
                              Device OS : \(UIDevice.current.systemVersion)
                              """
@@ -189,11 +198,15 @@ class SettingsViewController: UITableViewController {
     @IBAction func lightModeSwitchTapped(_ sender: UISwitch) {
         darkModeSwitch.isOn = false
         viewModel.changeAppearance(lightMode: lightModeSwitch.isOn, darkMode: darkModeSwitch.isOn)
+        
+        setImageViewsBorder()
     }
     
     @IBAction func darkModeSwitchTapped(_ sender: UISwitch) {
         lightModeSwitch.isOn = false
         viewModel.changeAppearance(lightMode: lightModeSwitch.isOn, darkMode: darkModeSwitch.isOn)
+        
+        setImageViewsBorder()
     }
     
     @IBAction func hapticSwitchTapped(_ sender: UISwitch) {
@@ -206,7 +219,9 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
-        restartLiveActivity()
+        
+        viewModel.executeAppReviews()
+        liveManager.rebootActivity()
     }
     
     @IBAction func liveColorSegmentedControlTapped(_ sender: UISegmentedControl) {
@@ -220,9 +235,10 @@ class SettingsViewController: UITableViewController {
         default:
             viewModel.liveColor = .clear
         }
-        
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
-        restartLiveActivity()
+        
+        viewModel.executeAppReviews()
+        liveManager.rebootActivity()
     }
     
     @IBAction func rateSubmitTapped(_ sender: UIButton) {

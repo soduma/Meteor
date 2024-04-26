@@ -45,6 +45,7 @@
 		F77E75442A80C180008F1883 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75432A80C180008F1883 /* Vibration.swift */; };
 		F77E75492A80CE87008F1883 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E75482A80CE87008F1883 /* SettingsViewModel.swift */; };
 		F77E754B2A811827008F1883 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77E754A2A811827008F1883 /* NoticeCell.swift */; };
+		F7810C242BD2568C0090F160 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7810C232BD2568C0090F160 /* LiveActivityManager.swift */; };
 		F78A549E2AB43E5700507678 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78A549D2AB43E5700507678 /* ToastManager.swift */; };
 		F7972D402A85EA6600050263 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A018483626A551C700DC3A59 /* SwiftUI.framework */; };
 		F7972D432A85EA6600050263 /* MeteorWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D422A85EA6600050263 /* MeteorWidgetBundle.swift */; };
@@ -54,6 +55,7 @@
 		F7972D4D2A85EA6700050263 /* MeteorWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F7972D512A85F46200050263 /* MeteorActivityConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorActivityConfiguration.swift */; };
 		F79CED572BBD134600683914 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CED502BBD0FDC00683914 /* ActivityKit.framework */; };
+		F7B5A97A2BDA202C0035FB2F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F758AC5B2BAD53DB00CC19A9 /* Localizable.xcstrings */; };
 		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */; };
@@ -148,6 +150,7 @@
 		F77E75432A80C180008F1883 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		F77E75482A80CE87008F1883 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F77E754A2A811827008F1883 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		F7810C232BD2568C0090F160 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		F78A549D2AB43E5700507678 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeteorWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7972D422A85EA6600050263 /* MeteorWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidgetBundle.swift; sourceTree = "<group>"; };
@@ -270,6 +273,7 @@
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				F797ABEB2BAD429B0012ACFE /* Extension */,
 				A04E305827A28E7E008C9993 /* Model */,
+				F7810C222BD256720090F160 /* Manager */,
 				A04E305A27A28EC6008C9993 /* View */,
 			);
 			path = Meteor;
@@ -305,7 +309,7 @@
 				A0A4C11E25FDDEA00090A214 /* SettingsViewController.swift */,
 				A0AAAFA426270CC600D6E5EB /* VersionViewController.swift */,
 				F77E75482A80CE87008F1883 /* SettingsViewModel.swift */,
-				F734A78A2BD0663800C9ABFD /* AlwaysOnLiveView.swift */,
+				F7810C272BD5EFBE0090F160 /* AlwaysOnLive */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -326,6 +330,23 @@
 				F77E754A2A811827008F1883 /* NoticeCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F7810C222BD256720090F160 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F73882D12BCE45D200B1A15A /* APNSManager.swift */,
+				F7810C232BD2568C0090F160 /* LiveActivityManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		F7810C272BD5EFBE0090F160 /* AlwaysOnLive */ = {
+			isa = PBXGroup;
+			children = (
+				F734A78A2BD0663800C9ABFD /* AlwaysOnLiveView.swift */,
+			);
+			path = AlwaysOnLive;
 			sourceTree = "<group>";
 		};
 		F7972D412A85EA6600050263 /* MeteorWidget */ = {
@@ -381,7 +402,6 @@
 				F77E75432A80C180008F1883 /* Vibration.swift */,
 				F78A549D2AB43E5700507678 /* ToastManager.swift */,
 				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
-				F73882D12BCE45D200B1A15A /* APNSManager.swift */,
 				F73882DB2BCE4E6300B1A15A /* JWTParse */,
 			);
 			path = Common;
@@ -514,6 +534,7 @@
 			files = (
 				F77A9BFB2BB5950D00CD015B /* PrivacyInfo.xcprivacy in Resources */,
 				F7972D492A85EA6700050263 /* Assets.xcassets in Resources */,
+				F7B5A97A2BDA202C0035FB2F /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +617,7 @@
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
 				F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */,
 				F71AF73A2AADB44F00DBECBE /* TextView+.swift in Sources */,
+				F7810C242BD2568C0090F160 /* LiveActivityManager.swift in Sources */,
 				F734A7852BD00D5800C9ABFD /* Date+.swift in Sources */,
 				F73882E32BCE595400B1A15A /* P8Payload.swift in Sources */,
 				F73882D82BCE4E2000B1A15A /* EllipticCurveKey.swift in Sources */,
@@ -862,7 +884,7 @@
 				INFOPLIST_FILE = MeteorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MeteorWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -895,7 +917,7 @@
 				INFOPLIST_FILE = MeteorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MeteorWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

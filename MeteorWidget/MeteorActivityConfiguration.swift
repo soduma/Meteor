@@ -5,26 +5,24 @@
 //  Created by 장기화 on 2023/08/11.
 //
 
+#if canImport(ActivityKit)
 import SwiftUI
 import WidgetKit
 import ActivityKit
 
 fileprivate let logo = "meteor_logo"
 
-#if canImport(ActivityKit)
 struct MeteorAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var liveText: String
         var liveColor: Int
         var hideContentOnLockScreen: Bool
-        var triggerDate: Int
     }
     
     // Fixed non-changing properties about your activity go here!
 //    var value: String
 }
-#endif
 
 struct MeteorActivityConfiguration: Widget {
     var body: some WidgetConfiguration {
@@ -42,8 +40,8 @@ struct MeteorActivityConfiguration: Widget {
                     .activityBackgroundTint(.clear)
             }
         } dynamicIsland: { context in
-            let timeInterval = TimeInterval(context.state.triggerDate)
-            let date = Date(timeIntervalSince1970: timeInterval)
+            let liveText = context.state.liveText
+            let date = Date()
             let twelveHours: TimeInterval = 12 * 60 * 60
             let workoutDateRange = date...date + twelveHours
             
@@ -70,20 +68,30 @@ struct MeteorActivityConfiguration: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text(context.state.liveText)
-                        .font(.system(size: 32, weight: .semibold))
-                        .foregroundColor(.white)
-                        .minimumScaleFactor(0.42)
+                    if liveText.isEmpty {
+                        Image(systemName: "arrow.left.arrow.right")
+                        
+                    } else {
+                        Text(context.state.liveText)
+                            .font(.system(size: 32, weight: .semibold))
+                            .foregroundColor(.white)
+                            .minimumScaleFactor(0.35)
+                    }
                 }
             } compactLeading: {
                 Image(logo)
+                    .grayscale(liveText.isEmpty ? 1 : 0)
             } compactTrailing: {
                 ProgressView(timerInterval: workoutDateRange) {
-                } currentValueLabel: { }
+                } currentValueLabel: { 
+//                    Image(systemName: "arrow.left.arrow.right")
+//                        .foregroundStyle(.secondary)
+                }
                 .progressViewStyle(.circular)
                 .tint(.white)
             } minimal: {
                 Image(logo)
+                    .grayscale(liveText.isEmpty ? 1 : 0)
             }
         }
     }
@@ -96,43 +104,47 @@ struct LockScreenView: View {
     var body: some View {
         if context.state.hideContentOnLockScreen {
             if isLuminanceReduced {
-                setLayout(context, hideContent: true)
+                setLayout(context, needHide: true)
             } else {
-                setLayout(context, hideContent: false)
+                setLayout(context, needHide: false)
             }
         } else {
-            setLayout(context, hideContent: false)
+            setLayout(context, needHide: false)
         }
     }
 }
 
-@ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorAttributes>, hideContent: Bool) -> some View {
-    VStack {
+@ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorAttributes>, needHide: Bool) -> some View {
+    let liveText = context.state.liveText
+    
+    VStack(spacing: 3) {
         setLeadingLayout(context)
             .padding(.leading)
         
-        if !context.state.liveText.isEmpty {
-            Text(context.state.liveText)
+        if !liveText.isEmpty {
+            Text(liveText)
                 .font(.system(size: 32, weight: .semibold))
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.42)
                 .padding([.leading, .trailing])
-                .blur(radius: hideContent ? 8 : 0)
+                .blur(radius: needHide ? 8 : 0)
         }
     }
     .padding([.top, .bottom])
 }
 
 @ViewBuilder fileprivate func setLeadingLayout(_ context: ActivityViewContext<MeteorAttributes>) -> some View {
+    let liveText = context.state.liveText
+    
     HStack(alignment: .center, spacing: 8) {
         ZStack {
             Circle()
-                .fill(context.state.liveText.isEmpty ? .clear : .white)
-                .frame(width: 30, height: 30, alignment: .center)
+                .fill(liveText.isEmpty ? .clear : .white)
+                .frame(width: 28, height: 28, alignment: .center)
             Image(logo)
                 .resizable()
-                .frame(width: 22, height: 22)
-                .grayscale(context.state.liveText.isEmpty ? 1 : 0)
+                .frame(width: 20, height: 20)
+                .grayscale(liveText.isEmpty ? 1 : 0)
         }
         
         Text("Meteor")
@@ -140,7 +152,7 @@ struct LockScreenView: View {
             .fontWeight(.medium)
             .lineLimit(1)
             .minimumScaleFactor(0.1)
-            .opacity(context.state.liveText.isEmpty ? 0.2 : 1)
+            .opacity(liveText.isEmpty ? 0.5 : 1)
         
         Spacer()
     }
@@ -165,3 +177,4 @@ struct LockScreenView: View {
 //            .previewDisplayName("Notification")
 //    }
 //}
+#endif

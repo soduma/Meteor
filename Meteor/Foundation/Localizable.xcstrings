@@ -4,6 +4,9 @@
     "'화면 상시표시'는 잠금 화면을 어둡게 하면서 최소한의 전력으로 시간, 위젯 및 알림과 같은 정보를 계속 표시합니다." : {
 
     },
+    "%@" : {
+
+    },
     "⚠️ Live Expired" : {
       "localizations" : {
         "ko" : {
@@ -14,15 +17,24 @@
         }
       }
     },
-    "Always On Live (β)" : {
+    "Always On Live" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live 항상 표시 (β)"
+            "value" : "Live 항상 표시"
           }
         }
       }
+    },
+    "Background Update (β)" : {
+
+    },
+    "beta" : {
+
+    },
+    "Customize" : {
+
     },
     "Delete All" : {
       "localizations" : {
@@ -51,6 +63,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기록"
+          }
+        }
+      }
+    },
+    "Inspire emotions into your day." : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 하루에 영감을 불어 넣어보세요."
           }
         }
       }
@@ -140,6 +162,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meteor"
+          }
+        }
+      }
+    },
+    "Meteor Widget" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메테오 위젯"
           }
         }
       }

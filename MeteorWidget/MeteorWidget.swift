@@ -43,20 +43,11 @@ struct MeteorWidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
-        let myImage = entry.imageData!
-        
-        if #available(iOSApplicationExtension 17.0, *) {
-            VStack {
-                Image(uiImage: UIImage(data: myImage)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            }.containerBackground(.clear, for: .widget)
-        }
-        else {
-            Image(uiImage: UIImage(data: myImage)!)
+        VStack {
+            Image(uiImage: UIImage(data: entry.imageData!)!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-        }
+        }.containerBackground(.clear, for: .widget)
     }
 }
 
@@ -68,9 +59,10 @@ struct MeteorWidget: Widget {
             MeteorWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Meteor Widget")
-        .description("Inspire emotions into your day.")
+        .description(String(
+            localized: "Inspire emotions into your day.",
+            bundle: Bundle(identifier: "com.soduma.Meteor.MeteorWidget")))
         .contentMarginsDisabled()
-//        .containerBackgroundRemovable(false)
     }
 }
 

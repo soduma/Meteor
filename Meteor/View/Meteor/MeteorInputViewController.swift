@@ -59,6 +59,7 @@ class MeteorInputViewController: UIViewController {
         view.font = .systemFont(ofSize: 25, weight: .medium)
         view.backgroundColor = .clear
         view.tintColor = .red
+        view.autocorrectionType = .no
         view.delegate = self
         return view
     }()
@@ -140,7 +141,7 @@ class MeteorInputViewController: UIViewController {
         enterButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(24)
 //            $0.height.equalTo(60)
-            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-20)
+            $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-12)
         }
         
 //        enterButton.snp.makeConstraints {
@@ -246,6 +247,7 @@ class MeteorInputViewController: UIViewController {
     }
     
     @objc private func historyButtonTapped() {
+        makeVibration(type: .medium)
         var viewController: UIViewController?
         
         let contentView = MeteorHistoryView { [weak self] text in

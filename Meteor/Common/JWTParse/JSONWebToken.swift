@@ -23,7 +23,7 @@ struct JSONWebToken: Codable {
         let isExpired = newDate > (oldDate + 20*60)
         guard isExpired else {
             claims = Claims(teamID: teamID, issueDate: oldDate)
-            guard let token = UserDefaults.standard.string(forKey: UserDefaultsKeys.tokenKey) else {
+            guard let token = UserDefaults.standard.string(forKey: UserDefaultsKeys.JWTokenKey) else {
                 throw JSONWebTokenError.invalidToken }
             self.token = token
             return
@@ -35,7 +35,7 @@ struct JSONWebToken: Codable {
         let signature = try ellipticCurveKey.es256Sign(digest: digest)
         token = [digest, signature].joined(separator: ".")
         UserDefaults.standard.set(newDate, forKey: UserDefaultsKeys.requestedDateKey)
-        UserDefaults.standard.set(token, forKey: UserDefaultsKeys.tokenKey)
+        UserDefaults.standard.set(token, forKey: UserDefaultsKeys.JWTokenKey)
     }
 }
 

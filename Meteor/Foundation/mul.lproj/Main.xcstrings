@@ -91,24 +91,6 @@
         }
       }
     },
-    "4tG-Qy-j6n.configuration.title" : {
-      "comment" : "Class = \"UIButton\"; configuration.title = \"Review\"; ObjectID = \"4tG-Qy-j6n\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Review"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Review"
-          }
-        }
-      }
-    },
     "4tG-Qy-j6n.normalTitle" : {
       "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"4tG-Qy-j6n\";",
       "extractionState" : "extracted_with_value",
@@ -326,19 +308,19 @@
       }
     },
     "eid-Qh-HRI.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Write\"; ObjectID = \"eid-Qh-HRI\";",
+      "comment" : "Class = \"UILabel\"; text = \"Feedback\"; ObjectID = \"eid-Qh-HRI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Write"
+            "value" : "Feedback"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Write"
+            "value" : "Feedback"
           }
         }
       }
@@ -362,19 +344,19 @@
       }
     },
     "fMt-Tu-Xlt.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Always On Live (β)\"; ObjectID = \"fMt-Tu-Xlt\";",
+      "comment" : "Class = \"UILabel\"; text = \"Always On Live\"; ObjectID = \"fMt-Tu-Xlt\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Always On Live (β)"
+            "value" : "Always On Live"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live 항상 표시 (β)"
+            "value" : "Live 항상 표시"
           }
         }
       }
@@ -465,6 +447,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iPhone 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."
+          }
+        }
+      }
+    },
+    "JG9-Hh-WK2.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Review\"; ObjectID = \"JG9-Hh-WK2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
           }
         }
       }
@@ -631,24 +631,6 @@
         }
       }
     },
-    "Pmw-Ai-Bkf.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Feedback\"; ObjectID = \"Pmw-Ai-Bkf\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Feedback"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback"
-          }
-        }
-      }
-    },
     "rDY-ZO-TPG.footerTitle" : {
       "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Can see this photo in the Widget, and approximately 500KB of data is used each time a photo is loaded.\"; ObjectID = \"rDY-ZO-TPG\";",
       "extractionState" : "extracted_with_value",
@@ -703,8 +685,8 @@
         }
       }
     },
-    "Tam-U8-D2K.configuration.title" : {
-      "comment" : "Class = \"UIButton\"; configuration.title = \"dev.soduma\"; ObjectID = \"Tam-U8-D2K\";",
+    "VFB-BL-E6f.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"dev.soduma\"; ObjectID = \"VFB-BL-E6f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -721,8 +703,8 @@
         }
       }
     },
-    "Tam-U8-D2K.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Tam-U8-D2K\";",
+    "VFB-BL-E6f.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"VFB-BL-E6f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -884,13 +866,13 @@
       }
     },
     "zae-IP-TZ4.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"  Stop  \"; ObjectID = \"zae-IP-TZ4\";",
+      "comment" : "Class = \"UIButton\"; normalTitle = \"   Stop   \"; ObjectID = \"zae-IP-TZ4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "  Stop  "
+            "value" : "   Stop   "
           }
         },
         "ko" : {
