@@ -109,6 +109,10 @@ class UserDefaultsKeys {
         return "JWToken"
     }
     
+    class var minimizeDynamicIslandStateKey: String {
+        return "MinimizeDynamicIslandState"
+    }
+    
     class var liveBackgroundUpdateStateKey: String {
         return "LiveBackgroundUpdateState"
     }

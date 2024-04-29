@@ -20,8 +20,9 @@ class MeteorViewController: UIViewController {
     @IBOutlet weak var liveButton: UIButton!
     @IBOutlet weak var liveBackgroundView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var endlessTimerLabel: UILabel!
+    
+    @IBOutlet weak var noticeStackView: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
@@ -45,7 +46,7 @@ class MeteorViewController: UIViewController {
         checkLiveState()
 //        Task {
 //            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
-                liveManager.getPushToStartToken()
+//                liveManager.getPushToStartToken()
                 
 //                await liveManager.push(timestamp: Date.timestamp, liveColor: 2, isHide: true)
 //                liveManager.loadLiveActivity()
@@ -264,12 +265,12 @@ extension MeteorViewController {
         stopButton.layer.cornerRadius = 16
         stopButton.clipsToBounds = true
         
+        noticeStackView.layer.cornerRadius = 20
+        noticeStackView.clipsToBounds = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
-        collectionView.layer.cornerRadius = 20
-        collectionView.clipsToBounds = true
         pageControl.numberOfPages = viewModel.noticeList.count
         
         authView.layer.cornerRadius = 20
@@ -380,11 +381,6 @@ extension MeteorViewController {
         }
     }
     
-    @objc private func willEnterForeground() {
-        removeAuthViewAfterAllowAuthorization()
-        liveManager.rebootActivity()
-    }
-    
     private func removeAuthViewAfterAllowAuthorization() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
             DispatchQueue.main.async {
@@ -394,6 +390,11 @@ extension MeteorViewController {
                 }
             }
         }
+    }
+    
+    @objc private func willEnterForeground() {
+        removeAuthViewAfterAllowAuthorization()
+        liveManager.rebootActivity()
     }
     
     @objc private func checkLiveState() {
@@ -443,7 +444,7 @@ extension MeteorViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoticeCell.identifier, for: indexPath) as? NoticeCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoticeCollectionViewCell.identifier, for: indexPath) as? NoticeCollectionViewCell else {
             return UICollectionViewCell() }
         cell.setLayout(notice: viewModel.noticeList[indexPath.row])
         return cell

@@ -125,7 +125,7 @@ class MeteorViewModel {
     /// 앱 업데이트 후 너무 이른 customReview 방지
     func resetCustomReviewCount() {
         let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingsViewModel().getCurrentVersion()
+        let currentVersion = SettingsViewModel.getCurrentVersion()
         
         if lastVersion != currentVersion {
             let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
@@ -156,7 +156,7 @@ class MeteorViewModel {
         dateFormatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date2 = dateFormatter2.string(from: Date())
         let locale = TimeZone.current.identifier
-        let version = SettingsViewModel().getCurrentVersion().replacingOccurrences(of: ".", with: "_")
+        let version = SettingsViewModel.getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let text = content.replacingOccurrences(of: "\n", with: "/-/")
         var value: Any? {
             if kind == "3_endlessText" {

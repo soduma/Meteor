@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import MessageUI
+import Puller
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var feedbackImageView: UIImageView!
@@ -20,22 +21,18 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var hapticSwitch: UISwitch!
     @IBOutlet weak var applicationSwitch: UISwitch!
     
-    @IBOutlet weak var alwayOnLiveCell: UITableViewCell!
-    @IBOutlet weak var alwaysOnLiveLabel: UILabel!
+    @IBOutlet weak var alwaysOnLiveCell: UITableViewCell!
+    @IBOutlet weak var alwaysOnLiveStackView: UIStackView!
+    @IBOutlet weak var alwaysOnLiveisOnLabel: UILabel!
+    @IBOutlet weak var alwaysOnLiveDescriptionLabel: UILabel!
     @IBOutlet weak var lockScreenSwitch: UISwitch!
     
     @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var keywordTextField: UITextField!
     @IBOutlet weak var refreshPhotoView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
-    @IBOutlet weak var starRateView: UIVisualEffectView!
-    @IBOutlet weak var rateHeaderLabel: UILabel!
-    @IBOutlet weak var rateTextLabel: UILabel!
-    @IBOutlet weak var rateCloseButton: UIButton!
-    @IBOutlet weak var rateSubmitButton: UIButton!
-    @IBOutlet weak var keywordTextField: UITextField!
     
     private let viewModel = SettingsViewModel()
     private let liveManager = LiveActivityManager.shared
@@ -54,89 +51,6 @@ class SettingsViewController: UITableViewController {
         viewModel.getFirebaseImageURL()
     }
     
-    private func setLayout() {
-//        [feedbackImageView, reviewImageView, versionImageView].forEach {
-//            $0?.layer.cornerRadius = 6
-////            $0?.layer.borderColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1).cgColor
-//            $0?.layer.borderColor = UIColor.systemGray6.cgColor
-//            $0?.layer.borderWidth = 0.5
-//            $0?.clipsToBounds = true
-//        }
-        setImageViewsBorder()
-        
-        activityIndicatorView.isHidden = true
-        keywordTextField.delegate = self
-        
-        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
-        
-        if let imageData = UserDefaults.standard.data(forKey: UserDefaultsKeys.widgetDataKey) {
-            imageView.image = UIImage(data: imageData)
-        }
-        
-        let refreshPhotoGesture = UITapGestureRecognizer(target: self, action: #selector(refreshPhotoCellViewTapped))
-        refreshPhotoView.addGestureRecognizer(refreshPhotoGesture)
-        let alwaysOnLiveGesture = UITapGestureRecognizer(target: self, action: #selector(alwaysOnLiveCellViewTapped))
-//        alwaysOnLiveView.addGestureRecognizer(alwaysOnLiveGesture)
-        alwayOnLiveCell.addGestureRecognizer(alwaysOnLiveGesture)
-        
-        
-        rateSubmitButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Submit", comment: "")), for: .normal)
-    }
-    
-    private func initialSeoul() {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
-            keywordTextField.text = "Seoul"
-            viewModel.keywordText = "Seoul"
-        }
-    }
-    
-    private func setSwitchesState() {
-        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
-        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
-        
-        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
-        //앱잠금
-        
-        alwaysOnLiveLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey) ? "On" : "Off", comment: "")
-        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
-        
-        liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
-    }
-    
-    private func setImageViewsBorder() {
-        [feedbackImageView, reviewImageView, versionImageView].forEach {
-            $0?.layer.cornerRadius = 6
-//            $0?.layer.borderColor = UIColor.systemGray5.withAlphaComponent(0.5).cgColor
-            $0?.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.3).cgColor
-            $0?.layer.borderWidth = 0.5
-            $0?.clipsToBounds = true
-        }
-    }
-    
-    @objc private func refreshPhotoCellViewTapped() {
-        keywordTextField.resignFirstResponder()
-        makeVibration(type: .rigid)
-        
-        starRateView.isHidden = !viewModel.executeAppReviews()
-        activityIndicatorView.isHidden = false
-        activityIndicatorView.startAnimating()
-        
-        Task {
-            guard let imageData = await viewModel.getNewImage() else { return }
-            imageView.image = UIImage(data: imageData)
-            activityIndicatorView.isHidden = true
-            activityIndicatorView.stopAnimating()
-        }
-    }
-    
-    @objc private func alwaysOnLiveCellViewTapped() {
-        let vc = UIHostingController(rootView: AlwaysOnLiveView())
-        vc.title = NSLocalizedString("Always On Live", comment: "")
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @IBAction func feedbackButtonTapped(_ sender: UIButton) {
         var reverseLast = ""
         if let last = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) {
@@ -153,7 +67,7 @@ class SettingsViewController: UITableViewController {
                              
                              -------------------
                              
-                             App Version : \(reverseLast). __\(viewModel.getCurrentVersion())
+                             App Version : \(reverseLast). __\(SettingsViewModel.getCurrentVersion())
                              Device Model : \(UIDevice.modelName)
                              Device OS : \(UIDevice.current.systemVersion)
                              """
@@ -220,7 +134,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
         UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
         
-        viewModel.executeAppReviews()
+        showCustomAppReview()
         liveManager.rebootActivity()
     }
     
@@ -237,22 +151,100 @@ class SettingsViewController: UITableViewController {
         }
         UserDefaults.standard.set(viewModel.liveColor.rawValue, forKey: UserDefaultsKeys.liveColorKey)
         
-        viewModel.executeAppReviews()
+        showCustomAppReview()
         liveManager.rebootActivity()
     }
-    
-    @IBAction func rateSubmitTapped(_ sender: UIButton) {
-        let url = "https://apps.apple.com/app/id1562989730?action=write-review"
-        guard let writeReviewURL = URL(string: url) else { return }
-        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+}
+
+extension SettingsViewController {
+    private func setLayout() {
+        setImageViewsBorder()
+        activityIndicatorView.isHidden = true
+        keywordTextField.delegate = self
         
-        starRateView.isHidden = true
-        UserDefaults.standard.set(viewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
+        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
+        
+        if let imageData = UserDefaults.standard.data(forKey: UserDefaultsKeys.widgetDataKey) {
+            imageView.image = UIImage(data: imageData)
+        }
+        
+        let refreshPhotoGesture = UITapGestureRecognizer(target: self, action: #selector(refreshPhotoCellViewTapped))
+        refreshPhotoView.addGestureRecognizer(refreshPhotoGesture)
+        let alwaysOnLiveGesture = UITapGestureRecognizer(target: self, action: #selector(alwaysOnLiveCellViewTapped))
+        alwaysOnLiveCell.addGestureRecognizer(alwaysOnLiveGesture)
+        
+        let currentLanguage = Bundle.main.preferredLocalizations[0]
+        print(currentLanguage)
+        if  currentLanguage == "en" {
+            alwaysOnLiveDescriptionLabel.isHidden = true
+        }
     }
     
-    @IBAction func rateCloseTapped(_ sender: UIButton) {
-        starRateView.isHidden = true
-        UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
+    private func initialSeoul() {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
+            keywordTextField.text = "Seoul"
+            viewModel.keywordText = "Seoul"
+        }
+    }
+    
+    private func setSwitchesState() {
+        lightModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lightStateKey)
+        darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
+        
+        hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
+        //앱잠금
+        
+        alwaysOnLiveisOnLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey) ? "On" : "Off", comment: "")
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+        
+        liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
+    }
+    
+    private func setImageViewsBorder() {
+        [feedbackImageView, reviewImageView, versionImageView].forEach {
+            $0?.layer.cornerRadius = 6
+//            $0?.layer.borderColor = UIColor.systemGray5.withAlphaComponent(0.5).cgColor
+            $0?.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.3).cgColor
+            $0?.layer.borderWidth = 0.5
+            $0?.clipsToBounds = true
+        }
+    }
+    
+    private func showCustomAppReview() {
+        if viewModel.executeAppReviews() {
+            let vc = MeteorReviewViewController()
+            let pullerModel = PullerModel(animator: .default,
+                                          detents: [.medium],
+                                          isModalInPresentation: true,
+                                          hasDynamicHeight: false,
+                                          hasCircleCloseButton: false)
+            presentAsPuller(vc, model: pullerModel)
+        }
+    }
+    
+    @objc private func refreshPhotoCellViewTapped() {
+        keywordTextField.resignFirstResponder()
+        makeVibration(type: .rigid)
+        
+        showCustomAppReview()
+        
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        
+        Task {
+            guard let imageData = await viewModel.getNewImage() else { return }
+            imageView.image = UIImage(data: imageData)
+            activityIndicatorView.isHidden = true
+            activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    @objc private func alwaysOnLiveCellViewTapped() {
+        let vc = UIHostingController(rootView: AlwaysOnLiveView())
+        vc.title = NSLocalizedString("Always On Live", comment: "")
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

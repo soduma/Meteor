@@ -24,6 +24,11 @@ class SettingsViewModel {
     var keywordText = ""
     var liveColor = LiveColor.red
     
+    static func getCurrentVersion() -> String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
+        return version
+    }
+    
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
             self?.firebaseImageURL = snapshot.value as? String ?? SettingsViewModel.defaultURL
@@ -113,11 +118,6 @@ class SettingsViewModel {
         
         UserDefaults.standard.set(lightMode, forKey: UserDefaultsKeys.lightStateKey)
         UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
-    }
-    
-    func getCurrentVersion() -> String {
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
-        return version
     }
     
     @discardableResult

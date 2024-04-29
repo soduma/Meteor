@@ -40,7 +40,7 @@ class LiveActivityManager {
             await registerLocalNotificaiton(text: text)
             await endAlwaysActivity()
             
-            let (attributes, content) = activityTemplete(text)
+            let (attributes, content) = activityTemplete(liveText: text)
             let activity = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
             currentActivity = activity
             await observeActivity(activity: activity)
@@ -56,7 +56,7 @@ class LiveActivityManager {
               Activity<MeteorAttributes>.activities.filter({ $0.content.state.liveText == "" }).isEmpty else { return }
             
         Task {
-            let (attributes, content) = activityTemplete("")
+            let (attributes, content) = activityTemplete(liveText: "")
             let activity = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
             await observeAlwaysActivity(activity: activity)
         }
@@ -143,7 +143,7 @@ class LiveActivityManager {
         currentActivity = nil
         
 //        Task {
-            let (_, finalContent) = activityTemplete("none")
+            let (_, finalContent) = activityTemplete(liveText: "none")
             await activity.end(finalContent, dismissalPolicy: .immediate)
             print("Ending the Live Activity(Timer): \(activity.id)")
             startAlwaysActivity()
@@ -156,7 +156,7 @@ class LiveActivityManager {
             .first else { return }
             
 //        Task {
-            let (_, finalContent) = activityTemplete("none")
+            let (_, finalContent) = activityTemplete(liveText: "none")
             await activity.end(finalContent, dismissalPolicy: .immediate)
             print("Ending the Live Activity(Timer): \(activity.id)")
 //        }
@@ -193,12 +193,12 @@ class LiveActivityManager {
         }
     }
     
-    private func activityTemplete(_ liveText: String) -> (MeteorAttributes, ActivityContent<MeteorAttributes.ContentState>) {
+    private func activityTemplete(liveText: String) -> (MeteorAttributes, ActivityContent<MeteorAttributes.ContentState>) {
         let attributes = MeteorAttributes()
         let state = MeteorAttributes.ContentState(
             liveText: liveText,
             liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-            hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+            ishide: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
         )
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         return (attributes, content)
@@ -256,7 +256,7 @@ extension LiveActivityManager {
             
             if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
                 if !isActivityAlive() {
-                    await push(
+                    push(
                         timestamp: Date.timestamp,
                         liveText: liveText,
                         liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
@@ -280,88 +280,14 @@ extension LiveActivityManager {
             let finalState = MeteorAttributes.ContentState(
                 liveText: "none",
                 liveColor: 0,
-                hideContentOnLockScreen: false
+                ishide: false
             )
             let finalContent = ActivityContent(state: finalState, staleDate: nil)
             await activity.end(finalContent, dismissalPolicy: .immediate)
         }
     }
     
-//    func push(timestamp: Int, liveText: String, liveColor: Int, isHide: Bool) {
-//        print("🐤🐤🐤 푸시불림")
-//        guard let p8Payload = FileParser.parse() else { return }
-//        do {
-//            let jsonWebToken = try JSONWebToken(keyID: FileParser.keyID, teamID: FileParser.teamID, p8Payload: p8Payload)
-//            let authenticationToken = jsonWebToken.token
-//            print("🍓 jsonWebToken : \(authenticationToken)")
-//            let deviceToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveDeviceTokenKey) ?? ""
-//            let payload =
-//"""
-//{
-//    "aps": {
-//        "timestamp": \(timestamp),
-//        "event": "start",
-//        "content-state": {
-//            "liveText": \(liveText),
-//            "liveColor": \(liveColor),
-//            "hideContentOnLockScreen": \(isHide)
-//        },
-//        "attributes-type": "MeteorAttributes",
-//        "attributes": {
-//            "liveText": "",
-//            "liveColor": \(liveColor),
-//            "hideContentOnLockScreen": \(isHide)
-//        },
-//        "alert": {
-//            "title": "A",
-//            "body": "B"
-//        }
-//    }
-//}
-//"""
-//            guard let request = APNSManager().urlRequest(
-//                authenticationToken: authenticationToken,
-//                deviceToken: deviceToken,
-//                payload: payload) else { return }
-//            
-//            let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-//                guard let self else { return }
-//                
-//                //            let (data, response) = try await URLSession.shared.data(for: request)
-//                var messages = [String]()
-//                
-//                if let data,
-//                   let description = String(data: data, encoding: .utf8),
-//                   !description.isEmpty {
-//                    messages.append("Payload: \(description)")
-//                }
-//                
-//                if let response = response as? HTTPURLResponse {
-//                    var description = response.description
-//                    let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
-//                    let range = NSMakeRange(0, description.count)
-//                    description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
-//                    if let url = response.url {
-//                        messages.append("URL: \(url)")
-//                    }
-//                    
-//                    messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
-//                    
-//                    if let allHeaderFields = response.allHeaderFields as? [String: String] {
-//                        messages.append("Header: \(allHeaderFields.description)")
-//                    }
-//                }
-//                print("🍖 \(messages.compactMap { $0 }.joined(separator: "\n")) \n-----")
-//            }
-//            
-//            task.resume()
-//            
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-    
-    func push(timestamp: Int, liveText: String, liveColor: Int, isHide: Bool) async {
+    func push(timestamp: Int, liveText: String, liveColor: Int, isHide: Bool) {
         print("🐤🐤🐤 푸시불림")
         guard let p8Payload = FileParser.parse() else { return }
         do {
@@ -378,13 +304,13 @@ extension LiveActivityManager {
         "content-state": {
             "liveText": \(liveText),
             "liveColor": \(liveColor),
-            "hideContentOnLockScreen": \(isHide)
+            "isHide": \(isHide)
         },
         "attributes-type": "MeteorAttributes",
         "attributes": {
             "liveText": "",
             "liveColor": \(liveColor),
-            "hideContentOnLockScreen": \(isHide)
+            "isHide": \(isHide)
         },
         "alert": {
             "title": "A",
@@ -398,35 +324,109 @@ extension LiveActivityManager {
                 deviceToken: deviceToken,
                 payload: payload) else { return }
             
-            let (data, response) = try await URLSession.shared.data(for: request)
-            var messages = [String]()
-            
-            if let description = String(data: data, encoding: .utf8),
-               !description.isEmpty {
-                messages.append("Payload: \(description)")
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                var description = response.description
-                let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
-                let range = NSMakeRange(0, description.count)
-                description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
-                if let url = response.url {
-                    messages.append("URL: \(url)")
+            let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+                guard let self else { return }
+                
+                //            let (data, response) = try await URLSession.shared.data(for: request)
+                var messages = [String]()
+                
+                if let data,
+                   let description = String(data: data, encoding: .utf8),
+                   !description.isEmpty {
+                    messages.append("Payload: \(description)")
                 }
                 
-                messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
-                
-                if let allHeaderFields = response.allHeaderFields as? [String: String] {
-                    messages.append("Header: \(allHeaderFields.description)")
+                if let response = response as? HTTPURLResponse {
+                    var description = response.description
+                    let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
+                    let range = NSMakeRange(0, description.count)
+                    description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
+                    if let url = response.url {
+                        messages.append("URL: \(url)")
+                    }
+                    
+                    messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
+                    
+                    if let allHeaderFields = response.allHeaderFields as? [String: String] {
+                        messages.append("Header: \(allHeaderFields.description)")
+                    }
                 }
+                print("🍖 \(messages.compactMap { $0 }.joined(separator: "\n")) \n-----")
             }
-            print("🍖 \(messages.compactMap { $0 }.joined(separator: "\n")) \n-----")
+            
+            task.resume()
             
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+//    func push(timestamp: Int, liveText: String, liveColor: Int, isHide: Bool) async {
+//        print("🐤🐤🐤 푸시불림")
+//        guard let p8Payload = FileParser.parse() else { return }
+//        do {
+//            let jsonWebToken = try JSONWebToken(keyID: FileParser.keyID, teamID: FileParser.teamID, p8Payload: p8Payload)
+//            let authenticationToken = jsonWebToken.token
+//            print("🍓 jsonWebToken : \(authenticationToken)")
+//            let deviceToken = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveDeviceTokenKey) ?? ""
+//            let payload =
+//"""
+//{
+//    "aps": {
+//        "timestamp": \(timestamp),
+//        "event": "start",
+//        "content-state": {
+//            "liveText": \(liveText),
+//            "liveColor": \(liveColor),
+//            "isHide": \(isHide)
+//        },
+//        "attributes-type": "MeteorAttributes",
+//        "attributes": {
+//            "liveText": "",
+//            "liveColor": \(liveColor),
+//            "isHide": \(isHide)
+//        },
+//        "alert": {
+//            "title": "A",
+//            "body": "B"
+//        }
+//    }
+//}
+//"""
+//            guard let request = APNSManager().urlRequest(
+//                authenticationToken: authenticationToken,
+//                deviceToken: deviceToken,
+//                payload: payload) else { return }
+//            
+//            let (data, response) = try await URLSession.shared.data(for: request)
+//            var messages = [String]()
+//            
+//            if let description = String(data: data, encoding: .utf8),
+//               !description.isEmpty {
+//                messages.append("Payload: \(description)")
+//            }
+//            
+//            if let response = response as? HTTPURLResponse {
+//                var description = response.description
+//                let regex = try! NSRegularExpression(pattern: "<.*:.*x.*>", options: NSRegularExpression.Options.caseInsensitive)
+//                let range = NSMakeRange(0, description.count)
+//                description = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "Response:")
+//                if let url = response.url {
+//                    messages.append("URL: \(url)")
+//                }
+//                
+//                messages.append("Status Code: \(response.statusCode) (\(HTTPURLResponse.localizedString(forStatusCode: response.statusCode)))")
+//                
+//                if let allHeaderFields = response.allHeaderFields as? [String: String] {
+//                    messages.append("Header: \(allHeaderFields.description)")
+//                }
+//            }
+//            print("🍖 \(messages.compactMap { $0 }.joined(separator: "\n")) \n-----")
+//            
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
 }
 
 //class LiveActivityManager {

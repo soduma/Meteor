@@ -17,7 +17,7 @@ struct MeteorAttributes: ActivityAttributes {
         // Dynamic stateful properties about your activity go here!
         var liveText: String
         var liveColor: Int
-        var hideContentOnLockScreen: Bool
+        var ishide: Bool
     }
     
     // Fixed non-changing properties about your activity go here!
@@ -102,7 +102,7 @@ struct LockScreenView: View {
     let context: ActivityViewContext<MeteorAttributes>
     
     var body: some View {
-        if context.state.hideContentOnLockScreen {
+        if context.state.ishide {
             if isLuminanceReduced {
                 setLayout(context, needHide: true)
             } else {
