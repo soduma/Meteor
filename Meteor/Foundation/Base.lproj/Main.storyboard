@@ -745,13 +745,13 @@ Meteor feature requires notification permission.</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="73A-nr-OUZ">
                                                     <rect key="frame" x="19.999999999999993" y="12" width="109.33333333333331" height="36.333333333333336"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always On Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMt-Tu-Xlt">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Always On Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMt-Tu-Xlt">
                                                             <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="19.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always On Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sq-ut-wTj">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Always On Live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sq-ut-wTj">
                                                             <rect key="frame" x="0.0" y="19.333333333333332" width="109.33333333333333" height="16.999999999999996"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" systemColor="systemGrayColor"/>
@@ -770,7 +770,7 @@ Meteor feature requires notification permission.</string>
                                                 <constraint firstAttribute="trailing" secondItem="zWe-cb-GqJ" secondAttribute="trailing" constant="8" id="2Id-Df-5fg"/>
                                                 <constraint firstItem="zWe-cb-GqJ" firstAttribute="centerY" secondItem="6io-Zc-6dw" secondAttribute="centerY" id="98w-Tf-aY8"/>
                                                 <constraint firstItem="73A-nr-OUZ" firstAttribute="centerY" secondItem="6io-Zc-6dw" secondAttribute="centerY" id="RX3-cA-1Yg"/>
-                                                <constraint firstItem="73A-nr-OUZ" firstAttribute="leading" secondItem="6io-Zc-6dw" secondAttribute="leading" constant="20" id="m1B-YB-aln"/>
+                                                <constraint firstItem="73A-nr-OUZ" firstAttribute="leading" secondItem="6io-Zc-6dw" secondAttribute="leadingMargin" id="m1B-YB-aln"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -132,7 +132,7 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
-        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.lockScreenStateKey)
+        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.liveContentHideStateKey)
         
         showCustomAppReview()
         liveManager.rebootActivity()
@@ -196,7 +196,7 @@ extension SettingsViewController {
         //앱잠금
         
         alwaysOnLiveisOnLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey) ? "On" : "Off", comment: "")
-        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey)
+        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)
         
         liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }

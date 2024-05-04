@@ -22,8 +22,12 @@ class UserDefaultsKeys {
         return "HapticState"
     }
     
-    class var lockScreenStateKey: String {
-        return "LockScreenState"
+//    class var lockScreenStateKey: String {
+//        return "LockScreenState"
+//    }
+    
+    class var liveContentHideStateKey: String {
+        return "LiveContentHideState"
     }
     
     class var liveColorKey: String {

@@ -46,7 +46,7 @@ class MeteorViewController: UIViewController {
         checkLiveState()
 //        Task {
 //            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
-//                liveManager.getPushToStartToken()
+                liveManager.getPushToStartToken()
                 
 //                await liveManager.push(timestamp: Date.timestamp, liveColor: 2, isHide: true)
 //                liveManager.loadLiveActivity()
@@ -63,6 +63,8 @@ class MeteorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+//        liveManager.loadActivity()
+
 //        checkLiveState()
         
         NotificationCenter.default.addObserver(self,
@@ -140,7 +142,7 @@ class MeteorViewController: UIViewController {
             makeVibration(type: .warning)
 //            liveManager.betaStart(liveText: "")
             Task {
-                await liveManager.push(timestamp: Date.timestamp, liveText: "", liveColor: 1, isHide: true)
+                await liveManager.push(liveText: "")
             }
             
             
@@ -381,7 +383,7 @@ extension MeteorViewController {
         }
     }
     
-    private func removeAuthViewAfterAllowAuthorization() {
+    private func removeAuthView() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
             DispatchQueue.main.async {
                 guard let self else { return }
@@ -393,8 +395,8 @@ extension MeteorViewController {
     }
     
     @objc private func willEnterForeground() {
-        removeAuthViewAfterAllowAuthorization()
-        liveManager.rebootActivity()
+        removeAuthView()
+//        liveManager.rebootActivity()
     }
     
     @objc private func checkLiveState() {

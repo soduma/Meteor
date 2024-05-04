@@ -9,10 +9,10 @@ import SwiftUI
 import ActivityKit
 
 struct AlwaysOnLiveView: View {
-    @AppStorage(UserDefaultsKeys.minimizeDynamicIslandStateKey)
-    private var isMinimizeOn: Bool = UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey)
     @AppStorage(UserDefaultsKeys.alwaysOnLiveStateKey)
     private var isAlwaysOn: Bool = UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
+    @AppStorage(UserDefaultsKeys.minimizeDynamicIslandStateKey)
+    private var isMinimizeOn: Bool = UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey)
     @AppStorage(UserDefaultsKeys.liveBackgroundUpdateStateKey)
     private var isBackgroundOn: Bool = UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey)
     
@@ -35,13 +35,19 @@ struct AlwaysOnLiveView: View {
                     Toggle("Minimize Dynamic Island", isOn: $isMinimizeOn)
                         .tint(.yellow)
                         .onChange(of: isMinimizeOn) { oldValue, newValue in
-                            //
+                            liveManager.rebootActivity()
                         }
                     Toggle("Background Update (β)", isOn: $isBackgroundOn)
-                        .tint(.orange)
-                        .onChange(of: isBackgroundOn) { oldValue, newValue in
-                            print(isBackgroundOn)
+                        .tint(.purple)
+                        .onChange(
+                            of: isBackgroundOn) { oldValue, newValue in
                             liveManager.rebootActivity()
+//                                liveManager.loadActivity()
+//                                Task {
+//                                    await liveManager.endAlwaysActivity()
+//                                    liveManager.startAlwaysActivity()
+//                                    liveManager.loadActivity()
+//                                }
                         }
                 } header: {
                     Text("Customize")
@@ -75,10 +81,7 @@ struct AlwaysOnLiveView: View {
         .contentMargins(.vertical, 19)
         .animation(.easeInOut, value: isAlwaysOn)
         .onAppear(perform: {
-            Task {
-//                await liveManager.getPushToStartToken()
-                //            print("🐶 token gettt")
-            }
+            liveManager.getPushToStartToken()
         })
     }
 }

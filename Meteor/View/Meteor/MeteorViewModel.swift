@@ -31,9 +31,7 @@ class MeteorViewModel {
         Task {
             if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
-                
                 UserDefaults.standard.set(true, forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
-                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
                 UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
                 
                 // 최초 위젯 이미지 생성
