@@ -671,9 +671,10 @@ Meteor feature requires notification permission.</string>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="General" id="mO4-mb-C9g">
+                                <string key="footerTitle">Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour. Only affects ‘Single’ and ‘Endless’.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
-                                        <rect key="frame" x="20" y="1035.6666622161865" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="1042.9999942779541" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="213-1a-puY" id="FlB-bQ-m7X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -703,14 +704,14 @@ Meteor feature requires notification permission.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="9dm-TH-fmM">
-                                        <rect key="frame" x="20" y="1079.6666622161865" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="1086.9999942779541" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dm-TH-fmM" id="4tk-bs-jY9">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lock Application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Rv-Gqc">
-                                                    <rect key="frame" x="20" y="12.333333333333334" width="120" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Sensitive Notificaitons" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hV-Rv-Gqc">
+                                                    <rect key="frame" x="20" y="12.333333333333334" width="201" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -720,7 +721,7 @@ Meteor feature requires notification permission.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="applicationSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="oTB-Sr-72g"/>
+                                                        <action selector="timeSensitiveSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="oTB-Sr-72g"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -737,7 +738,7 @@ Meteor feature requires notification permission.</string>
                             <tableViewSection headerTitle="Live" footerTitle="If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content." id="Xh4-Qj-N8E">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="aRL-HV-6YX">
-                                        <rect key="frame" x="20" y="1186.9999942779541" width="350" height="60"/>
+                                        <rect key="frame" x="20" y="1238.6666603088379" width="350" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRL-HV-6YX" id="6io-Zc-6dw">
                                             <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="60"/>
@@ -776,7 +777,7 @@ Meteor feature requires notification permission.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="UyZ-Xb-wBf">
-                                        <rect key="frame" x="20" y="1246.9999942779541" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="1298.6666603088379" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UyZ-Xb-wBf" id="Iw7-Tc-V8X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -793,7 +794,7 @@ Meteor feature requires notification permission.</string>
                                                     <color key="onTintColor" systemColor="systemYellowColor"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="lockScreenSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="YPs-K5-G00"/>
+                                                        <action selector="hideLiveContentSwitchTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="YPs-K5-G00"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -810,7 +811,7 @@ Meteor feature requires notification permission.</string>
                             <tableViewSection headerTitle="Live Color" id="keM-A9-xCm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="j8H-Kf-JZL">
-                                        <rect key="frame" x="20" y="1375.3333263397217" width="350" height="68"/>
+                                        <rect key="frame" x="20" y="1426.9999923706055" width="350" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8H-Kf-JZL" id="d27-Iv-GkP">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
@@ -911,17 +912,17 @@ Thank you for using. 👋🏻 </string>
                         <outlet property="alwaysOnLiveDescriptionLabel" destination="7sq-ut-wTj" id="Bzg-xa-sAl"/>
                         <outlet property="alwaysOnLiveStackView" destination="73A-nr-OUZ" id="BsG-IM-fkz"/>
                         <outlet property="alwaysOnLiveisOnLabel" destination="zWe-cb-GqJ" id="8E9-Jt-xRI"/>
-                        <outlet property="applicationSwitch" destination="7a0-3p-7RQ" id="reJ-Oo-UJH"/>
                         <outlet property="darkModeSwitch" destination="3YJ-YH-q9E" id="wCb-D3-8Ux"/>
                         <outlet property="feedbackImageView" destination="xjd-y7-zrx" id="wna-It-Cg9"/>
                         <outlet property="hapticSwitch" destination="gT1-20-Rqn" id="AYX-Dh-egI"/>
+                        <outlet property="hideLiveContentSwitch" destination="ZYy-z0-mdS" id="pMM-L9-Fuw"/>
                         <outlet property="imageView" destination="cRB-OJ-SQV" id="g64-r6-8fw"/>
                         <outlet property="keywordTextField" destination="8TC-ak-svv" id="tkd-wq-bRa"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
                         <outlet property="liveColorSegmentedControl" destination="Wlz-aA-bLY" id="5kV-YF-Oq6"/>
-                        <outlet property="lockScreenSwitch" destination="ZYy-z0-mdS" id="pMM-L9-Fuw"/>
                         <outlet property="refreshPhotoView" destination="eqt-rP-gYu" id="a54-RE-vbY"/>
                         <outlet property="reviewImageView" destination="BZ9-wB-xlR" id="6WE-Sc-5xQ"/>
+                        <outlet property="timeSensitiveSwitch" destination="7a0-3p-7RQ" id="reJ-Oo-UJH"/>
                         <outlet property="versionImageView" destination="dtV-xh-uJY" id="VAW-r9-p7t"/>
                     </connections>
                 </tableViewController>

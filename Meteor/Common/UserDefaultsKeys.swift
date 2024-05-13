@@ -26,6 +26,10 @@ class UserDefaultsKeys {
 //        return "LockScreenState"
 //    }
     
+    class var timeSensitiveStateKey: String {
+        return "TimeSensitiveState"
+    }
+    
     class var liveContentHideStateKey: String {
         return "LiveContentHideState"
     }

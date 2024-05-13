@@ -89,7 +89,11 @@ class MeteorViewModel {
         contents.title = "Meteor :"
         contents.body = "\(text)"
         contents.sound = .default
-        contents.interruptionLevel = .timeSensitive
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.timeSensitiveStateKey) {
+            contents.interruptionLevel = .timeSensitive
+        } else {
+            contents.interruptionLevel = .active
+        }
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
         let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)

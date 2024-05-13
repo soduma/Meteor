@@ -74,37 +74,37 @@
       }
     },
     "1hV-Rv-Gqc.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Lock Application\"; ObjectID = \"1hV-Rv-Gqc\";",
+      "comment" : "Class = \"UILabel\"; text = \"Time Sensitive Notificaitons\"; ObjectID = \"1hV-Rv-Gqc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Lock Application"
+            "value" : "Time Sensitive Notificaitons"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アプリロック"
+            "value" : "即時通知"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "앱 잠금"
+            "value" : "긴급한 알림"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "锁定应用程序"
+            "value" : "即时通知"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "鎖定應用程式"
+            "value" : "具時效性的通知"
           }
         }
       }
@@ -969,6 +969,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meteor"
+          }
+        }
+      }
+    },
+    "mO4-mb-C9g.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour. Only affects ‘Single’ and ‘Endless’.\"; ObjectID = \"mO4-mb-C9g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour. Only affects ‘Single’ and ‘Endless’."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即時通知は常にすぐに配信され、1時間はロック画面に残ります。 SingleとEndlessにのみ該当します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "긴급한 알림은 항상 즉시 표시되며, 1시간 동안 잠금 화면에 유지됩니다. Single과 Endless에만 해당됩니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即时通知将始终即时推送，并在锁屏上保留一小时。 只适用于Single和Endless。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「具時效性」的通知都將一律立即傳送並會在鎖定畫面上顯示一小時。 只適用於Single和Endless。"
           }
         }
       }

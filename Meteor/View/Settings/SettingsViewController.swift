@@ -19,13 +19,13 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
     @IBOutlet weak var hapticSwitch: UISwitch!
-    @IBOutlet weak var applicationSwitch: UISwitch!
+    @IBOutlet weak var timeSensitiveSwitch: UISwitch!
     
     @IBOutlet weak var alwaysOnLiveCell: UITableViewCell!
     @IBOutlet weak var alwaysOnLiveStackView: UIStackView!
     @IBOutlet weak var alwaysOnLiveisOnLabel: UILabel!
     @IBOutlet weak var alwaysOnLiveDescriptionLabel: UILabel!
-    @IBOutlet weak var lockScreenSwitch: UISwitch!
+    @IBOutlet weak var hideLiveContentSwitch: UISwitch!
     
     @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
     
@@ -127,12 +127,12 @@ class SettingsViewController: UITableViewController {
         UserDefaults.standard.set(hapticSwitch.isOn, forKey: UserDefaultsKeys.hapticStateKey)
     }
     
-    @IBAction func applicationSwitchTapped(_ sender: UISwitch) {
-        
+    @IBAction func timeSensitiveSwitchTapped(_ sender: UISwitch) {
+        UserDefaults.standard.set(timeSensitiveSwitch.isOn, forKey: UserDefaultsKeys.timeSensitiveStateKey)
     }
     
-    @IBAction func lockScreenSwitchTapped(_ sender: UISwitch) {
-        UserDefaults.standard.set(lockScreenSwitch.isOn, forKey: UserDefaultsKeys.liveContentHideStateKey)
+    @IBAction func hideLiveContentSwitchTapped(_ sender: UISwitch) {
+        UserDefaults.standard.set(hideLiveContentSwitch.isOn, forKey: UserDefaultsKeys.liveContentHideStateKey)
         
         showCustomAppReview()
         liveManager.rebootActivity()
@@ -162,7 +162,7 @@ extension SettingsViewController {
         activityIndicatorView.isHidden = true
         keywordTextField.delegate = self
         
-        lockScreenSwitch.isEnabled = viewModel.checkDeviceModel()
+        hideLiveContentSwitch.isEnabled = viewModel.checkDeviceModel()
         
         if let imageData = UserDefaults.standard.data(forKey: UserDefaultsKeys.widgetDataKey) {
             imageView.image = UIImage(data: imageData)
@@ -174,7 +174,6 @@ extension SettingsViewController {
         alwaysOnLiveCell.addGestureRecognizer(alwaysOnLiveGesture)
         
         let currentLanguage = Bundle.main.preferredLocalizations[0]
-        print(currentLanguage)
         if  currentLanguage == "en" {
             alwaysOnLiveDescriptionLabel.isHidden = true
         }
@@ -193,10 +192,10 @@ extension SettingsViewController {
         darkModeSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.darkStateKey)
         
         hapticSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticStateKey)
-        //앱잠금
+        timeSensitiveSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.timeSensitiveStateKey)
         
         alwaysOnLiveisOnLabel.text = NSLocalizedString(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey) ? "On" : "Off", comment: "")
-        lockScreenSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)
+        hideLiveContentSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)
         
         liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
     }
