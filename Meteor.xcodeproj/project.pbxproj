@@ -56,6 +56,8 @@
 		F7972D512A85F46200050263 /* MeteorActivityConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorActivityConfiguration.swift */; };
 		F79CED572BBD134600683914 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CED502BBD0FDC00683914 /* ActivityKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F7B5A97A2BDA202C0035FB2F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F758AC5B2BAD53DB00CC19A9 /* Localizable.xcstrings */; };
+		F7CDBCEB2BE6195E009E7BD8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDBCEA2BE6195E009E7BD8 /* OnboardingView.swift */; };
+		F7CDBCEE2BE6257E009E7BD8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDBCED2BE6257E009E7BD8 /* OnboardingViewModel.swift */; };
 		F7D6D4792A971111004C9D25 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F7D6D4782A971111004C9D25 /* Alamofire */; };
 		F7DDA5452A81F0A800265ABD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F7DDA5442A81F0A800265ABD /* Toast */; };
 		F7E7C80C2AA9B91B004D6E90 /* MeteorInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */; };
@@ -159,6 +161,8 @@
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F79CED502BBD0FDC00683914 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
+		F7CDBCEA2BE6195E009E7BD8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F7CDBCED2BE6257E009E7BD8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		F7D622242AA4AC610051740B /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		F7E7C80B2AA9B91B004D6E90 /* MeteorInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorInputViewController.swift; sourceTree = "<group>"; };
 		F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				A04AE61726453C1F008BB99C /* TabBar.swift */,
+				F7CDBCEC2BE61CB6009E7BD8 /* Onboarding */,
 				F77E75272A7B9AFF008F1883 /* Meteor */,
 				F77E75282A7B9B12008F1883 /* Settings */,
 			);
@@ -335,6 +340,7 @@
 		F7810C222BD256720090F160 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F78A549D2AB43E5700507678 /* ToastManager.swift */,
 				F73882D12BCE45D200B1A15A /* APNSManager.swift */,
 				F7810C232BD2568C0090F160 /* LiveActivityManager.swift */,
 			);
@@ -373,6 +379,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		F7CDBCEC2BE61CB6009E7BD8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F7CDBCEA2BE6195E009E7BD8 /* OnboardingView.swift */,
+				F7CDBCED2BE6257E009E7BD8 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		F7D622222AA4AC2B0051740B /* ci_scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,7 +415,6 @@
 			children = (
 				F77E75412A7E3338008F1883 /* Base.swift */,
 				F77E75432A80C180008F1883 /* Vibration.swift */,
-				F78A549D2AB43E5700507678 /* ToastManager.swift */,
 				F7EF99792A9E385100EB07BC /* UserDefaultsKeys.swift */,
 				F73882DB2BCE4E6300B1A15A /* JWTParse */,
 			);
@@ -615,6 +629,7 @@
 				F77E75422A7E3338008F1883 /* Base.swift in Sources */,
 				F734A78B2BD0663800C9ABFD /* AlwaysOnLiveView.swift in Sources */,
 				F77E75402A7E2AE6008F1883 /* MeteorViewModel.swift in Sources */,
+				F7CDBCEE2BE6257E009E7BD8 /* OnboardingViewModel.swift in Sources */,
 				F77E754B2A811827008F1883 /* NoticeCollectionViewCell.swift in Sources */,
 				F7EF997A2A9E385100EB07BC /* UserDefaultsKeys.swift in Sources */,
 				F776839E2A95A41800824E4E /* MeteorReviewViewController.swift in Sources */,
@@ -632,6 +647,7 @@
 				F73882D22BCE45D200B1A15A /* APNSManager.swift in Sources */,
 				F78A549E2AB43E5700507678 /* ToastManager.swift in Sources */,
 				F73882D42BCE4D6300B1A15A /* JSONWebToken.swift in Sources */,
+				F7CDBCEB2BE6195E009E7BD8 /* OnboardingView.swift in Sources */,
 				F73882DA2BCE4E4000B1A15A /* FileParser.swift in Sources */,
 				F77188C12A9300E400939BCD /* UIDevice+.swift in Sources */,
 				F72964B12BB4732F0068CF04 /* MeteorHistoryView.swift in Sources */,

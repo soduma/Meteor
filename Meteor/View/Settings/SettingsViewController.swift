@@ -53,7 +53,7 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func feedbackButtonTapped(_ sender: UIButton) {
         var reverseLast = ""
-        if let last = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) {
+        if let last = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey) {
             reverseLast = String(last.replacingOccurrences(of: ".", with: "").reversed())
         }
         if MFMailComposeViewController.canSendMail() {

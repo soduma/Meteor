@@ -120,7 +120,7 @@ class MeteorReviewViewController: UIViewController {
         let url = "https://apps.apple.com/app/id1562989730?action=write-review"
         guard let writeReviewURL = URL(string: url) else { return }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
-        UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
+        UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.reviewVersionKey)
         dismiss(animated: true)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import Puller
 
 class MeteorViewController: UIViewController {
@@ -40,10 +41,9 @@ class MeteorViewController: UIViewController {
         
         setLayout()
         checkTimerRunning()
+        checkLiveState()
         
         viewModel.initialAppLaunchSettings()
-        
-        checkLiveState()
 //        Task {
 //            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
                 liveManager.getPushToStartToken()
@@ -63,8 +63,24 @@ class MeteorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false ||
+            UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() { // 다음 업데이트 때 삭제해도됨
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self else { return }
+                let view = OnboardingView(dismissAction: {
+                    self.dismiss(animated: true)
+                })
+                    .environment(OnboardingViewModel())
+                let vc = UIHostingController(rootView: view)
+                vc.modalPresentationStyle = .pageSheet
+                vc.isModalInPresentation = true
+                self.present(vc, animated: true)
+            }
+            
+            UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
+        }
+        
 //        liveManager.loadActivity()
-
 //        checkLiveState()
         
         NotificationCenter.default.addObserver(self,
@@ -236,6 +252,7 @@ class MeteorViewController: UIViewController {
         case .live:
             Task {
                 await liveManager.endActivity()
+                liveManager.rebootActivity()
                 
                 makeVibration(type: .success)
                 ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")

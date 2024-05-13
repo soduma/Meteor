@@ -145,10 +145,10 @@ class SettingsViewModel {
         UserDefaults.standard.set(counterForCustomAppReview, forKey: UserDefaultsKeys.customAppReviewCountKey)
         print(counterForCustomAppReview)
                 
-        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        print(lastVersion ?? "")
+        let reviewVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey)
+        print(reviewVersion ?? "")
         
-        if lastVersion == nil && counterForCustomAppReview >= customReviewLimit {
+        if reviewVersion == nil && counterForCustomAppReview >= customReviewLimit {
             return true
         } else {
             return false

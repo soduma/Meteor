@@ -82,9 +82,14 @@ class UserDefaultsKeys {
         return "GetNewImageTappedCount"
     }
     
-    /// 리뷰한 버전
+    /// 마지막 버전
     class var lastVersionKey: String {
         return "LastVersion"
+    }
+    
+    /// 리뷰한 버전
+    class var reviewVersionKey: String {
+        return "ReviewVersion"
     }
     
 // MARK: - LIVE ACTIVITY

@@ -866,37 +866,37 @@
       }
     },
     "JG9-Hh-WK2.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Rate\"; ObjectID = \"JG9-Hh-WK2\";",
+      "comment" : "Class = \"UILabel\"; text = \"Share\"; ObjectID = \"JG9-Hh-WK2\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Rate"
+            "value" : "Share"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review"
+            "value" : "Share"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review"
+            "value" : "Share"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review"
+            "value" : "Share"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review"
+            "value" : "Share"
           }
         }
       }

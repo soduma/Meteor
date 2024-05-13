@@ -37,8 +37,9 @@ struct AlwaysOnLiveView: View {
                         .onChange(of: isMinimizeOn) { oldValue, newValue in
                             liveManager.rebootActivity()
                         }
-                    Toggle("Background Update (β)", isOn: $isBackgroundOn)
+                    Toggle("Restart Live in Background (β)", isOn: $isBackgroundOn)
                         .tint(.purple)
+                        .disabled(!liveManager.isSupportVersion())
                         .onChange(
                             of: isBackgroundOn) { oldValue, newValue in
                             liveManager.rebootActivity()
@@ -52,7 +53,8 @@ struct AlwaysOnLiveView: View {
                 } header: {
                     Text("Customize")
                 } footer: {
-                    Text("Background Update is currently in beta.")
+                    
+                    Text("If the active Live terminates, it will start Live over the network. For example, if swipe to clear Live from the Lock Screen, a new Live will start.\n\nRestart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later.")
                 }
             }
             

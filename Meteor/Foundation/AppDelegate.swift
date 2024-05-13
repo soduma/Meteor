@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
         
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
         UIApplication.shared.registerForRemoteNotifications()
         
         FirebaseConfiguration.shared.setLoggerLevel(.min)

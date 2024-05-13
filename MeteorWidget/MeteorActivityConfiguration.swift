@@ -17,7 +17,9 @@ struct MeteorAttributes: ActivityAttributes {
         // Dynamic stateful properties about your activity go here!
         var liveText: String
         var liveColor: Int
-        var ishide: Bool
+        var isContentHide: Bool
+        var isMinimize: Bool
+        var isAlwaysOnLive: Bool
     }
     
     // Fixed non-changing properties about your activity go here!
@@ -35,12 +37,15 @@ struct MeteorActivityConfiguration: Widget {
             case 1:
                 LockScreenView(context: context)
                     .activityBackgroundTint(.black)
-            default:
+            case 2:
                 LockScreenView(context: context)
                     .activityBackgroundTint(.clear)
+            default:
+                LockScreenView(context: context)
+                    .activityBackgroundTint(.purple)
             }
         } dynamicIsland: { context in
-            let liveText = context.state.liveText
+            let state = context.state
             let date = Date()
             let twelveHours: TimeInterval = 12 * 60 * 60
             let workoutDateRange = date...date + twelveHours
@@ -67,10 +72,35 @@ struct MeteorActivityConfiguration: Widget {
                         .tint(.white)
                     }
                 }
+                DynamicIslandExpandedRegion(.center) {
+                    if state.liveText.isEmpty {
+                        VStack {
+                            Spacer(minLength: 4)
+                            
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 128, height: 34)
+                                    .foregroundStyle(.black)
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(Color.gray, lineWidth: 1.5)
+                                    )
+                                Image(systemName: "arrow.left.arrow.right")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.white)
+                            }
+                        }
+                    }
+                }
                 DynamicIslandExpandedRegion(.bottom) {
-                    if liveText.isEmpty {
-                        Image(systemName: "arrow.left.arrow.right")
-                        
+                    if state.liveText.isEmpty {
+                        VStack {
+                            Spacer(minLength: 8)
+                            
+                            Text("Swiping Dynamic Island from side to side can hide it or make it reappear.")
+                                .font(.system(size: 12, weight: .medium))
+                                .multilineTextAlignment(.center)
+                        }
                     } else {
                         Text(context.state.liveText)
                             .font(.system(size: 32, weight: .semibold))
@@ -78,20 +108,26 @@ struct MeteorActivityConfiguration: Widget {
                             .minimumScaleFactor(0.35)
                     }
                 }
-            } compactLeading: {
-                Image(logo)
-                    .grayscale(liveText.isEmpty ? 1 : 0)
-            } compactTrailing: {
-                ProgressView(timerInterval: workoutDateRange) {
-                } currentValueLabel: { 
-//                    Image(systemName: "arrow.left.arrow.right")
-//                        .foregroundStyle(.secondary)
+            } compactLeading: {                
+                if !state.isAlwaysOnLive || !state.isMinimize {
+                    Image(logo)
+                        .grayscale(state.liveText.isEmpty ? 1 : 0)
                 }
-                .progressViewStyle(.circular)
-                .tint(.white)
+            } compactTrailing: {
+                if !state.isAlwaysOnLive || !state.isMinimize {
+                    ProgressView(timerInterval: workoutDateRange) {
+                    } currentValueLabel: { }
+                    .progressViewStyle(.circular)
+                    .tint(.white)
+                }
             } minimal: {
-                Image(logo)
-                    .grayscale(liveText.isEmpty ? 1 : 0)
+                if state.isAlwaysOnLive && state.isMinimize {
+                    Image(systemName: "arrow.left.arrow.right")
+                        .opacity(0.2)
+                } else {
+                    Image(logo)
+                        .grayscale(state.liveText.isEmpty ? 1 : 0)
+                }
             }
         }
     }
@@ -102,7 +138,7 @@ struct LockScreenView: View {
     let context: ActivityViewContext<MeteorAttributes>
     
     var body: some View {
-        if context.state.ishide {
+        if context.state.isContentHide {
             if isLuminanceReduced {
                 setLayout(context, needHide: true)
             } else {
@@ -125,7 +161,7 @@ struct LockScreenView: View {
             Text(liveText)
                 .font(.system(size: 32, weight: .semibold))
                 .foregroundColor(.white)
-                .minimumScaleFactor(0.42)
+                .minimumScaleFactor(0.39)
                 .padding([.leading, .trailing])
                 .blur(radius: needHide ? 8 : 0)
         }
@@ -137,44 +173,25 @@ struct LockScreenView: View {
     let liveText = context.state.liveText
     
     HStack(alignment: .center, spacing: 8) {
-        ZStack {
-            Circle()
-                .fill(liveText.isEmpty ? .clear : .white)
-                .frame(width: 28, height: 28, alignment: .center)
+//        ZStack {
+//            Circle()
+//                .fill(liveText.isEmpty ? .clear : .white)
+//                .frame(width: 26, height: 26, alignment: .center)
             Image(logo)
                 .resizable()
                 .frame(width: 20, height: 20)
                 .grayscale(liveText.isEmpty ? 1 : 0)
-        }
+//        }
         
         Text("Meteor")
+            .font(.system(size: 16, weight: .semibold))
             .foregroundColor(.white)
-            .fontWeight(.medium)
+            .kerning(-0.1)
             .lineLimit(1)
-            .minimumScaleFactor(0.1)
-            .opacity(liveText.isEmpty ? 0.5 : 1)
+            .minimumScaleFactor(0.8)
+            .opacity(liveText.isEmpty ? 0.5 : 0.9)
         
         Spacer()
     }
 }
-
-//struct MeteorWidgetLiveActivity_Previews: PreviewProvider {
-//    static let attributes = MeteorAttributes()
-//    static let contentState = MeteorAttributes.ContentState(liveText: "555", liveColor: 0, hideContentOnLockScreen: true, triggerDate: Date())
-//    
-//    static var previews: some View {
-//        attributes
-//            .previewContext(contentState, viewKind: .dynamicIsland(.compact))
-//            .previewDisplayName("Island Compact")
-//        attributes
-//            .previewContext(contentState, viewKind: .dynamicIsland(.expanded))
-//            .previewDisplayName("Island Expanded")
-//        attributes
-//            .previewContext(contentState, viewKind: .dynamicIsland(.minimal))
-//            .previewDisplayName("Minimal")
-//        attributes
-//            .previewContext(contentState, viewKind: .content)
-//            .previewDisplayName("Notification")
-//    }
-//}
 #endif

@@ -60,7 +60,7 @@ struct MeteorWidget: Widget {
         }
         .configurationDisplayName("Meteor Widget")
         .description(String(
-            localized: "Inspire emotions into your day.",
+            localized: "Inspire Emotions Into Your Day.",
             bundle: Bundle(identifier: "com.soduma.Meteor.MeteorWidget")))
         .contentMarginsDisabled()
     }
