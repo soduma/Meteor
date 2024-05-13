@@ -339,30 +339,30 @@
         }
       }
     },
-    "If the active Live terminates, it will start Live over the network. For example, if swipe to clear Live from the Lock Screen, a new Live will start.\n\nRestart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later." : {
+    "If the active Live terminates, it will start Live over the network. For example, if swipe to clear registered Live from the Lock Screen, a new Live will start.\n\nRestart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アクティブなLiveが終了すると、ネットワーク経由でLiveが開始されます。たとえば、スワイプしてロック画面からLiveをクリアすると、新しいLiveが開始されます。\n\n“バックグラウンドでのLiveの再起動”は現在ベータ版です。\nSupport iOS 17.2 and Later."
+            "value" : "アクティブなLiveが終了すると、ネットワーク経由でLiveが開始されます。たとえば、スワイプしてロック画面から登録されたライブをクリアすると、新しいライブが開始されます。\n\n“バックグラウンドでのLiveの再起動”は現在ベータ版です。\nSupport iOS 17.2 and Later."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "진행중인 Live가 종료될 경우 네트워크를 통해 Live를 시작합니다. 예를 들어 잠금화면에서 Live를 스와이프하여 지우면 새로운 Live가 시작됩니다.  ‘백그라운드에서 Live 새로 시작’은 현재 베타입니다.\niOS 17.2 이상에서 사용할 수 있습니다."
+            "value" : "진행중인 Live가 종료될 경우 네트워크를 통해 Live를 시작합니다. 예를 들어 잠금화면에서 등록된 Live를 스와이프하여 지우면 새로운 Live가 시작됩니다.  ‘백그라운드에서 Live 새로 시작’은 현재 베타입니다.\niOS 17.2 이상에서 사용할 수 있습니다."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果活动Live终止，它将在网络上启动Live。例如，如果滑动以从锁定屏幕清除Live，则将启动新的Live。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
+            "value" : "如果活动Live终止，它将在网络上启动Live。例如，如果滑动以从锁定屏幕清除已注册的Live，则将启动新的Live。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果活動Live終止，它將透過網路啟動Live。 例如，如果滑動以從鎖屏清除Live，新的Live將開始。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
+            "value" : "如果活動Live終止，它將透過網路啟動Live。 例如，如果滑動以從鎖定螢幕清除已註冊的Live，則將開始新的Live。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
           }
         }
       }
@@ -448,6 +448,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Live"
+          }
+        }
+      }
+    },
+    "Live Restarted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live再起動"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live 새로 시작됨"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live重新启动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live重新啟動"
           }
         }
       }

@@ -96,10 +96,17 @@ class LiveActivityManager {
                         MeteorViewModel().sendSingleMeteor(text: "디스미스")
 
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
-                           UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),// {
-                           !self.isActivityAlive() {
-                            await self.push(liveText: "")
-                            self.loadActivity()
+                           UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
+                            do {
+                                try await Task.sleep(for: .seconds(2))
+                                if !self.isActivityAlive() {
+                                    MeteorViewModel().sendSingleMeteor(text: "옵저브 디스미스 푸시불림")
+                                    await self.push(liveText: "")
+                                    self.loadActivity()
+                                }
+                            } catch {
+                                print(error.localizedDescription)
+                            }
                         }
                         
                     } else if activityState == .ended {
@@ -108,11 +115,11 @@ class LiveActivityManager {
                             await self.endActivity()
                             MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드")
                             
-                            if !self.isActivityAlive() {
+//                            if !self.isActivityAlive() {
                                 MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드 푸시불림")
                                 await self.push(liveText: UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? "")
                                 self.loadActivity()
-                            }
+//                            }
                         }
                     }
                 }
@@ -153,11 +160,11 @@ class LiveActivityManager {
                             await self.endActivity()
                             MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드")
                             
-                            if !self.isActivityAlive() {
+//                            if !self.isActivityAlive() {
                                 MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드 푸시불림")
                                 await self.push(liveText: "")
                                 self.loadActivity()
-                            }
+//                            }
                         }
                     }
                 }
@@ -300,8 +307,10 @@ extension LiveActivityManager {
             "isAlwaysOnLive": false
         },
         "alert": {
-            "title": "A",
-            "body": "B"
+            "title": "Meteor",
+            "body": {
+                "loc-key": "Live Restarted",
+            }
         }
     }
 }
