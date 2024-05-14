@@ -162,6 +162,7 @@ struct LockScreenView: View {
                 .font(.system(size: 32, weight: .semibold))
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.39)
+                .multilineTextAlignment(.center)
                 .padding([.leading, .trailing])
                 .blur(radius: needHide ? 8 : 0)
         }

@@ -64,7 +64,7 @@ class LiveActivityManager {
             let date = formatter.string(from: Date())
             print(date)
             
-            let (attributes, content) = activityTemplete(liveText: "\(text)\n\(date)")
+            let (attributes, content) = activityTemplete(liveText: text)
             let activity = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
             currentActivity = activity
             loadActivity()
@@ -94,7 +94,7 @@ class LiveActivityManager {
                     print(activity.id)
                     self.already = false
                     if activityState == .dismissed {
-                        MeteorViewModel().sendSingleMeteor(text: "디스미스")
+//                        MeteorViewModel().sendSingleMeteor(text: "디스미스")
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) == false {
                             // isActivityAlive 함수 체크용
                             self.currentActivity = nil
@@ -105,7 +105,7 @@ class LiveActivityManager {
                             do {
                                 try await Task.sleep(for: .seconds(1))
                                 if !self.isActivityAlive() && self.currentActivity != nil && self.already == false {
-                                    MeteorViewModel().sendSingleMeteor(text: "옵저브 디스미스 푸시불림")
+//                                    MeteorViewModel().sendSingleMeteor(text: "옵저브 디스미스 푸시불림")
                                     await self.push(liveText: "")
                                     self.loadActivity()
                                     self.already = true
@@ -116,14 +116,14 @@ class LiveActivityManager {
                         }
                         
                     } else if activityState == .ended {
-                        MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드")
+//                        MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드")
                         
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
                             await self.endActivity()
                             
 //                            if !self.isActivityAlive() {
-                                MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드 푸시불림")
+//                                MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드 푸시불림")
                                 await self.push(liveText: UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? "")
                                 self.loadActivity()
 //                            }
@@ -150,7 +150,7 @@ class LiveActivityManager {
 //                        }
                         
                     } else if activityState == .ended {
-                        MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드")
+//                        MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드")
                         
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),// {
@@ -158,7 +158,7 @@ class LiveActivityManager {
                             await self.endActivity()
                             
 //                            if !self.isActivityAlive() {
-                                MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드 푸시불림")
+//                                MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드 푸시불림")
                                 await self.push(liveText: "")
                                 self.loadActivity()
 //                            }
