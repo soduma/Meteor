@@ -866,37 +866,37 @@
       }
     },
     "JG9-Hh-WK2.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Share\"; ObjectID = \"JG9-Hh-WK2\";",
+      "comment" : "Class = \"UILabel\"; text = \"Share / Review\"; ObjectID = \"JG9-Hh-WK2\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Share"
+            "value" : "Share / Review"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share"
+            "value" : "Share / Review"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share"
+            "value" : "Share / Review"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share"
+            "value" : "Share / Review"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share"
+            "value" : "Share / Review"
           }
         }
       }
@@ -974,37 +974,37 @@
       }
     },
     "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour. Only affects ‘Single’ and ‘Endless’.\"; ObjectID = \"mO4-mb-C9g\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.\"; ObjectID = \"mO4-mb-C9g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour. Only affects ‘Single’ and ‘Endless’."
+            "value" : "Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "即時通知は常にすぐに配信され、1時間はロック画面に残ります。 SingleとEndlessにのみ該当します。"
+            "value" : "SingleとEndlessを即時通知として送信します。即時通知は常にすぐに配信され、1時間はロック画面に残ります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "긴급한 알림은 항상 즉시 표시되며, 1시간 동안 잠금 화면에 유지됩니다. Single과 Endless에만 해당됩니다."
+            "value" : "Single과 Endless를 긴급한 알림으로 보냅니다. 긴급한 알림은 항상 즉시 표시되며, 1시간 동안 잠금 화면에 유지됩니다."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "即时通知将始终即时推送，并在锁屏上保留一小时。 只适用于Single和Endless。"
+            "value" : "将Single和Endless作为即时通知发送。即时通知将始终即时推送，并在锁屏上保留一小时。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「具時效性」的通知都將一律立即傳送並會在鎖定畫面上顯示一小時。 只適用於Single和Endless。"
+            "value" : "傳送Single和Endless作為「具時效性」通知。「具時效性」的通知都將一律立即傳送並會在鎖定畫面上顯示一小時。"
           }
         }
       }

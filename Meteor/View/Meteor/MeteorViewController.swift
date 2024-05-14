@@ -41,9 +41,8 @@ class MeteorViewController: UIViewController {
         
         setLayout()
         checkTimerRunning()
-        checkLiveState()
         
-        viewModel.initialAppLaunchSettings()
+        viewModel.appLaunchSettings()
 //        Task {
 //            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
                 liveManager.getPushToStartToken()
@@ -58,13 +57,16 @@ class MeteorViewController: UIViewController {
         super.viewWillAppear(animated)
         
 //        liveManager.loadActivity()
+        checkLiveState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false ||
-            UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() { // 다음 업데이트 때 삭제해도됨
+        // 설치 또는 업데이트 직후 처리할 로직
+        if UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() {
+            viewModel.resetCustomReviewCount()
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 guard let self else { return }
                 let view = OnboardingView(dismissAction: {
@@ -84,7 +86,7 @@ class MeteorViewController: UIViewController {
 //        checkLiveState()
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
+                                               selector: #selector(removeAuthView),
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         
@@ -143,34 +145,6 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        if viewModel.meteorText.isEmpty {
-//            var color = 0
-//            
-//            switch viewModel.meteorType {
-//            case .single:
-//                color = 0
-//            case .endless:
-//                color = 1
-//            case .live:
-//                color = 2
-//            }
-            
-            makeVibration(type: .warning)
-//            liveManager.betaStart(liveText: "")
-            Task {
-                await liveManager.push(liveText: "")
-            }
-            
-            
-//            Task {
-//                if Activity<MeteorAttributes>.activities.isEmpty == false {
-//                    await liveActivityManager.endLiveActivity()
-//                }
-//                await liveActivityManager.push(timestamp: Date.timestamp, liveColor: color, isHide: true)
-//                await liveActivityManager.loadLiveActivity()
-//            }
-        }
-        
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
             guard let self else { return }
             
@@ -334,7 +308,7 @@ extension MeteorViewController {
             endlessButton.isSelected = false
             datePicker.isHidden = true
             
-            if let activity = liveManager.currentActivity {
+            if liveManager.currentActivity != nil {
                 stopButton.isHidden = false
             } else {
                 stopButton.isHidden = true
@@ -400,7 +374,7 @@ extension MeteorViewController {
         }
     }
     
-    private func removeAuthView() {
+    @objc private func removeAuthView() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] setting in
             DispatchQueue.main.async {
                 guard let self else { return }
@@ -411,10 +385,10 @@ extension MeteorViewController {
         }
     }
     
-    @objc private func willEnterForeground() {
-        removeAuthView()
-//        liveManager.rebootActivity()
-    }
+//    @objc private func willEnterForeground() {
+//        removeAuthView()
+////        liveManager.rebootActivity()
+//    }
     
     @objc private func checkLiveState() {
         liveManager.startAlwaysActivity()

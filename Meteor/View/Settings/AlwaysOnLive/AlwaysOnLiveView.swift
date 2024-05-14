@@ -22,7 +22,7 @@ struct AlwaysOnLiveView: View {
         List {
             Section {
             } footer: {
-                Text("‘Always On Live’ will continue to display only if it is available, even if there is no currently registered ‘Live’.")
+                Text("‘Always On Live’ will continue to display on the Lock Screen if available, even if there is no currently registered ‘Live’.")
             }
             
             Section {

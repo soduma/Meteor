@@ -27,10 +27,9 @@ class MeteorViewModel {
     
     private let liveManager = LiveActivityManager.shared
     
-    func initialAppLaunchSettings() {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) {
+    func appLaunchSettings() {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) {
             checkAppearanceMode()
-            resetCustomReviewCount()
             
             liveManager.loadActivity()
 //
@@ -130,14 +129,14 @@ class MeteorViewModel {
     
     /// 앱 업데이트 후 너무 이른 customReview 방지
     func resetCustomReviewCount() {
-        let reviewVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey)
+        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
         let currentVersion = SettingsViewModel.getCurrentVersion()
         
-        if reviewVersion != currentVersion {
-            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
-            }
+        if lastVersion != currentVersion {
+//            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+//            if customReviewLimit < reviewCount {
+                UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
+//            }
         }
     }
     

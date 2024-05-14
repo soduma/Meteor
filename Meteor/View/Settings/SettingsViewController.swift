@@ -180,8 +180,8 @@ extension SettingsViewController {
     }
     
     private func initialSeoul() {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.initialLaunchKey)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) == false {
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.launchedBeforeKey)
             keywordTextField.text = "Seoul"
             viewModel.keywordText = "Seoul"
         }
@@ -202,8 +202,7 @@ extension SettingsViewController {
     
     private func setImageViewsBorder() {
         [feedbackImageView, reviewImageView, versionImageView].forEach {
-            $0?.layer.cornerRadius = 6
-//            $0?.layer.borderColor = UIColor.systemGray5.withAlphaComponent(0.5).cgColor
+            $0?.layer.cornerRadius = 7
             $0?.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 0.3).cgColor
             $0?.layer.borderWidth = 0.5
             $0?.clipsToBounds = true

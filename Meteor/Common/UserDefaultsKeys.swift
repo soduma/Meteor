@@ -6,8 +6,8 @@
 //
 
 class UserDefaultsKeys {
-    class var initialLaunchKey: String {
-        return "InitialLaunch"
+    class var launchedBeforeKey: String {
+        return "LaunchedBefore"
     }
     
     class var lightStateKey: String {
