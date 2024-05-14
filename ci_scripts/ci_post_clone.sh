@@ -28,13 +28,10 @@ else
     echo "AuthKey.p8 환경변수가 존재하지 않습니다. 스크립트를 종료합니다."
 fi
 
-exit 0
-
 # Update brew and install SwiftLint and Danger-swift
 #brew update
 # Install CocoaPods using Homebrew.
 brew install cocoapods
 
 # Install dependencies you manage with CocoaPods.
-pod deintegrate
-pod update
+pod install
