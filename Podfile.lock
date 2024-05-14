@@ -46,15 +46,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessaging (10.25.0):
-    - FirebaseCore (~> 10.0)
-    - FirebaseInstallations (~> 10.0)
-    - GoogleDataTransport (~> 9.3)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
-    - GoogleUtilities/Environment (~> 7.8)
-    - GoogleUtilities/Reachability (~> 7.8)
-    - GoogleUtilities/UserDefaults (~> 7.8)
-    - nanopb (< 2.30911.0, >= 2.30908.0)
   - FirebaseRemoteConfigInterop (10.25.0)
   - FirebaseSessions (10.25.0):
     - FirebaseCore (~> 10.5)
@@ -132,7 +123,6 @@ DEPENDENCIES:
   - FirebaseAnalytics
   - FirebaseCrashlytics
   - FirebaseDatabase
-  - FirebaseMessaging
 
 SPEC REPOS:
   trunk:
@@ -144,7 +134,6 @@ SPEC REPOS:
     - FirebaseCrashlytics
     - FirebaseDatabase
     - FirebaseInstallations
-    - FirebaseMessaging
     - FirebaseRemoteConfigInterop
     - FirebaseSessions
     - FirebaseSharedSwift
@@ -165,7 +154,6 @@ SPEC CHECKSUMS:
   FirebaseCrashlytics: 4b96efb0ce73b38b2a85e8b8bd1bd8f63f09d015
   FirebaseDatabase: faa489a42f5f868d23a55dd442d6e2099348458e
   FirebaseInstallations: 91950fe859846fff0fbd296180909dd273103b09
-  FirebaseMessaging: 88950ba9485052891ebe26f6c43a52bb62248952
   FirebaseRemoteConfigInterop: b25018791b204c0d78a90e394d6c62d9b1f22da8
   FirebaseSessions: c0939656253a1fa0e94ecc266ccf770cc8b33732
   FirebaseSharedSwift: 0274086954b1b2d5fd7e829eccc587044d72a4ba
@@ -177,6 +165,6 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
 
-PODFILE CHECKSUM: 2ec755b4333ea061fa32c1f30f96745055db012f
+PODFILE CHECKSUM: 57976058b2071382b71e6e43cf0dd0c8393d373d
 
 COCOAPODS: 1.15.2

@@ -61,7 +61,7 @@ class SettingsViewModel {
 #if RELEASE
         guard let user = await UIDevice.current.identifierForVendor?.uuidString else { return nil }
         let locale = TimeZone.current.identifier
-        let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
+        let version = SettingsViewModel.getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: Date())
@@ -73,7 +73,7 @@ class SettingsViewModel {
                 .child(locale)
                 .child(user)
                 .child(date)
-                .setValue(["count": String(counterForGetNewImageTapped), "keyword": keyword])
+                .setValue(["count": String(counterForGetNewImageTapped), "keyword": keywordText])
         } catch {
             print(error.localizedDescription)
         }
