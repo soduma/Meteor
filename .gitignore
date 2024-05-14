@@ -9,6 +9,9 @@
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
 
+Meteor/AuthKey.p8
+Meteor/IDList.plist
+
 ### Swift ###
 # Xcode
 #

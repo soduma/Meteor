@@ -21,7 +21,13 @@ class SettingsViewModel {
     private var firebaseImageURL = ""
     static let defaultURL = "https://source.unsplash.com/random"
     
+    var keywordText = ""
     var liveColor = LiveColor.red
+    
+    static func getCurrentVersion() -> String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
+        return version
+    }
     
     func getFirebaseImageURL() {
         db.child(unsplash).observeSingleEvent(of: .value) { [weak self] snapshot in
@@ -29,19 +35,19 @@ class SettingsViewModel {
         }
     }
     
-    func getNewImage(keyword: String) async -> Data? {
+    func getNewImage() async -> Data? {
         var imageData: Data?
         var counterForGetNewImageTapped = UserDefaults.standard.integer(forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         counterForGetNewImageTapped += 1
         UserDefaults.standard.set(counterForGetNewImageTapped, forKey: UserDefaultsKeys.getNewImageTappedCountKey)
         
         do {
-            if keyword.isEmpty {
+            if keywordText.isEmpty {
                 guard let imageURL = URL(string: firebaseImageURL) else { return nil }
                 (imageData, _) = try await URLSession.shared.data(from: imageURL)
                 
             } else {
-                let url = "https://source.unsplash.com/featured/?\(keyword)"
+                let url = "https://source.unsplash.com/featured/?\(keywordText)"
                 guard let imageURL = URL(string: url) else { return nil }
                 (imageData, _) = try await URLSession.shared.data(from: imageURL)
                 
@@ -57,7 +63,7 @@ class SettingsViewModel {
         let locale = TimeZone.current.identifier
         let version = getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: Date())
         
         do {
@@ -114,11 +120,7 @@ class SettingsViewModel {
         UserDefaults.standard.set(darkMode, forKey: UserDefaultsKeys.darkStateKey)
     }
     
-    func getCurrentVersion() -> String {
-        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }
-        return version
-    }
-    
+    @discardableResult
     func executeAppReviews() -> Bool {
         systemAppReview()
         return customAppReview()
@@ -143,10 +145,10 @@ class SettingsViewModel {
         UserDefaults.standard.set(counterForCustomAppReview, forKey: UserDefaultsKeys.customAppReviewCountKey)
         print(counterForCustomAppReview)
                 
-        let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        print(lastVersion ?? "")
+        let reviewVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey)
+        print(reviewVersion ?? "")
         
-        if lastVersion == nil && counterForCustomAppReview >= customReviewLimit {
+        if reviewVersion == nil && counterForCustomAppReview >= customReviewLimit {
             return true
         } else {
             return false

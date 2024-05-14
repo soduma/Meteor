@@ -11,10 +11,28 @@
             "value" : "Blur"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不透明"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "불투명"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模糊"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模糊"
           }
         }
       }
@@ -29,7 +47,25 @@
             "value" : "Live"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Live"
@@ -38,19 +74,37 @@
       }
     },
     "1hV-Rv-Gqc.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content in Lock Screen\"; ObjectID = \"1hV-Rv-Gqc\";",
+      "comment" : "Class = \"UILabel\"; text = \"Time Sensitive Notificaitons\"; ObjectID = \"1hV-Rv-Gqc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Hide Live Content in Lock Screen"
+            "value" : "Time Sensitive Notificaitons"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即時通知"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "잠금 화면에서 Live 내용 가리기"
+            "value" : "긴급한 알림"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即时通知"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "具時效性的通知"
           }
         }
       }
@@ -65,7 +119,25 @@
             "value" : "Meteor"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meteor"
@@ -73,20 +145,74 @@
         }
       }
     },
-    "3H5-vd-AUs.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Submit\"; ObjectID = \"3H5-vd-AUs\";",
+    "4tG-Qy-j6n.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"4tG-Qy-j6n\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Submit"
+            "value" : "Button"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "제출"
+            "value" : "Button"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "7sq-ut-wTj.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Always On Live\"; ObjectID = \"7sq-ut-wTj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Always On Live"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always On Live"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always On Live"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always On Live"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always On Live"
           }
         }
       }
@@ -101,7 +227,25 @@
             "value" : "Keyword"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keyword"
@@ -119,7 +263,25 @@
             "value" : "Keyword"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keyword"
@@ -137,7 +299,25 @@
             "value" : "00:00:00"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00:00:00"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00:00:00"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00:00:00"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "00:00:00"
@@ -155,10 +335,28 @@
             "value" : "Dark Mode"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダークモード"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "다크 모드"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑暗模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑暗模式"
           }
         }
       }
@@ -173,7 +371,25 @@
             "value" : "Endless"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endless"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endless"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endless"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Endless"
@@ -191,7 +407,25 @@
             "value" : "고맙습니다.\nThank you for using. 👋🏻 "
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "고맙습니다.\nThank you for using. 👋🏻"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "고맙습니다.\nThank you for using. 👋🏻"
@@ -209,7 +443,25 @@
             "value" : "Made by"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Made by"
@@ -227,7 +479,25 @@
             "value" : "Single"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Single"
@@ -245,28 +515,28 @@
             "value" : "Red"
           }
         },
-        "ko" : {
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "빨강"
-          }
-        }
-      }
-    },
-    "DZa-ix-YkT.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"dev.soduma\"; ObjectID = \"DZa-ix-YkT\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "dev.soduma"
+            "value" : "レッド"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "dev.soduma"
+            "value" : "빨강"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红色"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "紅色"
           }
         }
       }
@@ -281,10 +551,28 @@
             "value" : "Meteor"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メテオ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "메테오"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
           }
         }
       }
@@ -299,64 +587,100 @@
             "value" : "Black"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブラック"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "검정"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑色"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑色"
+          }
         }
       }
     },
     "eid-Qh-HRI.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Write\"; ObjectID = \"eid-Qh-HRI\";",
+      "comment" : "Class = \"UILabel\"; text = \"Feedback\"; ObjectID = \"eid-Qh-HRI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Write"
+            "value" : "Feedback"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Write"
+            "value" : "Feedback"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
           }
         }
       }
     },
-    "eVG-QI-Qxx.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"Review\"; ObjectID = \"eVG-QI-Qxx\";",
+    "fMt-Tu-Xlt.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Always On Live\"; ObjectID = \"fMt-Tu-Xlt\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Review"
+            "value" : "Always On Live"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live常に表示"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Review"
-          }
-        }
-      }
-    },
-    "faQ-bF-XRm.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Star Rating\"; ObjectID = \"faQ-bF-XRm\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Star Rating"
+            "value" : "Live 항상 표시"
           }
         },
-        "ko" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "별점 남기기"
+            "value" : "Live总是能看见"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live總是能看見"
           }
         }
       }
@@ -371,7 +695,25 @@
             "value" : "Support iOS 17.0 and Later"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support iOS 17.0 and Later"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support iOS 17.0 and Later"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support iOS 17.0 and Later"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support iOS 17.0 and Later"
@@ -380,19 +722,37 @@
       }
     },
     "GqJ-gX-VE4.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Vibration\"; ObjectID = \"GqJ-gX-VE4\";",
+      "comment" : "Class = \"UILabel\"; text = \"Haptic\"; ObjectID = \"GqJ-gX-VE4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Vibration"
+            "value" : "Haptic"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ハプティック"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "진동"
+            "value" : "햅틱"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "触觉"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "觸覺"
           }
         }
       }
@@ -407,7 +767,25 @@
             "value" : "Current Version ~~~"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Version ~~~"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Version ~~~"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Version ~~~"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Current Version ~~~"
@@ -425,10 +803,28 @@
             "value" : "Write down a word without spaces. If blank, it's randomly."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スペースのない英単語を書き留めてください。空白の場合はランダムです。"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "키워드는 띄어쓰기가 없는 영단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
+            "value" : "키워드는 띄어쓰기가 없는 영어 단어로 입력하여야 합니다. 빈칸이라면 임의의 사진이 제공됩니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写下一个不带空格的英语单词。如果是空白的，它是随机的。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寫下一個不帶空格的英語單詞。 如果空白，它是隨機的。"
           }
         }
       }
@@ -443,10 +839,64 @@
             "value" : "iPhone Settings > Meteor > Notifications Please enable notifications."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone 設定 > Meteor > 通知\n通知を有効にしてください。"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "iPhone 설정 > Meteor > 알림에서 메테오의 알림을 활성화 해주세요."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone设置 > Meteor > 通知 请启用通知。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone設定 > Meteor > 通知 请启用通知。"
+          }
+        }
+      }
+    },
+    "JG9-Hh-WK2.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Share / Review\"; ObjectID = \"JG9-Hh-WK2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Share / Review"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share / Review"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share / Review"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share / Review"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share / Review"
           }
         }
       }
@@ -461,10 +911,28 @@
             "value" : "Live Color"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liveカラー"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Live 색상"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live颜色"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live顏色"
           }
         }
       }
@@ -479,7 +947,25 @@
             "value" : "Meteor"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meteor"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meteor"
@@ -488,19 +974,37 @@
       }
     },
     "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"mO4-mb-C9g\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.\"; ObjectID = \"mO4-mb-C9g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
+            "value" : "Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SingleとEndlessを即時通知として送信します。即時通知は常にすぐに配信され、1時間はロック画面に残ります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhone의 '화면 상시표시'가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+            "value" : "Single과 Endless를 긴급한 알림으로 보냅니다. 긴급한 알림은 항상 즉시 표시되며, 1시간 동안 잠금 화면에 유지됩니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将Single和Endless作为即时通知发送。即时通知将始终即时推送，并在锁屏上保留一小时。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "傳送Single和Endless作為「具時效性」通知。「具時效性」的通知都將一律立即傳送並會在鎖定畫面上顯示一小時。"
           }
         }
       }
@@ -515,28 +1019,64 @@
             "value" : "General"
           }
         },
-        "ko" : {
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "일반"
-          }
-        }
-      }
-    },
-    "mYh-w1-2Gl.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"⚠️ Meteor feature requires\\nnotification allowance.\"; ObjectID = \"mYh-w1-2Gl\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "⚠️ Meteor feature requires\nnotification allowance."
+            "value" : "一般"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 메테오 기능은\n알림 권한이 필요합니다."
+            "value" : "일반"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          }
+        }
+      }
+    },
+    "mYh-w1-2Gl.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"⚠️\\nMeteor feature requires notification permission.\"; ObjectID = \"mYh-w1-2Gl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⚠️\nMeteor feature requires notification permission."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️\nメテオ機能には通知権限が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 메테오 기능은 알림 권한이 필요합니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 流星功能需要通知权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠️ 流星功能需要通知許可權。"
           }
         }
       }
@@ -551,28 +1091,28 @@
             "value" : "Button"
           }
         },
-        "ko" : {
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Button"
-          }
-        }
-      }
-    },
-    "NBD-bZ-eN8.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Please take a moment and\\nRate Meteor 🥹\"; ObjectID = \"NBD-bZ-eN8\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Please take a moment and\nRate Meteor 🥹"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "잠깐 시간을 내어\n리뷰에 참여해주세요 🥹"
+            "value" : "Button"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
           }
         }
       }
@@ -587,10 +1127,28 @@
             "value" : "If turn off all switches then follow the system setting."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのスイッチをオフにすると、システム設定に従います。"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "스위치를 모두 끄면 시스템 설정을 따릅니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果关闭所有开关，然后按照系统设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果關閉所有開關,然後按照系統設置。"
           }
         }
       }
@@ -605,10 +1163,28 @@
             "value" : "Style"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタイル"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "화면 모드"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "风格"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "風格"
           }
         }
       }
@@ -623,7 +1199,25 @@
             "value" : "Version"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
@@ -631,20 +1225,38 @@
         }
       }
     },
-    "Pmw-Ai-Bkf.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"Feedback\"; ObjectID = \"Pmw-Ai-Bkf\";",
+    "q2N-8g-WkR.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"notice\\nexample\"; ObjectID = \"q2N-8g-WkR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Feedback"
+            "value" : "notice\nexample"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notice\nexample"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback"
+            "value" : "notice\nexample"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notice\nexample"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notice\nexample"
           }
         }
       }
@@ -659,10 +1271,28 @@
             "value" : "Can see this photo in the Widget, and approximately 500KB of data is used each time a photo is loaded."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウィジェットでこの写真を見ることができ、写真が読み込まれるたびに約500KBのデータが使用されます。"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "아래의 사진을 위젯에서 볼 수 있습니다. 사진을 불러올 때마다 약 500KB의 데이터가 사용됩니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可以在小部件中看到这张照片，每次加载照片时都会使用大约500KB的数据。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可以在小部件中看到這張照片，每次載入照片時都會使用大約500KB的資料。"
           }
         }
       }
@@ -677,7 +1307,25 @@
             "value" : "Widget"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Widget"
@@ -695,10 +1343,100 @@
             "value" : "Send"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "電送"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "보내기"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信"
+          }
+        }
+      }
+    },
+    "VFB-BL-E6f.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"dev.soduma\"; ObjectID = \"VFB-BL-E6f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dev.soduma"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dev.soduma"
+          }
+        }
+      }
+    },
+    "VFB-BL-E6f.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"VFB-BL-E6f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button"
           }
         }
       }
@@ -713,10 +1451,28 @@
             "value" : "Light Mode"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライトモード"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "라이트 모드"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灯光模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "燈光模式"
           }
         }
       }
@@ -731,7 +1487,25 @@
             "value" : "🇰🇷@infofield"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇰🇷@infofield"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇰🇷@infofield"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇰🇷@infofield"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🇰🇷@infofield"
@@ -739,20 +1513,110 @@
         }
       }
     },
-    "X8d-eH-xdK.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"notice example\"; ObjectID = \"X8d-eH-xdK\";",
+    "xcI-or-A7B.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Hide Live Content\"; ObjectID = \"xcI-or-A7B\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "notice example"
+            "value" : "Hide Live Content"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liveの内容を隠す"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "notice example"
+            "value" : "Live 내용 가리기"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏Live内容"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隱藏Live內容"
+          }
+        }
+      }
+    },
+    "Xh4-Qj-N8E.footerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content.\"; ObjectID = \"Xh4-Qj-N8E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneの「常に画面オン」がオンになり、ロック画面が薄暗くなった場合は、ライブコンテンツを非表示にします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone의 ‘화면 상시표시’가 켜져 있고 잠금 화면이 어두워진 상태에서 Live의 내용을 가립니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果iPhone的“全天候显示屏”打开且锁定屏幕变暗，则隐藏实时内容。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果iPhone的“永遠顯示”開啟且鎖屏變暗，則隱藏實時內容。"
+          }
+        }
+      }
+    },
+    "Xh4-Qj-N8E.headerTitle" : {
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Live\"; ObjectID = \"Xh4-Qj-N8E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Live"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live"
           }
         }
       }
@@ -767,7 +1631,25 @@
             "value" : "METEOR :"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "METEOR :"
+          }
+        },
         "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "METEOR :"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "METEOR :"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "METEOR :"
@@ -785,28 +1667,64 @@
             "value" : "Scribble here 👀"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここに作成 👀"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "여기에 작성 👀"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在这里填写👀"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在這裡填寫👀"
+          }
         }
       }
     },
     "zae-IP-TZ4.normalTitle" : {
-      "comment" : "Class = \"UIButton\"; normalTitle = \"  Stop  \"; ObjectID = \"zae-IP-TZ4\";",
+      "comment" : "Class = \"UIButton\"; normalTitle = \"   Stop   \"; ObjectID = \"zae-IP-TZ4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "  Stop  "
+            "value" : "   Stop   "
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "    終了   "
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "    종료    "
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "   停止   "
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  停止  "
           }
         }
       }
@@ -821,10 +1739,64 @@
             "value" : "Settings"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "zWe-cb-GqJ.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"-\"; ObjectID = \"zWe-cb-GqJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "-"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
           }
         }
       }
@@ -839,10 +1811,28 @@
             "value" : "Refresh Photo"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しい写真を読み込む"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "새로운 사진 불러오기"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新照片"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新照片"
           }
         }
       }

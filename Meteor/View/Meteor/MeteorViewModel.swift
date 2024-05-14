@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import ActivityKit
-import WidgetKit
 import SwiftData
 import FirebaseDatabase
 
@@ -27,18 +25,26 @@ class MeteorViewModel {
                       NSLocalizedString("notice3", comment: ""),
                       NSLocalizedString("notice4", comment: "")]
     
-//    var currentActivity: Activity<MeteorWidgetAttributes>?
-//    var activityState: ActivityState?
-//    
-//    init(currentActivity: Activity<MeteorWidgetAttributes>? = nil, activityState: ActivityState? = nil) {
-//        self.currentActivity = currentActivity
-//        self.activityState = activityState
-//    }
+    private let liveManager = LiveActivityManager.shared
     
-    func initialAppLaunchSettings() async {
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.initialLaunchKey) == false {
+    func appLaunchSettings() {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) {
+            checkAppearanceMode()
+            
+            liveManager.loadActivity()
+//
+//            if !liveManager.isLiveAlive() && UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
+//                liveManager.startLiveActivity(text: "")
+//                await push(timestamp: Date.timestamp, liveColor: 2, isHide: true)
+//                await loadLiveActivity()
+//            }
+//            liveManager.getPushToStartToken()
+            
+
+        } else {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
-            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.lockScreenStateKey)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveContentHideStateKey)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
             
             // 최초 위젯 이미지 생성
@@ -47,15 +53,11 @@ class MeteorViewModel {
                 let (imageData, _) = try await URLSession.shared.data(from: url)
                 SettingsViewModel().setWidget(imageData: imageData)
             }
-            
-        } else {
-            checkAppearanceMode()
-            resetCustomReviewCount()
-            await loadLiveActivity()
+//            liveManager.getPushToStartToken()
         }
     }
     
-    func checkAppearanceMode() {
+    private func checkAppearanceMode() {
         DispatchQueue.main.async {
             let scenes = UIApplication.shared.connectedScenes
             let windowScene = scenes.first as? UIWindowScene
@@ -83,8 +85,14 @@ class MeteorViewModel {
         }
         
         let contents = UNMutableNotificationContent()
-        contents.title = "METEOR :"
+        contents.title = "Meteor :"
         contents.body = "\(text)"
+        contents.sound = .default
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.timeSensitiveStateKey) {
+            contents.interruptionLevel = .timeSensitive
+        } else {
+            contents.interruptionLevel = .active
+        }
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
         let request = UNNotificationRequest(identifier: "\(index)timerdone", content: contents, trigger: trigger)
@@ -96,16 +104,17 @@ class MeteorViewModel {
         UserDefaults.standard.set(duration, forKey: UserDefaultsKeys.endlessDurationKey)
         
         let contents = UNMutableNotificationContent()
-        contents.title = "ENDLESS METEOR :"
+        contents.title = "Endless Meteor :"
         contents.body = text
-        contents.sound = UNNotificationSound.default
+        contents.sound = .default
+        contents.interruptionLevel = .timeSensitive
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(duration), repeats: true)
-        let request = UNNotificationRequest(identifier: "timerdone", content: contents, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "endlesstimer", content: contents, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    func setEndlessTimerLabel(triggeredDate: Date, duration: Int) -> String {
+    func getEndlessTimerString(triggeredDate: Date, duration: Int) -> String {
         var remainSeconds: Int
         let passedSeconds = Int(round(Date().timeIntervalSince(triggeredDate)))
         print(passedSeconds)
@@ -121,13 +130,13 @@ class MeteorViewModel {
     /// 앱 업데이트 후 너무 이른 customReview 방지
     func resetCustomReviewCount() {
         let lastVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey)
-        let currentVersion = SettingsViewModel().getCurrentVersion()
+        let currentVersion = SettingsViewModel.getCurrentVersion()
         
         if lastVersion != currentVersion {
-            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(customReviewReset, forKey: UserDefaultsKeys.customAppReviewCountKey)
-            }
+//            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
+//            if customReviewLimit < reviewCount {
+                UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
+//            }
         }
     }
     
@@ -145,11 +154,14 @@ class MeteorViewModel {
     private func firebase(kind: String, content: String, duration: Int = 0) {
 #if RELEASE
         guard let user = UIDevice.current.identifierForVendor?.uuidString else { return }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dateFormatter.string(from: Date())
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd"
+        let date1 = dateFormatter1.string(from: Date())
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date2 = dateFormatter2.string(from: Date())
         let locale = TimeZone.current.identifier
-        let version = SettingsViewModel().getCurrentVersion().replacingOccurrences(of: ".", with: "_")
+        let version = SettingsViewModel.getCurrentVersion().replacingOccurrences(of: ".", with: "_")
         let text = content.replacingOccurrences(of: "\n", with: "/-/")
         var value: Any? {
             if kind == "3_endlessText" {
@@ -164,9 +176,10 @@ class MeteorViewModel {
         self.db
             .child(version)
             .child(kind)
+            .child(date1)
             .child(locale)
             .child(user)
-            .child(date)
+            .child(date2)
             .setValue(value)
 #endif
     }
@@ -175,94 +188,5 @@ class MeteorViewModel {
         let container = try? ModelContainer(for: History.self, migrationPlan: HistoryMigrationPlan.self)
         let history = History(content: meteorText, timestamp: Date().timeIntervalSince1970)
         container?.mainContext.insert(history)
-    }
-}
-
-extension MeteorViewModel {
-    func loadLiveActivity() async {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-        await observeActivity(activity: activity)
-    }
-    
-    func startLiveActivity(text: String) -> Bool {
-        if ActivityAuthorizationInfo().areActivitiesEnabled {
-            UserDefaults.standard.set(text, forKey: UserDefaultsKeys.liveTextKey)
-            
-            Task {
-                // MARK: - Live 타임아웃 때 Local notification 등록
-                let contents = UNMutableNotificationContent()
-                contents.title = NSLocalizedString("⚠️ Live Expired", comment: "")
-                contents.body = text
-                contents.sound = UNNotificationSound.default
-                let twelveHours: TimeInterval = 12 * 60 * 60
-                
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: twelveHours, repeats: false)
-                let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
-                
-                do {
-                    try await UNUserNotificationCenter.current().add(request)
-                } catch {
-                    print(error.localizedDescription)
-                }
-                // MARK: -
-                
-                let attributes = MeteorWidgetAttributes(value: "none")
-                let state = MeteorWidgetAttributes.ContentState(
-                    liveText: text,
-                    liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-                    hideContentOnLockScreen: UserDefaults.standard.bool(forKey: UserDefaultsKeys.lockScreenStateKey),
-                    triggerDate: Date()
-                )
-                let content = ActivityContent(state: state, staleDate: .distantFuture)
-                
-                do {
-                    let activity = try Activity<MeteorWidgetAttributes>.request(attributes: attributes, content: content)
-                    await observeActivity(activity: activity)
-                    
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    private func observeActivity(activity: Activity<MeteorWidgetAttributes>) async {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return }
-        for await activityState in activity.activityStateUpdates {
-            if activityState == .dismissed {
-                await endLiveActivity()
-            }
-        }
-    }
-    
-    func endLiveActivity() async {
-        // MARK: - Local notification 해제
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["live"])
-        
-        let finalState = MeteorWidgetAttributes.ContentState(liveText: "none",
-                                                             liveColor: 0,
-                                                             hideContentOnLockScreen: false,
-                                                             triggerDate: Date()
-        )
-        let finalContent = ActivityContent(state: finalState, staleDate: nil)
-        
-        for activity in Activity<MeteorWidgetAttributes>.activities {
-            await activity.end(finalContent, dismissalPolicy: .immediate)
-            print("Ending the Live Activity(Timer): \(activity.id)")
-        }
-    }
-    
-    func isLiveActivityAlive() -> Bool {
-        guard let activity = Activity<MeteorWidgetAttributes>.activities.first else { return false }
-        let activityState = activity.activityState
-        switch activityState {
-        case .active, .ended:
-            return true
-        default:
-            return false
-        }
     }
 }

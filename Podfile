@@ -9,6 +9,7 @@ target 'Meteor' do
 pod 'FirebaseAnalytics'
 pod 'FirebaseCrashlytics'
 pod 'FirebaseDatabase'
+pod 'FirebaseMessaging'
 end
 
 post_install do |installer|

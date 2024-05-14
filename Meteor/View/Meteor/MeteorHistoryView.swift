@@ -67,6 +67,7 @@ struct MeteorHistoryListView: View {
                     Button(role: .destructive) {
                         do {
                             try modelContext.delete(model: History.self)
+                            makeVibration(type: .warning)
                         } catch {
                             print(error.localizedDescription)
                         }

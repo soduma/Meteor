@@ -6,8 +6,8 @@
 //
 
 class UserDefaultsKeys {
-    class var initialLaunchKey: String {
-        return "InitialLaunch"
+    class var launchedBeforeKey: String {
+        return "LaunchedBefore"
     }
     
     class var lightStateKey: String {
@@ -22,8 +22,16 @@ class UserDefaultsKeys {
         return "HapticState"
     }
     
-    class var lockScreenStateKey: String {
-        return "LockScreenState"
+//    class var lockScreenStateKey: String {
+//        return "LockScreenState"
+//    }
+    
+    class var timeSensitiveStateKey: String {
+        return "TimeSensitiveState"
+    }
+    
+    class var liveContentHideStateKey: String {
+        return "LiveContentHideState"
     }
     
     class var liveColorKey: String {
@@ -60,11 +68,6 @@ class UserDefaultsKeys {
         return "LiveText"
     }
     
-    /// 앱 리뷰 화면 표현용
-    class var meteorSentCountKey: String {
-        return "meteorSentCount"
-    }
-    
     /// 위젯용 이미지 데이터
     class var widgetDataKey: String {
         return "WidgetDataKey"
@@ -83,8 +86,47 @@ class UserDefaultsKeys {
         return "GetNewImageTappedCount"
     }
     
-    /// 앱 리뷰 화면 표현용
+    /// 마지막 버전
     class var lastVersionKey: String {
         return "LastVersion"
+    }
+    
+    /// 리뷰한 버전
+    class var reviewVersionKey: String {
+        return "ReviewVersion"
+    }
+    
+// MARK: - LIVE ACTIVITY
+    
+    class var alwaysOnLiveStateKey: String {
+        return "AlwaysOnLiveState"
+    }
+    
+    /// alert deviceToken
+    class var apnsDeviceTokenKey: String {
+        return "ApnsDeviceToken"
+    }
+    
+    /// liveactivity deviceToken
+    class var liveDeviceTokenKey: String {
+        return "LiveDeviceToken"
+    }
+    
+    /// jwt valid 확인용
+    class var requestedDateKey: String {
+        return "RequestedDate"
+    }
+    
+    /// jwt, authentication
+    class var JWTokenKey: String {
+        return "JWToken"
+    }
+    
+    class var minimizeDynamicIslandStateKey: String {
+        return "MinimizeDynamicIslandState"
+    }
+    
+    class var liveBackgroundUpdateStateKey: String {
+        return "LiveBackgroundUpdateState"
     }
 }

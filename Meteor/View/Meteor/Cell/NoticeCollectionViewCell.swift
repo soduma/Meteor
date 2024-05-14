@@ -1,5 +1,5 @@
 //
-//  NoticeCell.swift
+//  NoticeCollectionViewCell.swift
 //  Meteor
 //
 //  Created by 장기화 on 2023/08/07.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoticeCell: UICollectionViewCell {
+class NoticeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var noticeLabel: UILabel!
     
     static let identifier = "NoticeCell"
