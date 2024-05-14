@@ -36,4 +36,5 @@ exit 0
 brew install cocoapods
 
 # Install dependencies you manage with CocoaPods.
+cd ../
 pod install
