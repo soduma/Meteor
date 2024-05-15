@@ -52,8 +52,6 @@
 		F7972D492A85EA6700050263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7972D482A85EA6700050263 /* Assets.xcassets */; };
 		F7972D4D2A85EA6700050263 /* MeteorWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F7972D3E2A85EA6600050263 /* MeteorWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F7972D512A85F46200050263 /* MeteorActivityConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7972D442A85EA6600050263 /* MeteorActivityConfiguration.swift */; };
-		F79C77642BF3EB8A00CA8EDF /* AuthKey.p8 in Resources */ = {isa = PBXBuildFile; fileRef = F79C77622BF3EB8A00CA8EDF /* AuthKey.p8 */; };
-		F79C77652BF3EB8A00CA8EDF /* IDList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F79C77632BF3EB8A00CA8EDF /* IDList.plist */; };
 		F79CED572BBD134600683914 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CED502BBD0FDC00683914 /* ActivityKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F7B5A97A2BDA202C0035FB2F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F758AC5B2BAD53DB00CC19A9 /* Localizable.xcstrings */; };
 		F7CDBCEB2BE6195E009E7BD8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CDBCEA2BE6195E009E7BD8 /* OnboardingView.swift */; };
@@ -158,8 +156,6 @@
 		F7972D462A85EA6600050263 /* MeteorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteorWidget.swift; sourceTree = "<group>"; };
 		F7972D482A85EA6700050263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7972D4A2A85EA6700050263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F79C77622BF3EB8A00CA8EDF /* AuthKey.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey.p8; sourceTree = "<group>"; };
-		F79C77632BF3EB8A00CA8EDF /* IDList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IDList.plist; sourceTree = "<group>"; };
 		F79CED502BBD0FDC00683914 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
 		F7CDBCEA2BE6195E009E7BD8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F7CDBCED2BE6257E009E7BD8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -272,8 +268,6 @@
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
 				F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */,
 				F734A77A2BCE8DE400C9ABFD /* GoogleService-Info.plist */,
-				F79C77632BF3EB8A00CA8EDF /* IDList.plist */,
-				F79C77622BF3EB8A00CA8EDF /* AuthKey.p8 */,
 				F7E861332A7B7ED100E5F194 /* Foundation */,
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				F797ABEB2BAD429B0012ACFE /* Extension */,
@@ -535,13 +529,11 @@
 				F7F79FC82A8F175700FA5464 /* Main.storyboard in Resources */,
 				A0998A5B25FC99E9001BAEFD /* LaunchScreen.storyboard in Resources */,
 				A0998A5825FC99E9001BAEFD /* Assets.xcassets in Resources */,
-				F79C77652BF3EB8A00CA8EDF /* IDList.plist in Resources */,
 				F77683AC2A95CB7D00824E4E /* lottie_face.json in Resources */,
 				F77E75302A7CABAA008F1883 /* meteor_splash.png in Resources */,
 				F758AC5C2BAD53DB00CC19A9 /* Localizable.xcstrings in Resources */,
 				F734A77B2BCE8DE400C9ABFD /* GoogleService-Info.plist in Resources */,
 				F77A9BF92BB593A600CD015B /* PrivacyInfo.xcprivacy in Resources */,
-				F79C77642BF3EB8A00CA8EDF /* AuthKey.p8 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
