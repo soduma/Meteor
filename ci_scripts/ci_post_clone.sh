@@ -11,7 +11,7 @@ echo "Stage: ci_post_clone is activated .... "
 # for future reference
 # https://developer.apple.com/documentation/xcode/environment-variable-reference
 
-cd ../Meteor/
+cd ../Meteor/Foundation
 
 plutil -replace AUTHKEY_P8 -string $AUTHKEY_P8 $CI_WORKSPACE/$Meteor/Info.plist
 plutil -replace TEAM_ID -string $TEAM_ID $CI_WORKSPACE/$Meteor/Info.plist
