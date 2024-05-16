@@ -13,11 +13,11 @@ echo "Stage: ci_post_clone is activated .... "
 
 cd ../Meteor/
 
-plutil -replace AUTHKEY_P8 -string $AUTHKEY_P8 Info.plist
-plutil -replace TEAM_ID -string $TEAM_ID Info.plist
-plutil -replace KEY_ID -string $KEY_ID Info.plist
+plutil -replace AUTHKEY_P8 -string $AUTHKEY_P8 "$CI_WORKSPACE"/"$Meteor"/Info.plist
+plutil -replace TEAM_ID -string $TEAM_ID "$CI_WORKSPACE"/"$Meteor"/Info.plist
+plutil -replace KEY_ID -string $KEY_ID "$CI_WORKSPACE"/"$Meteor"/Info.plist
 
-plutil -p Info.plist
+plutil -p "$CI_WORKSPACE"/"$Meteor"/Info.plist
 
 echo "Stage: ci_post_clone is DONE .... "
 
