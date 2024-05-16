@@ -50,7 +50,7 @@ struct OnboardingContentView: View {
             
             Text("Take a Note at the Nearest Place.")
                 .font(.system(size: 24, weight: .semibold))
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 28)
                 .multilineTextAlignment(.center)
             
             Spacer(minLength: 24)
@@ -83,8 +83,8 @@ struct OnboardingImageView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.green]), startPoint: .top, endPoint: .bottom)
             
+            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.secondary.opacity(0.9)]), startPoint: .top, endPoint: .bottom)
             RoundedRectangle(cornerRadius: 32)
                 .frame(width: 400 * scale, height: 700 * scale)
                 .opacity(0.2)
