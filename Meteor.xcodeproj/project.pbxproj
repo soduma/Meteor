@@ -268,6 +268,7 @@
 				A018484526A551F300DC3A59 /* Meteor.entitlements */,
 				F77A9BF82BB593A600CD015B /* PrivacyInfo.xcprivacy */,
 				F734A77A2BCE8DE400C9ABFD /* GoogleService-Info.plist */,
+				A0998A5C25FC99E9001BAEFD /* Info.plist */,
 				F7E861332A7B7ED100E5F194 /* Foundation */,
 				F7E861342A7B7EFA00E5F194 /* Common */,
 				F797ABEB2BAD429B0012ACFE /* Extension */,
@@ -395,7 +396,6 @@
 			children = (
 				A0998A4E25FC99E7001BAEFD /* AppDelegate.swift */,
 				A0998A5025FC99E7001BAEFD /* SceneDelegate.swift */,
-				A0998A5C25FC99E9001BAEFD /* Info.plist */,
 				F77E75312A7CABB1008F1883 /* Resource */,
 				A0998A5925FC99E9001BAEFD /* LaunchScreen.storyboard */,
 				F7F79FCA2A8F175700FA5464 /* Main.storyboard */,
