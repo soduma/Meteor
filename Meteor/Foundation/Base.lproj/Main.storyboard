@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpH-LA-jla">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -206,7 +206,7 @@ example</string>
                                 </constraints>
                             </view>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-iO-9UW">
-                                <rect key="frame" x="310" y="59" width="393" height="793"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-f5-YF7">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
@@ -314,11 +314,6 @@ Meteor feature requires notification permission.</string>
                             <constraint firstItem="FCV-iO-9UW" firstAttribute="top" secondItem="Mqu-pD-j8Z" secondAttribute="top" id="yst-Cd-s50"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="gPZ-ZQ-iG3" secondAttribute="trailing" constant="30" id="zcj-YP-tGP"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="FCV-iO-9UW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meteor" id="eAl-3u-eGw">
                         <imageReference key="image" image="message.fill" catalog="system" symbolScale="large"/>
