@@ -30,17 +30,8 @@ class MeteorViewModel {
     func appLaunchSettings() {
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) {
             checkAppearanceMode()
-            
             liveManager.loadActivity()
-//
-//            if !liveManager.isLiveAlive() && UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
-//                liveManager.startLiveActivity(text: "")
-//                await push(timestamp: Date.timestamp, liveColor: 2, isHide: true)
-//                await loadLiveActivity()
-//            }
-//            liveManager.getPushToStartToken()
             
-
         } else {
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveContentHideStateKey)
@@ -53,7 +44,6 @@ class MeteorViewModel {
                 let (imageData, _) = try await URLSession.shared.data(from: url)
                 SettingsViewModel().setWidget(imageData: imageData)
             }
-//            liveManager.getPushToStartToken()
         }
     }
     
@@ -133,10 +123,7 @@ class MeteorViewModel {
         let currentVersion = SettingsViewModel.getCurrentVersion()
         
         if lastVersion != currentVersion {
-//            let reviewCount = UserDefaults.standard.integer(forKey: UserDefaultsKeys.customAppReviewCountKey)
-//            if customReviewLimit < reviewCount {
-                UserDefaults.standard.set(0, forKey: UserDefaultsKeys.customAppReviewCountKey)
-//            }
+            UserDefaults.standard.set(10, forKey: UserDefaultsKeys.customAppReviewCountKey)
         }
     }
     

@@ -81,7 +81,7 @@ class SettingsViewController: UITableViewController {
             
             let appStoreAction = UIAlertAction(title: NSLocalizedString("mailMove", comment: ""), style: .default) { _ in
                 if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"),
-                    UIApplication.shared.canOpenURL(url) {
+                   UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 }
             }

@@ -29,34 +29,6 @@
         }
       }
     },
-    "⚠️ Live Expired" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠️ Live満了する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠️ Live 만료됨"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠️直播已过期"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⚠️ 直播已過期"
-          }
-        }
-      }
-    },
     "9:41" : {
       "localizations" : {
         "ja" : {

@@ -23,7 +23,7 @@ struct MeteorAttributes: ActivityAttributes {
     }
     
     // Fixed non-changing properties about your activity go here!
-//    var value: String
+    //    var value: String
 }
 
 struct MeteorActivityConfiguration: Widget {
@@ -62,14 +62,14 @@ struct MeteorActivityConfiguration: Widget {
                         
                         Text(Date(timeIntervalSinceNow: twelveHours), style: .relative)
                             .font(.system(size: 12, weight: .medium))
-                        .minimumScaleFactor(0.7)
-                        .multilineTextAlignment(.trailing)
+                            .minimumScaleFactor(0.7)
+                            .multilineTextAlignment(.trailing)
                         
                         ProgressView(timerInterval: workoutDateRange) {
                         } currentValueLabel: { }
-                        .progressViewStyle(.circular)
-                        .frame(width: 30, height: 30)
-                        .tint(.white)
+                            .progressViewStyle(.circular)
+                            .frame(width: 30, height: 30)
+                            .tint(.white)
                     }
                 }
                 DynamicIslandExpandedRegion(.center) {
@@ -108,7 +108,7 @@ struct MeteorActivityConfiguration: Widget {
                             .minimumScaleFactor(0.35)
                     }
                 }
-            } compactLeading: {                
+            } compactLeading: {
                 if !state.isAlwaysOnLive || !state.isMinimize {
                     Image(logo)
                         .grayscale(state.liveText.isEmpty ? 1 : 0)
@@ -117,8 +117,8 @@ struct MeteorActivityConfiguration: Widget {
                 if !state.isAlwaysOnLive || !state.isMinimize {
                     ProgressView(timerInterval: workoutDateRange) {
                     } currentValueLabel: { }
-                    .progressViewStyle(.circular)
-                    .tint(.white)
+                        .progressViewStyle(.circular)
+                        .tint(.white)
                 }
             } minimal: {
                 if state.isAlwaysOnLive && state.isMinimize {
@@ -174,15 +174,10 @@ struct LockScreenView: View {
     let liveText = context.state.liveText
     
     HStack(alignment: .center, spacing: 8) {
-//        ZStack {
-//            Circle()
-//                .fill(liveText.isEmpty ? .clear : .white)
-//                .frame(width: 26, height: 26, alignment: .center)
-            Image(logo)
-                .resizable()
-                .frame(width: 20, height: 20)
-                .grayscale(liveText.isEmpty ? 1 : 0)
-//        }
+        Image(logo)
+            .resizable()
+            .frame(width: 20, height: 20)
+            .grayscale(liveText.isEmpty ? 1 : 0)
         
         Text("Meteor")
             .font(.system(size: 16, weight: .semibold))

@@ -28,11 +28,11 @@ struct MeteorHistoryView: View {
 }
 
 struct MeteorHistoryListView: View {
-    var historyText: ((String) -> Void)?
-
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     @Query(sort: \History.timestamp, order: .reverse) private var historyList: [History]
+    
+    var historyText: ((String) -> Void)?
     
     var body: some View {
         List {
@@ -43,9 +43,7 @@ struct MeteorHistoryListView: View {
                     .swipeActions(edge: .leading) {
                         Button {
                             historyText?(history.content)
-//                            dismiss()
                         } label: {
-//                            Label("Enter", systemImage: "swift")
                             Image(systemName: "swift")
                         }
                     }

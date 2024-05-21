@@ -11,8 +11,8 @@ import ActivityKit
 class LiveActivityManager {
     static let shared = LiveActivityManager()
     
+    /// isActivityAlive() 체크용
     var currentActivity: Activity<MeteorAttributes>?
-    var already = true
     
     func loadActivity() {
         let activityList = Activity<MeteorAttributes>.activities
@@ -34,18 +34,12 @@ class LiveActivityManager {
         Task {
             if currentActivity != nil {
                 await endActivity()
-                
-//                try await Task.sleep(for: .seconds(0.3))
                 guard let liveText = UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) else { return }
                 startActivity(text: liveText)
             } else {
                 await endAlwaysActivity()
-                
-//                try await Task.sleep(for: .seconds(0.3))
                 startAlwaysActivity()
             }
-//            try await Task.sleep(for: .seconds(0.5))
-//            loadActivity()
         }
     }
     
@@ -56,13 +50,6 @@ class LiveActivityManager {
         
         Task {
             await endAlwaysActivity()
-            
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "ko_KR")
-            formatter.timeZone = TimeZone(abbreviation: "KST")
-            formatter.dateFormat = "yyyy-MM-dd HH:mm"
-            let date = formatter.string(from: Date())
-            print(date)
             
             let (attributes, content) = activityTemplete(liveText: text)
             let activity = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
@@ -77,12 +64,11 @@ class LiveActivityManager {
               UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
               currentActivity == nil,
               Activity<MeteorAttributes>.activities.isEmpty else { return }
-            
+        
         Task {
             let (attributes, content) = activityTemplete(liveText: "")
             let _ = try Activity<MeteorAttributes>.request(attributes: attributes, content: content, pushType: .token)
             loadActivity()
-//            await observeAlwaysActivity(activity: activity)
         }
     }
     
@@ -92,23 +78,18 @@ class LiveActivityManager {
                 for await activityState in activity.activityStateUpdates {
                     print("🌈🌈🌈🌈🌈🌈🌈")
                     print(activity.id)
-                    self.already = false
                     if activityState == .dismissed {
-//                        MeteorViewModel().sendSingleMeteor(text: "디스미스")
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) == false {
-                            // isActivityAlive 함수 체크용
                             self.currentActivity = nil
                         }
-
+                        
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
                             do {
                                 try await Task.sleep(for: .seconds(1))
-                                if !self.isActivityAlive() && self.currentActivity != nil && self.already == false {
-//                                    MeteorViewModel().sendSingleMeteor(text: "옵저브 디스미스 푸시불림")
+                                if !self.isActivityAlive() && self.currentActivity != nil {
                                     await self.push(liveText: "")
                                     self.loadActivity()
-                                    self.already = true
                                 }
                             } catch {
                                 print(error.localizedDescription)
@@ -116,17 +97,11 @@ class LiveActivityManager {
                         }
                         
                     } else if activityState == .ended {
-//                        MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드")
-                        
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
                             await self.endActivity()
-                            
-//                            if !self.isActivityAlive() {
-//                                MeteorViewModel().sendSingleMeteor(text: "옵저브 엔드 푸시불림")
-                                await self.push(liveText: UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? "")
-                                self.loadActivity()
-//                            }
+                            await self.push(liveText: UserDefaults.standard.string(forKey: UserDefaultsKeys.liveTextKey) ?? "")
+                            self.loadActivity()
                         }
                     }
                 }
@@ -140,28 +115,14 @@ class LiveActivityManager {
                 for await activityState in activity.activityStateUpdates {
                     print("🍓🍓🍓🍓🍓🍓🍓")
                     if activityState == .dismissed {
-                        print(activity.id)
-                        
-//                        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
-//                           UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),// {
-//                           !self.isActivityAlive() {
-//                            await self.push(liveText: "")
-//                            self.loadActivity()
-//                        }
                         
                     } else if activityState == .ended {
-//                        MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드")
-                        
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),// {
                            self.isActivityAlive() {
                             await self.endActivity()
-                            
-//                            if !self.isActivityAlive() {
-//                                MeteorViewModel().sendSingleMeteor(text: "올웨이즈 옵저브 엔드 푸시불림")
-                                await self.push(liveText: "")
-                                self.loadActivity()
-//                            }
+                            await self.push(liveText: "")
+                            self.loadActivity()
                         }
                     }
                 }
@@ -173,24 +134,18 @@ class LiveActivityManager {
         guard let activity = currentActivity else { return }
         currentActivity = nil
         
-//        Task {
-            let (_, finalContent) = activityTemplete(liveText: "none")
-            await activity.end(finalContent, dismissalPolicy: .immediate)
-            print("Ending the Live Activity(Timer): \(activity.id)")
-//            startAlwaysActivity()
-//        }
+        let (_, finalContent) = activityTemplete(liveText: "none")
+        await activity.end(finalContent, dismissalPolicy: .immediate)
+        print("Ending the Live Activity(Timer): \(activity.id)")
     }
     
     func endAlwaysActivity() async {
-        let activities = Activity<MeteorAttributes>.activities
-            .filter({ $0.content.state.liveText == "" })
-            
-//        Task {
+        let activities = Activity<MeteorAttributes>.activities.filter({ $0.content.state.liveText == "" })
+        
         for activity in activities {
             let (_, finalContent) = activityTemplete(liveText: "none")
             await activity.end(finalContent, dismissalPolicy: .immediate)
             print("Ending the Live Activity(Timer): \(activity.id)")
-//        }
         }
     }
     
@@ -220,39 +175,13 @@ class LiveActivityManager {
         let state = MeteorAttributes.ContentState(
             liveText: liveText,
             liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
-            isContentHide: UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey), 
+            isContentHide: UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey),
             isMinimize: UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey),
             isAlwaysOnLive: UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
         )
         let content = ActivityContent(state: state, staleDate: .distantFuture)
         return (attributes, content)
     }
-    
-//    /// Live 타임아웃 때 전송될 Local notification 등록
-//    private func registerLocalNotificaiton(text: String) async {
-//        print("👀 live noti start")
-//        
-//        let contents = UNMutableNotificationContent()
-//        contents.title = NSLocalizedString("⚠️ Live Expired", comment: "")
-//        contents.body = text
-//        contents.sound = .default
-//        let twelveHours: TimeInterval = 12 * 60 * 60
-//        
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-//        let request = UNNotificationRequest(identifier: "live", content: contents, trigger: trigger)
-//        
-//        do {
-//            try await UNUserNotificationCenter.current().add(request)
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-//    
-//    /// Local notification 해제
-//    private func removeLocalNotificaiton() {
-//        print("⚠️ live pending remove")
-//        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["live"])
-//    }
 }
 
 extension LiveActivityManager {
@@ -302,7 +231,7 @@ extension LiveActivityManager {
 }
 """
         
-        guard let p8Payload = FileParser.parse() else { return }
+        guard let p8Payload = FileParser.parse() else { return print("❌ parse 실패") }
         do {
             let jsonWebToken = try JSONWebToken(keyID: FileParser.keyID, teamID: FileParser.teamID, p8Payload: p8Payload)
             let authenticationToken = jsonWebToken.token

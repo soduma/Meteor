@@ -140,14 +140,8 @@ class MeteorInputViewController: UIViewController {
         
         enterButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(24)
-//            $0.height.equalTo(60)
             $0.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-12)
         }
-        
-//        enterButton.snp.makeConstraints {
-//            $0.top.equalTo(rectangleView.snp.bottom).offset(16)
-//            $0.trailing.equalTo(rectangleView).inset(3)
-//        }
         
         [textView, clearButton, historyButton, grabberView].forEach {
             rectangleView.addSubview($0)
@@ -194,7 +188,6 @@ class MeteorInputViewController: UIViewController {
             guard let self else { return }
             rectangleViewOriginalX = gesture.view!.center.x
             rectangleViewOriginalY = gesture.view!.center.y
-//            makeVibration(type: .rigid)
         }
     }
     
@@ -214,10 +207,6 @@ class MeteorInputViewController: UIViewController {
         case .ended:
             if abs(velocity.y) > 500 || absoluteY > 300 { // 빠르게 할 때만 디스미스
                 textView.resignFirstResponder()
-                
-//                UIView.animate(withDuration: 0.1) {
-//                    self.enterButton.alpha = 0
-//                }
                 
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     guard let self else { return }
@@ -296,7 +285,6 @@ class MeteorInputViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, delay: 0) { [weak self] in
             guard let self else { return }
-//            enterButton.alpha = 0
             view.alpha = 0
             view.layoutIfNeeded()
             delegate?.updateMeteorTextLabelUI(text: textView.text)

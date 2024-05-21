@@ -37,18 +37,12 @@ struct AlwaysOnLiveView: View {
                         .onChange(of: isMinimizeOn) { oldValue, newValue in
                             liveManager.rebootActivity()
                         }
+                    
                     Toggle("Restart Live in Background (β)", isOn: $isBackgroundOn)
                         .tint(.purple)
                         .disabled(!liveManager.isSupportVersion())
-                        .onChange(
-                            of: isBackgroundOn) { oldValue, newValue in
+                        .onChange(of: isBackgroundOn) { oldValue, newValue in
                             liveManager.rebootActivity()
-//                                liveManager.loadActivity()
-//                                Task {
-//                                    await liveManager.endAlwaysActivity()
-//                                    liveManager.startAlwaysActivity()
-//                                    liveManager.loadActivity()
-//                                }
                         }
                 } header: {
                     Text("Customize")
@@ -62,19 +56,6 @@ struct AlwaysOnLiveView: View {
                     .tint(.yellow)
                     .onChange(of: isAlwaysOn) { oldValue, newValue in
                         liveManager.rebootActivity()
-//                        if newValue {
-//                            if liveManager.isActivityAlive() == false {
-//                                liveManager.startAlwaysActivity()
-//                            }
-////                            liveManager.betaStart()
-//                        }
-                        
-//                        if newValue == false {
-//                            Task {
-//                                await liveManager.endAlwaysActivity()
-//                            }
-////                            liveManager.betaStop()
-//                        }
                     }
             }
         }
