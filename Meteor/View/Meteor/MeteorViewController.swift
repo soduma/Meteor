@@ -43,20 +43,12 @@ class MeteorViewController: UIViewController {
         checkTimerRunning()
         
         viewModel.appLaunchSettings()
-//        Task {
-//            if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveKey) {
-                liveManager.getPushToStartToken()
-                
-//                await liveManager.push(timestamp: Date.timestamp, liveColor: 2, isHide: true)
-//                liveManager.loadLiveActivity()
-//            }
-//        }
+        liveManager.getPushToStartToken()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        liveManager.loadActivity()
         checkLiveState()
     }
     
@@ -82,9 +74,6 @@ class MeteorViewController: UIViewController {
             UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         }
         
-//        liveManager.loadActivity()
-//        checkLiveState()
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(removeAuthView),
                                                name: UIApplication.willEnterForegroundNotification,
@@ -95,18 +84,6 @@ class MeteorViewController: UIViewController {
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
     }
-    
-//    func getPushToStartToken() {
-//        if #available(iOS 17.2, *) {
-//            Task {
-//                for await data in Activity<MeteorAttributes>.pushToStartTokenUpdates {
-//                    let token = data.hexadecimalString
-//                    print("🌊 Activity PushToStart Token: \(token)")
-//                    UserDefaults.standard.set(token, forKey: UserDefaultsKeys.liveDeviceTokenKey)
-//                }
-//            }
-//        }
-//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -199,9 +176,6 @@ class MeteorViewController: UIViewController {
     }
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
-//        sendButton.isEnabled = false
-//        stopButton.isHidden = true
-        
         switch viewModel.meteorType {
         case .single:
             break
@@ -209,19 +183,18 @@ class MeteorViewController: UIViewController {
         case .endless:
             guard let savedEndlessDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.endlessTriggeredDateKey) as? Date else { return }
             guard Date().timeIntervalSince1970 - savedEndlessDate.timeIntervalSince1970 >= 1.1,
-                let endlessTimer else { return }
+                  let endlessTimer else { return }
             endlessTimer.invalidate()
             print("❎ timer invalidate")
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["endlesstimer"])
             UserDefaults.standard.set(false, forKey: UserDefaultsKeys.endlessIdlingKey)
             self.endlessTimer = nil
-
+            
             makeVibration(type: .success)
             ToastManager.makeToast(toast: &ToastManager.toast, title: "Endless", subTitle: "Stopped", imageName: "clock.badge.xmark.fill")
             
             endlessTimerLabel.isHidden = true
             stopButton.isHidden = true
-//            sendButton.isEnabled = true
             
         case .live:
             Task {
@@ -231,7 +204,6 @@ class MeteorViewController: UIViewController {
                 makeVibration(type: .success)
                 ToastManager.makeToast(toast: &ToastManager.toast, title: "Live", subTitle: "Stopped", imageName: "checkmark.message.fill")
                 
-//                sendButton.isEnabled = true
                 stopButton.isHidden = true
             }
         }
@@ -341,13 +313,6 @@ extension MeteorViewController {
             guard let self else { return }
             self.endlessTimer = timer
             endlessTimerLabel.text = viewModel.getEndlessTimerString(triggeredDate: triggeredDate, duration: duration)
-            
-            // MARK: - 여기서 타이머 중지
-//            if viewModel.isEndlessIdling() == false {
-//                timer.invalidate()
-//                print("❎ timer invalidate")
-//            }
-            // MARK: -
         }
     }
     
@@ -385,14 +350,8 @@ extension MeteorViewController {
         }
     }
     
-//    @objc private func willEnterForeground() {
-//        removeAuthView()
-////        liveManager.rebootActivity()
-//    }
-    
     @objc private func checkLiveState() {
         liveManager.startAlwaysActivity()
-//        liveManager.rebootActivity()
         
         switch viewModel.meteorType {
         case .live:

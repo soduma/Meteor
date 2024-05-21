@@ -12,6 +12,4 @@ let systemReviewLimit = 110
 let customReviewLimit = 20
 
 // MARK: for FirebaseDatabase Key
-let shortText = "shortText" // deprecated
-let longText = "longText" // deprecated
 let unsplash = "a_unsplash"

@@ -144,7 +144,7 @@ class SettingsViewModel {
         
         UserDefaults.standard.set(counterForCustomAppReview, forKey: UserDefaultsKeys.customAppReviewCountKey)
         print(counterForCustomAppReview)
-                
+        
         let reviewVersion = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey)
         print(reviewVersion ?? "")
         

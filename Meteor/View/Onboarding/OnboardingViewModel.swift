@@ -22,16 +22,4 @@ class OnboardingViewModel {
         
         isPresented = true
     }
-    
-    func sendSingle() {
-        let center = UNUserNotificationCenter.current()
-        let contents = UNMutableNotificationContent()
-        contents.title = "METEOR :"
-        contents.body = "테스트"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "sing", content: contents, trigger: trigger)
-        center.add(request)
-        print("single")
-    }
 }

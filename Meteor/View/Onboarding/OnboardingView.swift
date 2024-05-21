@@ -14,8 +14,7 @@ struct OnboardingView: View {
     var dismissAction: (() -> Void)?
     
     var body: some View {
-//        NavigationStack {
-            OnboardingContentView(scale: $scale)
+        OnboardingContentView(scale: $scale)
             .onAppear {
                 Task {
                     try await Task.sleep(for: .seconds(0.5))
@@ -28,7 +27,6 @@ struct OnboardingView: View {
         if isPresent {
             OnboardingContinueButtonView(viewModel: viewModel)
         }
-//        }
     }
 }
 
@@ -83,7 +81,6 @@ struct OnboardingImageView: View {
     
     var body: some View {
         ZStack {
-            
             LinearGradient(gradient: Gradient(colors: [Color.blue, Color.secondary.opacity(0.9)]), startPoint: .top, endPoint: .bottom)
             RoundedRectangle(cornerRadius: 32)
                 .frame(width: 400 * scale, height: 700 * scale)
@@ -188,12 +185,11 @@ struct OnboardingContinueButtonView: View {
         .buttonBorderShape(.roundedRectangle(radius: 16))
         .padding(.horizontal, 24)
         .padding(.top, 20)
-//            .navigationDestination(isPresented: $viewModel.isPresented) {
-//                OnboardingTabView(dismissAction: dismissAction ?? {} )
-//            }
+//        .navigationDestination(isPresented: $viewModel.isPresented) {
+//            OnboardingTabView(dismissAction: dismissAction ?? {} )
+//        }
         
         Spacer(minLength: 52)
-
     }
 }
 
