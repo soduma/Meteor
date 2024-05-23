@@ -397,6 +397,42 @@
         }
       }
     },
+    "CSH-Qt-DMi.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Left Alignment\"; ObjectID = \"CSH-Qt-DMi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Left Alignment"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "左揃え"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "왼쪽 정렬"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "左对齐"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "左對齊"
+          }
+        }
+      }
+    },
     "CYW-C2-CJt.footerTitle" : {
       "comment" : "Class = \"UITableViewSection\"; footerTitle = \"고맙습니다.\\nThank you for using. 👋🏻 \"; ObjectID = \"CYW-C2-CJt\";",
       "extractionState" : "extracted_with_value",
@@ -626,25 +662,25 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback"
+            "value" : "フィードバック"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback"
+            "value" : "피드백"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback"
+            "value" : "反馈 "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback"
+            "value" : "反饋"
           }
         }
       }
@@ -830,13 +866,13 @@
       }
     },
     "j1o-go-okn.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"iPhone Settings > Meteor > Notifications Please enable notifications.\"; ObjectID = \"j1o-go-okn\";",
+      "comment" : "Class = \"UILabel\"; text = \"iPhone Settings > Meteor > Notifications Please enable permission.\"; ObjectID = \"j1o-go-okn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "iPhone Settings > Meteor > Notifications Please enable notifications."
+            "value" : "iPhone Settings > Meteor > Notifications Please enable permission."
           }
         },
         "ja" : {
@@ -878,109 +914,109 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share / Review"
+            "value" : "シェア / レビュー"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share / Review"
+            "value" : "공유 / 리뷰"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share / Review"
+            "value" : "分享 / 评论"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Share / Review"
+            "value" : "分享 / 評論"
           }
         }
       }
     },
     "keM-A9-xCm.headerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Live Color\"; ObjectID = \"keM-A9-xCm\";",
+      "comment" : "Class = \"UITableViewSection\"; headerTitle = \"Live Customize\"; ObjectID = \"keM-A9-xCm\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Live Color"
+            "value" : "Live Customize"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liveカラー"
+            "value" : "Live カスタマイズ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live 색상"
+            "value" : "Live 사용자화"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live颜色"
+            "value" : "Live 定製"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live顏色"
+            "value" : "Live 定製"
           }
         }
       }
     },
     "Lak-TZ-MUE.title" : {
-      "comment" : "Class = \"UINavigationItem\"; title = \"Meteor\"; ObjectID = \"Lak-TZ-MUE\";",
+      "comment" : "Class = \"UINavigationItem\"; title = \"Settings\"; ObjectID = \"Lak-TZ-MUE\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Meteor"
+            "value" : "Settings"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meteor"
+            "value" : "設定"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meteor"
+            "value" : "설정"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meteor"
+            "value" : "设置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meteor"
+            "value" : "設定"
           }
         }
       }
     },
     "mO4-mb-C9g.footerTitle" : {
-      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.\"; ObjectID = \"mO4-mb-C9g\";",
+      "comment" : "Class = \"UITableViewSection\"; footerTitle = \"Send ‘Single’ and ‘Endless’ as Time Sensitive notifications. Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.\"; ObjectID = \"mO4-mb-C9g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.\nTime Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour."
+            "value" : "Send ‘Single’ and ‘Endless’ as Time Sensitive notifications. Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour."
           }
         },
         "ja" : {
@@ -1046,37 +1082,37 @@
       }
     },
     "mYh-w1-2Gl.text" : {
-      "comment" : "Class = \"UILabel\"; text = \"⚠️\\nMeteor feature requires notification permission.\"; ObjectID = \"mYh-w1-2Gl\";",
+      "comment" : "Class = \"UILabel\"; text = \"Meteor feature requires Notification Permission.\"; ObjectID = \"mYh-w1-2Gl\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "⚠️\nMeteor feature requires notification permission."
+            "value" : "Meteor feature requires Notification Permission."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️\nメテオ機能には通知権限が必要です。"
+            "value" : "メテオ機能には通知権限が必要です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 메테오 기능은 알림 권한이 필요합니다."
+            "value" : "메테오 기능은 알림 권한이 필요합니다."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 流星功能需要通知权限。"
+            "value" : "流星功能需要通知权限。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⚠️ 流星功能需要通知許可權。"
+            "value" : "流星功能需要通知許可權。"
           }
         }
       }
@@ -1202,25 +1238,25 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "バージョン"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "버전"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "版本"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "版本"
           }
         }
       }
@@ -1286,13 +1322,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可以在小部件中看到这张照片，每次加载照片时都会使用大约500KB的数据。"
+            "value" : "可以在小组件中看到这张照片，每次加载照片时都会使用大约500KB的数据。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "可以在小部件中看到這張照片，每次載入照片時都會使用大約500KB的資料。"
+            "value" : "可以在小工具中看到這張照片，每次載入照片時都會使用大約500KB的資料。"
           }
         }
       }
@@ -1310,25 +1346,25 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget"
+            "value" : "ウィジェット"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget"
+            "value" : "위젯"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget"
+            "value" : "小组件"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget"
+            "value" : "小工具"
           }
         }
       }
@@ -1689,6 +1725,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在這裡填寫👀"
+          }
+        }
+      }
+    },
+    "ybt-ah-Rid.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Center Alignment\"; ObjectID = \"ybt-ah-Rid\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Center Alignment"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中央揃え"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가운데 정렬"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "居中对齐"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "居中對齊"
           }
         }
       }

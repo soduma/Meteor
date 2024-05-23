@@ -17,6 +17,7 @@ struct MeteorAttributes: ActivityAttributes {
         // Dynamic stateful properties about your activity go here!
         var liveText: String
         var liveColor: Int
+        var liveAlignment: Int
         var isContentHide: Bool
         var isMinimize: Bool
         var isAlwaysOnLive: Bool
@@ -54,7 +55,7 @@ struct MeteorActivityConfiguration: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    setLeadingLayout(context)
+                    setLogoLayout(context)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     HStack(spacing: 8) {
@@ -129,6 +130,7 @@ struct MeteorActivityConfiguration: Widget {
                         .grayscale(state.liveText.isEmpty ? 1 : 0)
                 }
             }
+            .widgetURL(URL(string: "hihihii"))
         }
     }
 }
@@ -151,18 +153,18 @@ struct LockScreenView: View {
 }
 
 @ViewBuilder fileprivate func setLayout(_ context: ActivityViewContext<MeteorAttributes>, needHide: Bool) -> some View {
-    let liveText = context.state.liveText
+    let state = context.state
     
     VStack(spacing: 3) {
-        setLeadingLayout(context)
+        setLogoLayout(context)
             .padding(.leading)
         
-        if !liveText.isEmpty {
-            Text(liveText)
+        if !state.liveText.isEmpty {
+            Text(state.liveText)
                 .font(.system(size: 32, weight: .semibold))
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.39)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(state.liveAlignment == 0 ? .leading : .center)
                 .padding([.leading, .trailing])
                 .blur(radius: needHide ? 8 : 0)
         }
@@ -170,7 +172,7 @@ struct LockScreenView: View {
     .padding([.top, .bottom])
 }
 
-@ViewBuilder fileprivate func setLeadingLayout(_ context: ActivityViewContext<MeteorAttributes>) -> some View {
+@ViewBuilder fileprivate func setLogoLayout(_ context: ActivityViewContext<MeteorAttributes>) -> some View {
     let liveText = context.state.liveText
     
     HStack(alignment: .center, spacing: 8) {

@@ -16,6 +16,11 @@ enum LiveColor: Int { // UserDefaults 저장을 위해서 Int 처리
     case clear = 2
 }
 
+enum LiveAlignment: Int {
+    case left = 0
+    case center = 1
+}
+
 class SettingsViewModel {
     private let db = Database.database().reference()
     private var firebaseImageURL = ""
@@ -23,6 +28,7 @@ class SettingsViewModel {
     
     var keywordText = ""
     var liveColor = LiveColor.red
+    var liveAlignment = LiveAlignment.left
     
     static func getCurrentVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "" }

@@ -215,36 +215,52 @@ example</string>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-T7-oDf">
-                                                    <rect key="frame" x="11.999999999999996" y="20.000000000000004" width="49.666666666666657" height="34.333333333333343"/>
+                                                    <rect key="frame" x="322.33333333333331" y="20.000000000000004" width="50.666666666666686" height="34.333333333333343"/>
                                                     <color key="tintColor" systemColor="systemGrayColor"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                                    </buttonConfiguration>
                                                     <connections>
                                                         <action selector="authCloseButtonTapped:" destination="5ue-D9-5Dz" eventType="touchUpInside" id="epM-6z-4Oo"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl">
-                                                    <rect key="frame" x="50" y="295.66666666666669" width="293" height="79"/>
-                                                    <string key="text">⚠️
-Meteor feature requires notification permission.</string>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone Settings &gt; Meteor &gt; Notifications Please enable notifications." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
-                                                    <rect key="frame" x="50" y="384.66666666666669" width="273" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="hqG-nX-jf7"/>
-                                                    </constraints>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eOL-eI-8hB">
+                                                    <rect key="frame" x="60" y="246.33333333333331" width="313" height="137.33333333333331"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KeK-0L-MdL">
+                                                            <rect key="frame" x="0.0" y="1.3333333333333321" width="60" height="57.666666666666671"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="WSK-Nw-Gxh"/>
+                                                                <constraint firstAttribute="width" constant="60" id="wLb-P4-qrO"/>
+                                                            </constraints>
+                                                            <imageReference key="image" image="exclamationmark.triangle.fill" catalog="system" renderingMode="hierarchical">
+                                                                <hierarchicalColors>
+                                                                    <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                    <color systemColor="systemYellowColor"/>
+                                                                </hierarchicalColors>
+                                                            </imageReference>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meteor feature requires Notification Permission." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-w1-2Gl" userLabel="⚠️  Meteor feature requires notification permission.">
+                                                            <rect key="frame" x="0.0" y="80" width="273" height="57.333333333333343"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone Settings &gt; Meteor &gt; Notifications Please enable permission." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-go-okn">
+                                                    <rect key="frame" x="60" y="403.66666666666669" width="273" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgP-WV-G9E">
-                                                    <rect key="frame" x="302" y="439.66666666666669" width="51" height="40"/>
+                                                    <rect key="frame" x="302" y="459.66666666666663" width="51" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="r7I-OR-cAO"/>
                                                     </constraints>
-                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="arrowshape.turn.up.right" catalog="system">
                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
@@ -258,14 +274,15 @@ Meteor feature requires notification permission.</string>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="j1o-go-okn" firstAttribute="leading" secondItem="mYh-w1-2Gl" secondAttribute="leading" id="25g-Gn-JHz"/>
-                                                <constraint firstItem="mYh-w1-2Gl" firstAttribute="leading" secondItem="Wg8-Bb-QJF" secondAttribute="leading" constant="50" id="Lhr-Hx-qSx"/>
-                                                <constraint firstItem="j1o-go-okn" firstAttribute="top" secondItem="mYh-w1-2Gl" secondAttribute="bottom" constant="10" id="ONn-rh-Nvj"/>
+                                                <constraint firstAttribute="trailing" secondItem="eOL-eI-8hB" secondAttribute="trailing" constant="20" id="4zf-Lq-oCv"/>
+                                                <constraint firstItem="j1o-go-okn" firstAttribute="trailing" secondItem="mYh-w1-2Gl" secondAttribute="trailing" id="7aN-Xx-5Wi"/>
+                                                <constraint firstItem="j1o-go-okn" firstAttribute="leading" secondItem="mYh-w1-2Gl" secondAttribute="leading" id="BwA-IT-1eS"/>
                                                 <constraint firstAttribute="trailing" secondItem="WgP-WV-G9E" secondAttribute="trailing" constant="40" id="PHq-n8-qvt"/>
-                                                <constraint firstAttribute="trailing" secondItem="mYh-w1-2Gl" secondAttribute="trailing" constant="50" id="aht-VM-TiM"/>
-                                                <constraint firstItem="WgP-WV-G9E" firstAttribute="top" secondItem="j1o-go-okn" secondAttribute="bottom" constant="5" id="fYO-Gg-7aW"/>
+                                                <constraint firstItem="WgP-WV-G9E" firstAttribute="top" secondItem="j1o-go-okn" secondAttribute="bottom" constant="20" id="fYO-Gg-7aW"/>
+                                                <constraint firstItem="eOL-eI-8hB" firstAttribute="leading" secondItem="Wg8-Bb-QJF" secondAttribute="leading" constant="60" id="g6u-Pi-3to"/>
                                                 <constraint firstItem="mZN-T7-oDf" firstAttribute="top" secondItem="Wg8-Bb-QJF" secondAttribute="top" constant="20" id="kmx-YP-QEI"/>
-                                                <constraint firstItem="mZN-T7-oDf" firstAttribute="leading" secondItem="Wg8-Bb-QJF" secondAttribute="leading" constant="12" id="ktd-3v-Xy6"/>
+                                                <constraint firstItem="j1o-go-okn" firstAttribute="top" secondItem="eOL-eI-8hB" secondAttribute="bottom" constant="20" id="ocG-eV-I4y"/>
+                                                <constraint firstAttribute="trailing" secondItem="mZN-T7-oDf" secondAttribute="trailing" constant="20" id="zh9-06-IED"/>
                                             </constraints>
                                         </view>
                                         <blurEffect style="regular"/>
@@ -286,9 +303,9 @@ Meteor feature requires notification permission.</string>
                         <constraints>
                             <constraint firstItem="9oA-8S-R1U" firstAttribute="centerX" secondItem="zae-IP-TZ4" secondAttribute="centerX" id="0Kq-lR-oPY"/>
                             <constraint firstItem="n4l-go-yFp" firstAttribute="leading" secondItem="Mqu-pD-j8Z" secondAttribute="leading" constant="16" id="0o8-GD-KkB"/>
+                            <constraint firstItem="eOL-eI-8hB" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-40" id="5dU-hV-Vh3"/>
                             <constraint firstItem="Mqu-pD-j8Z" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="16" id="67C-dr-oaE"/>
                             <constraint firstItem="epS-6F-Kaa" firstAttribute="centerY" secondItem="RFX-SY-fYk" secondAttribute="centerY" constant="-1" id="7oh-fY-SXz"/>
-                            <constraint firstItem="mYh-w1-2Gl" firstAttribute="centerY" secondItem="Mqu-pD-j8Z" secondAttribute="centerY" constant="-20" id="AgP-kS-FuC"/>
                             <constraint firstItem="6dV-9H-D56" firstAttribute="leading" secondItem="rbg-Pj-CxJ" secondAttribute="leading" constant="20" id="CqR-Sa-jIe"/>
                             <constraint firstItem="Y9A-9s-chN" firstAttribute="trailing" secondItem="n4l-go-yFp" secondAttribute="trailing" constant="-16" id="Hi5-cb-Z1n"/>
                             <constraint firstItem="Y9A-9s-chN" firstAttribute="leading" secondItem="n4l-go-yFp" secondAttribute="leading" constant="16" id="PbA-SJ-Eyn"/>
@@ -369,12 +386,12 @@ Meteor feature requires notification permission.</string>
             </objects>
             <point key="canvasLocation" x="-40" y="73.222748815165872"/>
         </scene>
-        <!--Meteor-->
+        <!--Settings-->
         <scene sceneID="9ZW-EQ-19w">
             <objects>
                 <tableViewController id="yKD-ZQ-Tqh" customClass="SettingsViewController" customModule="Meteor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sTO-D1-Fnl">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
                             <tableViewSection id="si5-2F-S24">
@@ -664,8 +681,7 @@ Meteor feature requires notification permission.</string>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="General" id="mO4-mb-C9g">
-                                <string key="footerTitle">Send ‘Single’ and ‘Endless’ as Time Sensitive notifications.
-Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.</string>
+                                <string key="footerTitle">Send ‘Single’ and ‘Endless’ as Time Sensitive notifications. Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="213-1a-puY">
                                         <rect key="frame" x="20" y="1042.9999942779541" width="350" height="44"/>
@@ -732,7 +748,7 @@ Time Sensitive notifications are always delivered immediately and remain on the 
                             <tableViewSection headerTitle="Live" footerTitle="If iPhone's 'Always On Display' turned on and the Lock Screen dimmed, then hide the Live content." id="Xh4-Qj-N8E">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="aRL-HV-6YX">
-                                        <rect key="frame" x="20" y="1270.6666603088379" width="350" height="60"/>
+                                        <rect key="frame" x="20" y="1254.6666603088379" width="350" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRL-HV-6YX" id="6io-Zc-6dw">
                                             <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="60"/>
@@ -771,7 +787,7 @@ Time Sensitive notifications are always delivered immediately and remain on the 
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="UyZ-Xb-wBf">
-                                        <rect key="frame" x="20" y="1330.6666603088379" width="350" height="44"/>
+                                        <rect key="frame" x="20" y="1314.6666603088379" width="350" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UyZ-Xb-wBf" id="Iw7-Tc-V8X">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
@@ -802,13 +818,13 @@ Time Sensitive notifications are always delivered immediately and remain on the 
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Live Color" id="keM-A9-xCm">
+                            <tableViewSection headerTitle="Live Customize" id="keM-A9-xCm">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="j8H-Kf-JZL">
-                                        <rect key="frame" x="20" y="1458.9999923706055" width="350" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="j8H-Kf-JZL">
+                                        <rect key="frame" x="20" y="1442.9999923706055" width="350" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8H-Kf-JZL" id="d27-Iv-GkP">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wlz-aA-bLY">
@@ -849,23 +865,23 @@ Time Sensitive notifications are always delivered immediately and remain on the 
                                                         <action selector="liveColorSegmentedControlTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="oHW-qD-h1h"/>
                                                     </connections>
                                                 </segmentedControl>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="L5E-vv-S0D">
-                                                    <rect key="frame" x="4" y="44" width="346" height="24"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="L5E-vv-S0D">
+                                                    <rect key="frame" x="6" y="44" width="340" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-8s-X7G">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBn-Bm-JdW">
-                                                            <rect key="frame" x="115.33333333333334" y="0.0" width="115.33333333333334" height="24"/>
+                                                            <rect key="frame" x="117.33333333333334" y="0.0" width="105.33333333333334" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cq-UK-TS4">
-                                                            <rect key="frame" x="230.66666666666666" y="0.0" width="115.33333333333334" height="24"/>
+                                                            <rect key="frame" x="234.66666666666666" y="0.0" width="105.33333333333334" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -875,13 +891,80 @@ Time Sensitive notifications are always delivered immediately and remain on the 
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="L5E-vv-S0D" secondAttribute="trailing" id="BOr-tg-Xdg"/>
-                                                <constraint firstItem="L5E-vv-S0D" firstAttribute="leading" secondItem="d27-Iv-GkP" secondAttribute="leading" constant="4" id="Hbp-y3-SF5"/>
+                                                <constraint firstAttribute="trailing" secondItem="L5E-vv-S0D" secondAttribute="trailing" constant="4" id="BOr-tg-Xdg"/>
+                                                <constraint firstItem="L5E-vv-S0D" firstAttribute="leading" secondItem="d27-Iv-GkP" secondAttribute="leading" constant="6" id="Hbp-y3-SF5"/>
                                                 <constraint firstItem="Wlz-aA-bLY" firstAttribute="top" secondItem="d27-Iv-GkP" secondAttribute="top" id="OJC-zL-xEk"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wlz-aA-bLY" secondAttribute="trailing" id="Tw2-3Q-L78"/>
                                                 <constraint firstItem="L5E-vv-S0D" firstAttribute="top" secondItem="Wlz-aA-bLY" secondAttribute="bottom" id="XU2-Um-yA6"/>
-                                                <constraint firstAttribute="bottom" secondItem="L5E-vv-S0D" secondAttribute="bottom" id="f7X-G9-Pfj"/>
+                                                <constraint firstAttribute="bottom" secondItem="L5E-vv-S0D" secondAttribute="bottom" constant="12" id="f7X-G9-Pfj"/>
                                                 <constraint firstItem="Wlz-aA-bLY" firstAttribute="leading" secondItem="d27-Iv-GkP" secondAttribute="leading" id="lHH-lz-rhL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="jfx-ka-MJ4">
+                                        <rect key="frame" x="20" y="1522.9999923706055" width="350" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jfx-ka-MJ4" id="NRg-1Z-Gcv">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5gg-Xu-SNR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="Z8K-ga-gjJ"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="">
+                                                            <imageReference key="image" image="align.horizontal.left.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                                <hierarchicalColors>
+                                                                    <color systemColor="labelColor"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                    <color systemColor="tertiaryLabelColor"/>
+                                                                </hierarchicalColors>
+                                                            </imageReference>
+                                                        </segment>
+                                                        <segment title="">
+                                                            <imageReference key="image" image="align.horizontal.center.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                                                                <hierarchicalColors>
+                                                                    <color systemColor="labelColor"/>
+                                                                    <color systemColor="secondaryLabelColor"/>
+                                                                    <color systemColor="tertiaryLabelColor"/>
+                                                                </hierarchicalColors>
+                                                            </imageReference>
+                                                        </segment>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="liveAlignmentSegmentedControlTapped:" destination="yKD-ZQ-Tqh" eventType="valueChanged" id="Air-12-6It"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ksg-RP-k7V">
+                                                    <rect key="frame" x="4" y="44" width="342" height="24"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Alignment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSH-Qt-DMi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="165" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Center Alignment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybt-ah-Rid">
+                                                            <rect key="frame" x="177" y="0.0" width="165" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ksg-RP-k7V" secondAttribute="trailing" constant="4" id="8Va-Np-7Lb"/>
+                                                <constraint firstAttribute="trailing" secondItem="5gg-Xu-SNR" secondAttribute="trailing" id="BWe-8s-xLt"/>
+                                                <constraint firstItem="5gg-Xu-SNR" firstAttribute="top" secondItem="NRg-1Z-Gcv" secondAttribute="top" id="Elj-mz-tjD"/>
+                                                <constraint firstItem="ksg-RP-k7V" firstAttribute="leading" secondItem="NRg-1Z-Gcv" secondAttribute="leading" constant="4" id="Iyb-eV-M9E"/>
+                                                <constraint firstItem="ksg-RP-k7V" firstAttribute="top" secondItem="5gg-Xu-SNR" secondAttribute="bottom" id="PvQ-mD-ern"/>
+                                                <constraint firstAttribute="bottom" secondItem="ksg-RP-k7V" secondAttribute="bottom" constant="12" id="r2U-PF-EzD"/>
+                                                <constraint firstItem="5gg-Xu-SNR" firstAttribute="leading" secondItem="NRg-1Z-Gcv" secondAttribute="leading" id="wmz-cc-h83"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -898,8 +981,8 @@ Thank you for using. 👋🏻 </string>
                             <outlet property="delegate" destination="yKD-ZQ-Tqh" id="2AF-IB-EOu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meteor" id="Lak-TZ-MUE"/>
-                    <size key="freeformSize" width="390" height="1500"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Lak-TZ-MUE"/>
+                    <size key="freeformSize" width="390" height="2000"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="HSg-RR-DOY" id="PiT-bz-Rq5"/>
                         <outlet property="alwaysOnLiveCell" destination="aRL-HV-6YX" id="THB-ZG-EMx"/>
@@ -913,6 +996,7 @@ Thank you for using. 👋🏻 </string>
                         <outlet property="imageView" destination="cRB-OJ-SQV" id="g64-r6-8fw"/>
                         <outlet property="keywordTextField" destination="8TC-ak-svv" id="tkd-wq-bRa"/>
                         <outlet property="lightModeSwitch" destination="76j-vM-aKA" id="cs9-1G-dYq"/>
+                        <outlet property="liveAlignmentSegmentedControl" destination="5gg-Xu-SNR" id="d6f-3V-QJA"/>
                         <outlet property="liveColorSegmentedControl" destination="Wlz-aA-bLY" id="5kV-YF-Oq6"/>
                         <outlet property="refreshPhotoView" destination="eqt-rP-gYu" id="a54-RE-vbY"/>
                         <outlet property="reviewImageView" destination="BZ9-wB-xlR" id="6WE-Sc-5xQ"/>
@@ -1043,10 +1127,13 @@ Thank you for using. 👋🏻 </string>
         </scene>
     </scenes>
     <resources>
+        <image name="align.horizontal.center.fill" catalog="system" width="120" height="128"/>
+        <image name="align.horizontal.left.fill" catalog="system" width="128" height="118"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="arrowshape.turn.up.forward.circle.fill" catalog="system" width="128" height="123"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="104"/>
         <image name="bird.fill" catalog="system" width="126" height="128"/>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="109"/>
         <image name="lightspectrum.horizontal" catalog="system" width="128" height="123"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="meteor_splash.png" width="300" height="300"/>
@@ -1058,49 +1145,52 @@ Thank you for using. 👋🏻 </string>
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17647058823529413" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="quaternarySystemFillColor">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -33,10 +33,13 @@ class MeteorViewModel {
             liveManager.loadActivity()
             
         } else {
+            meteorText = NSLocalizedString("Hello.", comment: "")
+            
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveContentHideStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
             UserDefaults.standard.set(LiveColor.red.rawValue, forKey: UserDefaultsKeys.liveColorKey)
+            UserDefaults.standard.set(LiveAlignment.left.rawValue, forKey: UserDefaultsKeys.liveAlignmentKey)
             
             // 최초 위젯 이미지 생성
             Task {
@@ -162,8 +165,8 @@ class MeteorViewModel {
         
         self.db
             .child(version)
-            .child(kind)
             .child(date1)
+            .child(kind)
             .child(locale)
             .child(user)
             .child(date2)

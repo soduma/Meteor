@@ -48,7 +48,7 @@ struct OnboardingContentView: View {
             
             Text("Take a Note at the Nearest Place.")
                 .font(.system(size: 24, weight: .semibold))
-                .padding(.horizontal, 28)
+                .padding(.horizontal, 32)
                 .multilineTextAlignment(.center)
             
             Spacer(minLength: 24)
@@ -70,6 +70,8 @@ struct OnboardingContentView: View {
                     secondaryColor: .primary
                 )
             }
+            
+            Spacer(minLength: 40)
         }
     }
 }

@@ -55,24 +55,7 @@ class MeteorViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // 설치 또는 업데이트 직후 처리할 로직
-        if UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() {
-            viewModel.resetCustomReviewCount()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                guard let self else { return }
-                let view = OnboardingView(dismissAction: {
-                    self.dismiss(animated: true)
-                })
-                    .environment(OnboardingViewModel())
-                let vc = UIHostingController(rootView: view)
-                vc.modalPresentationStyle = .pageSheet
-                vc.isModalInPresentation = true
-                self.present(vc, animated: true)
-            }
-            
-            UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
-        }
+        isInstallOrUpdate()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(removeAuthView),
@@ -241,6 +224,11 @@ extension MeteorViewController {
         authView.layer.cornerRadius = 20
         moveToSettingButton.layer.cornerRadius = 20
         moveToSettingButton.clipsToBounds = true
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) == false {
+            meteorTextLabel.text = NSLocalizedString("Hello.", comment: "")
+            meteorTextLabel.textColor = .label
+        }
     }
     
     private func updateStackButtonUI(type: MeteorType) {
@@ -325,6 +313,27 @@ extension MeteorViewController {
                                           hasDynamicHeight: false,
                                           hasCircleCloseButton: false)
             presentAsPuller(vc, model: pullerModel)
+        }
+    }
+    
+    /// 설치 또는 업데이트 후 첫 실행 직후에 한 번만 처리할 로직
+    private func isInstallOrUpdate() {
+        if UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() {
+            viewModel.resetCustomReviewCount()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self else { return }
+                let view = OnboardingView(dismissAction: {
+                    self.dismiss(animated: true)
+                })
+                    .environment(OnboardingViewModel())
+                let vc = UIHostingController(rootView: view)
+                vc.modalPresentationStyle = .pageSheet
+                vc.isModalInPresentation = true
+                self.present(vc, animated: true)
+            }
+            
+            UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
         }
     }
     
