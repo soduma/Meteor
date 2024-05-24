@@ -15,6 +15,11 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var reviewImageView: UIImageView!
     @IBOutlet weak var versionImageView: UIImageView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var keywordTextField: UITextField!
+    @IBOutlet weak var refreshPhotoView: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     @IBOutlet weak var lightModeSwitch: UISwitch!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
@@ -28,11 +33,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var hideLiveContentSwitch: UISwitch!
     
     @IBOutlet weak var liveColorSegmentedControl: UISegmentedControl!
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var keywordTextField: UITextField!
-    @IBOutlet weak var refreshPhotoView: UIView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var liveAlignmentSegmentedControl: UISegmentedControl!
     
     private let viewModel = SettingsViewModel()
     private let liveManager = LiveActivityManager.shared
@@ -52,9 +53,11 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func feedbackButtonTapped(_ sender: UIButton) {
-        var reverseLast = ""
-        if let last = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey) {
-            reverseLast = String(last.replacingOccurrences(of: ".", with: "").reversed())
+        makeVibration(type: .medium)
+        
+        var reverseReview = ""
+        if let review = UserDefaults.standard.string(forKey: UserDefaultsKeys.reviewVersionKey) {
+            reverseReview = String(review.replacingOccurrences(of: ".", with: "").reversed())
         }
         if MFMailComposeViewController.canSendMail() {
             let composeViewController = MFMailComposeViewController()
@@ -67,7 +70,7 @@ class SettingsViewController: UITableViewController {
                              
                              -------------------
                              
-                             App Version : \(reverseLast). __\(SettingsViewModel.getCurrentVersion())
+                             App Version : (\(reverseReview)0). __\(SettingsViewModel.getCurrentVersion())
                              Device Model : \(UIDevice.modelName)
                              Device OS : \(UIDevice.current.systemVersion)
                              """
@@ -102,6 +105,8 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func reviewButtonTapped(_ sender: UIButton) {
+        makeVibration(type: .medium)
+        
         let url = "itms-apps://itunes.apple.com/app/1562989730"
         if let url = URL(string: url),
            UIApplication.shared.canOpenURL(url) {
@@ -154,6 +159,21 @@ class SettingsViewController: UITableViewController {
         showCustomAppReview()
         liveManager.rebootActivity()
     }
+    
+    @IBAction func liveAlignmentSegmentedControlTapped(_ sender: UISegmentedControl) {
+        makeVibration(type: .rigid)
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.liveAlignment = .left
+        default:
+            viewModel.liveAlignment = .center
+        }
+        UserDefaults.standard.set(viewModel.liveAlignment.rawValue, forKey: UserDefaultsKeys.liveAlignmentKey)
+        
+        showCustomAppReview()
+        liveManager.rebootActivity()
+    }
 }
 
 extension SettingsViewController {
@@ -198,6 +218,7 @@ extension SettingsViewController {
         hideLiveContentSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)
         
         liveColorSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey)
+        liveAlignmentSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveAlignmentKey)
     }
     
     private func setImageViewsBorder() {

@@ -38,6 +38,10 @@ class UserDefaultsKeys {
         return "LiveColor"
     }
     
+    class var liveAlignmentKey: String {
+        return "LiveAlignment"
+    }
+    
     /// single의 identifier 분리용
     class var singleIndexKey: String {
         return "SingleIndex"

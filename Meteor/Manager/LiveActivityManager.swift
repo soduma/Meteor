@@ -43,6 +43,19 @@ class LiveActivityManager {
         }
     }
     
+    func isActivityAlive() -> Bool {
+        if let currentActivity {
+            switch currentActivity.activityState {
+            case .dismissed:
+                return false
+            default:
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+    
     @discardableResult
     func startActivity(text: String) -> Bool {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return false }
@@ -74,7 +87,7 @@ class LiveActivityManager {
     
     private func observeActivity(activity: Activity<MeteorAttributes>) async {
         await withTaskGroup(of: Void.self) { group in
-            group.addTask { @MainActor in
+            group.addTask {
                 for await activityState in activity.activityStateUpdates {
                     print("🌈🌈🌈🌈🌈🌈🌈")
                     print(activity.id)
@@ -86,7 +99,7 @@ class LiveActivityManager {
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
                            UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey) {
                             do {
-                                try await Task.sleep(for: .seconds(1))
+                                try await Task.sleep(for: .seconds(1)) // 사용자화 변경시 반영되지 않도록
                                 if !self.isActivityAlive() && self.currentActivity != nil {
                                     await self.push(liveText: "")
                                     self.loadActivity()
@@ -106,6 +119,14 @@ class LiveActivityManager {
                     }
                 }
             }
+            
+            group.addTask { @MainActor in
+                for await pushToken in activity.pushTokenUpdates {
+                    let token = pushToken.hexadecimalString
+                    print("💌 pushTokenUpdates: \(token)")
+                    UserDefaults.standard.set(token, forKey: UserDefaultsKeys.liveDeviceTokenKey)
+                }
+            }
         }
     }
     
@@ -118,13 +139,21 @@ class LiveActivityManager {
                         
                     } else if activityState == .ended {
                         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey),
-                           UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),// {
+                           UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveBackgroundUpdateStateKey),
                            self.isActivityAlive() {
                             await self.endActivity()
                             await self.push(liveText: "")
                             self.loadActivity()
                         }
                     }
+                }
+            }
+            
+            group.addTask { @MainActor in
+                for await pushToken in activity.pushTokenUpdates {
+                    let token = pushToken.hexadecimalString
+                    print("💌 pushTokenUpdates: \(token)")
+                    UserDefaults.standard.set(token, forKey: UserDefaultsKeys.liveDeviceTokenKey)
                 }
             }
         }
@@ -139,7 +168,7 @@ class LiveActivityManager {
         print("Ending the Live Activity(Timer): \(activity.id)")
     }
     
-    func endAlwaysActivity() async {
+    private func endAlwaysActivity() async {
         let activities = Activity<MeteorAttributes>.activities.filter({ $0.content.state.liveText == "" })
         
         for activity in activities {
@@ -149,32 +178,12 @@ class LiveActivityManager {
         }
     }
     
-    func isActivityAlive() -> Bool {
-        if let currentActivity {
-            switch currentActivity.activityState {
-            case .dismissed:
-                return false
-            default:
-                return true
-            }
-        } else {
-            return false
-        }
-    }
-    
-    func isSupportVersion() -> Bool {
-        if #available(iOS 17.2, *) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
     private func activityTemplete(liveText: String) -> (MeteorAttributes, ActivityContent<MeteorAttributes.ContentState>) {
         let attributes = MeteorAttributes()
         let state = MeteorAttributes.ContentState(
             liveText: liveText,
             liveColor: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveColorKey),
+            liveAlignment: UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveAlignmentKey),
             isContentHide: UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey),
             isMinimize: UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey),
             isAlwaysOnLive: UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey)
@@ -209,6 +218,7 @@ extension LiveActivityManager {
         "content-state": {
             "liveText": "\(liveText)",
             "liveColor": 4,
+            "liveAlignment": \(UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveAlignmentKey)),
             "isContentHide": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)),
             "isMinimize": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey)),
             "isAlwaysOnLive": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey))
@@ -217,6 +227,7 @@ extension LiveActivityManager {
         "attributes": {
             "liveText": "\(liveText)",
             "liveColor": 4,
+            "liveAlignment": \(UserDefaults.standard.integer(forKey: UserDefaultsKeys.liveAlignmentKey)),
             "isContentHide": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.liveContentHideStateKey)),
             "isMinimize": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.minimizeDynamicIslandStateKey)),
             "isAlwaysOnLive": \(UserDefaults.standard.bool(forKey: UserDefaultsKeys.alwaysOnLiveStateKey))
@@ -224,7 +235,7 @@ extension LiveActivityManager {
         "alert": {
             "title": "Meteor",
             "body": {
-                "loc-key": "Live Restarted",
+                "loc-key": "Live Started",
             }
         }
     }

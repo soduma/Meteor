@@ -11,6 +11,12 @@ class VersionViewController: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var idButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        makeVibration(type: .medium)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

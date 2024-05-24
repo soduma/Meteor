@@ -18,7 +18,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“Live总是能看见”将仅在可用时继续显示，即使目前没有注册的“Live”。"
+            "value" : "“Live总是能看见”将仅在可用时继续显示，即使目前没有注册的 Live。"
           }
         },
         "zh-Hant" : {
@@ -311,30 +311,30 @@
         }
       }
     },
-    "If the active Live terminates, it will start Live over the network. For example, if swipe to clear registered Live from the Lock Screen, a new Live will start.\n\nRestart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later." : {
+    "If the active Live terminates, it will start Live over the network. For example, if swipe to clear registered Live from the Lock Screen, a new Live will start.\n\nStart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アクティブなLiveが終了すると、ネットワーク経由でLiveが開始されます。たとえば、スワイプしてロック画面から登録されたライブをクリアすると、新しいライブが開始されます。\n\n“バックグラウンドでのLiveの再起動”は現在ベータ版です。\nSupport iOS 17.2 and Later."
+            "value" : "アクティブなLiveが終了すると、ネットワーク経由でLiveが開始されます。たとえば、スワイプしてロック画面から登録されたライブをクリアすると、新しいライブが開始されます。\n\n“バックグラウンドでLiveを開始する”は現在ベータ版です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "진행중인 Live가 종료될 경우 네트워크를 통해 Live를 시작합니다. 예를 들어 등록된 Live를 잠금화면에서 스와이프하여 지우면 새로운 Live가 시작됩니다.  ‘백그라운드에서 Live 새로 시작’은 현재 베타입니다.\niOS 17.2 이상에서 사용할 수 있습니다."
+            "value" : "진행중인 Live가 종료될 경우 네트워크를 통해 Live를 시작합니다. 예를 들어 등록된 Live를 잠금화면에서 스와이프하여 지우면 새로운 Live가 시작됩니다.  ‘백그라운드에서 Live 시작’은 현재 베타입니다.\niOS 17.2 이상에서 사용할 수 있습니다."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果活动Live终止，它将在网络上启动Live。例如，如果滑动以从锁定屏幕清除已注册的Live，则将启动新的Live。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
+            "value" : "如果活动Live 终止，它将在网络上启动Live。例如，如果滑动以从锁定屏幕清除已注册的Live，则将启动新的Live。\n\n“在后台开始Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果活動Live終止，它將透過網路啟動Live。 例如，如果滑動以從鎖定螢幕清除已註冊的Live，則將開始新的Live。\n\n“在后台重新启动Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
+            "value" : "如果活動Live終止，它將透過網路啟動Live。 例如，如果滑動以從鎖定螢幕清除已註冊的Live，則將開始新的Live。\n\n“在後臺開始 Live”目前处于测试阶段。\nSupport iOS 17.2 and Later."
           }
         }
       }
@@ -424,31 +424,31 @@
         }
       }
     },
-    "Live Restarted" : {
+    "Live Started" : {
       "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live再起動"
+            "value" : "Live開始した"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live 새로 시작됨"
+            "value" : "Live 시작됨"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live重新启动"
+            "value" : "Live开始"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live重新啟動"
+            "value" : "Live開始"
           }
         }
       }
@@ -762,7 +762,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Endless는 선택한 시간마다\n반복되는 알림입니다."
+            "value" : "Endless는 선택한 시간의 간격마다\n반복되는 알림입니다."
           }
         },
         "zh-Hans" : {
@@ -1048,34 +1048,6 @@
         }
       }
     },
-    "Restart Live in Background (β)" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "バックグラウンドでのLiveの再起動(β)"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "백그라운드에서 Live 새로 시작 (β)"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在后台重新启动Live（β）"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在后台重新启动Live（β）"
-          }
-        }
-      }
-    },
     "Scribble here 👀" : {
       "comment" : "Localizable.strings\n  Meteor\n\n  Created by 장기화 on 2021/04/24.",
       "localizations" : {
@@ -1101,6 +1073,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在這裡填寫👀"
+          }
+        }
+      }
+    },
+    "Start Live in Background (β)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バックグラウンドでLiveを開始する(β)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "백그라운드에서 Live 시작 (β)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在后台开始Live（β）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在後臺開始 Live（β）"
           }
         }
       }
@@ -1180,7 +1180,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "左右滑动“Dynamic Island”可以隐藏它或使其重新出现。"
+            "value" : "左右滑动Dynamic Island可以隐藏它或使其重新出现。"
           }
         },
         "zh-Hant" : {

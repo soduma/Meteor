@@ -38,16 +38,19 @@ struct AlwaysOnLiveView: View {
                             liveManager.rebootActivity()
                         }
                     
-                    Toggle("Restart Live in Background (β)", isOn: $isBackgroundOn)
-                        .tint(.purple)
-                        .disabled(!liveManager.isSupportVersion())
-                        .onChange(of: isBackgroundOn) { oldValue, newValue in
-                            liveManager.rebootActivity()
-                        }
+                    if #available(iOS 17.2, *) {
+                        Toggle("Start Live in Background (β)", isOn: $isBackgroundOn)
+                            .tint(.purple)
+                            .onChange(of: isBackgroundOn) { oldValue, newValue in
+                                liveManager.rebootActivity()
+                            }
+                    }
                 } header: {
                     Text("Customize")
                 } footer: {
-                    Text("If the active Live terminates, it will start Live over the network. For example, if swipe to clear registered Live from the Lock Screen, a new Live will start.\n\nRestart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later.")
+                    if #available(iOS 17.2, *) {
+                        Text("If the active Live terminates, it will start Live over the network. For example, if swipe to clear registered Live from the Lock Screen, a new Live will start.\n\nStart Live in Background is currently in Beta.\nSupport iOS 17.2 and Later.")
+                    }
                 }
             }
             

@@ -17,15 +17,16 @@ struct OnboardingView: View {
         OnboardingContentView(scale: $scale)
             .onAppear {
                 Task {
-                    try await Task.sleep(for: .seconds(0.5))
-                    withAnimation(.default.speed(0.7)) {
+                    try await Task.sleep(for: .seconds(0.1))
+                    withAnimation(.default.speed(1)) {
                         scale = 0.4
                         isPresent = true
                     }
                 }
             }
+        
         if isPresent {
-            OnboardingContinueButtonView(viewModel: viewModel)
+            OnboardingContinueButtonView(viewModel: viewModel, dismissAction: dismissAction)
         }
     }
 }
@@ -48,7 +49,7 @@ struct OnboardingContentView: View {
             
             Text("Take a Note at the Nearest Place.")
                 .font(.system(size: 24, weight: .semibold))
-                .padding(.horizontal, 28)
+                .padding(.horizontal, 32)
                 .multilineTextAlignment(.center)
             
             Spacer(minLength: 24)
@@ -58,7 +59,7 @@ struct OnboardingContentView: View {
                     systemName: "clock.badge",
                     title: "Three Ways of Notification",
                     description: "Immediately, Specified Time Interval or using ‘Live Activity’ to display notifications on the Lock Screen or Notification Center.",
-                    primaryColor: .red,
+                    primaryColor: .yellow,
                     secondaryColor: .primary
                 )
                 
@@ -66,10 +67,12 @@ struct OnboardingContentView: View {
                     systemName: "bubble.left.and.exclamationmark.bubble.right.fill",
                     title: "Get What's Important",
                     description: "Time Sensitive notifications are always delivered immediately and remain on the Lock Screen for an hour.",
-                    primaryColor: .yellow,
+                    primaryColor: .orange,
                     secondaryColor: .primary
                 )
             }
+            
+            Spacer(minLength: 40)
         }
     }
 }
@@ -81,7 +84,11 @@ struct OnboardingImageView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.secondary.opacity(0.9)]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.yellow, Color.pink.opacity(0.5)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
             RoundedRectangle(cornerRadius: 32)
                 .frame(width: 400 * scale, height: 700 * scale)
                 .opacity(0.2)
@@ -97,7 +104,7 @@ struct OnboardingImageView: View {
                         .frame(width: 370 * scale, height: 120 * scale)
                         .scaleEffect(notificationViewScale)
                         .onAppear {
-                            withAnimation(.spring.delay(0.3).speed(0.5)
+                            withAnimation(.spring.delay(0.7).speed(1)
                                 .repeatForever(autoreverses: true)) {
                                     notificationViewScale = 0.9
                                 }
@@ -163,14 +170,16 @@ struct OnboardingDescriptionView: View {
 }
 
 struct OnboardingContinueButtonView: View {
-    @Environment(\.dismiss) private var dismiss
+//    @Environment(\.dismiss) private var dismiss
     @Bindable var viewModel: OnboardingViewModel
+    var dismissAction: (() -> Void)?
     
     var body: some View {
         Button {
             Task {
                 await viewModel.requestAuth()
-                dismiss()
+//                dismiss()
+                dismissAction?()
             }
         } label: {
             HStack {
