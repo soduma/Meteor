@@ -32,9 +32,7 @@ class MeteorViewModel {
             checkAppearanceMode()
             liveManager.loadActivity()
             
-        } else {
-            meteorText = NSLocalizedString("Hello.", comment: "")
-            
+        } else {            
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.hapticStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.liveContentHideStateKey)
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.alwaysOnLiveStateKey)

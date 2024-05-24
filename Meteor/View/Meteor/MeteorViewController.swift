@@ -224,11 +224,6 @@ extension MeteorViewController {
         authView.layer.cornerRadius = 20
         moveToSettingButton.layer.cornerRadius = 20
         moveToSettingButton.clipsToBounds = true
-        
-        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.launchedBeforeKey) == false {
-            meteorTextLabel.text = NSLocalizedString("Hello.", comment: "")
-            meteorTextLabel.textColor = .label
-        }
     }
     
     private func updateStackButtonUI(type: MeteorType) {
@@ -321,9 +316,10 @@ extension MeteorViewController {
         if UserDefaults.standard.string(forKey: UserDefaultsKeys.lastVersionKey) != SettingsViewModel.getCurrentVersion() {
             viewModel.resetCustomReviewCount()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                 guard let self else { return }
                 let view = OnboardingView(dismissAction: {
+                    UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
                     self.dismiss(animated: true)
                 })
                     .environment(OnboardingViewModel())
@@ -331,9 +327,7 @@ extension MeteorViewController {
                 vc.modalPresentationStyle = .pageSheet
                 vc.isModalInPresentation = true
                 self.present(vc, animated: true)
-            }
-            
-            UserDefaults.standard.set(SettingsViewModel.getCurrentVersion(), forKey: UserDefaultsKeys.lastVersionKey)
+            }            
         }
     }
     
