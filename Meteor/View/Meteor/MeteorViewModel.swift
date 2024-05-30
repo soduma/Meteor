@@ -98,7 +98,11 @@ class MeteorViewModel {
         contents.title = "Endless Meteor :"
         contents.body = text
         contents.sound = .default
-        contents.interruptionLevel = .timeSensitive
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.timeSensitiveStateKey) {
+            contents.interruptionLevel = .timeSensitive
+        } else {
+            contents.interruptionLevel = .active
+        }
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(duration), repeats: true)
         let request = UNNotificationRequest(identifier: "endlesstimer", content: contents, trigger: trigger)
