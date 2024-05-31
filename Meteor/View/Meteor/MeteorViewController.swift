@@ -43,13 +43,12 @@ class MeteorViewController: UIViewController {
         checkTimerRunning()
         
         viewModel.appLaunchSettings()
-        liveManager.getPushToStartToken()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        checkLiveState()
+        updateLiveState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,7 +62,7 @@ class MeteorViewController: UIViewController {
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(checkLiveState),
+                                               selector: #selector(updateLiveState),
                                                name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
     }
@@ -353,7 +352,8 @@ extension MeteorViewController {
         }
     }
     
-    @objc private func checkLiveState() {
+    @objc private func updateLiveState() {
+        liveManager.getPushToStartToken()
         liveManager.startAlwaysActivity()
         
         switch viewModel.meteorType {
